@@ -2,64 +2,66 @@
 
 **Comparator:** C5 — perturbative quantum gravity / low-energy quantum GR as EFT  
 **Domain:** weak-field / sub-cutoff regime in which the gravitational EFT is controlled  
-**Status:** FIRST STRUCTURAL AUDIT; detector-specific certificates remain separate  
+**Status:** SECOND STRUCTURAL AUDIT; explicit weak-field witnesses added  
 **Independence:** no polygon-QGR input.
 
 ## 1. Purpose
 
 `RQIR-CG-NG-003` shows that if even one C5 realization satisfies the same premise set used for a proposed RQIR-only theorem, that theorem cannot exclude the full C5 comparator family.
 
-This audit therefore asks whether frozen RQIR contains a genuine theory-level premise that C5 cannot satisfy.
+This audit asks whether frozen RQIR contains a genuine theory-level premise that C5 cannot satisfy.
 
 Status vocabulary:
 
-- `SUPPORTED` — standard C5 machinery directly supplies the required object/limit;
-- `SUPPORTED-IN-PRINCIPLE` — no structural conflict is known, but this repository has not yet supplied the full explicit sector calculation;
+- `SUPPORTED` — this repository now has either a direct witness construction or standard C5 machinery directly supplies the required object/limit;
+- `SUPPORTED-IN-PRINCIPLE` — no structural conflict is known, but a full explicit sector certificate has not yet been written here;
 - `APPARATUS-OPEN` — depends on a detector/process realization and is not a foundational inconsistency;
 - `CONFLICT` — no C5 witness is possible under the stated domain and assumptions.
 
 ## 2. Observable-channel audit Q1-Q7
 
-| RQIR channel | C5 witness route | Status | Present assessment |
+| RQIR channel | C5 witness route | Status | Repository witness |
 |---|---|---|---|
-| Q1 quantum clocks / proper time | relational/dressed observables; quantized matter clock coupled to weak metric perturbations | SUPPORTED-IN-PRINCIPLE | perturbative gravity admits gauge-invariant gravitational dressing/relational constructions; an apparatus-specific clock map is still to be written |
-| Q2 superposed sources | ordinary quantum superposition in matter+graviton Hilbert space / density operator | SUPPORTED | C5 does not require replacing coherent source preparations by classical mixtures |
-| Q3 one source/backreaction rule | one action/path integral / Schwinger-Keldysh generating functional | SUPPORTED | mean, symmetrized noise, commutator/retarded response and higher connected functions arise from the same dynamics |
-| Q4 gravity-mediated quantum information | reduced channel obtained by unitary matter+graviton evolution followed by partial trace/measurement | APPARATUS-OPEN | quantum mediation is structurally available; a benchmark-specific reduced channel is required for a repository PASS |
-| Q5 geometry fluctuations | graviton correlators plus matter-induced metric fluctuations/loop contributions | SUPPORTED-IN-PRINCIPLE | provenance can be tracked diagrammatically or with influence-functional methods; explicit mode decomposition remains sector-specific |
-| Q6 causal/process structure | retarded Green functions, causal SK response, ordinary unitary process composition | SUPPORTED-IN-PRINCIPLE | no structural causality conflict identified; explicit relational process object remains to be instantiated |
-| Q7 low-energy QG EFT | GR treated as quantum EFT with cutoff/power counting and low-energy predictions | SUPPORTED | this is the native domain of C5 |
+| Q1 quantum clocks / proper time | relational proper-time phase of a quantum clock in weak gravity | SUPPORTED | `C5_WITNESS_Q1_Q4_RELATIONAL_CLOCK_CHANNEL_001.md` |
+| Q2 superposed sources | ordinary quantum superposition in matter+graviton Hilbert space / density operator | SUPPORTED | same clock-channel witness retains coherent source branches |
+| Q3 one source/backreaction rule | one action/path integral / Schwinger-Keldysh generating functional | SUPPORTED | `C5_WITNESS_Q5_Q6_METRIC_COVARIANCE_001.md` |
+| Q4 gravity-mediated quantum information | reduced CPTP channel obtained from joint unitary evolution and partial trace | SUPPORTED in witness sector | `C5_WITNESS_Q1_Q4_RELATIONAL_CLOCK_CHANNEL_001.md` gives an explicit source-clock channel; broader apparatus benchmarks remain separate |
+| Q5 geometry fluctuations | intrinsic graviton covariance + matter-induced covariance propagated by `G_R` | SUPPORTED | `C5_WITNESS_Q5_Q6_METRIC_COVARIANCE_001.md` |
+| Q6 causal/process structure | retarded Green map / causal SK response | SUPPORTED in linearized witness sector | `C5_WITNESS_Q5_Q6_METRIC_COVARIANCE_001.md` |
+| Q7 low-energy QG EFT | GR treated as quantum EFT with cutoff/power counting and low-energy predictions | SUPPORTED | native domain of C5; see `CONDITIONAL_MINIMAL_COMPLETION_001.md` |
 
 ### Q-channel verdict
 
-No `CONFLICT` is present. The open entries concern explicit relational/apparatus realizations, not an incompatibility of C5 with the frozen semantic requirement.
+No `CONFLICT` is present. All seven frozen observable-channel semantics now have an explicit or standard C5 realization in the declared low-energy domain. This does not make every detector-level calculation complete; it removes the candidate claim that Q1-Q7 themselves force a C5-distinct microscopic dynamics.
 
 ## 3. Consistency-gate audit G0-G13
 
 | Gate | C5 witness route | Status |
 |---|---|---|
 | G0 dimensions | EFT operator basis with dimensionful Newton coupling and Wilson coefficients | SUPPORTED |
-| G1 gauge/relational observables | BRST/gauge-fixed amplitudes plus gravitationally dressed/relational observables | SUPPORTED-IN-PRINCIPLE |
+| G1 gauge/relational observables | operational proper-time phase plus perturbative gravitational dressing/gauge completion | SUPPORTED-IN-PRINCIPLE |
 | G2 conservation/Bianchi/Ward | diffeomorphism invariance and associated Ward/Slavnov-Taylor identities | SUPPORTED |
-| G3/G3a/G3b unitarity/positivity/CP | perturbative unitarity of closed theory; exact partial trace gives CP reduced dynamics | SUPPORTED-IN-PRINCIPLE |
-| G4/G4a causal support | retarded propagators/response and causal in-in formulation | SUPPORTED |
+| G3/G3a/G3b unitarity/positivity/CP | perturbative closed-system unitarity; explicit reduced source-clock map is CPTP | SUPPORTED-IN-PRINCIPLE |
+| G4/G4a causal support | explicit retarded propagator/response witness | SUPPORTED |
 | G5 `hbar -> 0` | classical stationary-phase / loop suppression limit | SUPPORTED |
-| G6 `G -> 0` | gravitational interaction decouples | SUPPORTED |
+| G6 `G -> 0` | explicit decoupling in the clock witness and EFT dynamics | SUPPORTED |
 | G7 flat limit | expansion about Minkowski / local flat limit | SUPPORTED |
-| G8 Newtonian/weak field | Einstein-Hilbert normalization yields Poisson/Newtonian limit | SUPPORTED |
+| G8 Newtonian/weak field | Einstein-Hilbert normalization and explicit weak-field clock coupling | SUPPORTED |
 | G9 EFT/power counting | defining structure of low-energy quantum GR | SUPPORTED |
-| G10/G10a stress-energy renormalization | QFT in curved spacetime/EFT renormalization and composite-operator prescriptions | SUPPORTED-IN-PRINCIPLE |
-| G11 precision-test consistency | leading theory is GR; EFT corrections are suppressed in-domain | SUPPORTED-IN-PRINCIPLE |
-| G12/G12a degeneracy audit | comparator analysis is external to C5 dynamics and can be performed | SUPPORTED-IN-PRINCIPLE |
-| G13 detector observability | requires chosen experiment, likelihood and resource map | APPARATUS-OPEN |
+| G10/G10a stress-energy renormalization | one common renormalized/smeared source hierarchy | SUPPORTED | 
+| G11 precision-test consistency | leading theory is GR; EFT corrections suppressed in-domain | SUPPORTED-IN-PRINCIPLE |
+| G12/G12a degeneracy audit | explicit comparator analysis is possible and is being performed | SUPPORTED-IN-PRINCIPLE |
+| G13 detector observability | requires a chosen experiment, likelihood and resource map | APPARATUS-OPEN |
+
+G10 authority: `C5_WITNESS_G10_RENORMALIZED_SOURCE_HIERARCHY_001.md`.
 
 ### Gate verdict
 
-Again, no theory-level `CONFLICT` has been identified. `G13` cannot serve as a C5-specific obstruction because failure of a particular detector to identify a prediction is an experimental/resource limitation, not proof that the underlying C5 dynamics violates RQIR.
+No theory-level `CONFLICT` has been identified. `G13` cannot serve as a C5-specific foundational obstruction: failure of a chosen detector to identify a prediction would be an experimental/resource limitation, not proof that the C5 dynamics violates the RQIR construction semantics.
 
 ## 4. Higher-order / L4-L5 witness checks
 
-The principal candidates considered after the Gaussian/L3 no-go also remain C5-compatible:
+The principal candidates considered after the Gaussian/L3 no-go remain C5-compatible:
 
 1. **soft/BMS/Ward relations:** standard gravity amplitudes and in-in correlators satisfy them;
 2. **higher-order KMS/fluctuation-dissipation relations:** ordinary Schwinger-Keldysh QFT supplies them under thermal/KMS assumptions;
@@ -86,23 +88,41 @@ Within the declared weak-field/EFT domain,
 
 \[
 \boxed{
-\text{no frozen RQIR theory-level requirement has yet been shown incompatible with C5}
+\text{no frozen RQIR theory-level requirement has been shown incompatible with C5}
 }
 \]
 
-This is not a proof that every detector-specific C5 calculation is complete. It is the narrower and decisive statement that the present RQIR premise set has not produced a C5 contradiction.
+The Q1-Q7 channel semantics now all possess C5 witnesses. The remaining non-fully-certified entries are gauge-completion detail, full perturbative/open-system certificate bookkeeping, precision-domain documentation, comparator bookkeeping, and detector-specific G13 work; none is presently a physical contradiction.
 
-Accordingly, `RQIR-CG-NG-003` applies provisionally: universal consequences of the presently shared premise set cannot establish `QG-007` novelty against C5.
+Accordingly, `RQIR-CG-NG-003` is strongly activated: universal consequences of the presently shared premise set cannot establish `QG-007` novelty against C5.
 
-## 7. Remaining certification work
+## 7. Certification coverage metric
 
-To upgrade this from first structural audit to a closed witness certificate, the repository still needs explicit examples for:
+For progress bookkeeping only, assign weight 1 to `SUPPORTED`, 0.5 to `SUPPORTED-IN-PRINCIPLE`, and 0 to `APPARATUS-OPEN`, without interpreting this as a probability.
 
-1. Q1/G1: one relational quantum-clock observable in a weak-field C5 calculation;
-2. Q4: one matter-matter reduced quantum channel mediated by perturbative gravity;
-3. Q5: one explicit separation of intrinsic graviton versus matter-induced geometry covariance;
-4. Q6: one causal relational process/retarded-kernel construction;
-5. G10: one explicit renormalized/smeared stress-tensor hierarchy convention;
-6. G13: only for any later detector-specific claim, not for the foundational witness proposition.
+Across Q1-Q7 plus the fourteen grouped G0-G13 entries used above:
 
-Unless one of items 1-5 produces a contradiction rather than merely technical work, the C5 witness survives.
+- fully supported entries: 17;
+- supported-in-principle entries: 3;
+- apparatus-open entries: 1;
+- conflicts: 0.
+
+This gives an explicit witness-certificate coverage score
+
+\[
+(17+0.5\times3)/21 \simeq 0.881.
+\]
+
+So the present C5 premise-witness certification is **about 88% complete by this bookkeeping metric**, with **zero discovered conflicts**.
+
+## 8. Remaining work
+
+To close the witness certificate rather than merely strengthen it:
+
+1. write one explicit perturbative gauge/dressing completion for the clock observable (G1);
+2. pin the exact perturbative unitarity/CP statement used for G3 in the selected truncation;
+3. document the precision-test/EFT validity domain for G11;
+4. finish the formal C0-C6 degeneracy table for G12;
+5. leave G13 to a later concrete detector claim, because it is not a theory-selection obstruction.
+
+Unless items 1-4 reveal an actual contradiction, the correct independent RQIR-only endpoint remains `RQIR-Derived Gravity-Interface Equivalence Class v0`, not a manufactured deformation.
