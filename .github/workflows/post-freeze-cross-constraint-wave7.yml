@@ -1,0 +1,92 @@
+name: Post-freeze cross-constraint wave 7
+
+on:
+  push:
+    branches: [post-freeze-cross-constraint-wave7]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  kl-rg-consistency:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave7/kl_rg_scaling_consistency.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kl-rg-scaling-consistency
+          path: wave7_results/kl_rg_scaling_consistency.json
+
+  operational-rg-identifiability:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave7/operational_rg_identifiability.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: operational-rg-identifiability
+          path: wave7_results/operational_rg_identifiability.json
+
+  spectral-rank-robustness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave7/spectral_rank_noise_stability.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-rank-noise-stability
+          path: wave7_results/spectral_rank_noise_stability.json
+
+  analytic-growth-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave7/analytic_growth_holdout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: analytic-growth-holdout
+          path: wave7_results/analytic_growth_holdout.json
+
+  current-spectral-rg-comparator:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave7/current_spectral_rg_comparator.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: current-spectral-rg-comparator
+          path: wave7_results/current_spectral_rg_comparator.json
+
+  aggregate-wave7:
+    needs: [kl-rg-consistency, operational-rg-identifiability, spectral-rank-robustness, analytic-growth-holdout, current-spectral-rg-comparator]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave7_downloads
+      - run: python compute_wave7/aggregate_wave7.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cross-constraint-wave7-summary
+          path: wave7_summary.json
