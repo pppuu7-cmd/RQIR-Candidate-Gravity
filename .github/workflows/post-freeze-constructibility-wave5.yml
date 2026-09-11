@@ -1,0 +1,68 @@
+name: Post-freeze constructibility wave 5
+
+on:
+  push:
+    branches:
+      - post-freeze-constructibility-wave5
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  boundary-contact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python compute_wave5/boundary_contact_constructibility.py
+      - uses: actions/upload-artifact@v4
+        with: {name: boundary-contact-constructibility, path: wave5_results/}
+
+  loop-counterterms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python compute_wave5/loop_counterterm_power_count.py
+      - uses: actions/upload-artifact@v4
+        with: {name: loop-counterterm-power-count, path: wave5_results/}
+
+  cubic-seeds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python compute_wave5/three_point_seed_space.py
+      - uses: actions/upload-artifact@v4
+        with: {name: three-point-seed-space, path: wave5_results/}
+
+  decision-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python compute_wave5/constructibility_decision_matrix.py
+      - uses: actions/upload-artifact@v4
+        with: {name: constructibility-decision-matrix, path: wave5_results/}
+
+  aggregate-wave5:
+    if: always()
+    needs: [boundary-contact, loop-counterterms, cubic-seeds, decision-matrix]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/download-artifact@v4
+        with: {path: wave5_downloads}
+      - run: python compute_wave5/aggregate_wave5.py
+      - uses: actions/upload-artifact@v4
+        with: {name: constructibility-wave5-summary, path: wave5_summary.json}
