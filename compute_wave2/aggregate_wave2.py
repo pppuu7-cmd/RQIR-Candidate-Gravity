@@ -20,7 +20,7 @@ if "spin2_positive_spectral" in items:
     sig["finite_Q_TT_shape_nonunique_after_low_energy_fix"]=any(r.get("width",0)>1e-10 for r in d.get("finite_Q_after_two_low_energy_coefficients",[]))
 if "ward_transverse_form_factors" in items:
     d=items["ward_transverse_form_factors"]
-    sig["Ward_projectors_numerically_transverse"]=d.get("projector_Ward_max_abs_error",1)>0 and d.get("projector_Ward_max_abs_error",1)<1e-10
+    sig["Ward_projectors_numerically_transverse"]=d.get("projector_Ward_max_abs_error",1)<=1e-10
     sig["Ward_leaves_regular_form_factor_freedom"]=any(r.get("free_after_Ward_and_low_order_fixes",0)>0 for r in d.get("regular_form_factor_counting",[]) if r.get("fixed_regular_orders_each_sector",0)>=2)
 if "causal_retarded_shape" in items:
     d=items["causal_retarded_shape"]
