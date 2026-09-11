@@ -1,0 +1,112 @@
+name: Action-level no-go wave 20
+
+on:
+  push:
+    branches: [action-level-no-go-wave20]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  single-action-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave20/single_action_rank.py
+      - uses: actions/upload-artifact@v4
+        with: {name: single-action-rank, path: wave20_results/single_action_rank.json}
+
+  field-redefinition-quotient:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave20/field_redefinition_quotient.py
+      - uses: actions/upload-artifact@v4
+        with: {name: field-redefinition-quotient, path: wave20_results/field_redefinition_quotient.json}
+
+  background-ward-action:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave20/background_ward_action_rank.py
+      - uses: actions/upload-artifact@v4
+        with: {name: background-ward-action, path: wave20_results/background_ward_action_rank.json}
+
+  four-point-bound:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave20/four_point_bound.py
+      - uses: actions/upload-artifact@v4
+        with: {name: four-point-bound, path: wave20_results/four_point_bound.json}
+
+  minimality-selector:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave20/minimality_selector.py
+      - uses: actions/upload-artifact@v4
+        with: {name: minimality-selector, path: wave20_results/minimality_selector.json}
+
+  uv-gap-selector:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave20/uv_gap_selector.py
+      - uses: actions/upload-artifact@v4
+        with: {name: uv-gap-selector, path: wave20_results/uv_gap_selector.json}
+
+  endpoint-witness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave20/endpoint_witness.py
+      - uses: actions/upload-artifact@v4
+        with: {name: endpoint-witness, path: wave20_results/endpoint_witness.json}
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave20/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave20-comparator-firewall, path: wave20_results/comparator_firewall.json}
+
+  aggregate-wave20:
+    needs: [single-action-rank, field-redefinition-quotient, background-ward-action, four-point-bound, minimality-selector, uv-gap-selector, endpoint-witness, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave20_downloads}
+      - run: python compute_wave20/aggregate_wave20.py
+      - uses: actions/upload-artifact@v4
+        with: {name: action-level-wave20-summary, path: wave20_summary.json}
