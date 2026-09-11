@@ -1,0 +1,106 @@
+name: Post-freeze functional equation wave 14
+
+on:
+  push:
+    branches: [post-freeze-functional-equation-wave14]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  local-ode-nullspace:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave14/local_ode_nullspace_killer.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: local-ode-nullspace-killer
+          path: wave14_results/local_ode_nullspace_killer.json
+
+  volterra-closure:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave14/volterra_predictive_closure.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: volterra-predictive-closure
+          path: wave14_results/volterra_predictive_closure.json
+
+  fredholm-bifurcation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave14/fredholm_bifurcation_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fredholm-bifurcation-audit
+          path: wave14_results/fredholm_bifurcation_audit.json
+
+  functional-identity-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave14/functional_identity_rank.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: functional-identity-rank
+          path: wave14_results/functional_identity_rank.json
+
+  equation-class-identifiability:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave14/equation_class_identifiability.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: equation-class-identifiability
+          path: wave14_results/equation_class_identifiability.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave14/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: functional-equation-comparator-firewall
+          path: wave14_results/comparator_firewall.json
+
+  aggregate-wave14:
+    needs: [local-ode-nullspace, volterra-closure, fredholm-bifurcation, functional-identity-rank, equation-class-identifiability, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave14_downloads
+      - run: python compute_wave14/aggregate_wave14.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: functional-equation-wave14-summary
+          path: wave14_summary.json
