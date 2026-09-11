@@ -1,0 +1,114 @@
+name: RQIR tensor Ward wave 17
+
+on:
+  push:
+    branches: [rqir-tensor-ward-wave17]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  projector-algebra:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/projector_algebra.py
+      - uses: actions/upload-artifact@v4
+        with: {name: projector-algebra, path: wave17_results/projector_algebra.json}
+
+  gauge-decoupling:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/gauge_decoupling.py
+      - uses: actions/upload-artifact@v4
+        with: {name: gauge-decoupling, path: wave17_results/gauge_decoupling.json}
+
+  ward-tensor-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/ward_tensor_rank.py
+      - uses: actions/upload-artifact@v4
+        with: {name: ward-tensor-rank, path: wave17_results/ward_tensor_rank.json}
+
+  ir-gr-normalization:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/ir_gr_normalization.py
+      - uses: actions/upload-artifact@v4
+        with: {name: ir-gr-normalization, path: wave17_results/ir_gr_normalization.json}
+
+  pole-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/pole_audit.py
+      - uses: actions/upload-artifact@v4
+        with: {name: pole-audit, path: wave17_results/pole_audit.json}
+
+  tensor-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/tensor_holdout.py
+      - uses: actions/upload-artifact@v4
+        with: {name: tensor-holdout, path: wave17_results/tensor_holdout.json}
+
+  eft-transverse-control:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/eft_transverse_control.py
+      - uses: actions/upload-artifact@v4
+        with: {name: eft-transverse-control, path: wave17_results/eft_transverse_control.json}
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave17/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with: {name: tensor-comparator-firewall, path: wave17_results/comparator_firewall.json}
+
+  aggregate-wave17:
+    needs: [projector-algebra, gauge-decoupling, ward-tensor-rank, ir-gr-normalization, pole-audit, tensor-holdout, eft-transverse-control, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave17_downloads}
+      - run: python compute_wave17/aggregate_wave17.py
+      - uses: actions/upload-artifact@v4
+        with: {name: rqir-tensor-wave17-summary, path: wave17_summary.json}
