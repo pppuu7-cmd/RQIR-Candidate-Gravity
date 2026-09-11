@@ -1,12 +1,12 @@
 # Next Axiom Search — candidate closures beyond the frozen RQIR equivalence class
 
-**Status:** SEARCH CATALOGUE / NO HYPOTHESIS ADOPTED YET
+**Status:** SEARCH CATALOGUE / NO NEW HYPOTHESIS ADOPTED
 
 ## 1. Rule of this stage
 
 Frozen RQIR v1.0 has produced a constrained equivalence class but has not selected a unique C5-distinct microscopic completion.
 
-Every proposed next principle must therefore be labeled one of:
+Every proposed next principle must be labeled one of:
 
 - `RQIR-FORCED` — a frozen RQIR requirement demonstrably cannot be satisfied without it;
 - `EXTRA-HYPOTHESIS` — an independently motivated physical postulate to be tested by RQIR;
@@ -14,9 +14,11 @@ Every proposed next principle must therefore be labeled one of:
 
 No hypothesis is promoted merely because it is novel.
 
+`RQIR-CG-NG-003_PREMISE_CLOSURE` now adds a stronger rule: if a C5 realization satisfies the same premise set, no theorem derived only from that set can exclude the whole C5 family. Therefore **C5 premise-witness certification precedes any new-axiom promotion**.
+
 ## 2. Selection metrics
 
-For a hypothesis `H`, record:
+For a hypothesis `H`, record
 
 \[
 \mathcal C_H=(N_{par},N_{func},N_{new\,dof},N_{new\,scales})
@@ -37,33 +39,27 @@ and evaluate:
 
 ## 3. H0 — minimum local covariant quantum metric dynamics
 
-**Label:** `RQIR-COMPATIBLE ROOT`, not an extra novel hypothesis.
+**Label:** `RQIR-COMPATIBLE ROOT`.
 
-Take the metric-only local generally covariant EFT with no extra low-energy degrees of freedom beyond the perturbative graviton and matter.
+Metric-only local generally covariant EFT with no extra low-energy gravitational degree of freedom beyond the perturbative graviton.
 
-Outcome already found: `ANSATZ-RQIR-MIN`, provisionally C5-like.
+Outcome: `ANSATZ-RQIR-MIN`, C5-like control/root completion.
 
-Complexity increment: minimal.
+Status: **retained as the minimum-complexity witness, not a novelty claim**.
 
-Novelty expectation: none.
+## 4. H1 — minimal Stinespring environment / quantum-limited channel
 
-Role: null/reference completion.
+**Label:** `EXTRA-HYPOTHESIS`.
 
-## 4. H1 — minimal Stinespring environment / no hidden excess channel
+The Gaussian QLC version was explicitly tested. Its CP-saturating noise floor is reproduced by an ordinary pure Gaussian unitary dilation.
 
-**Label:** `EXTRA-HYPOTHESIS`, already partially tested by QLC.
-
-Postulate that the operational gravity channel has the smallest environment compatible with the physical mode algebra and saturates the relevant quantum-noise constraints.
-
-Outcome: the one-mode Gaussian version reduces to an ordinary quantum-limited Gaussian dilation and does not establish novelty.
-
-Status: **insufficient as a C5 discriminator at Gaussian order**.
+Status: **tested; insufficient as a C5 discriminator**.
 
 ## 5. H2 — universal non-Gaussian cross-order closure
 
 **Label:** `EXTRA-HYPOTHESIS` unless independently derived.
 
-Postulate a universal relation
+Desired form:
 
 \[
 W^{(3)}=\mathcal F_3[W^{(1)},W^{(2)}],
@@ -71,25 +67,23 @@ W^{(3)}=\mathcal F_3[W^{(1)},W^{(2)}],
 W^{(4)}=\mathcal F_4[W^{(1)},W^{(2)},W^{(3)}],\ldots
 \]
 
-with no arbitrary function freedom after low-order data are fixed.
+Audit result: Ward/Bianchi identities, positivity, causality, KMS/FDT structures and soft relations constrain higher orders but do not generically produce a unique universal closure that excludes C5.
 
-Potential value: could create a falsifiable L4 cross-order prediction.
+Premise-closure result: any such relation derived only from assumptions also satisfied by C5 is automatically C5-compatible.
 
-Problem: frozen RQIR currently supplies no unique `F_n`. Choosing one from comparator performance would be retrofit.
-
-Status: **OPEN / not adopted**.
+Status: **AUDITED / NOT RQIR-FORCED / NOT ADOPTED**.
 
 ## 6. H3 — intrinsic gravitational open-system channel
 
 **Label:** `EXTRA-HYPOTHESIS`.
 
-Postulate that even after all matter and known gravitational modes are retained, the low-energy gravitational interface is fundamentally nonunitary/open with a covariant CP generator.
+Postulate fundamental low-energy nonunitarity/open dynamics even after known matter and graviton modes are retained.
 
-Potential discriminator: irreducible decoherence/noise not reproducible by tracing ordinary C5 modes in the same domain.
+Potential discriminator: irreducible decoherence/noise not reproducible by tracing ordinary C5 modes.
 
-Cost: introduces a new environmental structure and usually new rates/kernels; strong burden on diffeomorphism/conservation and energy accounting.
+Cost: new environmental structure/rates/kernels and a major burden on diffeomorphism invariance, conservation, energy accounting and complete positivity.
 
-Status: **high falsifiability, high added structure; not adopted**.
+Status: **not adopted; may be considered only with independent anomaly/empirical motivation**.
 
 ## 7. H4 — new covariant nonlocal memory kernel
 
@@ -101,74 +95,71 @@ Add a causal covariant memory functional not reducible to standard EFT nonlocali
 W_{new}\sim\int d^4x d^4y\,\mathcal O(x)K_{new}(x,y)\mathcal O(y).
 \]
 
-Potential discriminator: frequency-dependent phase/noise/response relation.
+An arbitrary kernel carries effectively infinite functional freedom unless generated by a finite new state space or spectral law.
 
-Cost: an arbitrary kernel is effectively infinite functional freedom unless derived from a new finite state space or spectral law.
-
-Status: **disfavored by RQIR minimum-complexity discipline unless independently derived**.
+Status: **disfavored absent independent derivation or data**.
 
 ## 8. H5 — additional gravitational degree of freedom
 
 **Label:** `EXTRA-HYPOTHESIS`.
 
-Introduce a scalar/vector/tensor/topological degree of freedom beyond the low-energy massless spin-2 sector.
+Introduce scalar/vector/tensor/topological degrees of freedom beyond the low-energy massless spin-2 sector.
 
-Potential discriminator: new pole, dispersion relation, polarization, screening or cross-channel signature.
+Potential signatures include new poles, polarizations, dispersion, screening or cross-channel effects.
 
-Cost: new field, mass/coupling structure, precision-test constraints; not forced by current RQIR result.
-
-Status: **not adopted**.
+Status: **not RQIR-forced / not adopted**.
 
 ## 9. H6 — state-dependent/nonlinear source rule
 
 **Label:** `EXTRA-HYPOTHESIS`.
 
-Modify the gravity source map beyond ordinary operator/EFT dynamics, for example by a nonlinear state functional.
+Modify the source map beyond ordinary linear quantum dynamics.
 
-Potential discriminator: preparation-dependent backreaction not captured by linear quantum dynamics.
-
-Cost: severe risk to no-signalling, ensemble equivalence, conservation and CP; requires exceptionally strong independent motivation.
+Risks: superluminal signalling, ensemble inequivalence, conservation failure and loss of CP.
 
 Status: **strongly disfavored absent a demonstrated obstruction**.
 
 ## 10. H7 — relational process-composition principle
 
-**Label:** `EXTRA-HYPOTHESIS CANDIDATE`, lowest structural cost among genuinely new directions.
-
-Instead of adding a field or arbitrary kernel, postulate an additional law governing **composition of relational gravity channels/processes** across adjacent spacetime regions or clock-defined interventions.
+**Label:** `EXTRA-HYPOTHESIS` if ever adopted.
 
 Desired form:
 
 \[
 \mathfrak I_{A\to C}
-=\mathfrak C(\mathfrak I_{A\to B},\mathfrak I_{B\to C})
+=\mathfrak C(\mathfrak I_{A\to B},\mathfrak I_{B\to C}).
 \]
 
-where `C` is covariant, causal, CP-compatible and reduces to ordinary GR/QFT composition in the controlled classical/flat limits, but may impose a nontrivial cross-order constraint on multi-time process tensors.
+Audit result: frozen relationality, causal normalization and positivity do not uniquely force a composition rule beyond ordinary quantum/QFT process composition. Choosing a modified rule solely to differ from C5 would be retrofit.
 
-Why it is attractive:
+Status: **AUDITED / NOT RQIR-FORCED / NOT ADOPTED**.
 
-- adds a law rather than a new propagating field;
-- naturally lives at RQIR L5/process level;
-- may constrain higher cumulants without introducing an arbitrary function per order;
-- has direct falsification through multi-time/process consistency.
+## 11. Premise-closure consequence
 
-Why it is not yet a model:
+The prior ranking `H7 -> H2 -> H3 -> ...` is retired.
 
-- ordinary unitary QFT already has composition/factorization properties;
-- no RQIR-derived alternative composition law has yet been forced;
-- choosing a modified law solely to differ from C5 would be retrofit.
+Before any new hypothesis is considered, issue #5 must answer whether C5 is a witness model of the frozen theory-level RQIR premises in the weak-field/EFT domain.
 
-Status: **priority for derivation audit, not adopted**.
+Current audit already finds:
 
-## 11. Current ranking
+- Q1-Q7: C5 witness realizations available;
+- explicit witness-certificate coverage: about 88%;
+- theory-level conflicts: 0.
 
-For the next independent analysis, examine in this order:
+Authorities:
 
-1. **H7 relational process-composition audit** — smallest potential structural addition, test whether frozen causality/relational requirements force anything beyond ordinary QFT composition;
-2. **H2 cross-order closure audit** — determine whether Ward/positivity/causality can remove higher-order freedom without a new arbitrary function;
-3. **H3 intrinsic open channel** only if H7/H2 fail and an independently motivated low-energy anomaly demands it;
-4. H5/H4 only with independent empirical/theoretical motivation;
-5. H6 last because of the consistency burden.
+- `RQIR_CG_NO_GO_003_PREMISE_CLOSURE.md`;
+- `C5_PREMISE_WITNESS_AUDIT_001.md`;
+- `C5_WITNESS_Q1_Q4_RELATIONAL_CLOCK_CHANNEL_001.md`;
+- `C5_WITNESS_Q5_Q6_METRIC_COVARIANCE_001.md`;
+- `C5_WITNESS_G10_RENORMALIZED_SOURCE_HIERARCHY_001.md`.
 
-This ranking is based on structural cost and RQIR compatibility, not on which hypothesis would most easily defeat a comparator.
+## 12. Current decision tree
+
+1. **Finish C5 premise-witness certification.** Search actively for a genuine frozen-gate contradiction, not merely an unfinished calculation.
+2. **If a contradiction is found:** derive and isolate it before choosing any new dynamics. That obstruction may justify an `RQIR-FORCED` extension.
+3. **If no contradiction is found:** freeze `RQIR-EQUIV-CLASS-V0` as the independent RQIR-only result.
+4. **Only after that**, consider H3/H4/H5/H6/H7/H2 as `EXTRA-HYPOTHESIS` branches, and only when they have independent theoretical or empirical motivation.
+5. Any hypothesis introduced solely because it separates C5 is `REJECTED-AS-RETROFIT`.
+
+This decision tree is based on logical closure, structural cost and anti-overfitting discipline, not on which deformation would be easiest to publish or benchmark.
