@@ -1,0 +1,92 @@
+name: Post-freeze all-order closure wave 6
+
+on:
+  push:
+    branches: [post-freeze-all-order-wave6]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  rg-fixed-point:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave6/rg_fixed_point_predictivity.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rg-fixed-point-predictivity
+          path: wave6_results/rg_fixed_point_predictivity.json
+
+  spectral-recurrence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave6/spectral_recurrence_closure.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-recurrence-closure
+          path: wave6_results/spectral_recurrence_closure.json
+
+  regge-tower:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave6/regge_tower_completion.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: regge-tower-completion
+          path: wave6_results/regge_tower_completion.json
+
+  transfer-matrix:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave6/transfer_matrix_uv_degeneracy.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: transfer-matrix-uv-degeneracy
+          path: wave6_results/transfer_matrix_uv_degeneracy.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave6/comparator_identity_matrix.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: comparator-identity-matrix
+          path: wave6_results/comparator_identity_matrix.json
+
+  aggregate-wave6:
+    needs: [rg-fixed-point, spectral-recurrence, regge-tower, transfer-matrix, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave6_downloads
+      - run: python compute_wave6/aggregate_wave6.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: all-order-wave6-summary
+          path: wave6_summary.json
