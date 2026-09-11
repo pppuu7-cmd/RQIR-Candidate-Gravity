@@ -1,0 +1,91 @@
+name: Post-freeze joint closure wave 8
+
+on:
+  push:
+    branches: [post-freeze-joint-closure-wave8]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  dispersion-subtractions:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave8/dispersion_subtraction_closure.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dispersion-subtraction-closure
+          path: wave8_results/dispersion_subtraction_closure.json
+
+  regge-contact-nullspace:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave8/regge_contact_nullspace.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: regge-contact-nullspace
+          path: wave8_results/regge_contact_nullspace.json
+
+  joint-latent-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave8/joint_latent_holdout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: joint-latent-holdout
+          path: wave8_results/joint_latent_holdout.json
+
+  running-dispersion-bookkeeping:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave8/running_dispersion_bookkeeping.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: running-dispersion-bookkeeping
+          path: wave8_results/running_dispersion_bookkeeping.json
+
+  dispersion-comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave8/dispersion_comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dispersion-comparator-firewall
+          path: wave8_results/dispersion_comparator_firewall.json
+
+  aggregate-wave8:
+    needs: [dispersion-subtractions, regge-contact-nullspace, joint-latent-holdout, running-dispersion-bookkeeping, dispersion-comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave8_downloads
+      - run: python compute_wave8/aggregate_wave8.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: joint-closure-wave8-summary
+          path: wave8_summary.json
