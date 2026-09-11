@@ -1,0 +1,59 @@
+name: Wave 18 methodological correction 001
+
+on:
+  push:
+    branches: [extra-hypothesis-wave18-correction]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  corrected-h0:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18_correction/h0_control_corrected.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h0-corrected, path: wave18_correction_results/h0_corrected.json}
+
+  h2-regression:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/h2_semigroup.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h2-regression, path: wave18_results/h2_semigroup.json}
+
+  class-identifiability-regression:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/class_identifiability.py
+      - uses: actions/upload-artifact@v4
+        with: {name: class-identifiability-regression, path: wave18_results/class_identifiability.json}
+
+  aggregate-correction:
+    needs: [corrected-h0, h2-regression, class-identifiability-regression]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave18_correction_downloads}
+      - run: python compute_wave18_correction/aggregate_correction.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave18-method-correction-001-summary, path: wave18_correction_summary.json}
