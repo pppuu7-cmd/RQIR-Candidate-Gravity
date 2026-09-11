@@ -1,0 +1,101 @@
+name: Cross-order closure wave 19
+
+on:
+  push:
+    branches: [cross-order-closure-wave19]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  ward-cross-order:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave19/ward_cross_order_rank.py
+      - uses: actions/upload-artifact@v4
+        with: {name: ward-cross-order, path: wave19_results/ward_cross_order_rank.json}
+
+  soft-contact:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave19/soft_contact_freedom.py
+      - uses: actions/upload-artifact@v4
+        with: {name: soft-contact-freedom, path: wave19_results/soft_contact_freedom.json}
+
+  cubic-only-eft:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave19/cubic_only_eft_control.py
+      - uses: actions/upload-artifact@v4
+        with: {name: cubic-only-eft-control, path: wave19_results/cubic_only_eft_control.json}
+
+  causality-inequality:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave19/causality_inequality.py
+      - uses: actions/upload-artifact@v4
+        with: {name: causality-inequality, path: wave19_results/causality_inequality.json}
+
+  same-generating-product:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave19/same_generating_product_law.py
+      - uses: actions/upload-artifact@v4
+        with: {name: same-generating-product, path: wave19_results/same_generating_product_law.json}
+
+  cross-order-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave19/cross_order_holdout.py
+      - uses: actions/upload-artifact@v4
+        with: {name: cross-order-holdout, path: wave19_results/cross_order_holdout.json}
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave19/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave19-comparator-firewall, path: wave19_results/comparator_firewall.json}
+
+  aggregate-wave19:
+    needs: [ward-cross-order, soft-contact, cubic-only-eft, causality-inequality, same-generating-product, cross-order-holdout, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave19_downloads}
+      - run: python compute_wave19/aggregate_wave19.py
+      - uses: actions/upload-artifact@v4
+        with: {name: cross-order-wave19-summary, path: wave19_summary.json}
