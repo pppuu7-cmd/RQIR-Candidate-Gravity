@@ -1,0 +1,107 @@
+schema_version: 1
+model_id: ANSATZ-RQIR-MIN
+model_version: 0.1
+status: DRAFT
+allowed_gate_states: [PASS, FAIL, BLOCKED, NOT_TESTED, NOT_APPLICABLE]
+
+qg_gates:
+  QG-001:
+    title: Physical state space
+    state: PASS
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+    evidence:
+      - perturbative matter x gravity kinematical space declared
+      - physical sector defined by diffeomorphism/gauge constraints or BRST cohomology
+      - detector-facing observables restricted to relational/gauge-completed quantities
+    blocker: null
+  QG-002:
+    title: Matter-gravity dynamics
+    state: PASS
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+    evidence:
+      - single covariant low-energy action declared
+      - leading metric-stress coupling derived from the same action
+      - CTP parent object fixed as the generator of RQIR-facing correlators
+    blocker: null
+  QG-003:
+    title: Controlled Newtonian and GR limits
+    state: NOT_TESTED
+    authority: null
+    evidence: []
+    blocker: Derive the weak-field static equations and normalization explicitly.
+  QG-004:
+    title: Unitarity positivity or complete positivity
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+    evidence: []
+    blocker: Give an explicit gauge-fixed/physical-subspace evolution proof at the declared truncation order and a positivity statement for reduced observables.
+  QG-005:
+    title: Constraint and gauge consistency
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+    evidence: []
+    blocker: Derive the linearized constraint algebra/projectors and at least one relational detector observable.
+  QG-006:
+    title: Ordinary-QM and semiclassical limits
+    state: NOT_TESTED
+    authority: null
+    evidence: []
+    blocker: Derive the G->0, coarse-grained semiclassical and flat-QFT limits explicitly.
+  QG-007:
+    title: First model-specific discriminator
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+    evidence: []
+    blocker: Run C0-C6 propagation after foundational checks; do not invent a discriminator beforehand.
+  QG-008:
+    title: RQIR finite-discriminant propagation
+    state: NOT_TESTED
+    authority: null
+    evidence: []
+    blocker: Requires QG-007 candidate difference direction.
+  QG-009:
+    title: Statistical identifiability
+    state: NOT_TESTED
+    authority: null
+    evidence: []
+    blocker: Requires detector likelihood and nuisance map after QG-007/008.
+  QG-010:
+    title: Physical resource and measurability closure
+    state: NOT_TESTED
+    authority: null
+    evidence: []
+    blocker: Requires Paper-III propagation after QG-009.
+
+cross_gates:
+  GAUGE_RELATIONAL:
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+  CONSERVATION_BIANCHI_WARD:
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+  CAUSALITY:
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+  POSITIVITY_SPECTRAL:
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+  FLAT_QFT_LIMIT:
+    state: NOT_TESTED
+    authority: null
+  EFT_POWER_COUNTING:
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+  STRESS_ENERGY_RENORMALIZATION:
+    state: BLOCKED
+    authority: model/ANSATZ-RQIR-MIN/MODEL.md
+  MODEL_DEGENERACY:
+    state: NOT_TESTED
+    authority: null
+  DETECTOR_MEASURABILITY:
+    state: NOT_TESTED
+    authority: null
+
+notes:
+  - QG-001 and QG-002 PASS mean the foundational objects are explicitly specified, not that all consistency consequences have already passed.
+  - C5 degeneracy is expected and must be tested; it would reject novelty, not consistency.
+  - No gate is upgraded from BLOCKED/NOT_TESTED without a repository derivation or reproducible certificate.
