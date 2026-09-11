@@ -1,0 +1,106 @@
+name: RQIR provenance kernel wave 16
+
+on:
+  push:
+    branches: [rqir-provenance-kernel-wave16]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  rqir-constraint-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave16/rqir_constraint_rank.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rqir-constraint-rank
+          path: wave16_results/rqir_constraint_rank.json
+
+  translation-robustness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave16/translation_robustness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: translation-robustness
+          path: wave16_results/translation_robustness.json
+
+  same-dynamics-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave16/rqir_same_dynamics_rank.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rqir-same-dynamics-rank
+          path: wave16_results/rqir_same_dynamics_rank.json
+
+  higher-order-residual:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave16/higher_order_closure_residual.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: higher-order-closure-residual
+          path: wave16_results/higher_order_closure_residual.json
+
+  provenance-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave16/provenance_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: provenance-firewall
+          path: wave16_results/provenance_firewall.json
+
+  minimal-extra-principle:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave16/minimal_extra_principle.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: minimal-extra-principle
+          path: wave16_results/minimal_extra_principle.json
+
+  aggregate-wave16:
+    needs: [rqir-constraint-rank, translation-robustness, same-dynamics-rank, higher-order-residual, provenance-firewall, minimal-extra-principle]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave16_downloads
+      - run: python compute_wave16/aggregate_wave16.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rqir-provenance-wave16-summary
+          path: wave16_summary.json
