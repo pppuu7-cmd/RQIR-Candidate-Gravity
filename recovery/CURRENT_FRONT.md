@@ -2,107 +2,92 @@
 
 **Repository:** `RQIR-Candidate-Gravity`  
 **Active branch:** `rqir-derived-model-v0`  
-**Independence rule:** do not inspect or import the separately developed polygon-derived QGR candidate until the independent RQIR branch formally opens the blind-comparison checkpoint.
+**Independent reconstruction status:** **FROZEN v0** before blind comparison with polygon-derived QGR.
 
-## Frozen authority
+## Frozen authorities
 
-Use `docs/RQIR_V1_AUTHORITY_SNAPSHOT.md` and `model/REQUIREMENTS_MATRIX.md`.
+- `docs/RQIR_V1_AUTHORITY_SNAPSHOT.md`
+- `model/REQUIREMENTS_MATRIX.md`
+- `model/RQIR_DERIVED_EQUIVALENCE_CLASS_V0.md`
+- `model/INDEPENDENT_RQIR_RECONSTRUCTION_FREEZE_V0.md`
 
-## Current RQIR-only reconstruction result
+## Independent RQIR-only result
 
-The active authority result remains:
+Frozen RQIR strongly constrains admissible gravity interfaces but does not, without an additional microscopic postulate, select a unique C5-distinct theory.
 
-`model/RQIR_DERIVED_EQUIVALENCE_CLASS_V0.md`.
+The RQIR-only endpoint is a constrained gravity-interface equivalence class.
 
-Frozen RQIR strongly constrains admissible gravity interfaces but, without an extra microscopic postulate, does not select one unique C5-distinct theory.
-
-Conditional minimum-complexity result:
-
-`frozen RQIR + metric-only + local covariance + two-derivative leading dynamics + ordinary quantization -> low-energy quantum GR/EFT (C5-like)`.
+Under explicitly additional minimum-complexity assumptions — metric-only, local covariance, two-derivative leading dynamics, ordinary quantization and EFT organization — the root representative is low-energy quantum GR/EFT (C5-like).
 
 Authority: `model/CONDITIONAL_MINIMAL_COMPLETION_001.md`.
 
-## New no-go: premise closure
+## No-go chain
 
-Authority:
+The independent branch established:
 
-`model/RQIR_CG_NO_GO_003_PREMISE_CLOSURE.md`.
+1. `RQIR_CG_NO_GO_001_GAUSSIAN_INTERFACE.md` — Gaussian CP-saturating channel noise is not gravity-specific and can be reproduced by an ordinary quantum dilation;
+2. `RQIR_CG_NO_GO_002_UNDERDETERMINATION.md` — low-order RQIR data do not uniquely fix higher microscopic structure;
+3. `RQIR_CG_NO_GO_003_PREMISE_CLOSURE.md` — if C5 satisfies the same premise set, no sound theorem derived only from that set can exclude the whole C5 family.
 
-If a C5 realization satisfies the same frozen RQIR + auxiliary premise set used in a purported RQIR-only derivation, no sound theorem derived only from that premise set can exclude the whole C5 family.
+Soft/BMS/Ward relations, nonlinear KMS/FDT identities, positivity bounds, gravitational dressing, higher connected functions and generic process quantumness were checked as possible escape routes and do not provide the missing C5 obstruction.
 
-Concrete L4/L5 candidates checked and found C5-compatible include:
+## C5 premise-witness certificate
 
-- soft/BMS/Ward hierarchies;
-- nonlinear KMS/fluctuation-dissipation relations;
-- positivity/dispersive bounds;
-- gravitational dressing/non-factorization;
-- gravity-mediated entanglement witnesses.
+Authority: `model/C5_PREMISE_WITNESS_AUDIT_001.md`.
 
-Issue #4 is therefore closed with no C5-distinct obstruction found.
+Explicit witnesses include:
 
-## C5 premise-witness certification
+- `C5_WITNESS_Q1_Q4_RELATIONAL_CLOCK_CHANNEL_001.md`;
+- `C5_WITNESS_Q5_Q6_METRIC_COVARIANCE_001.md`;
+- `C5_WITNESS_G1_RELATIONAL_GAUGE_COMPLETION_001.md`;
+- `C5_WITNESS_G3_UNITARITY_CP_001.md`;
+- `C5_WITNESS_G10_RENORMALIZED_SOURCE_HIERARCHY_001.md`;
+- `C5_WITNESS_G11_VALIDITY_PRECISION_DOMAIN_001.md`;
+- `C5_WITNESS_G12_COMPARATOR_DEGENERACY_TABLE_001.md`.
 
-Active authority:
+Final certification state:
 
-`model/C5_PREMISE_WITNESS_AUDIT_001.md`.
+- Q1-Q7: **SUPPORTED**;
+- G0-G12: **SUPPORTED**;
+- theory-level conflicts: **0**;
+- theory-level premise-witness coverage: **20/20 = 100%**;
+- full bookkeeping matrix including detector-facing G13: **20/21 = 95.24%**;
+- G13: `APPARATUS-OPEN`, intentionally deferred to a concrete detector/likelihood/resource claim.
 
-Explicit witness files now include:
+Issues #4 and #5 are closed.
 
-- `model/C5_WITNESS_Q1_Q4_RELATIONAL_CLOCK_CHANNEL_001.md` — weak-field quantum proper-time phase, coherent source branches and explicit reduced CPTP clock channel;
-- `model/C5_WITNESS_Q5_Q6_METRIC_COVARIANCE_001.md` — intrinsic vs matter-induced metric covariance and causal retarded response;
-- `model/C5_WITNESS_G10_RENORMALIZED_SOURCE_HIERARCHY_001.md` — one common renormalized/smeared `J,N,D,chi^R,...` convention.
+## Active ansatz status
 
-Current witness audit:
+### ANSATZ-RQIR-MIN v0.1
 
-- Q1-Q7: all have C5 witness realizations in the declared low-energy domain;
-- theory-level conflicts found: **0**;
-- bookkeeping coverage: **about 88%**;
-- remaining non-fully-certified items: explicit gauge/dressing completion detail, selected perturbative unitarity/CP certificate, precision-domain documentation, final comparator bookkeeping;
-- G13 remains apparatus-specific and is not a foundational theory-selection obstruction.
+Role: **CONTROL ROOT / C5-like representative**.
 
-Issue #5 controls this certification.
+It is not promoted as a novel theory.
 
-## ANSATZ-RQIR-MIN v0.1
+### ANSATZ-RQIR-QLC v0.1
 
-Status: **DRAFT / CONTROL ROOT**.
+Role: **OPERATIONAL REPRESENTATION**.
 
-- QG-001: PASS
-- QG-002: PASS
-- Newtonian QG-003 subcheck: PASS, full gate BLOCKED
-- role: least-structured C5-like representative, not a novel theory claim.
+Its first novelty mechanism is rejected. QG-007 remains **BLOCKED** as a C5-distinct discriminator.
 
-## ANSATZ-RQIR-QLC v0.1
+## Scientific conclusion
 
-Status: **DRAFT / OPERATIONAL REPRESENTATION**.
+`Frozen RQIR v1.0` by itself does **not** force a unique C5-distinct microscopic gravity model.
 
-The Gaussian CP-saturation mechanism and generic L3/L4/L5 quantumness do not establish novelty. QG-007 remains **BLOCKED**.
+This is now a frozen negative reconstruction result rather than an unfinished search.
 
-Canonical negative results:
+The funnel succeeded as an anti-overfitting device: it prevented channel noise, higher correlators, process language or comparator-driven deformations from being mistaken for a new theory.
 
-- `model/RQIR_CG_NO_GO_001_GAUSSIAN_INTERFACE.md`
-- `model/RQIR_CG_NO_GO_002_UNDERDETERMINATION.md`
-- `model/RQIR_CG_NO_GO_003_PREMISE_CLOSURE.md`
+## Next permitted scientific stage
 
-## Extra-axiom status
+The independent branch may now open a **blind-comparison checkpoint** against the separately developed polygon-derived QGR candidate because the RQIR-only architecture and conclusions are frozen.
 
-`model/NEXT_AXIOM_SEARCH.md` separates `RQIR-FORCED` structure from `EXTRA-HYPOTHESIS` candidates.
+The comparison must not rewrite this v0 history. It should record only:
 
-Already audited:
+1. structures independently reached by both routes;
+2. structures present only in polygon-QGR;
+3. constraints present only in RQIR-only reconstruction;
+4. whether polygon-QGR contains an independently motivated extra postulate;
+5. whether either route exposes a genuine C5 obstruction missed by the other.
 
-- H7 relational process composition: not RQIR-forced;
-- H2 higher-order Ward/positivity/causality closure: not uniquely closing in general;
-- generic L4/L5 universal relations: C5-compatible under premise closure.
-
-No new field, arbitrary nonlocal kernel, intrinsic decoherence law, nonlinear source rule or modified composition law is to be added merely to obtain novelty.
-
-## Immediate scientific frontier
-
-Issue #5:
-
-> finish C5 premise-witness certification and actively search for a genuine frozen-gate contradiction.
-
-Decision rule:
-
-1. if a true C5/RQIR contradiction is found, derive the obstruction before proposing new dynamics;
-2. if the C5 witness closes without conflict, freeze `RQIR-EQUIV-CLASS-V0` as the independent RQIR-only output;
-3. any later C5-distinct model must begin with a clearly labeled, independently motivated `EXTRA-HYPOTHESIS` or with empirical evidence excluding C5.
+If no independent extra principle or empirical C5 failure exists, any new C5-distinct model remains an `EXTRA-HYPOTHESIS`, not an RQIR-derived consequence.
