@@ -1,0 +1,93 @@
+name: Post-freeze rank origin wave 10
+
+on:
+  push:
+    branches: [post-freeze-rank-origin-wave10]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  atomic-vs-continuum-hankel:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave10/atomic_vs_continuum_hankel.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atomic-vs-continuum-hankel
+          path: wave10_results/atomic_vs_continuum_hankel.json
+
+  finite-state-realization:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave10/finite_state_realization.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finite-state-realization
+          path: wave10_results/finite_state_realization.json
+
+  rational-vs-continuum:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave10/rational_vs_continuum_stieltjes.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rational-vs-continuum-stieltjes
+          path: wave10_results/rational_vs_continuum_stieltjes.json
+
+  continuum-recurrence-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave10/continuum_recurrence_holdout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: continuum-recurrence-holdout
+          path: wave10_results/continuum_recurrence_holdout.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave10/continuum_comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: continuum-comparator-firewall
+          path: wave10_results/continuum_comparator_firewall.json
+
+  aggregate-wave10:
+    needs: [atomic-vs-continuum-hankel, finite-state-realization, rational-vs-continuum, continuum-recurrence-holdout, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave10_downloads
+      - run: python compute_wave10/aggregate_wave10.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rank-origin-wave10-summary
+          path: wave10_summary.json
