@@ -29,6 +29,7 @@ qg_gates:
     authority: model/ANSATZ-RQIR-QLC/MODEL.md
     evidence:
       - mean transfer required to reduce to Poisson response
+      - static sector is treated as a constrained/relational sector rather than an artificial canonical oscillator
     blocker: Explicit physical mode projection from the GR Green operator has not yet been derived for this channel.
   QG-004:
     title: Unitarity positivity or complete positivity
@@ -37,12 +38,14 @@ qg_gates:
     evidence:
       - one-mode CP inequality solved analytically
       - isotropic quantum-limited floor y*=hbar|1-eta|/2 derived
+      - a pure-environment Gaussian unitary dilation reproducing the saturation law was constructed in FOUNDATIONAL_DERIVATION_002
     blocker: Full multimode physical channel and causal composition certificate remain outstanding.
   QG-005:
     title: Constraint and gauge consistency
     state: BLOCKED
-    authority: model/ANSATZ-RQIR-QLC/MODEL.md
-    evidence: []
+    authority: model/ANSATZ-RQIR-QLC/FOUNDATIONAL_DERIVATION_002.md
+    evidence:
+      - static constraint sector is explicitly separated from dynamical/radiative physical modes
     blocker: Construct K on the conserved/gauge quotient and an explicit relational output mode.
   QG-006:
     title: Ordinary-QM and semiclassical limits
@@ -54,10 +57,12 @@ qg_gates:
   QG-007:
     title: First model-specific discriminator
     state: BLOCKED
-    authority: model/ANSATZ-RQIR-QLC/FOUNDATIONAL_DERIVATION_001.md
+    authority: model/ANSATZ-RQIR-QLC/FOUNDATIONAL_DERIVATION_003.md
     evidence:
-      - candidate closure relation between transfer commutators and minimum added noise identified
-    blocker: Must show at least one applicable comparator cannot reproduce the relation after nuisance/calibration profiling.
+      - the original CP-saturation discriminator was explicitly rejected by FOUNDATIONAL_DERIVATION_002
+      - generic L3 noise plus ordered/retarded response was explicitly shown compatible with an ordinary Gaussian quantum mediator in FOUNDATIONAL_DERIVATION_003
+      - the surviving search frontier is a specific L4/L5 cross-order/process relation or a gravity-specific obstruction to the conventional dilation
+    blocker: No comparator-relative observable difference distinct from C5 has yet been derived.
   QG-008:
     title: RQIR finite-discriminant propagation
     state: NOT_TESTED
@@ -80,13 +85,13 @@ qg_gates:
 cross_gates:
   GAUGE_RELATIONAL:
     state: BLOCKED
-    authority: model/ANSATZ-RQIR-QLC/MODEL.md
+    authority: model/ANSATZ-RQIR-QLC/FOUNDATIONAL_DERIVATION_002.md
   CONSERVATION_BIANCHI_WARD:
     state: BLOCKED
     authority: model/ANSATZ-RQIR-QLC/MODEL.md
   CAUSALITY:
     state: BLOCKED
-    authority: model/ANSATZ-RQIR-QLC/MODEL.md
+    authority: model/ANSATZ-RQIR-QLC/FOUNDATIONAL_DERIVATION_003.md
   POSITIVITY_SPECTRAL:
     state: BLOCKED
     authority: model/ANSATZ-RQIR-QLC/FOUNDATIONAL_DERIVATION_001.md
@@ -100,8 +105,8 @@ cross_gates:
     state: BLOCKED
     authority: model/ANSATZ-RQIR-QLC/MODEL.md
   MODEL_DEGENERACY:
-    state: NOT_TESTED
-    authority: null
+    state: BLOCKED
+    authority: model/RQIR_CG_NO_GO_001_GAUSSIAN_INTERFACE.md
   DETECTOR_MEASURABILITY:
     state: NOT_TESTED
     authority: null
@@ -109,4 +114,6 @@ cross_gates:
 notes:
   - QG-001/QG-002 PASS certify that the channel model is explicitly instantiated, not that it is experimentally or microscopically complete.
   - The one-mode CP subcheck is a real calculation but is not sufficient for QG-004 PASS.
-  - Exact reproduction of QLC by C5 would reject novelty while retaining the channel as an operational representation.
+  - CP saturation is no longer a candidate novelty criterion: a pure Gaussian unitary dilation reproduces it exactly.
+  - Generic L3 ordered/retarded response is also not sufficient against C5; a specific quantitative L4/L5 or gravity-obstruction discriminator is required.
+  - Exact reproduction by C5 rejects novelty while retaining QLC as an operational representation.
