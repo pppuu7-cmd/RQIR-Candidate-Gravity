@@ -1,0 +1,93 @@
+name: Post-freeze spectral selector wave 13
+
+on:
+  push:
+    branches: [post-freeze-spectral-selector-wave13]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  endpoint-sumrule-nullspace:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave13/endpoint_sumrule_nullspace.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: endpoint-sumrule-nullspace
+          path: wave13_results/endpoint_sumrule_nullspace.json
+
+  finite-ward-nullspace:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave13/finite_ward_sumrules_nullspace.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finite-ward-sumrules-nullspace
+          path: wave13_results/finite_ward_sumrules_nullspace.json
+
+  stieltjes-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave13/stieltjes_dispersion_holdout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stieltjes-dispersion-holdout
+          path: wave13_results/stieltjes_dispersion_holdout.json
+
+  uv-ir-asymptotics:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave13/uv_ir_asymptotic_nullspace.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uv-ir-asymptotic-nullspace
+          path: wave13_results/uv_ir_asymptotic_nullspace.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave13/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-selector-comparator-firewall
+          path: wave13_results/comparator_firewall.json
+
+  aggregate-wave13:
+    needs: [endpoint-sumrule-nullspace, finite-ward-nullspace, stieltjes-holdout, uv-ir-asymptotics, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave13_downloads
+      - run: python compute_wave13/aggregate_wave13.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-selector-wave13-summary
+          path: wave13_summary.json
