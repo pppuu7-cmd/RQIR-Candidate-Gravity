@@ -1,0 +1,89 @@
+name: Post-freeze parallel uniqueness campaign
+
+on:
+  push:
+    branches:
+      - post-freeze-parallel-compute-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  channel-polytope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip scipy numpy
+      - run: python compute/channel_polytope.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: channel-polytope
+          path: compute_results/
+
+  spectral-moments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip scipy numpy
+      - run: python compute/spectral_moment_problem.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-moments
+          path: compute_results/
+
+  cumulant-hierarchy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip scipy numpy
+      - run: python compute/cumulant_hierarchy.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cumulant-hierarchy
+          path: compute_results/
+
+  crossing-eft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute/crossing_eft_basis.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crossing-eft
+          path: compute_results/
+
+  aggregate:
+    if: always()
+    needs: [channel-polytope, spectral-moments, cumulant-hierarchy, crossing-eft]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded_results
+      - run: python compute/aggregate_results.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: campaign-summary
+          path: |
+            campaign_summary.json
+            campaign_summary.md
