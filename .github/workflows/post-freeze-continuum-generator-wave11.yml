@@ -1,0 +1,92 @@
+name: Post-freeze continuum generator wave 11
+
+on:
+  push:
+    branches: [post-freeze-continuum-generator-wave11]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  beta-generator:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave11/beta_continuum_generator.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beta-continuum-generator
+          path: wave11_results/beta_continuum_generator.json
+
+  stieltjes-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave11/continuum_stieltjes_holdout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: continuum-stieltjes-holdout
+          path: wave11_results/continuum_stieltjes_holdout.json
+
+  low-moment-nonuniqueness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave11/low_moment_generator_nonuniqueness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: low-moment-generator-nonuniqueness
+          path: wave11_results/low_moment_generator_nonuniqueness.json
+
+  continuum-to-wilson:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave11/continuum_to_wilson_tower.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: continuum-to-wilson-tower
+          path: wave11_results/continuum_to_wilson_tower.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave11/continuum_generator_comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: continuum-generator-comparator-firewall
+          path: wave11_results/continuum_generator_comparator_firewall.json
+
+  aggregate-wave11:
+    needs: [beta-generator, stieltjes-holdout, low-moment-nonuniqueness, continuum-to-wilson, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave11_downloads
+      - run: python compute_wave11/aggregate_wave11.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: continuum-generator-wave11-summary
+          path: wave11_summary.json
