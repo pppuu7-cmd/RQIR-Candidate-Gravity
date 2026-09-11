@@ -1,0 +1,103 @@
+name: Extra hypothesis wave 18
+
+on:
+  push:
+    branches: [extra-hypothesis-wave18]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  h0-control:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/h0_control.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h0-control, path: wave18_results/h0_control.json}
+
+  h1-common-entire:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/h1_common_entire.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h1-common-entire, path: wave18_results/h1_common_entire.json}
+
+  h2-semigroup:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/h2_semigroup.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h2-semigroup, path: wave18_results/h2_semigroup.json}
+
+  h3-spectral:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/h3_spectral.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h3-spectral, path: wave18_results/h3_spectral.json}
+
+  h4-rg-fixed-point:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/h4_rg_fixed_point.py
+      - uses: actions/upload-artifact@v4
+        with: {name: h4-rg-fixed-point, path: wave18_results/h4_rg_fixed_point.json}
+
+  class-identifiability:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/class_identifiability.py
+      - uses: actions/upload-artifact@v4
+        with: {name: class-identifiability, path: wave18_results/class_identifiability.json}
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave18/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave18-comparator-firewall, path: wave18_results/comparator_firewall.json}
+
+  aggregate-wave18:
+    needs: [h0-control, h1-common-entire, h2-semigroup, h3-spectral, h4-rg-fixed-point, class-identifiability, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave18_downloads}
+      - run: python compute_wave18/aggregate_wave18.py
+      - uses: actions/upload-artifact@v4
+        with: {name: extra-hypothesis-wave18-summary, path: wave18_summary.json}
