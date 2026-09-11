@@ -1,0 +1,92 @@
+name: Post-freeze generator origin wave 12
+
+on:
+  push:
+    branches: [post-freeze-generator-origin-wave12-run]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  reversible-family:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave12/reversible_family_nonuniqueness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reversible-family-nonuniqueness
+          path: wave12_results/reversible_family_nonuniqueness.json
+
+  polynomial-closure:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave12/polynomial_closure_uniqueness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: polynomial-closure-uniqueness
+          path: wave12_results/polynomial_closure_uniqueness.json
+
+  semigroup-ctmc:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave12/semigroup_ctmc_counterexample.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semigroup-ctmc-counterexample
+          path: wave12_results/semigroup_ctmc_counterexample.json
+
+  dynamical-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave12/dynamical_holdout_discriminator.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dynamical-holdout-discriminator
+          path: wave12_results/dynamical_holdout_discriminator.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave12/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: comparator-firewall-wave12
+          path: wave12_results/comparator_firewall.json
+
+  aggregate-wave12:
+    needs: [reversible-family, polynomial-closure, semigroup-ctmc, dynamical-holdout, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave12_downloads
+      - run: python compute_wave12/aggregate_wave12.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generator-origin-wave12-summary
+          path: wave12_summary.json
