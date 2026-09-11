@@ -1,0 +1,84 @@
+name: Post-freeze higher-point wave 4
+
+on:
+  push:
+    branches:
+      - post-freeze-higher-point-wave4
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  cemz-scale-proxy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave4/cemz_scale_proxy.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cemz-scale-proxy
+          path: wave4_results/
+
+  quadratic-curvature-state-cost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave4/quadratic_curvature_state_cost.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: quadratic-curvature-state-cost
+          path: wave4_results/
+
+  soft-contact-nullspace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave4/soft_contact_nullspace.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: soft-contact-nullspace
+          path: wave4_results/
+
+  higher-point-only-family:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave4/higher_point_only_family.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: higher-point-only-family
+          path: wave4_results/
+
+  aggregate-wave4:
+    if: always()
+    needs: [cemz-scale-proxy, quadratic-curvature-state-cost, soft-contact-nullspace, higher-point-only-family]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave4_downloads
+      - run: python compute_wave4/aggregate_wave4.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: higher-point-wave4-summary
+          path: wave4_summary.json
