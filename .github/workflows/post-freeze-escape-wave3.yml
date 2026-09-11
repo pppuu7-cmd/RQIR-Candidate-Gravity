@@ -1,0 +1,84 @@
+name: Post-freeze escape-route wave 3
+
+on:
+  push:
+    branches:
+      - post-freeze-escape-route-wave3
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  spectral-purity-two-point:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave3/spectral_purity_two_point.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-purity-two-point
+          path: wave3_results/
+
+  nonlocal-uv-vs-positive-spectrum:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave3/nonlocal_uv_softening_vs_positive_spectrum.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nonlocal-uv-softening-vs-positive-spectrum
+          path: wave3_results/
+
+  time-symmetric-support:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave3/time_symmetric_prescription_support.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: time-symmetric-prescription-support
+          path: wave3_results/
+
+  higher-point-visibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python compute_wave3/higher_point_visibility.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: higher-point-visibility
+          path: wave3_results/
+
+  aggregate-wave3:
+    if: always()
+    needs: [spectral-purity-two-point, nonlocal-uv-vs-positive-spectrum, time-symmetric-support, higher-point-visibility]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave3_downloads
+      - run: python compute_wave3/aggregate_wave3.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: escape-wave3-summary
+          path: wave3_summary.json
