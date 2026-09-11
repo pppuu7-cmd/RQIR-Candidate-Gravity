@@ -1,0 +1,92 @@
+name: Post-freeze minimal defect wave 9
+
+on:
+  push:
+    branches: [post-freeze-minimal-defect-wave9]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  minimal-defect-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave9/minimal_defect_rank.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: minimal-defect-rank
+          path: wave9_results/minimal_defect_rank.json
+
+  spectral-to-dispersion:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave9/spectral_to_dispersion_recurrence.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spectral-to-dispersion-recurrence
+          path: wave9_results/spectral_to_dispersion_recurrence.json
+
+  recurrence-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave9/recurrence_holdout_selection.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recurrence-holdout-selection
+          path: wave9_results/recurrence_holdout_selection.json
+
+  onset-scale:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave9/higher_derivative_onset_scale.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: higher-derivative-onset-scale
+          path: wave9_results/higher_derivative_onset_scale.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave9/minimal_defect_comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: minimal-defect-comparator-firewall
+          path: wave9_results/minimal_defect_comparator_firewall.json
+
+  aggregate-wave9:
+    needs: [minimal-defect-rank, spectral-to-dispersion, recurrence-holdout, onset-scale, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave9_downloads
+      - run: python compute_wave9/aggregate_wave9.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: minimal-defect-wave9-summary
+          path: wave9_summary.json
