@@ -1,0 +1,106 @@
+name: Post-freeze cross-sector kernel wave 15
+
+on:
+  push:
+    branches: [post-freeze-cross-sector-kernel-wave15]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  shared-kernel-cross-sector:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave15/shared_kernel_cross_sector.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shared-kernel-cross-sector
+          path: wave15_results/shared_kernel_cross_sector.json
+
+  unlinked-vs-shared-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave15/unlinked_vs_shared_kernel_rank.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unlinked-vs-shared-kernel-rank
+          path: wave15_results/unlinked_vs_shared_kernel_rank.json
+
+  kernel-null-holdout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave15/kernel_null_perturbation_holdout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kernel-null-perturbation-holdout
+          path: wave15_results/kernel_null_perturbation_holdout.json
+
+  same-realization:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy scipy
+      - run: python compute_wave15/same_realization_consistency.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: same-realization-consistency
+          path: wave15_results/same_realization_consistency.json
+
+  kernel-axiom-rank:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave15/kernel_axiom_rank.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kernel-axiom-rank
+          path: wave15_results/kernel_axiom_rank.json
+
+  comparator-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave15/comparator_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cross-sector-comparator-firewall
+          path: wave15_results/comparator_firewall.json
+
+  aggregate-wave15:
+    needs: [shared-kernel-cross-sector, unlinked-vs-shared-rank, kernel-null-holdout, same-realization, kernel-axiom-rank, comparator-firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave15_downloads
+      - run: python compute_wave15/aggregate_wave15.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cross-sector-kernel-wave15-summary
+          path: wave15_summary.json
