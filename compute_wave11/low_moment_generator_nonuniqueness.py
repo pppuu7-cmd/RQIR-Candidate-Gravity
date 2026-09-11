@@ -2,7 +2,6 @@
 import json
 import numpy as np
 from pathlib import Path
-from numpy.polynomial.legendre import legval
 
 # Base continuum rho0(x)=1 on [0,1]. Add shifted Legendre P3(2x-1), orthogonal to polynomials degree <=2.
 # This keeps m0,m1,m2 exactly fixed while changing m3 and above.
@@ -16,7 +15,7 @@ for eps in [-0.8,-0.5,-0.2,0.0,0.2,0.5,0.8]:
     rho=1.0+eps*P3
     moments=[]
     for n in range(7):
-        moments.append(float(np.trapz(rho*x**n,x)))
+        moments.append(float(np.trapezoid(rho*x**n,x)))
     records.append({"epsilon":eps,"rho_min":float(rho.min()),"moments_m0_to_m6":moments})
 base=records[3]['moments_m0_to_m6']
 max_design_delta=max(max(abs(r['moments_m0_to_m6'][n]-base[n]) for n in range(3)) for r in records)
