@@ -17,6 +17,7 @@ Purpose: make cross-branch research progress visible from `main` without merging
 | 31 | `generalized-eh-wave31` | run `34665447413` | PASS | After EH baseline quotient, analytic linear-curvature bulk residual rank is 0; published generalized-EH sector does not supply two frozen independent bulk directions. |
 | 32 | `f1-relevant-basis-wave32` | run `34665724676` | PASS | Critical exponents determine UV surface dimension but not its orientation; same spectrum permits nearly 90° different 3D relevant subspaces in 5D. |
 | 33 | `frg-basis-ingest-wave33` | run `34666795814`, compute `57fe08111967366dc259eb73bfc46120dd6f3256` | PASS | 5x5 orientation-object ingest, complex-pair realification, phase/normalization invariance, seven symmetric trajectories and uncertainty propagation validated. Certificate: `certificates/WAVE33_FRG_BASIS_INGEST_CERTIFICATE.md`. Physical J8 remains blocked; surrogate is `SURROGATE_NOT_J8`. |
+| 34 | `appendix-f-surrogate-wave34` | run `34667231522`, compute `15e6d2ee3b3120567fca746641ace1e3daed04af` | RUNNING | Source-faithful Appendix-F F1–F5/Truncation-4 reconstruction audit: conditioning, nearby-root search, spectrum comparison, rounding sensitivity and permanent `SURROGATE_NOT_J8` firewall. |
 
 ## Current blocker
 
