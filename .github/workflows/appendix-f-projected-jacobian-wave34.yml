@@ -1,0 +1,54 @@
+name: Appendix F projected Jacobian wave 34
+on:
+  push:
+    branches: [appendix-f-projected-jacobian-wave34]
+    paths:
+      - 'compute_wave34/**'
+      - '.github/workflows/appendix-f-projected-jacobian-wave34.yml'
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  projected-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - anchor_residual
+          - conditional_root
+          - projected_jacobian
+          - held_coordinate_sensitivity
+          - embedding_no_go
+          - published_spectrum_mismatch
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.test }}
+        run: cd compute_wave34 && python ${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave34-${{ matrix.test }}
+          path: compute_wave34/wave34_${{ matrix.test }}.json
+
+  aggregate-wave34:
+    needs: projected-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave34_downloads
+      - run: python compute_wave34/aggregate_wave34.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appendix-f-projected-jacobian-wave34-summary
+          path: wave34_summary.json
