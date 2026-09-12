@@ -1,0 +1,69 @@
+name: RCG Iter036 G47-C Three-State Switching Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER036_G47C_LAUNCH.md'
+
+jobs:
+  calibrate:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        control: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G47-C positive-control lane
+        run: |
+          mkdir -p out
+          python scripts/iter036_g47c_three_state_switching_calibration.py --method '${{ matrix.method }}' --control '${{ matrix.control }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg036-g47c-${{ matrix.method }}-c${{ matrix.control }}
+          path: out/result.json
+
+  aggregate:
+    needs: calibrate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G47-C rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          support=bool(structural and all(r['scientific_support'] for r in rows))
+          summary={
+              'iteration':'Iter036','gate':'G47-C','n_results':len(rows),
+              'all_structural_valid':structural,'scientific_support':support,
+              'worst_train_gap':max((r['best_candidate']['train_max_trace_gap'] for r in rows),default=None),
+              'worst_holdout_gap':max((r['best_candidate']['holdout_max_trace_gap'] for r in rows),default=None),
+              'worst_normalized_parameter_error':max((r['best_candidate']['normalized_parameter_error'] for r in rows),default=None),
+              'provenance_valid_count':sum(int(r['best_candidate']['provenance_valid']) for r in rows),
+              'classification':'THREE_STATE_CLASSICAL_SWITCHING_OPTIMIZER_CALIBRATED' if support else 'THREE_STATE_CLASSICAL_SWITCHING_OPTIMIZER_CALIBRATION_NOT_ESTABLISHED',
+              'scope_lock':'Response-blind calibration only for frozen 12D explicit three-state hidden-classical switching family.',
+              'interpretation':'Calibration only; PASS may authorize only separately preregistered adversarial G47-A.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg036-g47c-summary
+          path: summary/summary.json
