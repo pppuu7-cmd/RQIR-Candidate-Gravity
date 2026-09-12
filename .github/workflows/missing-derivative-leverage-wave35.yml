@@ -1,0 +1,47 @@
+name: Missing derivative leverage wave 35
+on:
+  push:
+    branches: [missing-derivative-leverage-wave35]
+    paths:
+      - 'compute_wave35/**'
+      - '.github/workflows/missing-derivative-leverage-wave35.yml'
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  leverage-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test: [B_only, C_only, D_only, BC, BCD, decomposition_contract, physical_input_contract, information_firewall]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.test }}
+        run: cd compute_wave35 && python ${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave35-${{ matrix.test }}
+          path: compute_wave35/wave35_${{ matrix.test }}.json
+
+  aggregate-wave35:
+    needs: leverage-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave35_downloads
+      - run: python compute_wave35/aggregate_wave35.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: missing-derivative-leverage-wave35-summary
+          path: wave35_summary.json

@@ -1,0 +1,4 @@
+from common import write
+required=['same_closure_fixed_point','ordered_coordinates_mu_lambda3_lambda4_g3_g4','numeric_5x5_stability_matrix_or_equivalent_normalized_right_eigensystem','closure_and_vertex_identification','projection_and_regulator_provenance','derivative_or_finite_difference_provenance','numerical_precision_and_tolerances']
+signals={'minimal_external_physical_input_contract_is_complete':len(required)==7,'matrix_or_right_eigensystem_is_required_not_critical_exponents_alone':True,'same_closure_provenance_is_required':True}
+out={'test':'physical_input_contract','required_fields':required,'acceptance_rule':'No physical J8 promotion if any required field is absent or if the orientation object comes from a different closure/realization.','signals':signals}; write('wave35_physical_input_contract.json',out); assert all(signals.values())
