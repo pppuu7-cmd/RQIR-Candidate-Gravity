@@ -1,0 +1,64 @@
+name: Principle synergy wave 26
+
+on:
+  push:
+    branches: [principle-synergy-wave26]
+    paths:
+      - 'compute_wave26/**'
+      - 'post_freeze/WAVE26_PRINCIPLE_SYNERGY_PREREGISTRATION.md'
+      - 'protocol/PARENT_LAW_ACCEPTANCE_PROTOCOL_V1.json'
+      - 'holdouts/WAVE22_FROZEN_BANK.json'
+      - 'certificates/WAVE25_KNOWN_PRINCIPLE_TOURNAMENT_CERTIFICATE.md'
+      - '.github/workflows/principle-synergy-wave26.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  synergy-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - canonical_transverse
+          - random_orientation
+          - aligned_redundancy
+          - ward_positivity
+          - rank_identity
+          - acceptance_ledger
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.test }}
+        run: python compute_wave26/${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave26-${{ matrix.test }}
+          path: wave26_results/${{ matrix.test }}.json
+
+  aggregate-wave26:
+    if: always()
+    needs: [synergy-tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave26_downloads
+      - run: python compute_wave26/aggregate_wave26.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: principle-synergy-wave26-summary
+          path: wave26_summary.json
