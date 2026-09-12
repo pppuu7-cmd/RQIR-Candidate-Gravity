@@ -1,0 +1,63 @@
+name: Known-principle tournament wave 25
+
+on:
+  push:
+    branches: [known-principle-tournament-wave25]
+    paths:
+      - 'compute_wave25/**'
+      - 'post_freeze/WAVE25_KNOWN_PRINCIPLE_TOURNAMENT_PREREGISTRATION.md'
+      - 'protocol/PARENT_LAW_ACCEPTANCE_PROTOCOL_V1.json'
+      - 'holdouts/WAVE22_FROZEN_BANK.json'
+      - '.github/workflows/known-principle-tournament-wave25.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  principle-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - soft_ward
+          - positivity
+          - causality_uv
+          - asymptotic_safety
+          - double_copy
+          - gate_matrix
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.test }}
+        run: python compute_wave25/${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave25-${{ matrix.test }}
+          path: wave25_results/${{ matrix.test }}.json
+
+  aggregate-wave25:
+    if: always()
+    needs: [principle-tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave25_downloads
+      - run: python compute_wave25/aggregate_wave25.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: known-principle-tournament-wave25-summary
+          path: wave25_summary.json
