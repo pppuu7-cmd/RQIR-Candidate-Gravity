@@ -1,0 +1,69 @@
+name: RCG Iter024C G41-A High Rank Rate Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER024C_G41A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        rank: [4, 5, 6]
+        shard: [0, 1, 2, 3]
+        method: [sobol_lsq, lhs_lsq]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G41-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter024c_g41a_high_rank_rate_adversarial.py --rank '${{ matrix.rank }}' --shard '${{ matrix.shard }}' --method '${{ matrix.method }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg024c-g41a-r${{ matrix.rank }}-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G41-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==24 and all(r['structural_valid'] for r in rows))
+          cells={}
+          for rank in (4,5,6):
+              for shard in range(4):
+                  rr=[r for r in rows if r['rank']==rank and r['shard']==shard]
+                  by={r['method']:r for r in rr}; a=by.get('sobol_lsq'); b=by.get('lhs_lsq')
+                  ga=None if a is None else a['best_candidate']['gap']; gb=None if b is None else b['best_candidate']['gap']
+                  diff=None if ga is None or gb is None else abs(ga-gb)
+                  support=bool(len(rr)==2 and all(r['lane_support'] for r in rr) and diff is not None and diff<=0.002)
+                  cells[f'r{rank}s{shard}']={'sobol_gap':ga,'lhs_gap':gb,'cross_method_difference':diff,'support':support}
+          support=bool(structural and all(v['support'] for v in cells.values()))
+          summary={'iteration':'Iter024C','gate':'G41-A','n_results':len(rows),'all_structural_valid':structural,'cells':cells,'scientific_support':support,
+                   'classification':'DERIVED_SCOPED_HIGH_RANK_RATE_COMPARATOR_SUPPORT' if support else 'G41A_FROZEN_SUPPORT_RULE_NOT_MET',
+                   'frozen_nonzero_gap':1e-4,'frozen_cross_method_agreement':0.002,
+                   'interpretation':'Finite frame-indexed rank-4/5/6 positive-rate classical comparator result only; no arbitrary-orientation/general PSD Kossakowski claim.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg024c-g41a-summary
+          path: summary/summary.json
