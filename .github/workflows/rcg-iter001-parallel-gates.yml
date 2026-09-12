@@ -1,0 +1,55 @@
+name: RCG Iter001 Parallel Gates
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter001_rcg001_gates.py'
+      - 'candidates/RCG_001_RELATIONAL_RESPONSE_KERNEL.md'
+      - '.github/workflows/rcg-iter001-parallel-gates.yml'
+  workflow_dispatch:
+
+jobs:
+  gate-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        gate: [positivity, limits, causality, identifiability, stochastic]
+        seed: [17, 41, 73]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install -q 'numpy==2.1.1'
+      - name: Run frozen RCG-001 gate
+        run: |
+          mkdir -p results/iter001
+          python scripts/iter001_rcg001_gates.py \
+            --gate '${{ matrix.gate }}' \
+            --seed '${{ matrix.seed }}' \
+            --output 'results/iter001/${{ matrix.gate }}_${{ matrix.seed }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg001-${{ matrix.gate }}-${{ matrix.seed }}
+          path: results/iter001/*.json
+          retention-days: 90
+
+  static-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify independence and claim locks
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          c=Path('docs/CONSTRUCTION_CONTRACT.md').read_text()
+          m=Path('candidates/RCG_001_RELATIONAL_RESPONSE_KERNEL.md').read_text()
+          assert 'must not import equations' in c
+          assert 'BLOCKED != FAIL' in c
+          assert 'DEGENERATE' in m
+          assert 'not claimed to be a UV theory' in m
+          print('STATIC_CONTRACT_PASS')
+          PY
