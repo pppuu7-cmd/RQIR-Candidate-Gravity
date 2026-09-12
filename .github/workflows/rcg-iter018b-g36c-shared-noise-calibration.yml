@@ -1,0 +1,92 @@
+name: RCG Iter018B G36-C Shared Noise Calibration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter018b_g36c_shared_noise_optimizer_calibration.py'
+      - '.github/workflows/rcg-iter018b-g36c-shared-noise-calibration.yml'
+  workflow_dispatch:
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        include:
+          - {method: sobol_lsq, shard: '0'}
+          - {method: sobol_lsq, shard: '1'}
+          - {method: sobol_lsq, shard: '2'}
+          - {method: sobol_lsq, shard: '3'}
+          - {method: sobol_lsq, shard: '4'}
+          - {method: sobol_lsq, shard: '5'}
+          - {method: lhs_lsq, shard: '0'}
+          - {method: lhs_lsq, shard: '1'}
+          - {method: lhs_lsq, shard: '2'}
+          - {method: lhs_lsq, shard: '3'}
+          - {method: lhs_lsq, shard: '4'}
+          - {method: lhs_lsq, shard: '5'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G36-C calibration lane
+        run: |
+          mkdir -p out
+          python scripts/iter018b_g36c_shared_noise_optimizer_calibration.py \
+            --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg018b-g36c-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: calibrate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G36-C calibration
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq'); tol=0.002
+          all_structural=bool(len(rows)==12 and all(r['structural_valid'] for r in rows))
+          by_method={}
+          for m in methods:
+              rr=[r for r in rows if r['method']==m]
+              by_method[m]={
+                'n':len(rr),
+                'support_count':sum(int(r['result']['scientific_support']) for r in rr),
+                'worst_trace_gap':max((r['result']['best_trace_gap'] for r in rr),default=None),
+                'all_support':bool(len(rr)==6 and all(r['result']['scientific_support'] for r in rr))
+              }
+          per_shard={}
+          for s in range(6):
+              rr={r['method']:r for r in rows if r['shard']==s}
+              gaps={m:rr[m]['result']['best_trace_gap'] for m in methods if m in rr}
+              per_shard[str(s)]={'gaps':gaps,'both_recover':bool(len(gaps)==2 and all(v<tol for v in gaps.values()))}
+          overall=bool(all_structural and all(by_method[m]['all_support'] for m in methods) and all(v['both_recover'] for v in per_shard.values()))
+          summary={
+            'iteration':'Iter018B','gate':'G36-C','n_results':len(rows),
+            'all_structural_valid':all_structural,'by_method':by_method,'per_shard':per_shard,
+            'scientific_support':overall,
+            'frozen_recovery_tolerance':tol,
+            'interpretation':'Prospective positive-control calibration for the finite shared-classical-noise comparator. PASS authorizes, but does not prejudge, a separate RCG-002 adversarial gate.'
+          }
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not all_structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg018b-g36c-summary
+          path: summary/summary.json
