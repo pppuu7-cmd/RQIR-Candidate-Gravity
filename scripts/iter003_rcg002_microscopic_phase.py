@@ -32,7 +32,7 @@ def gate_causality(scale):
         vals.append([f,chi])
     pre=max(abs(v) for f,v in vals if f<=1.0)
     post=max(abs(v) for f,v in vals if f>1.0)
-    return {'gate':'G12_RETARDED_ONSET','scale':scale,'tau':tau,'samples':vals,'pass':pre<1e-18 and post>0}
+    return {'gate':'G12_RETARDED_ONSET','scale':float(scale),'tau':float(tau),'samples':[[float(f),float(v)] for f,v in vals],'pass':bool(pre<1e-18 and post>0)}
 
 
 def gate_scaling(which, factor):
@@ -55,7 +55,7 @@ def gate_scaling(which, factor):
     c1=entangling_phase(**p)
     ratio=c1/c0
     rel=abs(ratio-expected)/max(abs(expected),1e-30)
-    return {'gate':'G13_MICROSCOPIC_SCALING','which':which,'factor':factor,'ratio':ratio,'expected':expected,'relerr':rel,'pass':rel<1e-12}
+    return {'gate':'G13_MICROSCOPIC_SCALING','which':which,'factor':float(factor),'ratio':float(ratio),'expected':float(expected),'relerr':float(rel),'pass':bool(rel<1e-12)}
 
 
 def gate_entanglement(scale):
@@ -63,7 +63,7 @@ def gate_entanglement(scale):
     m1=2e-14*scale; m2=2.4e-14*scale
     chi=entangling_phase(m1,m2,2.0,0.45,0.62,0.57,0.48)
     n=negativity_from_chi(chi)
-    return {'gate':'G14_MICROSCOPIC_ENTANGLING_PHASE','scale':scale,'chi':chi,'negativity':n,'pass':n>1e-12}
+    return {'gate':'G14_MICROSCOPIC_ENTANGLING_PHASE','scale':float(scale),'chi':float(chi),'negativity':float(n),'pass':bool(n>1e-12)}
 
 
 def gate_separable_bound(seed):
@@ -81,7 +81,8 @@ def gate_separable_bound(seed):
     pt=rho.reshape(2,2,2,2).transpose(0,3,2,1).reshape(4,4)
     ev=np.linalg.eigvalsh(pt)
     neg=float(np.sum(np.maximum(-ev,0)))
-    return {'gate':'G15_SEPARABLE_LOCC_BOUND','seed':seed,'negativity':neg,'min_pt_eig':float(ev.min()),'pass':neg<1e-12 and ev.min()>-1e-12}
+    mineig=float(ev.min())
+    return {'gate':'G15_SEPARABLE_LOCC_BOUND','seed':int(seed),'negativity':neg,'min_pt_eig':mineig,'pass':bool(neg<1e-12 and mineig>-1e-12)}
 
 
 def gate_geometry_null(which):
@@ -94,7 +95,7 @@ def gate_geometry_null(which):
         return {'gate':'G16_INTERACTION_NULLS','which':which,'chi':chi,'pass':True}
     else: raise ValueError(which)
     chi=entangling_phase(**p)
-    return {'gate':'G16_INTERACTION_NULLS','which':which,'chi':chi,'pass':abs(chi)<1e-18}
+    return {'gate':'G16_INTERACTION_NULLS','which':which,'chi':float(chi),'pass':bool(abs(chi)<1e-18)}
 
 
 def main():
