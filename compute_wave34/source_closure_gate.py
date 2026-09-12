@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
-E=json.loads(Path('evidence/WAVE34_APPENDIX_F_SURROGATE_EVIDENCE.json').read_text())
+ROOT=Path(__file__).resolve().parents[1]
+E=json.loads((ROOT/'evidence/WAVE34_APPENDIX_F_SURROGATE_EVIDENCE.json').read_text())
 p=E['published_truncation4']
 signals={
  'classification_is_SURROGATE_NOT_J8':E['classification']=='SURROGATE_NOT_J8',
