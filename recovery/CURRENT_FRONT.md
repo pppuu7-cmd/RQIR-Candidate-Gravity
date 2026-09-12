@@ -1,8 +1,8 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active gates: `ITER025C / G42-C2 PSD-boundary calibration` + `ITER025D / G42-C3 PSD rank-completion calibration`
-Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_CALIBRATION`
+Active gates: `ITER026 / G42-A boundary-capable bounded-PSD adversarial` + `ITER026R / G42-R held-out calibration replication`
+Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_ATTACK`
 
 ## Canonical status
 
@@ -15,61 +15,62 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_CALIBRATION`
 
 Readiness is programme completion, not a probability of physical correctness. `59% -> 60%` came only from terminal G41-A scoped adversarial closure. Calibration/diagnostic/identifiability gates do not raise readiness by themselves.
 
-## Current closed authority
-
-### G40 RTN
-
-G40-RC-A run `34710216045` failed the frozen all-shards support rule on shard 3. G40-RC-D2 run `34710444349` then showed persistent optimizer/objective nonrobustness: four deep-search best gaps `0.7495354861`, `0.7450136685`, `0.7450127676`, `0.7450127451`, spread `0.0045227410 > 0.002`. There is no RTN adversarial physics PASS. Any future RTN reopening requires a separately calibrated trace-metric-aligned optimizer.
-
-### G41 high-rank frame-indexed comparator
-
-G41-C run `34710257380`: 24/24 positive-control lanes passed. G41-A run `34710491309`, aggregate `103598462910`, artifact `10303600848`, digest `sha256:fe89d973dc1f24fe50fba09542e1b1b8e1d1fbae5e9cb1f33165b7213764dea7`: all 12 rank×shard cells passed frozen nonzero-gap and Sobol/LHS agreement. Classification `DERIVED_SCOPED_HIGH_RANK_RATE_COMPARATOR_SUPPORT`, limited to finite frame-indexed positive-rate rank-4/5/6 classical families. This closure produced readiness `59% -> 60%`.
-
-### G42-J identifiability
-
-Run `34710643103`, aggregate `103598755854`, artifact `10303316491`, digest `sha256:07a895f0fb309a6e642cd6eb5429e368ddcad0c78367571cfa59b7c7bce8ea9e`: four controls passed Jacobian rank `21/21` at both derivative steps, worst condition `5.905925058`, max two-step relative mismatch `1.262474e-9`, CPTP clean. Classification `FULL_LOCAL_RANK_IDENTIFIABILITY_PRE_GATE`.
+## Newly closed calibration authority
 
 ### G42-C SPD-interior calibration
 
-Run `34710744967`, aggregate `103599128599`, artifact `10302903611`, digest `sha256:daa9c9f1ac0bf70094fd47783c7b0dece89243593348befff801054f799e258a`: 8/8 positive-control lanes passed. However its log-Cholesky diagonal bounds `[-2,-0.5]` make every candidate strictly positive definite. Therefore scientific authority is **bounded SPD-interior optimizer calibration**, not full PSD-boundary calibration. Durable scope correction: `results/ITER025B_G42C_TERMINAL.md`. No G42-A was launched from G42-C.
+Run `34710744967`, aggregate `103599128599`, artifact `10302903611`, digest `sha256:daa9c9f1ac0bf70094fd47783c7b0dece89243593348befff801054f799e258a`: 8/8 positive-control lanes passed. Its log-Cholesky bounds exclude rank-deficient PSD boundary, so its authority is SPD-interior only. Durable note: `results/ITER025B_G42C_TERMINAL.md`.
 
-## Active gate 1 — G42-C2
+### G42-C2 PSD-boundary calibration — PASS
 
-Protocol: `protocol/ITER025C_G42C2_PSD_BOUNDARY_CALIBRATION.md`.
-Launch/head: `858ad4b6848362bf430eaab849fb0ed4166f9cde`.
-Run: `34710953936`.
+Run `34710953936`, head `858ad4b6848362bf430eaab849fb0ed4166f9cde`, aggregate `103600409310`, artifact `10303587123`, digest `sha256:d71af618510d0d61fbac14a3db91e9bf713822f657cfd985cc54e96fbf2ac94e`.
 
-Coordinates: `C=B B^T` with direct Cholesky diagonals `[0,0.60]` and off-diagonals `[-0.30,0.30]`; PSD boundary is included exactly. Positive controls have intended ranks 2/4/5/6. Search is Sobol/LHS × four controls, 32 starts, top-6 refinements, same four times × six product probes.
+All 8/8 rank-2/4/5/6 positive-control lanes passed frozen trace-recovery, relative-Kossakowski and rank-recovery rules. Sobol worst trace gap `4.2824978732075346e-10`, worst relative-C error `3.3388943747698924e-09`; LHS worst gap `1.9221941865034614e-10`, worst relative-C error `1.9289529867904655e-09`. Classification `PSD_BOUNDARY_OPTIMIZER_CALIBRATED`. Durable note: `results/ITER025C_G42C2_TERMINAL.md`.
 
-Each lane must satisfy simultaneously: trace gap `<0.002`; relative Kossakowski error `<0.02`; recovered effective rank at eigenvalue threshold `1e-5` equals hidden rank. Initial terminal rank-6 Sobol lane passed with trace gap `1.3497e-16`, relative C error `8.041e-16`, recovered rank `6/6`.
+### G42-C3 rank-completion calibration — PASS
 
-## Active gate 2 — G42-C3
+Run `34711048394`, head `35f719fdad8af1e2f8fdd71727c84abec3857c2a`, aggregate `103601042911`, artifact `10303627020`, digest `sha256:a9fa4ccaa8f6f79540311deb3f8a42be74661e2793d6dc7e5092570a7e52e3d1`.
 
-Protocol: `protocol/ITER025D_G42C3_PSD_RANK_COMPLETION.md`.
-Launch/head: `35f719fdad8af1e2f8fdd71727c84abec3857c2a`.
-Run: `34711048394`.
+All 8/8 held positive-control lanes covering missing effective ranks 1 and 3 passed. Sobol worst trace gap `4.2872736979461425e-07`, worst relative-C error `8.398809261492516e-06`; LHS worst gap `7.34537126692358e-07`, worst relative-C error `1.5813386032144557e-05`. Classification `PSD_BOUNDARY_RANK_COMPLETION_CALIBRATED`. Durable note: `results/ITER025D_G42C3_TERMINAL.md`.
 
-Purpose: complete missing boundary-rank calibration with two rank-1 and two rank-3 positive controls, under exactly the same boundary-capable coordinates, bounds, times/probes, Sobol/LHS designs, 32 starts, top-6 refinements and recovery/rank rules as G42-C2.
+Joint interpretation: C2+C3 calibrate the frozen optimizer across effective PSD ranks 1–6 **within the bounded Cholesky chart** `diag∈[0,0.60]`, `offdiag∈[-0.30,0.30]`. This is not an unbounded mathematical full-PSD theorem.
 
-## Authorization lock
+## Primary active gate — G42-A
 
-A broad boundary-capable arbitrary-orientation PSD adversarial gate is authorized **only if both G42-C2 and G42-C3 terminally PASS**. Failure of either blocks it. This requirement was frozen before G42-C2 aggregate completion; neither run may be post-hoc retuned.
+Protocol: `protocol/ITER026_G42A_BOUNDARY_PSD_ADVERSARIAL.md`.
+Launch/head: `f7f48725a3d57398426f8ac9341a1d11b9cc591f`.
+Run: `34712491707`.
 
-## Stable finite-comparator layers
+Eight prospective adversarial lanes = Sobol/LHS × four frozen RCG-002 target shards. Comparator family is the same 21-coordinate boundary-capable bounded real-PSD 6x6 Markovian classical random-Hamiltonian Kossakowski chart calibrated by C2+C3. Frozen scientific rule per shard: both methods admissible, each gap `>1e-4`, and absolute Sobol/LHS gap difference `<=0.002`; all four shards required.
 
-- G35: finite K2/K3/K4 additive independent measurement-feedback support.
-- G36: one shared Gaussian classical-noise support.
-- G37: corrected nested MF + shared-noise finite support.
-- G38: OU finite-correlation toy support.
-- G39: finite rank2/rank3 multimode white-noise support.
-- G40: RTN calibration succeeded but adversarial support unresolved due optimizer nonrobustness.
-- G41: rank4/5/6 frame-indexed positive-rate scoped adversarial support.
-- G42: full local identifiability + SPD-interior calibration established; PSD-boundary calibration active.
+Early non-terminal check only: shard 3 has completed both methods with Sobol gap `0.8197294896504166`, LHS gap `0.819101112669069`, difference `0.0006283769813476 < 0.002`; both maps passed PSD/TP/Choi/state/trace admissibility. This is not a terminal gate classification.
+
+## Independent active gate — G42-R
+
+Protocol: `protocol/ITER026R_G42R_HELDOUT_PSD_CALIBRATION.md`.
+Launch/head: `3b53451c192c8bcaedd39105d1c9b9b3ae3aa6e6`.
+Run: `34712524241`.
+
+Twelve held-out positive-control lanes = new hidden controls ranks 1–6 × Sobol/LHS with seeds disjoint from C2/C3. Same bounded PSD family/search/recovery rules. This is methodology robustness only; it cannot alter G42-A thresholds/verdict or raise readiness by itself.
+
+## Stable scientific closures
+
+- G35: finite K2/K3/K4 additive independent measurement-feedback scoped support.
+- G36: one shared Gaussian classical-noise scoped support.
+- G37: corrected nested MF + shared-noise finite scoped support.
+- G38: OU finite-correlation toy comparator support.
+- G39: finite rank2/rank3 multimode shared white-noise support.
+- G40: RTN calibration succeeded but adversarial support unresolved due persistent optimizer/objective nonrobustness; no RTN physics PASS.
+- G41: rank4/5/6 frame-indexed positive-rate scoped adversarial support; readiness `59% -> 60%`.
+- G42-J: full 21-param local identifiability PASS.
+- G42-C/C2/C3: SPD interior + boundary rank1–6 optimizer calibration; no readiness increment.
 
 ## Open scientific layers
 
-- terminal G42-C2 + G42-C3 boundary calibration;
-- only after joint PASS: prospective boundary-capable arbitrary-orientation PSD adversarial test;
+- terminal G42-A bounded boundary-capable arbitrary-orientation PSD adversarial verdict;
+- G42-R held-out optimizer replication;
+- if G42-A supports a gap: response-blind basis/chart/bound-coverage audit before any stronger PSD-family interpretation;
+- broader non-Markovian/classically correlated comparator layers;
 - externally anchored observables/holdouts;
 - continuum/full candidate-gravity dynamics and any actual gravity-theory constitution gate.
 
@@ -79,4 +80,4 @@ Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, 
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_60_PERCENT + THEORY_ESTABLISHED_0 + FINITE_COMPARATOR_SUPPORT_ONLY + G40_RTN_UNRESOLVED_OPTIMIZER_NONROBUSTNESS + G41A_SCOPED_HIGH_RANK_RATE_PASS + G42J_FULL_LOCAL_RANK_PASS + G42C_SPD_INTERIOR_CALIBRATED + G42C2_PSD_BOUNDARY_RUNNING + G42C3_RANK_COMPLETION_QUEUED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_60_PERCENT + THEORY_ESTABLISHED_0 + FINITE_COMPARATOR_SUPPORT_ONLY + G40_RTN_UNRESOLVED_OPTIMIZER_NONROBUSTNESS + G41A_SCOPED_HIGH_RANK_RATE_PASS + G42J_FULL_LOCAL_RANK_PASS + G42C2_C3_BOUNDARY_RANK1_TO_6_CALIBRATED + G42A_RUNNING + G42R_RUNNING`.
