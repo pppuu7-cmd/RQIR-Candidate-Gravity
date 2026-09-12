@@ -57,7 +57,13 @@ def principal_angles(B1,B2):
     s=np.clip(s,-1,1)
     return np.arccos(s)
 
+def _json_default(value):
+    if isinstance(value,np.generic): return value.item()
+    if isinstance(value,np.ndarray): return value.tolist()
+    raise TypeError(f'Object of type {value.__class__.__name__} is not JSON serializable')
+
 def write(name,obj):
     obj=dict(obj); obj.setdefault('classification',CLASSIFICATION)
-    pathlib.Path(name).write_text(json.dumps(obj,indent=2,sort_keys=True))
-    print(json.dumps(obj,indent=2,sort_keys=True))
+    text=json.dumps(obj,indent=2,sort_keys=True,default=_json_default)
+    pathlib.Path(name).write_text(text)
+    print(text)
