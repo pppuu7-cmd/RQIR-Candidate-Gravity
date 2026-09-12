@@ -1,0 +1,79 @@
+name: RCG Iter003 Microscopic Phase Closure
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  gate-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {gate: causality, arg: '0.5', label: causal-r05}
+          - {gate: causality, arg: '2.0', label: causal-r20}
+          - {gate: scaling, arg: 'm1:0.5', label: m1-half}
+          - {gate: scaling, arg: 'm1:2.0', label: m1-double}
+          - {gate: scaling, arg: 'm2:0.5', label: m2-half}
+          - {gate: scaling, arg: 'm2:2.0', label: m2-double}
+          - {gate: scaling, arg: 'time:0.5', label: time-half}
+          - {gate: scaling, arg: 'time:2.0', label: time-double}
+          - {gate: scaling, arg: 'distance:0.5', label: distance-half}
+          - {gate: scaling, arg: 'distance:2.0', label: distance-double}
+          - {gate: entanglement, arg: '0.5', label: ent-scale05}
+          - {gate: entanglement, arg: '1.0', label: ent-scale10}
+          - {gate: entanglement, arg: '2.0', label: ent-scale20}
+          - {gate: separable, arg: '17', label: sep-s17}
+          - {gate: separable, arg: '41', label: sep-s41}
+          - {gate: separable, arg: '73', label: sep-s73}
+          - {gate: 'null', arg: 'equal', label: null-equal-geometry}
+          - {gate: 'null', arg: 'zero_mass', label: null-zero-mass}
+          - {gate: 'null', arg: 'zero_G', label: null-zero-G}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy
+      - name: Run frozen microscopic gate
+        run: |
+          mkdir -p out
+          python scripts/iter003_rcg002_microscopic_phase.py --gate '${{ matrix.gate }}' --arg '${{ matrix.arg }}' --out 'out/${{ matrix.label }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003-${{ matrix.label }}
+          path: out/${{ matrix.label }}.json
+
+  aggregate:
+    if: always()
+    needs: gate-matrix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen outcomes
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          groups={}
+          for r in rows:
+              g=r['gate']; groups.setdefault(g,{'n':0,'passes':0})
+              groups[g]['n']+=1; groups[g]['passes']+=int(bool(r['pass']))
+          for v in groups.values(): v['all_pass']=v['n']==v['passes']
+          s={'candidate':'RCG-002','iteration':'ITER003','n_results':len(rows),'gates':groups,'all_hard_pass':len(rows)==19 and all(r['pass'] for r in rows)}
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(s,f,indent=2)
+          print(json.dumps(s,indent=2))
+          if not s['all_hard_pass']: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003-iter003-summary
+          path: summary/summary.json
