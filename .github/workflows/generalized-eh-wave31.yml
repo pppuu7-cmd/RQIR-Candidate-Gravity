@@ -1,0 +1,61 @@
+name: Generalized EH wave 31
+
+on:
+  push:
+    branches: [generalized-eh-wave31]
+    paths:
+      - '.github/workflows/generalized-eh-wave31.yml'
+      - 'compute_wave31/**'
+      - 'evidence/WAVE31_GENERALIZED_EH_EVIDENCE.json'
+      - 'post_freeze/WAVE31_GENERALIZED_EH_PREREGISTRATION.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  generalized-eh-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - linear_curvature_bulk_quotient
+          - generalized_eh_evidence_gate
+          - anti_double_counting
+          - endpoint_identifiability
+          - counterfactual_rank6
+          - p6_exclusion
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.task }}
+        run: python compute_wave31/${{ matrix.task }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave31-${{ matrix.task }}
+          path: wave31_${{ matrix.task }}.json
+
+  aggregate-wave31:
+    needs: generalized-eh-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave31_downloads
+      - run: python compute_wave31/aggregate_wave31.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generalized-eh-wave31-summary
+          path: wave31_summary.json
