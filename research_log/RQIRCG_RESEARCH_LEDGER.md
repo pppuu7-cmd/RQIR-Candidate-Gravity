@@ -15,7 +15,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - `60% -> 61%`: G42-A bounded boundary-PSD adversarial comparator closure.
 - `61% -> 62%`: G44-A basis-invariant real-PSD `tr(C)<=4` comparator closure.
 - `62% -> 63%`: G47-A explicit finite hidden-classical memory comparator closure.
-- G46-A and G48-C deepen/calibrate the already-counted Markovian PSD rubric and do not add readiness points. Calibration, implementation, identifiability, provenance and coordinate-coverage gates do not themselves raise readiness.
+- G46-A, G48-C and G48-A deepen/calibrate the already-counted Markovian PSD rubric and do not add readiness points. Calibration, implementation, identifiability, provenance and coordinate-coverage gates do not themselves raise readiness.
 
 ## Authoritative gate ledger
 
@@ -40,31 +40,34 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G46-C | `34719083985` | `EXTENDED_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED_CAP8_CAP16` | Calibration only. |
 | G47-C | `34719251400` | `THREE_STATE_CLASSICAL_SWITCHING_OPTIMIZER_CALIBRATED` | Calibration only. |
 | G47-A | `34719377641` | `DERIVED_SCOPED_THREE_STATE_CLASSICAL_SWITCHING_COMPARATOR_SUPPORT` | Frozen bounded 12D stationary 3-state CTMC family only. |
-| G46-A | `34719458597` | `DERIVED_SCOPED_EXTENDED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP8_CAP16` | Fixed bounded real-PSD caps 8/16; not unbounded PSD. |
+| G46-A | `34719458597` | `DERIVED_SCOPED_EXTENDED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP8_CAP16` | Fixed bounded real-PSD caps 8/16. |
 | G48-C | `34721391489` / `194db0cf...` | `CAP32_CAP64_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED` | Response-blind finite cap32/cap64 calibration only. |
-| G48-A | launch head `235e807f...` | **ACTIVE / unclassified** | Finite cap32/cap64 adversarial transport only. |
+| G48-A | `34724106251` / `235e807f...` | `DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64` | Finite caps 32/64 only; not unbounded PSD. |
+| G49-C | `34726705385` / `db61900e...` | **ACTIVE / unclassified** | Response-blind cap-free/direct-PSD numerical calibration only. |
 
-## G48-C terminal authority
+## G48-A terminal authority
 
-Run `34721391489`, aggregate job `103628932444`, summary artifact `10307000228`, digest `sha256:a31ba73467efeb83cb15c045f8928cc6e84c9dbf09a407e0052ac877b3a01ce9`.
+Run `34724106251`, head `235e807fbb9f5bf00de42e66a5aa07df90a21116`, aggregate job `103636108319`, summary artifact `10307232484`, digest `sha256:4e58ab8c40a07546e47ea48eec5ffec8ec265e7216869c94702eda0eb50cd5b8`.
 
-All `24/24` response-blind positive-control lanes are structurally valid and meet the preregistered calibration rule. cap32: 12/12 PASS, worst gap `2.8474088570401036e-11`, worst relative Kossakowski error `2.83680640607369e-10`, ranks 12/12. cap64: 12/12 PASS, worst gap `6.153799793735667e-10`, worst relative Kossakowski error `1.6423013282529114e-05`, ranks 12/12. Classification `CAP32_CAP64_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED`.
+All `16/16` lanes are structurally valid. All eight method pairs pass the frozen nonzero-gap rule; cross-method differences are `1.64e-08` to `3.70e-07`, well inside `0.002`. All cap32-vs-terminal-cap16 and cap64-vs-cap32 nesting checks pass. Best finite-cap gaps remain nonzero for all four shards. Classification: `DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64`.
 
-This is calibration only; readiness stays 63%. Durable note: `results/ITER039_G48C_CAP32_CAP64_CALIBRATION_TERMINAL.md`.
+This is finite-cap evidence only. It does not establish an unbounded-PSD limit and is not an all-classical or all-semiclassical no-go theorem. Readiness remains 63%. Durable note: `results/ITER040_G48A_CAP32_CAP64_ADVERSARIAL_TERMINAL.md`.
 
-## Active frontier
+## Active frontier — G49-C
 
-`Iter040 / G48-A` was prospectively frozen only after terminal G48-C classification. Preregistration commit `8cec8199300d8930cde6cbfb9e2331b24235c50b`; implementation `ea0e0dc12efeee80e680e01d62fc62b7ea608258`; workflow `5cbc3e89a9f10db63b2e82657b4cfde85f7f647f`; launch/head `235e807fbb9f5bf00de42e66a5aa07df90a21116`.
+G49-C was prospectively frozen only after terminal G48-A classification. Preregistration `2d472c4223602f77e13b054615e713c58f0b46c3`; implementation `05a41f62b36e0912f60c01f7aa1657130c3c66d4`; workflow `7c31d7d19f4847b12043e15ba1699740e0fd7af3`; launch/head `db61900e4113cf002f3d5c7b636b7e14d41e00c0`; run `34726705385`.
 
-Frozen matrix: caps `{32,64}` × Sobol/LHS × four RCG-002 shards = 16 lanes. Same G46-A target/family/optimizer/admissibility thresholds. Aggregate requires both methods to meet the nonzero-gap rule and agree within `0.002`, plus cap32 nesting against terminal cap16 minima and cap64 nesting against cap32 within `0.002`. No retuning is authorized.
+Frozen family: direct real-symmetric physical-scale `A`, `C=A^2`, no physical trace cap. The optimizer uses a numerical box `[-8,8]^21`, which must be inactive (`max |w_i| / 8 < 0.80`) for PASS. Response-blind controls use ranks 1..6 and `sqrt(tr(C))=[0.5,1,2,3,4,5]`, methods Sobol/LHS, 12 lanes. Per-lane thresholds are gap `<0.002`, relative Kossakowski error `<0.02`, exact requested effective rank, and frozen PSD/TP/CP/state/trace controls. RCG-002 is not used in this calibration.
+
+Only terminal G49-C PASS may authorize a separately preregistered RCG-002 transport. Even that later transport cannot by itself become a mathematical unbounded-PSD theorem.
 
 ## Open scientific layers
 
-- terminal G48-A wider finite-cap transport, without claiming an unbounded limit;
+- terminal G49-C and conditional direct-PSD RCG-002 transport;
 - broader hidden-classical memory beyond the frozen stationary 3-state/12D family;
 - externally anchored observables/holdouts;
 - continuum/full candidate-gravity dynamics and an actual gravity-theory constitution gate.
 
 ## Claim locks
 
-Never promote finite/bounded-family gaps to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen thresholds/families/witnesses post hoc. Invalid/nonrobust historical gates remain invalid. Do not import QGR/KMQGB/RQIR physical assumptions or desired conclusions. `THEORY_ESTABLISHED` remains 0%.
+Never promote finite/bounded-family or numerical direct-PSD gaps to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen thresholds/families/witnesses post hoc. Invalid/nonrobust historical gates remain invalid. Do not import QGR/KMQGB/RQIR physical assumptions or desired conclusions. `THEORY_ESTABLISHED` remains 0%.
