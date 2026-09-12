@@ -6,7 +6,7 @@ funcs=[x*(1-x), x*(1-x)*(2*x-1), x*(1-x)*(6*x*x-6*x+1)]
 # Project interiors onto two finite diagnostic moments. This is deliberately not a physical RQIR map.
 M=[]
 for f in funcs:
-    M.append([float(np.trapz(f,x)), float(np.trapz((2*x-1)*f,x))])
+    M.append([float(np.trapezoid(f,x)), float(np.trapezoid((2*x-1)*f,x))])
 M=np.array(M)
 rank=int(np.linalg.matrix_rank(M,tol=1e-10))
 endpoint_ok=all(abs(f[0])<1e-14 and abs(f[-1])<1e-14 for f in funcs)
