@@ -1,0 +1,75 @@
+name: RCG Iter040 G48-A Cap32 Cap64 Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER040_G48A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        cap: [32, 64]
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G48-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter040_g48a_cap32_cap64_adversarial.py --cap '${{ matrix.cap }}' --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg040-g48a-cap${{ matrix.cap }}-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G48-A rules
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==16 and all(r.get('structural_valid',False) for r in rows))
+          pairs=[]
+          for cap in (32.0,64.0):
+              for s in range(4):
+                  rr=[r for r in rows if float(r.get('trace_cap',-1))==cap and r.get('shard')==s]
+                  gaps=sorted([r['best_candidate']['gap'] for r in rr])
+                  ok=bool(len(rr)==2 and all(r.get('admissible') and r.get('lane_support') for r in rr) and abs(gaps[1]-gaps[0])<=0.002)
+                  pairs.append({'cap':cap,'shard':s,'gaps':gaps,'difference':abs(gaps[1]-gaps[0]) if len(gaps)==2 else None,'pair_support':ok})
+          cap16={0:0.03700797230755979,1:0.14632856595800156,2:0.5275496176970684,3:0.6663860056257985}
+          nesting=[]
+          for s in range(4):
+              g32=[r['best_candidate']['gap'] for r in rows if float(r.get('trace_cap',-1))==32.0 and r.get('shard')==s]
+              g64=[r['best_candidate']['gap'] for r in rows if float(r.get('trace_cap',-1))==64.0 and r.get('shard')==s]
+              b32=min(g32) if g32 else None; b64=min(g64) if g64 else None
+              ok32=bool(b32 is not None and b32<=cap16[s]+0.002)
+              ok64=bool(b64 is not None and b32 is not None and b64<=b32+0.002)
+              nesting.append({'shard':s,'best_cap16_terminal':cap16[s],'best_cap32':b32,'best_cap64':b64,'cap32_nested':ok32,'cap64_nested':ok64})
+          support=bool(structural and all(p['pair_support'] for p in pairs) and all(n['cap32_nested'] and n['cap64_nested'] for n in nesting))
+          cls='DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64' if support else ('G48A_IMPLEMENTATION_OR_NUMERICAL_INVALID' if not structural else 'G48A_FROZEN_SUPPORT_RULE_NOT_MET')
+          summary={'iteration':'Iter040','gate':'G48-A','n_results':len(rows),'all_structural_valid':structural,'pairs':pairs,'nesting':nesting,'scientific_support':support,'classification':cls,'scope_lock':'Finite basis-invariant real-PSD Markovian trace caps 32/64 only.','interpretation':'Scoped toy-trajectory comparator result; not unbounded PSD or all-classical no-go.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg040-g48a-summary
+          path: summary/summary.json
