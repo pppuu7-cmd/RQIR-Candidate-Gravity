@@ -1,0 +1,72 @@
+name: RCG Iter023C G40-RC-A Axis Covariant Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER023C_G40RC_A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G40-RC-A lane
+        run: |
+          mkdir -p out
+          python scripts/iter023c_g40rc_axis_covariant_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023c-g40rca-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G40-RC-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          shards={}
+          for s in range(4):
+              rr=[r for r in rows if r['shard']==s]
+              by={r['method']:r for r in rr}
+              a=by.get('sobol_lsq'); b=by.get('lhs_lsq')
+              ga=None if a is None or a['best_strict_candidate'] is None else a['best_strict_candidate']['gap']
+              gb=None if b is None or b['best_strict_candidate'] is None else b['best_strict_candidate']['gap']
+              diff=None if ga is None or gb is None else abs(ga-gb)
+              support=bool(len(rr)==2 and all(r['lane_support'] for r in rr) and diff is not None and diff<=0.002)
+              shards[str(s)]={'sobol_gap':ga,'lhs_gap':gb,'cross_method_difference':diff,
+                              'sobol_axis_covariant_BLP':None if a is None or a['best_strict_candidate'] is None else a['best_strict_candidate']['axis_covariant_BLP'],
+                              'lhs_axis_covariant_BLP':None if b is None or b['best_strict_candidate'] is None else b['best_strict_candidate']['axis_covariant_BLP'],
+                              'support':support}
+          support=bool(structural and all(shards[str(s)]['support'] for s in range(4)))
+          summary={'iteration':'Iter023C','gate':'G40-RC-A','n_results':len(rows),'all_structural_valid':structural,'shards':shards,'scientific_support':support,
+                   'classification':'DERIVED_SCOPED_AXIS_COVARIANT_RTN_COMPARATOR_SUPPORT' if support else 'G40RCA_FROZEN_SUPPORT_RULE_NOT_MET',
+                   'frozen_nonzero_gap':1e-4,'frozen_cross_method_agreement':0.002,'frozen_axis_covariant_BLP_min':0.02,
+                   'interpretation':'Finite-family axis-covariant RTN comparator result only; never a general classical/non-Markovian no-go.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023c-g40rca-summary
+          path: summary/summary.json
