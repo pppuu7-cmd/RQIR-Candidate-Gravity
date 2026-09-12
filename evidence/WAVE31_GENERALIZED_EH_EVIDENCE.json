@@ -1,0 +1,45 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "target_lineage": "fluctuation_vertex_F1_F2",
+  "source_scope": [
+    "Pawlowski & Traenkle, Phys. Rev. D 110, 086011 (2024), arXiv:2309.17043v2",
+    "author presentations explicitly discussing the same 2309.17043 reconstruction are supporting evidence only"
+  ],
+  "wave30_requirement": {
+    "finite_first_slope_quadratic_rank_cap": 4,
+    "minimum_additional_independent_residual_directions_needed_for_possible_rank6": 2
+  },
+  "published_generalized_EH_facts": {
+    "Rcal_contains_classical_linear_curvature_term": true,
+    "momentum_dependent_Newton_coupling_considered": true,
+    "G0_equals_classical_Newton_coupling": true,
+    "inverse_G_expansion_written": "G(Delta)^-1 = G(0)^-1 + c1 Delta + ...",
+    "paper_statement": "the corresponding curvature term reduces to the classical one up to potential boundary terms",
+    "Rcal_constraints_in_paper": ["IR consistency", "UV consistency"],
+    "unique_published_generalized_EH_low_energy_coefficient_map": false,
+    "explicit_two_independent_generalized_EH_residual_coefficients_after_GR_baseline_subtraction": false
+  },
+  "bulk_quotient_assumption": {
+    "domain": "boundaryless manifold or standard asymptotic/compact-support conditions such that integrated covariant Laplacians of scalars are boundary terms",
+    "consequence": "For a purely linear-curvature term integral sqrt(g) F(Delta) R, analytic positive powers Delta^n R with n>=1 do not create independent bulk local coefficients after quotienting the classical EH term; they integrate to boundary terms under the declared conditions.",
+    "claim_boundary": "This does not remove genuinely nonlinear curvature dependence in Rcal(Delta,R), nor nonanalytic/global boundary-sensitive structures."
+  },
+  "nonlinear_generalized_EH_status": {
+    "potentially_nontrivial": true,
+    "uniquely_reconstructed_in_frozen_F2_publication": false,
+    "supporting_author_talk_classification": "so far educated guess",
+    "finite_two_direction_residual_basis_justified": false
+  },
+  "quadratic_sector_separation": {
+    "R2_and_Ricci2_form_factors_already_counted_in_wave29": true,
+    "must_not_be_recounted_as_generalized_EH_extra_directions": true
+  },
+  "excluded_shortcuts": [
+    "count arbitrary functional freedom of Rcal as finite RQIR rank without a projection",
+    "recount R^2 or Ricci^2 form-factor coefficients",
+    "import p6/R3 structures excluded from F2 reconstruction",
+    "splice Lorentzian-spectral, essential-C3, KMQGB/polygon, or other lineages"
+  ],
+  "information_firewall": "No polygon-derived QGR equations, architecture, fitted parameters, or repairs are admitted."
+}
