@@ -27,26 +27,25 @@ Additional provenance diagnostics:
 - generator distance from the generator built from `Re(C)`;
 - least-squares residual after projecting that generator difference onto the six-dimensional **local Hamiltonian commutator** span;
 - least-squares residual after projecting onto the full fifteen-dimensional two-qubit Hamiltonian commutator span;
+- **full classical-span residual** after projecting the entire complex generator onto the linear span of all 21 real-symmetric Kossakowski dissipators plus the six local-Hamiltonian commutators;
 - product-input output negativity scan on 16 deterministic product states at `t=0.7`.
 
 For `real_psd_control`, require:
 - unitality residual <= `1e-10`;
 - generator difference from `Re(C)` <= `1e-12`;
+- full classical-span residual <= `1e-10`;
 - explicit simultaneous-noise local-product unitary factorization error <= `1e-12`;
 - product-output negativity <= `1e-9`.
 
-For each complex lane, define a **classical-provenance obstruction witness** if at least one of the following prospectively frozen conditions holds:
-- unitality residual > `1e-6`; or
-- residual after projection onto the local-Hamiltonian commutator span > `1e-6`; or
-- product-output negativity > `1e-8`.
+For each complex lane, define a **classical-provenance obstruction witness** only if the stronger full classical-span residual exceeds `1e-6`. Unitality, local-H/full-H projection residuals and product-output negativity are retained as explanatory diagnostics but are not sufficient by themselves for the aggregate obstruction classification.
 
 ## Aggregate interpretation
 `COMPLEX_PSD_EXTENDS_BEYOND_CLASSICAL_RANDOM_HAMILTONIAN_PROVENANCE_ON_FROZEN_CONTROLS` iff:
 - all 12 lanes are structurally/admissibly valid;
 - all four real controls pass their classical provenance rules; and
-- at least one same-site complex lane and at least one cross-site complex lane exhibit a frozen classical-provenance obstruction witness.
+- at least one same-site complex lane and at least one cross-site complex lane have full classical-span residual > `1e-6`.
 
-If all lanes are valid but one required complex panel has no obstruction witness, classify `COMPLEX_PSD_PROVENANCE_BOUNDARY_PARTIAL_OR_UNRESOLVED`.
+If all lanes are valid but one required complex panel has no frozen full-span obstruction witness, classify `COMPLEX_PSD_PROVENANCE_BOUNDARY_PARTIAL_OR_UNRESOLVED`.
 Structural/admissibility failure is `STRUCTURAL_NUMERICAL_FAIL` and is not a physics result.
 
 ## Claim locks
@@ -54,4 +53,5 @@ Structural/admissibility failure is `STRUCTURAL_NUMERICAL_FAIL` and is not a phy
 - No comparator-separation claim is authorized by this gate.
 - No statement that all complex PSD GKSL channels are nonclassical is authorized.
 - No statement that the complex-Hermitian PSD family is a classical mediator family is authorized.
+- The full-span residual is only a certificate against representation inside the frozen linear span of real-symmetric Kossakowski dissipators plus local Hamiltonian drift on this operator basis; it is not a universal theorem over arbitrary dilations or mediator constructions.
 - No readiness increase from this implementation/provenance gate alone.
