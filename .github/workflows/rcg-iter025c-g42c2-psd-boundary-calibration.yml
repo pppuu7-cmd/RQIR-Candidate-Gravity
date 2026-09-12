@@ -1,0 +1,68 @@
+name: RCG Iter025C G42-C2 PSD Boundary Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER025C_G42C2_LAUNCH.md'
+
+jobs:
+  calibrate:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G42-C2 boundary calibration lane
+        run: |
+          mkdir -p out
+          python scripts/iter025c_g42c2_psd_boundary_calibration.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg025c-g42c2-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: calibrate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G42-C2 rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq')
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          by={}
+          for m in methods:
+              rr=[r for r in rows if r['method']==m]
+              by[m]={'n':len(rr),'support_count':sum(int(r['scientific_support']) for r in rr),
+                     'worst_trace_gap':max((r['best_candidate']['gap'] for r in rr),default=None),
+                     'worst_relative_kossakowski_error':max((r['best_candidate']['relative_kossakowski_error'] for r in rr),default=None),
+                     'rank_match_count':sum(int(r['best_candidate']['recovered_effective_rank']==r['intended_hidden_rank']) for r in rr),
+                     'all_support':bool(len(rr)==4 and all(r['scientific_support'] for r in rr))}
+          support=bool(structural and all(by[m]['all_support'] for m in methods))
+          summary={'iteration':'Iter025C','gate':'G42-C2','n_results':len(rows),'all_structural_valid':structural,'by_method':by,'scientific_support':support,
+                   'classification':'PSD_BOUNDARY_OPTIMIZER_CALIBRATED' if support else 'PSD_BOUNDARY_OPTIMIZER_CALIBRATION_NOT_CLOSED',
+                   'frozen_trace_tolerance':0.002,'frozen_relative_kossakowski_tolerance':0.02,'frozen_rank_eigenvalue_threshold':1e-5,
+                   'interpretation':'Boundary-capable PSD positive-control calibration only. PASS may authorize a separate prospective arbitrary-orientation PSD adversarial gate with identical coordinates/search rules.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg025c-g42c2-summary
+          path: summary/summary.json
