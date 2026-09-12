@@ -1,0 +1,120 @@
+name: RCG Iter017 G35 Calibrated K3 K4 Comparator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter017_g35_calibrated_k3k4_adversarial.py'
+      - '.github/workflows/rcg-iter017-g35-calibrated-k3k4.yml'
+  workflow_dispatch:
+
+jobs:
+  compute:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        include:
+          - {stream: adversarial_k3, method: sobol_lsq, shard: '0'}
+          - {stream: adversarial_k3, method: sobol_lsq, shard: '1'}
+          - {stream: adversarial_k3, method: sobol_lsq, shard: '2'}
+          - {stream: adversarial_k3, method: sobol_lsq, shard: '3'}
+          - {stream: adversarial_k3, method: lhs_lsq, shard: '0'}
+          - {stream: adversarial_k3, method: lhs_lsq, shard: '1'}
+          - {stream: adversarial_k3, method: lhs_lsq, shard: '2'}
+          - {stream: adversarial_k3, method: lhs_lsq, shard: '3'}
+          - {stream: adversarial_k4, method: sobol_lsq, shard: '0'}
+          - {stream: adversarial_k4, method: sobol_lsq, shard: '1'}
+          - {stream: adversarial_k4, method: sobol_lsq, shard: '2'}
+          - {stream: adversarial_k4, method: sobol_lsq, shard: '3'}
+          - {stream: adversarial_k4, method: lhs_lsq, shard: '0'}
+          - {stream: adversarial_k4, method: lhs_lsq, shard: '1'}
+          - {stream: adversarial_k4, method: lhs_lsq, shard: '2'}
+          - {stream: adversarial_k4, method: lhs_lsq, shard: '3'}
+          - {stream: admissibility_k3, method: none, shard: '0'}
+          - {stream: admissibility_k3, method: none, shard: '1'}
+          - {stream: admissibility_k3, method: none, shard: '2'}
+          - {stream: admissibility_k3, method: none, shard: '3'}
+          - {stream: admissibility_k4, method: none, shard: '0'}
+          - {stream: admissibility_k4, method: none, shard: '1'}
+          - {stream: admissibility_k4, method: none, shard: '2'}
+          - {stream: admissibility_k4, method: none, shard: '3'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run prospectively frozen G35 lane
+        run: |
+          mkdir -p out
+          python scripts/iter017_g35_calibrated_k3k4_adversarial.py \
+            --stream '${{ matrix.stream }}' --method '${{ matrix.method }}' \
+            --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg017-${{ matrix.stream }}-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: compute
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate G35 without changing frozen gates
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=['sobol_lsq','lhs_lsq']
+          agreement_tol=0.002; nonzero_thr=1e-4; nesting_slack=0.002
+          all_structural=(len(rows)==24 and all(r['structural_valid'] for r in rows))
+          # G34 prerequisite values are authoritative prospective K=2 minima, not G30/G31 history.
+          k2={
+            '0':{'sobol_lsq':0.02607083637907346,'lhs_lsq':0.026070816008971712},
+            '1':{'sobol_lsq':0.10462725764602553,'lhs_lsq':0.1046226877828865},
+            '2':{'sobol_lsq':0.40307763835411964,'lhs_lsq':0.40307758671702226},
+            '3':{'sobol_lsq':0.532452669358466,'lhs_lsq':0.5324532595059579},
+          }
+          adv_summary={}
+          previous=k2
+          for K in (3,4):
+              current={}
+              per_shard={}
+              rr=[r for r in rows if r['stream']==f'adversarial_k{K}']
+              for s in range(4):
+                  by={r['method']:r for r in rr if r['shard']==s}
+                  gaps={m:by[m]['result']['best_trace_gap'] for m in methods if m in by}
+                  current[str(s)]=gaps
+                  agree=(len(gaps)==2 and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=agreement_tol)
+                  nz=(len(gaps)==2 and all(v>nonzero_thr for v in gaps.values()))
+                  nest=(len(gaps)==2 and all(gaps[m] <= previous[str(s)][m]+nesting_slack for m in methods))
+                  per_shard[str(s)]={'gaps':gaps,'cross_method_agreement':agree,'both_nonzero':nz,'nesting_sanity':nest,'scientific_support':bool(agree and nz and nest)}
+              adv_summary[str(K)]={'per_shard':per_shard,'scoped_scientific_support':bool(len(rr)==8 and all(v['scientific_support'] for v in per_shard.values()))}
+              previous=current
+          validity={}
+          for K in (3,4):
+              rr=[r for r in rows if r['stream']==f'admissibility_k{K}']
+              validity[str(K)]={'n':len(rr),'support_count':sum(int(r['result']['scientific_support']) for r in rr),'all_support':bool(len(rr)==4 and all(r['result']['scientific_support'] for r in rr))}
+          s={
+            'iteration':'Iter017','gate':'G35','n_results':len(rows),'all_structural_valid':all_structural,
+            'adversarial':adv_summary,'admissibility':validity,
+            'frozen_rules':{'nonzero_gap':nonzero_thr,'cross_method_agreement':agreement_tol,'nesting_slack':nesting_slack},
+            'interpretation':'Any support is restricted to the finite additive independent single-axis Markovian measurement-feedback GKSL comparator family; no general semiclassical-gravity no-go is authorized.',
+            'next_gate_rule':'A correlated/general positive-Kossakowski comparator is authorized only after G35 terminal classification and durable recording. K-specific failure is retained and not threshold-tuned.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2))
+          print(json.dumps(s,indent=2))
+          if not all_structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg017-summary
+          path: summary/summary.json
