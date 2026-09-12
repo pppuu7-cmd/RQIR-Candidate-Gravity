@@ -1,0 +1,54 @@
+name: Appendix-F surrogate wave 34
+
+on:
+  push:
+    branches: [appendix-f-surrogate-wave34]
+
+permissions:
+  contents: read
+
+jobs:
+  surrogate-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - source_closure_gate
+          - flow_finiteness
+          - rounded_conditioning
+          - nearby_root_reconstruction
+          - step_size_stability
+          - published_spectrum_comparison
+          - rounding_sensitivity
+          - surrogate_firewall
+          - information_firewall
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy scipy
+      - name: Run ${{ matrix.test }}
+        run: cd compute_wave34 && python ${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave34-${{ matrix.test }}
+          path: compute_wave34/wave34_${{ matrix.test }}.json
+
+  aggregate-wave34:
+    needs: surrogate-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave34_downloads
+      - run: python compute_wave34/aggregate_wave34.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appendix-f-surrogate-wave34-summary
+          path: wave34_summary.json
