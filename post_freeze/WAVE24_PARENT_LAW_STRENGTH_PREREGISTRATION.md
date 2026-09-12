@@ -52,6 +52,18 @@ Interpretation: full mathematical closure alone is not evidence for the chosen l
 ### S6 — bounded/inequality consistency region
 A frozen symmetric hyperrectangle around the origin is sampled with seed 2406. Gate: accepted samples produce nonzero holdout width >= `0.05`, demonstrating that inequality admissibility need not imply uniqueness.
 
+### S7 — unconstrained single-function interpolation control
+A claim of “only one function” is not counted as low microscopic freedom merely because it is named by one symbol. Define ten fixed probe coordinates `x_i = linspace(-1,1,10)` and the preregistered target vector
+
+`y = [0.12,-0.05,0.18,-0.11,0.07,0.20,-0.16,0.09,0.14,-0.08]`.
+
+Fit the unique degree-9 polynomial through all ten points. Predeclared gates:
+- maximum interpolation error <= `1e-10`;
+- polynomial coefficient count = 10;
+- therefore an otherwise unconstrained function can encode the complete finite holdout vector and fails `no_hidden_functional_freedom`.
+
+Interpretation: functional notation is not a compression theorem. A function earns low-freedom status only through independently justified dynamics, analyticity/spectral structure, a finite generative law, or other constraints that produce prospective predictions rather than pointwise interpolation.
+
 ## Parent-Law Acceptance Gate v1
 
 A future selector receives scientific parent-law credit only if **all** are true:
@@ -73,9 +85,10 @@ Wave 24 does not preregister any tested selector as satisfying all five gates.
 - arbitrary_full_rank_selectors_can_choose_conflicting_unique_points
 - minimality_is_unique_but_not_physical_law
 - inequality_consistency_region_is_nonunique
+- unconstrained_function_interpolates_arbitrary_finite_holdout
 - no_tested_selector_earns_parent_law_credit
 - future_candidate_information_firewall_pass
 
 ## Claim boundary
 
-Passing Wave 24 localizes the missing ingredient to **independently justified full closure**, not merely algebraic rank. It is not a proof that no such physical principle exists.
+Passing Wave 24 localizes the missing ingredient to **independently justified full closure**, not merely algebraic rank or compact notation. It is not a proof that no such physical principle exists.
