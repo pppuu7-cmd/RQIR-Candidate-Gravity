@@ -1,0 +1,62 @@
+name: RCG Iter026R G42-R Heldout PSD Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER026R_G42R_LAUNCH.md'
+
+jobs:
+  calibrate:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        rank: [1, 2, 3, 4, 5, 6]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G42-R held-out calibration lane
+        run: |
+          mkdir -p out
+          python scripts/iter026r_g42r_heldout_psd_calibration.py --method '${{ matrix.method }}' --rank '${{ matrix.rank }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg026r-g42r-${{ matrix.method }}-r${{ matrix.rank }}
+          path: out/result.json
+
+  aggregate:
+    needs: calibrate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G42-R rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==12 and all(r['structural_valid'] for r in rows))
+          support=bool(structural and all(r['scientific_support'] for r in rows))
+          by_rank={}
+          for rank in range(1,7):
+              rr=[r for r in rows if r['intended_hidden_rank']==rank]
+              by_rank[str(rank)]={'n':len(rr),'support_count':sum(int(r['scientific_support']) for r in rr),'worst_trace_gap':max((r['best_candidate']['gap'] for r in rr),default=None),'worst_relative_kossakowski_error':max((r['best_candidate']['relative_kossakowski_error'] for r in rr),default=None),'rank_match_count':sum(int(r['best_candidate']['recovered_effective_rank']==rank) for r in rr)}
+          summary={'iteration':'Iter026R','gate':'G42-R','n_results':len(rows),'all_structural_valid':structural,'by_rank':by_rank,'scientific_support':support,
+                   'classification':'PSD_BOUNDARY_HELDOUT_CALIBRATION_REPLICATED' if support else 'PSD_BOUNDARY_HELDOUT_CALIBRATION_NOT_REPLICATED',
+                   'interpretation':'Methodology robustness only. This result cannot alter the frozen G42-A verdict or raise programme readiness by itself.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg026r-g42r-summary
+          path: summary/summary.json
