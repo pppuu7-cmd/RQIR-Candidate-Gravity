@@ -50,8 +50,8 @@ def profile_nuisance(X,selected):
 def write_result(name,obj):
     Path('wave22_results').mkdir(exist_ok=True)
     def default(v):
-        if hasattr(v,'item'): return v.item()
         if isinstance(v,np.ndarray): return v.tolist()
+        if hasattr(v,'item'): return v.item()
         raise TypeError(type(v).__name__)
     text=json.dumps(obj,indent=2,sort_keys=True,default=default)
     Path(f'wave22_results/{name}.json').write_text(text)
