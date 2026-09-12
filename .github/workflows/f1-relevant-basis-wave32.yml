@@ -1,0 +1,61 @@
+name: F1 relevant basis wave 32
+
+on:
+  push:
+    branches: [f1-relevant-basis-wave32]
+    paths:
+      - '.github/workflows/f1-relevant-basis-wave32.yml'
+      - 'compute_wave32/**'
+      - 'evidence/WAVE32_F1_RELEVANT_BASIS_EVIDENCE.json'
+      - 'post_freeze/WAVE32_F1_RELEVANT_BASIS_PREREGISTRATION.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  basis-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - evidence_gate
+          - spectrum_orientation_nonidentifiability
+          - approximation_spectra_ambiguity
+          - closure_dependence
+          - analytic_surrogate_firewall
+          - minimum_orientation_object
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.task }}
+        run: python compute_wave32/${{ matrix.task }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave32-${{ matrix.task }}
+          path: wave32_${{ matrix.task }}.json
+
+  aggregate-wave32:
+    needs: basis-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave32_downloads
+      - run: python compute_wave32/aggregate_wave32.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f1-relevant-basis-wave32-summary
+          path: wave32_summary.json
