@@ -1,0 +1,73 @@
+name: RCG Iter008 G26 Measurement-Feedback Master Equation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter008_measurement_feedback_master_equation.py'
+      - '.github/workflows/iter008_g26_measurement_feedback_master_equation.yml'
+  workflow_dispatch:
+
+jobs:
+  g26-matrix:
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        scale: ['0.5','1.0','2.0','4.0']
+        theta: ['0.025','0.050','0.100','0.200','0.350','0.500']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -q numpy
+      - name: Run G26 preregistered master-equation lane
+        run: |
+          TAG="s${{ matrix.scale }}-t${{ matrix.theta }}"
+          SAFE=$(echo "$TAG" | tr '.' 'p')
+          python scripts/iter008_measurement_feedback_master_equation.py \
+            --scale "${{ matrix.scale }}" \
+            --theta "${{ matrix.theta }}" \
+            --tag "$TAG" \
+            --out "results/iter008/${SAFE}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g26-${{ matrix.scale }}-${{ matrix.theta }}
+          path: results/iter008/*.json
+
+  aggregate:
+    if: always()
+    needs: g26-matrix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g26-*
+          path: artifacts
+          merge-multiple: true
+      - name: Aggregate G26 outcomes
+        run: |
+          python - <<'PY'
+          import glob,json,sys
+          fs=glob.glob('artifacts/*.json')
+          rows=[json.load(open(f)) for f in fs]
+          passed=sum(bool(r.get('pass')) for r in rows)
+          summary={
+            'iteration':'Iter008','gate':'G26','lanes_found':len(rows),
+            'lanes_passed':passed,
+            'all_pass':len(rows)==24 and passed==24,
+            'min_target_negativity':min((r['target_negativity'] for r in rows),default=None),
+            'min_best_trace_gap':min((r['best']['td'] for r in rows),default=None),
+            'max_best_trace_gap':max((r['best']['td'] for r in rows),default=None),
+            'scope_lock':'Only the preregistered Markovian measurement-feedback surrogate family is tested.'
+          }
+          print(json.dumps(summary,indent=2))
+          open('g26_aggregate.json','w').write(json.dumps(summary,indent=2))
+          if not summary['all_pass']: sys.exit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g26-aggregate
+          path: g26_aggregate.json
