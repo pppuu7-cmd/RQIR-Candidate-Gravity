@@ -1,0 +1,70 @@
+name: RCG Iter022F G40-A Strict-BLP RTN Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER022F_G40A_STRICT_BLP_RTN_ADVERSARIAL_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G40-A strict-BLP adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter022f_g40a_strict_blp_rtn_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg022f-g40a-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G40-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq'); nz=1e-4; agree=0.002
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          shards={}
+          for s in range(4):
+              rr={r['method']:r for r in rows if r['shard']==s}
+              exists=bool(len(rr)==2 and all(rr[m]['best_strict_candidate'] is not None for m in methods))
+              gaps={m:rr[m]['best_strict_candidate']['gap'] for m in methods if m in rr and rr[m]['best_strict_candidate'] is not None}
+              blp={m:rr[m]['best_strict_candidate']['BLP'] for m in methods if m in rr and rr[m]['best_strict_candidate'] is not None}
+              nonzero=bool(len(gaps)==2 and all(v>nz for v in gaps.values()))
+              cross=bool(len(gaps)==2 and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=agree)
+              strict=bool(len(blp)==2 and all(v>0.02 for v in blp.values()))
+              support=bool(exists and nonzero and cross and strict)
+              shards[str(s)]={'gaps':gaps,'BLP':blp,'strict_candidate_exists_both':exists,'both_nonzero':nonzero,'cross_method_agreement':cross,'strict_filter_pass':strict,'scientific_support':support}
+          support=bool(structural and all(v['scientific_support'] for v in shards.values()))
+          summary={'iteration':'Iter022F','gate':'G40-A','n_results':len(rows),'all_structural_valid':structural,'per_shard':shards,'scientific_support':support,
+                   'frozen_rules':{'nonzero_gap':nz,'cross_method_agreement':agree,'fixed_witness_BLP_filter':0.02},
+                   'interpretation':'Any support is restricted to the calibrated finite fixed-witness BLP>0.02 hidden-classical RTN subset and the controlled-phase toy trajectory. It is not an all-classical/non-Markovian no-go.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg022f-g40a-summary
+          path: summary/summary.json
