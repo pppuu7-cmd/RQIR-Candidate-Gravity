@@ -1,0 +1,84 @@
+name: RCG Iter033 G45-P Complex PSD Provenance Boundary
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER033_G45P_LAUNCH.md'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        panel: [real_psd_control, same_site_complex, cross_site_complex]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G45-P provenance lane
+        run: |
+          mkdir -p out
+          python scripts/iter033_g45p_complex_psd_provenance_boundary.py --panel '${{ matrix.panel }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg033-g45p-${{ matrix.panel }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G45-P rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==12 and all(r.get('structural_valid') and r.get('admissible') for r in rows))
+          panels={}
+          for name in ('real_psd_control','same_site_complex','cross_site_complex'):
+              rr=[r for r in rows if r.get('panel')==name]
+              panels[name]={
+                  'n':len(rr),
+                  'scientific_support_count':sum(int(bool(r.get('scientific_support'))) for r in rr),
+                  'obstruction_count':sum(int(bool(r.get('provenance',{}).get('classical_provenance_obstruction_witness'))) for r in rr),
+                  'max_classical_span_residual':max([r.get('provenance',{}).get('full_realKoss_plus_localH_span_residual',float('nan')) for r in rr],default=float('nan')),
+                  'max_unitality_residual':max([r.get('admissibility',{}).get('max_unitality_residual',float('nan')) for r in rr],default=float('nan')),
+              }
+          real_ok=bool(panels['real_psd_control']['n']==4 and panels['real_psd_control']['scientific_support_count']==4)
+          same_ok=bool(panels['same_site_complex']['n']==4 and panels['same_site_complex']['obstruction_count']>=1)
+          cross_ok=bool(panels['cross_site_complex']['n']==4 and panels['cross_site_complex']['obstruction_count']>=1)
+          support=bool(structural and real_ok and same_ok and cross_ok)
+          if not structural:
+              classification='STRUCTURAL_NUMERICAL_FAIL'
+          elif support:
+              classification='COMPLEX_PSD_EXTENDS_BEYOND_CLASSICAL_RANDOM_HAMILTONIAN_PROVENANCE_ON_FROZEN_CONTROLS'
+          else:
+              classification='COMPLEX_PSD_PROVENANCE_BOUNDARY_PARTIAL_OR_UNRESOLVED'
+          summary={
+              'iteration':'Iter033','gate':'G45-P','n_results':len(rows),
+              'all_structural_admissible':structural,'scientific_support':support,
+              'panels':panels,'classification':classification,
+              'scope_lock':'Frozen response-blind complex-Hermitian PSD provenance audit on six local Pauli generators; no RCG-002 comparator claim.',
+              'interpretation':'A PASS only establishes a provenance boundary on frozen controls; no universal nonclassicality theorem and no readiness increase.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg033-g45p-summary
+          path: summary/summary.json
