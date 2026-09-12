@@ -1,0 +1,65 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "target_object": "same-realization numerical 5x5 stability matrix or normalized right-eigenvector basis for the best pure-gravity fluctuation/vertex truncation, plus uncertainty variants",
+  "target_coordinates": ["mu", "lambda3", "lambda4", "g3", "g4"],
+  "sources": [
+    {
+      "id": "F1_2018",
+      "citation": "Denz, Pawlowski, Reichert, EPJC 78, 336 (2018), arXiv:1612.07315",
+      "same_lineage": true,
+      "best_fixed_point": true,
+      "critical_exponents": true,
+      "full_or_approx_numeric_stability_matrix_publicly_reusable_in_audited_record": false,
+      "right_eigenvectors_publicly_reusable_in_audited_record": false,
+      "notes": "Full stability matrix stated unavailable because higher-coupling flows are unknown; two approximations are discussed and spectra are published."
+    },
+    {
+      "id": "RECONSTRUCTING_GRAVITON_2021",
+      "citation": "Bonanno, Denz, Pawlowski, Reichert, arXiv:2102.02217",
+      "same_lineage": true,
+      "uses_F1_momentum_dependent_trajectory_data": true,
+      "physical_k0_propagator_and_three_graviton_coupling": true,
+      "stability_matrix_for_F1_5D_best_truncation": false,
+      "right_eigenvectors_for_F1_5D_best_truncation": false,
+      "notes": "Uses/approximates RG trajectory information guided by F1; not a published reusable orientation object for the F1 five-dimensional critical surface."
+    },
+    {
+      "id": "FLUCTUATION_REVIEW_2023",
+      "citation": "Pawlowski, Reichert, arXiv:2309.10785 / Handbook of Quantum Gravity",
+      "same_lineage": true,
+      "states_pure_gravity_stability_analysis_reference_is_F1_2018": true,
+      "repeats_F1_fixed_point_and_exponents": true,
+      "right_eigenvectors_given": false,
+      "notes": "Review defines stability matrix and discusses relevance/avatars but refers pure-gravity stability analysis to Denz et al. 2018."
+    },
+    {
+      "id": "F2_2024",
+      "citation": "Pawlowski, Tränkle, Phys. Rev. D 110, 086011 (2024), arXiv:2309.17043",
+      "same_broad_fluctuation_program": true,
+      "full_momentum_three_four_point_physical_data": true,
+      "effective_action_form_factors": true,
+      "five_dimensional_F1_stability_matrix_or_eigenvectors": false,
+      "notes": "Computes/reconstructs k=0 momentum-dependent vertices/form factors; no stability-matrix/critical-exponent section found. Some g3 input is explicitly from a different truncation in the 4-point setup, so it is not promoted as the missing same-realization J8 orientation object."
+    },
+    {
+      "id": "PUBLIC_GITHUB_QUERY",
+      "scope": "audited public repository queries for exact F1 title/arXiv ID and Pawlowski/Reichert FRG gravity terms",
+      "reusable_paper_specific_repository_identified": false,
+      "claim_boundary": "This is not proof that unpublished/private code or data do not exist; it records only the audited public discovery result."
+    }
+  ],
+  "availability_verdict_precompute": "NO_REUSABLE_SAME_REALIZATION_ORIENTATION_OBJECT_IDENTIFIED_IN_FROZEN_PUBLIC_AUDIT",
+  "fresh_recompute_minimum": {
+    "fixed_point_coordinates": 5,
+    "stability_matrix_shape": [5, 5],
+    "relevant_real_dimension_expected_for_F1_best_displayed_closure": 3,
+    "symmetric_trajectory_count_per_orientation_object": 7,
+    "J8_output_dimension": 6,
+    "J8_jacobian_shape": [6, 3],
+    "J9_requires_approximation_regulator_truncation_variants": true,
+    "right_eigenvectors_must_be_saved": true,
+    "raw_beta_derivative_or_matrix_provenance_must_be_saved": true
+  },
+  "information_firewall": "No KMQGB/polygon-QGR candidate equations, fitted parameters, architecture, or repairs are admitted."
+}
