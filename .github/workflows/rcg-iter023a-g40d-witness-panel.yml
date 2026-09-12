@@ -1,0 +1,63 @@
+name: RCG Iter023A G40-D Witness Panel Diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER023A_G40D_WITNESS_PANEL_LAUNCH.md'
+
+jobs:
+  diagnostic:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen witness-panel diagnostic
+        run: |
+          mkdir -p out
+          python scripts/iter023a_g40d_witness_panel_diagnostic.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023a-g40d-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: diagnostic
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate diagnostic
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          by={}
+          for s in range(4):
+              rr={r['method']:r for r in rows if r['shard']==s}
+              gaps={m:(rr[m]['best_panel_admissible']['gap'] if rr.get(m) and rr[m]['best_panel_admissible'] is not None else None) for m in ('sobol_lsq','lhs_lsq')}
+              escapes={m:(rr[m]['n_escape'] if rr.get(m) else None) for m in ('sobol_lsq','lhs_lsq')}
+              cross=(gaps['sobol_lsq'] is not None and gaps['lhs_lsq'] is not None and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=0.002)
+              by[str(s)]={'best_panel_gaps':gaps,'escape_counts':escapes,'cross_method_gap_agreement':bool(cross)}
+          any_escape=any((r['n_escape']>0) for r in rows)
+          summary={'iteration':'Iter023A','gate':'G40-D','n_results':len(rows),'all_structural_valid':structural,'any_fixed_witness_escape':bool(any_escape),'per_shard':by,'classification':'FIXED_WITNESS_FRAGILE_ON_PANEL' if any_escape else 'NO_PANEL_ESCAPE_FOUND','interpretation':'Diagnostic only; G40-A remains terminally failed and cannot be retroactively promoted.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023a-g40d-summary
+          path: summary/summary.json
