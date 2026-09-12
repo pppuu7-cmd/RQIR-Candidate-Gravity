@@ -21,10 +21,10 @@ def neg(r):
  p=r.reshape(2,2,2,2).transpose(0,3,2,1).reshape(4,4); e=np.linalg.eigvalsh((p+p.conj().T)/2); return float(np.sum(np.abs(e[e<0])))
 def td(a,b): return float(.5*np.sum(np.linalg.svd(a-b,compute_uv=False)))
 def target(th):
- U=math.cos(th)*np.eye(4)-1j*math.sin(th)*ZZ; return U@RHO0@U.conj().T
+ U=math.cos(th)*np.eye(4,dtype=complex)-1j*math.sin(th)*ZZ; return U@RHO0@U.conj().T
 def axis(b): return math.cos(b)*Z+math.sin(b)*X
 def Lgen(chi,A,B,ga,gb):
- H=chi*np.kron(A,B); I4=np.eye(4,complex); L=-1j*(np.kron(I4,H)-np.kron(H.T,I4))
+ H=chi*np.kron(A,B); I4=np.eye(4,dtype=complex); L=-1j*(np.kron(I4,H)-np.kron(H.T,I4))
  for rate,Q in ((ga,np.kron(A,I2)),(gb,np.kron(I2,B))):
   Q2=Q.conj().T@Q; L+=rate*(np.kron(Q.conj(),Q)-.5*np.kron(I4,Q2)-.5*np.kron(Q2.T,I4))
  return L
