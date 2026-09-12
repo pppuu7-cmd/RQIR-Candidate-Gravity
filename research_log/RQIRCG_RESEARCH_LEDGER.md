@@ -8,11 +8,12 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 
 ## Canonical readiness
 
-- Internal programme readiness: **60%**.
+- Internal programme readiness: **61%**.
 - Theory established: **0%**.
 - `58% -> 59%`: terminal closure of corrected G37-A3.
 - `59% -> 60%`: terminal closure of G41-A finite high-rank positive-rate comparator layer.
-- Calibration, implementation, identifiability and diagnostic gates do not themselves raise readiness.
+- `60% -> 61%`: terminal closure of G42-A scoped bounded boundary-PSD adversarial comparator.
+- Calibration, implementation, identifiability and diagnostic/chart-coverage gates do not themselves raise readiness.
 
 ## Authoritative recent gate ledger
 
@@ -33,8 +34,10 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | Iter025B | G42-C | `34710744967` / `7ebc18df...` | `FULL_PSD_OPTIMIZER_CALIBRATED` with scope correction | Strictly SPD-interior chart only; boundary excluded. |
 | Iter025C | G42-C2 | `34710953936` / `858ad4b6...` | `PSD_BOUNDARY_OPTIMIZER_CALIBRATED` | Bounded PSD chart, ranks 2/4/5/6 controls. |
 | Iter025D | G42-C3 | `34711048394` / `35f719fd...` | `PSD_BOUNDARY_RANK_COMPLETION_CALIBRATED` | Same bounded PSD chart, ranks 1/3 controls. |
-| Iter026 | G42-A | `34712491707` / `f7f48725...` | **RUNNING** | Prospective bounded 21-coordinate real-PSD Markovian adversarial gate. |
-| Iter026R | G42-R | `34712524241` / `3b53451c...` | **RUNNING** | Held-out optimizer replication only. |
+| Iter026 | G42-A | `34712491707` / `f7f48725...` | `DERIVED_SCOPED_BOUNDARY_PSD_COMPARATOR_SUPPORT` | Bounded 21-coordinate real-PSD Markovian family only. |
+| Iter026R | G42-R | `34712524241` / `3b53451c...` | `PSD_BOUNDARY_HELDOUT_CALIBRATION_REPLICATED` | Method robustness only. |
+| Iter026B | G42-BC | `34712857575` / `11b5a060...` | `BOUNDED_CHART_ROTATION_COVERAGE_LIMIT_FOUND` | Single-chart basis coverage is not invariant. |
+| Iter027 | G43-A | `34715739668` / `b69524b9...` | **RUNNING/QUEUED** | Response-blind five-chart atlas on held-out controls/rotations. |
 
 ## Decisive terminal results
 
@@ -50,50 +53,55 @@ G41-A run `34710491309`, aggregate `103598462910`, artifact `10303600848`, diges
 
 Run `34710643103`, aggregate `103598755854`, artifact `10303316491`, digest `sha256:07a895f0fb309a6e642cd6eb5429e368ddcad0c78367571cfa59b7c7bce8ea9e`: all four controls had Jacobian rank `21/21`, worst condition `5.905925058`, maximum two-step relative mismatch `1.262474e-9`, CPTP clean. Classification `FULL_LOCAL_RANK_IDENTIFIABILITY_PRE_GATE`.
 
-### G42-C scope correction
+### G42-C/C2/C3 bounded-chart calibration
 
-Run `34710744967`, aggregate `103599128599`, artifact `10302903611`, digest `sha256:daa9c9f1ac0bf70094fd47783c7b0dece89243593348befff801054f799e258a`: 8/8 controls passed, but log-Cholesky diagonal bounds made every candidate strictly positive definite. Authority is SPD-interior calibration only, not PSD-boundary calibration. No adversarial gate was launched from this result alone.
+G42-C established only SPD-interior calibration because its log-Cholesky diagonal excluded the PSD boundary. G42-C2 run `34710953936`, artifact `10303587123`, and G42-C3 run `34711048394`, artifact `10303627020`, then prospectively calibrated the boundary-capable bounded Cholesky optimizer across effective ranks 1–6. This is calibration authority only, not an unbounded full-PSD theorem.
 
-### G42-C2 boundary calibration
+### G42-A bounded boundary-PSD adversarial closure
 
-Run `34710953936`, head `858ad4b6848362bf430eaab849fb0ed4166f9cde`, aggregate `103600409310`, artifact `10303587123`, digest `sha256:d71af618510d0d61fbac14a3db91e9bf713822f657cfd985cc54e96fbf2ac94e`.
+Run `34712491707`, head `f7f48725a3d57398426f8ac9341a1d11b9cc591f`, aggregate `103605124717`, artifact `10304400253`, digest `sha256:002bea19226bd9b7283a08b36db3e72715762e074f10c40b7114d1e35ac3903c`.
 
-All 8/8 positive-control lanes for effective ranks 2/4/5/6 passed frozen trace-recovery `<0.002`, relative Kossakowski error `<0.02`, correct rank recovery and PSD validity. Sobol worst trace gap `4.2824978732075346e-10`, worst relative-C error `3.3388943747698924e-09`; LHS worst gap `1.9221941865034614e-10`, worst relative-C error `1.9289529867904655e-09`. Classification `PSD_BOUNDARY_OPTIMIZER_CALIBRATED`.
+All 8 lanes were valid/admissible. Frozen all-shard support rule passed. Per-shard Sobol/LHS gaps and method differences:
 
-Durable note: `results/ITER025C_G42C2_TERMINAL.md`.
+- shard 0: `0.03700325124270668 / 0.03701733499594546`, diff `1.4083753238774976e-05`;
+- shard 1: `0.1463716306513109 / 0.14637041941069723`, diff `1.2112406136688403e-06`;
+- shard 2: `0.5276672796201998 / 0.5276813340757002`, diff `1.4054455500400742e-05`;
+- shard 3: `0.8197294896504166 / 0.819101112669069`, diff `0.0006283769813475448`.
 
-### G42-C3 rank completion
+Classification `DERIVED_SCOPED_BOUNDARY_PSD_COMPARATOR_SUPPORT`. Scope ceiling is exactly the frozen bounded 21-coordinate real-PSD 6x6 Markovian classical random-Hamiltonian Kossakowski family. Readiness `60% -> 61%` for closing this scoped adversarial rubric item only.
 
-Run `34711048394`, head `35f719fdad8af1e2f8fdd71727c84abec3857c2a`, aggregate `103601042911`, artifact `10303627020`, digest `sha256:a9fa4ccaa8f6f79540311deb3f8a42be74661e2793d6dc7e5092570a7e52e3d1`.
+### G42-R held-out optimizer replication
 
-All 8/8 rank-1/rank-3 completion lanes passed. Sobol worst trace gap `4.2872736979461425e-07`, worst relative-C error `8.398809261492516e-06`; LHS worst gap `7.34537126692358e-07`, worst relative-C error `1.5813386032144557e-05`. Classification `PSD_BOUNDARY_RANK_COMPLETION_CALIBRATED`.
+Run `34712524241`, aggregate `103604804647`, artifact `10303143301`, digest `sha256:81fa588873316be4c243657cf7e2ac2f0aa08f092de05c969188c39d70c20f10`. All 12/12 hidden positive controls across ranks 1–6 passed. Worst trace gap `3.9203174236860917e-07`; worst relative Kossakowski error `7.245639283979663e-06`; rank recovery 12/12. Classification `PSD_BOUNDARY_HELDOUT_CALIBRATION_REPLICATED`. No readiness increment.
 
-Together C2+C3 prospectively calibrate the optimizer across effective PSD ranks 1–6 **within the frozen bounded Cholesky chart** `diag∈[0,0.60]`, `offdiag∈[-0.30,0.30]`. They do not establish an unbounded full-PSD optimization theorem and do not raise readiness.
+### G42-BC basis/chart audit
 
-Durable note: `results/ITER025D_G42C3_TERMINAL.md`.
+Run `34712857575`, head `11b5a0604ada235a4504990966b89f8f89857471`, aggregate `103606238137`, artifact `10304851327`, digest `sha256:e171c028ed31cd28fd19b1a1f1fd3a1dd91d9aa93a6be641bbfe580ad5b47e4c`.
+
+All 24/24 local-basis generator-covariance checks passed with maximum errors around `4.8e-16`, but only 14/24 rotated controls remained inside the single frozen Cholesky coordinate box; 10/24 exited. Classification `BOUNDED_CHART_ROTATION_COVERAGE_LIMIT_FOUND`.
+
+This is a response-blind coordinate-coverage blocker. It does not retroactively change G42-A but forbids basis-invariant interpretation of that bounded-chart result for the entire mathematical real-PSD family.
+
+Durable package: `results/ITER026_G42A_G42R_G42BC_TERMINAL.md`.
 
 ## Active frontier
 
-### G42-A — primary physics gate
+### Iter027 / G43-A — held-out response-blind finite-atlas coverage
 
-Protocol `protocol/ITER026_G42A_BOUNDARY_PSD_ADVERSARIAL.md`; run `34712491707`; head `f7f48725a3d57398426f8ac9341a1d11b9cc591f`.
+Protocol `protocol/ITER027_G43A_HELDOUT_MULTICHART_BASIS_COVERAGE.md`; prereg commit `cb289ca11da5885e5bf4a04bcbbd1a9b4f44c7e7`; implementation `67329b2397792b351817f7effa06ed35fe200a30`; workflow `8e2e8ea076fa85b4e184ff6d6a342268f252a9c4`; launch/head `b69524b9fe8c33ff2f433f1d9dbc6ce54f8e4a06`; run `34715739668`.
 
-Eight prospective lanes = Sobol/LHS × four frozen RCG-002 target shards. Same boundary-capable bounded 21-coordinate real-PSD 6x6 Markovian classical random-Hamiltonian Kossakowski chart calibrated by C2+C3. Frozen per-shard rule: both methods admissible, each scientific trace gap `>1e-4`, and Sobol/LHS gap difference `<=0.002`; all four shards required.
+Thirty-six response-blind lanes = six new hidden PSD controls (effective ranks 1–6) × six held-out local basis rotations. Frozen atlas has five charts: identity plus the four G42-BC basis charts. A lane is covered iff at least one chart gives canonical semidefinite-Cholesky coordinates inside the unchanged production box with reconstruction error `<1e-10`.
 
-Early non-terminal result only: shard 3 Sobol gap `0.8197294896504166`, LHS `0.819101112669069`, difference `0.0006283769813476`; both maps pass PSD/TP/Choi/state/trace admissibility. No overall scientific classification before aggregate.
+Frozen classifier: all 36 covered -> `HELDOUT_MULTICHART_BASIS_COVERAGE_PASS`; validity/covariance clean but at least one uncovered -> `HELDOUT_MULTICHART_BASIS_COVERAGE_PARTIAL_LIMIT`; any structural/covariance failure -> `MULTICHART_IMPLEMENTATION_OR_VALIDITY_FAIL`.
 
-### G42-R — independent held-out calibration replication
-
-Protocol `protocol/ITER026R_G42R_HELDOUT_PSD_CALIBRATION.md`; run `34712524241`; head `3b53451c192c8bcaedd39105d1c9b9b3ae3aa6e6`.
-
-Twelve new hidden-control lanes = effective ranks 1–6 × Sobol/LHS, with seeds disjoint from C2/C3. Same bounded PSD chart/search/recovery/rank rules. Methodology robustness only: cannot modify G42-A thresholds/verdict and cannot raise readiness by itself.
+No RCG-002 target/result enters this gate. No chart, threshold or bound may be changed after production. This gate cannot raise readiness by itself.
 
 ## Stable readiness rubric
 
-Closed: independent scope discipline; coherent RCG-002 toy seed; finite MF K2/K3/K4; shared Gaussian finite layers; corrected nested MF+shared comparator; OU finite-correlation toy comparator; finite rank2/rank3 multimode shared noise; finite rank4/5/6 frame-indexed positive-rate comparator; full 21-param local identifiability; bounded PSD optimizer calibration across effective ranks 1–6.
+Closed: independent scope discipline; coherent RCG-002 toy seed; finite MF K2/K3/K4; shared Gaussian finite layers; corrected nested MF+shared comparator; OU finite-correlation toy comparator; finite rank2/rank3 multimode shared noise; finite rank4/5/6 frame-indexed positive-rate comparator; full 21-param local identifiability; bounded PSD optimizer calibration across effective ranks 1–6; scoped bounded boundary-PSD adversarial comparator.
 
-Not closed: terminal G42-A bounded arbitrary-orientation PSD adversarial comparator; basis/chart/bound robustness needed before stronger PSD-family interpretation; robust RTN trace-metric-aligned optimization; broader non-Markovian/classically correlated comparators; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics; any constitution gate for an actual gravity theory.
+Not closed: basis/chart/bound robustness needed before stronger PSD-family interpretation; robust RTN trace-metric-aligned optimization; broader non-Markovian/classically correlated comparators; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics; any constitution gate for an actual gravity theory.
 
 ## Claim locks
 
-Never promote finite/bounded-family gaps to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen thresholds/families/witnesses post hoc. Invalid or nonrobust historical gates remain invalid. Do not import QGR/KMQGB/RQIR physical assumptions or desired conclusions.
+Never promote finite/bounded-family gaps to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen thresholds/families/witnesses/charts post hoc. Invalid or nonrobust historical gates remain invalid. Do not import QGR/KMQGB/RQIR physical assumptions or desired conclusions.
