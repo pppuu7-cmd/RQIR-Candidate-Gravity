@@ -1,0 +1,99 @@
+name: RCG Iter006 Continuous Measurement Feedback Comparator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter006_continuous_measurement_feedback.py'
+      - '.github/workflows/rcg-iter006-measurement-feedback.yml'
+  workflow_dispatch:
+
+jobs:
+  comparator-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        include:
+          - {arg: '0.5:0.0', label: s05-m00}
+          - {arg: '0.5:0.1', label: s05-m01}
+          - {arg: '0.5:0.25', label: s05-m025}
+          - {arg: '0.5:0.5', label: s05-m05}
+          - {arg: '0.5:0.75', label: s05-m075}
+          - {arg: '0.5:0.9', label: s05-m09}
+          - {arg: '1.0:0.0', label: s10-m00}
+          - {arg: '1.0:0.1', label: s10-m01}
+          - {arg: '1.0:0.25', label: s10-m025}
+          - {arg: '1.0:0.5', label: s10-m05}
+          - {arg: '1.0:0.75', label: s10-m075}
+          - {arg: '1.0:0.9', label: s10-m09}
+          - {arg: '2.0:0.0', label: s20-m00}
+          - {arg: '2.0:0.1', label: s20-m01}
+          - {arg: '2.0:0.25', label: s20-m025}
+          - {arg: '2.0:0.5', label: s20-m05}
+          - {arg: '2.0:0.75', label: s20-m075}
+          - {arg: '2.0:0.9', label: s20-m09}
+          - {arg: '4.0:0.0', label: s40-m00}
+          - {arg: '4.0:0.1', label: s40-m01}
+          - {arg: '4.0:0.25', label: s40-m025}
+          - {arg: '4.0:0.5', label: s40-m05}
+          - {arg: '4.0:0.75', label: s40-m075}
+          - {arg: '4.0:0.9', label: s40-m09}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy
+      - name: Run Iter006 preregistered comparator
+        run: |
+          mkdir -p out
+          python scripts/iter006_continuous_measurement_feedback.py --arg='${{ matrix.arg }}' --out='out/${{ matrix.label }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg006-${{ matrix.label }}
+          path: out/${{ matrix.label }}.json
+
+  aggregate:
+    if: always()
+    needs: comparator-matrix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: rcg006-*
+          path: artifacts
+      - name: Aggregate Iter006 outcomes
+        run: |
+          python - <<'PY'
+          import glob,json,os,statistics
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          byscale={}
+          for r in rows: byscale.setdefault(str(r['scale']),[]).append(r)
+          summary_by_scale={}
+          for scale,rs in byscale.items():
+              summary_by_scale[scale]={
+                  'n':len(rs),
+                  'min_distance_over_target_negativity':min(r['distance_over_target_negativity'] for r in rs),
+                  'max_classical_negativity':max(r['best_classical_negativity'] for r in rs),
+                  'best_absolute_trace_distance':min(r['best_trace_distance'] for r in rs),
+                  'mean_best_purity':statistics.mean(r['classical_purity'] for r in rs)
+              }
+          s={
+              'candidate':'RCG-003-unified','iteration':'ITER006','n_results':len(rows),
+              'summary_by_scale':summary_by_scale,
+              'all_lane_pass':len(rows)==24 and all(r['pass'] for r in rows),
+              'claim_lock':'Pass excludes only the explicit reciprocal weak-measurement + classical-feedback LOCC family tested here.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(s,f,indent=2)
+          print(json.dumps(s,indent=2))
+          if not s['all_lane_pass']: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg006-iter006-summary
+          path: summary/summary.json
