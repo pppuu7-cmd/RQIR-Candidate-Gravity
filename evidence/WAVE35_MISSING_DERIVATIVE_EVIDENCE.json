@@ -1,0 +1,29 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "classification": "SYNTHETIC_INFORMATION_LEVERAGE_NOT_J8",
+  "known_block": {
+    "source": "Wave 34 certified conditional F1/F2/F4 Jacobian",
+    "dimension": [3, 3],
+    "physical_J8_credit": false
+  },
+  "full_matrix_partition": {
+    "shape": [5, 5],
+    "A_known_entries": 9,
+    "B_shape": [3, 2],
+    "C_shape": [2, 3],
+    "D_shape": [2, 2],
+    "missing_entries": 16
+  },
+  "baseline_completion": {
+    "B": "zero",
+    "C": "zero",
+    "D_diagonal": [-2.0, 2.0],
+    "meaning": "synthetic reference only"
+  },
+  "scales": [0.05, 0.10, 0.20, 0.40],
+  "trials_per_scenario_scale": 400,
+  "seed": 350035,
+  "physical_input_contract": "same-closure fixed point + ordered 5D coordinates + numerical 5x5 stability matrix OR equivalent normalized right-eigensystem + closure/projection/regulator provenance + numerical precision",
+  "information_firewall": "No polygon/KMQGB-derived QGR equations, architecture, fitted parameters or repairs are admitted."
+}
