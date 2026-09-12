@@ -1,0 +1,66 @@
+name: RCG Iter024B G41-C High Rank Rate Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER024B_G41C_LAUNCH.md'
+
+jobs:
+  calibrate:
+    strategy:
+      fail-fast: false
+      matrix:
+        rank: [4, 5, 6]
+        shard: [0, 1, 2, 3]
+        method: [sobol_lsq, lhs_lsq]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G41-C calibration lane
+        run: |
+          mkdir -p out
+          python scripts/iter024b_g41c_high_rank_rate_calibration.py --rank '${{ matrix.rank }}' --shard '${{ matrix.shard }}' --method '${{ matrix.method }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg024b-g41c-r${{ matrix.rank }}-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: calibrate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G41-C rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==24 and all(r['structural_valid'] for r in rows))
+          by={}
+          for rank in (4,5,6):
+              by[str(rank)]={}
+              for method in ('sobol_lsq','lhs_lsq'):
+                  rr=[r for r in rows if r['rank']==rank and r['method']==method]
+                  by[str(rank)][method]={'n':len(rr),'support_count':sum(int(r['scientific_support']) for r in rr),'worst_recovery_gap':max((r['best_candidate']['gap'] for r in rr),default=None),'all_support':bool(len(rr)==4 and all(r['scientific_support'] for r in rr))}
+          support=bool(structural and all(by[str(rank)][m]['all_support'] for rank in (4,5,6) for m in ('sobol_lsq','lhs_lsq')))
+          summary={'iteration':'Iter024B','gate':'G41-C','n_results':len(rows),'all_structural_valid':structural,'by_rank_method':by,'scientific_support':support,
+                   'classification':'HIGH_RANK_RATE_OPTIMIZER_CALIBRATED' if support else 'HIGH_RANK_RATE_CALIBRATION_NOT_CLOSED',
+                   'frozen_recovery_tolerance':0.002,
+                   'interpretation':'Positive-rate optimizer calibration on frozen classical mode frames only; no arbitrary-orientation calibration and no RCG-002 target.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg024b-g41c-summary
+          path: summary/summary.json
