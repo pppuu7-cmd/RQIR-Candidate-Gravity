@@ -1,0 +1,29 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "source": "Denz, Pawlowski, Reichert, EPJC 78, 336 (2018), Appendix F / Table 3",
+  "classification": "PARTIAL_SURROGATE_NOT_J8",
+  "published_truncation4_anchor": {
+    "coordinates_5d": ["mu", "lambda3", "lambda4", "g3", "g4"],
+    "fixed_point_rounded": [-0.23, -0.060, -0.11, 0.64, 0.55],
+    "eta_phi_zero": true,
+    "higher_vertex_identification": {
+      "lambda_n_gt_4": "lambda3",
+      "g_n_gt_4": "g4"
+    }
+  },
+  "reconstructible_partial_system": {
+    "active_coordinates": ["mu", "lambda3", "g3"],
+    "held_coordinates": {"lambda4": -0.11, "g4": 0.55},
+    "published_equations_used": ["F1", "F2", "F4"],
+    "lambda5_identified_with_lambda3": true,
+    "g5_identified_with_g4": true,
+    "all_anomalous_dimensions_set_zero_per_truncation4": true
+  },
+  "exclusions": [
+    "F3 and F5 are not used to claim a full 5D stability matrix",
+    "the conditional 3D root is not the published 5D fixed point",
+    "the projected 3x3 Jacobian is not promoted to a physical J8 basis",
+    "no polygon/KMQGB-derived QGR information is admitted"
+  ]
+}
