@@ -1,74 +1,69 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active iteration: `ITER016`
-Phase: `INDEPENDENT_RQIR_DERIVATION / CALIBRATED_MULTICHANNEL_COMPARATOR`
+Active iteration: `ITER017`
+Phase: `INDEPENDENT_RQIR_DERIVATION / CALIBRATED_K3_K4_ADVERSARIAL_COMPARATOR`
 
 ## Canonical status
 
-- Candidate-model/programme readiness: **48%**
+- Candidate-model/programme readiness: **52%**
 - Theory established: **0%**
 - Active seed: `RCG-002 Relational controlled-phase channel`
 - Independent-from-QGR construction contract: **FROZEN**
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`
 
-Readiness is an internal construction metric, not a probability that the model is correct. The increase from 46% to 48% reflects closure of the K=2 positive-control optimizer-calibration subgate only; it does not promote any old adversarial gap to physics evidence.
+Readiness is an internal construction metric, not a probability that the model is correct. The increase to 52% reflects closure of the calibrated K=2 adversarial rerun plus K=3/K=4 optimizer-calibration subgates. It does not broaden the physical scope of the comparator result.
 
-## Iter013 / G31
+## Iter016 / G34 terminal result
 
-Run `34695076098`, head `f32ecf1949f1e7d6c577b201b73c517d4605fdb7`, aggregate artifact `10297704949`, digest `sha256:cfe6a47700e929b4c3c515362db16e2b1618ca64723bfd96dbc38856d9522871`.
+Authoritative run `34695835216`, head `09d729764ca38a0d83f11b81dc59f157cd0cb734`, aggregate job `103562681303`, aggregate artifact `10299385844`, digest `sha256:622e04cfdc1859561bd958962cadd293403defb8f8265641410c7119de2843c4`.
 
-Classification: `SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED`. The positive in-family K=2 recovery control failed (`0.0604612 > 0.002`), so G31 adversarial minima remain diagnostics only.
+All 24 lanes were structurally valid.
 
-## Iter014 / G32 and G32-J
+### K=2 prospective calibrated adversarial rerun
 
-G32 run `34695441883`, head `ea54a3ae9694366c3bebe06c13b775af44d46833`, aggregate artifact `10299010209`, digest `sha256:86035287985cc1b1793df8298b919b47067b81aa22b757a5a841df9245389638`.
+Both G33-calibrated methods retained nonzero gaps and agreed within the frozen `0.002` scale on all four shards. Gaps ranged from `0.026070816008971712` to `0.5324532595059579`.
 
-- oracle replay 4/4 PASS with max gap `0.0`;
-- K=2 channel-swap symmetry 4/4 PASS;
-- direct trace-distance local/global recovery did not calibrate on all controls.
+Classification: `DERIVED_SCOPED_K2_CALIBRATED_COMPARATOR_SUPPORT`.
 
-G32-J run `34695478444`, head `706245fa183845556aa020bc99d2a4d86e4e3060`, aggregate artifact `10298208349`, digest `sha256:e0a48b3cc49ab4ab3514b26de8c47cf2ad7b3e7fb72b7bb5c9e91e262a9490ee`.
+This is limited to the finite additive independent single-axis Markovian measurement-feedback GKSL comparator family and is not a general no-go theorem.
 
-- effective Jacobian rank `11/11` on all four K=2 controls;
-- max finite-difference discrepancy `1.2393500576443816e-09`;
-- max retained-subspace condition number `4033.8739690901716`.
+### K=3 positive controls
 
-These diagnostics isolated strong conditioning / optimizer-landscape difficulty rather than a basic representability or rank defect.
+- Sobol-LSQ 4/4 PASS; worst gap `4.864663671077271e-11`.
+- LHS-LSQ 4/4 PASS; worst gap `3.1874163425023643e-11`.
 
-## Iter015 / G33 terminal result
+Classification: `POSITIVE_CONTROL_METHOD_CALIBRATED_K3`.
 
-Authoritative run `34695662002`, head `d15d633f58fa63d378a85d6e5409c4bb0735a97e`, aggregate artifact `10298088690`, digest `sha256:92f1d470f516bd6b85e7d475581762b10ca6871d3ec4c85fc0e73f218f0faa19`.
+### K=4 positive controls
 
-All 12 lanes were structurally valid. Hidden source coordinates were never optimizer initializers. Scientific acceptance remained the unchanged trace-distance recovery criterion `< 0.002`.
+- Sobol-LSQ 4/4 PASS; worst gap `8.088582075956358e-13`.
+- LHS-LSQ 4/4 PASS; worst gap `2.658734486319925e-12`.
 
-- `sobol_lsq`: **4/4 PASS**, worst trace-distance gap `1.6005292984593422e-12`;
-- `lhs_lsq`: **4/4 PASS**, worst trace-distance gap `1.6222740678511114e-12`;
-- `de_smooth_lsq`: 3/4 PASS, worst gap `0.012008310266765621`.
+Classification: `POSITIVE_CONTROL_METHOD_CALIBRATED_K4`.
 
-Classification: `POSITIVE_CONTROL_METHOD_CALIBRATED_K2`.
+Historical G30/G31 adversarial minima remain diagnostics only and are not promoted retroactively.
 
-Authority methods for the next gate are the two independently calibrated constructions `sobol_lsq` and `lhs_lsq`. The failed `de_smooth_lsq` route is retained as a negative methodology result and is not used for adversarial authority.
+## Active authorized gate — Iter017 / G35
 
-Crucially, G33 does **not** retroactively validate G30/G31 gaps. Any RCG-002 adversarial claim must be recomputed prospectively using the calibrated method.
+Run independent fronts in parallel:
 
-## Active authorized gate — Iter016 / G34
+1. prospective calibrated RCG-002 adversarial reruns for K=3 with Sobol-LSQ and LHS-LSQ across all four shards;
+2. prospective calibrated RCG-002 adversarial reruns for K=4 with the same two independently calibrated methods;
+3. independent numerical physical-admissibility audits for prospectively sampled K=3 and K=4 additive generators/evolutions.
 
-Run three independent scientific fronts in parallel:
+Frozen scientific rules, fixed before G35 inspection:
 
-1. **K=2 calibrated adversarial rerun:** rerun the four RCG-002 comparator targets with both G33-calibrated methods using the exact K=2 unit-box/smooth-residual/multistart constructions. Interpret only the newly computed G34 results. Require both calibrated methods to retain a nonzero gap and require cross-method agreement within the frozen `0.002` calibration scale before granting scoped K=2 comparator support.
-2. **K=3 positive-control calibration:** generate four prospectively fixed in-family K=3 hidden targets and test both Sobol-LSQ and LHS-LSQ extensions. Hidden truth must not be used as an initializer. Scientific calibration still requires trace-distance `<0.002` on all four controls under the same method.
-3. **K=4 positive-control calibration:** same discipline for K=4. No K=3/K=4 adversarial interpretation is allowed before its own positive-control calibration passes.
+- nonzero adversarial gap: `> 1e-4`;
+- cross-method agreement on each shard: `<= 0.002`;
+- nesting sanity: increasing K may not worsen the calibrated minimum by more than `0.002` relative to the immediately smaller calibrated K frontier;
+- admissibility: TP residual `<1e-10`, Choi minimum eigenvalue `>-1e-8`, evolved-state minimum eigenvalue `>-1e-8`, trace error `<1e-10`;
+- final distance authority remains trace distance;
+- no historical G30/G31 minima are reused;
+- no threshold changes after result inspection.
 
-Frozen safeguards:
-
-- final acceptance is always trace distance, even though optimization uses a smooth density-matrix residual;
-- old G30/G31 minima cannot be reused as authority;
-- no post-result threshold changes;
-- K=3/K=4 calibrated-method extension must be fixed before result inspection;
-- if K=3/K=4 calibrate, their adversarial RCG-002 reruns occur only in a subsequent gate;
-- all conclusions remain restricted to the finite additive independent single-axis Markovian measurement-feedback GKSL comparator family.
+Only after terminal G35 classification may a correlated/general positive-Kossakowski comparator gate be opened.
 
 ## Claim locks
 
@@ -79,10 +74,9 @@ Forbidden:
 - `RQIR_REQUIRES_RCG002`;
 - claim that all classical/semiclassical mediators are excluded;
 - treating green CI as scientific PASS;
-- treating G30/G31 historical adversarial gaps as validated by G33;
 - changing frozen thresholds after seeing results;
 - importing physical assumptions or desired conclusions from QGR/KMQGB/RQIR.
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + K2_OPTIMIZER_CALIBRATED + G34_CALIBRATED_K2_ADVERSARIAL_AND_K3K4_POSITIVE_CONTROLS_REQUIRED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + K2_K3_K4_OPTIMIZER_CALIBRATED + K2_SCOPED_CALIBRATED_COMPARATOR_SUPPORT + G35_K3K4_ADVERSARIAL_REQUIRED`.
