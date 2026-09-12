@@ -1,0 +1,72 @@
+name: RCG Iter014B G32-J Positive-Control Jacobian
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter014b_positive_control_jacobian.py'
+      - '.github/workflows/rcg-iter014b-positive-control-jacobian.yml'
+  workflow_dispatch:
+
+jobs:
+  jacobian:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: ['0','1','2','3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G32-J lane
+        run: |
+          mkdir -p out
+          python scripts/iter014b_positive_control_jacobian.py --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg014b-jacobian-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: jacobian
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate local-identifiability diagnostics
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          valid=(len(rows)==4 and all(r['structural_valid'] for r in rows))
+          ranks=[r['result']['effective_rank'] for r in rows]
+          conds=[r['result']['condition_number_on_retained_subspace'] for r in rows]
+          conv=[r['result']['relative_two_step_jacobian_difference'] for r in rows]
+          s={
+            'iteration':'Iter014B','gate':'G32-J','n_results':len(rows),
+            'all_derivative_controls_valid':valid,
+            'effective_ranks':ranks,
+            'min_effective_rank':min(ranks) if ranks else None,
+            'max_effective_rank':max(ranks) if ranks else None,
+            'max_condition_number':max(conds) if conds else None,
+            'max_two_step_jacobian_difference':max(conv) if conv else None,
+            'interpretation':'Rank/conditioning diagnose local positive-control identifiability only. They neither validate nor falsify RCG-002.',
+            'scope_lock':'Hidden K=2 positive controls only; no RCG-002 target.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2))
+          print(json.dumps(s,indent=2))
+          if not valid: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg014b-summary
+          path: summary/summary.json
