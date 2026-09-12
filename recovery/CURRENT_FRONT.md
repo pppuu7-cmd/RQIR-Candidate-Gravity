@@ -1,8 +1,8 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active iteration: `ITER013`
-Phase: `INDEPENDENT_RQIR_DERIVATION / GLOBAL_COMPARATOR_SEARCH_CALIBRATION`
+Active iteration: `ITER014`
+Phase: `INDEPENDENT_RQIR_DERIVATION / OPTIMIZER_CALIBRATION_DIAGNOSTIC`
 
 ## Canonical status
 
@@ -13,35 +13,40 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / GLOBAL_COMPARATOR_SEARCH_CALIBRATION`
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`
 
-Readiness is an internal construction metric, not a probability that the model is correct.
+Readiness is an internal construction metric, not a probability that the model is correct. G31 does not raise readiness because its positive recovery calibration failed.
 
-## Latest terminal result — Iter012 / G30
+## Latest terminal result — Iter013 / G31
 
-Authoritative workflow run `34694264478`, head `fa9be36b422b84614b03f96de7c37660059f2d74`, aggregate artifact `10298417946`, digest `sha256:7c4095c8ddd329b53973fd1bc5b0b823455b2b543c26fe370aba748806b6f0b0`.
+Authoritative workflow run `34695076098`, head `f32ecf1949f1e7d6c577b201b73c517d4605fdb7`, aggregate artifact `10297704949`, digest `sha256:cfe6a47700e929b4c3c515362db16e2b1618ca64723bfd96dbc38856d9522871`.
 
-Twenty lanes completed. All were structurally valid. Within the frozen additive independent-channel K<=3 Markovian GKSL family, the minimum adversarial trace-distance gaps remained nonzero:
+Twenty lanes completed and all were structurally valid. The stronger differential-evolution adversarial searches returned nonzero minima and K=4 admissibility controls passed, but the prospectively frozen positive in-family recovery control failed decisively:
 
-- K=2: `0.025014400602647237`
-- K=3: `0.025028081208365957`
+- maximum K=2 positive-control recovery gap: `0.06046122957245775`;
+- frozen recovery tolerance: `< 0.002`;
+- minimum K=2 adversarial gap: `0.028426977805393647`;
+- minimum K=3 adversarial gap: `0.02749744988997753`;
+- minimum K=4 adversarial gap: `0.02631736559670728`;
+- nesting consistency within frozen `2e-3` optimizer slack: PASS;
+- `scientific_interpretable = false`;
+- `scoped_scientific_support = false`.
 
 Classification:
-`DERIVED_SCOPED_NEGATIVE_COMPARATOR_RESULT_WITH_MULTICHANNEL_ROBUSTNESS`.
+`SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED`.
 
-Scientific ceiling: this is **not** a no-go theorem. G30 used finite-restart coordinate search and did not cover general correlated Kossakowski structures, non-Markovian feedback, arbitrary semiclassical gravity, or all classical mediators.
+This is **not** evidence against RCG-002 and is **not** evidence that the comparator family closes the residual. It means G31 demonstrated that the search procedure cannot yet be trusted to find a known in-family solution. Consequently G31 adversarial gaps are retained as diagnostics only and cannot be promoted to physics evidence.
 
-Durable result note: `results/ITER012_G30_MULTICHANNEL_SUMMARY.md`.
+## Active authorized gate — Iter014 / G32
 
-## Active authorized gate — Iter013 / G31
-
-Goal: calibrate the nearest-comparator search itself before treating residual gaps as robust evidence, and extend the additive family to K=4.
+Goal: isolate whether the G31 recovery failure comes from parameterization/objective plumbing, local basin geometry, symmetry/permutation handling, or insufficient global-search budget.
 
 Frozen requirements before result inspection:
 
-1. stronger global differential-evolution adversarial searches for K=2, K=3, K=4;
-2. positive in-family recovery controls: optimizer must recover a known K=2 comparator-generated target below a fixed trace-distance tolerance;
-3. K=4 CPTP/PSD controls;
-4. nesting/monotonicity controls so broader families cannot spuriously report worse minima than embedded narrower boundaries;
-5. scientific interpretation blocked if positive controls fail, even if adversarial target gaps stay nonzero.
+1. exact oracle replay of the hidden K=2 source parameters; the same objective evaluated at the true source must be numerically zero;
+2. channel-swap symmetry replay for K=2 must preserve the generated Liouvillian/target to numerical precision;
+3. local bounded optimization from prospectively fixed perturbations around the true source must recover below the existing `2e-3` tolerance;
+4. substantially enlarged global differential-evolution budgets must be tested on the same four hidden positive controls without inspecting adversarial RCG-002 targets;
+5. an independent hybrid global+local search must be tested on the same positive controls;
+6. adversarial RCG-002 interpretation remains blocked until a prospectively defined positive-control method passes. If a calibrated method is found, RCG-002 adversarial K=2/3/4 searches must be rerun under that method in a later gate; old G31 minima cannot be retroactively promoted.
 
 ## Claim locks
 
@@ -52,8 +57,9 @@ Forbidden:
 - `RQIR_REQUIRES_RCG002`;
 - claim that all classical/semiclassical mediators are excluded;
 - treating green CI as a scientific PASS;
+- treating G31 adversarial gaps as scientifically interpretable after its failed positive calibration;
 - importing physical assumptions or desired conclusions from QGR/KMQGB/RQIR.
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + FINITE_MARKOVIAN_COMPARATOR_GAPS_SURVIVE_K<=3 + GLOBAL_SEARCH_CALIBRATION_REQUIRED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + FINITE_COMPARATOR_SEARCH_UNCALIBRATED + G32_OPTIMIZER_DIAGNOSTIC_REQUIRED`.
