@@ -14,10 +14,11 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | Iter011 | G29 robustness suite | run `34694101699`, head `c4c6f0d35e4e57a2105facafee2bdddc8036a52f` | `DERIVED_SCOPED_ROBUSTNESS_SUPPORT` | 24/24 structural valid/support in finite single-axis family. |
 | Iter012 | G30 additive multi-channel comparator | run `34694264478`, head `fa9be36b422b84614b03f96de7c37660059f2d74` | `FINITE_SEARCH_DIAGNOSTIC` | Historical K=2/K=3 gaps cannot be treated as nearest distances after later calibration failure. |
 | Iter013 | G31 global-search calibration | run `34695076098`, head `f32ecf1949f1e7d6c577b201b73c517d4605fdb7` | `SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED` | Positive K=2 recovery failed; adversarial minima diagnostic only. |
-| Iter014 | G32 positive-control optimizer diagnosis | run `34695441883`, head `ea54a3ae9694366c3bebe06c13b775af44d46833` | `POSITIVE_CONTROL_OPTIMIZER_FAIL / LOCAL_BASIN_GEOMETRY_OR_CONDITIONING` | Exact representability/plumbing pass; direct trace-distance search unreliable. |
+| Iter014 | G32 positive-control optimizer diagnosis | run `34695441883`, head `ea54a3ae9694366c13b775af44d46833` | `POSITIVE_CONTROL_OPTIMIZER_FAIL / LOCAL_BASIN_GEOMETRY_OR_CONDITIONING` | Exact representability/plumbing pass; direct trace-distance search unreliable. |
 | Iter014B | G32-J positive-control Jacobian | run `34695478444`, head `706245fa183845556aa020bc99d2a4d86e4e3060` | `FULL_LOCAL_RANK / STRONGLY_ILL_CONDITIONED_DIAGNOSTIC` | Rank 11/11; condition number up to ~4034. |
 | Iter015 | G33 smooth positive-control calibration | run `34695662002`, head `d15d633f58fa63d378a85d6e5409c4bb0735a97e` | `POSITIVE_CONTROL_METHOD_CALIBRATED_K2` | Sobol-LSQ and LHS-LSQ each recover all four hidden K=2 targets far below frozen 0.002 tolerance. |
 | Iter016 | G34 calibrated multichannel comparator | run `34695835216`, head `09d729764ca38a0d83f11b81dc59f157cd0cb734` | `DERIVED_SCOPED_K2_CALIBRATED_COMPARATOR_SUPPORT + POSITIVE_CONTROL_METHOD_CALIBRATED_K3_K4` | K=2 prospective gaps supported inside finite additive independent-channel family; K=3/K=4 adversarial reruns newly authorized. |
+| Iter018A | G36-P shared-classical-noise implementation pre-gate | run `34702575861`, head `270a26300117aeebe23af126dd4e6c53c96cf3f9` | `CLASSICAL_SHARED_NOISE_IMPLEMENTATION_VALIDATED` | Implementation/provenance only; 12/12 frozen checks pass. No RCG-002 adversarial claim. |
 
 ## Key aggregates
 
@@ -53,14 +54,34 @@ All 24 lanes were structurally valid. Prospective K=2 adversarial gaps were nonz
 
 This closes the calibrated K=2 comparator rerun and K=3/K=4 optimizer-calibration subgates. It does not broaden the physical scope beyond the finite additive independent single-axis Markovian measurement-feedback GKSL family.
 
+### Iter018A / G36-P
+
+Run `34702575861`, head `270a26300117aeebe23af126dd4e6c53c96cf3f9`, aggregate job `103576905242`, aggregate artifact `10300760790`, digest `sha256:3a03b7462ccf026c6cc7cdef88fbe0c9f4710c3040f467a5caf9fa5e3e4d228d`.
+
+All 12 prospectively frozen implementation lanes were structurally valid and passed. Worst diagnostics across the 12 lanes:
+
+- maximum TP-generator residual `1.1300368731185704e-15`;
+- minimum Choi eigenvalue `-1.4408804081828725e-15` versus frozen floor `-1e-8`;
+- minimum evolved-state eigenvalue `3.617376051975559e-08`;
+- maximum trace error `2.220446049250313e-16`;
+- maximum Gaussian random-unitary reconstruction trace distance `8.008126699255227e-16`;
+- maximum product-unitary factorization error `4.2200682427327647e-14` versus frozen `<1e-12`;
+- maximum negativity from the fixed product input `0.0`.
+
+Classification: `CLASSICAL_SHARED_NOISE_IMPLEMENTATION_VALIDATED`. This validates only the implementation/provenance of the shared Gaussian classical-noise ingredient as a convex mixture of product unitaries. It does not test RCG-002 and does not change programme readiness by itself.
+
 ## Current frontier
 
-G35 is prospectively authorized:
+G35 remains the authoritative physics gate:
 
 - recompute RCG-002 adversarial nearest-comparator searches for K=3 and K=4 using only the G34-calibrated Sobol-LSQ and LHS-LSQ constructions;
 - require both methods to retain `gap > 1e-4` and agree within `0.002` on every shard;
 - enforce nesting sanity prospectively: increasing K may not worsen the calibrated minimum by more than the fixed `0.002` calibration scale;
 - independently audit numerical physical validity of representative K=3/K=4 generated channels/evolutions (trace preservation, Hermiticity, PSD within frozen numerical tolerances).
+
+In parallel, G35-R (`34702384573`) is a held-out calibration robustness replication using new theta values, hidden in-family sources and seeds. It cannot alter the frozen G35 physics verdict by itself.
+
+G36-P has closed implementation validation for a safe shared-classical-noise ingredient. The actual broader RCG-002 correlated-classical-noise comparator gate remains unopened until G35 is terminal.
 
 Historical G30/G31 gaps remain diagnostics only and are not reused as scientific authority.
 
@@ -75,7 +96,8 @@ Historical G30/G31 gaps remain diagnostics only and are not reused as scientific
 - calibrated K=2 adversarial comparator rerun: closed
 - K=3/K=4 optimizer calibration: closed
 - calibrated K=3/K=4 adversarial comparator rerun: active G35
-- correlated/general Kossakowski comparator: open
+- shared-classical-noise implementation/provenance: closed at pre-gate level
+- correlated/general classical-noise comparator against RCG-002: open after G35
 - non-Markovian comparator layer: open
 - externally anchored observable/holdout programme: open
 - full candidate-gravity dynamics / continuum completion: open
