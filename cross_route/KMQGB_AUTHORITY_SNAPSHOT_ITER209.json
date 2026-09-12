@@ -1,0 +1,36 @@
+{
+  "snapshot_id": "KMQGB_ITER209_FOR_WAVE21",
+  "source_repository": "pppuu7-cmd/Known-Models-Quantum-Gravity-Benchmark",
+  "source_ref": "main",
+  "source_file": "recovery/state.json",
+  "source_blob_sha": "55b77c8ec0c3541406aa0dd4a4de5fcd4e8da6b3",
+  "source_updated": "2026-09-10",
+  "kmqgb_iteration": 209,
+  "allowed_scope": "status, promotion, gate-closure and provenance metadata only; no candidate equations or architecture",
+  "readiness": {
+    "repository_R1_percent": 100,
+    "methodology_R2_percent": 100,
+    "candidate_gravity_R3_percent": 24
+  },
+  "paper_iv": {
+    "global_decision": "NOT_YET_AUTHORIZED",
+    "new_required_authorized": false,
+    "D2A_framework_set_coverage": "NOT_CLOSED",
+    "D2B_complete_same_realization_objects": "NOT_CLOSED",
+    "D3_common_domain_comparability": "PARTIAL",
+    "D4_comparator_subtracted_residual_matrix": "PARTIAL_ACTIVE_SET_MATRIX__GLOBAL_COVERAGE_NOT_CLOSED",
+    "D6_same_realization_composition_discipline": "PASS_RULE_TARGETS_OPEN",
+    "D7_global_terminal_proof_obligation": "NOT_CLOSED"
+  },
+  "candidate_gravity": {
+    "status": "CONDITIONAL_NOT_ACTIVE_FRONT",
+    "external_iteration": 675,
+    "readiness_percent": 24,
+    "promotable_ansatz": false,
+    "robust_unique_residual": false,
+    "activation_condition": "Paper-IV D7 terminal decision NEW_REQUIRED"
+  },
+  "compute": {
+    "heavy_compute_status": "IDLE_PENDING_FROZEN_PHYSICAL_OBJECT"
+  }
+}
