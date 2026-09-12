@@ -1,0 +1,140 @@
+name: Prospective QGR holdouts wave 22
+
+on:
+  push:
+    branches: [prospective-qgr-holdouts-wave22]
+    paths:
+      - 'compute_wave22/**'
+      - 'post_freeze/WAVE22_PROSPECTIVE_HOLDOUT_PREREGISTRATION.md'
+      - 'post_freeze/WAVE22_EXTERNAL_PROVENANCE.md'
+      - '.github/workflows/prospective-qgr-holdouts-wave22.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  rank-selection:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/rank_and_selection.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-rank-selection
+          path: wave22_results/rank_and_selection.json
+
+  nuisance-robustness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/nuisance_robustness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-nuisance-robustness
+          path: wave22_results/nuisance_robustness.json
+
+  noise-stability:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/noise_stability.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-noise-stability
+          path: wave22_results/noise_stability.json
+
+  cross-order-visibility:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/cross_order_visibility.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-cross-order-visibility
+          path: wave22_results/cross_order_visibility.json
+
+  comparator-power:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/comparator_power.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-comparator-power
+          path: wave22_results/comparator_power.json
+
+  information-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/information_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-information-firewall
+          path: wave22_results/information_firewall.json
+
+  coverage-report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/coverage_report.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-coverage-report
+          path: wave22_results/coverage_report.json
+
+  ir-guard:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave22/ir_guard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave22-ir-guard
+          path: wave22_results/ir_guard.json
+
+  aggregate-wave22:
+    needs: [rank-selection, nuisance-robustness, noise-stability, cross-order-visibility, comparator-power, information-firewall, coverage-report, ir-guard]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave22_downloads
+      - run: python compute_wave22/aggregate_wave22.py
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: prospective-qgr-holdouts-wave22-summary
+          path: wave22_summary.json
