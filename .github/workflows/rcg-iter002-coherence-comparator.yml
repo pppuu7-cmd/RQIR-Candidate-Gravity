@@ -35,8 +35,8 @@ jobs:
           - {gate: robustness, chi: '1.11', eta: '0.85', seed: 17}
           - {gate: robustness, chi: '1.11', eta: '0.70', seed: 17}
           - {gate: robustness, chi: '1.11', eta: '0.50', seed: 17}
-          - {gate: null, chi: '0.0', eta: '1.0', seed: 17}
-          - {gate: null, chi: '0.0', eta: '0.70', seed: 41}
+          - {gate: 'null', chi: '0.0', eta: '1.0', seed: 17}
+          - {gate: 'null', chi: '0.0', eta: '0.70', seed: 41}
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
