@@ -1,0 +1,82 @@
+name: RCG Iter017R G35-R Heldout Calibration Replication
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter017r_holdout_calibration_replication.py'
+      - '.github/workflows/rcg-iter017r-g35r-holdout-calibration.yml'
+  workflow_dispatch:
+
+jobs:
+  compute:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 18
+      matrix:
+        K: ['2','3','4']
+        method: [sobol_lsq, lhs_lsq]
+        holdout: ['0','1','2']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G35-R held-out lane
+        run: |
+          mkdir -p out
+          python scripts/iter017r_holdout_calibration_replication.py \
+            --K '${{ matrix.K }}' --method '${{ matrix.method }}' \
+            --holdout '${{ matrix.holdout }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg017r-k${{ matrix.K }}-${{ matrix.method }}-h${{ matrix.holdout }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: compute
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen held-out replication
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          by={}
+          for K in (2,3,4):
+              by[str(K)]={}
+              for method in ('sobol_lsq','lhs_lsq'):
+                  rr=[r for r in rows if r['K']==K and r['method']==method]
+                  gaps=[r['result']['best_trace_gap'] for r in rr]
+                  by[str(K)][method]={
+                    'n':len(rr),
+                    'support_count':sum(int(r['result']['scientific_support']) for r in rr),
+                    'max_trace_gap':max(gaps) if gaps else None,
+                    'all_three_holdouts_pass':bool(len(rr)==3 and all(r['structural_valid'] and r['result']['scientific_support'] for r in rr)),
+                  }
+          all_structural=bool(len(rows)==18 and all(r['structural_valid'] for r in rows))
+          all_methods_holdout_robust=bool(all(by[str(K)][m]['all_three_holdouts_pass'] for K in (2,3,4) for m in ('sobol_lsq','lhs_lsq')))
+          s={
+            'iteration':'Iter017R','gate':'G35-R','n_results':len(rows),
+            'all_structural_valid':all_structural,'by_K_method':by,
+            'all_methods_holdout_robust':all_methods_holdout_robust,
+            'scientific_rule':'Method-family robustness requires trace-distance <2e-3 on all three new held-out controls for each K and each independently calibrated design family. Failure is retained; thresholds are not changed.',
+            'scope_lock':'Methodology robustness only; this gate cannot promote or veto G35 adversarial physics results by itself.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2))
+          print(json.dumps(s,indent=2))
+          if not all_structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg017r-summary
+          path: summary/summary.json
