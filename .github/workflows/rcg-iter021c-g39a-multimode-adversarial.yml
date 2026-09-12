@@ -1,0 +1,72 @@
+name: RCG Iter021C G39-A Multimode Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER021C_G39A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        rank: [2, 3]
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G39-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter021c_g39a_multimode_adversarial.py --rank '${{ matrix.rank }}' --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg021c-g39a-r${{ matrix.rank }}-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G39-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          ranks=(2,3); methods=('sobol_lsq','lhs_lsq'); nz=1e-4; agree=0.002; slack=0.002
+          structural=bool(len(rows)==16 and all(r['structural_valid'] for r in rows))
+          shards={}
+          for s in range(4):
+              shards[str(s)]={}
+              best={}
+              for K in ranks:
+                  rr={r['method']:r for r in rows if r['rank']==K and r['shard']==s}
+                  gaps={m:rr[m]['result']['best_trace_gap'] for m in methods if m in rr}
+                  both=bool(len(gaps)==2 and all(v>nz for v in gaps.values()))
+                  agreement=bool(len(gaps)==2 and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=agree)
+                  best[K]=min(gaps.values()) if gaps else None
+                  shards[str(s)][f'rank{K}']={'gaps':gaps,'both_nonzero':both,'cross_method_agreement':agreement,'best_gap':best[K]}
+              nesting=bool(best.get(2) is not None and best.get(3) is not None and best[3] <= best[2]+slack)
+              shards[str(s)]['rank3_vs_rank2_nesting']=nesting
+              shards[str(s)]['scientific_support']=bool(nesting and all(shards[str(s)][f'rank{K}']['both_nonzero'] and shards[str(s)][f'rank{K}']['cross_method_agreement'] for K in ranks))
+          support=bool(structural and all(v['scientific_support'] for v in shards.values()))
+          summary={'iteration':'Iter021C','gate':'G39-A','n_results':len(rows),'all_structural_valid':structural,'per_shard':shards,'scientific_support':support,'frozen_rules':{'nonzero_gap':nz,'cross_method_agreement':agree,'rank3_vs_rank2_nesting_slack':slack},'interpretation':'Support, if any, is restricted to the calibrated finite rank-2/rank-3 multimode shared classical white-noise family. Rank3 nesting is valid because rank3 contains rank2 via zero third-mode rate. No nesting claim to G36 is made.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg021c-g39a-summary
+          path: summary/summary.json
