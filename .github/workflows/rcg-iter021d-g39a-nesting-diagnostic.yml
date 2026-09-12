@@ -1,0 +1,62 @@
+name: RCG Iter021D G39-A Nesting Diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER021D_G39A_NESTING_DIAGNOSTIC_LAUNCH.md'
+
+jobs:
+  diagnostic:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen nesting diagnostic
+        run: |
+          mkdir -p out
+          python scripts/iter021d_g39a_nesting_diagnostic.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg021d-g39an-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: diagnostic
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen diagnostic rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          support=bool(structural and all(r['diagnostic_support'] for r in rows))
+          summary={
+            'iteration':'Iter021D','gate':'G39-A-N','n_results':len(rows),
+            'all_structural_valid':structural,'diagnostic_support':support,
+            'max_embedding_gap_difference':max((abs(r['rank3_exact_embedding']['gap']-r['rank2_reproduced']['gap']) for r in rows),default=None),
+            'max_seeded_minus_embedded_gap':max((r['rank3_seeded_refinement']['gap']-r['rank3_exact_embedding']['gap'] for r in rows),default=None),
+            'frozen_interpretation':'PASS establishes optimizer/search miss as the cause of any original G39-A nesting violation; it does not establish the adversarial nonzero-gap claim.'
+          }
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg021d-g39an-summary
+          path: summary/summary.json
