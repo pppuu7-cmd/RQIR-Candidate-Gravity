@@ -1,0 +1,82 @@
+name: RCG Iter015 G33 Smooth Optimizer Calibration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter015_smooth_optimizer_calibration.py'
+      - '.github/workflows/rcg-iter015-smooth-calibration.yml'
+  workflow_dispatch:
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        method: [sobol_lsq, lhs_lsq, de_smooth_lsq]
+        shard: ['0','1','2','3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G33 lane
+        run: |
+          mkdir -p out
+          python scripts/iter015_smooth_optimizer_calibration.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg015-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: calibrate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G33 calibration
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=['sobol_lsq','lhs_lsq','de_smooth_lsq']
+          by={}
+          for m in methods:
+              rr=[r for r in rows if r['method']==m]
+              gaps=[r['result']['best_trace_gap'] for r in rr]
+              by[m]={
+                'n':len(rr),
+                'structural_valid':sum(int(r['structural_valid']) for r in rr),
+                'scientific_support':sum(int(r['result']['scientific_support']) for r in rr),
+                'max_trace_gap':max(gaps) if gaps else None,
+                'calibrated_all_four':bool(len(rr)==4 and all(r['structural_valid'] and r['result']['scientific_support'] for r in rr)),
+              }
+          calibrated=[m for m,v in by.items() if v['calibrated_all_four']]
+          all_structural=(len(rows)==12 and all(r['structural_valid'] for r in rows))
+          s={
+            'iteration':'Iter015','gate':'G33','n_results':len(rows),
+            'all_structural_valid':all_structural,
+            'methods':by,
+            'calibrated_methods':calibrated,
+            'positive_control_method_calibrated':bool(calibrated),
+            'scientific_rule':'A method calibrates only if the same prospectively specified method passes trace-distance <2e-3 on all four hidden controls. Hidden source coordinates were not optimizer initializers. If calibrated, a later gate must rerun RCG-002 adversarial targets under the exact frozen calibrated construction; older gaps cannot be promoted retroactively.',
+            'scope_lock':'Positive controls only; no RCG-002 adversarial target in G33.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2))
+          print(json.dumps(s,indent=2))
+          if not all_structural:
+              raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg015-summary
+          path: summary/summary.json
