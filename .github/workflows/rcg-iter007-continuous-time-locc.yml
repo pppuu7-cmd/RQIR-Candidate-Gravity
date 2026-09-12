@@ -1,0 +1,104 @@
+name: RCG Iter007 Continuous-Time LOCC Limit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter007_continuous_time_locc_limit.py'
+      - '.github/workflows/rcg-iter007-continuous-time-locc.yml'
+  workflow_dispatch:
+
+jobs:
+  g25-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        include:
+          - {arg: '0.5:0.05', label: s05-r005}
+          - {arg: '0.5:0.10', label: s05-r010}
+          - {arg: '0.5:0.25', label: s05-r025}
+          - {arg: '0.5:0.50', label: s05-r050}
+          - {arg: '0.5:1.00', label: s05-r100}
+          - {arg: '0.5:2.00', label: s05-r200}
+          - {arg: '1.0:0.05', label: s10-r005}
+          - {arg: '1.0:0.10', label: s10-r010}
+          - {arg: '1.0:0.25', label: s10-r025}
+          - {arg: '1.0:0.50', label: s10-r050}
+          - {arg: '1.0:1.00', label: s10-r100}
+          - {arg: '1.0:2.00', label: s10-r200}
+          - {arg: '2.0:0.05', label: s20-r005}
+          - {arg: '2.0:0.10', label: s20-r010}
+          - {arg: '2.0:0.25', label: s20-r025}
+          - {arg: '2.0:0.50', label: s20-r050}
+          - {arg: '2.0:1.00', label: s20-r100}
+          - {arg: '2.0:2.00', label: s20-r200}
+          - {arg: '4.0:0.05', label: s40-r005}
+          - {arg: '4.0:0.10', label: s40-r010}
+          - {arg: '4.0:0.25', label: s40-r025}
+          - {arg: '4.0:0.50', label: s40-r050}
+          - {arg: '4.0:1.00', label: s40-r100}
+          - {arg: '4.0:2.00', label: s40-r200}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy
+      - name: Run G25 preregistered continuous-time LOCC lane
+        run: |
+          mkdir -p out
+          python scripts/iter007_continuous_time_locc_limit.py --arg='${{ matrix.arg }}' --out='out/${{ matrix.label }}.json'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rcg007-${{ matrix.label }}
+          path: out/${{ matrix.label }}.json
+
+  aggregate:
+    if: always()
+    needs: g25-matrix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: rcg007-*
+          path: artifacts
+      - name: Aggregate G25 outcomes
+        run: |
+          python - <<'PY'
+          import glob,json,os,statistics
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              try:
+                  with open(p) as f: rows.append(json.load(f))
+              except Exception: pass
+          byscale={}
+          for r in rows: byscale.setdefault(str(r['scale']),[]).append(r)
+          summary_by_scale={}
+          for scale,rs in byscale.items():
+              summary_by_scale[scale]={
+                  'n':len(rs),
+                  'pass_count':sum(bool(r['pass']) for r in rs),
+                  'min_N64_distance_over_target_negativity':min(r['distance_over_target_negativity_N64'] for r in rs),
+                  'max_continuum_relative_drift':max(r['continuum_relative_distance_drift_32_64'] for r in rs),
+                  'all_LOCC_outputs_separable':all(r['all_states_physical_and_separable'] for r in rs)
+              }
+          s={
+              'candidate':'RCG-003-unified','iteration':'ITER007','gate':'G25_CONTINUOUS_TIME_LOCC_LIMIT',
+              'n_results':len(rows),'pass_count':sum(bool(r['pass']) for r in rows),
+              'summary_by_scale':summary_by_scale,
+              'all_lane_pass':len(rows)==24 and all(r['pass'] for r in rows),
+              'claim_lock':'Only the operational diffusive-scaling reciprocal weak-measurement + classical-feedback LOCC family is tested; no universal semiclassical-gravity exclusion is claimed.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(s,f,indent=2)
+          print(json.dumps(s,indent=2))
+          if not s['all_lane_pass']: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rcg007-iter007-summary
+          path: summary/summary.json
