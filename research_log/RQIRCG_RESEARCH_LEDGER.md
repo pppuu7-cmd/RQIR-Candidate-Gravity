@@ -8,10 +8,11 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 
 ## Canonical readiness
 
-- Internal programme readiness: **59%**.
+- Internal programme readiness: **60%**.
 - Theory established: **0%**.
-- The 58→59 increment is attributed only to terminal closure of corrected G37-A3.
-- G40 witness/calibration diagnostics and G41 implementation/calibration work do not by themselves raise readiness.
+- `58% -> 59%`: terminal closure of corrected G37-A3.
+- `59% -> 60%`: terminal closure of G41-A finite high-rank positive-rate comparator layer.
+- Calibration, implementation, identifiability and diagnostic gates do not themselves raise readiness.
 
 ## Authoritative recent gate ledger
 
@@ -20,57 +21,57 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | Iter017 | G35 | `34697766107` / `fbc71768...` | `DERIVED_SCOPED_K3_K4_CALIBRATED_COMPARATOR_SUPPORT` | Finite additive independent MF. |
 | Iter017R | G35-R | `34702384573` / `1b93cbf1...` | `HELDOUT_OPTIMIZER_ROBUSTNESS_PASS_K2_K3_K4` | Method robustness only. |
 | Iter018A-C | G36-P/C/A | `34702575861`, `34703606707`, `34703779268` | shared-noise implementation/calibration/scoped support | One shared Gaussian classical mode. |
-| Iter019C | G37-C2 | `34704249235` / `0852fe30...` | `POSITIVE_CONTROL_METHOD_CALIBRATED_TRULY_NESTED_MF_PLUS_SHARED` | Corrected finite combined family. |
-| Iter019D | G37-A2 | `34704659119` / `823587d7...` | `NUMERICAL_OPTIMIZER_NESTING_VALIDITY_FAIL` | No physics verdict. |
-| Iter019E | G37-A2-N | `34707889631` / `fd2eb2be...` | `EXACT_PARENT_EMBEDDING_VALID + SURROGATE_OBJECTIVE_REFINEMENT_FAIL` | Method diagnosis only. |
-| Iter019F | G37-A3 | `34708041385` / `28d6fa63...` | `DERIVED_SCOPED_TRULY_NESTED_MF_PLUS_SHARED_BOUNDARY_PRESERVING_COMPARATOR_SUPPORT` | Finite corrected MF + one shared Markovian noise family. |
+| Iter019C-F | G37-C2/A3 | `34704249235`, `34708041385` | calibrated corrected nested family + `DERIVED_SCOPED_TRULY_NESTED_MF_PLUS_SHARED_BOUNDARY_PRESERVING_COMPARATOR_SUPPORT` | Finite K2-MF + one shared Markovian mode. |
 | Iter020A-C | G38-P/C/A | `34704060723`, `34704210632`, `34704373278` | OU implementation/calibration/scoped support | Three-time OU toy trajectory. |
-| Iter021A | G39-P | `34704548004` | `MULTIMODE_CLASSICAL_NOISE_IMPLEMENTATION_VALIDATED` | Finite rank2/rank3 shared white noise. |
-| Iter021B | G39-C | `34704727102` / `389b8723...` | `POSITIVE_CONTROL_METHOD_CALIBRATED_MULTIMODE_R2_R3` | Calibration only. |
-| Iter021C | G39-A | `34704846612` / `8f011454...` | `NUMERICAL_OPTIMIZER_SEARCH_MISS / NESTING_VIOLATION` | No physics verdict. |
-| Iter021D | G39-A-N | `34706674297` / `30a3f202...` | `RANK3_CONTAINMENT_VALID / ORIGINAL_SEARCH_MISS_DIAGNOSED` | Diagnostic only. |
-| Iter021E | G39-A2 | `34707920572` / `da65199d...` | `DERIVED_SCOPED_MULTIMODE_RANK3_BOUNDARY_PRESERVING_COMPARATOR_SUPPORT` | Calibrated finite rank3 family. |
-| Iter022A | G40-P | `34708162180` / `0297f33f...` | `STRICT_CLASSICAL_RTN_INFORMATION_BACKFLOW_IMPLEMENTATION_VALIDATED` | RTN implementation + fixed BLP witness. |
-| Iter022B | G40-C | `34708292521` / `80107b2d...` | `PROTOCOL_DESIGN_FAIL / OUT_OF_FAMILY_POSITIVE_CONTROL + LHS_OPTIMIZER_MISS_ON_INVALID_CONTROL` | No calibration authority. |
-| Iter022C | G40-C2-E | `34708494925` / `1b52b4c5...` | `STRICT_BLP_HIDDEN_CONTROL_ELIGIBILITY_PASS` | Eligibility only. |
-| Iter022D | G40-C2 | `34708550582` / `2221f481...` | `POSITIVE_CONTROL_METHOD_CALIBRATED_STRICT_RTN` | Corrected eligible-control calibration only. |
-| Iter022E | G40-C3 | `34708885346` / `af8f23f7...` | `FIXED_WITNESS_STRICT_BLP_FILTERED_SEARCH_CALIBRATED` | Search-rule calibration only. |
-| Iter022F | G40-A | `34708971194` / `dab64180...` | `NEGATIVE_RESULT / G40A_FROZEN_SUPPORT_RULE_NOT_MET` | Fixed-witness finite RTN subset only; no general verdict. |
-| Iter023A | G40-D | `34709706322` / `89dc08a4...` | `FIXED_WITNESS_FRAGILE_ON_PANEL` | Diagnostic only; G40-A remains failed. |
-| Iter023B | G40-RC-C | `34710049387` / `1f79d9c7...` | `AXIS_FRAME_COVARIANT_RTN_SEARCH_CALIBRATED` | Family-axis-covariant witness calibration only. |
-| Iter023C | G40-RC-A | `34710216045` / `3e31a9fa...` | `RUNNING` | Prospective finite RTN adversarial with calibrated axis-frame witness. |
-| Iter024A | G41-P | `34710097236` / `e6c74225...` | `HIGH_RANK_CLASSICAL_KOSSAKOWSKI_IMPLEMENTATION_VALIDATED` | Rank-4/5/6 implementation/provenance only. |
-| Iter024B | G41-C | `34710257380` / `2bac531b...` | `QUEUED / RUNNING` | Positive-rate optimizer calibration on frozen high-rank frames only. |
+| Iter021A-E | G39-P/C/A2 | `34704548004`, `34704727102`, `34707920572` | rank2/rank3 implementation/calibration/scoped support | Finite rank3 multimode shared white noise. |
+| Iter022A-E | G40-P/C2/C3 | `34708162180`, `34708550582`, `34708885346` | RTN implementation + corrected fixed-witness calibration | Calibration only. |
+| Iter022F | G40-A | `34708971194` / `dab64180...` | `G40A_FROZEN_SUPPORT_RULE_NOT_MET` | Fixed-witness finite RTN subset. |
+| Iter023A | G40-D | `34709706322` / `89dc08a4...` | `FIXED_WITNESS_FRAGILE_ON_PANEL` | Diagnostic only. |
+| Iter023B | G40-RC-C | `34710049387` / `1f79d9c7...` | `AXIS_FRAME_COVARIANT_RTN_SEARCH_CALIBRATED` | Family-axis-covariant calibration only. |
+| Iter023C | G40-RC-A | `34710216045` / `3e31a9fa...` | `G40RCA_FROZEN_SUPPORT_RULE_NOT_MET` | Axis-frame finite RTN; shard3 agreement failed. |
+| Iter023D | G40-RC-D2 | `34710444349` / `ccf4274e...` | `PERSISTENT_OPTIMIZER_OR_OBJECTIVE_GEOMETRY_NONROBUSTNESS` | Diagnostic only; no repaired physics gate. |
+| Iter024A | G41-P | `34710097236` / `e6c74225...` | `HIGH_RANK_CLASSICAL_KOSSAKOWSKI_IMPLEMENTATION_VALIDATED` | Rank4/5/6 implementation/provenance. |
+| Iter024B | G41-C | `34710257380` / `2bac531b...` | `HIGH_RANK_RATE_OPTIMIZER_CALIBRATED` | Positive-rate search on frozen frames only. |
+| Iter024C | G41-A | `34710491309` / `766ea138...` | `DERIVED_SCOPED_HIGH_RANK_RATE_COMPARATOR_SUPPORT` | Frame-indexed rank4/5/6 positive-rate families only. |
+| Iter025A | G42-J | `34710643103` / `ec3d1a5e...` | `FULL_LOCAL_RANK_IDENTIFIABILITY_PRE_GATE` | Full 21-param real-PSD identifiability only. |
+| Iter025B | G42-C | `34710744967` / `7ebc18df...` | `QUEUED / RUNNING` | Full 21-param real-PSD positive-control optimizer calibration. |
 
-## Decisive current results
+## Decisive new terminal results
 
-### G37-A3
+### G40-RC-A and G40-RC-D2
 
-Run `34708041385`, aggregate `103594427577`, artifact `10302623647`, digest `sha256:5b50793fe136cc30ce7aa60fae05a7be60b7895794686a2f35a5ca82feb2de63`. All 8 lanes passed exact parent embedding, nesting, nonzero-gap and Sobol/LHS agreement. Durable note: `results/ITER019F_G37A3_TERMINAL.md`.
+G40-RC-A run `34710216045` was structurally valid but failed the frozen all-shards support rule solely on shard 3: Sobol/LHS gap difference `0.0022523906566203067 > 0.002`. G40-RC-D2 run `34710444349` then used four independent 64-start deep searches on the unchanged shard-3 family/witness/target. Best gaps were `0.7495354861`, `0.7450136685`, `0.7450127676`, `0.7450127451`; spread `0.0045227410 > 0.002`. Classification: `PERSISTENT_OPTIMIZER_OR_OBJECTIVE_GEOMETRY_NONROBUSTNESS`. The RTN branch has no adversarial physics PASS and no repaired gate is authorized without a separately calibrated trace-metric-aligned optimizer.
 
-### G40-A / G40-D
+Durable notes: `results/ITER023C_G40RCA_TERMINAL.md`, `results/ITER023D_G40RCD2_TERMINAL.md`.
 
-G40-A run `34708971194` failed its frozen support rule and remains a negative/inconclusive finite-family result. G40-D run `34709706322`, aggregate `103596229487`, artifact `10301928780`, digest `sha256:35d4dba7b5aea572e33b7ba6c067a5f4695b8d18fb84455e958ed2cde25a2383`, demonstrated `FIXED_WITNESS_FRAGILE_ON_PANEL`: shards 0/1 admitted panel witnesses where the single fixed witness admitted none. Durable notes: `results/ITER022F_G40A_TERMINAL.md`, `results/ITER023A_G40D_TERMINAL.md`.
+### G41-C / G41-A
 
-### G40-RC-C calibration
+G41-C run `34710257380`, aggregate `103597956597`, artifact `10302238984`, digest `sha256:567a1994b5892050379509066bf5075f1190831658638a77eaa26d36ef62ee82`: all 24 positive-control rank4/5/6 × shard × Sobol/LHS lanes passed with worst recovery around `1.6e-16`.
 
-Run `34710049387`, aggregate `103597100244`, artifact `10303335725`, digest `sha256:6b3d446be11880ae79cad0a55b74ccfff0cdf33a55f1045e04b27d6752f56f74`. Both Sobol and LHS passed 4/4 corrected hidden controls. Minimum hidden/recovered axis-frame-covariant BLP was `~0.8471377488`; worst recovery was `~1.73e-15`. This authorizes only the separately preregistered G40-RC-A run `34710216045`. Durable note: `results/ITER023B_G40RCC_TERMINAL.md`.
+G41-A run `34710491309`, aggregate `103598462910`, artifact `10303600848`, digest `sha256:fe89d973dc1f24fe50fba09542e1b1b8e1d1fbae5e9cb1f33165b7213764dea7`: all 12 rank×shard cells passed nonzero-gap and cross-method agreement. Gaps ranged `~0.08004` to `~0.90799`; maximum Sobol/LHS difference was only `~5.2e-9`. Classification: `DERIVED_SCOPED_HIGH_RANK_RATE_COMPARATOR_SUPPORT`.
 
-### G41-P implementation
+Scope remains finite frame-indexed positive-rate classical random-Hamiltonian families; arbitrary orientations/general PSD are not yet tested. Durable notes: `results/ITER024B_G41C_TERMINAL.md`, `results/ITER024C_G41A_TERMINAL.md`.
 
-Run `34710097236`, aggregate `103597226535`, artifact `10303101144`, digest `sha256:a189c87f4cb786e3fd2f5324e3bb54e3813d55f7f7ac959ff263747b811c185f`. All 12 rank-4/5/6 lanes passed the frozen classical Kossakowski rank, TP/CPTP, product-unitary factorization and zero-product-entanglement checks. This is implementation/provenance only and authorizes only a calibrated finite optimizer subfamily. Durable note: `results/ITER024A_G41P_TERMINAL.md`.
+### G42-J full-PSD identifiability
+
+Run `34710643103`, aggregate `103598755854`, artifact `10303316491`, digest `sha256:07a895f0fb309a6e642cd6eb5429e368ddcad0c78367571cfa59b7c7bce8ea9e`.
+
+All four 21-parameter hidden controls passed: Jacobian rank `21/21` at both finite-difference steps, worst condition number `5.905925058`, maximum relative two-step difference `1.262474e-9`, and CPTP diagnostics clean. Classification: `FULL_LOCAL_RANK_IDENTIFIABILITY_PRE_GATE`. This authorizes only G42-C positive-control optimization calibration. Durable note: `results/ITER025A_G42J_TERMINAL.md`.
 
 ## Active frontier
 
-1. **G40-RC-A**, run `34710216045`: prospective adversarial test under exactly the G40-RC-C axis-frame-covariant witness/search rule. Frozen nonzero gap `>1e-4`, method agreement `<=0.002`, axis-covariant BLP `>0.02`.
-2. **G41-C**, run `34710257380`: ranks 4/5/6 × four shards × Sobol/LHS positive-control rate calibration on deterministic G41-P mode frames. Frozen recovery `<0.002`. No RCG-002 target. Even PASS does not calibrate arbitrary PSD Kossakowski orientations.
+**G42-C**, run `34710744967`, launch/head `7ebc18df416b62784e85ce6090ba6e8836619d92`.
+
+Eight positive-control lanes: full real-PSD 6x6 classical Kossakowski family in 21 Cholesky coordinates, Sobol/LHS × four hidden controls, 32 starts, top-6 refinements, frozen four-time/six-product-probe observable design, max trace-distance recovery threshold `<0.002`. Exact hidden coordinates are not inserted as starts. No RCG-002 target.
+
+Only terminal G42-C PASS may authorize a separately preregistered G42-A arbitrary-orientation/full-PSD adversarial gate using the identical family/search rules.
 
 ## Stable readiness rubric
 
-Closed: independent scope discipline; coherent RCG-002 toy seed; finite MF K2/K3/K4 calibration/scoped comparator; one-mode shared Gaussian noise; corrected truly nested MF+shared finite comparator; OU three-time toy comparator; rank3 multimode shared white-noise comparator; strict RTN implementation; fixed-witness fragility diagnosed; axis-frame-covariant RTN search calibrated; rank-4/5/6 classical Kossakowski implementation validated.
+Closed: independent scope discipline; coherent RCG-002 toy seed; finite MF K2/K3/K4; one-mode shared Gaussian noise; corrected nested MF+shared finite comparator; OU finite-correlation toy comparator; rank3 multimode shared white noise; high-rank rank4/5/6 frame-indexed positive-rate comparator; full 21-param real-PSD local identifiability.
 
-Not closed: terminal G40-RC-A adversarial verdict; high-rank classical optimizer/adversarial gate; arbitrary-orientation/general PSD Kossakowski comparator; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics; any constitution gate for an actual gravity theory.
+Not closed: full-PSD optimizer calibration and adversarial comparator; robust RTN trace-metric-aligned optimization; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics; any constitution gate for an actual gravity theory.
 
 ## Claim locks
 
-Never promote finite-family gaps to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen `0.002`, `1e-4`, BLP `0.02`, family, witness or target rules post hoc. Invalid G30/G31/G37/G39/G40 results stay invalid. Do not import QGR/KMQGB/RQIR physical assumptions or desired conclusions.
+Never promote finite-family gaps to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen thresholds/families/witnesses post hoc. Invalid or nonrobust G30/G31/G37/G39/G40 results stay invalid. Do not import QGR/KMQGB/RQIR physical assumptions or desired conclusions.
