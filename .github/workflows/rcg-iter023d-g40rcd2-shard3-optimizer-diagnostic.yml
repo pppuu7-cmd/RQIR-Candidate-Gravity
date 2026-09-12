@@ -1,0 +1,61 @@
+name: RCG Iter023D G40-RC-D2 Shard3 Optimizer Diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER023D_G40RCD2_LAUNCH.md'
+
+jobs:
+  diagnose:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol64, lhs64, halton64, random64]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen shard3 diagnostic lane
+        run: |
+          mkdir -p out
+          python scripts/iter023d_g40rcd2_shard3_optimizer_diagnostic.py --method '${{ matrix.method }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023d-g40rcd2-${{ matrix.method }}
+          path: out/result.json
+
+  aggregate:
+    needs: diagnose
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen diagnostic rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==4 and all(r['structural_valid'] for r in rows))
+          by={r['method']:r for r in rows}
+          gaps={m:(None if m not in by or by[m]['best_strict_candidate'] is None else by[m]['best_strict_candidate']['gap']) for m in ('sobol64','lhs64','halton64','random64')}
+          blps={m:(None if m not in by or by[m]['best_strict_candidate'] is None else by[m]['best_strict_candidate']['axis_covariant_BLP']) for m in gaps}
+          good=[g for g in gaps.values() if g is not None]
+          spread=None if len(good)!=4 else max(good)-min(good)
+          convergence=bool(structural and len(good)==4 and spread<=0.002)
+          classification='DEEP_SEARCH_CONVERGENCE_PASS / ORIGINAL_SHARD3_SEARCH_NONROBUSTNESS_DIAGNOSED' if convergence else 'PERSISTENT_OPTIMIZER_OR_OBJECTIVE_GEOMETRY_NONROBUSTNESS'
+          summary={'iteration':'Iter023D','gate':'G40-RC-D2','n_results':len(rows),'all_structural_valid':structural,'best_gaps':gaps,'best_BLP':blps,'four_method_gap_spread':spread,'diagnostic_support':convergence,'classification':classification,'frozen_agreement_tolerance':0.002,'interpretation':'Diagnostic only. Terminal G40-RC-A remains failed; PASS here only authorizes a separately preregistered deeper-search adversarial rerun.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023d-g40rcd2-summary
+          path: summary/summary.json
