@@ -1,0 +1,104 @@
+name: RCG Iter016 G34 Calibrated Multichannel Comparator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter016_calibrated_multichannel_comparator.py'
+      - '.github/workflows/rcg-iter016-calibrated-multichannel.yml'
+  workflow_dispatch:
+
+jobs:
+  compute:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        stream: [adversarial_k2, positive_k3, positive_k4]
+        method: [sobol_lsq, lhs_lsq]
+        shard: ['0','1','2','3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run prospectively frozen G34 lane
+        run: |
+          mkdir -p out
+          python scripts/iter016_calibrated_multichannel_comparator.py \
+            --stream '${{ matrix.stream }}' --method '${{ matrix.method }}' \
+            --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg016-${{ matrix.stream }}-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: compute
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate calibrated G34 campaign
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=['sobol_lsq','lhs_lsq']
+          all_structural=(len(rows)==24 and all(r['structural_valid'] for r in rows))
+
+          positives={}
+          for K,stream in [(3,'positive_k3'),(4,'positive_k4')]:
+              positives[str(K)]={}
+              for m in methods:
+                  rr=[r for r in rows if r['stream']==stream and r['method']==m]
+                  gaps=[r['result']['best_trace_gap'] for r in rr]
+                  positives[str(K)][m]={
+                    'n':len(rr),
+                    'scientific_support':sum(int(r['result']['scientific_support']) for r in rr),
+                    'max_trace_gap':max(gaps) if gaps else None,
+                    'calibrated_all_four':bool(len(rr)==4 and all(r['structural_valid'] and r['result']['scientific_support'] for r in rr)),
+                  }
+              positives[str(K)]['calibrated_methods']=[m for m in methods if positives[str(K)][m]['calibrated_all_four']]
+              positives[str(K)]['any_method_calibrated']=bool(positives[str(K)]['calibrated_methods'])
+
+          adv=[r for r in rows if r['stream']=='adversarial_k2']
+          per_shard={}
+          for s in range(4):
+              rr={r['method']:r for r in adv if r['shard']==s}
+              gaps={m:rr[m]['result']['best_trace_gap'] for m in methods if m in rr}
+              agreement=(len(gaps)==2 and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=0.002)
+              nonzero=(len(gaps)==2 and all(g>1e-4 for g in gaps.values()))
+              per_shard[str(s)]={'gaps':gaps,'cross_method_agreement':agreement,'both_nonzero':nonzero,'scientific_support':bool(agreement and nonzero)}
+          k2_support=(len(adv)==8 and all(v['scientific_support'] for v in per_shard.values()))
+          all_adv_gaps=[r['result']['best_trace_gap'] for r in adv]
+
+          s={
+            'iteration':'Iter016','gate':'G34','n_results':len(rows),
+            'all_structural_valid':all_structural,
+            'k2_adversarial':{
+              'per_shard':per_shard,
+              'min_gap_all_methods':min(all_adv_gaps) if all_adv_gaps else None,
+              'max_gap_all_methods':max(all_adv_gaps) if all_adv_gaps else None,
+              'scoped_scientific_support':bool(k2_support),
+              'interpretation':'Support is limited to the finite calibrated K=2 additive independent-channel comparator and requires both calibrated methods plus cross-method agreement.'
+            },
+            'positive_controls':positives,
+            'next_gate_rule':'K=3/K=4 adversarial RCG-002 reruns are authorized only for K values with at least one prospectively calibrated method. Historical G30/G31 gaps are never promoted retroactively.',
+            'scope_lock':'Finite additive independent single-axis Markovian measurement-feedback GKSL comparator family only.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2))
+          print(json.dumps(s,indent=2))
+          if not all_structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg016-summary
+          path: summary/summary.json
