@@ -1,0 +1,81 @@
+name: RCG Iter035 G47-P Three-State Classical Switching Provenance
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER035_G47P_LAUNCH.md'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G47-P provenance lane
+        run: |
+          mkdir -p out
+          python scripts/iter035_g47p_three_state_classical_switching_provenance.py --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg035-g47p-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G47-P rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==6 and all(r['structural_valid'] for r in rows))
+          provenance=bool(structural and all(r['classical_provenance_support'] for r in rows))
+          memory_count=sum(int(r['memory_witness_support']) for r in rows)
+          support=bool(provenance and memory_count>=4)
+          if not structural:
+              classification='STRUCTURAL_NUMERICAL_FAIL'
+          elif not provenance:
+              classification='THREE_STATE_CLASSICAL_SWITCHING_PROVENANCE_NOT_ESTABLISHED'
+          elif memory_count<4:
+              classification='THREE_STATE_CLASSICAL_SWITCHING_MEMORY_WITNESS_NOT_ESTABLISHED'
+          else:
+              classification='THREE_STATE_CLASSICAL_SWITCHING_PRODUCT_UNITARY_PROVENANCE_VALIDATED'
+          summary={
+              'iteration':'Iter035','gate':'G47-P','n_results':len(rows),
+              'all_structural_valid':structural,'all_classical_provenance_support':provenance,
+              'memory_witness_count':memory_count,'scientific_support':support,
+              'max_factorization_error':max((r['provenance']['max_conditional_product_unitary_factorization_error'] for r in rows),default=None),
+              'max_tp_residual':max((r['provenance']['max_tp_residual'] for r in rows),default=None),
+              'min_choi_eigenvalue':min((r['provenance']['min_choi_eigenvalue'] for r in rows),default=None),
+              'max_product_output_negativity':max((r['provenance']['max_product_output_negativity'] for r in rows),default=None),
+              'min_semigroup_defect':min((r['memory']['reduced_semigroup_defect_fro'] for r in rows),default=None),
+              'max_semigroup_defect':max((r['memory']['reduced_semigroup_defect_fro'] for r in rows),default=None),
+              'classification':classification,
+              'scope_lock':'Explicit three-state classical CTMC switching among local-sum Hamiltonians; response-blind provenance/memory implementation only.',
+              'interpretation':'No RCG-002 target and no readiness increment. PASS only validates this explicit hidden-classical finite-memory family for later separately calibrated comparator work.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg035-g47p-summary
+          path: summary/summary.json
