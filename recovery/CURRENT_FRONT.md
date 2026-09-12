@@ -1,8 +1,8 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active gates: `ITER019F / G37-A3` and `ITER021E / G39-A2`
-Phase: `INDEPENDENT_RQIR_DERIVATION / BOUNDARY_PRESERVING_CLASSICAL_COMPARATOR_SEARCH`
+Active gates: `ITER019F / G37-A3`, `ITER021E / G39-A2`, and `ITER022B / G40-C`
+Phase: `INDEPENDENT_RQIR_DERIVATION / BOUNDARY_PRESERVING_AND_INFORMATION_BACKFLOW_CLASSICAL_COMPARATORS`
 
 ## Canonical status
 
@@ -13,14 +13,14 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / BOUNDARY_PRESERVING_CLASSICAL_COMPARATOR_S
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**
 
-Readiness is an internal construction metric, not a probability of physical correctness. No readiness increase is granted for a comparator gate with unresolved optimizer/nesting validity.
+Readiness is an internal construction metric, not a probability of physical correctness. No readiness increase is granted for a comparator gate with unresolved optimizer/nesting validity or for implementation/witness validation alone.
 
 ## Closed scoped comparator layers
 
 - G35 run `34697766107`: calibrated finite K3/K4 additive independent measurement-feedback support.
 - G35-R run `34702384573`: held-out K2/K3/K4 optimizer replication 18/18 PASS.
 - G36-P/C/A: one shared Gaussian classical-noise implementation, calibration and scoped adversarial support closed.
-- G38-P/C/A: OU finite-correlation three-time toy-trajectory implementation/calibration/scoped support closed. This is not strict information-backflow non-Markovian evidence.
+- G38-P/C/A: OU finite-correlation three-time toy-trajectory implementation/calibration/scoped support closed. This is not by itself strict information-backflow evidence.
 
 ## G37 truly nested MF + one shared-noise family
 
@@ -40,7 +40,7 @@ Eight diagnostic lanes were structurally valid. The exact G36 shared-parent embe
 ### Active G37-A3 boundary-preserving repair
 Run `34708041385`, launch head `28d6fa6343dabb068aba5a462f6026d8ec1a6a4f`.
 
-New prospective gate keeps the original G37-A2 Sobol/LHS 19D search intact, but also retains both exact legal parent candidates: G36 shared-only at `lambda_MF=0` and G34 K2 MF-only at `lambda_MF=1, cA=cB=0`. Both boundary seeds may be refined, but exact parent points remain candidates and all candidates are ranked by final trace distance. Frozen rules: nonzero `>1e-4`, cross-method agreement `<=0.002`, exact embedding/nesting tolerance `1e-10`. No prior result is promoted.
+New prospective gate keeps the original G37-A2 Sobol/LHS 19D search intact, but also retains both exact legal parent candidates: G36 shared-only at `lambda_MF=0` and G34 K2 MF-only at `lambda_MF=1, cA=cB=0`. Both boundary seeds may be refined, but exact parent points remain candidates and all candidates are ranked by final trace distance. Frozen rules: nonzero `>1e-4`, cross-method agreement `<=0.002`, exact embedding/nesting tolerance `1e-10`. No prior result is promoted. Latest checked state: **1/8 terminal, 7/8 in progress (12.5%)**.
 
 ## G39 rank-2/rank-3 multimode shared classical-noise family
 
@@ -60,13 +60,26 @@ All 8 diagnostic lanes passed. Exact rank2→rank3 zero-third-rate embedding rep
 ### Active G39-A2 parent-seeded repair
 Run `34707920572`, launch head `da65199d56e1cb1be5bff232f97230611dd9ef2e`.
 
-The original rank3 Sobol/LHS designs remain intact. Each method/shard also reproduces the rank2 optimum, embeds it exactly at zero third-mode rate, retains the exact point as a candidate and refines from it. Winner selection is by final trace distance. Frozen rules: exact embedding/nesting `1e-10`, nonzero `>1e-4`, cross-method agreement `<=0.002`. No family or threshold change.
+The original rank3 Sobol/LHS designs remain intact. Each method/shard also reproduces the rank2 optimum, embeds it exactly at zero third-mode rate, retains the exact point as a candidate and refines from it. Winner selection is by final trace distance. Frozen rules: exact embedding/nesting `1e-10`, nonzero `>1e-4`, cross-method agreement `<=0.002`. No family or threshold change. Latest checked state: **7/8 terminal, 1/8 cleanup in progress (87.5%)**; aggregate awaits the barrier.
+
+## G40 strict classical information-backflow layer
+
+### G40-P RTN information-backflow pre-gate — PASS
+Run `34708162180`, launch head `0297f33faabeede29e0cb81c3161b278c18be9c0`, aggregate job `103592018677`, summary artifact `10302078122`, digest `sha256:720bc3d4a9c9841d1fd84bd7c00339fc6cbc9d6a37f9ba2bc24b7c8fd702e1c1`.
+
+All 4 hidden-classical symmetric random-telegraph-noise validation lanes passed the frozen witness/admissibility rule. Minimum strong-control BLP total positive trace-distance increment was `0.5923274153651977` versus required `>0.02`; maximum weak-control BLP increment was `0.0` versus required `<1e-6`. Worst TP residual `4.440892098500626e-16`; minimum Choi eigenvalue `-3.732254805202328e-16`; maximum conditioned product-unitary factorization error `2.220988084178258e-16`; product-input output negativity `0.0`. Classification: `STRICT_CLASSICAL_RTN_INFORMATION_BACKFLOW_IMPLEMENTATION_VALIDATED`. This is implementation/witness evidence only and does not compare RCG-002.
+
+### Active G40-C optimizer calibration
+Run `34708292521`, launch head `80107b2d65c154d4e6a0cc52a2c1fffd8408dd8d`.
+
+Prospectively frozen finite RTN family uses parameters `r,nu,cA,cB,thetaA,phiA,thetaB,phiB` with `gamma=r*nu*cA` and arbitrary local Pauli axes. Four hidden in-family controls are fit under independent Sobol/LHS constructions on fixed times `[0.35,0.80,1.60,3.00]` and six product-state probes. Each lane must recover maximum trace distance `<0.002` and retain BLP total positive increment `>0.02`; both methods must pass all four controls. G40-C is calibration only. No RCG-002 adversarial gate is authorized unless this terminally passes. Latest checked state: queued.
 
 ## Open layers
 
 - terminal classification of G37-A3 and G39-A2;
+- terminal optimizer calibration of the strict-BLP RTN family G40-C;
 - higher-rank/general positive-Kossakowski classical comparator beyond finite G39 rank;
-- strict information-backflow/non-Markovian comparator layer with a prospectively calibrated witness;
+- separate RCG-002 strict information-backflow adversarial comparator only if G40-C passes;
 - externally anchored observable/holdout programme;
 - full candidate-gravity dynamics / continuum completion.
 
@@ -76,4 +89,4 @@ Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, 
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + FINITE_COMPARATOR_SUPPORT_ONLY + G37C2_CALIBRATED + G37A2_OPTIMIZER_FAIL + G37A2N_EXACT_EMBEDDING_PASS_SURROGATE_FAIL + G37A3_RUNNING + G39C_CALIBRATED + G39A_OPTIMIZER_FAIL + G39AN_DIAGNOSTIC_PASS + G39A2_RUNNING`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + FINITE_COMPARATOR_SUPPORT_ONLY + G37C2_CALIBRATED + G37A2_OPTIMIZER_FAIL + G37A2N_EXACT_EMBEDDING_PASS_SURROGATE_FAIL + G37A3_RUNNING + G39C_CALIBRATED + G39A_OPTIMIZER_FAIL + G39AN_DIAGNOSTIC_PASS + G39A2_87P5_PERCENT + G40P_STRICT_BLP_IMPLEMENTATION_PASS + G40C_QUEUED`.
