@@ -1,0 +1,59 @@
+name: RCG Iter022C G40-C2 Control Eligibility
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER022C_G40C2_CONTROL_ELIGIBILITY_LAUNCH.md'
+
+jobs:
+  eligibility:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G40-C2 eligibility lane
+        run: |
+          mkdir -p out
+          python scripts/iter022c_g40c2_control_eligibility.py --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg022c-g40c2e-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: eligibility
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen eligibility rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==4 and all(r['structural_valid'] for r in rows))
+          support=bool(structural and all(r['scientific_support'] for r in rows))
+          summary={'iteration':'Iter022C','gate':'G40-C2-E','n_results':len(rows),'all_structural_valid':structural,'scientific_support':support,
+                   'target_BLP_by_shard':{str(r['shard']):r['target_BLP_total_positive_increment'] for r in rows},
+                   'all_inside_bounds':bool(len(rows)==4 and all(r['inside_frozen_bounds'] for r in rows)),
+                   'frozen_BLP_min':0.02,
+                   'interpretation':'Eligibility only. PASS authorizes a separate prospectively launched G40-C2 calibration.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg022c-g40c2e-summary
+          path: summary/summary.json
