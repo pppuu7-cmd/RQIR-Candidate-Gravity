@@ -1,0 +1,63 @@
+name: Jacobian data contract wave 28
+
+on:
+  push:
+    branches: [jacobian-data-contract-wave28]
+    paths:
+      - 'compute_wave28/**'
+      - 'evidence/WAVE28_F1F2_DATA_AVAILABILITY.json'
+      - 'post_freeze/WAVE28_JACOBIAN_DATA_CONTRACT_PREREGISTRATION.md'
+      - 'holdouts/WAVE22_FROZEN_BANK.json'
+      - 'certificates/WAVE27_ASYMPTOTIC_SAFETY_LINEAGE_CERTIFICATE.md'
+      - '.github/workflows/jacobian-data-contract-wave28.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  audit-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - evidence_gate
+          - trajectory_count
+          - synthetic_fd_contract
+          - projection_contract
+          - uncertainty_contract
+          - anti_splice_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.test }}
+        run: python compute_wave28/${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave28-${{ matrix.test }}
+          path: wave28_results/${{ matrix.test }}.json
+
+  aggregate-wave28:
+    if: always()
+    needs: [audit-tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave28_downloads
+      - run: python compute_wave28/aggregate_wave28.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jacobian-data-contract-wave28-summary
+          path: wave28_summary.json
