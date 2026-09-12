@@ -1,0 +1,31 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "source": "Denz, Pawlowski, Reichert, EPJC 78, 336 (2018), arXiv:1612.07315v2",
+  "best_realization": {
+    "coordinates": ["mu", "lambda3", "lambda4", "g3", "g4"],
+    "fixed_point": [-0.45, 0.12, 0.028, 0.83, 0.57],
+    "physical_J8_basis_available": false
+  },
+  "analytic_surrogate": {
+    "paper_label": "Truncation 4 / Section 6 analytic-flow system",
+    "coordinates": ["mu", "lambda3", "lambda4", "g3", "g4"],
+    "fixed_point": [-0.23, -0.060, -0.11, 0.64, 0.55],
+    "bar_spectrum": ["-3.0", "-1.9+1.6i", "-1.9-1.6i", "1.7", "3.4"],
+    "tilde_spectrum": ["-2.2", "-0.50+1.7i", "-0.50-1.7i", "1.5+0.88i", "1.5-0.88i"],
+    "eta_phi_zero": true,
+    "gravitational_couplings_from_derivative_expansion_at_p2_0": true,
+    "analytic_beta_equations_F1_to_F5_published": true,
+    "paper_warns_local_projection_can_introduce_large_error": true,
+    "paper_use_boundary": "qualitatively similar fixed-point behaviour / qualitative IR trajectory study",
+    "classification": "SURROGATE_NOT_J8"
+  },
+  "wave32_minimum_orientation_contract": {
+    "dimension": 5,
+    "relevant_real_dimension": 3,
+    "required_orientation_input": "numeric 5x5 stability matrix under one frozen closure OR normalized right-eigenvector basis",
+    "required_trajectory_count_symmetric": 7,
+    "required_uncertainty_variants_for_J9": true
+  },
+  "information_firewall": "No polygon/KMQGB-derived QGR equations, architecture, fitted parameters, or repairs are admitted."
+}
