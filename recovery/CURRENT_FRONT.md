@@ -1,80 +1,85 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active iteration: `ITER019A`
-Phase: `INDEPENDENT_RQIR_DERIVATION / COMBINED_CLASSICAL_COMPARATOR_CALIBRATION`
+Active iterations: `ITER019C / G37-C2` and `ITER021A / G39-P`
+Phase: `INDEPENDENT_RQIR_DERIVATION / NESTED_COMBINED_AND_MULTIMODE_CLASSICAL_COMPARATORS`
 
 ## Canonical status
 
-- Candidate-model/programme readiness: **56%**
+- Candidate-model/programme readiness: **57%**
 - Theory established: **0%**
 - Active seed: `RCG-002 Relational controlled-phase channel`
 - Independent-from-QGR construction contract: **FROZEN**
-- Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`
+- Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**
 
-Readiness is an internal construction metric, not a probability that the candidate is correct. The move from 55% to 56% records closure of one additional scoped adversarial comparator layer, shared Gaussian classical Hamiltonian noise. It does not imply a general no-go theorem and it does not score the still-running combined-family calibration.
+Readiness is an internal construction metric, not a probability that RCG-002 is physically correct. The increase from 56% to 57% records closure of the finite three-time OU colored-classical-noise trajectory comparator subgate. The strict information-backflow/non-Markovian layer, broader classical-channel families, externally anchored observables and continuum gravity dynamics remain open.
 
-## Iter017 / G35 terminal — K=3/K=4 measurement-feedback comparator
+## Established scoped comparator results
 
-Run `34697766107`, head `fbc71768da3cec0d6ea5a8cbb755a29036b16726`, aggregate job `103578278887`, summary artifact `10301201162`, digest `sha256:7e07e47311db7a279e2de47502d64a36cf31623c10c0da67f062ee8817bac199`.
+### Measurement-feedback K=2/K=3/K=4
 
-All 24 frozen lanes were structurally valid. K=3 and K=4 each passed all four RCG-002 shards under both calibrated methods with nonzero gap `>1e-4`, cross-method agreement `<=0.002`, nesting sanity, and 4/4 admissibility. Classification: `DERIVED_SCOPED_K3_K4_CALIBRATED_COMPARATOR_SUPPORT`.
+G34 run `34695835216` and G35 run `34697766107` prospectively calibrated and reran the finite additive independent single-axis Markovian measurement-feedback family. G35 aggregate job `103578278887`, artifact `10301201162`, digest `sha256:7e07e47311db7a279e2de47502d64a36cf31623c10c0da67f062ee8817bac199` passed all K=3/K=4 adversarial, nesting and admissibility rules. Classification: `DERIVED_SCOPED_K3_K4_CALIBRATED_COMPARATOR_SUPPORT`.
 
-Scope ceiling remains the finite additive independent single-axis Markovian measurement-feedback GKSL family. Durable note: `results/ITER017_G35_CALIBRATED_K3K4_TERMINAL.md`.
+Held-out optimizer replication G35-R run `34702384573`, artifact `10300682102`, digest `sha256:5724519f32faf1e10d011e97d10df283fa6225facdfdb9ad8b14e82577557b13`, passed 18/18 new K2/K3/K4 controls. Classification: `HELDOUT_OPTIMIZER_ROBUSTNESS_PASS_K2_K3_K4`.
 
-## Iter017R / G35-R terminal — held-out optimizer robustness
+### Shared Gaussian classical noise
 
-Run `34702384573`, head `1b93cbf14b4705ae2699f559523d1c1b1ae28be5`, aggregate job `103580063685`, summary artifact `10300682102`, digest `sha256:5724519f32faf1e10d011e97d10df283fa6225facdfdb9ad8b14e82577557b13`.
+G36-P run `34702575861` validated the convex-mixture-of-product-unitaries implementation. G36-C run `34703606707`, artifact `10301561148`, calibrated 12/12 hidden controls. G36-A run `34703779268`, aggregate job `103580126265`, artifact `10301491686`, digest `sha256:2a75483c5ed8261e62466581b7a00046dd5d7a81ddffc5e49e38e819f81832ce`, retained nonzero RCG-002 gaps on all four shards under both calibrated methods. Classification: `DERIVED_SCOPED_SHARED_NOISE_CALIBRATED_COMPARATOR_SUPPORT`.
 
-All 18 new held-out positive controls passed for K=2/K=3/K=4 and both Sobol-LSQ/LHS-LSQ designs. Worst trace-distance recovery gap was `5.6435139378164e-13` versus frozen `<0.002`. Classification: `HELDOUT_OPTIMIZER_ROBUSTNESS_PASS_K2_K3_K4`. This is methodology robustness only. Durable note: `results/ITER017R_G35R_HELDOUT_OPTIMIZER_REPLICATION_TERMINAL.md`.
+### OU colored finite-correlation trajectory comparator
 
-## Iter018A / G36-P terminal — shared-noise implementation
+G38-P run `34704060723`, aggregate job `103580959913`, artifact `10301152567`, digest `sha256:8642947c6b1c03689c35ed472ed994fe1cca2b3724c9320e07108dff4f4e0980`, passed 12/12 implementation checks. At one final time this OU channel depends only on integrated phase variance, so a single-time adversarial test would be redundant with G36.
 
-Run `34702575861`, head `270a26300117aeebe23af126dd4e6c53c96cf3f9`, aggregate job `103576905242`, artifact `10300760790`, digest `sha256:3a03b7462ccf026c6cc7cdef88fbe0c9f4710c3040f467a5caf9fa5e3e4d228d`.
+G38-C run `34704210632`, aggregate job `103581251810`, artifact `10300863359`, digest `sha256:bd16f6d2fb356285d29725b2275fe3f1ca93b4bbb8287c2815e52a755f12cf2f`, calibrated 12/12 three-time trajectories at `T=[0.25,0.5,1.0]`.
 
-12/12 frozen implementation/provenance checks passed for shared Gaussian classical Hamiltonian noise represented as a convex mixture of product unitaries. Classification: `CLASSICAL_SHARED_NOISE_IMPLEMENTATION_VALIDATED`.
+G38-A run `34704373278`, workflow head `493da45d6a9b88e5cee32fca598fb657ea7a2ce4`, aggregate job `103581860728`, summary artifact `10301542445`, digest `sha256:ed9a0728c9288e696e6ed62fba176b848a46790c5ec7fe2faad9dbf04d26aa00`, passed the frozen four-shard × two-method toy-trajectory adversarial rule. Maximum trajectory-gap pairs (Sobol,LHS):
+- shard 0: `(0.025545074758564972, 0.0255450797621222)`;
+- shard 1: `(0.10046306945014429, 0.1004630806848435)`;
+- shard 2: `(0.35877357179426705, 0.3587736163604044)`;
+- shard 3: `(0.5996899264483135, 0.5996899101531477)`.
 
-## Iter018B / G36-C terminal — shared-noise optimizer calibration
+Classification: `DERIVED_SCOPED_OU_COLORED_TRAJECTORY_COMPARATOR_SUPPORT`. The target convention is only the controlled-phase toy trajectory `target(theta*T)`, not continuum gravity-time dynamics. This is not an information-backflow non-Markovian no-go.
 
-Run `34703606707`, head `95335aa32e92dcd1cc76762cd6fd3717754a1057`, aggregate job `103579641822`, summary artifact `10301561148`, digest `sha256:5f82bf2eb2b74bf0ac2f2bbc6e5f252898da97420fa5e0da1f1fd91f6e5f5f0c`.
+## G37 protocol correction
 
-All 12 hidden in-family positive-control lanes passed with both independently defined Sobol-LSQ and Latin-hypercube-LSQ constructions. Worst trace-distance recovery gap was `5.288760714311301e-15` versus frozen `<0.002`. Classification: `POSITIVE_CONTROL_METHOD_CALIBRATED_SHARED_NOISE`. Durable note: `results/ITER018B_G36C_SHARED_NOISE_CALIBRATION_TERMINAL.md`.
+Old G37-C run `34703787083` calibrated its own 18-dimensional family, but code inspection showed that family was **not** a mathematical superset of shared-noise-only: normalized K=2 measurement-feedback weights could not switch the MF component fully off.
 
-## Iter018C / G36-A terminal — shared-noise RCG-002 adversarial comparator
+Old G37-A run `34704008252`, aggregate job `103581352127`, artifact `10301497283`, digest `sha256:26926f7123ad1f69f4d13d17354c5e02a48a817cf6028f4850acc03a5422c0ee`, returned a nesting failure on shards 1 and 2. Because the family did not actually contain the declared parent, this is classified `PROTOCOL_DESIGN_FAIL / NONNESTED_COMBINED_FAMILY`, not a scientific FAIL of RCG-002. No threshold was weakened and the old output remains diagnostic only. Durable note: `results/ITER019B_G37A_NONNESTED_PROTOCOL_FAIL_TERMINAL.md`.
 
-Run `34703779268`, head `15ba7c90fd4794d3d31e41a5a08ee35511284faf`, aggregate job `103580126265`, summary artifact `10301491686`, digest `sha256:2a75483c5ed8261e62466581b7a00046dd5d7a81ddffc5e49e38e819f81832ce`.
+## Active authoritative gate — Iter019C / G37-C2
 
-All 8 frozen adversarial lanes were structurally valid. For all four RCG-002 shards both calibrated methods retained nonzero gaps and agreed within `0.002`. Gap pairs (Sobol,LHS) were approximately `(0.025499009,0.025499011)`, `(0.100361598,0.100361587)`, `(0.358737039,0.358737038)`, `(0.598026653,0.598026873)`.
+Run `34704249235`, launch head `0852fe30aa6bb7542dbb5ff4ec17fe8fd6eb55c1`.
 
-Classification: `DERIVED_SCOPED_SHARED_NOISE_CALIBRATED_COMPARATOR_SUPPORT`.
+Corrected family adds an explicit `lambda_MF in [0,1]`:
+`L = L_MF(lambda_MF * theta) + L_shared`.
+Therefore `lambda_MF=0` exactly contains shared-noise-only, while `cA=cB=0` exactly contains the K=2 measurement-feedback boundary.
 
-Scope ceiling: one shared Gaussian classical Hamiltonian-noise process coupled to local Pauli axes, represented as a convex mixture of product unitaries. This is not a no-go theorem for all classical/semiclassical mediators. Durable note: `results/ITER018C_G36A_SHARED_NOISE_ADVERSARIAL_TERMINAL.md`.
+Frozen calibration: 8 hidden in-family controls × Sobol/LHS = 16 positive-control lanes, including exact MF-only and shared-only boundaries, plus 4 independent admissibility lanes. Every positive-control trace distance must be `<0.002`; all admissibility thresholds must pass.
 
-## Active gate — Iter019A / G37-C combined comparator calibration
+Latest checked live state: **19/20 scientific lanes terminal success (95%)**. Only `positive (sobol_lsq, shard 4)` — the MF-only boundary — remains in progress. Aggregate is not authorized until it terminates. Only a terminal G37-C2 scientific PASS may authorize a corrected nested-family RCG-002 adversarial gate.
 
-Run `34703787083`, launch head `59cf94512a65a54a37eba05ae3093b7ee85bead0`.
+## Active independent pre-gate — Iter021A / G39-P
 
-The prospectively frozen combined family is the calibrated K=2 additive independent single-axis measurement-feedback GKSL generator plus the validated shared Gaussian classical Hamiltonian-noise generator. This gate is positive-control calibration only and does not inspect RCG-002 adversarial performance.
+Run `34704548004`, head `995f3c60b7648afe7a7d1a9b6ebb4c9e609dbf20`.
 
-Frozen controls: six hidden in-family states × two independent optimizer designs, including four interior combined controls, one exact measurement-feedback-only boundary control, and one strong shared-noise control; plus four independent TP/CP/PSD/trace/Hermiticity admissibility lanes. Positive-control recovery must be `<0.002` in all 12 lanes; all four admissibility lanes must pass their frozen thresholds.
+Twelve lanes validate a broader finite rank-2/rank-3 positive-Kossakowski classical white-noise decomposition `L=sum_k kappa_k D[F_k]`, with multiple shared classical modes and prospectively noncommuting local axes. Each stochastic trajectory still has Hamiltonian `H_A(t)⊗I + I⊗H_B(t)` and therefore factorizes into local unitaries; the averaged channel is correlated local-random-unitary.
 
-Latest checked live state: **14/16 scientific lanes terminal success; 2/16 in progress** (`positive sobol_lsq shard 4` and `positive lhs_lsq shard 4`). Aggregate is blocked until both finish. No scientific PASS is inferred from green individual jobs before aggregate inspection.
+Frozen checks cover TP/CP/PSD/trace, zero output negativity over prospectively sampled product inputs, mode-order invariance, exact single-mode reduction, and explicit noncommuting-axis richness. Latest checked state: **12/12 validation lanes in progress**; aggregate pending. G39-P is implementation/admissibility only and cannot support an RCG-002 claim by itself.
 
-Only terminal G37-C scientific PASS may authorize a separate combined-family RCG-002 adversarial gate. A calibration failure is retained and blocks adversarial interpretation; no threshold/family rescue is allowed post hoc.
+## Open layers
 
-## Open layers after current gate
-
-- combined measurement-feedback + shared-classical-noise adversarial comparator: blocked pending G37-C terminal PASS;
-- broader correlated/general positive-Kossakowski classical-channel comparators: open;
-- non-Markovian/colored-noise comparator layer: open;
+- corrected truly nested MF + shared-noise adversarial comparator: blocked pending G37-C2 PASS;
+- multimode shared-classical-noise optimizer calibration/adversarial search: blocked pending G39-P PASS;
+- higher-rank/general positive-Kossakowski classical-channel comparator: open beyond finite G39 rank;
+- strict information-backflow/non-Markovian comparator layer: open;
 - externally anchored observable/holdout programme: open;
 - full candidate-gravity dynamics / continuum completion: open.
 
 ## Claim locks
 
-Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, any claim that all classical/semiclassical mediators are excluded, green-CI-as-science, post-hoc threshold weakening, retroactive promotion of G30/G31 minima, or importing physical assumptions/results from QGR/KMQGB/RQIR.
+Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, any claim that all classical/semiclassical mediators are excluded, treating green CI as scientific PASS, post-hoc threshold/family weakening, retroactive promotion of G30/G31 minima, or importing physical assumptions/results from QGR/KMQGB/RQIR.
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + K2_K3_K4_SCOPED_CALIBRATED_MEASUREMENT_FEEDBACK_SUPPORT + HELDOUT_OPTIMIZER_ROBUSTNESS_PASS + SHARED_NOISE_IMPLEMENTATION_AND_OPTIMIZER_CALIBRATED + SHARED_NOISE_SCOPED_CALIBRATED_COMPARATOR_SUPPORT + G37C_COMBINED_CALIBRATION_RUNNING`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + MEASUREMENT_FEEDBACK_K2_K4_SCOPED_SUPPORT + SHARED_NOISE_SCOPED_SUPPORT + OU_COLORED_THREE_TIME_SCOPED_SUPPORT + G37_OLD_PROTOCOL_FAIL_RETAINED + G37C2_NESTED_CALIBRATION_95_PERCENT + G39P_MULTIMODE_IMPLEMENTATION_RUNNING`.
