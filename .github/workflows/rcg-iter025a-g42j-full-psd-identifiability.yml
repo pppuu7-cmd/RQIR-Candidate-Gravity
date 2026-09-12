@@ -1,0 +1,65 @@
+name: RCG Iter025A G42-J Full PSD Identifiability
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER025A_G42J_LAUNCH.md'
+
+jobs:
+  identify:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G42-J identifiability lane
+        run: |
+          mkdir -p out
+          python scripts/iter025a_g42j_full_psd_kossakowski_identifiability.py --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg025a-g42j-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: identify
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G42-J rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==4 and all(r['structural_valid'] for r in rows))
+          support=bool(structural and all(r['scientific_support'] for r in rows))
+          summary={'iteration':'Iter025A','gate':'G42-J','n_results':len(rows),'all_structural_valid':structural,
+                   'support_count':sum(int(r['scientific_support']) for r in rows),
+                   'min_rank_h':min((r['jacobian']['rank_h'] for r in rows),default=None),
+                   'min_rank_h2':min((r['jacobian']['rank_h2'] for r in rows),default=None),
+                   'max_condition':max((max(r['jacobian']['condition_h'],r['jacobian']['condition_h2']) for r in rows),default=None),
+                   'max_relative_two_step_difference':max((r['jacobian']['relative_two_step_difference'] for r in rows),default=None),
+                   'max_tp_residual':max((r['admissibility']['max_tp_residual'] for r in rows),default=None),
+                   'min_choi_eigenvalue':min((r['admissibility']['min_choi_eigenvalue'] for r in rows),default=None),
+                   'scientific_support':support,
+                   'classification':'FULL_LOCAL_RANK_IDENTIFIABILITY_PRE_GATE' if support else 'FULL_PSD_IDENTIFIABILITY_PRE_GATE_NOT_CLOSED',
+                   'interpretation':'Identifiability/admissibility pre-gate only; no RCG-002 target and no readiness increase.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg025a-g42j-summary
+          path: summary/summary.json
