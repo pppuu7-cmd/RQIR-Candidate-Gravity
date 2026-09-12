@@ -1,0 +1,65 @@
+name: RCG Iter037 G47-A Three-State Switching Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER037_G47A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G47-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter037_g47a_three_state_switching_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg037-g47a-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G47-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          pairs=[]
+          for s in range(4):
+              rr=[r for r in rows if r['shard']==s]
+              gaps=sorted([r['best_candidate']['gap'] for r in rr])
+              pair_ok=bool(len(rr)==2 and all(r['admissible'] and r['lane_support'] for r in rr) and abs(gaps[1]-gaps[0])<=0.002)
+              pairs.append({'shard':s,'gaps':gaps,'difference':abs(gaps[1]-gaps[0]) if len(gaps)==2 else None,'pair_support':pair_ok})
+          support=bool(structural and all(p['pair_support'] for p in pairs))
+          summary={'iteration':'Iter037','gate':'G47-A','n_results':len(rows),'all_structural_valid':structural,'pairs':pairs,'scientific_support':support,'classification':'DERIVED_SCOPED_THREE_STATE_CLASSICAL_SWITCHING_COMPARATOR_SUPPORT' if support else 'G47A_FROZEN_SUPPORT_RULE_NOT_MET','scope_lock':'Finite explicit 12D stationary three-state hidden-classical switching/product-unitary family only.','interpretation':'Scoped toy-trajectory comparator result; never promote to arbitrary classical memory or all-classical no-go.'}
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg037-g47a-summary
+          path: summary/summary.json
