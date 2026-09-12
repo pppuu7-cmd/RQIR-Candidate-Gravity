@@ -1,0 +1,69 @@
+name: RCG Iter019D G37-A2 Nested Combined Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER019D_G37A2_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G37-A2 nested adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter019d_g37a2_nested_combined_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg019d-g37a2-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G37-A2 rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq'); nz=1e-4; agree=0.002; slack=0.002
+          # Exact terminal parent minima: G34 K2 measurement-feedback and G36-A shared-noise.
+          mf={0:0.026070816008971712,1:0.1046226877828865,2:0.40307758671702226,3:0.532452669358466}
+          shared={0:0.025499008832948887,1:0.10036158741640057,2:0.35873703839655824,3:0.5980266528346264}
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          shards={}
+          for s in range(4):
+              rr={r['method']:r for r in rows if r['shard']==s}; gaps={m:rr[m]['result']['best_trace_gap'] for m in methods if m in rr}
+              both=bool(len(gaps)==2 and all(v>nz for v in gaps.values()))
+              agreement=bool(len(gaps)==2 and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=agree)
+              best=min(gaps.values()) if gaps else None
+              parent=min(mf[s],shared[s])
+              nesting=bool(best is not None and best<=parent+slack)
+              shards[str(s)]={'gaps':gaps,'both_nonzero':both,'cross_method_agreement':agreement,'best_exact_parent_gap':parent,'combined_best_gap':best,'nesting_sanity':nesting,'scientific_support':bool(both and agreement and nesting)}
+          support=bool(structural and all(v['scientific_support'] for v in shards.values()))
+          s={'iteration':'Iter019D','gate':'G37-A2','n_results':len(rows),'all_structural_valid':structural,'per_shard':shards,'scientific_support':support,'frozen_rules':{'nonzero_gap':nz,'cross_method_agreement':agree,'nesting_slack':slack},'interpretation':'Support, if any, is restricted to the calibrated truly nested finite K2 measurement-feedback + single shared Gaussian classical-noise Markovian family. No general classical/semiclassical no-go.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(s,indent=2)); print(json.dumps(s,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg019d-g37a2-summary
+          path: summary/summary.json
