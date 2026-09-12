@@ -1,7 +1,8 @@
 import json
 from pathlib import Path
-E=json.loads(Path('evidence/WAVE34_APPENDIX_F_SURROGATE_EVIDENCE.json').read_text())
-P=Path('docs/WAVE34_APPENDIX_F_SURROGATE_PREREGISTRATION.md').read_text()
+ROOT=Path(__file__).resolve().parents[1]
+E=json.loads((ROOT/'evidence/WAVE34_APPENDIX_F_SURROGATE_EVIDENCE.json').read_text())
+P=(ROOT/'docs/WAVE34_APPENDIX_F_SURROGATE_PREREGISTRATION.md').read_text()
 signals={
  'surrogate_classification_is_permanent':E['classification']=='SURROGATE_NOT_J8' and 'SURROGATE_NOT_J8' in P,
  'good_match_cannot_close_physical_J8':'Physical J8 remains blocked' in P,
