@@ -1,0 +1,37 @@
+{
+  "status": "FROZEN_CANDIDATE_BLIND_FINITE_PROXY_EXAM",
+  "authority_run": 34661882499,
+  "authority_commit": "9009bb7e68e083cc819ebf0a3d6b6a111950e456",
+  "parameter_order": ["c3", "d3", "e4", "f4", "s2", "s0"],
+  "selection_rule": "exhaustive 10-of-12 D-optimal max logdet(X^T X + 1e-12 I), preregistered before candidate inspection",
+  "thresholds": {
+    "rank": 6,
+    "condition_number_max": 8.0,
+    "profiled_min_singular_value_min": 0.15,
+    "perturbation_full_rank_fraction_min": 0.99,
+    "perturbation_q05_min_singular_value_min": 0.15,
+    "perturbation_fraction": 0.02,
+    "perturbation_trials": 1000,
+    "perturbation_seed": 2201
+  },
+  "probes": [
+    {"name":"P2_q0.65","sector":"2pt","row":[0.0,0.0,0.0,0.0,0.4225,0.0]},
+    {"name":"P0_q0.35","sector":"2pt","row":[0.0,0.0,0.0,0.0,0.0,0.1225]},
+    {"name":"P0_q0.75","sector":"2pt","row":[0.0,0.0,0.0,0.0,0.0,0.5625]},
+    {"name":"V3_x0.5_h-1","sector":"3pt","row":[0.25,-0.125,0.0,0.0,0.075,0.025]},
+    {"name":"V3_x0.7_h1","sector":"3pt","row":[0.49,0.343,0.0,0.0,0.105,-0.049]},
+    {"name":"V3_x0.9_h-1","sector":"3pt","row":[0.81,-0.729,0.0,0.0,0.135,0.081]},
+    {"name":"A4_s0.25_t0.15_h1","sector":"4pt","row":[0.1,0.0075,0.085,0.0375,0.025,0.012]},
+    {"name":"A4_s0.4_t0.2_h-1","sector":"4pt","row":[0.15,-0.016,0.2,-0.08,0.04,0.016]},
+    {"name":"A4_s0.55_t0.25_h1","sector":"4pt","row":[0.2,0.0275,0.365,0.1375,0.055,0.02]},
+    {"name":"A4_s0.7_t0.3_h-1","sector":"4pt","row":[0.25,-0.042,0.58,-0.21,0.07,0.024]}
+  ],
+  "authority_metrics": {
+    "condition_number": 5.249949491713074,
+    "profiled_min_singular_value": 0.19974483383518615,
+    "perturbation_full_rank_fraction": 1.0,
+    "perturbation_q05_min_singular_value": 0.193224078910377,
+    "minimum_synthetic_comparator_distance": 0.13468715343342882
+  },
+  "governance": "A future candidate may be evaluated against this bank but may not alter probe selection, rows, thresholds, nuisance definition, perturbation seed or authority metrics."
+}
