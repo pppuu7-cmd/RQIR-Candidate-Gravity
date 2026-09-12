@@ -1,8 +1,8 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-12
+Updated: 2026-09-13
 Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_ATTACK`
-Active production gate: `ITER038 / G46-A extended trace-ball adversarial`
+Active production prerequisite: `ITER039 / G48-C cap32-cap64 response-blind calibration` (to be launched prospectively after this front sync).
 
 ## Canonical status
 
@@ -13,52 +13,34 @@ Active production gate: `ITER038 / G46-A extended trace-ball adversarial`
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 
-Readiness is programme completion, not probability of correctness. `61% -> 62%` came from G44-A; `62% -> 63%` comes from terminal G47-A closing a distinct finite hidden-classical memory comparator layer. Calibration/provenance gates alone never raise readiness.
+Readiness is programme completion, not probability of correctness. `61% -> 62%` came from G44-A; `62% -> 63%` from terminal G47-A. G46-A deepens the already-counted bounded Markovian PSD rubric and does not add another point.
 
 ## Newly closed authority
 
+### G46-A extended trace-ball adversarial — PASS
+
+Run `34719458597`, launch/head `a2dd7fd3cf3b40f642077c62bd1c0020a97d12bb`, aggregate job `103623455694`, summary artifact `10304948789`, digest `sha256:187128fcab86e209f622f8e1eabd13dc8630d5361c2a9ccc44eb40ccb905e263`.
+
+All 16/16 lanes are structurally valid; all eight Sobol/LHS pair rules pass and all four cap-nesting rules pass. Frozen classification: `DERIVED_SCOPED_EXTENDED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP8_CAP16`.
+
+Best gaps remain finite and materially unchanged when the trace cap is enlarged from 8 to 16 on the frozen four-shard toy target panel. This is scoped bounded real-PSD Markovian support only; it is not an unbounded-PSD theorem and not an all-classical/semiclassical no-go. Durable note: `results/ITER038_G46A_EXTENDED_TRACE_BALL_ADVERSARIAL_TERMINAL.md`.
+
 ### G47-A explicit three-state hidden-classical switching adversarial — PASS
 
-Run `34719377641`, launch/head `4898523929c698030c49709b6210a21d8f5d2095`, aggregate `103622436777`, summary artifact `10305072882`, digest `sha256:f75f0a590cae9978b5abe2e56386f237d4e05323c94c4e4321cbb22ab1ef99dd`.
+Run `34719377641`, launch/head `4898523929c698030c49709b6210a21d8f5d2095`, aggregate `103622436777`, artifact `10305072882`, digest `sha256:f75f0a590cae9978b5abe2e56386f237d4e05323c94c4e4321cbb22ab1ef99dd`. Classification `DERIVED_SCOPED_THREE_STATE_CLASSICAL_SWITCHING_COMPARATOR_SUPPORT`; frozen bounded 12D stationary three-state CTMC switching/product-unitary family only. This moved readiness `62% -> 63%`.
 
-All 8/8 lanes pass structural/provenance and all four frozen Sobol/LHS pair-agreement rules. Gap pairs:
-- s0 `0.6385600880482375 / 0.6385600884311459`, diff `3.8290837167664904e-10`;
-- s1 `0.6784960973078257 / 0.6784961451118307`, diff `4.780400497672588e-08`;
-- s2 `0.8235518631773218 / 0.8235518632703851`, diff `9.306333481617912e-11`;
-- s3 `0.7695388395862157 / 0.7695390013607699`, diff `1.6177455419708053e-07`.
+### Calibration/provenance authority retained
 
-Classification `DERIVED_SCOPED_THREE_STATE_CLASSICAL_SWITCHING_COMPARATOR_SUPPORT`. Scope ceiling: only the frozen bounded 12D stationary three-state CTMC switching/product-unitary family; not arbitrary classical memory or a universal no-go. Durable note: `results/ITER037_G47A_THREE_STATE_SWITCHING_ADVERSARIAL_TERMINAL.md`. Readiness `62% -> 63%`.
+- G46-C run `34719083985`: `EXTENDED_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED_CAP8_CAP16`.
+- G47-C run `34719251400`: `THREE_STATE_CLASSICAL_SWITCHING_OPTIMIZER_CALIBRATED`.
+- G45-P run `34718225194`: generic complex-PSD GKSL leaves honest classical random-Hamiltonian provenance on frozen controls.
+- G40-TM-A run `34716863840`: `G40TMA_FROZEN_SUPPORT_RULE_NOT_MET`; RTN robustness remains unresolved.
 
-### G47-C three-state switching optimizer calibration — PASS
+## Next authorized gate
 
-Run `34719251400`, launch/head `2623e3e898f197cfdacce5a02532b416e886298e`, aggregate `103622040491`, artifact `10305347477`, digest `sha256:8d5f005501a97c2623da1e83d823732ec44210187bd3f84243873595bfdf09bf`.
+`ITER039 / G48-C`: response-blind calibration of the same basis-invariant real-PSD trace-ball optimizer at caps `{32,64}` before any wider-cap adversarial production.
 
-All 8/8 response-blind positive controls pass. Worst training gap `5.4275615639463476e-11`, held-out gap `3.599259601883243e-11`, normalized parameter error `7.652303300674281e-10`, provenance 8/8. Classification `THREE_STATE_CLASSICAL_SWITCHING_OPTIMIZER_CALIBRATED`. Calibration only. Durable note: `results/ITER036_G47C_THREE_STATE_SWITCHING_CALIBRATION_TERMINAL.md`.
-
-### G46-C extended basis-invariant trace-ball calibration — PASS
-
-Run `34719083985`, launch/head `9c1f78dd72d70ad3f47a6fc54ef0c550a64a4290`, aggregate `103622183765`, artifact `10305154162`, digest `sha256:7d6193093c2dc423a479e747707c80af1975f4d87bfd646207d426830ecad0c6`.
-
-All 24/24 response-blind lanes pass. Cap8: 12/12, worst gap `1.0900999144735261e-11`, worst relative C error `3.479885009977411e-11`. Cap16: 12/12, worst gap `2.393957298667677e-11`, worst relative C error `9.32022808014185e-11`. Classification `EXTENDED_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED_CAP8_CAP16`. Calibration only. Durable note: `results/ITER034_G46C_EXTENDED_TRACE_BALL_CALIBRATION_TERMINAL.md`.
-
-### Earlier decisive closures / limits
-
-- G44-A run `34718045811`: `DERIVED_SCOPED_BASIS_INVARIANT_TRACE_BALL_PSD_COMPARATOR_SUPPORT`; bounded real-PSD Markovian `tr(C)<=4`; readiness `61% -> 62%`.
-- G45-P run `34718225194`: generic complex-PSD GKSL leaves honest classical random-Hamiltonian provenance on frozen controls; complex PSD cannot be relabelled classical without constructive proof.
-- G47-P run `34719123666`: explicit three-state hidden-classical/product-unitary provenance validated; 6/6 non-semigroup witnesses.
-- G40-TM-A run `34716863840`: `G40TMA_FROZEN_SUPPORT_RULE_NOT_MET`; all four RTN Sobol/LHS pairs violated frozen agreement; no post-hoc rescue and no universal RTN no-go.
-
-## Active gate — G46-A extended trace-ball adversarial
-
-Preregistered only after terminal G46-C PASS.
-
-- protocol `protocol/ITER038_G46A_EXTENDED_TRACE_BALL_ADVERSARIAL.md`, commit `6524210a531f80efe8596a6f3ab00000c2c1389b`;
-- implementation `362a830a631b8fcf7f54912905d27dba0af43052`;
-- workflow `62bf42fe811301f90b59e43114b05172f3462a5b`;
-- launch/head `a2dd7fd3cf3b40f642077c62bd1c0020a97d12bb`;
-- run **`34719458597`**.
-
-16 lanes = caps `{8,16}` × Sobol/LHS × four frozen G44-A RCG-002 toy targets. Frozen rules: lane gap `>1e-4`, pair agreement `<=0.002`, and mathematically required cap nesting `best(cap16) <= best(cap8)+0.002` per shard. Latest durable state: **0/16 terminal, 16 queued**. A terminal PASS must not automatically add another readiness point if it only deepens the already-counted bounded Markovian PSD rubric; assess information gain and double-counting first.
+Frozen intent: ranks 1..6, Sobol/LHS, same hidden-control construction, same optimizer settings and the same recovery/rank/PSD thresholds as G46-C; no RCG-002 target access. A calibration PASS is prerequisite only and cannot increase readiness. If calibration passes, the next dependent gate may prospectively freeze cap32/cap64 adversarial transport with explicit nesting against the already-terminal cap16 values. If calibration fails, classify scientific/optimizer/numerical cause without changing thresholds.
 
 ## Stable scientific closures / limits
 
@@ -69,12 +51,13 @@ Preregistered only after terminal G46-C PASS.
 - G43 finite-atlas partial coverage limit.
 - G44 basis-invariant real-PSD trace-ball representation/calibration/scoped support at cap4.
 - G45 complex-PSD classical-provenance boundary.
+- G46 bounded Markovian real-PSD support extended through caps 8/16.
 - G47 explicit finite stationary three-state hidden-classical memory provenance/calibration/scoped support.
 
 ## Open scientific layers
 
-- terminal G46-A extended cap8/cap16 bounded Markovian PSD attack;
-- broader hidden-classical memory beyond the frozen stationary 3-state 12D family;
+- calibrated extension test toward wider finite trace caps, without claiming an unbounded limit;
+- broader hidden-classical memory beyond the frozen stationary 3-state/12D family;
 - externally anchored observables/holdouts;
 - continuum/full candidate-gravity dynamics and an actual gravity-theory constitution gate.
 
@@ -84,4 +67,4 @@ Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, 
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_63_PERCENT + THEORY_ESTABLISHED_0 + G44A_SCOPED_MARKOVIAN_PSD_SUPPORT + G47A_SCOPED_FINITE_MEMORY_SUPPORT + G46A_RUNNING_EXTENDED_PSD + COMPLEX_PSD_PROVENANCE_BOUNDARY_RETAINED + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_63_PERCENT + THEORY_ESTABLISHED_0 + G46A_SCOPED_MARKOVIAN_PSD_CAP8_CAP16_SUPPORT + G47A_SCOPED_FINITE_MEMORY_SUPPORT + COMPLEX_PSD_PROVENANCE_BOUNDARY_RETAINED + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
