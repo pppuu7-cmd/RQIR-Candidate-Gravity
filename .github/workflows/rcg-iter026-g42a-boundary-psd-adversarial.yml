@@ -1,0 +1,75 @@
+name: RCG Iter026 G42-A Boundary PSD Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER026_G42A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G42-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter026_g42a_boundary_psd_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg026-g42a-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G42-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq')
+          structural=bool(len(rows)==8 and all(r['structural_valid'] and r['admissible'] for r in rows))
+          by_shard={}; support=structural
+          for s in range(4):
+              rr=[r for r in rows if r['shard']==s]
+              vals={r['method']:r for r in rr}
+              complete=all(m in vals for m in methods)
+              gs=vals['sobol_lsq']['best_candidate']['gap'] if complete else None
+              gl=vals['lhs_lsq']['best_candidate']['gap'] if complete else None
+              diff=abs(gs-gl) if complete else None
+              nonzero=bool(complete and all(vals[m]['lane_support'] for m in methods))
+              agree=bool(complete and diff<=0.002)
+              cell=bool(complete and nonzero and agree and all(vals[m]['admissible'] for m in methods))
+              by_shard[str(s)]={'sobol_gap':gs,'lhs_gap':gl,'method_difference':diff,'both_nonzero':nonzero,'agreement':agree,'support':cell}
+              support=bool(support and cell)
+          gaps=[r['best_candidate']['gap'] for r in rows]
+          summary={'iteration':'Iter026','gate':'G42-A','n_results':len(rows),'all_structural_and_admissible':structural,'by_shard':by_shard,
+                   'min_gap':min(gaps) if gaps else None,'max_gap':max(gaps) if gaps else None,'scientific_support':support,
+                   'classification':'DERIVED_SCOPED_BOUNDARY_PSD_COMPARATOR_SUPPORT' if support else 'G42A_FROZEN_SUPPORT_RULE_NOT_MET',
+                   'frozen_nonzero_gap':1e-4,'frozen_cross_method_agreement':0.002,
+                   'scope_lock':'Bounded 21-coordinate real-PSD 6x6 Markovian classical random-Hamiltonian Kossakowski family only.',
+                   'interpretation':'Scoped finite toy-trajectory comparator result only; no universal classical-mediator or gravity-theory claim.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg026-g42a-summary
+          path: summary/summary.json
