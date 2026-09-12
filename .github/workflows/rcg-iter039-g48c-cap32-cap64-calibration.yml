@@ -1,0 +1,63 @@
+name: RCG Iter039 G48-C Cap32 Cap64 Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER039_G48C_LAUNCH.md'
+
+jobs:
+  calibrate:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        cap: [32, 64]
+        method: [sobol_lsq, lhs_lsq]
+        rank: [1, 2, 3, 4, 5, 6]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G48-C calibration lane
+        run: |
+          mkdir -p out
+          python scripts/iter039_g48c_cap32_cap64_calibration.py --cap '${{ matrix.cap }}' --method '${{ matrix.method }}' --rank '${{ matrix.rank }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg039-g48c-cap${{ matrix.cap }}-${{ matrix.method }}-r${{ matrix.rank }}
+          path: out/result.json
+
+  aggregate:
+    needs: calibrate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G48-C rules
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==24 and all(r.get('structural_valid',False) for r in rows))
+          support=bool(structural and all(r.get('scientific_support',False) for r in rows))
+          cls='CAP32_CAP64_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED' if support else ('G48C_IMPLEMENTATION_OR_NUMERICAL_INVALID' if not structural else 'G48C_FROZEN_CALIBRATION_RULE_NOT_MET')
+          bycap={}
+          for cap in (32.0,64.0):
+              rr=[r for r in rows if float(r.get('trace_cap',-1))==cap]
+              bycap[str(int(cap))]={'n':len(rr),'n_pass':sum(bool(r.get('scientific_support')) for r in rr),'worst_gap':max((r['best_candidate']['gap'] for r in rr),default=None),'worst_relative_kossakowski_error':max((r['best_candidate']['relative_kossakowski_error'] for r in rr),default=None),'rank_matches':sum(r['best_candidate']['recovered_effective_rank']==r['hidden']['effective_rank'] for r in rr)}
+          summary={'iteration':'Iter039','gate':'G48-C','n_results':len(rows),'all_structural_valid':structural,'scientific_support':support,'classification':cls,'by_cap':bycap,'scope_lock':'Response-blind finite cap32/cap64 optimizer calibration only.','interpretation':'Calibration only; no readiness increment and no unbounded-PSD or comparator-separation claim.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg039-g48c-summary
+          path: summary/summary.json
