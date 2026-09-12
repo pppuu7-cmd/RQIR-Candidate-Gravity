@@ -1,0 +1,65 @@
+{
+  "status": "FROZEN_EVIDENCE_SET_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "required_nodes": ["J0","J1","J2","J3","J4","J5","J6","J7","J8","J9"],
+  "node_meanings": {
+    "J0": "explicit realization/truncation/regulator identity",
+    "J1": "interacting UV fixed point",
+    "J2": "relevant eigendirections / critical-surface coordinates",
+    "J3": "integrated corresponding RG trajectory to physical IR",
+    "J4": "physical-limit two-point object",
+    "J5": "physical-limit three-point object",
+    "J6": "physical-limit four-point object",
+    "J7": "Lorentzian/on-shell or diffeomorphism-invariant observable/effective-action representation sufficient for matching",
+    "J8": "explicit same-realization UV-coordinate to all-six RQIR residual Jacobian",
+    "J9": "propagated truncation/regulator/scheme uncertainty on all six RQIR residual outputs"
+  },
+  "sources": [
+    {
+      "id": "F1",
+      "lineage": "fluctuation_vertex",
+      "citation": "Denz, Pawlowski, Reichert, Towards apparent convergence in asymptotically safe quantum gravity, EPJC 78, 336 (2018), arXiv:1612.07315",
+      "support": {"J0":true,"J1":true,"J2":true,"J3":true,"J4":true,"J5":true,"J6":true,"J7":false,"J8":false,"J9":false},
+      "note": "Systematic Euclidean fluctuation/vertex expansion through four-graviton function; UV fixed point and IR trajectories. No frozen evidence of an explicit six-direction UV-to-RQIR sensitivity Jacobian with propagated uncertainty."
+    },
+    {
+      "id": "F2",
+      "lineage": "fluctuation_vertex",
+      "citation": "Pawlowski, Traenkle, Effective action and black hole solutions in asymptotically safe quantum gravity, Phys. Rev. D 110, 086011 (2024)",
+      "support": {"J0":true,"J1":false,"J2":false,"J3":true,"J4":true,"J5":true,"J6":true,"J7":true,"J8":false,"J9":false},
+      "note": "Uses existing fluctuation-flow data, integrates fully momentum-dependent four-point flow at physical cutoff, reconstructs effective action/form factors and continues to Lorentzian black-hole equations. No explicit derivative of six RQIR outputs with respect to UV critical-surface coordinates."
+    },
+    {
+      "id": "L1",
+      "lineage": "lorentzian_spectral",
+      "citation": "Assant, Litim, Reichert, Spectral Functions of Lorentzian Quantum Gravity, arXiv:2606.19321 (2026)",
+      "support": {"J0":true,"J1":true,"J2":false,"J3":true,"J4":true,"J5":false,"J6":false,"J7":true,"J8":false,"J9":false},
+      "note": "Lorentzian graviton spectral functions interpolate from classical GR to an asymptotically safe UV fixed point; effective action/form factors are extracted to quadratic order in curvature. Higher-point closure and six-direction Jacobian are not supplied by the frozen evidence."
+    },
+    {
+      "id": "E1",
+      "lineage": "essential_C3",
+      "citation": "Del Porro et al., Impact of Quantum Gravity on the UV Sensitivity of Extremal Black Holes, Fortschritte der Physik (2026), DOI:10.1002/prop.70101",
+      "support": {"J0":true,"J1":true,"J2":true,"J3":true,"J4":false,"J5":false,"J6":false,"J7":true,"J8":false,"J9":false},
+      "partial_bridge": {
+        "operator": "Goroff-Sagnotti C^3",
+        "single_relevant_direction_after_unit_fixing": true,
+        "unique_separatrix_in_declared_two-coupling_truncation": true,
+        "positive_sign_in_both_reported_regulator_treatments": true,
+        "reported_dimensionless_coefficient_magnitudes": [0.0096, 0.00000302],
+        "quantitative_magnitude_scheme_closed": false
+      },
+      "note": "Genuine fixed-point/eigendirection/separatrix-to-one-IR-Wilson-coefficient bridge in a specific essential six-derivative truncation. It is not a six-direction RQIR map; reported coefficient magnitude is strongly prescription/regulator dependent although its sign is stable in the two reported treatments."
+    },
+    {
+      "id": "C1",
+      "lineage": "scattering_guard",
+      "citation": "Knorr, Asymptotically (un)safe scattering amplitudes from scratch: a deep dive into the IR jungle, arXiv:2602.21285 (2026)",
+      "support": {"J0":true,"J1":true,"J2":false,"J3":false,"J4":false,"J5":false,"J6":false,"J7":true,"J8":false,"J9":false},
+      "methodological_guard": true,
+      "note": "Explicit scattering calculation in a simplified setting: fixed point alone does not ensure amplitude boundedness and derivative/RG-improvement approximations can fail for momentum-dependent Wilson-coefficient reconstruction. Used as an anti-shortcut guard, not as completion evidence."
+    }
+  ],
+  "lineage_policy": "Node support may be unioned only among rows with the same lineage label. Cross-lineage unions are diagnostic only and cannot establish same-realization closure.",
+  "rqir_residual_order": ["c3","d3","e4","f4","s2","s0"]
+}
