@@ -37,6 +37,8 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | Iter021C | G39-A | `34704846612` / `8f011454324652076876b9b79821e40155d8c573` | `NUMERICAL_OPTIMIZER_SEARCH_MISS / NESTING_VIOLATION` | No adversarial scientific verdict. |
 | Iter021D | G39-A-N | `34706674297` / `30a3f202d21726f271cd874dc1afc3d27d54de14` | `RANK3_CONTAINMENT_VALID / ORIGINAL_SEARCH_MISS_DIAGNOSED` | Diagnostic only. |
 | Iter021E | G39-A2 | `34707920572` / `da65199d56e1cb1be5bff232f97230611dd9ef2e` | `RUNNING / PARENT_SEEDED_REPAIR` | Prospective repaired finite rank3 adversarial gate. |
+| Iter022A | G40-P | `34708162180` / `0297f33faabeede29e0cb81c3161b278c18be9c0` | `STRICT_CLASSICAL_RTN_INFORMATION_BACKFLOW_IMPLEMENTATION_VALIDATED` | Hidden-classical RTN implementation and BLP witness only. |
+| Iter022B | G40-C | `34708292521` / `80107b2d65c154d4e6a0cc52a2c1fffd8408dd8d` | `QUEUED / POSITIVE_CONTROL_CALIBRATION` | No RCG-002 inference; calibration only. |
 
 ## Recent decisive diagnostics
 
@@ -52,23 +54,31 @@ Original G39-A aggregate `103583601316`, artifact `10300858098`, digest `sha256:
 
 G39-A-N aggregate `103588218746`, artifact `10302540122`, digest `sha256:0f320730c3f2a275222a82167dcd6f301cbe688e40febc76b8b3d0ede83194b9`: 8/8 diagnostic lanes PASS. Exact rank2→rank3 embedding gap difference is `0.0`; seeded rank3 refinement is no worse than embedded by more than `3.9312997301976793e-13`. This diagnoses the original G39-A failure as an optimizer/search miss and authorizes the separately preregistered G39-A2.
 
+### G40-P strict classical information backflow
+
+G40-P aggregate job `103592018677`, summary artifact `10302078122`, digest `sha256:720bc3d4a9c9841d1fd84bd7c00339fc6cbc9d6a37f9ba2bc24b7c8fd702e1c1`: 4/4 structurally valid lanes passed. Minimum strong-control BLP total positive trace-distance increment `0.5923274153651977`; maximum weak-control BLP `0.0`; maximum TP error `4.440892098500626e-16`; minimum Choi eigenvalue `-3.732254805202328e-16`; product-unitary factorization error `2.220988084178258e-16`; product-input output negativity `0.0`. This closes only the implementation/witness pre-gate for a hidden classical RTN mechanism. It does not compare RCG-002. G40-C was preregistered separately before any calibration result.
+
 ## Active frontier
 
 ### G37-A3 — run `34708041385`
 
-Boundary-preserving repaired adversarial gate. It retains the complete original G37-A2 combined Sobol/LHS search and additionally retains exact G36 shared and G34 K2-MF parent boundary candidates, plus refinements from both. Winner selection is by final trace distance. Frozen thresholds: nonzero `>1e-4`, cross-method `<=0.002`, parent embedding/nesting `1e-10`.
+Boundary-preserving repaired adversarial gate. It retains the complete original G37-A2 combined Sobol/LHS search and additionally retains exact G36 shared and G34 K2-MF parent boundary candidates, plus refinements from both. Winner selection is by final trace distance. Frozen thresholds: nonzero `>1e-4`, cross-method `<=0.002`, parent embedding/nesting `1e-10`. Latest check: 1/8 terminal, 7 in progress.
 
 ### G39-A2 — run `34707920572`
 
-Parent-seeded repaired rank3 adversarial gate. It retains all original rank3 starts and an exact zero-third-rate rank2 boundary candidate plus seeded refinement. Frozen thresholds: nonzero `>1e-4`, cross-method `<=0.002`, exact embedding/nesting `1e-10`.
+Parent-seeded repaired rank3 adversarial gate. It retains all original rank3 starts and an exact zero-third-rate rank2 boundary candidate plus seeded refinement. Frozen thresholds: nonzero `>1e-4`, cross-method `<=0.002`, exact embedding/nesting `1e-10`. Latest check: 7/8 terminal, one cleanup in progress.
+
+### G40-C — run `34708292521`
+
+Strict-BLP RTN positive-control optimizer calibration. Finite 8-parameter family with arbitrary local Pauli axes; four hidden controls, two independent Sobol/LHS designs, four fixed times and six fixed product probes. Frozen recovery requires maximum trace distance `<0.002` plus recovered BLP total positive increment `>0.02` in every lane. Latest check: queued. Only terminal PASS may authorize a separate RCG-002 adversarial RTN gate.
 
 ## Stable readiness rubric
 
-Closed: independent scope/claim discipline; toy-channel coherent seed; finite MF K2/K3/K4 calibration and scoped comparator layer; one-mode shared classical-noise implementation/calibration/scoped comparator; OU three-time toy-trajectory implementation/calibration/scoped comparator; corrected G37 family calibration; G39 rank2/rank3 implementation and calibration.
+Closed: independent scope/claim discipline; toy-channel coherent seed; finite MF K2/K3/K4 calibration and scoped comparator layer; one-mode shared classical-noise implementation/calibration/scoped comparator; OU three-time toy-trajectory implementation/calibration/scoped comparator; corrected G37 family calibration; G39 rank2/rank3 implementation and calibration; strict hidden-classical RTN implementation plus BLP information-backflow witness.
 
-Not closed: valid terminal repaired G37 adversarial classifier; valid terminal repaired G39 adversarial classifier; higher-rank/general positive-Kossakowski classical comparator; strict information-backflow/non-Markovian comparator; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics.
+Not closed: valid terminal repaired G37 adversarial classifier; valid terminal repaired G39 adversarial classifier; terminal G40 RTN optimizer calibration and any subsequent adversarial classifier; higher-rank/general positive-Kossakowski classical comparator; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics.
 
-Current internal programme readiness: **57%**. This is a construction/readiness metric, not a probability of physical correctness. Theory established remains **0%**. Do not raise readiness until a stable rubric gate closes.
+Current internal programme readiness: **57%**. This is a construction/readiness metric, not a probability of physical correctness. Theory established remains **0%**. G40-P alone does not raise readiness because it validates an ingredient/witness rather than closing an adversarial comparator layer.
 
 ## Claim locks
 
