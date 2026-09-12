@@ -51,6 +51,12 @@ def solve_conditional(l4=L4_0,g4=G4_0,start=ANCHOR,tol=1e-10,maxit=60):
         if not moved: return x,False,it,nb
     nb=float(np.linalg.norm(f(x))); return x,nb<tol,maxit,nb
 
+def _json_default(value):
+    if isinstance(value,np.generic): return value.item()
+    if isinstance(value,np.ndarray): return value.tolist()
+    raise TypeError(f'Object of type {value.__class__.__name__} is not JSON serializable')
+
 def write(name,obj):
     obj=dict(obj); obj.setdefault('classification',CLASSIFICATION)
-    pathlib.Path(name).write_text(json.dumps(obj,indent=2,sort_keys=True)); print(json.dumps(obj,indent=2,sort_keys=True))
+    text=json.dumps(obj,indent=2,sort_keys=True,default=_json_default)
+    pathlib.Path(name).write_text(text); print(text)
