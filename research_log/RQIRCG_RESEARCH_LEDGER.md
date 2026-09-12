@@ -11,7 +11,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - Internal programme readiness: **59%**.
 - Theory established: **0%**.
 - The 58→59 increment is attributed only to terminal closure of corrected G37-A3.
-- G40 implementation, eligibility, calibration and diagnostics do not by themselves raise readiness.
+- G40 witness/calibration diagnostics and G41 implementation/calibration work do not by themselves raise readiness.
 
 ## Authoritative recent gate ledger
 
@@ -35,8 +35,12 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | Iter022C | G40-C2-E | `34708494925` / `1b52b4c5...` | `STRICT_BLP_HIDDEN_CONTROL_ELIGIBILITY_PASS` | Eligibility only. |
 | Iter022D | G40-C2 | `34708550582` / `2221f481...` | `POSITIVE_CONTROL_METHOD_CALIBRATED_STRICT_RTN` | Corrected eligible-control calibration only. |
 | Iter022E | G40-C3 | `34708885346` / `af8f23f7...` | `FIXED_WITNESS_STRICT_BLP_FILTERED_SEARCH_CALIBRATED` | Search-rule calibration only. |
-| Iter022F | G40-A | `34708971194` / `dab64180...` | `NEGATIVE_RESULT / G40A_FROZEN_SUPPORT_RULE_NOT_MET` | Finite fixed-witness BLP>0.02 RTN subset only; no general verdict. |
-| Iter023A | G40-D | `34709706322` / `89dc08a4...` | `RUNNING / WITNESS_PANEL_DIAGNOSTIC` | Diagnostic only; cannot promote G40-A. |
+| Iter022F | G40-A | `34708971194` / `dab64180...` | `NEGATIVE_RESULT / G40A_FROZEN_SUPPORT_RULE_NOT_MET` | Fixed-witness finite RTN subset only; no general verdict. |
+| Iter023A | G40-D | `34709706322` / `89dc08a4...` | `FIXED_WITNESS_FRAGILE_ON_PANEL` | Diagnostic only; G40-A remains failed. |
+| Iter023B | G40-RC-C | `34710049387` / `1f79d9c7...` | `AXIS_FRAME_COVARIANT_RTN_SEARCH_CALIBRATED` | Family-axis-covariant witness calibration only. |
+| Iter023C | G40-RC-A | `34710216045` / `3e31a9fa...` | `RUNNING` | Prospective finite RTN adversarial with calibrated axis-frame witness. |
+| Iter024A | G41-P | `34710097236` / `e6c74225...` | `HIGH_RANK_CLASSICAL_KOSSAKOWSKI_IMPLEMENTATION_VALIDATED` | Rank-4/5/6 implementation/provenance only. |
+| Iter024B | G41-C | `34710257380` / `2bac531b...` | `QUEUED / RUNNING` | Positive-rate optimizer calibration on frozen high-rank frames only. |
 
 ## Decisive current results
 
@@ -44,23 +48,28 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 
 Run `34708041385`, aggregate `103594427577`, artifact `10302623647`, digest `sha256:5b50793fe136cc30ce7aa60fae05a7be60b7895794686a2f35a5ca82feb2de63`. All 8 lanes passed exact parent embedding, nesting, nonzero-gap and Sobol/LHS agreement. Durable note: `results/ITER019F_G37A3_TERMINAL.md`.
 
-### G40-C3 calibration
+### G40-A / G40-D
 
-Run `34708885346`, aggregate `103593923157`, artifact `10302603412`, digest `sha256:a2eda672b6c3a8e581a081b30e9d278619a0bf71356eb6587dbe8ac26f428845`. All 8 hidden-control filtered-search lanes passed recovery `<0.002` and fixed-witness BLP `>0.02`. This authorizes only use of that exact filtered search rule.
+G40-A run `34708971194` failed its frozen support rule and remains a negative/inconclusive finite-family result. G40-D run `34709706322`, aggregate `103596229487`, artifact `10301928780`, digest `sha256:35d4dba7b5aea572e33b7ba6c067a5f4695b8d18fb84455e958ed2cde25a2383`, demonstrated `FIXED_WITNESS_FRAGILE_ON_PANEL`: shards 0/1 admitted panel witnesses where the single fixed witness admitted none. Durable notes: `results/ITER022F_G40A_TERMINAL.md`, `results/ITER023A_G40D_TERMINAL.md`.
 
-### G40-A terminal failed support rule
+### G40-RC-C calibration
 
-Run `34708971194`, aggregate `103594269913`, artifact `10302404036`, digest `sha256:5f299a2a08e228894b1cb52cb2059f4f1c961c387f0e30e0842307a1d8eafe52`. All lanes were structural, but shards 0/1 yielded no admissible fixed-witness strict candidate, shard 2 gave consistent scoped separation, and shard 3 violated frozen Sobol/LHS agreement. Durable note: `results/ITER022F_G40A_TERMINAL.md`. G40-A stays failed; no retroactive promotion.
+Run `34710049387`, aggregate `103597100244`, artifact `10303335725`, digest `sha256:6b3d446be11880ae79cad0a55b74ccfff0cdf33a55f1045e04b27d6752f56f74`. Both Sobol and LHS passed 4/4 corrected hidden controls. Minimum hidden/recovered axis-frame-covariant BLP was `~0.8471377488`; worst recovery was `~1.73e-15`. This authorizes only the separately preregistered G40-RC-A run `34710216045`. Durable note: `results/ITER023B_G40RCC_TERMINAL.md`.
 
-### Active G40-D
+### G41-P implementation
 
-Preregistered in `protocol/ITER023A_G40D_WITNESS_PANEL_DIAGNOSTIC.md`. Run `34709706322`, launch head `89dc08a4f31a76851e5b12c970aaf8b4b81eaa1b`. It tests fixed-witness/basis fragility on a four-element local witness panel while preserving the G40-A family, targets, optimizer and thresholds. It is diagnostic-only.
+Run `34710097236`, aggregate `103597226535`, artifact `10303101144`, digest `sha256:a189c87f4cb786e3fd2f5324e3bb54e3813d55f7f7ac959ff263747b811c185f`. All 12 rank-4/5/6 lanes passed the frozen classical Kossakowski rank, TP/CPTP, product-unitary factorization and zero-product-entanglement checks. This is implementation/provenance only and authorizes only a calibrated finite optimizer subfamily. Durable note: `results/ITER024A_G41P_TERMINAL.md`.
+
+## Active frontier
+
+1. **G40-RC-A**, run `34710216045`: prospective adversarial test under exactly the G40-RC-C axis-frame-covariant witness/search rule. Frozen nonzero gap `>1e-4`, method agreement `<=0.002`, axis-covariant BLP `>0.02`.
+2. **G41-C**, run `34710257380`: ranks 4/5/6 × four shards × Sobol/LHS positive-control rate calibration on deterministic G41-P mode frames. Frozen recovery `<0.002`. No RCG-002 target. Even PASS does not calibrate arbitrary PSD Kossakowski orientations.
 
 ## Stable readiness rubric
 
-Closed: independent scope discipline; coherent RCG-002 toy seed; finite MF K2/K3/K4 calibration/scoped comparator; one-mode shared Gaussian noise; corrected truly nested MF+shared finite comparator; OU three-time toy comparator; rank3 multimode shared white-noise comparator; strict RTN implementation and fixed-witness filtered-search calibration.
+Closed: independent scope discipline; coherent RCG-002 toy seed; finite MF K2/K3/K4 calibration/scoped comparator; one-mode shared Gaussian noise; corrected truly nested MF+shared finite comparator; OU three-time toy comparator; rank3 multimode shared white-noise comparator; strict RTN implementation; fixed-witness fragility diagnosed; axis-frame-covariant RTN search calibrated; rank-4/5/6 classical Kossakowski implementation validated.
 
-Not closed: rotation/witness-robust strict information-backflow comparator; higher-rank/general classical comparator; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics; any constitution gate for an actual gravity theory.
+Not closed: terminal G40-RC-A adversarial verdict; high-rank classical optimizer/adversarial gate; arbitrary-orientation/general PSD Kossakowski comparator; externally anchored observables/holdouts; continuum/full candidate-gravity dynamics; any constitution gate for an actual gravity theory.
 
 ## Claim locks
 
