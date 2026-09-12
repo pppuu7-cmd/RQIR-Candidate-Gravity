@@ -1,0 +1,71 @@
+name: RCG Iter019F G37-A3 Boundary-Preserving Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER019F_G37A3_BOUNDARY_PRESERVING_ADVERSARIAL_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G37-A3 boundary-preserving lane
+        run: |
+          mkdir -p out
+          python scripts/iter019f_g37a3_boundary_preserving_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg019f-g37a3-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G37-A3 rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq'); nz=1e-4; agree=0.002; nest=1e-10
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          shards={}
+          for s in range(4):
+              rr={r['method']:r for r in rows if r['shard']==s}
+              gaps={m:rr[m]['boundary_preserving_best']['gap'] for m in methods if m in rr}
+              parents={m:min(rr[m]['shared_parent']['embedded_gap'],rr[m]['mf_parent']['embedded_gap']) for m in methods if m in rr}
+              embeddings=bool(len(rr)==2 and all(rr[m]['checks']['both_parent_embeddings_exact_1e-10'] for m in methods))
+              nesting=bool(len(rr)==2 and all(rr[m]['checks']['combined_not_worse_than_best_parent_1e-10'] for m in methods))
+              nonzero=bool(len(gaps)==2 and all(v>nz for v in gaps.values()))
+              cross=bool(len(gaps)==2 and abs(gaps['sobol_lsq']-gaps['lhs_lsq'])<=agree)
+              parent_cross=bool(len(parents)==2 and abs(parents['sobol_lsq']-parents['lhs_lsq'])<=agree)
+              support=bool(embeddings and nesting and nonzero and cross and parent_cross)
+              shards[str(s)]={'combined_gaps':gaps,'best_parent_gaps':parents,'both_embeddings_exact':embeddings,'nesting_ok':nesting,'both_nonzero':nonzero,'combined_cross_method_agreement':cross,'parent_cross_method_agreement':parent_cross,'scientific_support':support}
+          support=bool(structural and all(v['scientific_support'] for v in shards.values()))
+          summary={'iteration':'Iter019F','gate':'G37-A3','n_results':len(rows),'all_structural_valid':structural,'per_shard':shards,'scientific_support':support,
+                   'frozen_rules':{'nonzero_gap':nz,'cross_method_agreement':agree,'exact_embedding_and_nesting_tolerance':nest},
+                   'interpretation':'Support, if any, is restricted to the calibrated truly nested finite MF+one-shared-noise Markovian family. Exact parent candidates are preserved because G37-A2-N exposed LSQ surrogate-objective worsening.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg019f-g37a3-summary
+          path: summary/summary.json
