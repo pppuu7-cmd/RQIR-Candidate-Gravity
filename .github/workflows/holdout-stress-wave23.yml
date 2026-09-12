@@ -1,0 +1,109 @@
+name: Holdout stress wave 23
+
+on:
+  push:
+    branches: [holdout-stress-wave23]
+    paths:
+      - 'compute_wave23/**'
+      - 'post_freeze/WAVE23_HOLDOUT_STRESS_PREREGISTRATION.md'
+      - '.github/workflows/holdout-stress-wave23.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  bank-integrity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/bank_integrity.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-bank-integrity, path: wave23_results/bank_integrity.json}
+
+  basis-invariance:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/basis_invariance.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-basis-invariance, path: wave23_results/basis_invariance.json}
+
+  unit-rescaling:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/unit_rescaling.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-unit-rescaling, path: wave23_results/unit_rescaling.json}
+
+  jackknife:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/jackknife.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-jackknife, path: wave23_results/jackknife.json}
+
+  extended-nuisance:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/extended_nuisance.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-extended-nuisance, path: wave23_results/extended_nuisance.json}
+
+  omitted-physics:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/omitted_physics.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-omitted-physics, path: wave23_results/omitted_physics.json}
+
+  information-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave23/information_firewall.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave23-information-firewall, path: wave23_results/information_firewall.json}
+
+  aggregate-wave23:
+    needs: [bank-integrity, basis-invariance, unit-rescaling, jackknife, extended-nuisance, omitted-physics, information-firewall]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave23_downloads}
+      - run: python compute_wave23/aggregate_wave23.py
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with: {name: holdout-stress-wave23-summary, path: wave23_summary.json}
