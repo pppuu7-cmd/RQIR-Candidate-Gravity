@@ -45,7 +45,7 @@ jobs:
       - name: Run Iter005 preregistered gate
         run: |
           mkdir -p out
-          python scripts/iter005_noise_boundary_and_classical_comparator.py --gate '${{ matrix.gate }}' --arg '${{ matrix.arg }}' --out 'out/${{ matrix.label }}.json'
+          python scripts/iter005_noise_boundary_and_classical_comparator.py --gate='${{ matrix.gate }}' --arg='${{ matrix.arg }}' --out='out/${{ matrix.label }}.json'
       - uses: actions/upload-artifact@v4
         with:
           name: rcg005-${{ matrix.label }}
