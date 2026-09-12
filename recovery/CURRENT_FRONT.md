@@ -1,71 +1,74 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active iteration: `ITER015`
-Phase: `INDEPENDENT_RQIR_DERIVATION / SMOOTH_OPTIMIZER_CALIBRATION`
+Active iteration: `ITER016`
+Phase: `INDEPENDENT_RQIR_DERIVATION / CALIBRATED_MULTICHANNEL_COMPARATOR`
 
 ## Canonical status
 
-- Candidate-model/programme readiness: **46%**
+- Candidate-model/programme readiness: **48%**
 - Theory established: **0%**
 - Active seed: `RCG-002 Relational controlled-phase channel`
 - Independent-from-QGR construction contract: **FROZEN**
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`
 
-Readiness is an internal construction metric, not a probability that the model is correct. Neither G31 nor G32 raises readiness because positive-control optimizer calibration remains open.
+Readiness is an internal construction metric, not a probability that the model is correct. The increase from 46% to 48% reflects closure of the K=2 positive-control optimizer-calibration subgate only; it does not promote any old adversarial gap to physics evidence.
 
 ## Iter013 / G31
 
 Run `34695076098`, head `f32ecf1949f1e7d6c577b201b73c517d4605fdb7`, aggregate artifact `10297704949`, digest `sha256:cfe6a47700e929b4c3c515362db16e2b1618ca64723bfd96dbc38856d9522871`.
 
-Classification: `SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED`.
+Classification: `SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED`. The positive in-family K=2 recovery control failed (`0.0604612 > 0.002`), so G31 adversarial minima remain diagnostics only.
 
-The positive in-family K=2 recovery control failed with maximum gap `0.06046122957245775 > 0.002`. Therefore G31 adversarial K=2/3/4 minima remain diagnostics only and cannot be promoted to physics evidence.
+## Iter014 / G32 and G32-J
 
-## Iter014 / G32 terminal result
+G32 run `34695441883`, head `ea54a3ae9694366c3bebe06c13b775af44d46833`, aggregate artifact `10299010209`, digest `sha256:86035287985cc1b1793df8298b919b47067b81aa22b757a5a841df9245389638`.
 
-Authoritative run `34695441883`, head `ea54a3ae9694366c3bebe06c13b775af44d46833`, aggregate artifact `10299010209`, digest `sha256:86035287985cc1b1793df8298b919b47067b81aa22b757a5a841df9245389638`.
+- oracle replay 4/4 PASS with max gap `0.0`;
+- K=2 channel-swap symmetry 4/4 PASS;
+- direct trace-distance local/global recovery did not calibrate on all controls.
 
-Twenty frozen positive-control lanes completed and were structurally valid.
+G32-J run `34695478444`, head `706245fa183845556aa020bc99d2a4d86e4e3060`, aggregate artifact `10298208349`, digest `sha256:e0a48b3cc49ab4ab3514b26de8c47cf2ad7b3e7fb72b7bb5c9e91e262a9490ee`.
 
-- exact oracle replay: 4/4 PASS; maximum gap `0.0`;
-- K=2 channel-swap symmetry: 4/4 PASS; max Liouvillian difference `9.947092584916169e-17`, max target gap `3.918320310696023e-16`;
-- local perturbed-source recovery: only 2/4 PASS; maximum gap `0.02431103093558268`;
-- deep global DE + polish: only 2/4 PASS; maximum gap `0.017872382285720974`;
-- hybrid global/local: only 1/4 PASS; maximum gap `0.040425953741512866`;
-- no tested global method calibrated on all four controls.
+- effective Jacobian rank `11/11` on all four K=2 controls;
+- max finite-difference discrepancy `1.2393500576443816e-09`;
+- max retained-subspace condition number `4033.8739690901716`.
 
-Classification: `POSITIVE_CONTROL_OPTIMIZER_FAIL / LOCAL_BASIN_GEOMETRY_OR_CONDITIONING`.
+These diagnostics isolated strong conditioning / optimizer-landscape difficulty rather than a basic representability or rank defect.
 
-Interpretation: the model plumbing and K=2 parameterization can reproduce the hidden in-family target exactly, so G31 failure is not a basic representability bug. However trace-distance optimization remains unreliable, including locally at stronger controls. RCG-002 adversarial interpretation remains blocked.
+## Iter015 / G33 terminal result
 
-## Iter014B / G32-J terminal result
+Authoritative run `34695662002`, head `d15d633f58fa63d378a85d6e5409c4bb0735a97e`, aggregate artifact `10298088690`, digest `sha256:92f1d470f516bd6b85e7d475581762b10ca6871d3ec4c85fc0e73f218f0faa19`.
 
-Authoritative run `34695478444`, head `706245fa183845556aa020bc99d2a4d86e4e3060`, aggregate artifact `10298208349`, digest `sha256:e0a48b3cc49ab4ab3514b26de8c47cf2ad7b3e7fb72b7bb5c9e91e262a9490ee`.
+All 12 lanes were structurally valid. Hidden source coordinates were never optimizer initializers. Scientific acceptance remained the unchanged trace-distance recovery criterion `< 0.002`.
 
-- finite-difference derivative controls valid 4/4;
-- effective local rank `11/11` on all four hidden K=2 controls;
-- maximum two-step Jacobian discrepancy `1.2393500576443816e-09`;
-- maximum retained-subspace condition number `4033.8739690901716`.
+- `sobol_lsq`: **4/4 PASS**, worst trace-distance gap `1.6005292984593422e-12`;
+- `lhs_lsq`: **4/4 PASS**, worst trace-distance gap `1.6222740678511114e-12`;
+- `de_smooth_lsq`: 3/4 PASS, worst gap `0.012008310266765621`.
 
-Classification: `FULL_LOCAL_RANK / STRONGLY_ILL_CONDITIONED_DIAGNOSTIC`.
+Classification: `POSITIVE_CONTROL_METHOD_CALIBRATED_K2`.
 
-This is a numerical/identifiability diagnosis only. It neither validates nor falsifies RCG-002. It motivates changing optimizer coordinates/objective while preserving the original final trace-distance acceptance rule.
+Authority methods for the next gate are the two independently calibrated constructions `sobol_lsq` and `lhs_lsq`. The failed `de_smooth_lsq` route is retained as a negative methodology result and is not used for adversarial authority.
 
-## Active authorized gate — Iter015 / G33
+Crucially, G33 does **not** retroactively validate G30/G31 gaps. Any RCG-002 adversarial claim must be recomputed prospectively using the calibrated method.
 
-Goal: test whether a smooth residual formulation with parameter normalization closes the same four positive controls without using the hidden truth as an optimizer initialization and without inspecting RCG-002.
+## Active authorized gate — Iter016 / G34
 
-Frozen requirements before execution:
+Run three independent scientific fronts in parallel:
 
-1. map all 11 K=2 parameters affinely to unit-box coordinates `[0,1]`;
-2. use a smooth real residual vector formed from the Hermitian density-matrix difference for bounded nonlinear least squares;
-3. use only deterministic prospectively fixed global initial designs (Sobol/Latin-hypercube or fixed seeded starts), never the hidden source or its perturbation;
-4. test multiple independent search constructions in parallel, including multistart least-squares and an independent smooth global-to-local route;
-5. the optimizer may minimize the smooth residual, but scientific acceptance remains the unchanged trace-distance recovery gap `< 0.002` on all four hidden controls;
-6. method calibration requires all four controls PASS under one prospectively specified method;
-7. RCG-002 adversarial targets remain forbidden in G33. Only after a method calibrates may a later gate rerun K=2/3/4 adversarial targets under that exact method. G31/G32 gaps cannot be promoted retroactively.
+1. **K=2 calibrated adversarial rerun:** rerun the four RCG-002 comparator targets with both G33-calibrated methods using the exact K=2 unit-box/smooth-residual/multistart constructions. Interpret only the newly computed G34 results. Require both calibrated methods to retain a nonzero gap and require cross-method agreement within the frozen `0.002` calibration scale before granting scoped K=2 comparator support.
+2. **K=3 positive-control calibration:** generate four prospectively fixed in-family K=3 hidden targets and test both Sobol-LSQ and LHS-LSQ extensions. Hidden truth must not be used as an initializer. Scientific calibration still requires trace-distance `<0.002` on all four controls under the same method.
+3. **K=4 positive-control calibration:** same discipline for K=4. No K=3/K=4 adversarial interpretation is allowed before its own positive-control calibration passes.
+
+Frozen safeguards:
+
+- final acceptance is always trace distance, even though optimization uses a smooth density-matrix residual;
+- old G30/G31 minima cannot be reused as authority;
+- no post-result threshold changes;
+- K=3/K=4 calibrated-method extension must be fixed before result inspection;
+- if K=3/K=4 calibrate, their adversarial RCG-002 reruns occur only in a subsequent gate;
+- all conclusions remain restricted to the finite additive independent single-axis Markovian measurement-feedback GKSL comparator family.
 
 ## Claim locks
 
@@ -76,10 +79,10 @@ Forbidden:
 - `RQIR_REQUIRES_RCG002`;
 - claim that all classical/semiclassical mediators are excluded;
 - treating green CI as scientific PASS;
-- treating G31/G32 adversarial diagnostics as physics evidence;
-- changing the frozen `2e-3` recovery threshold after seeing results;
+- treating G30/G31 historical adversarial gaps as validated by G33;
+- changing frozen thresholds after seeing results;
 - importing physical assumptions or desired conclusions from QGR/KMQGB/RQIR.
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + EXACT_IN_FAMILY_REPRESENTABILITY_CONFIRMED + FINITE_COMPARATOR_SEARCH_UNCALIBRATED + G33_SMOOTH_CALIBRATION_REQUIRED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + K2_OPTIMIZER_CALIBRATED + G34_CALIBRATED_K2_ADVERSARIAL_AND_K3K4_POSITIVE_CONTROLS_REQUIRED`.
