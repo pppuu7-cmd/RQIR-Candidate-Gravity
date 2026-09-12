@@ -1,8 +1,6 @@
 name: RCG Iter009 G27 Rotated Axis Master Equation
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
