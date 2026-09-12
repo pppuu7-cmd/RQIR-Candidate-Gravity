@@ -1,0 +1,68 @@
+name: RCG Iter032 G44-A Trace-Ball PSD Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER032_G44A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G44-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter032_g44a_trace_ball_psd_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg032-g44a-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G44-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          by_shard={}; support=structural
+          for s in range(4):
+              rr=[r for r in rows if r['shard']==s]
+              methods={r['method']:r for r in rr}
+              gaps=[methods[m]['best_candidate']['gap'] for m in ('sobol_lsq','lhs_lsq') if m in methods]
+              diff=abs(gaps[0]-gaps[1]) if len(gaps)==2 else None
+              pair=bool(len(rr)==2 and all(r['admissible'] and r['lane_support'] for r in rr) and diff is not None and diff<=0.002)
+              support=bool(support and pair)
+              by_shard[str(s)]={'n':len(rr),'admissible_count':sum(int(r['admissible']) for r in rr),'lane_support_count':sum(int(r['lane_support']) for r in rr),'best_gaps':gaps,'cross_method_gap_difference':diff,'pair_support':pair}
+          classification='DERIVED_SCOPED_BASIS_INVARIANT_TRACE_BALL_PSD_COMPARATOR_SUPPORT' if support else ('G44A_FROZEN_SUPPORT_RULE_NOT_MET' if structural else 'STRUCTURAL_NUMERICAL_FAIL')
+          summary={'iteration':'Iter032','gate':'G44-A','n_results':len(rows),'all_structural_valid':structural,'scientific_support':support,'by_shard':by_shard,'classification':classification,
+                   'authorization_lock':'This run is scientifically authorized only if terminal G44-C PASS predates the launch marker.',
+                   'scope_lock':'Bounded basis-invariant real-PSD Markovian trace-ball tr(C)<=4 against frozen RCG-002 toy trajectories only; no universal no-go.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg032-g44a-summary
+          path: summary/summary.json
