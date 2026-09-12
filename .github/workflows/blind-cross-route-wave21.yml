@@ -1,0 +1,121 @@
+name: Blind cross-route wave 21
+
+on:
+  push:
+    branches: [blind-cross-route-wave21]
+    paths:
+      - 'compute_wave21/**'
+      - 'cross_route/**'
+      - 'model/RQIR_ONLY_ACTION_LEVEL_ENDPOINT_V1.md'
+      - 'post_freeze/WAVE21_BLIND_CROSS_ROUTE_PREREGISTRATION.md'
+      - '.github/workflows/blind-cross-route-wave21.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  authority-freshness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/authority_freshness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-authority-freshness
+          path: wave21_results/authority_freshness.json
+
+  decision-convergence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/decision_vector_convergence.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-decision-convergence
+          path: wave21_results/decision_vector_convergence.json
+
+  obstruction-taxonomy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/obstruction_taxonomy.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-obstruction-taxonomy
+          path: wave21_results/obstruction_taxonomy.json
+
+  promotion-gates:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/promotion_gate_conjunction.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-promotion-gates
+          path: wave21_results/promotion_gate_conjunction.json
+
+  contradiction-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/contradiction_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-contradiction-audit
+          path: wave21_results/contradiction_audit.json
+
+  information-independence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/information_independence.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-information-independence
+          path: wave21_results/information_independence.json
+
+  anti-backwrite:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python compute_wave21/anti_backwrite_firewall.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave21-anti-backwrite
+          path: wave21_results/anti_backwrite_firewall.json
+
+  aggregate-wave21:
+    needs: [authority-freshness, decision-convergence, obstruction-taxonomy, promotion-gates, contradiction-audit, information-independence, anti-backwrite]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave21_downloads
+      - run: python compute_wave21/aggregate_wave21.py
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: blind-cross-route-wave21-summary
+          path: wave21_summary.json
