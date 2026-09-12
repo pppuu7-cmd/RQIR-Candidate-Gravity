@@ -1,0 +1,29 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "source": "Denz, Pawlowski, Reichert, EPJC 78, 336 (2018), arXiv:1612.07315v2, Appendix F and Table 3",
+  "classification": "SURROGATE_NOT_J8",
+  "coordinates": ["mu", "lambda3", "lambda4", "g3", "g4"],
+  "published_truncation4": {
+    "eta_phi_zero": true,
+    "gravitational_couplings_from_derivative_expansion_at_p2_0": true,
+    "closure": {
+      "lambda5": "lambda3",
+      "lambda6": "lambda3",
+      "g5": "g4",
+      "g6": "g4"
+    },
+    "rounded_fixed_point": [-0.23, -0.060, -0.11, 0.64, 0.55],
+    "bar_spectrum": ["-3.0", "-1.9+1.6i", "-1.9-1.6i", "1.7", "3.4"],
+    "tilde_spectrum": ["-2.2", "-0.50+1.7i", "-0.50-1.7i", "1.5+0.88i", "1.5-0.88i"]
+  },
+  "printed_equations": ["F1", "F2", "F3", "F4", "F5"],
+  "source_caveats": {
+    "local_projection_at_p0_can_introduce_large_error": true,
+    "analytic_system_used_for_qualitative_behaviour": true,
+    "table_fixed_point_is_rounded": true,
+    "full_best_realization_stability_matrix_not_available": true
+  },
+  "wave34_boundary": "A successful reconstruction of Appendix-F Truncation 4 validates only the published analytic surrogate. It must never be promoted to the full momentum-dependent best-realization J8 basis.",
+  "information_firewall": "No KMQGB/polygon-QGR equations, fitted parameters, architecture or repairs are admitted."
+}
