@@ -1,0 +1,90 @@
+name: RCG Iter013 G31 Global Search Calibration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter013_global_search_calibration.py'
+      - '.github/workflows/rcg-iter013-global-search.yml'
+  workflow_dispatch:
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        stream: [adversarial_k2, adversarial_k3, adversarial_k4, recovery_k2, admissibility_k4]
+        shard: ['0','1','2','3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G31 lane
+        run: |
+          mkdir -p out
+          python scripts/iter013_global_search_calibration.py --stream '${{ matrix.stream }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg013-${{ matrix.stream }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: search
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate G31 without converting scientific FAIL into CI failure
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          by={}
+          for r in rows:
+              x=by.setdefault(r['stream'],{'n':0,'structural_valid':0,'scientific_support':0})
+              x['n']+=1
+              x['structural_valid']+=int(r['structural_valid'])
+              x['scientific_support']+=int(r['result']['scientific_support'])
+          def vals(stream,key):
+              return [r['result'][key] for r in rows if r['stream']==stream]
+          k2=vals('adversarial_k2','best_gap'); k3=vals('adversarial_k3','best_gap'); k4=vals('adversarial_k4','best_gap')
+          rec=vals('recovery_k2','recovery_gap')
+          all_structural=(len(rows)==20 and all(r['structural_valid'] for r in rows))
+          recovery_calibrated=(len(rec)==4 and max(rec)<2e-3)
+          nonzero_all=(len(k2)==len(k3)==len(k4)==4 and min(k2+k3+k4)>1e-4)
+          nesting_consistent=(bool(k2 and k3 and k4) and min(k3)<=min(k2)+2e-3 and min(k4)<=min(k3)+2e-3)
+          scientific_interpretable=all_structural and recovery_calibrated
+          scoped_support=scientific_interpretable and nonzero_all and nesting_consistent and by.get('admissibility_k4',{}).get('scientific_support',0)==4
+          s={
+            'iteration':'Iter013','gate':'G31','n_results':len(rows),'streams':by,
+            'all_structural_valid':all_structural,
+            'max_positive_control_recovery_gap':max(rec) if rec else None,
+            'min_k2_adversarial_gap':min(k2) if k2 else None,
+            'min_k3_adversarial_gap':min(k3) if k3 else None,
+            'min_k4_adversarial_gap':min(k4) if k4 else None,
+            'recovery_calibrated':recovery_calibrated,
+            'nonzero_all_adversarial':nonzero_all,
+            'nesting_consistent_with_2e-3_optimizer_slack':nesting_consistent,
+            'scientific_interpretable':scientific_interpretable,
+            'scoped_scientific_support':scoped_support,
+            'interpretation_rule':'Residual adversarial gaps are not scientifically interpretable if positive in-family recovery calibration fails.',
+            'scope_lock':'Additive K<=4 finite two-qubit Markovian independent single-axis measurement-feedback GKSL channels only.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2))
+          print(json.dumps(s,indent=2))
+          if not all_structural:
+              raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg013-summary
+          path: summary/summary.json
