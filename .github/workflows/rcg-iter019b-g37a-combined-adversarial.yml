@@ -45,8 +45,8 @@ jobs:
           for p in glob.glob('artifacts/**/*.json',recursive=True):
               with open(p) as f: rows.append(json.load(f))
           methods=('sobol_lsq','lhs_lsq'); nz=1e-4; agree=0.002; slack=0.002
-          # Calibrated authoritative smaller-family minima from terminal G34 (K2 MF) and G36-A (shared noise).
-          mf={0:min(0.026070816008971712,0.02607083500239983),1:min(0.10462705021070003,0.1046280224077526),2:min(0.4030775755359582,0.4030776193040029),3:min(0.5324529974645373,0.5324520837003446)}
+          # Exact calibrated K2 measurement-feedback minima from terminal G34 and exact shared-noise minima from terminal G36-A.
+          mf={0:0.026070816008971712,1:0.1046226877828865,2:0.40307758671702226,3:0.532452669358466}
           shared={0:0.025499008832948887,1:0.10036158741640057,2:0.35873703839655824,3:0.5980266528346264}
           structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
           shards={}
