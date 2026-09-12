@@ -1,0 +1,44 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "classification": "SCOPED_PUBLIC_SOURCE_AUDIT",
+  "target": "Reusable same-realization F1 five-dimensional stability matrix or equivalent right-eigenvector basis for Denz-Pawlowski-Reichert, arXiv:1612.07315 / EPJC 78, 336 (2018)",
+  "sources_checked": [
+    {
+      "source": "Springer article page",
+      "url": "https://link.springer.com/article/10.1140/epjc/s10052-018-5806-0",
+      "checks": ["Supplementary", "Electronic supplementary", "Data availability", "code"],
+      "orientation_object_located": false,
+      "note": "Article discusses programming code technically, but no downloadable same-realization stability matrix/eigenbasis or supplementary-data link was located in the audited page."
+    },
+    {
+      "source": "arXiv abstract/HTML",
+      "url": "https://arxiv.org/abs/1612.07315",
+      "checks": ["GitHub", "code", "Appendix A stability matrix"],
+      "orientation_object_located": false,
+      "note": "Appendix A states the full stability matrix is not known because flows of fifth- and sixth-order couplings are unknown; two approximations are used for critical exponents."
+    },
+    {
+      "source": "SCOAP3 record",
+      "url": "https://repo.scoap3.org/records/25140",
+      "checks": ["record files", "supplement/code"],
+      "orientation_object_located": false,
+      "note": "Audited record exposes XML and PDF/A full text; no reusable orientation object was located."
+    },
+    {
+      "source": "INSPIRE record",
+      "url": "https://inspirehep.net/literature/1505417",
+      "checks": ["external links and bibliographic metadata"],
+      "orientation_object_located": false
+    },
+    {
+      "source": "GitHub global code search",
+      "queries": ["1612.07315", "Denz:2016qks", "Towards apparent convergence in asymptotically safe quantum gravity", "Tobias Denz Pawlowski Reichert"],
+      "orientation_object_located": false,
+      "note": "Hits inspected were bibliographic/citation references or event pages; no file exposing a same-realization 5x5 stability matrix or right eigensystem was located. A modern DiFfRG repository contains the paper in its bibliography but is not treated as a 2018 same-realization artifact."
+    }
+  ],
+  "scope_statement": "No reusable same-realization orientation object was located in the audited public sources. This is not a proof that no such object exists elsewhere or privately.",
+  "physical_blocker": "BLOCKED_NO_PUBLIC_SAME_REALIZATION_5X5_STABILITY_MATRIX_OR_RIGHT_EIGENSYSTEM_LOCATED_IN_AUDITED_SOURCES",
+  "information_firewall": "No polygon/KMQGB-derived QGR equations, architecture, fitted parameters or repairs are admitted."
+}
