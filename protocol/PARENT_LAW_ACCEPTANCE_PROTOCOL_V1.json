@@ -1,0 +1,57 @@
+{
+  "protocol": "PARENT_LAW_ACCEPTANCE_PROTOCOL_V1",
+  "status": "FROZEN_PROSPECTIVE_FILTER",
+  "authority_wave": 24,
+  "authority_run": 34662559366,
+  "authority_scientific_commit": "0523c39a868b9db61d0f32b89e4dd02490789627",
+  "frozen_holdout_bank": {
+    "path": "holdouts/WAVE22_FROZEN_BANK.json",
+    "blob_sha": "c32bd52edd003589ef65e0240c757475f215f55f",
+    "parameter_order": ["c3", "d3", "e4", "f4", "s2", "s0"]
+  },
+  "mandatory_gates": [
+    {
+      "id": "PL1_CLOSURE",
+      "requirement": "Residual physical nullity is zero after explicitly declared design/calibration parameters are accounted for.",
+      "fail_closed": true
+    },
+    {
+      "id": "PL2_INDEPENDENT_PROVENANCE",
+      "requirement": "The law is motivated or derived independently of the frozen candidate holdout outcomes and is not introduced solely to remove an observed residual.",
+      "fail_closed": true
+    },
+    {
+      "id": "PL3_COMPARATOR_NOVELTY",
+      "requirement": "The law or its prospective consequences are not merely a reparameterization of C5/EFT or an already-known generic factorization/consistency relation.",
+      "fail_closed": true
+    },
+    {
+      "id": "PL4_PROSPECTIVE_PREDICTIVITY",
+      "requirement": "At least two frozen Wave-22 probes remain unused in calibration and are genuine prospective predictions.",
+      "minimum_unused_holdouts": 2,
+      "fail_closed": true
+    },
+    {
+      "id": "PL5_CONTROLLED_FUNCTIONAL_FREEDOM",
+      "requirement": "No arbitrary function, pointwise knob set, or equivalent hidden freedom can reproduce arbitrary frozen holdout vectors without independently justified dynamics or finite generative constraints.",
+      "fail_closed": true
+    }
+  ],
+  "acceptance_rule": "ACCEPT_PARENT_LAW only if PL1 through PL5 all PASS. Any UNKNOWN, BLOCKED, PARTIAL, or FAIL yields NO_PARENT_LAW_CREDIT.",
+  "anti_retrofit_controls": {
+    "full_rank_alone_is_insufficient": true,
+    "minimum_complexity_alone_is_insufficient": true,
+    "bounded_consistency_region_alone_is_insufficient": true,
+    "compact_single_function_not_automatically_low_freedom": true,
+    "future_candidate_cannot_modify_frozen_bank": true
+  },
+  "wave24_reference_metrics": {
+    "S1_nullity": 5,
+    "S2_nullity": 3,
+    "S3_out_of_family_residual": 0.7443058247219579,
+    "S4_conflicting_unique_prediction_distance": 0.33576319308591585,
+    "S6_inequality_prediction_width": 0.625088209434556,
+    "S7_interpolation_error": 1.4307999229856705e-14
+  },
+  "claim_boundary": "This protocol is a prospective scientific-governance filter over the frozen finite RQIR residual/holdout construction, not a theorem classifying all possible quantum-gravity principles."
+}
