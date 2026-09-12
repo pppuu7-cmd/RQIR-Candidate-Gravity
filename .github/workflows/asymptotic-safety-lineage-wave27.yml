@@ -1,0 +1,64 @@
+name: Asymptotic-safety lineage wave 27
+
+on:
+  push:
+    branches: [asymptotic-safety-lineage-wave27]
+    paths:
+      - 'compute_wave27/**'
+      - 'evidence/WAVE27_ASYMPTOTIC_SAFETY_LINEAGES.json'
+      - 'post_freeze/WAVE27_ASYMPTOTIC_SAFETY_LINEAGE_PREREGISTRATION.md'
+      - 'holdouts/WAVE22_FROZEN_BANK.json'
+      - 'protocol/PARENT_LAW_ACCEPTANCE_PROTOCOL_V1.json'
+      - 'certificates/WAVE26_PRINCIPLE_SYNERGY_TRANSVERSALITY_CERTIFICATE.md'
+      - '.github/workflows/asymptotic-safety-lineage-wave27.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  lineage-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - lineage_completeness
+          - anti_splice
+          - jacobian_gate
+          - c3_bridge
+          - vertex_lineage
+          - lorentzian_lineage
+          - integrity_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run ${{ matrix.test }}
+        run: python compute_wave27/${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave27-${{ matrix.test }}
+          path: wave27_results/${{ matrix.test }}.json
+
+  aggregate-wave27:
+    if: always()
+    needs: [lineage-tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave27_downloads
+      - run: python compute_wave27/aggregate_wave27.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asymptotic-safety-lineage-wave27-summary
+          path: wave27_summary.json
