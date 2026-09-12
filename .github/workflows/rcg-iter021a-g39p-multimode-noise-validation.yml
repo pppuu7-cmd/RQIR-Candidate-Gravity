@@ -1,0 +1,56 @@
+name: RCG Iter021A G39-P Multimode Classical Noise Validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER021A_G39P_LAUNCH.md'
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G39-P multimode validation lane
+        run: |
+          mkdir -p out
+          python scripts/iter021a_g39p_multimode_classical_noise_validation.py --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg021a-g39p-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: validate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G39-P rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==12 and all(r['structural_valid'] for r in rows))
+          support=bool(structural and all(r['result']['scientific_support'] for r in rows))
+          r={k:[x['result'][k] for x in rows] for k in ['tp_residual','choi_min_eig','min_product_input_output_eig','max_trace_error','max_output_negativity_over_10_product_inputs','mode_permutation_generator_error','single_mode_reduction_error','local_A_commutator_norm_first_two_modes']}
+          summary={'iteration':'Iter021A','gate':'G39-P','n_results':len(rows),'all_structural_valid':structural,'all_scientific_support':support,'rank2_count':sum(x['rank_modes']==2 for x in rows),'rank3_count':sum(x['rank_modes']==3 for x in rows),'worst':{'max_tp_residual':max(r['tp_residual']) if rows else None,'min_choi_eig':min(r['choi_min_eig']) if rows else None,'min_product_output_eig':min(r['min_product_input_output_eig']) if rows else None,'max_trace_error':max(r['max_trace_error']) if rows else None,'max_negativity':max(r['max_output_negativity_over_10_product_inputs']) if rows else None,'max_permutation_error':max(r['mode_permutation_generator_error']) if rows else None,'max_single_mode_reduction_error':max(r['single_mode_reduction_error']) if rows else None,'min_noncommuting_A_commutator_norm':min(r['local_A_commutator_norm_first_two_modes']) if rows else None},'interpretation':'Implementation/admissibility validation only for finite rank-2/rank-3 multimode shared classical white-noise channels; no RCG-002 adversarial inference.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg021a-g39p-summary
+          path: summary/summary.json
