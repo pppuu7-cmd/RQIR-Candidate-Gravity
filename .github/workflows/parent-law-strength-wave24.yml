@@ -1,0 +1,120 @@
+name: Parent-law strength wave 24
+
+on:
+  push:
+    branches: [parent-law-strength-wave24]
+    paths:
+      - 'compute_wave24/**'
+      - 'post_freeze/WAVE24_PARENT_LAW_STRENGTH_PREREGISTRATION.md'
+      - '.github/workflows/parent-law-strength-wave24.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  rank-budget:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/rank_budget.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-rank-budget, path: wave24_results/rank_budget.json}
+
+  two-latent-generator:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/two_latent_generator.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-two-latent-generator, path: wave24_results/two_latent_generator.json}
+
+  full-rank-retrofit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/full_rank_retrofit.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-full-rank-retrofit, path: wave24_results/full_rank_retrofit.json}
+
+  minimum-complexity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/minimum_complexity.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-minimum-complexity, path: wave24_results/minimum_complexity.json}
+
+  inequality-region:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/inequality_region.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-inequality-region, path: wave24_results/inequality_region.json}
+
+  functional-freedom:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/functional_freedom.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-functional-freedom, path: wave24_results/functional_freedom.json}
+
+  acceptance-gate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/acceptance_gate.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-acceptance-gate, path: wave24_results/acceptance_gate.json}
+
+  information-firewall:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --upgrade pip numpy
+      - run: python compute_wave24/information_firewall.py
+      - uses: actions/upload-artifact@v4
+        with: {name: wave24-information-firewall, path: wave24_results/information_firewall.json}
+
+  aggregate-wave24:
+    needs: [rank-budget, two-latent-generator, full-rank-retrofit, minimum-complexity, inequality-region, functional-freedom, acceptance-gate, information-firewall]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {path: wave24_downloads}
+      - run: python compute_wave24/aggregate_wave24.py
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with: {name: parent-law-strength-wave24-summary, path: wave24_summary.json}
