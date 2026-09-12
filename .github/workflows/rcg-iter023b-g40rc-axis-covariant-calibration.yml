@@ -1,0 +1,69 @@
+name: RCG Iter023B G40-RC-C Axis Covariant Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER023B_G40RC_C_LAUNCH.md'
+
+jobs:
+  calibrate:
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen axis-covariant calibration lane
+        run: |
+          mkdir -p out
+          python scripts/iter023b_g40rc_axis_covariant_calibration.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023b-g40rc-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: calibrate
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G40-RC-C rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          methods=('sobol_lsq','lhs_lsq')
+          structural=bool(len(rows)==8 and all(r['structural_valid'] for r in rows))
+          by={}
+          for m in methods:
+              rr=[r for r in rows if r['method']==m]
+              good=[r for r in rr if r['best_strict_candidate'] is not None]
+              by[m]={'n':len(rr),'support_count':sum(int(r['scientific_support']) for r in rr),
+                     'all_hidden_eligible':bool(len(rr)==4 and all(r['hidden_control_eligible'] for r in rr)),
+                     'min_hidden_axis_covariant_BLP':min((r['hidden_control_axis_covariant_BLP'] for r in rr),default=None),
+                     'worst_recovery_gap':max((r['best_strict_candidate']['gap'] for r in good),default=None),
+                     'min_recovered_axis_covariant_BLP':min((r['best_strict_candidate']['axis_covariant_BLP'] for r in good),default=None),
+                     'all_support':bool(len(rr)==4 and all(r['scientific_support'] for r in rr))}
+          support=bool(structural and all(by[m]['all_support'] for m in methods))
+          summary={'iteration':'Iter023B','gate':'G40-RC-C','n_results':len(rows),'all_structural_valid':structural,'by_method':by,'scientific_support':support,
+                   'frozen_recovery_tolerance':0.002,'frozen_BLP_min':0.02,
+                   'interpretation':'Axis-frame-covariant positive-control calibration only. PASS authorizes only a separate prospective adversarial gate using the identical rule.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg023b-g40rc-summary
+          path: summary/summary.json
