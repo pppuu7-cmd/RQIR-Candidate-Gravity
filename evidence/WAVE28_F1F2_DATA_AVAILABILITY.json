@@ -1,0 +1,70 @@
+{
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "audit_date": "2026-09-12",
+  "target_lineage": "fluctuation_vertex_F1_F2",
+  "relevant_direction_count": 3,
+  "rqir_residual_order": ["c3","d3","e4","f4","s2","s0"],
+  "evidence": {
+    "D28_1_central_physical_representation": {
+      "status": "PASS_ANALYTIC_FITS_AVAILABLE",
+      "support": [
+        "Pawlowski & Traenkle, Phys. Rev. D 110, 086011 (2024), Appendix H: analytic fits and best-fit parameters for the numerical momentum-dependent data/form factors",
+        "Article states the fits reproduce numerical data to a few-percent level"
+      ],
+      "raw_machine_arrays_located": false,
+      "analytic_fit_representation_located": true
+    },
+    "D28_2_uv_coordinate_basis": {
+      "status": "BLOCKED_EXPLICIT_RELEVANT_EIGENVECTOR_BASIS_NOT_FROZEN",
+      "support": [
+        "Denz, Pawlowski, Reichert (2018) publishes UV fixed-point data and critical exponents and identifies three attractive directions",
+        "Frozen search did not locate an explicit reusable numerical eigenvector matrix in the same coordinate conventions needed for downstream finite differences"
+      ],
+      "critical_exponents_available": true,
+      "explicit_numeric_eigenvector_basis_frozen": false
+    },
+    "D28_3_trajectory_ensemble": {
+      "status": "BLOCKED_MISSING_SAME_REALIZATION_TRAJECTORY_ENSEMBLE",
+      "support": [
+        "F1 reports UV-finite trajectories into a classical-GR IR regime",
+        "Frozen evidence does not provide central plus independent +/- displacements along all three relevant UV directions propagated to F2 k=0 outputs"
+      ],
+      "central_or_representative_trajectories_exist": true,
+      "direction_resolved_displaced_trajectory_ensemble_frozen": false
+    },
+    "D28_4_six_output_projection": {
+      "status": "BLOCKED_MISSING_F1F2_TO_SIX_RQIR_PROJECTION",
+      "support": [
+        "F2 explicitly maps graviton scattering couplings into diffeomorphism-invariant effective-action form factors",
+        "No frozen source supplies the further deterministic projection into all six Wave-22 RQIR residual proxy coordinates"
+      ],
+      "vertex_to_effective_action_map": true,
+      "effective_action_to_six_rqir_map": false
+    },
+    "D28_5_uncertainty": {
+      "status": "BLOCKED_MISSING_PROPAGATED_SIX_OUTPUT_COVARIANCE",
+      "support": [
+        "F1 contains truncation/identification stability comparisons",
+        "F2 reports fit accuracy at the few-percent level",
+        "No frozen source propagates these uncertainties through a six-output UV-to-RQIR Jacobian"
+      ],
+      "input_level_stability_information": true,
+      "six_output_propagated_covariance": false
+    },
+    "D28_6_reproducible_machine_object": {
+      "status": "PARTIAL_CENTRAL_FITS_BUT_NO_FROZEN_DISPLACED_DATASET",
+      "support": [
+        "Published analytic fits are sufficient for a central-output representation",
+        "APS article page frozen search found no Data Availability, Supplemental-data, or code/repository text",
+        "Exact-title public GitHub repository search returned no paper-specific repository"
+      ],
+      "central_fits_reusable": true,
+      "paper_specific_displaced_dataset_or_code_located": false
+    },
+    "D28_7_anti_splice": {
+      "status": "PASS",
+      "forbidden_substitutions": ["essential_C3 E1", "lorentzian_spectral L1", "KMQGB/polygon candidate objects"]
+    }
+  },
+  "source_scope_note": "This table records what was located in the frozen public evidence search. Absence means not located in this audit, not a claim that unpublished author data do not exist."
+}
