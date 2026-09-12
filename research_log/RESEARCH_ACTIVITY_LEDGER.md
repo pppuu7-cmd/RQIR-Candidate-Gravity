@@ -17,13 +17,21 @@ Purpose: make cross-branch research progress visible from `main` without merging
 | 31 | `generalized-eh-wave31` | run `34665447413` | PASS | After EH baseline quotient, analytic linear-curvature bulk residual rank is 0; published generalized-EH sector does not supply two frozen independent bulk directions. |
 | 32 | `f1-relevant-basis-wave32` | run `34665724676` | PASS | Critical exponents determine UV surface dimension but not its orientation; same spectrum permits nearly 90° different 3D relevant subspaces in 5D. |
 | 33 | `frg-basis-ingest-wave33` | run `34666795814`, compute `57fe08111967366dc259eb73bfc46120dd6f3256` | PASS | 5x5 orientation-object ingest, complex-pair realification, phase/normalization invariance, seven symmetric trajectories and uncertainty propagation validated. Certificate: `certificates/WAVE33_FRG_BASIS_INGEST_CERTIFICATE.md`. Physical J8 remains blocked; surrogate is `SURROGATE_NOT_J8`. |
-| 34 | `appendix-f-surrogate-wave34` | run `34667231522`, compute `15e6d2ee3b3120567fca746641ace1e3daed04af` | RUNNING | Source-faithful Appendix-F F1–F5/Truncation-4 reconstruction audit: conditioning, nearby-root search, spectrum comparison, rounding sensitivity and permanent `SURROGATE_NOT_J8` firewall. |
+| 34 | `appendix-f-surrogate-wave34` | run `34667338160`, final path-fix head `66fcb4f8f43e44ce5f1e51b34352edcde94887ea` | PASS / INCONCLUSIVE SURROGATE | 9/9 + aggregator PASS, but no raw-residual root in frozen box. Rounded-point residual ≈1.525e9, Jacobian condition ≈8.25e10, published-spectrum mismatch ≈2.75e9. Appendix-F printed system is not promoted as an end-to-end J8 surrogate. Certificate: `certificates/WAVE34_APPENDIX_F_SURROGATE_CERTIFICATE.md`. |
 
 ## Current blocker
 
 `BLOCKED_MISSING_REUSABLE_F1_RELEVANT_EIGENVECTOR_BASIS_OR_NUMERIC_APPROXIMATE_STABILITY_MATRIX_IN_SAME_CLOSURE`
 
 The physical J8 calculation remains blocked until a same-realization numerical 5x5 stability matrix or normalized right-eigenvector basis is available. Critical exponents alone are not used as displacement directions.
+
+## Current route after Wave 34
+
+Do not fit or repair the Appendix-F surrogate. Prioritize:
+
+1. later same-lineage FRG vertex-expansion papers and supplements for a reusable numerical stability matrix/right-eigenvector basis;
+2. public data/code that can produce the same-realization orientation object;
+3. if unavailable, a minimal fresh FRG stability calculation specification capable of generating the 5x5 orientation object and seven displaced trajectories.
 
 ## Logging policy from Wave 33 onward
 
