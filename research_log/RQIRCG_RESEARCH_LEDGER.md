@@ -4,84 +4,80 @@ This file is the clean authority ledger for `RQIR-Candidate-Gravity` only. The p
 
 ## Scope contract
 
-RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may contribute methodology, gate discipline and mathematical tools, but not imported physical assumptions, ansatz coefficients or desired conclusions.
+RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may contribute methodology, gate discipline and mathematical tools, but not imported physical assumptions, ansatz coefficients, results or desired conclusions.
 
 ## Latest authoritative results
 
 | Iteration | Gate | Run / head | Classification | Result ceiling |
 |---|---|---|---|---|
-| Iter010 | G28 full-Bloch comparator audit | run `34692403874`, head `3d8d3f969a22c22c1526b00f42377c2d41f87a04` | `DERIVED_SCOPED_NEGATIVE_COMPARATOR_RESULT` | Finite single-axis Markovian family only. |
-| Iter011 | G29 robustness suite | run `34694101699`, head `c4c6f0d35e4e57a2105facafee2bdddc8036a52f` | `DERIVED_SCOPED_ROBUSTNESS_SUPPORT` | 24/24 structural valid/support in finite single-axis family. |
-| Iter012 | G30 additive multi-channel comparator | run `34694264478`, head `fa9be36b422b84614b03f96de7c37660059f2d74` | `FINITE_SEARCH_DIAGNOSTIC` | Historical K=2/K=3 gaps cannot be treated as nearest distances after later calibration failure. |
-| Iter013 | G31 global-search calibration | run `34695076098`, head `f32ecf1949f1e7d6c577b201b73c517d4605fdb7` | `SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED` | Positive K=2 recovery failed; adversarial minima diagnostic only. |
-| Iter014 | G32 positive-control optimizer diagnosis | run `34695441883`, head `ea54a3ae9694366c13b775af44d46833` | `POSITIVE_CONTROL_OPTIMIZER_FAIL / LOCAL_BASIN_GEOMETRY_OR_CONDITIONING` | Exact representability/plumbing pass; direct trace-distance search unreliable. |
-| Iter014B | G32-J positive-control Jacobian | run `34695478444`, head `706245fa183845556aa020bc99d2a4d86e4e3060` | `FULL_LOCAL_RANK / STRONGLY_ILL_CONDITIONED_DIAGNOSTIC` | Rank 11/11; condition number up to ~4034. |
-| Iter015 | G33 smooth positive-control calibration | run `34695662002`, head `d15d633f58fa63d378a85d6e5409c4bb0735a97e` | `POSITIVE_CONTROL_METHOD_CALIBRATED_K2` | Sobol-LSQ and LHS-LSQ each recover all four hidden K=2 targets far below frozen 0.002 tolerance. |
-| Iter016 | G34 calibrated multichannel comparator | run `34695835216`, head `09d729764ca38a0d83f11b81dc59f157cd0cb734` | `DERIVED_SCOPED_K2_CALIBRATED_COMPARATOR_SUPPORT + POSITIVE_CONTROL_METHOD_CALIBRATED_K3_K4` | K=2 prospective gaps supported inside finite additive independent-channel family; K=3/K=4 adversarial reruns newly authorized. |
-| Iter017 | G35 calibrated K=3/K=4 comparator | run `34697766107`, head `fbc71768da3cec0d6ea5a8cbb755a29036b16726` | `DERIVED_SCOPED_K3_K4_CALIBRATED_COMPARATOR_SUPPORT` | 24/24 structural valid; K=3 and K=4 each pass four-shard nonzero-gap, cross-method, nesting and admissibility gates. Same finite additive independent-channel family only. |
-| Iter018A | G36-P shared-classical-noise implementation pre-gate | run `34702575861`, head `270a26300117aeebe23af126dd4e6c53c96cf3f9` | `CLASSICAL_SHARED_NOISE_IMPLEMENTATION_VALIDATED` | Implementation/provenance only; 12/12 frozen checks pass. No RCG-002 adversarial claim. |
-| Iter018B | G36-C shared-noise optimizer calibration | run `34703606707`, head `95335aa32e92dcd1cc76762cd6fd3717754a1057` | `RUNNING / FROZEN_PROSPECTIVE_CALIBRATION` | Six hidden in-family targets × Sobol/LHS. Frozen recovery `<0.002`; no adversarial interpretation until terminal calibration. |
+| Iter010 | G28 full-Bloch comparator audit | `34692403874` / `3d8d3f969a22c22c1526b00f42377c2d41f87a04` | `DERIVED_SCOPED_NEGATIVE_COMPARATOR_RESULT` | Finite single-axis Markovian family only. |
+| Iter011 | G29 robustness suite | `34694101699` / `c4c6f0d35e4e57a2105facafee2bdddc8036a52f` | `DERIVED_SCOPED_ROBUSTNESS_SUPPORT` | Finite single-axis family. |
+| Iter012 | G30 additive multichannel comparator | `34694264478` / `fa9be36b422b84614b03f96de7c37660059f2d74` | `FINITE_SEARCH_DIAGNOSTIC` | Historical gaps non-authoritative after later calibration failure. |
+| Iter013 | G31 global-search calibration | `34695076098` / `f32ecf1949f1e7d6c577b201b73c517d4605fdb7` | `SCIENTIFIC_CALIBRATION_FAIL / GLOBAL_OPTIMIZER_NOT_VALIDATED` | Adversarial minima diagnostic only. |
+| Iter014 | G32 optimizer diagnosis | `34695441883` / `ea54a3ae9694366c13b775af44d46833` | `POSITIVE_CONTROL_OPTIMIZER_FAIL / LOCAL_BASIN_GEOMETRY_OR_CONDITIONING` | Direct trace-distance optimizer unreliable. |
+| Iter014B | G32-J Jacobian | `34695478444` / `706245fa183845556aa020bc99d2a4d86e4e3060` | `FULL_LOCAL_RANK / STRONGLY_ILL_CONDITIONED_DIAGNOSTIC` | Rank 11/11; condition number up to ~4034. |
+| Iter015 | G33 smooth K2 calibration | `34695662002` / `d15d633f58fa63d378a85d6e5409c4bb0735a97e` | `POSITIVE_CONTROL_METHOD_CALIBRATED_K2` | Sobol-LSQ and LHS-LSQ calibrated. |
+| Iter016 | G34 multichannel comparator | `34695835216` / `09d729764ca38a0d83f11b81dc59f157cd0cb734` | `DERIVED_SCOPED_K2_CALIBRATED_COMPARATOR_SUPPORT + POSITIVE_CONTROL_METHOD_CALIBRATED_K3_K4` | Finite additive independent measurement-feedback family. |
+| Iter017 | G35 K3/K4 adversarial | `34697766107` / `fbc71768da3cec0d6ea5a8cbb755a29036b16726` | `DERIVED_SCOPED_K3_K4_CALIBRATED_COMPARATOR_SUPPORT` | K3/K4 four-shard + admissibility PASS; same finite family only. |
+| Iter017R | G35-R held-out replication | `34702384573` / `1b93cbf14b4705ae2699f559523d1c1b1ae28be5` | `HELDOUT_OPTIMIZER_ROBUSTNESS_PASS_K2_K3_K4` | Methodology robustness only. |
+| Iter018A | G36-P shared-noise implementation | `34702575861` / `270a26300117aeebe23af126dd4e6c53c96cf3f9` | `CLASSICAL_SHARED_NOISE_IMPLEMENTATION_VALIDATED` | Convex mixture of product unitaries; implementation/provenance only. |
+| Iter018B | G36-C shared-noise calibration | `34703606707` / `95335aa32e92dcd1cc76762cd6fd3717754a1057` | `POSITIVE_CONTROL_METHOD_CALIBRATED_SHARED_NOISE` | 12/12 hidden in-family controls PASS; authorizes G36-A only. |
+| Iter018C | G36-A shared-noise adversarial | `34703779268` / `15ba7c90fd4794d3d31e41a5a08ee35511284faf` | `DERIVED_SCOPED_SHARED_NOISE_CALIBRATED_COMPARATOR_SUPPORT` | Four RCG-002 shards × two methods PASS; shared Gaussian classical noise only. |
+| Iter019A | G37-C combined comparator calibration | `34703787083` / `59cf94512a65a54a37eba05ae3093b7ee85bead0` | `RUNNING / FROZEN_PROSPECTIVE_CALIBRATION` | K2 measurement-feedback + shared Gaussian classical-noise finite family; no adversarial interpretation yet. |
 
-## Iter017 / G35 terminal aggregate
+## Key new terminal aggregates
 
-Aggregate job `103578278887`, aggregate artifact `10301201162`, digest `sha256:7e07e47311db7a279e2de47502d64a36cf31623c10c0da67f062ee8817bac199`.
+### Iter017 / G35
 
-All 24 required artifacts were structurally valid. Frozen gates were unchanged after inspection. K=3 and K=4 each passed all four shards for both calibrated methods, with every gap `>1e-4`, Sobol/LHS agreement `<=0.002`, and K-to-K nesting sanity within the fixed `0.002` slack. Admissibility was 4/4 for K=3 and 4/4 for K=4.
+Aggregate job `103578278887`, summary artifact `10301201162`, digest `sha256:7e07e47311db7a279e2de47502d64a36cf31623c10c0da67f062ee8817bac199`. All 24 required artifacts structurally valid. K=3 and K=4 each passed all four shards for both calibrated methods, frozen nonzero-gap and cross-method rules, nesting sanity and 4/4 admissibility. Durable note: `results/ITER017_G35_CALIBRATED_K3K4_TERMINAL.md`.
 
-K=3 gap pairs (Sobol,LHS):
+### Iter017R / G35-R
 
-- shard 0 `(0.02607083500239983, 0.02607082455460381)`;
-- shard 1 `(0.10462705021070003, 0.1046280224077526)`;
-- shard 2 `(0.4030775755359582, 0.4030776193040029)`;
-- shard 3 `(0.5324536720244457, 0.5324529974645373)`.
+Aggregate job `103580063685`, summary artifact `10300682102`, digest `sha256:5724519f32faf1e10d011e97d10df283fa6225facdfdb9ad8b14e82577557b13`. 18/18 held-out controls passed across K=2/K=3/K=4 and Sobol/LHS. Worst trace-distance recovery `5.6435139378164e-13` versus frozen `<0.002`. Durable note: `results/ITER017R_G35R_HELDOUT_OPTIMIZER_REPLICATION_TERMINAL.md`.
 
-K=4 gap pairs:
+### Iter018A / G36-P
 
-- shard 0 `(0.026070843192707152, 0.026070840339822314)`;
-- shard 1 `(0.1046282559394234, 0.10462763627815973)`;
-- shard 2 `(0.40307761916005946, 0.40307752304763794)`;
-- shard 3 `(0.5324520837003446, 0.5324521216247678)`.
+Aggregate job `103576905242`, artifact `10300760790`, digest `sha256:3a03b7462ccf026c6cc7cdef88fbe0c9f4710c3040f467a5caf9fa5e3e4d228d`. 12/12 implementation/provenance checks passed for shared Gaussian Hamiltonian noise as a convex mixture of product unitaries.
 
-Classification: `DERIVED_SCOPED_K3_K4_CALIBRATED_COMPARATOR_SUPPORT`. This remains a scoped result for the finite additive independent single-axis Markovian measurement-feedback GKSL comparator family only. It is not a general no-go theorem.
+### Iter018B / G36-C
 
-Durable result note: `results/ITER017_G35_CALIBRATED_K3K4_TERMINAL.md`, commit `ad1a6bf689740f3af2997df601a516b3b0a6334c`.
+Aggregate job `103579641822`, summary artifact `10301561148`, digest `sha256:5f82bf2eb2b74bf0ac2f2bbc6e5f252898da97420fa5e0da1f1fd91f6e5f5f0c`. All 12 positive controls passed; worst trace-distance recovery `5.288760714311301e-15` versus `<0.002`. Durable note: `results/ITER018B_G36C_SHARED_NOISE_CALIBRATION_TERMINAL.md`.
 
-## Iter018A / G36-P
+### Iter018C / G36-A
 
-Run `34702575861`, head `270a26300117aeebe23af126dd4e6c53c96cf3f9`, aggregate job `103576905242`, aggregate artifact `10300760790`, digest `sha256:3a03b7462ccf026c6cc7cdef88fbe0c9f4710c3040f467a5caf9fa5e3e4d228d`.
+Aggregate job `103580126265`, summary artifact `10301491686`, digest `sha256:2a75483c5ed8261e62466581b7a00046dd5d7a81ddffc5e49e38e819f81832ce`.
 
-All 12 prospectively frozen implementation lanes passed. Classification: `CLASSICAL_SHARED_NOISE_IMPLEMENTATION_VALIDATED`. The validated ingredient is shared Gaussian Hamiltonian noise represented as a convex mixture of product unitaries; this is deliberately narrower than an arbitrary nonlocal Lindblad channel.
+All eight frozen RCG-002 adversarial lanes passed. Gap pairs (Sobol,LHS): shard0 `(0.025499008832948887,0.025499011169133425)`, shard1 `(0.10036159822213998,0.10036158741640057)`, shard2 `(0.3587370385387613,0.35873703839655824)`, shard3 `(0.5980266528346264,0.5980268730784868)`. All are `>1e-4` and each pair agrees within `0.002`. Durable note: `results/ITER018C_G36A_SHARED_NOISE_ADVERSARIAL_TERMINAL.md`.
 
-## Active frontier — Iter018B / G36-C
+This remains scoped to one shared Gaussian classical Hamiltonian-noise process and is not a general classical/semiclassical no-go.
 
-Run `34703606707`, launch head `95335aa32e92dcd1cc76762cd6fd3717754a1057`.
+## Active frontier — Iter019A / G37-C
 
-G36-C is a prospective positive-control optimizer calibration for the finite shared-classical-noise comparator before any RCG-002 adversarial use. Twelve lanes cover six hidden in-family targets with two independent global designs, Sobol-LSQ and Latin-hypercube-LSQ. Hidden coordinates are not used as optimizer starts. Frozen scientific recovery is final trace distance `<0.002` on every lane. Structural/nonfinite failure is separated from scientific calibration failure.
+Run `34703787083`, launch head `59cf94512a65a54a37eba05ae3093b7ee85bead0`.
 
-Only terminal G36-C PASS may authorize the separate RCG-002 shared-noise adversarial comparator gate. A G36-C failure must be retained and diagnosed without weakening the threshold post hoc.
+Prospectively calibrate the stronger combined finite Markovian comparator: calibrated K=2 additive independent single-axis measurement-feedback GKSL plus validated shared Gaussian classical Hamiltonian noise. Six hidden in-family controls × Sobol/LHS plus four independent admissibility lanes are frozen before inspection. Every positive-control trace distance must be `<0.002`; TP/CP/PSD/trace/Hermiticity admissibility must pass all four lanes. Latest checked state: 14/16 scientific lanes terminal success, two shard-4 positive-control lanes still in progress; aggregate pending.
 
-In parallel, G35-R run `34702384573` remains methodology robustness only and cannot change the frozen G35 physics verdict.
+Only terminal G37-C scientific PASS authorizes a separate combined-family RCG-002 adversarial test. Failure blocks that interpretation; thresholds/family cannot be weakened post hoc.
 
 ## Stable readiness rubric
 
 - independent scope/claim discipline: closed
 - weak-field coherent candidate construction: closed at toy-channel level
-- basis/rotation robustness of finite comparator: closed
-- CPTP/PSD and numerical robustness of finite comparator: closed at tested layers
-- exact K=2 in-family representability/plumbing: closed
-- K=2 smooth optimizer calibration: closed
-- calibrated K=2 adversarial comparator rerun: closed
-- K=3/K=4 optimizer calibration: closed
-- calibrated K=3/K=4 adversarial comparator rerun: **closed G35**
-- shared-classical-noise implementation/provenance: closed at pre-gate level
-- shared-classical-noise optimizer calibration: **active G36-C**
-- correlated/shared classical-noise comparator against RCG-002: blocked pending G36-C terminal PASS
+- basis/rotation robustness and finite comparator validity: closed at tested layers
+- K2/K3/K4 measurement-feedback optimizer calibration and prospective adversarial reruns: closed
+- held-out optimizer replication: closed methodology support
+- shared-classical-noise implementation/provenance: closed
+- shared-classical-noise optimizer calibration: closed
+- shared-classical-noise adversarial comparator against RCG-002: closed, scoped
+- combined measurement-feedback + shared-noise calibration: active G37-C
+- combined-family adversarial comparator: blocked pending G37-C PASS
+- broader correlated/general positive-Kossakowski comparator: open
 - non-Markovian comparator layer: open
 - externally anchored observable/holdout programme: open
 - full candidate-gravity dynamics / continuum completion: open
 
-Current internal programme readiness: **55%**. This is a construction/readiness metric, not a probability of physical correctness.
+Current internal programme readiness: **56%**. This is a construction/readiness metric, not a probability of physical correctness.
 
 ## Claim locks
 
-Do not promote finite-family gaps to claims that all semiclassical gravity, all classical mediators, or all alternatives to quantum gravity are excluded. Do not use green CI as a scientific verdict. Do not weaken the frozen `2e-3` calibration/agreement criterion or `1e-4` nonzero-gap criterion after seeing results. Do not reuse G30/G31 adversarial minima as authority. Do not import physical assumptions or desired conclusions from QGR/KMQGB/RQIR.
+Do not promote finite-family gaps to claims that all semiclassical gravity, all classical mediators, or all quantum-gravity alternatives are excluded. Do not use green CI as scientific PASS. Do not weaken frozen `2e-3` calibration/agreement or `1e-4` nonzero-gap criteria after seeing results. G30/G31 adversarial minima remain diagnostics only. Do not import physical assumptions or desired conclusions from QGR/KMQGB/RQIR.
