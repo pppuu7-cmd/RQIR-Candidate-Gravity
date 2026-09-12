@@ -1,9 +1,8 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-12
-Active gates: `ITER030 / G44-C basis-invariant trace-ball calibration` + `ITER031 / G40-TM-A prospective RTN adversarial`
-Prepared locked next gate: `ITER032 / G44-A basis-invariant trace-ball adversarial`
 Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_ATTACK`
+Active production gates: `ITER032 / G44-A basis-invariant trace-ball adversarial` + `ITER033 / G45-P complex-PSD provenance boundary`
 
 ## Canonical status
 
@@ -14,70 +13,63 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_ATTACK`
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 
-Readiness is programme completion, not probability of correctness. Calibration/implementation/coverage gates do not raise readiness. Only a terminal new physics/comparator rubric closure can trigger a readiness review.
+Readiness is programme completion, not probability of correctness. Calibration/implementation/provenance/coverage gates do not raise readiness. Only a terminal new physics/comparator rubric closure can trigger a readiness review.
 
 ## Newly closed authority
 
-### G43-A finite multichart atlas — PARTIAL LIMIT
+### G44-C basis-invariant trace-ball optimizer calibration — PASS
 
-Run `34715739668`, head `b69524b9fe8c33ff2f433f1d9dbc6ce54f8e4a06`, aggregate `103614423827`, artifact `10304965236`, digest `sha256:7b45a058f3ab45cc93f869a151b5f6dd4c9f32567964d8aaa7eaa170747cb4a9`.
+Run `34716808171`, head `a0061c979963b8b891fdb886de79424711516993`, aggregate `103616615329`, artifact `10304911987`, digest `sha256:7e34d6843135c670230839027cffb3d65f5a6d0fb70b8ed8b82f880ef0daf7db`.
 
-All 36 response-blind lanes were structurally valid and basis-covariant. The frozen five-chart atlas covered only **25/36**: ranks 1/2/3 = 6/6 each, rank4 = 3/6, rank5 = 1/6, rank6 = 3/6. Classification `HELDOUT_MULTICHART_BASIS_COVERAGE_PARTIAL_LIMIT`. No chart may be added post hoc. Durable note: `results/ITER027_G43A_MULTICHART_COVERAGE_TERMINAL.md`.
+All 12 response-blind positive controls ranks1–6 × Sobol/LHS passed. LHS radial-boundary rank6: gap `3.4694469519536137e-16`, relative Kossakowski error `1.18731827336088e-15`, recovered rank6 and `tr(C)=4.0`. Classification `BASIS_INVARIANT_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED`. Calibration only; no readiness increment. Durable note: `results/ITER030_G44C_TRACE_BALL_CALIBRATION_TERMINAL.md`.
 
-### G44-P basis-invariant PSD trace-ball representation — PASS
+### G40-TM-A prospective RTN adversarial — FROZEN SUPPORT RULE NOT MET
 
-Run `34716135086`, head `daf40fca9e5e6dc6f98b7673d5c2d34a4cc75552`, aggregate `103615055245`, artifact `10305175168`, digest `sha256:2e9f719f90f0d7df07eebed0c6150d12a7c5fde928c06aa19ab14a3b0ea814f4`.
+Run `34716863840`, aggregate `103616629784`, artifact `10305770549`, digest `sha256:7ece1af4ca748acc2a0597b1c5f900e58e805de2cfdf2d01a7f2cc6fed1d3a4b`.
 
-Frozen family: `C=A^2`, `A=A^T`, `||A||_F<=2`, equivalently real PSD `tr(C)<=4`. All 24 rank1–6 × local-basis-rotation lanes passed representation, rank, trace-ball and covariance conditions. The old G42 box is analytically contained because max `||B||_F^2=3.51<4`. Classification `BASIS_INVARIANT_TRACE_BALL_PSD_REPRESENTATION_VALIDATED`. No readiness increment. Durable note: `results/ITER028_G44P_TRACE_BALL_PSD_TERMINAL.md`.
+All 8 lanes were structurally valid, strict-BLP admissible and individually had large nonzero gaps, but the frozen Sobol/LHS agreement `<=0.002` failed in all four shards: differences `0.0200349612`, `0.0231292421`, `0.00517398865`, `0.00742134795`. Classification `G40TMA_FROZEN_SUPPORT_RULE_NOT_MET`. No threshold weakening or retroactive optimizer rescue. This is method-robustness nonclosure for the frozen finite RTN experiment, not a universal RTN physics no-go. Durable note: `results/ITER031_G40TMA_TRACE_METRIC_RTN_ADVERSARIAL_TERMINAL.md`. Readiness remains 61%.
 
-### G40-TM-C trace-metric RTN calibration — PASS
+## Active gate 1 — G44-A basis-invariant trace-ball PSD adversarial
 
-Run `34716161178`, head `aff54cae0954eb06771337ab315672a049450923`, aggregate `103614850103`, artifact `10305010398`, digest `sha256:1578827bf3cdc8a441eda3ed54bf4d5a9db51a69ebbf903f90420676c79c8ad5`.
+G44-A was frozen before G44-C terminal:
+- scientific protocol `protocol/ITER032_G44A_TRACE_BALL_PSD_ADVERSARIAL.md`;
+- script `scripts/iter032_g44a_trace_ball_psd_adversarial.py`;
+- workflow `.github/workflows/rcg-iter032-g44a-trace-ball-psd-adversarial.yml`.
 
-All 8 response-blind positive-control lanes passed direct max-trace-distance recovery with strict axis-covariant BLP. Classification `TRACE_METRIC_ALIGNED_RTN_OPTIMIZER_CALIBRATED`. Historical G40-RC-A/G40-RC-D2 negative/nonrobust verdicts remain immutable; this is a new prospective optimizer calibration, not a retroactive repair. No readiness increment. Durable note: `results/ITER029_G40TMC_TRACE_METRIC_CALIBRATION_TERMINAL.md`.
+After consuming terminal G44-C PASS, launch marker commit `fbb9305039bc44086e100ba23fe4c90e2a13cd97` authorized production unchanged. Active run: **`34718045811`**.
 
-## Active gate 1 — G44-C basis-invariant trace-ball optimizer calibration
+8 lanes = Sobol/LHS × 4 frozen RCG-002 toy target shards. Frozen per-shard rule: both lanes admissible/supporting, gap `>1e-4`, absolute cross-method gap difference `<=0.002`; all four shards required. Scope is only the bounded basis-invariant real-PSD Markovian trace-ball `tr(C)<=4`; no universal classical/semiclassical no-go.
 
-Prereg `protocol/ITER030_G44C_TRACE_BALL_OPTIMIZER_CALIBRATION.md` frozen before G44-P terminal. Launch/head `a0061c979963b8b891fdb886de79424711516993`; run `34716808171`.
+Latest state at this durable sync: 1 lane in progress, 7 queued, 0 terminal. A terminal scientific PASS may justify readiness `61% -> 62%` after rubric review; any frozen rule failure leaves readiness at 61%.
 
-12 positive-control lanes = ranks 1–6 × Sobol/LHS. Same exact physical family `tr(C)<=4`; six hidden controls include rank-deficient boundaries and exact radial boundary rank6. Frozen lane rules: max trace gap `<0.002`, relative C error `<0.02`, rank recovery, PSD floor and trace-ball membership.
+## Active gate 2 — G45-P complex-Hermitian PSD provenance boundary
 
-Latest live state at this update: **7/12 terminal = 58.3%**, one additional lane in progress. All inspected completed lanes support. Examples: rank1/Sobol gap `6.6335e-12`, relative C error `8.9192e-12`, rank 1/1; rank3/Sobol gap `8.7060e-12`, error `2.5530e-11`, rank 3/3; rank6 radial-boundary/Sobol gap `2.5427e-16`, error `1.0447e-15`, `tr(C)=4.0`, rank 6/6.
+Response-blind independent stream; **no RCG-002 target**.
 
-Only terminal 12/12 PASS may authorize G44-A production.
+- preregistration commit `fae8063aba169ad77f4928e4a8febaf4a2839d45` before implementation;
+- implementation commit `83856b814b46b9af85b298dd48a57f860549cd37`;
+- workflow commit `ac0f8147ffa90f645ea9d45b14679da991464eeb`;
+- launch commit `35583bcaa013944017a18c56f8f05714b616ee81`;
+- active run **`34718225194`**.
 
-## Active gate 2 — G40-TM-A prospective RTN adversarial
+12 lanes = real-PSD classical controls, same-site complex PSD controls, cross-site complex PSD controls × 4 shards. Frozen question: does generic complex-Hermitian PSD GKSL structure leave the linear provenance span of all 21 real-symmetric Kossakowski dissipators plus six local-Hamiltonian commutators on the local-Pauli basis? This prevents incorrectly calling a broader quantum GKSL family a classical random-Hamiltonian comparator. A PASS is provenance-only and cannot raise readiness.
 
-Prereg `protocol/ITER031_G40TMA_TRACE_METRIC_RTN_ADVERSARIAL.md` and implementation/workflow were frozen before G40-TM-C aggregate. Launch/head `114b664e328fdfb9328bcd7606d8e9d9a58ce5bd`; run `34716863840`.
+Latest state at this durable sync: run queued; matrix jobs not yet materialized.
 
-8 prospective lanes = Sobol/LHS direct-trace optimizer × four frozen G40-RC-A RCG-002 toy target shards. Same finite symmetric hidden-classical RTN family, same candidate-axis-frame BLP witness, same target convention. Frozen pair rule per shard: both strict-BLP candidates, each gap `>1e-4`, Sobol/LHS gap difference `<=0.002`; all four shards required.
-
-Latest live state: **2/8 terminal = 25%**. Sobol shard0 gap `0.584587750080894`, BLP `0.5664696956410414`; Sobol shard1 gap `0.5724941626871984`, BLP `0.5634482323007587`; both lane-support true. These are early non-terminal results. Cross-method agreement is not known until matching LHS lanes finish.
-
-A terminal PASS here would close a new scoped non-Markovian RTN comparator layer and may justify readiness `61% -> 62%` after rubric review. Any rule failure leaves readiness at 61%.
-
-## Prepared but locked — G44-A
-
-Frozen before G44-C terminal:
-- protocol `protocol/ITER032_G44A_TRACE_BALL_PSD_ADVERSARIAL.md`, commit `902a8bdf33881a48e4053cd1005a68efbb6d20db`;
-- script `scripts/iter032_g44a_trace_ball_psd_adversarial.py`, commit `39575d036646c5d4f1c619dbfea5ae7a809e23ee`;
-- workflow `.github/workflows/rcg-iter032-g44a-trace-ball-psd-adversarial.yml`, commit `beee08a4909f4a4b83bffa9397d3642899180e00`.
-
-Production launch marker is deliberately absent. If and only if G44-C terminally PASSes, G44-A may be launched unchanged: same basis-invariant `tr(C)<=4` family/search map, same four G42-A target shards, gap `>1e-4`, Sobol/LHS agreement `<=0.002`, all four shards.
-
-## Stable scientific closures
+## Stable scientific closures / limits
 
 - G35 finite K2/K3/K4 additive MF scoped support.
 - G36 shared Gaussian classical-noise scoped support.
 - G37 corrected nested MF + shared-noise scoped support.
 - G38 OU finite-correlation toy support.
 - G39 finite rank2/rank3 multimode support.
-- G40 historical RTN adversarial unresolved due old optimizer nonrobustness; new G40-TM-A is prospective and active.
+- Historical G40 RTN branches plus G40-TM-A remain without robust prospective physics support; do not rescue post hoc.
 - G41 rank4/5/6 frame-indexed positive-rate scoped support.
 - G42 bounded PSD calibration + scoped bounded-chart adversarial support; readiness `60% -> 61%`.
 - G42-BC single-chart basis coverage limit.
-- G43 finite-atlas partial coverage limit.
-- G44-P basis-invariant trace-ball representation PASS; G44-C calibration active.
+- G43 frozen five-chart atlas partial limit: 25/36 held-out controls covered.
+- G44-P basis-invariant real-PSD trace-ball representation PASS.
+- G44-C basis-invariant trace-ball optimizer calibration PASS.
 
 ## Claim locks
 
@@ -85,4 +77,4 @@ Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, 
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_61_PERCENT + THEORY_ESTABLISHED_0 + G42A_SCOPED_BOUNDED_PSD_SUPPORT + G43A_FINITE_ATLAS_PARTIAL_LIMIT + G44P_BASIS_INVARIANT_TRACE_BALL_REPRESENTATION_PASS + G44C_RUNNING + G40TMC_CALIBRATED + G40TMA_RUNNING + G44A_PREPARED_LOCKED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_61_PERCENT + THEORY_ESTABLISHED_0 + G44C_CALIBRATED + G40TMA_FROZEN_SUPPORT_RULE_NOT_MET + G44A_RUNNING + G45P_RUNNING_RESPONSE_BLIND_PROVENANCE`.
