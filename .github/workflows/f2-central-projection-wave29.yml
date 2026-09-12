@@ -1,0 +1,61 @@
+name: F2 central projection wave 29
+
+on:
+  push:
+    branches: [f2-central-projection-wave29]
+    paths:
+      - '.github/workflows/f2-central-projection-wave29.yml'
+      - 'compute_wave29/**'
+      - 'evidence/WAVE29_F2_EFFECTIVE_ACTION_BASIS.json'
+      - 'post_freeze/WAVE29_F2_CENTRAL_PROJECTION_PREREGISTRATION.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  projection-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - f2_operator_basis
+          - wave22_sector_visibility
+          - anti_overcounting_rank
+          - low_energy_truncation_rank
+          - r3_gap
+          - projection_identifiability
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.task }}
+        run: python compute_wave29/${{ matrix.task }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave29-${{ matrix.task }}
+          path: wave29_${{ matrix.task }}.json
+
+  aggregate-wave29:
+    needs: projection-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave29_downloads
+      - run: python compute_wave29/aggregate_wave29.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f2-central-projection-wave29-summary
+          path: wave29_summary.json
