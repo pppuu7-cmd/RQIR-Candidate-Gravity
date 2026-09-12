@@ -1,0 +1,99 @@
+name: RCG Iter002 Coherence Comparator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter002_rcg002_channel_gates.py'
+      - 'candidates/RCG_002_RELATIONAL_CONTROLLED_PHASE_CHANNEL.md'
+      - '.github/workflows/rcg-iter002-coherence-comparator.yml'
+  workflow_dispatch:
+
+jobs:
+  gate-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {gate: consistency, chi: '0.37', eta: '1.0', seed: 17}
+          - {gate: consistency, chi: '1.11', eta: '0.85', seed: 41}
+          - {gate: consistency, chi: '2.03', eta: '0.70', seed: 73}
+          - {gate: comparator, chi: '0.37', eta: '1.0', seed: 17}
+          - {gate: comparator, chi: '0.37', eta: '1.0', seed: 41}
+          - {gate: comparator, chi: '0.37', eta: '1.0', seed: 73}
+          - {gate: comparator, chi: '1.11', eta: '1.0', seed: 17}
+          - {gate: comparator, chi: '1.11', eta: '1.0', seed: 41}
+          - {gate: comparator, chi: '1.11', eta: '1.0', seed: 73}
+          - {gate: comparator, chi: '2.03', eta: '1.0', seed: 17}
+          - {gate: comparator, chi: '2.03', eta: '1.0', seed: 41}
+          - {gate: comparator, chi: '2.03', eta: '1.0', seed: 73}
+          - {gate: holdout, chi: '0.37', eta: '1.0', seed: 17}
+          - {gate: holdout, chi: '1.11', eta: '1.0', seed: 41}
+          - {gate: holdout, chi: '2.03', eta: '1.0', seed: 73}
+          - {gate: robustness, chi: '1.11', eta: '1.0', seed: 17}
+          - {gate: robustness, chi: '1.11', eta: '0.95', seed: 17}
+          - {gate: robustness, chi: '1.11', eta: '0.85', seed: 17}
+          - {gate: robustness, chi: '1.11', eta: '0.70', seed: 17}
+          - {gate: robustness, chi: '1.11', eta: '0.50', seed: 17}
+          - {gate: null, chi: '0.0', eta: '1.0', seed: 17}
+          - {gate: null, chi: '0.0', eta: '0.70', seed: 41}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy
+      - name: Run preregistered RCG-002 gate
+        run: |
+          mkdir -p results/iter002
+          python scripts/iter002_rcg002_channel_gates.py \
+            --gate '${{ matrix.gate }}' --chi '${{ matrix.chi }}' --eta '${{ matrix.eta }}' --seed '${{ matrix.seed }}' \
+            --output 'results/iter002/${{ matrix.gate }}_chi${{ matrix.chi }}_eta${{ matrix.eta }}_s${{ matrix.seed }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg002-${{ matrix.gate }}-chi${{ matrix.chi }}-eta${{ matrix.eta }}-s${{ matrix.seed }}
+          path: results/iter002/*.json
+          retention-days: 90
+
+  aggregate:
+    needs: gate-matrix
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: rcg002-*
+          path: gathered
+          merge-multiple: true
+      - name: Aggregate frozen outcomes
+        run: |
+          python - <<'PY'
+          import json, glob, pathlib
+          rows=[json.load(open(p)) for p in glob.glob('gathered/*.json')]
+          gates={}
+          for r in rows:
+              g=r['gate']; gates.setdefault(g,[]).append(r)
+          out={'candidate':'RCG-002','n_results':len(rows),'gates':{},'all_hard_pass':True}
+          for g,rs in sorted(gates.items()):
+              ps=[r.get('pass',True) for r in rs]
+              out['gates'][g]={'n':len(rs),'passes':sum(bool(x) for x in ps),'all_pass':all(ps)}
+              if g!='G10_DEPHASING_ROBUSTNESS': out['all_hard_pass'] &= all(ps)
+          comp=gates.get('G8_COMPARATOR_RESISTANT_ENTANGLEMENT',[])
+          if comp:
+              out['min_rcg002_negativity']=min(r['rcg002_negativity'] for r in comp)
+              out['max_classical_comparator_negativity']=max(r['classical_local_phase_negativity'] for r in comp)
+          hold=gates.get('G9_PARAMETER_FREE_HOLDOUT',[])
+          if hold: out['max_holdout_abs_error']=max(r['abs_error'] for r in hold)
+          rob=gates.get('G10_DEPHASING_ROBUSTNESS',[])
+          if rob: out['robustness_map']=[{'eta':r['eta'],'negativity':r['negativity'],'survives':r['witness_survives']} for r in sorted(rob,key=lambda x:-x['eta'])]
+          pathlib.Path('summary.json').write_text(json.dumps(out,indent=2))
+          print(json.dumps(out,indent=2))
+          if not out['all_hard_pass']: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg002-iter002-summary
+          path: summary.json
+          retention-days: 90
