@@ -1,0 +1,55 @@
+name: FRG basis ingest wave 33
+on:
+  push:
+    branches: [frg-basis-ingest-wave33]
+    paths:
+      - 'compute_wave33/**'
+      - '.github/workflows/frg-basis-ingest-wave33.yml'
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  basis-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - ingest_schema
+          - complex_realification
+          - phase_invariance
+          - matrix_basis_equivalence
+          - seven_trajectory_generator
+          - uncertainty_subspace_stress
+          - surrogate_firewall
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.test }}
+        run: cd compute_wave33 && python ${{ matrix.test }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave33-${{ matrix.test }}
+          path: compute_wave33/wave33_${{ matrix.test }}.json
+
+  aggregate-wave33:
+    needs: basis-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave33_downloads
+      - run: python compute_wave33/aggregate_wave33.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frg-basis-ingest-wave33-summary
+          path: wave33_summary.json
