@@ -16,7 +16,7 @@ Purpose: make cross-branch research progress visible from `main` without merging
 | 30 | `residual-nullity-wave30` | run `34665126543` | PASS | Codimension lower bounds: 4, 2, 1 for latent dimensions 2, 4, 5; rank-6 needs at least two additional independent directions beyond the four-coefficient quadratic sector. |
 | 31 | `generalized-eh-wave31` | run `34665447413` | PASS | After EH baseline quotient, analytic linear-curvature bulk residual rank is 0; published generalized-EH sector does not supply two frozen independent bulk directions. |
 | 32 | `f1-relevant-basis-wave32` | run `34665724676` | PASS | Critical exponents determine UV surface dimension but not its orientation; same spectrum permits nearly 90° different 3D relevant subspaces in 5D. |
-| 33 | `frg-basis-ingest-wave33` | prereg commit `2eaf0f9e1bfc437fedfa799a080d40454c366083` | ACTIVE | Build executable 5x5 stability-matrix/eigenbasis ingest, realify complex relevant pair, generate 7 symmetric trajectories, stress uncertainty; Appendix-F object remains `SURROGATE_NOT_J8`. |
+| 33 | `frg-basis-ingest-wave33` | run `34666478508`, head `3fd040184a00e3dff1acad5749b73512cf61d121` | RUNNING/QUEUED | Executable 5x5 stability-matrix/eigenbasis ingest, complex-pair realification, seven symmetric trajectories, uncertainty stress and provenance firewalls. Appendix-F object remains `SURROGATE_NOT_J8`. |
 
 ## Current blocker
 
