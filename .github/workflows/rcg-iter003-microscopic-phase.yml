@@ -1,8 +1,6 @@
 name: RCG Iter003 Microscopic Phase Closure
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
