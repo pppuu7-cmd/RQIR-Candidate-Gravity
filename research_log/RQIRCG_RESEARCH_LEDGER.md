@@ -17,6 +17,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | Iter014 | G32 positive-control optimizer diagnosis | run `34695441883`, head `ea54a3ae9694366c3bebe06c13b775af44d46833` | `POSITIVE_CONTROL_OPTIMIZER_FAIL / LOCAL_BASIN_GEOMETRY_OR_CONDITIONING` | Exact representability/plumbing pass; direct trace-distance search unreliable. |
 | Iter014B | G32-J positive-control Jacobian | run `34695478444`, head `706245fa183845556aa020bc99d2a4d86e4e3060` | `FULL_LOCAL_RANK / STRONGLY_ILL_CONDITIONED_DIAGNOSTIC` | Rank 11/11; condition number up to ~4034. |
 | Iter015 | G33 smooth positive-control calibration | run `34695662002`, head `d15d633f58fa63d378a85d6e5409c4bb0735a97e` | `POSITIVE_CONTROL_METHOD_CALIBRATED_K2` | Sobol-LSQ and LHS-LSQ each recover all four hidden K=2 targets far below frozen 0.002 tolerance. |
+| Iter016 | G34 calibrated multichannel comparator | run `34695835216`, head `09d729764ca38a0d83f11b81dc59f157cd0cb734` | `DERIVED_SCOPED_K2_CALIBRATED_COMPARATOR_SUPPORT + POSITIVE_CONTROL_METHOD_CALIBRATED_K3_K4` | K=2 prospective gaps supported inside finite additive independent-channel family; K=3/K=4 adversarial reruns newly authorized. |
 
 ## Key aggregates
 
@@ -44,33 +45,43 @@ Aggregate artifact `10298088690`, digest `sha256:92f1d470f516bd6b85e7d475581762b
 
 The successful methods use affine unit-box coordinates, smooth density-matrix residuals, and global low-discrepancy/design multistarts followed by bounded least squares. Hidden source coordinates were not supplied as optimizer initializers. Scientific acceptance remained the original trace-distance `<0.002` condition. This closes the K=2 optimizer-calibration subgate but does not retroactively validate any historical adversarial gap.
 
+### Iter016 / G34
+
+Aggregate artifact `10299385844`, digest `sha256:622e04cfdc1859561bd958962cadd293403defb8f8265641410c7119de2843c4`; aggregate job `103562681303`.
+
+All 24 lanes were structurally valid. Prospective K=2 adversarial gaps were nonzero and cross-method consistent on all four shards: minima/maxima across methods were `0.026070816008971712` / `0.5324532595059579`. K=3 positive controls calibrated 4/4 for both methods, with worst gaps `4.864663671077271e-11` (Sobol) and `3.1874163425023643e-11` (LHS). K=4 positive controls calibrated 4/4 for both methods, with worst gaps `8.088582075956358e-13` and `2.658734486319925e-12`.
+
+This closes the calibrated K=2 comparator rerun and K=3/K=4 optimizer-calibration subgates. It does not broaden the physical scope beyond the finite additive independent single-axis Markovian measurement-feedback GKSL family.
+
 ## Current frontier
 
-G34 is prospectively authorized as a parallel three-front gate:
+G35 is prospectively authorized:
 
-- rerun RCG-002 K=2 adversarial targets under both independently calibrated K=2 methods; both methods must retain a nonzero residual and agree within the frozen `0.002` calibration scale for scoped comparator support;
-- calibrate the same smooth/unit-box multistart methodology prospectively on four hidden in-family K=3 controls using both Sobol-LSQ and LHS-LSQ extensions;
-- independently calibrate K=4 in the same way.
+- recompute RCG-002 adversarial nearest-comparator searches for K=3 and K=4 using only the G34-calibrated Sobol-LSQ and LHS-LSQ constructions;
+- require both methods to retain `gap > 1e-4` and agree within `0.002` on every shard;
+- enforce nesting sanity prospectively: increasing K may not worsen the calibrated minimum by more than the fixed `0.002` calibration scale;
+- independently audit numerical physical validity of representative K=3/K=4 generated channels/evolutions (trace preservation, Hermiticity, PSD within frozen numerical tolerances).
 
-K=3/K=4 adversarial interpretation remains forbidden until that K has its own positive-control calibration. If calibration passes, adversarial reruns are a later gate; historical G30/G31 minima are never promoted retroactively.
+Historical G30/G31 gaps remain diagnostics only and are not reused as scientific authority.
 
 ## Stable readiness rubric
 
 - independent scope/claim discipline: closed
 - weak-field coherent candidate construction: closed at toy-channel level
 - basis/rotation robustness of finite comparator: closed
-- CPTP/PSD and numerical robustness of finite comparator: closed
+- CPTP/PSD and numerical robustness of finite comparator: closed at existing tested layers; G35 extends K=3/K=4 validity audit
 - exact K=2 in-family representability/plumbing: closed
-- **K=2 smooth optimizer calibration: closed**
-- calibrated K=2 adversarial comparator rerun: active G34
-- K=3/K=4 optimizer calibration: active G34
+- K=2 smooth optimizer calibration: closed
+- calibrated K=2 adversarial comparator rerun: closed
+- K=3/K=4 optimizer calibration: closed
+- calibrated K=3/K=4 adversarial comparator rerun: active G35
 - correlated/general Kossakowski comparator: open
 - non-Markovian comparator layer: open
 - externally anchored observable/holdout programme: open
 - full candidate-gravity dynamics / continuum completion: open
 
-Current internal programme readiness: **48%**. This is a construction/readiness metric, not a probability of physical correctness.
+Current internal programme readiness: **52%**. This is a construction/readiness metric, not a probability of physical correctness.
 
 ## Claim locks
 
-Do not promote finite-family gaps to claims that all semiclassical gravity, all classical mediators, or all alternatives to quantum gravity are excluded. Do not use green CI as a scientific verdict. Do not weaken the frozen `2e-3` positive-control criterion. Do not reuse G30/G31 adversarial minima as authority; calibrated adversarial tests must be recomputed prospectively.
+Do not promote finite-family gaps to claims that all semiclassical gravity, all classical mediators, or all alternatives to quantum gravity are excluded. Do not use green CI as a scientific verdict. Do not weaken the frozen `2e-3` calibration/agreement criterion or `1e-4` nonzero-gap criterion after seeing results. Do not reuse G30/G31 adversarial minima as authority. Do not import physical assumptions or desired conclusions from QGR/KMQGB/RQIR.
