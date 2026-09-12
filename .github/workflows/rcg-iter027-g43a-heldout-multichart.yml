@@ -1,0 +1,66 @@
+name: RCG Iter027 G43-A Heldout Multichart Coverage
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER027_G43A_LAUNCH.md'
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        rank: [1, 2, 3, 4, 5, 6]
+        panel: [0, 1, 2, 3, 4, 5]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G43-A lane
+        run: |
+          mkdir -p out
+          python scripts/iter027_g43a_heldout_multichart_basis_coverage.py --rank '${{ matrix.rank }}' --panel '${{ matrix.panel }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg027-g43a-r${{ matrix.rank }}-p${{ matrix.panel }}
+          path: out/result.json
+
+  aggregate:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G43-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os,collections
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          valid=bool(len(rows)==36 and all(r['structural_valid'] and r['basis_covariance']['support'] for r in rows))
+          covered=sum(int(r['atlas']['covered']) for r in rows)
+          if not valid: cls='MULTICHART_IMPLEMENTATION_OR_VALIDITY_FAIL'
+          elif covered==36: cls='HELDOUT_MULTICHART_BASIS_COVERAGE_PASS'
+          else: cls='HELDOUT_MULTICHART_BASIS_COVERAGE_PARTIAL_LIMIT'
+          by_rank={}
+          for rank in range(1,7):
+              rr=[r for r in rows if r['rank']==rank]
+              by_rank[str(rank)]={'n':len(rr),'covered_count':sum(int(r['atlas']['covered']) for r in rr),'max_covariance_error':max((r['basis_covariance']['relative_generator_error'] for r in rr),default=None),'max_best_violation':max((r['atlas']['best_violation_score'] for r in rr),default=None)}
+          wins=collections.Counter(str(r['atlas']['best_chart']) for r in rows)
+          max_rec=max((m['reconstruction_relative_error'] for r in rows for m in r['atlas']['charts']),default=None)
+          summary={'iteration':'Iter027','gate':'G43-A','n_results':len(rows),'all_structural_and_covariant':valid,'covered_count':covered,'uncovered_count':len(rows)-covered,'by_rank':by_rank,'best_chart_histogram':dict(wins),'worst_chart_reconstruction_error':max_rec,'classification':cls,'frozen_atlas_size':5,'interpretation':'Response-blind finite-atlas coverage diagnostic only; cannot alter G42-A or establish full-PSD basis-invariant support.'}
+          os.makedirs('summary',exist_ok=True); open('summary/summary.json','w').write(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
+          if not valid: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg027-g43a-summary
+          path: summary/summary.json
