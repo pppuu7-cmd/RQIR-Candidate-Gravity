@@ -1,0 +1,6 @@
+Wave 21 authoritative corrected run: 34661494644
+all_predeclared_signals_true=true
+obstruction_level_independent_convergence_supported=true
+model_to_model_blind_comparison_authorized=false
+equation_level_convergence_claim_authorized=false
+candidate_new_QG_primitive_found=false
