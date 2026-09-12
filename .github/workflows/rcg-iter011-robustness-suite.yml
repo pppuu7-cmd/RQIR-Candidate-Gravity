@@ -1,0 +1,81 @@
+name: RCG Iter011 G29 Robustness Suite
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter011_robustness_suite.py'
+      - '.github/workflows/rcg-iter011-robustness-suite.yml'
+  workflow_dispatch:
+
+jobs:
+  robustness:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        stream: [basis_covariance, admissibility, null_calibration, convergence, identifiability, adversarial]
+        shard: ['0','1','2','3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy
+      - name: Run frozen G29 robustness lane
+        run: |
+          mkdir -p out
+          python scripts/iter011_robustness_suite.py \
+            --stream '${{ matrix.stream }}' \
+            --shard '${{ matrix.shard }}' \
+            --out 'out/result.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg011-${{ matrix.stream }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: robustness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate G29 without conflating scientific FAIL with CI failure
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          by={}
+          for r in rows:
+              s=r['stream']; by.setdefault(s,{'n':0,'structural_valid':0,'scientific_support':0})
+              by[s]['n']+=1
+              by[s]['structural_valid']+=int(bool(r['structural_valid']))
+              by[s]['scientific_support']+=int(bool(r['result']['scientific_support']))
+          adv=[r['result']['best_continuous_gap'] for r in rows if r['stream']=='adversarial']
+          adm=[r['result']['choi_min_eig'] for r in rows if r['stream']=='admissibility']
+          ident=[r['result']['effective_rank_1e-7'] for r in rows if r['stream']=='identifiability']
+          conv=[r['result']['finest_error'] for r in rows if r['stream']=='convergence']
+          s={
+            'iteration':'Iter011','gate':'G29','n_results':len(rows),'streams':by,
+            'all_structural_valid':len(rows)==24 and all(r['structural_valid'] for r in rows),
+            'all_scientific_support':len(rows)==24 and all(r['result']['scientific_support'] for r in rows),
+            'min_adversarial_gap':min(adv) if adv else None,
+            'min_choi_eig':min(adm) if adm else None,
+            'min_identifiability_rank':min(ident) if ident else None,
+            'max_finest_convergence_error':max(conv) if conv else None,
+            'scope_lock':'Finite two-qubit Markovian single-axis-per-site measurement-feedback family only; no general semiclassical-gravity no-go claim.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(s,indent=2)); print(json.dumps(s,indent=2))
+          # CI failure means missing/invalid computation only. Scientific false entries remain valid results.
+          if not s['all_structural_valid']: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg011-summary
+          path: summary/summary.json
