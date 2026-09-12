@@ -1,0 +1,59 @@
+name: Residual nullity wave 30
+
+on:
+  push:
+    branches: [residual-nullity-wave30]
+    paths:
+      - '.github/workflows/residual-nullity-wave30.yml'
+      - 'compute_wave30/**'
+      - 'post_freeze/WAVE30_RESIDUAL_NULLITY_PREREGISTRATION.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  nullity-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - wave22_rank
+          - codimension_bounds
+          - probe_composition
+          - generalized_eh_scenarios
+          - rank_cap_robustness
+          - information_firewall
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run ${{ matrix.task }}
+        run: python compute_wave30/${{ matrix.task }}.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wave30-${{ matrix.task }}
+          path: wave30_${{ matrix.task }}.json
+
+  aggregate-wave30:
+    needs: nullity-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: wave30_downloads
+      - run: python compute_wave30/aggregate_wave30.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: residual-nullity-wave30-summary
+          path: wave30_summary.json
