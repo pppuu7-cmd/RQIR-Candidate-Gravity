@@ -1,0 +1,71 @@
+name: RCG Iter049 G53-W Finite-Size Wavepacket Bridge
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER049_G53W_LAUNCH.md'
+
+jobs:
+  wavepacket-bridge:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        case: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G53-W lane
+        run: |
+          mkdir -p out
+          python scripts/iter049_g53w_finite_size_wavepacket_bridge.py --case '${{ matrix.case }}' --out 'out/result.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg049-g53w-case${{ matrix.case }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: wavepacket-bridge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G53-W rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          rows=sorted(rows,key=lambda r:r['R_over_s'])
+          structural=len(rows)==8 and all(r['structural_valid'] for r in rows)
+          lane_support=structural and all(r['lane_support'] for r in rows)
+          ratios=[r['point_ratio'] for r in rows]
+          monotonic=bool(len(ratios)==8 and all(ratios[i+1]+1e-14>=ratios[i] for i in range(len(ratios)-1)))
+          support=bool(lane_support and monotonic)
+          summary={
+            'iteration':'Iter049','gate':'G53-W','n_results':len(rows),
+            'all_structural_valid':structural,'all_lane_support':bool(lane_support),
+            'point_ratio_monotonic':monotonic,'scientific_support':support,
+            'worst_numeric_relative_error':max((r['numerical_relative_error'] for r in rows),default=None),
+            'worst_high_ratio_point_relative_difference':max((r['point_relative_difference'] for r in rows if r['R_over_s']>=8),default=None),
+            'worst_high_ratio_branch_relative_error':max((r['branch_point_relative_error'] for r in rows if r['R_over_s']>=8),default=None),
+            'classification':'FINITE_SIZE_GAUSSIAN_WAVEPACKET_WEAK_FIELD_BRIDGE_VALIDATED' if support else 'G53W_FROZEN_RULE_NOT_MET',
+            'scope_lock':'Isotropic Gaussian finite-size weak-field kernel bridge only; not a covariant continuum quantum-gravity dynamics.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(summary,f,indent=2)
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg049-g53w-summary
+          path: summary/summary.json
