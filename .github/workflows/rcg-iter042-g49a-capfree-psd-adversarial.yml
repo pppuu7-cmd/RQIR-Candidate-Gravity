@@ -1,0 +1,81 @@
+name: RCG Iter042 G49-A Capfree PSD Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER042_G49A_LAUNCH.md'
+
+jobs:
+  transport:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G49-A transport lane
+        run: |
+          mkdir -p out
+          python scripts/iter042_g49a_capfree_psd_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg042-g49a-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: transport
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G49-A rules
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r.get('structural_valid',False) for r in rows))
+          cap64={
+              0:0.03700796699310312,
+              1:0.14632813080599644,
+              2:0.5275494895483135,
+              3:0.6663863350263319,
+          }
+          pairs=[]; consistency=[]
+          for s in range(4):
+              rr=[r for r in rows if r.get('shard')==s]
+              gaps=sorted([r['best_candidate']['gap'] for r in rr])
+              pair_ok=bool(len(rr)==2 and all(r.get('admissible') and r.get('lane_support') for r in rr) and abs(gaps[1]-gaps[0])<=0.002)
+              best=min(gaps) if gaps else None
+              cons=bool(best is not None and best<=cap64[s]+0.002)
+              pairs.append({'shard':s,'gaps':gaps,'difference':abs(gaps[1]-gaps[0]) if len(gaps)==2 else None,'pair_support':pair_ok})
+              consistency.append({'shard':s,'best_cap64_terminal':cap64[s],'best_direct_psd':best,'direct_not_worse_than_cap64_plus_tol':cons})
+          support=bool(structural and all(p['pair_support'] for p in pairs) and all(c['direct_not_worse_than_cap64_plus_tol'] for c in consistency))
+          cls='DERIVED_SCOPED_CAPFREE_DIRECT_PSD_COMPARATOR_SUPPORT' if support else ('G49A_IMPLEMENTATION_OR_NUMERICAL_INVALID' if not structural else 'G49A_FROZEN_SUPPORT_RULE_NOT_MET')
+          summary={
+              'iteration':'Iter042','gate':'G49-A','n_results':len(rows),
+              'all_structural_valid':structural,'pairs':pairs,'cap64_consistency':consistency,
+              'scientific_support':support,'classification':cls,
+              'scope_lock':'Frozen four-shard RCG-002 toy target and calibrated direct real-PSD Markovian comparator only.',
+              'interpretation':'Scoped numerical transport; not a mathematical unbounded-PSD optimum or universal classical/semiclassical no-go.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg042-g49a-summary
+          path: summary/summary.json
