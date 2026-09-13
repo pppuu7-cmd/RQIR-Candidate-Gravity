@@ -1,0 +1,49 @@
+name: RCG Iter056 G58-B linearized covariant baseline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rcg-iter056-g58b-linearized-covariant-baseline.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D, E]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy mpmath
+      - run: python scripts/iter056_g58b_linearized_covariant_baseline.py --stream ${{ matrix.lane }} --out out/${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg056-g58b-${{ matrix.lane }}
+          path: out/${{ matrix.lane }}.json
+
+  aggregate:
+    needs: [stream]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy mpmath
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter056_g58b_linearized_covariant_baseline.py --aggregate-dir downloaded --out summary/g58b_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg056-g58b-aggregate
+          path: summary/g58b_summary.json
