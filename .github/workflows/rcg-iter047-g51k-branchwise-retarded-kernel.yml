@@ -1,0 +1,64 @@
+name: RCG Iter047 G51-K Branchwise Retarded Kernel
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER047_G51K_LAUNCH.md'
+
+jobs:
+  kernel-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        case: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen G51-K lane
+        run: |
+          mkdir -p out
+          python scripts/iter047_g51k_branchwise_retarded_kernel.py --case '${{ matrix.case }}' --out 'out/result.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg047-g51k-case${{ matrix.case }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: kernel-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G51-K rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json', recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural = len(rows)==8 and all(r['structural_valid'] for r in rows)
+          support = structural and all(r['lane_support'] for r in rows)
+          summary={
+            'iteration':'Iter047','gate':'G51-K','n_results':len(rows),
+            'all_structural_valid':structural,'scientific_support':bool(support),
+            'worst_post_relative_error':max((max(x['relative_error'] for x in r['post_all_identity']) for r in rows), default=None),
+            'minimum_shared_proxy_relative_difference':min((r['shared_rmax_proxy_probe']['relative_difference'] for r in rows), default=None),
+            'classification':'BRANCHWISE_RETARDED_KERNEL_VALIDATED_AND_SHARED_RMAX_CAUSAL_PROXY_REJECTED' if support else 'G51K_FROZEN_RULE_NOT_MET',
+            'scope_lock':'Finite branchwise-retarded weak-field toy-kernel audit only; not a covariant GR retarded Green-function derivation.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(summary,f,indent=2)
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg047-g51k-summary
+          path: summary/summary.json
