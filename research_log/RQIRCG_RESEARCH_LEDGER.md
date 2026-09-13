@@ -3,12 +3,12 @@
 This is the clean scientific authority ledger for `RQIR-Candidate-Gravity`. Legacy mixed-project ledgers are **not scientific authority**.
 
 ## Scope contract
-RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR/MSQGR and other candidate programmes may contribute methodology, funnel/gate discipline and general mathematical tools, but not imported physical assumptions, ansatz coefficients, results or desired conclusions. Green CI is never automatically scientific PASS. Frozen criteria/families/witnesses are never weakened post hoc.
+RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR/MSQGR and other candidate programmes may contribute methodology, funnel/gate discipline and general mathematical tools, but not imported physical assumptions, ansatz coefficients, results or desired conclusions. Green CI is never automatically scientific PASS. Frozen criteria/families/witnesses are never weakened post hoc. Competing duplicate gates on the same frozen decision object are not allowed to create alternative authorities.
 
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O. G56F2 through G92 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration/nonlinear-selection qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O. G56F2 through G93 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration/nonlinear-selection qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative gate index
@@ -46,61 +46,81 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR/MSQGR a
 | G89 | `34784502253` / `4a99209f...` | `BLOCKED_D_INHERITED_CUBIC_RETARDED_CTP_CONSTRAINTS_DO_NOT_SELECT_QUARTIC_COMPLETION_COEFFICIENTS_SCOPED` | Inherited D selector sufficiency only. |
 | G90 | `34784852748` / `92d9779463d412a53bdace61434bad014ad4ab96` | `BLOCKED_C_EXPLICIT_COVARIANT_CUBIC_INVARIANT_FAMILY_PRESERVES_FROZEN_QUADRATIC_DATA_SCOPED` | Explicit two-invariant local covariant C family only; off-shell witness. |
 | G91 | `34784929824` / `0742c191af7542d424fd38369bed73a0aedcbb37` | `BLOCKED_D_EXPLICIT_COVARIANT_QUARTIC_INVARIANT_FAMILY_PRESERVES_FROZEN_CUBIC_DATA_SCOPED` | Explicit two-invariant local covariant D family only; off-shell witness. |
-| G92 | `34785342844` / `b82d58d3e016ef313873af57216d8f2fb103096b` | `BLOCKED_G90_G91_RICCI_ONLY_COVARIANT_WITNESSES_VANISH_ON_FROZEN_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED` | Frozen leading Ricci-flat-shell qualification only; no complete field-redefinition quotient. |
+| G92 | `34785342844` / `b82d58d3e016ef313873af57216d8f2fb103096b` | `BLOCKED_G90_G91_RICCI_ONLY_COVARIANT_WITNESSES_VANISH_ON_FROZEN_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED` | Leading Ricci-flat-shell qualification only; no complete field-redefinition quotient. |
+| G93 | `34788309457` / `d22f7d3acdb73cd7d85f570196562be310e23161` | `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED` | Connected three-source operational selector prerequisite only; rank undefined because map missing. |
 
 ## Recent terminal provenance
-### G86 / G87 — nonlinear lower-jet underdetermination
-G86: run `34784240659`, aggregate job/artifact `103796818156 / 10325852621`, digest `sha256:cd675a05da4cbbed7294665449ac98d1f0a83f8e840b1bab96298298b8839c3d`.
-G87: run `34784249423`, aggregate job/artifact `103796784537 / 10326181714`, digest `sha256:ca832f5d674f8347673a5fc9386808fa71e7ba593d31301feaabb08553e435ad`.
-These gates establish multiple reduced-jet higher-order completions preserving frozen lower-order data, scoped only to their frozen families.
+### G86 / G87 — nonlinear higher-order underdetermination
+G86 run `34784240659`, aggregate `10325852621`, digest `sha256:cd675a05da4cbbed7294665449ac98d1f0a83f8e840b1bab96298298b8839c3d`.
+G87 run `34784249423`, aggregate `10326181714`, digest `sha256:ca832f5d674f8347673a5fc9386808fa71e7ba593d31301feaabb08553e435ad`.
+Multiple higher-order completions preserve frozen lower-order data within the exact frozen witness families.
 
 ### G88 / G89 — inherited selection rank zero
-G88: run `34784495476`, aggregate job/artifact `103797423221 / 10325763348`, digest `sha256:ce1a9a267dde43de1ada39777c39361a9efca023c273f421fc45e60d41772ef6`.
-G89: run `34784502253`, aggregate job/artifact `103797440276 / 10326101442`, digest `sha256:4487f3d388c3993fe0e8df7ac8468998a80dcf9c7471994a870c8ef110de2e95`.
-Inherited lower-order/CTP/Ward or cubic-retarded constraints have exact selection rank zero on the frozen completion coefficient pairs; genuine higher-order control components restore rank.
+G88 run `34784495476`, aggregate `10325763348`, digest `sha256:ce1a9a267dde43de1ada39777c39361a9efca023c273f421fc45e60d41772ef6`.
+G89 run `34784502253`, aggregate `10326101442`, digest `sha256:4487f3d388c3993fe0e8df7ac8468998a80dcf9c7471994a870c8ef110de2e95`.
+Inherited lower-order/CTP/Ward or cubic-retarded constraints do not select the frozen completion coefficient pairs. Genuine higher-order synthetic controls can carry rank, proving the machinery is not intrinsically blind.
 
-### G90 / G91 — explicit off-shell covariant witness families
-G90: run `34784852748`, head `92d9779463d412a53bdace61434bad014ad4ab96`, aggregate job/artifact `103798379836 / 10326232568`, digest `sha256:45ecf7c30097733e0cc70b34e8f7f8aa755e384580ea180599e29be34109755f`.
-G91: run `34784929824`, head `0742c191af7542d424fd38369bed73a0aedcbb37`, aggregate job/artifact `103798622512 / 10325818667`, digest `sha256:bc080c9115b6f1aef014a8bbb9add9e65a5209dd6e0f360573401d3334cbff2d`.
-These exact Ricci-only families are valid off-shell witnesses of covariant underdetermination but are now qualified by G92.
+### G90 / G91 — explicit off-shell covariant witnesses
+G90 run `34784852748`, aggregate `10326232568`, digest `sha256:45ecf7c30097733e0cc70b34e8f7f8aa755e384580ea180599e29be34109755f`.
+G91 run `34784929824`, aggregate `10325818667`, digest `sha256:bc080c9115b6f1aef014a8bbb9add9e65a5209dd6e0f360573401d3334cbff2d`.
+The explicit Ricci-only invariant pairs witness off-shell covariant underdetermination but are finite-family results, not unique/complete physical nonlinear laws.
 
 ### G92 — leading Einstein-vacuum shell qualification
-Preregistration `c496340c8ec85a89da6712f76dc1221f113ded3b`; implementation `80f544c64ebdf4f869a39991ce4b1d9e8fca3d4d`; production head `b82d58d3e016ef313873af57216d8f2fb103096b`; run `34785342844`; aggregate job/artifact `103799717386 / 10326675920`; digest `sha256:cf9cebafd56a337428850d9641a4e65b1e3d739947259b1afc2696e32d023b20`.
+Prereg `c496340c8ec85a89da6712f76dc1221f113ded3b`; implementation `80f544c64ebdf4f869a39991ce4b1d9e8fca3d4d`; production `b82d58d3e016ef313873af57216d8f2fb103096b`; run `34785342844`; aggregate `10326675920`, digest `sha256:cf9cebafd56a337428850d9641a4e65b1e3d739947259b1afc2696e32d023b20`.
+Raw A/B/C/D artifacts `10326317970 / 10325699864 / 10326611062 / 10325968546` were consumed. The exact G90/G91 Ricci-only pairs vanish on the frozen leading Ricci-flat shell; independent algebraic Weyl controls remain nonzero. This leaves G90/G91 valid off-shell witnesses but does not establish their exact pairs as independent on-shell physical directions. Terminal note: `results/ITER090_G92_LEADING_VACUUM_SHELL_WITNESS_AUDIT_TERMINAL.md`.
 
-Raw artifacts consumed before classification: A `10326317970` (`sha256:e8bb055602b472f0b253773a3079bcfa4965956bff8e31c3a8b30e23b160786a`), B `10325699864` (`sha256:6a2dda29e948e4ec062a9c65700980170a627f0080267f4505ae521a2f390c60`), C `10326611062` (`sha256:ff89ae570dcefd7f3d5d1167f6dc1a0442ce701ce183b87e6f3ed53e54360fc6`), D `10325968546` (`sha256:969c91df0cb9eeceeebb9622426825b7a5a5853656e3df8737639b37e6380e6a`). A/B exactly vanish on the frozen Ricci-flat shell, C preserves nonzero algebraic Weyl controls, and D rejects false-positive shell-vanishing logic. Terminal note: `results/ITER090_G92_LEADING_VACUUM_SHELL_WITNESS_AUDIT_TERMINAL.md`.
+### G93 — connected three-source operational selector prerequisite
+Authoritative prospective chain: prereg `a4d062025ba9f1400cb62d7c0a99325680b81206`; implementation `fe62d145fa6be62aa8e3a266046f1d38a581e1b2`; production `d22f7d3acdb73cd7d85f570196562be310e23161`; run `34788309457`; jobs A/B/C/D/aggregate `103807749691 / 103807749729 / 103807749725 / 103807749730 / 103807952105`.
 
-G92 leaves G90/G91 valid off-shell but forbids treating their exact Ricci-only pairs as established independent on-shell physical deformation directions. It does not prove the complete RQIRCG shell is Ricci-flat or provide a complete field-redefinition/S-matrix quotient.
+Artifacts consumed before classification:
+- A `10327208141`, digest `sha256:7d1833eed5f36a248b50221c9234920dbc8ecb13401d6c660ec536eab87fdcb5`;
+- B `10327013772`, digest `sha256:bf59522b47c54847af556ff58a62a55cd83f858ad7d98d81527fc1f0408211c5`;
+- C `10327457612`, digest `sha256:7843b954924a56d1f32cee83f326560119ccf278070c759af2327b00347aa3db`;
+- D `10326914056`, digest `sha256:90ff3971505e99ef4dab30f5d22651439761453eba91cfc252b1213b0e92a553`;
+- aggregate `10327118325`, digest `sha256:1c13186fa6d773634ff7f10b69d0cf2f16ad57a4625f56f0318710ff1822e46e`.
+
+A establishes exactly that the connected third finite difference of the RCG-002 branch phase annihilates every constant/one-body/pairwise contribution and detects a genuine `T abc` term. B finds all frozen authority present but no explicit candidate-owned nonlinear map from two completion directions through physical source protocols into that connected phase. C calibrates exact rank-2/1/0 controls and preserves rank under all frozen invertible coefficient transformations. D rejects inherited pairwise, proportional-protocol and basis-change false positives.
+
+Terminal classification: `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED`.
+Selection rank is `UNDEFINED_MAP_MISSING`, not zero. No coefficient is selected. Terminal note: `results/ITER091_G93_C_CONNECTED_THREE_SOURCE_PHASE_SELECTOR_TERMINAL.md`.
+
+## Concurrency quarantine
+A later overlapping G93 chain was preregistered at `cae05b73251b79d546636beaac48d788118c0a3a`, implemented at `f91c7744c5fa1e139cd647c502b4c23bf77b3e7e`, launched at `1e850e57d4258a81d245ae1de34f7f1f34c0a62e`, run `34788311792`. It addresses the same connected-multisource decision object and post-dates the authoritative preregistration `a4d062025...`. It is retained historically but **not consumed as a competing scientific verdict**.
 
 ## Infrastructure note
-Post-hoc terminal-validation workflow definitions on the G90/G91 branches produced runs `34785111428` and `34785120618` with zero jobs and immediate workflow failure. They are `INFRASTRUCTURE/WORKFLOW-VALIDATION FAIL`, not scientific FAIL, and do not supersede the original frozen matrix runs.
+Historical G90/G91 post-hoc terminal-validation workflows `34785111428` and `34785120618` failed with zero jobs. They are infrastructure failures, not scientific FAILs, and do not supersede original validated gates.
 
-## Closed side branches and syntheses
-- G76–G79 robustness fan-out: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`.
-- G80–G83 native-anchor to external-reference transition: `results/G80_G83_NATIVE_BLOCK_TO_REFERENCE_CONSTRUCTION_SYNTHESIS.md`.
-- G82–G85 reference imperfect-decoupling robustness: `results/G82_G85_REFERENCE_ROBUSTNESS_SYNTHESIS.md`.
-- G86–G87 nonlinear lower-jet underdetermination: `results/G86_G87_NONLINEAR_UNDERDETERMINATION_SYNTHESIS.md`.
-- G88–G89 inherited selection-principle gap: `results/G88_G89_SELECTION_PRINCIPLE_GAP_SYNTHESIS.md`.
-- G90–G91 explicit covariant off-shell underdetermination: `results/G90_G91_COVARIANT_UNDERDETERMINATION_SYNTHESIS.md`.
+## Scientific interpretation after G93
+The nonlinear selection-principle gap is now localized more sharply:
+1. multiple higher-order completions preserve inherited data (G86/G87);
+2. inherited constraints have selector rank zero (G88/G89);
+3. explicit finite covariant families retain off-shell freedom (G90/G91);
+4. the exact Ricci-only witnesses vanish on the frozen leading vacuum shell (G92);
+5. RCG-002 supplies a clean genuinely beyond-pairwise **operational functional** `chi_ABC`, but current candidate-owned dynamics do not predict it from surviving nonlinear completion directions (G93).
 
-## Current scientific interpretation
-G69 is localized as a nonlinear **selection-principle gap**:
-1. C/D lower-order data admit multiple higher-order completions (G86/G87);
-2. inherited C/D constraints do not select their coefficients (G88/G89);
-3. explicit local generally covariant Ricci-only families preserve off-shell nonuniqueness (G90/G91);
-4. those exact Ricci-only pairs vanish on the frozen leading Ricci-flat shell (G92), so they are not yet established on-shell physical deformation directions;
-5. no candidate-owned genuinely higher-order physical selector has yet been justified.
-
-Therefore no unique nonlinear law is admissible without a prospectively justified candidate-owned selector/datum and an explicit map from surviving nonlinear completion freedom to that datum. Choosing coefficients by simplicity, setting them to zero post hoc, importing another project's desired physics, or treating abstract rank as dynamics is forbidden.
+Therefore the next missing scientific object is no longer another abstract selector vector. It is the candidate-owned nonlinear source/geometry/dynamics bridge that produces physical multi-source branch phases. Until that object exists, nonlinear coefficient selection is undefined and the completion space is not reduced.
 
 ## Active frontier
-`NONLINEAR_SELECTOR_FRONTIER`: prioritize a genuinely candidate-owned higher-order operational datum. The strongest current candidate is a connected multi-source controlled phase/observable that cancels inherited one- and two-body phase information. Before it can select coefficients, RQIRCG must derive an explicit source/geometry/dynamics map from at least two nonlinear completion directions into that observable. If that map is missing, record `BLOCKED_MISSING_CANDIDATE_OWNED_DATUM` rather than inventing a phenomenological selector.
+`NONLINEAR_DYNAMICAL_MAP_FRONTIER`.
+
+The exact next admissible gate must prospectively construct/test from RQIRCG's own constraints:
+- a physical three-source/reference preparation protocol;
+- a nonlinear field/source equation, influence-functional rule or equivalent candidate-owned dynamics;
+- the map from surviving nonlinear completion directions to all eight branch phases;
+- conservation and Bianchi/diffeomorphism consistency;
+- CTP/retarded and gauge-independent observable compatibility;
+- only then the Jacobian into `chi_ABC`.
+
+Do not run another rank/conditioning/covariant-lift variant while this map is absent. Do not add a fitted `kappa abc` or import another candidate programme. If the map cannot be derived independently, record a terminal nonlinear-selection blocker or modification requirement.
 
 ## Open scientific layers
-- candidate-owned nonlinear selection principle / genuinely higher-order datum;
+- candidate-owned nonlinear dynamical/source map and selector;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - physical source/reference preparation and realizability;
-- field/measure/quantization closure;
-- externally anchored physical predictions beyond current finite weak-field scope.
+- field content/state space;
+- measure/quantization and quantum consistency;
+- nonlinear physical observable map;
+- externally anchored held-out prediction.
 
 ## Claim locks
-Never promote finite/bounded-family or structural results to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen criteria post hoc. Do not import QGR/MSQGR/KMQGB/RQIR physical assumptions or desired conclusions. Do not select coefficients post hoc. `THEORY_ESTABLISHED` remains 0%.
+Never promote finite/bounded-family or structural results to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen criteria post hoc. Covariance is not uniqueness. Identifiability is not dynamics. Abstract full rank is not physical realizability. Do not import QGR/MSQGR/KMQGB/RQIR physical assumptions/results or select coefficients post hoc. `THEORY_ESTABLISHED` remains **0%**.
