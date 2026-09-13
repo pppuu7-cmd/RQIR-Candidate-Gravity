@@ -1,0 +1,82 @@
+name: RCG G90 frozen terminal validation
+on:
+  push:
+    branches: [g90-c-covariant-cubic-lift]
+    paths:
+      - '.github/workflows/iter088_g90_terminal_validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  validate-terminal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Re-run frozen lanes
+        run: |
+          mkdir -p raw
+          for lane in A B C D; do
+            python scripts/iter088_g90_c_covariant_cubic_lift.py --lane "$lane" --out "raw/g90-$lane.json"
+          done
+      - name: Validate frozen classifications and write terminal note
+        shell: python
+        run: |
+          import hashlib, json, os, pathlib, sys
+          expected={
+            'A':'C_COVARIANT_CUBIC_DENSITIES_START_AT_THIRD_ORDER_SCOPED',
+            'B':'C_COVARIANT_CUBIC_INVARIANTS_POINTWISE_INDEPENDENT_SCOPED',
+            'C':'C_COVARIANT_CUBIC_CTP_FAMILY_PRESERVES_LOWER_DATA_SCOPED',
+            'D':'C_COVARIANT_LIFT_ORDER_AND_INDEPENDENCE_CONTROLS_SCOPED'}
+          rows={}
+          digests={}
+          for lane in 'ABCD':
+            p=pathlib.Path(f'raw/g90-{lane}.json')
+            b=p.read_bytes(); r=json.loads(b); rows[lane]=r
+            digests[lane]=hashlib.sha256(b).hexdigest()
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') is True and rows[k].get('classification')==v for k,v in expected.items()))
+          if not valid: sys.exit('Frozen G90 validation failed')
+          out=pathlib.Path('results/ITER088_G90_C_COVARIANT_CUBIC_LIFT_TERMINAL.md')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          text=f'''# Iter088 / G90 — C explicit covariant cubic lift — TERMINAL
+
+Date: 2026-09-13
+Classification: `BLOCKED_C_EXPLICIT_COVARIANT_CUBIC_INVARIANT_FAMILY_PRESERVES_FROZEN_QUADRATIC_DATA_SCOPED`
+Scientific status: **BLOCKED / COVARIANT FAMILY UNDERDETERMINED, scoped**
+Programme readiness: **66%**
+Theory established: **0%**
+
+## Terminal validation authority
+- validation head: `{os.environ.get('GITHUB_SHA','')}`
+- validation run: `{os.environ.get('GITHUB_RUN_ID','')}`
+- raw lane SHA-256: A `{digests['A']}`, B `{digests['B']}`, C `{digests['C']}`, D `{digests['D']}`
+
+## Frozen result
+- A `{expected['A']}`: both explicit densities begin at formal third order, preserving value/first/second flat-background orders.
+- B `{expected['B']}`: `R^3` and `R R_{{mu nu}}R^{{mu nu}}` give an exact rank-two E/P evaluation matrix; scalar multiples and zero/background controls behave as frozen.
+- C `{expected['C']}`: the branch-difference covariant family is exactly CTP-normalized and coefficient-free through the frozen lower perturbative order.
+- D `{expected['D']}`: `R^2` is correctly rejected as lower-order contamination; proportional/zero/one-background controls do not fake two-dimensional independence.
+
+## Scientific interpretation
+Within this prospectively frozen explicit local generally covariant two-invariant family, bare covariance and the frozen lower-order C information do not select a unique cubic completion. This strengthens G86/G88 but remains a finite family witness.
+
+## Scope ceiling
+No completeness modulo field redefinitions, integrations by parts or dimension-specific identities is claimed. No causal/unitary/measure closure or physical completion is established. Readiness remains 66%; `THEORY_ESTABLISHED=0%`.
+'''
+          out.write_text(text)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g90-terminal-validation-raw
+          path: |
+            raw/g90-*.json
+            results/ITER088_G90_C_COVARIANT_CUBIC_LIFT_TERMINAL.md
+      - name: Commit terminal note
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add results/ITER088_G90_C_COVARIANT_CUBIC_LIFT_TERMINAL.md
+          git commit -m "Record terminal G90 covariant cubic lift" || exit 0
+          git push
