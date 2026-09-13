@@ -55,6 +55,13 @@ G93 classification remains `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOUR
 
 The later overlapping G93 chain `cae05b73251b79d546636beaac48d788118c0a3a` / `f91c7744c5fa1e139cd647c502b4c23bf77b3e7e` / `1e850e57d4258a81d245ae1de34f7f1f34c0a62e`, run `34788311792`, remains historical non-authoritative duplicate infrastructure.
 
+## Pending orthogonal prospective gate — CPI1
+Commit `7be8d9f08eefb38caafe6718a367e5f43f3517e3` prospectively freezes `prereg/RCG002_CPI1_CTP_PHASE_INTEGRABILITY_CONSTRUCTOR_AUDIT.md` against frozen input `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`.
+
+CPI1 is an **orthogonal structural constructor/falsifier**, not a competing G94 provenance verdict and not a replacement for G93/G94. It asks whether an exact noiseless one-Delta retarded cubic CTP response can be promoted to coherent branch phases without an additional positive/integrable influence-functional object. The preregistration explicitly preserves G72–G94 authority and the independent-construction firewall.
+
+Current status: `PREREGISTERED_NOT_IMPLEMENTED_OR_EXECUTED`. No CPI1 implementation commit, workflow run, artifacts or terminal scientific verdict are present in current GitHub authority. Therefore no substantive CPI1 claim is consumed yet. Do not launch a duplicate CPI1 decision object; the next worker may implement the frozen contract exactly or, if changing its scientific object/criteria, must create a new preregistered gate.
+
 ## Residual nonlinear freedom
 - G86/G87: multiple higher-order completions preserve frozen lower-order data.
 - G88/G89: inherited Ward/CTP/retarded/lower-order constraints have selection rank zero on their frozen completion coordinates.
@@ -94,4 +101,4 @@ If no such principle can be derived from RQIRCG's own candidate-owned content, t
 Forbidden unless future authority explicitly changes them: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `THEORY_ESTABLISHED`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, family-wide uniqueness, green-CI-as-scientific-PASS, post-hoc coefficient/selector/normalization choice, or importing QGR/MSQGR/KMQGB/RQIR physical assumptions/results as selectors.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + G90_G91_OFFSHELL_COVARIANT_UNDERDETERMINATION_SCOPED + G92_RICCI_ONLY_ONSHELL_QUALIFICATION_SCOPED + G93_CONNECTED_OPERATIONAL_FORM_VALID_BUT_NONLINEAR_MAP_MISSING_SCOPED + G94_D_ALGEBRA_CONNECTED_SENSITIVE_BUT_NATIVE_PHYSICAL_BRIDGE_MISSING_SCOPED + CANDIDATE_OWNED_NONLINEAR_DYNAMICAL_PRINCIPLE_FRONTIER`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + G90_G91_OFFSHELL_COVARIANT_UNDERDETERMINATION_SCOPED + G92_RICCI_ONLY_ONSHELL_QUALIFICATION_SCOPED + G93_CONNECTED_OPERATIONAL_FORM_VALID_BUT_NONLINEAR_MAP_MISSING_SCOPED + G94_D_ALGEBRA_CONNECTED_SENSITIVE_BUT_NATIVE_PHYSICAL_BRIDGE_MISSING_SCOPED + CPI1_PREREGISTERED_NOT_EXECUTED + CANDIDATE_OWNED_NONLINEAR_DYNAMICAL_PRINCIPLE_FRONTIER`.
