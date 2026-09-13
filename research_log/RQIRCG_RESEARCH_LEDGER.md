@@ -16,7 +16,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - `63% -> 64%`: G50-A broader four-state hidden-classical memory target-separation closure.
 - `64% -> 65%`: combined microscopic weak-field bridge rubric requiring G52-H + G53-W terminal PASS.
 - `65% -> 66%`: G55-O prospectively held-out entanglement-observable transport closure.
-- G50-R, G51-K, G54-Q, G56-F2, G58-B, G59, G60, G61, G62, G63, G64, G65 and G66 are structural/robustness/constitution qualifications and do not independently add readiness points.
+- G50-R, G51-K, G54-Q, G56-F2, G58-B, G59, G60, G61, G62, G63, G64, G65, G66 and G67 are structural/robustness/constitution qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -33,26 +33,24 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G64 | `34767127085` / `9e8db59a...` | `FOUR_DERIVATIVE_LINEARIZED_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED` | Minimal source-coupling rank two in same representatives only. |
 | G65 | `34770109680` / `5cac0018...` | `FOUR_DERIVATIVE_LINEARIZED_FULL_CONSERVED_SOURCE_PROJECTOR_DECOMPOSITION_SCOPED` | Complete conserved-source projector decomposition within frozen local linearized class only. |
 | G66 | `34770233112` / `8681a3d8...` | `FOUR_DERIVATIVE_LINEARIZED_CONSERVED_SOURCE_GAUGE_SECTOR_INDEPENDENCE_SCOPED` | Exact Ward/gauge-sector independence of the frozen conserved-source linearized response only. |
-
-## G65 terminal authority
-Initial preregistration `dca4bd77c2fac5850f4d012c05b00fee34ccfea9`; pre-implementation Minkowski correction `56a04b8823a11eb551ea9ded4444c320edd224a8`; implementation `ecad1751103e5fa9b5b09f309688f52be189a610`; production head `5cac0018f39a9c6fc001e937fc763da15e421a7c`; run `34770109680`; aggregate job/artifact `103758047952/10321651327`; aggregate digest `sha256:8644579d8835b8cac803ec74015a3ff39515397968078a9a1432ff68d02fab5c`.
-Raw lanes: A `103758027280/10321836874` (`sha256:fb06edb695dae8afbd0bffb1340b6d242989cbdbaad79efabbf6e9a97a690ba3`); B `103758027346/10321567477` (`sha256:0bc3f3fb89f1f441e4bc599db9b98f0664b615a1b5d5cfada2c12e241f7ef411`); C `103758027306/10321787046` (`sha256:bb14ac7df3e67ea9b6f845b4ae8b15623f71be5b1c6cfdc826089b171ecd710c`); D `103758027204/10320779979` (`sha256:67e1fafa454f9d245a3237051bb6b6a576adf9bb6e1c7e07993c8e4a4e98927f`).
-A: exact projector ranks `(5,1,6)` and idempotence/orthogonality/transversality for all three frozen Minkowski momenta. B: 576/576 exact held-out conserved-source reconstruction/response checks. C: 82/82 exact discrete-Lorentz covariance checks. D: all four false-positive controls rejected.
-Interpretation: G61–G64 algebraic sector structure extends to the complete frozen conserved symmetric-source space. This is still linearized/local/four-derivative and does not establish physical ghosts, instability, quantum-unitarity failure, coefficient selection, nonlinear inconsistency or a global no-go theorem. Readiness remains 66%; theory established remains 0%.
-Terminal note: `results/ITER063_G65_FULL_CONSERVED_SOURCE_PROJECTOR_TERMINAL.md`.
+| G67 | `34770704574` / `4e0251d5...` | `FOUR_DERIVATIVE_LINEARIZED_SOURCE_SATURATED_OPPOSITE_RESIDUE_COUPLING_SCOPED` | Exact source-saturated opposite-residue coupling within the frozen local linearized four-derivative class only. |
 
 ## G66 terminal authority
 Preregistration `b5284bb4263d0ceb7a5be87154d475be25d9e39a`; implementation `8b155d1c000cd5af81c8536bdcc3ceee6831284d`; production head `8681a3d8f440bb61dd8be4446a446a46f3fab467`; run `34770233112`; aggregate job/artifact `103758400276/10322160793`; aggregate digest `sha256:35176ab7a68543d822df57a946dc27c7dacaddf2dd03312828cdc8c16d1ec630`.
-Raw A `103758378653/10321926926` (`sha256:716fb4152d91ff30e919cfd8f41f41c6d8f31e79150d4e484a1519bcc84e21b8`): 180/180 exact Ward-annihilation checks. Raw B `103758378740/10322236176` (`sha256:65f00707c65ad9fdb90391c6448db112c7607a9d9d6b2cbd57419466b97295b6`): 2484/2484 held-out exact response-invariance checks. Raw C `103758378716/10321631519` (`sha256:87856c664e7b03f0c41e8303f5044ab6dfa321ba0ed8d79881502fa43f43cc62`): 180/180 exact discrete-Lorentz covariance checks. Raw D `103758378762/10322025977` (`sha256:e02ca62c9c67e0ca6230beabdb6ffe8bf0c0c451e035a27aabf57b0f189752fc`): nonconserved, wrong-nonlongitudinal and index-position controls all detected.
-Interpretation: the preregistered longitudinal gauge-sector family annihilates the complete frozen G65 conserved-source response. This does not establish nonlinear diffeomorphism completion, a physical ghost, instability, unitarity failure, coefficient selection, nonlinear consistency or a global no-go theorem. Readiness remains 66%; theory established remains 0%.
+Raw A `103758378653/10321926926`: 180/180 exact Ward-annihilation checks. Raw B `103758378740/10322236176`: 2484/2484 held-out exact response-invariance checks. Raw C `103758378716/10321631519`: 180/180 exact discrete-Lorentz covariance checks. Raw D `103758378762/10322025977`: nonconserved, wrong-nonlongitudinal and index-position controls all detected.
 Terminal note: `results/ITER064_G66_GAUGE_SECTOR_INDEPENDENCE_TERMINAL.md`.
 
+## G67 terminal authority
+Preregistration `757ad475331bee15efec66ef73623e1e484be291`; implementation `416d486329d8832ffa113a792359bd36d7160c87`; production head `4e0251d5ab6eb95c1873cff8c9412cd5a626d4b2`; run `34770704574`; aggregate job/artifact `103759759785/10321956604`; aggregate digest `sha256:1fa501166026e2d8d3ab13ae29353c8c3a763e40afb59b4230acf2a8c0cd5061`.
+Raw A `103759656367/10321358931` (`sha256:c8af46f1cc98d3db22941c168c48e5f89a893674300dc85b30d65ac629973e35`): 96/96 TT source-saturated residue checks, all 12 frozen pure-TT numerators nonzero. Raw B `103759656324/10321507146` (`sha256:57fbcad676b30be1285ea2f3df81b984cf0f6e971d211faa7bab87713c5acc58`): 96/96 scalar checks, all 12 pure-scalar numerators nonzero. Raw C `103759656319/10321986471` (`sha256:fd400a77507db8d33c23bfe01ab933ba553c94ceee175e4f5a75975b270f934b`): 384/384 exact generic conserved-source partial-fraction reconstructions, zero invalid frozen lanes. Raw D `103759656190/10321528337` (`sha256:9786dccd3c7c5f70b62c9996bd7129ae046a695c1a2ecdd8d6a0cc9e66d48f79`): 2448/2448 exact discrete-Lorentz saturation checks. Raw E `103759656288/10321568315` (`sha256:014fa5a889d29493271a6479a436f84896926c676016aea2ad2e7929890421de`): all six exceptional/false-positive controls pass.
+Interpretation: the additional G61/G62 poles and opposite relative residues survive exact saturation with the full G65 conserved-source space. This does not establish a negative-norm state, physical ghost, instability, unitarity failure, coefficient exclusion, nonlinear inconsistency or a global no-go theorem. Readiness remains 66%; theory established remains 0%.
+Terminal note: `results/ITER065_G67_SOURCE_SATURATED_RESIDUE_TERMINAL.md`.
+
 ## Active next frontier
-Iter065 / G67: prospectively freeze a **source-saturated pole/residue viability audit** before implementation. Combine the exact G61 pole locations, G62 relative residues and G65 full conserved-source projectors. Require independent TT and scalar source-saturated residue checks, held-out generic conserved-source mixtures with exact partial-fraction reconstruction, and exceptional-line/pure-sector/nonconserved controls. PASS ceiling only: source-saturated opposite-residue coupling within the frozen local linearized four-derivative class. It is not a physical-ghost theorem, quantum-unitarity theorem, instability proof, coefficient selection or global no-go claim.
+Iter066 / G68: prospectively freeze a **quadratic-gravity baseline/novelty audit**. Test whether the complete G60 two-dimensional local four-derivative escape space is exactly the standard curvature-squared quadratic-gravity deformation modulo the 4D Gauss-Bonnet relation, and whether G61–G67 sector structure is generated without any candidate-specific ingredient. Fixed external literature anchors: K. S. Stelle, Phys. Rev. D 16, 953 (1977), DOI `10.1103/PhysRevD.16.953`; A. Salvio, Front. Phys. 6, 77 (2018), DOI `10.3389/fphy.2018.00077`. A baseline-equivalence PASS means novelty is **not established in this layer**; it is not a global non-novelty or falsification statement about RCG-002.
 
 ## Open scientific layers
-- source-saturated physical viability/selection inside or outside the G60 escape space;
-- independently motivated candidate-owned deformation beyond the G59 class;
+- candidate-owned deformation beyond standard two- and four-derivative local gravity baselines;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
