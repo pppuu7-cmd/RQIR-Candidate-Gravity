@@ -1,0 +1,77 @@
+name: RCG Iter052 G56-F Gaussian continuum field closure
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/rcg-iter052-g56f-gaussian-continuum-field-closure.yml'
+
+jobs:
+  field-closure:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        case: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy
+      - name: Run frozen G56-F lane
+        run: python scripts/iter052_g56f_gaussian_continuum_field_closure.py --case ${{ matrix.case }} --out out/case${{ matrix.case }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg052-g56f-case${{ matrix.case }}
+          path: out/case${{ matrix.case }}.json
+
+  aggregate:
+    needs: field-closure
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: false
+      - name: Apply frozen aggregate rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          rows=sorted(rows,key=lambda r:r.get('case',999))
+          structural=len(rows)==6 and all(r.get('structural_valid',False) for r in rows)
+          lane_support=bool(structural and all(r.get('lane_support',False) for r in rows))
+          support=lane_support
+          cls=('RCG002_GAUSSIAN_CONTINUUM_SOURCE_KERNEL_CLOSURE_VALIDATED_SCOPED'
+               if support else 'G56F_FROZEN_CONTINUUM_FIELD_CLOSURE_RULE_NOT_MET')
+          summary={
+            'iteration':'Iter052','gate':'G56-F','n_results':len(rows),
+            'all_structural_valid':structural,'all_lane_support':lane_support,
+            'scientific_support':support,
+            'worst_cartesian_laplacian_relative_error':max((r['worst_cartesian_laplacian_relative_error'] for r in rows),default=None),
+            'worst_orientation_scaled_laplacian_spread':max((r['orientation_scaled_laplacian_spread'] for r in rows),default=None),
+            'worst_gauss_flux_absolute_error':max((r['gauss_flux_absolute_error'] for r in rows),default=None),
+            'worst_source_normalization_absolute_error':max((r['source_normalization_absolute_error'] for r in rows),default=None),
+            'worst_scale_kernel_absolute_error':max((r['scale_kernel_absolute_error'] for r in rows),default=None),
+            'worst_scale_source_absolute_error':max((r['scale_source_absolute_error'] for r in rows),default=None),
+            'worst_scale_laplacian_absolute_error':max((r['scale_laplacian_absolute_error'] for r in rows),default=None),
+            'minimum_wrong_sign_relative_error':min((r['wrong_sign_min_relative_error'] for r in rows),default=None),
+            'minimum_wrong_width_relative_difference':min((r['wrong_width_relative_difference'] for r in rows),default=None),
+            'classification':cls,
+            'scope_lock':'RCG-002 isotropic Gaussian weak-field continuum source/kernel closure only; not a covariant gravity theory or dynamical field equation.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(summary,f,indent=2)
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg052-g56f-summary
+          path: summary/summary.json
