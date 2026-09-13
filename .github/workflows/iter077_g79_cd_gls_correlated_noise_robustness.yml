@@ -1,0 +1,61 @@
+name: RCG Iter077 G79 C-D GLS correlated-noise robustness
+on:
+  push:
+    branches: [g79-gls-correlated-noise]
+    paths:
+      - 'scripts/iter077_g79_cd_gls_correlated_noise_robustness.py'
+      - 'prereg/ITER077_G79_CD_GLS_CORRELATED_NOISE_ROBUSTNESS.md'
+      - '.github/workflows/iter077_g79_cd_gls_correlated_noise_robustness.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run frozen scientific stream
+        run: python scripts/iter077_g79_cd_gls_correlated_noise_robustness.py --lane ${{ matrix.lane }} --out g79-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g79-${{ matrix.lane }}
+          path: g79-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g79-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'SPD_GLS_FULL_RANK_WITH_WEAK_ANCHOR_VARIANCE_GROWTH_SCOPED',
+            'B':'CHOLESKY_AND_EIGEN_WHITENING_AGREE_SCOPED',
+            'C':'ORTHOGONAL_GLS_FISHER_SPECTRUM_INVARIANCE_SCOPED',
+            'D':'SINGULAR_COVARIANCE_AND_ONE_SIDED_GLS_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g79-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'G75_SPD_GLS_IDENTIFIABILITY_PERSISTS_WHILE_WEAK_ANCHOR_VARIANCE_GROWS_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','readiness':66,'theory_established':0,'scope_lock':'Frozen G75 design with prospectively frozen SPD covariance surrogates only; no physical covariance claim.'}
+          pathlib.Path('g79-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g79-aggregate
+          path: g79-aggregate.json
