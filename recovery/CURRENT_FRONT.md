@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_CLOSED / G76_NEAR_ALIAS_CONDITIONING_CLOSED / G77_STATISTICAL_NOISE_CLOSED / G78_ROW_REDUNDANCY_CLOSED / G79_GLS_NOISE_CLOSED / SOURCE_DEFINED_ANCHOR_FRONTIER`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_CLOSED / G76_G79_ROBUSTNESS_FANOUT_CLOSED / G80_C_NATIVE_ANCHOR_BLOCKED / G81_D_NATIVE_ANCHOR_BLOCKED / MINIMAL_SOURCE_CALIBRATION_AUGMENTATION_FRONTIER`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -12,38 +12,47 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G6
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 - `recovery/state.json` is currently absent; newest main + this file + clean ledger + durable results + validated Actions artifacts are authority.
 
-## Terminal robustness fan-out from G75
-G76–G79 are now terminal. G77/G78/G79 were prospectively frozen on independent sibling branches rooted at terminal G75 and were merged only after raw-artifact validation.
+## Closed robustness fan-out
+G76–G79 are terminal scoped robustness qualifications of the G75 abstract anchor design. Retrospective synthesis: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`.
 
-- G76 — run `34782314724`: `G75_EXACT_IDENTIFIABILITY_DEGRADES_CONTINUOUSLY_TOWARD_ALIAS_SCOPED`.
-  Terminal note: `results/ITER074_G76_CD_NEAR_ALIAS_CONDITIONING_ROBUSTNESS_TERMINAL.md`.
-- G77 — run `34782611134`: `G75_ANCHORED_ESTIMATOR_VARIANCE_GROWS_AS_ANCHORS_WEAKEN_SCOPED`.
-  Terminal note: `results/ITER075_G77_CD_STATISTICAL_NOISE_ROBUSTNESS_TERMINAL.md`.
-- G78 — run `34782616139`: `G75_ANCHORED_DESIGN_SINGLE_ROW_FAILURE_MODES_AND_MINIMAL_CUBIC_REDUNDANCY_SCOPED`.
-  Terminal note: `results/ITER076_G78_CD_ROW_DELETION_REDUNDANCY_TERMINAL.md`.
-- G79 — run `34782623331`: `G75_SPD_GLS_IDENTIFIABILITY_PERSISTS_WHILE_WEAK_ANCHOR_VARIANCE_GROWS_SCOPED`.
-  Terminal note: `results/ITER077_G79_CD_GLS_CORRELATED_NOISE_ROBUSTNESS_TERMINAL.md`.
+## G80 — C native source-anchor availability
+Run `34783125605`; terminal classification `BLOCKED_C_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_SLOPE_ALIAS_SCOPED`.
 
-Retrospective synthesis: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`.
+The existing C object was audited without allowing a newly invented calibration observable. Exact C/N1 slope aliasing survives primary/held-out panels, G72 transverse/Ward projected-source sampling, and existing Gaussian CTP sectors. Distinct-shape/non-native calibration controls correctly restore rank two. Therefore the scientific result is **BLOCKED, scoped**, not FAIL.
 
-## Scientific meaning of the closed fan-out
-Inside the frozen G75 tangent-design layer, two independent alias-breaking directions restore exact rank, but that rank becomes ill-conditioned near the aliases; estimator uncertainty grows as anchors weaken under both iid and prospectively frozen SPD-correlated noise surrogates; and the design has explicit single-row failure modes plus a minimal algebraic cubic-redundancy repair.
+Terminal note: `results/ITER078_G80_C_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
 
-This is still an abstract local-design result. It does not establish physically realizable anchors or physical detectability.
+## G81 — D native source-anchor availability
+Run `34783132206`; terminal classification `BLOCKED_D_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_CUBIC_CALIBRATION_ALIAS_SCOPED`.
 
-## Active scientific frontier — source-defined anchor realization
-The next admissible layer is to replace abstract AQ/AD information rows by architecture-specific source/observable constructions. Surviving architecture C and D must be treated as separate prospectively frozen sibling gates because their completion mechanisms occupy different perturbative-order structures.
+The existing D object was audited without allowing a newly invented calibration observable. Exact D/N3 cubic-gain aliasing survives the frozen retarded kernel, Sigma-leg permutation information, CTP normalization and zero-Hessian/nonzero-third-derivative jet structure. Distinct-kernel/non-native calibration controls correctly restore rank two. Therefore the scientific result is **BLOCKED, scoped**, not FAIL.
 
-Before launching those gates, recover the exact C/D architecture definitions and their G71/G72 completion witnesses. Each sibling gate must freeze:
-- the candidate-owned source/observable map being tested;
-- the nuisance direction it is intended to distinguish;
-- conservation/Ward/causal constraints applicable to that architecture;
-- exact positive and negative controls;
-- an interpretation ceiling forbidding architecture selection or physical-detectability claims from algebraic success alone.
+Terminal note: `results/ITER079_G81_D_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
+
+## Active scientific frontier — minimal source-calibration augmentation
+G80/G81 show that the missing information cannot be recovered by relabelling already-native structures. The next admissible work is to construct the **smallest explicit additional source/calibration channel** separately for C and D and test whether it breaks the corresponding alias while preserving all inherited architecture constraints.
+
+C and D must be launched as separate sibling gates from a common post-G81 main base.
+
+### C gate requirements
+- add exactly one explicit calibration/reference response direction not already present in G70–G72;
+- keep the candidate C response tangent and G72 transverse/Ward embedding unchanged;
+- preserve the pole-free witness and Gaussian CTP normalization/sector separation;
+- require exact alias breaking only because the new channel responds differently to C and N1;
+- same-shape and zero-channel controls must remain rank deficient.
+
+### D gate requirements
+- add exactly one explicit cubic calibration/reference response direction not already present in G70–G72;
+- preserve retarded support, Sigma symmetry, CTP normalization and zero-Hessian/nonzero-third-derivative structure;
+- require exact alias breaking only because the new channel responds differently to D and N3;
+- same-kernel and zero-channel controls must remain rank deficient.
+
+Any successful result at this layer is only a **construction sufficiency witness**. It does not prove the extra channel physically exists or is measurable.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
-- physically/source-defined anchor realization for C and D;
+- minimal source-calibration augmentation for C and D;
+- physical/source preparation and realizability of any augmentation;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
@@ -53,4 +62,4 @@ Before launching those gates, recover the exact C/D architecture definitions and
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_SUFFICIENT_SCOPED + G76_NEAR_ALIAS_CONDITIONING_DEGRADES_SCOPED + G77_WEAK_ANCHOR_VARIANCE_GROWTH_SCOPED + G78_SINGLE_ROW_FAILURE_MAP_SCOPED + G79_SPD_GLS_ROBUSTNESS_SCOPED + SOURCE_DEFINED_ANCHOR_FRONTIER`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_SUFFICIENT_SCOPED + G76_G79_ROBUSTNESS_QUALIFIED_SCOPED + G80_C_NATIVE_ANCHOR_BLOCKED_SCOPED + G81_D_NATIVE_ANCHOR_BLOCKED_SCOPED + MINIMAL_SOURCE_CALIBRATION_AUGMENTATION_FRONTIER`.
