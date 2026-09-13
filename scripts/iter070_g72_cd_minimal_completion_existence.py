@@ -53,7 +53,9 @@ def C1():
     return {'stream':'C1','valid':valid,'classification':'C_MINIMAL_WARD_COMPLETION_EXISTS_SCOPED' if valid else 'SCIENTIFIC_FAIL_FROZEN_PREDICATE','checks':{'rows':rows,'negative_control_detected':negative_seen},'readiness':66,'theory_established':0}
 
 def C2():
-    z,ell2,a=sp.symbols('z ell2 a', positive=True, nonzero=True)
+    z=sp.symbols('z')
+    ell2=sp.symbols('ell2', positive=True, nonzero=True)
+    a=sp.symbols('a', nonzero=True)
     f=sp.exp(-ell2*z)
     zeros=sp.solveset(f,z,domain=sp.S.Complexes)
     nozeros=(zeros==sp.EmptySet)
