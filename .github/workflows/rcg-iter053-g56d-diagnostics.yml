@@ -1,0 +1,73 @@
+name: RCG Iter053 G56-D frozen failure diagnostics
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rcg-iter053-g56d-diagnostics.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  fd-convergence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy mpmath
+      - run: python scripts/iter053_g56d_diagnostics.py --stream d1 --out out/d1.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg053-g56d-d1-fd-convergence
+          path: out/d1.json
+
+  width-control:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy mpmath
+      - run: python scripts/iter053_g56d_diagnostics.py --stream d2 --out out/d2.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg053-g56d-d2-width-control
+          path: out/d2.json
+
+  high-precision:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy mpmath
+      - run: python scripts/iter053_g56d_diagnostics.py --stream d3 --out out/d3.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg053-g56d-d3-high-precision
+          path: out/d3.json
+
+  aggregate:
+    needs: [fd-convergence, width-control, high-precision]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy mpmath
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter053_g56d_diagnostics.py --aggregate-dir downloaded --out summary/g56d_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg053-g56d-aggregate
+          path: summary/g56d_summary.json
