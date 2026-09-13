@@ -1,0 +1,49 @@
+name: RCG Iter059 G61 sector pole stratification
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/rcg-iter059-g61-sector-pole-stratification.yml'
+  workflow_dispatch:
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        stream: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - run: python scripts/iter059_g61_four_derivative_sector_poles.py --stream ${{ matrix.stream }} --out out/${{ matrix.stream }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g61-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+
+  aggregate:
+    needs: stream
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g61-*
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter059_g61_four_derivative_sector_poles.py --aggregate-dir downloaded --out summary/g61_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g61-aggregate
+          path: summary/g61_summary.json
