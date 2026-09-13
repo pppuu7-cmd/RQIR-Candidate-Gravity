@@ -1,0 +1,61 @@
+name: RCG Iter072 G74 C-D same-order nuisance confounding
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter072_g74_cd_same_order_nuisance_confounding.py'
+      - 'prereg/ITER072_G74_CD_SAME_ORDER_NUISANCE_CONFOUNDING.md'
+      - '.github/workflows/iter072_g74_cd_same_order_nuisance_confounding.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter072_g74_cd_same_order_nuisance_confounding.py --lane ${{ matrix.lane }} --out g74-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g74-${{ matrix.lane }}
+          path: g74-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g74-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'BASELINE_AND_CONSTANT_NUISANCE_INDEPENDENCE_SCOPED',
+            'B':'C_SAME_SHAPE_SLOPE_CONFOUNDED_DISTINCT_CURVATURE_SEPARABLE_SCOPED',
+            'C':'D_SAME_SHAPE_CUBIC_CALIBRATION_CONFOUNDED_SCOPED',
+            'D':'COMBINED_ALIAS_AND_ADDITIONAL_OBSERVABLE_CONTROL_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g74-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','readiness':66,'theory_established':0,'scope_lock':'Frozen C/D local identifiability robustness only; no architecture selection or candidate law.'}
+          pathlib.Path('g74-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g74-aggregate
+          path: g74-aggregate.json
