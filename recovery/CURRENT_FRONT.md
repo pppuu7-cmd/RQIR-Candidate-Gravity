@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_CLOSED / G76_G79_ROBUSTNESS_FANOUT_CLOSED / G80_G81_NATIVE_ANCHOR_BLOCKED / G82_G83_REFERENCE_CONSTRUCTION_CLOSED / G84_G85_REFERENCE_LEAKAGE_ROBUSTNESS_CLOSED / G86_G87_NONLINEAR_UNDERDETERMINATION_CLOSED / G88_G89_INHERITED_SELECTION_GAP_CLOSED / COVARIANT_LIFT_FRONTIER`
+Updated: 2026-09-14
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED / G70_G89_ARCHITECTURE_IDENTIFIABILITY_AND_SELECTION_GAP_CHARACTERIZED / G90_G91_COVARIANT_LIFT_CLOSED_BLOCKED / NONLINEAR_SELECTOR_FRONTIER`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -10,58 +10,44 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G6
 - Independent-from-QGR construction contract: **FROZEN**.
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
-- `recovery/state.json` is currently absent; newest main + this file + clean ledger + durable results + validated Actions artifacts are authority.
+- `recovery/state.json` is absent; newest main + this file + clean ledger + durable results + validated Actions artifacts are authority.
 
-## Closed identifiability/reference branch through G85
-The abstract identifiability and external-reference channel layers are characterized through G85. They remain construction/robustness results only; physical source/reference preparation is unestablished.
+## Latest terminal authority — G90/G91 explicit covariant lifts
+### G90 — C cubic covariant lift
+- run `34784852748`, production head `92d9779463d412a53bdace61434bad014ad4ab96`;
+- aggregate job/artifact `103798379836 / 10326232568`;
+- aggregate digest `sha256:45ecf7c30097733e0cc70b34e8f7f8aa755e384580ea180599e29be34109755f`;
+- classification `BLOCKED_C_EXPLICIT_COVARIANT_CUBIC_INVARIANT_FAMILY_PRESERVES_FROZEN_QUADRATIC_DATA_SCOPED`;
+- terminal note `results/ITER088_G90_C_COVARIANT_CUBIC_LIFT_TERMINAL.md`.
 
-## G86/G87 — nonlinear lower-jet underdetermination
-- G86 run `34784240659`: `BLOCKED_C_FROZEN_QUADRATIC_DATA_ADMIT_MULTIPLE_CUBIC_CTP_COMPLETIONS_SCOPED`.
-  Multiple distinct cubic reduced-jet shapes preserve the complete frozen C quadratic jet and CTP normalization.
-- G87 run `34784249423`: `BLOCKED_D_FROZEN_CUBIC_DATA_ADMIT_MULTIPLE_QUARTIC_CTP_COMPLETIONS_SCOPED`.
-  Multiple distinct quartic reduced-jet shapes preserve the complete frozen D cubic jet, CTP normalization and audited cubic-kernel structure.
+Raw A/B/C/D artifacts were consumed and validate: third-order onset of both cubic densities; exact pointwise rank-two independence on the frozen backgrounds; CTP/lower-order preservation with inherited selector rank zero; and rejection of lower-order/proportional/zero controls.
 
-Retrospective synthesis: `results/G86_G87_NONLINEAR_UNDERDETERMINATION_SYNTHESIS.md`.
+### G91 — D quartic covariant lift
+- run `34784929824`, production head `0742c191af7542d424fd38369bed73a0aedcbb37`;
+- aggregate job/artifact `103798622512 / 10325818667`;
+- aggregate digest `sha256:bc080c9115b6f1aef014a8bbb9add9e65a5209dd6e0f360573401d3334cbff2d`;
+- classification `BLOCKED_D_EXPLICIT_COVARIANT_QUARTIC_INVARIANT_FAMILY_PRESERVES_FROZEN_CUBIC_DATA_SCOPED`;
+- terminal note `results/ITER089_G91_D_COVARIANT_QUARTIC_LIFT_TERMINAL.md`.
 
-## G88/G89 — inherited selection-principle gap
-- G88 run `34784495476`: `BLOCKED_C_INHERITED_LOWER_WARD_CTP_CONSTRAINTS_DO_NOT_SELECT_CUBIC_COMPLETION_COEFFICIENTS_SCOPED`.
-  Lower-jet, CTP and frozen quadratic Ward/source constraints have exact selection rank zero on the reduced C cubic coefficient pair. Genuine cubic components give rank one/two in the frozen controls.
-- G89 run `34784502253`: `BLOCKED_D_INHERITED_CUBIC_RETARDED_CTP_CONSTRAINTS_DO_NOT_SELECT_QUARTIC_COMPLETION_COEFFICIENTS_SCOPED`.
-  Cubic-jet, CTP and frozen retarded/Sigma cubic constraints have exact selection rank zero on the reduced D quartic coefficient pair. Genuine quartic components give rank one/two in the frozen controls.
+Raw A/B/C/D artifacts were consumed and validate: fourth-order onset of both quartic densities; exact pointwise rank-two independence; CTP preservation with the frozen retarded/Sigma-symmetric cubic kernel unchanged and inherited selector rank zero; and rejection of lower-order/proportional/zero controls.
 
-Retrospective synthesis: `results/G88_G89_SELECTION_PRINCIPLE_GAP_SYNTHESIS.md`.
+## Newly-terminal infrastructure failures
+Runs `34785111428` (G90 terminal-validation workflow) and `34785120618` (G91 terminal-validation workflow) failed before creating any jobs. They are **INFRASTRUCTURE/WORKFLOW-VALIDATION failures**, not scientific results. They do not invalidate the original frozen matrix runs above, whose raw artifacts and aggregates were independently consumed. No scientific threshold or witness was changed.
 
-## Scientific meaning for G69
-G69 is no longer only an inventory statement that nonlinear dynamics are undefined. The current programme now has an explicit sequence:
-1. lower-order C/D information admits multiple higher-order completions;
-2. the already-frozen architecture constraints preserve but do not select those completions;
-3. truly new higher-order information can select coefficients in the frozen control families.
+## Scientific meaning
+G86/G87 showed reduced-jet nonlinear nonuniqueness; G88/G89 showed inherited lower-order/CTP/Ward/retarded constraints have selection rank zero; G90/G91 now show that this nonuniqueness survives inside explicit local generally covariant higher-curvature families. Therefore **bare covariance plus all currently frozen lower-order information still does not select a unique nonlinear C or D completion**.
 
-Therefore any unique nonlinear C or D law now requires a **prospectively justified candidate-owned selection principle or genuinely higher-order datum**. Choosing coefficients by simplicity, zeroing them post hoc, or selecting the preferred completion after results is forbidden.
+This is a finite-family underdetermination result. It is not a completeness theorem modulo all field redefinitions, boundary identities or dimension-specific relations, and it is not a physical no-go theorem.
 
-## Active scientific frontier — covariant lift of the underdetermination witnesses
-Before introducing a new selector, strengthen the scope of G86/G87 beyond reduced jet proxies.
+## Active scientific frontier — candidate-owned nonlinear selector / genuinely higher-order datum
+The covariant-lift prerequisite is closed. The next admissible work must add genuinely new candidate-owned information rather than reusing lower-order constraints under new notation.
 
-### C sibling gate
-Lift the cubic witnesses to explicit local generally covariant scalar densities, e.g. independent curvature-cubic invariants. Require:
-- formal perturbative order starts at `O(h^3)` about flat space and therefore preserves the frozen quadratic response;
-- each term is separately generally covariant and its CTP action-difference vanishes on equal histories;
-- the selected invariant pair is pointwise non-proportional on prospectively frozen curvature backgrounds;
-- exact controls detect proportional/scalar-multiple or lower-order contaminations.
+A valid next gate must be prospectively frozen and must distinguish at least two independent completion coefficients without importing QGR/KMQGB/RQIR physical assumptions or selecting a preferred answer post hoc. Candidate classes may be audited for exact selection rank, invariance under admissible reparameterization, null/false-positive calibration and compatibility with already-frozen CTP/Ward/retarded structure. A selector that is algebraically dependent on inherited lower-order constraints is a BLOCKED result, not a theory success.
 
-### D sibling gate
-Lift the quartic witnesses to explicit local generally covariant scalar densities. Require:
-- formal perturbative order starts at `O(h^4)` and preserves the frozen cubic jet;
-- each term is separately covariant and CTP-normalized by branch difference;
-- the selected invariant pair is pointwise non-proportional on frozen curvature backgrounds;
-- the already-frozen retarded cubic kernel remains untouched because the lift starts at quartic order;
-- exact controls reject lower-order contamination and proportional families.
-
-A valid result would strengthen underdetermination inside an explicit covariant invariant family. It would **not** prove inequivalence modulo all field redefinitions/boundary identities or construct a complete nonlinear theory.
+No coefficient values are authorized at this frontier.
 
 ## Open scientific layers
-- covariant lift of C/D nonlinear underdetermination;
-- candidate-owned nonlinear selection principle / higher-order datum;
+- candidate-owned nonlinear selection principle / genuinely higher-order datum;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - physical source/reference preparation and realizability;
 - field/measure/quantization closure;
@@ -71,4 +57,4 @@ A valid result would strengthen underdetermination inside an explicit covariant 
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_SUFFICIENT_SCOPED + G76_G79_ROBUSTNESS_QUALIFIED_SCOPED + G80_G81_NATIVE_ANCHOR_BLOCKED_SCOPED + G82_G83_EXTERNAL_REFERENCE_CONSTRUCTION_SUFFICIENT_SCOPED + G84_G85_IMPERFECT_DECOUPLING_ROBUSTNESS_SCOPED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + COVARIANT_LIFT_FRONTIER`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G70_G85_ARCHITECTURE_IDENTIFIABILITY_REFERENCE_LAYERS_SCOPED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + G90_G91_EXPLICIT_COVARIANT_FAMILY_UNDERDETERMINATION_SCOPED + NONLINEAR_SELECTOR_FRONTIER`.
