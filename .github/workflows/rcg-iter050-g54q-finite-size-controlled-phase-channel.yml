@@ -1,0 +1,76 @@
+name: RCG Iter050 G54-Q Finite-Size Controlled-Phase Channel
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER050_G54Q_LAUNCH.md'
+
+jobs:
+  channel-integration:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        case: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G54-Q lane
+        run: |
+          mkdir -p out
+          python scripts/iter050_g54q_finite_size_controlled_phase_channel.py --case '${{ matrix.case }}' --out 'out/result.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg050-g54q-case${{ matrix.case }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: channel-integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G54-Q rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          rows=sorted(rows,key=lambda r:r['min_d_over_s'])
+          structural=len(rows)==8 and all(r.get('structural_valid',False) for r in rows)
+          lane_support=structural and all(r.get('lane_support',False) for r in rows)
+          errs=[r['point_phase_relative_difference'] for r in rows]
+          monotonic=bool(len(errs)==8 and all(errs[i+1] <= errs[i] + 1e-13 for i in range(len(errs)-1)))
+          support=bool(lane_support and monotonic)
+          cls='FINITE_SIZE_WEAK_FIELD_CONTROLLED_PHASE_CHANNEL_INTEGRATED_SCOPED' if support else 'G54Q_FROZEN_INTEGRATION_RULE_NOT_MET'
+          summary={
+            'iteration':'Iter050','gate':'G54-Q','n_results':len(rows),
+            'all_structural_valid':structural,'all_lane_support':bool(lane_support),
+            'point_limit_error_monotonic':monotonic,'scientific_support':support,
+            'worst_kernel_relative_error':max((r['max_kernel_relative_error'] for r in rows),default=None),
+            'worst_unitary_factorization_error':max((r['unitary_factorization_error'] for r in rows),default=None),
+            'worst_local_shift_absolute_error':max((r['local_shift_absolute_error'] for r in rows),default=None),
+            'worst_exchange_relative_error':max((r['exchange_relative_error'] for r in rows),default=None),
+            'worst_tp_residual':max((r['tp_residual'] for r in rows),default=None),
+            'minimum_choi_eigenvalue':min((r['minimum_choi_eigenvalue'] for r in rows),default=None),
+            'worst_high_ratio_point_phase_relative_difference':max((r['point_phase_relative_difference'] for r in rows if r['min_d_over_s']>=8),default=None),
+            'classification':cls,
+            'scope_lock':'Finite weak-field isotropic-Gaussian controlled-phase channel integration only; not covariant continuum gravity.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(summary,f,indent=2)
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg050-g54q-summary
+          path: summary/summary.json
