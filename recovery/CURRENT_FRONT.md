@@ -1,104 +1,87 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED / G70_G92_NONLINEAR_FREEDOM_AND_ONSHELL_QUALIFICATION_CHARACTERIZED / G93_CONNECTED_PHASE_OBJECT_DEFINED_BUT_NONLINEAR_MAP_MISSING / G94_D_REUSE_BLOCKED_NATIVE_BRIDGE_INCOMPLETE / CANDIDATE_OWNED_NONLINEAR_DYNAMICAL_PRINCIPLE_FRONTIER`
+Phase: `G94_NATIVE_BRIDGE_INCOMPLETE / CPI1_STRUCTURAL_TERMINAL / CANDIDATE_OWNED_NONLINEAR_SOURCE_STATE_EVOLUTION_AND_CONSERVATION_CLOSURE_FRONTIER`
 
 ## Canonical status
-- Candidate-model/programme readiness: **66%**.
-- Theory established: **0%**.
 - Active seed: `RCG-002 Relational controlled-phase channel`.
-- Independent-construction contract: **FROZEN**. QGR/MSQGR/CRQN/KMQGB/RQIR physical assumptions/results are not selector inputs.
-- Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
-- Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
-- `recovery/state.json` is absent; newest main + this file + clean ledger + durable terminal results + validated Actions artifacts are authority.
+- Programme readiness: **66%**; theory established: **0%**. These are inherited bookkeeping labels, not probabilities.
+- Clean scientific ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`, latest CPI1 addendum; historical gate records remain unchanged.
+- Legacy mixed-project ledger is NOT scientific authority. `recovery/state.json` remains absent.
+- Independence contract remains frozen: no physical assumptions, dynamics or coefficients from QGR/MSQGR/CRQN/KMQGB/ISQGR/RQIR beyond frozen requirements are selector inputs. General mathematics and explicitly labelled GR/QFT/EFT baselines are permitted, not candidate dynamics.
 
-## Latest terminal authority — G94 D native three-source bridge sufficiency
-Classification: `BLOCKED_D_CUBIC_CTP_OBJECT_LACKS_NATIVE_THREE_SOURCE_SOURCE_TO_PHASE_BRIDGE_SCOPED`.
-Scientific status: `BLOCKED_MISSING_CANDIDATE_OWNED_DATUM / D_REUSE_INSUFFICIENT`.
-Selection rank: `UNDEFINED_NATIVE_BRIDGE_INCOMPLETE`.
+## Latest orthogonal terminal — RCG002-CPI1
+
+CPI1 is now **EXECUTED AND TERMINAL**, superseding the previous `PREREGISTERED_NOT_IMPLEMENTED_OR_EXECUTED` recovery entry. It is not a competing G93/G94 gate. Do not duplicate it.
 
 Authority:
-- preregistration `83b06652225f6bbc05e98b9befac61ef20628e23`;
+- prospective contract `7be8d9f08eefb38caafe6718a367e5f43f3517e3`, `prereg/RCG002_CPI1_CTP_PHASE_INTEGRABILITY_CONSTRUCTOR_AUDIT.md`;
+- frozen input `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`;
+- executed code persisted at `eed477ca6b098c6953f9cbfe1f78e4e06edc3cc5`, `scripts/rcg002_cpi1_ctp_phase_integrability.py`;
+- code blob `570e51d5ccebc834f148e10b77953c1654db6f09`, verified against local executed bytes;
+- code SHA256 `b5ac9f9a0e60ca65aa401cdd58c457f989a718eb7b8cdc22bffa1baccd035e8f`;
+- raw bundle `75abe9179f24f0c39b39138dbb9fa101bb429c48`, `results/raw/RCG002_CPI1_RAW_BUNDLE.json`;
+- derivation/terminal `1e3d6d1fd20ea1bf634c1cb9f47af120c0f4642d`, `results/RCG002_CPI1_NONLINEAR_CONSTRUCTOR_TERMINAL.md`;
+- clean ledger addendum `225dcf34755b4931c4976d7efed7d18857c5d7e8`, with accidental historical G77 run-ID transcription restored at `8a5312e6a17ff165e9ca6bdf8ef57bff093c9490`.
+
+Execution: four concurrent LOCAL processes; all 28 structural control conditions passed (A7/B10/C8/D3). This was not a new GitHub Actions run and not four independent reviewers. The contract was committed before execution; identical executed code was committed afterward. Raw payloads retain process IDs, timestamps, exact expressions and hashes.
+
+Classifications:
+- `PASS_STRUCTURAL_CPI1` for the scoped identities/counterexamples;
+- `FAIL_SCOPED_UNRESTRICTED_HISTORY_NOISELESS_KERNEL` for naive exact promotion of a real one-Delta cubic into a complete noiseless Schur kernel;
+- overall physical map `BLOCKED_REQUIRES_NEW_NONLINEAR_SOURCE_STATE_EVOLUTION_PRINCIPLE`;
+- selector rank `UNDEFINED_PHYSICAL_MAP_MISSING`, NOT zero.
+
+## New scientific content to consume
+
+A normalized positive unit-modulus influence kernel must be rank one and satisfy the phase cocycle. For `Gamma=k*(x-y)*((x+y)/2)^2`, the three-history determinant is `-4*sin(k/4)^2`; rescaled arbitrarily small histories violate positivity for any nonzero k. The local cubic-potential control requires the extra `k*d^3/12` term, but that control is NOT adopted as RCG-002 physics.
+
+The actual G72 D1 26-entry finite retarded kernel remains retarded and Sigma-symmetric but fails the coherent-potential integrability condition. One exact curl is `6*s0+s1`. The separate D2 reduced polynomial has curl `2*s0`; it is not identified with D1. Full permutation symmetry plus latest-response-time support forces a finite-grid cubic kernel to equal-time triples. A d-only cubic cannot remove a nonzero first-Delta response curl.
+
+These exclusions apply only to the frozen exact noiseless/unrestricted-history promotion. They do NOT exclude a full noisy influence functional, a retained mediator, physically restricted closed-loop source protocols, leading-order EFT truncations with omitted terms, or continuum derivative-contact distributions. They do NOT prove D or RCG-002 impossible.
+
+The minimum evaluable bridge is a physical preparation map plus a normalized positive influence kernel, with coherent factorization or justified noise/phase separation demonstrated before eight coherent branch phases are assigned. Four conditional Ramsey phase differences access ONE connected contrast without absolute phases, provided the same linear channel, reference and nonzero-visibility assumptions hold.
+
+For a CONDITIONAL coherent source action and independent affine sources, the connected difference through quartic order is `hbar*chi=W3[A,B,C]+W4[J0,A,B,C]+(W4[A,A,B,C]+W4[A,B,B,C]+W4[A,B,C,C])/2`. Fixed nonzero J0 makes part of the quartic response scale cubically. This does not select W3/W4 or supply candidate dynamics.
+
+Flat source conservation is insufficient at nonlinear order. The exact external-metric held-dust control has `nabla_mu T^{mu x}=epsilon^2*rho*f'(x)` despite zero flat divergence. Include support/apparatus stress. Bianchi/constraint propagation for a candidate nonlinear law remains unestablished.
+
+## Prior terminal authority — G94
+
+Classification remains `BLOCKED_D_CUBIC_CTP_OBJECT_LACKS_NATIVE_THREE_SOURCE_SOURCE_TO_PHASE_BRIDGE_SCOPED`.
+- prereg `83b06652225f6bbc05e98b9befac61ef20628e23`;
 - implementation `9355f0d562d84ed87247ecb28057f023712b3086`;
-- production head `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`;
+- production `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`;
 - run `34789599885`;
 - jobs A/B/C/D/aggregate `103811251395 / 103811251442 / 103811251401 / 103811251262 / 103811374325`;
-- aggregate artifact `10328050273`, digest `sha256:0bf596fa5a878b2f6a339d357512d0a47a76d8b0511e9cfe1928072c287fefc2`.
+- raw artifacts A/B/C/D `10327394348 / 10327806195 / 10328355129 / 10328050205`;
+- aggregate `10328050273`, digest `sha256:0bf596fa5a878b2f6a339d357512d0a47a76d8b0511e9cfe1928072c287fefc2`.
+Terminal: `results/ITER092_G94_D_NATIVE_THREE_SOURCE_PHASE_BRIDGE_TERMINAL.md`.
 
-Raw artifacts consumed before classification:
-- A `10327394348`, `sha256:664a0f8ea8d0bdbbc545d387d4d47b90c586c204ee8b6ea48995a9213f835086`;
-- B `10327806195`, `sha256:54a52b56aee55f6a34dc1144e86931dfcb88e4a15cda475c45658ea10a6d5a7b`;
-- C `10328355129`, `sha256:7edc3de062918a313e5f21f9fa3a149d4e5d253316b10207d88497482cd808c0`;
-- D `10328050205`, `sha256:87be3aaf0022b2a1358732984b24f70a9f3a489941a8652f103c3bd6f9d92820`.
+CPI1 independently downloaded all five G94 ZIPs, recomputed their recorded SHA256 values and checked exact equality of raw payloads with the aggregate. Qualification: G94 B/D are documented-inventory/token checks, not a constructive dynamical existence search or general nonexistence theorem. Synthetic alternative embeddings are not certified physical gravitational completions. This narrows interpretation without changing the historical verdict.
 
-Terminal note: `results/ITER092_G94_D_NATIVE_THREE_SOURCE_PHASE_BRIDGE_TERMINAL.md`.
+The five G94 native gaps persist: physical three-source preparation; source-to-Delta/Sigma embedding; physical source/kernel contraction; physical nonlinear phase normalization; completion-coordinate dependence. G83/G85 reference channels remain external calibration constructions, not native realizable physics.
 
-## G94 scientific meaning
-The already-frozen D retarded cubic CTP construction has genuine **algebraic** connected-three-source sensitivity: the synthetic frozen control gives nonzero `chi_ABC`, while arbitrary constant/one-body/pairwise phase structure gives exactly zero. This rules out the trivial explanation that the D cubic algebra is incapable of carrying connected information.
+## Earlier scientific state and residual freedom
 
-However, current RQIRCG authority does not turn that algebra into a native physical RCG-002 source/phase prediction. Five indispensable bridge components remain non-native/missing:
-1. physical three-source preparation;
-2. source-to-`Delta/Sigma` CTP leg embedding;
-3. physical source/kernel contraction;
-4. dimensionless nonlinear branch-phase normalization;
-5. candidate-owned dependence on nonlinear completion coordinates.
+G68 identifies the tested four-derivative baseline with standard quadratic gravity. G69 lacks a candidate-owned beyond-baseline rule. G86/G87 and G88/G89 retain higher-order freedom within frozen reduced families; inherited constraints do not select it. G90/G91 are finite off-shell covariant witnesses. G92's Ricci-only leading-vacuum-shell qualification is NOT a complete matter-coupled physical quotient. Do not automatically count their two coordinates as two physical nonlinear degrees of freedom.
 
-The G83/G85 reference channel remains an explicitly added calibration construction outside the candidate D functional and is not established physically realizable, measurable, natural, unique or candidate-owned. It is therefore forbidden as a rescue of G94.
+G93 defines the connected operational contrast but not the physical nonlinear map. Its authoritative run remains `34788309457`, production `d22f7d3acdb73cd7d85f570196562be310e23161`. The later overlapping chain `cae05b73251b79d546636beaac48d788118c0a3a` / `f91c7744c5fa1e139cd647c502b4c23bf77b3e7e` / `1e850e57d4258a81d245ae1de34f7f1f34c0a62e`, run `34788311792`, remains non-authoritative duplicate infrastructure.
 
-The correct rank status remains **undefined bridge**, not rank zero. No nonlinear coefficient is selected.
+No physical nonlinear completion space, its dimension, or its selector Jacobian is defined. No coefficient is selected. G89's quartic-family blindness is not cured merely by physicalizing a cubic response. A three-source contrast can receive higher-order terms and apparatus/source nuisances, so it is not a unique quantum-gravity signal. Standard GR supplies a non-additive post-Newtonian baseline; it is not adopted as the new RCG-002 law.
 
-## Relation to residual D freedom
-G81 already leaves the native D/N3 same-shape cubic calibration alias unresolved. G89 independently established that the frozen cubic/retarded/CTP D sector is coefficient-blind to the two frozen quartic completion coordinates `(lambda,mu)`. Therefore even a future physicalization of the same cubic D kernel would not, by itself, select that quartic completion pair: a genuinely quartic candidate-owned datum or deeper nonlinear dynamical principle is still required.
+## EXACT NEXT ADMISSIBLE FUNDAMENTAL GATE
 
-## Prior terminal authority — G93
-G93 classification remains `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED`, with `chi_ABC = phi_111 - phi_110 - phi_101 - phi_011 + phi_100 + phi_010 + phi_001 - phi_000` established as a clean beyond-pairwise operational functional. G94 tested the strongest existing D-sector reuse route and found it insufficient as a native physical bridge.
+**Candidate-owned nonlinear source/state/evolution and conserved-source closure.**
 
-The later overlapping G93 chain `cae05b73251b79d546636beaac48d788118c0a3a` / `f91c7744c5fa1e139cd647c502b4c23bf77b3e7e` / `1e850e57d4258a81d245ae1de34f7f1f34c0a62e`, run `34788311792`, remains historical non-authoritative duplicate infrastructure.
+Specify an independently motivated physical preparation and conserved TOTAL source including apparatus, an initial state, and a causal evolution law. Derive its positive influence kernel, or demonstrate coherent factorization on a specified closed-mediator protocol. Verify nonlinear conservation/Bianchi/constraint compatibility and recovery of the validated pairwise weak-field normalization within the SAME realization.
 
-## Pending orthogonal prospective gate — CPI1
-Commit `7be8d9f08eefb38caafe6718a367e5f43f3517e3` prospectively freezes `prereg/RCG002_CPI1_CTP_PHASE_INTEGRABILITY_CONSTRUCTOR_AUDIT.md` against frozen input `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`.
+The current seed does not fix this object. A proposed new principle must be independently motivated before any connected-phase outcome is inspected, prospectively frozen, and labelled as a new candidate version. Retaining RCG-002's defining sector permits an extension; replacing its defining operational properties requires a distinct candidate. Do not insert a d-cubic term, preferred external gravity action, reference channel or fitted connected coefficient merely to rescue the model.
 
-CPI1 is an **orthogonal structural constructor/falsifier**, not a competing G94 provenance verdict and not a replacement for G93/G94. It asks whether an exact noiseless one-Delta retarded cubic CTP response can be promoted to coherent branch phases without an additional positive/integrable influence-functional object. The preregistration explicitly preserves G72–G94 authority and the independent-construction firewall.
+Do not repeat an abstract rank/conditioning/reference-leakage/covariant-lift gate or duplicate CPI1. Do not jump directly to selector fitting, state-space completion or quantization/measure.
 
-Current status: `PREREGISTERED_NOT_IMPLEMENTED_OR_EXECUTED`. No CPI1 implementation commit, workflow run, artifacts or terminal scientific verdict are present in current GitHub authority. Therefore no substantive CPI1 claim is consumed yet. Do not launch a duplicate CPI1 decision object; the next worker may implement the frozen contract exactly or, if changing its scientific object/criteria, must create a new preregistered gate.
+## Open layers and claim locks
 
-## Residual nonlinear freedom
-- G86/G87: multiple higher-order completions preserve frozen lower-order data.
-- G88/G89: inherited Ward/CTP/retarded/lower-order constraints have selection rank zero on their frozen completion coordinates.
-- G90/G91: explicit local covariant off-shell finite families remain underdetermined.
-- G92: exact Ricci-only G90/G91 witnesses vanish on the frozen leading Ricci-flat shell.
-- G93: a genuinely beyond-pairwise operational functional exists, but the native nonlinear map into it is absent.
-- G94: the existing D cubic construction cannot supply that native physical bridge without adding unestablished embedding/normalization/source physics; its synthetic algebra can carry connected sensitivity, so the blocker is physical dynamics/provenance rather than algebraic capacity.
+Physical source realization, native nonlinear dynamics, total-source/Bianchi closure, physical completion quotient, spacetime causality, nonlinear coherent/noisy observable map, state/measure completion and externally held-out predictions remain open. `hbar -> 0` is not proved by an action-over-hbar expression.
 
-No nonlinear coefficient is selected. C-type tested cubic freedom remains at least two-dimensional within its frozen witness family. D quartic freedom remains at least two-dimensional within the frozen G87/G89 family. These are finite-family statements, not completeness theorems.
-
-## Active scientific frontier — candidate-owned nonlinear dynamical principle
-Do **not** run another abstract rank, conditioning, reference-leakage or covariant-lift variant. Do **not** promote G83/G85 reference constructions or choose an arbitrary connected coefficient/normalization.
-
-The next high-information task is candidate-owned nonlinear **theory construction under prospective discipline**: determine whether the RCG-002 seed/repository supplies an independent relational/composition/operational principle that fixes a nonlinear influence functional / `Delta Gamma` (or equivalent field/source rule) before inspecting which coefficients it would select.
-
-Any admissible new candidate-owned nonlinear rule must prospectively specify and then test:
-1. physical multi-source preparations;
-2. conserved physical source coupling and source-to-history/CTP mapping;
-3. dimensionless branch-phase normalization reducing to G52–G54 in their validated pairwise weak-field domain;
-4. nonlinear conservation plus Bianchi/diffeomorphism/gauge consistency;
-5. retarded/CTP compatibility;
-6. dependence on at least two genuine nonlinear completion directions, or an independently derived reason those directions are absent/redundant;
-7. a held-out connected observable such as `chi_ABC`.
-
-If no such principle can be derived from RQIRCG's own candidate-owned content, the proper next terminal conclusion is that the current RCG-002 version requires an explicitly new, independently motivated candidate modification before nonlinear selection can proceed.
-
-## Open scientific layers
-- candidate-owned nonlinear dynamical principle / influence functional / source-phase map;
-- nonlinear conserved-source/Bianchi/diffeomorphism completion;
-- physical source/reference preparation and realizability;
-- field content/state space;
-- measure/quantization and quantum consistency;
-- nonlinear physical observable map;
-- externally anchored held-out prediction.
-
-## Claim locks
-Forbidden unless future authority explicitly changes them: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `THEORY_ESTABLISHED`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, family-wide uniqueness, green-CI-as-scientific-PASS, post-hoc coefficient/selector/normalization choice, or importing QGR/MSQGR/KMQGB/RQIR physical assumptions/results as selectors.
-
-Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + G90_G91_OFFSHELL_COVARIANT_UNDERDETERMINATION_SCOPED + G92_RICCI_ONLY_ONSHELL_QUALIFICATION_SCOPED + G93_CONNECTED_OPERATIONAL_FORM_VALID_BUT_NONLINEAR_MAP_MISSING_SCOPED + G94_D_ALGEBRA_CONNECTED_SENSITIVE_BUT_NATIVE_PHYSICAL_BRIDGE_MISSING_SCOPED + CPI1_PREREGISTERED_NOT_EXECUTED + CANDIDATE_OWNED_NONLINEAR_DYNAMICAL_PRINCIPLE_FRONTIER`.
+Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002, all-classical/all-semiclassical no-go, family-wide uniqueness, green-CI-as-physics, post-hoc selection, or imported candidate dynamics. Readiness remains 66%; theory established remains 0%.
