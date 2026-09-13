@@ -17,7 +17,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - `64% -> 65%`: combined microscopic weak-field bridge rubric requiring G52-H + G53-W terminal PASS.
 - `65% -> 66%`: G55-O prospectively held-out entanglement-observable transport closure.
 - G50-R, G51-K and G54-Q are robustness/causality/integration qualifications and do not independently add readiness points.
-- G56-F is a preserved frozen-rule FAIL and adds no readiness point. G56-D diagnostics are non-rescue and also cannot change readiness.
+- G56-F is a preserved frozen-rule FAIL. G56-D is terminal diagnostic only. G56-F2 cannot raise readiness above 66% by itself.
 
 ## Authoritative recent gates
 | Gate | Run / head | Terminal classification | Scope ceiling |
@@ -29,44 +29,32 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G53-W | `34741027250` / `84a27880...` | `FINITE_SIZE_GAUSSIAN_WAVEPACKET_WEAK_FIELD_BRIDGE_VALIDATED` | Isotropic Gaussian finite-size weak-field kernel bridge only. |
 | G54-Q | `34743980333` / `d4f5b37a...` | `FINITE_SIZE_WEAK_FIELD_CONTROLLED_PHASE_CHANNEL_INTEGRATED_SCOPED` | Finite weak-field isotropic-Gaussian unitary channel only. |
 | G55-O | `34744407575` / `4e233f48...` | `HELDOUT_FINITE_SIZE_ENTANGLEMENT_OBSERVABLE_TRANSPORT_VALIDATED_SCOPED` | Six prospectively held-out finite weak-field geometries and negativity observable only. |
-| G56-F | `34746540910` / `fc8bed75...` | `G56F_FROZEN_CONTINUUM_FIELD_CLOSURE_RULE_NOT_MET` | Frozen isotropic-Gaussian source/kernel closure panel; failure localized to one wrong-width negative-control predicate. |
-
-## G50-R terminal authority
-Preregistration `0ee31e39dacb0e2fb145fbe57345209f0c2ef878`; head `1e0d0e669089b144be24399032330c4690f37a8b`; run `34739265637`; aggregate job `103676188542`; artifact `10312356700`; digest `sha256:34b9bee037a9fc28d664d4b5bc303e51c2478e3ee302206d801040a7fcbf3e34`.
-16/16 lanes valid; worst gap-invariance delta `2.1094237467877974e-15`; worst direct implementation discrepancy `1.6378558132172463e-15`; minimum output eigenvalue `-5.023393988398949e-16`.
-
-## G51-K terminal authority
-Preregistration `0b8bf52cc10539aaaf507e0da330c582461914e5`; head `9c4236f596002f1f145c852d964e426bb11e5b4a`; run `34741016035`; aggregate job `103680636906`; artifact `10312114763`; digest `sha256:624543dc89d57a7c9abceb155a57e96492d190234ae55e4d95bcb081a1117c15`.
-8/8 lanes valid; worst post-all identity relative error `5.996553810643397e-16`; minimum shared-proxy relative difference `0.4999999999999997`.
-
-## G52-H terminal authority
-Preregistration `d097e371b2cca109d9af77b8a782afcb41d2ed52`; head `83af9396556293f211bd778837b0b1cb8e55122b`; run `34741020448`; aggregate job `103680658462`; artifact `10312359172`; digest `sha256:4a76cb160d81b6f519f2fa5fc77b39ee0ebf0c5c4eb2a776023ed1f14898a631`.
-8/8 lanes valid; point-energy quotient, local/global phase quotient and exchange controls pass on the frozen weak-field panel.
-
-## G53-W terminal authority
-Preregistration `20432ce2c7a6d052881d4bae7d091621a6f09343`; head `84a278806e6dd4256a3b44a14a1132b08914225c`; run `34741027250`; aggregate job `103680697114`; artifact `10311534805`; digest `sha256:f1384e5cd5ddef0966d5f74873d6aa3a88326617c0e435ea56d01369a9da6ff8`.
-8/8 lanes valid; analytic Gaussian kernel and independent Fourier quadrature agree and frozen point-particle limits pass. G52-H + G53-W set readiness to 65%.
-
-## G54-Q terminal authority
-Preregistration `aa3efc459c43ccf9055b3d6ddf8fa32cc1ac06b0`. Initial run `34741756333` was implementation-invalid because NumPy booleans could not be serialized; no science classification. Serialization-only repair `33efdabc9169d498eb90d32c1ebce3481df2df2e`. Authoritative retry head `d4f5b37ac0c00842aaf85344850ee99d46dacdff`; run `34743980333`; aggregate job `103688387613`; artifact `10312897870`; digest `sha256:554436be119b3a60cd7880b5cd2c6c5f70878afad91ac1ebfe8706df20b5d428`.
-8/8 raw lanes structural-valid/supportive. This does not raise readiness beyond 65% and is not a covariant gravity theory.
+| G56-F | `34746540910` / `fc8bed75...` | `G56F_FROZEN_CONTINUUM_FIELD_CLOSURE_RULE_NOT_MET` | Historical frozen FAIL; source/kernel identities passed but one single-point width-control predicate failed. |
+| G56-D | `34748468285` / `fa9c9036...` | `NEGATIVE_CONTROL_LOCAL_BLIND_SPOT_WITH_INDEPENDENT_IDENTITY_SUPPORT` | Non-rescue localization of G56-F failure only. |
 
 ## G55-O terminal authority
-Preregistration `a824171b4e2fafa3ec61a0aa160d5d8a652a3343`; authoritative head `4e233f480561399fbbe80beb1cd984ec01a06e4b`; run `34744407575`; aggregate job `103689556743`; aggregate artifact `10313850057`; digest `sha256:e750229e99a129f6d2eac338bff600c77339108a748291cd9d76ab43113f6973`.
-6/6 raw lanes were consumed and are structural-valid/supportive. Worst direct-vs-closed negativity absolute difference `7.113382691041614e-17`; local-Z difference `1.5319776697220178e-16`; exchange difference `8.634315051131436e-17`; equal-distance null negativity `1.4150003977845598e-16`; analytic-vs-Fourier kernel relative error `4.3500125146101264e-16`; density trace residual `3.5315423418641234e-21`; minimum density eigenvalue `-1.4164084827420255e-16`.
-Frozen aggregate classification is `HELDOUT_FINITE_SIZE_ENTANGLEMENT_OBSERVABLE_TRANSPORT_VALIDATED_SCOPED`. Per preregistration this closes the independent observable/witness rubric and sets readiness to 66%.
+Preregistration `a824171b4e2fafa3ec61a0aa160d5d8a652a3343`; head `4e233f480561399fbbe80beb1cd984ec01a06e4b`; run `34744407575`; aggregate job `103689556743`; artifact `10313850057`; digest `sha256:e750229e99a129f6d2eac338bff600c77339108a748291cd9d76ab43113f6973`.
+6/6 raw lanes were consumed and are structural-valid/supportive. Worst direct-vs-closed negativity absolute difference `7.113382691041614e-17`; local-Z difference `1.5319776697220178e-16`; exchange difference `8.634315051131436e-17`; equal-distance null negativity `1.4150003977845598e-16`; analytic-vs-Fourier kernel relative error `4.3500125146101264e-16`. Frozen aggregate classification closes the independent observable/witness rubric and sets readiness to 66%.
 
 ## G56-F terminal authority
-Preregistration `f27b25d290fae7e45f4584b5a66c902d33c0e568`; implementation `0b459d3a36826387194a25655d5014d397c039bc`; production head `fc8bed7571d88bf48a3cb168e71067185a5ad1e6`; run `34746540910`; aggregate job `103695482197`; aggregate artifact `10313798716`; digest `sha256:57de2f010d09a2f0d584f4238c98d98e0eb28261582515cbfbea7f03539a4b1b`.
-All 6 lanes are structural-valid, but frozen aggregate scientific support is false because case 3 (`u=2.0`) has wrong-width (`1.3s`) source relative difference `0.029913948838822833`, below the preregistered `>=0.05` negative-control threshold. That lane nevertheless passes every source/kernel identity and numerical predicate, including Cartesian Laplacian relative error `1.0614870158684851e-09`, orientation spread `1.6777244871146735e-10`, Gauss-flux error `3.1327862526353556e-10`, normalization error `0.0`, scale collapse and wrong-sign control. Frozen terminal label remains `G56F_FROZEN_CONTINUUM_FIELD_CLOSURE_RULE_NOT_MET`; no threshold change or retrospective PASS is allowed.
-Terminal note: `results/ITER052_G56F_GAUSSIAN_CONTINUUM_FIELD_CLOSURE_TERMINAL.md`.
+Preregistration `f27b25d290fae7e45f4584b5a66c902d33c0e568`; implementation `0b459d3a36826387194a25655d5014d397c039bc`; head `fc8bed7571d88bf48a3cb168e71067185a5ad1e6`; run `34746540910`; aggregate job `103695482197`; aggregate artifact `10313798716`; digest `sha256:57de2f010d09a2f0d584f4238c98d98e0eb28261582515cbfbea7f03539a4b1b`.
+All 6 lanes are structural-valid, but case 3 (`u=2.0`) failed the frozen wrong-width `1.3s` discriminator: `0.029913948838822833 <0.05`. Every source/kernel identity predicate in that lane passed. Historical classification remains `G56F_FROZEN_CONTINUUM_FIELD_CLOSURE_RULE_NOT_MET`; no threshold change or retrospective PASS is allowed.
 
-## Active G56-D diagnostics
-Preregistration `325b4a44328c9f00b9a1a6643cdf79c47e90b22b`; implementation `b8e1498b8ee08b351a06780558a9212792331466`; launch head `fa9c90366b10970e55d18277caf0e16edca96d31`; run `34748468285`.
-Three parallel non-rescue streams test finite-difference convergence, the analytic wrong-width-control crossing/blind interval, and 80-digit held-out source/kernel identities. These diagnostics cannot alter G56-F or readiness 66%.
+## G56-D terminal authority
+Preregistration `325b4a44328c9f00b9a1a6643cdf79c47e90b22b`; implementation `b8e1498b8ee08b351a06780558a9212792331466`; head `fa9c90366b10970e55d18277caf0e16edca96d31`; run `34748468285`.
+- D1 job `103700644293`; artifact `10315435658`; digest `sha256:5f78d99b6a756bb6e31596bd253230f7208261720cdae611b2f10cdec12daf2d`: original numerical predicates reproduced and expected fourth-order stencil behavior observed until round-off.
+- D2 job `103700643877`; artifact `10314752825`; digest `sha256:57de945788f9386e323bd2028986e8f627ae7696bc3e083020cef1095bbfb747`: exact crossing `u=1.9635717388164815`; old 5% blind interval `[1.899,2.023]`; failed old lane `u=2.0` lies inside; global radial-profile L1 separation `0.4772096540261944`.
+- D3 job `103700643726`; artifact `10315460569`; digest `sha256:dedcbb09a5a1344edbee6b024ece40fd49983e98fb236a01ed9a1d998b912e9f`: 7 held-out 80-digit points; max Laplacian relative error `2.76121848733739194017909059486e-78`; max Gauss-flux absolute error `1.05421979432305232243485740513e-81`.
+- aggregate job `103700722982`; artifact `10314747849`; digest `sha256:f5590714a7179159e20a2fb3ec204f87e47e2c25768b049318fa067160615124`.
+Terminal diagnostic label is `NEGATIVE_CONTROL_LOCAL_BLIND_SPOT_WITH_INDEPENDENT_IDENTITY_SUPPORT`. This confirms a protocol-control blind spot and does not alter historical G56-F.
+Terminal note: `results/ITER053_G56D_DIAGNOSTICS_TERMINAL.md`.
+
+## Active G56-F2 replacement gate
+Preregistration `f885cbe831c932b03c397f1c54b32093dca05aa1`; implementation `26eca8f41b7cb3389f7e228f344e55eaf808a925`; launch head `9e61ed352065286b1785aa7601831a9fcca590b1`; run `34748626476`.
+This is a new prospective gate, not a retry/rescore of G56-F. It freezes three independent streams: an eight-lane held-out real-space differential panel, independent Fourier-space kernel/source reconstruction, and global profile-level width controls for `q=1.3` and `q=0.77`. G56-F2 cannot raise readiness above 66% by itself.
 
 ## Open scientific layers
-- prospective replacement continuum/field-closure gate, only if G56-D shows how to construct a non-degenerate control without relaxing G56-F;
+- robust terminal continuum source/kernel closure (G56-F2 active);
 - generally covariant candidate-gravity dynamics and gravity-theory constitution;
 - field/measure/quantization closure beyond weak-field branch kernels;
 - externally anchored physical predictions beyond current finite weak-field bridge/observable scope.
