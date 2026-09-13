@@ -1,0 +1,74 @@
+name: RCG Iter043 G50-P Four-State Switching Provenance
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER043_G50P_LAUNCH.md'
+
+jobs:
+  provenance:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G50-P provenance/memory lane
+        run: |
+          mkdir -p out
+          python scripts/iter043_g50p_four_state_classical_switching_provenance.py --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg043-g50p-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: provenance
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G50-P qualification rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==6 and all(r.get('structural_valid',False) for r in rows))
+          provenance=bool(structural and all(r.get('classical_provenance_support',False) for r in rows))
+          memory=bool(provenance and all(r.get('memory_witness_support',False) for r in rows))
+          qualified=bool(structural and provenance and memory)
+          if not structural:
+              cls='G50P_IMPLEMENTATION_OR_NUMERICAL_INVALID'
+          elif qualified:
+              cls='FOUR_STATE_CLASSICAL_SWITCHING_PROVENANCE_MEMORY_QUALIFIED'
+          else:
+              cls='G50P_FROZEN_QUALIFICATION_RULE_NOT_MET'
+          summary={
+              'iteration':'Iter043','gate':'G50-P','n_results':len(rows),
+              'all_structural_valid':structural,'all_provenance_support':provenance,
+              'all_memory_witness_support':memory,'scientific_qualification':qualified,
+              'classification':cls,
+              'lanes':[{k:r.get(k) for k in ('shard','structural_valid','classical_provenance_support','memory_witness_support','classification')} for r in sorted(rows,key=lambda z:z.get('shard',99))],
+              'scope_lock':'Explicit finite four-state stationary hidden-classical CTMC switching among local-sum Hamiltonians only; response-blind qualification, no RCG-002 target separation.',
+              'interpretation':'PASS only authorizes a separately preregistered calibration/adversarial transport gate; no universal classical-memory or gravity claim.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg043-g50p-summary
+          path: summary/summary.json
