@@ -1,0 +1,41 @@
+name: RCG Iter062 G64 source coupling rank audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter062_g64_source_coupling_rank.py'
+      - '.github/workflows/rcg-iter062-g64-source-coupling-rank.yml'
+  workflow_dispatch:
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/iter062_g64_source_coupling_rank.py --stream ${{ matrix.stream }} --out out/${{ matrix.stream }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g64-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+
+  aggregate:
+    needs: stream
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g64-*
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter062_g64_source_coupling_rank.py --aggregate-dir downloaded --out summary/g64_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g64-aggregate
+          path: summary/g64_summary.json
