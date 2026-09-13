@@ -1,0 +1,61 @@
+name: RCG Iter085 G87 D nonlinear completion nonuniqueness
+on:
+  push:
+    branches: [g87-d-nonlinear-completion-nonuniqueness]
+    paths:
+      - 'scripts/iter085_g87_d_nonlinear_completion_nonuniqueness.py'
+      - 'prereg/ITER085_G87_D_NONLINEAR_COMPLETION_NONUNIQUENESS.md'
+      - '.github/workflows/iter085_g87_d_nonlinear_completion_nonuniqueness.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter085_g87_d_nonlinear_completion_nonuniqueness.py --lane ${{ matrix.lane }} --out g87-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g87-${{ matrix.lane }}
+          path: g87-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g87-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'D_QUARTIC_ADDITIONS_PRESERVE_FROZEN_CUBIC_JET_SCOPED',
+            'B':'D_DISTINCT_QUARTIC_JET_SHAPES_LINEAR_COORDINATE_ROBUST_SCOPED',
+            'C':'D_QUARTIC_CTP_NORMALIZATION_AND_CUBIC_STRUCTURE_PRESERVATION_SCOPED',
+            'D':'D_NONLINEAR_NONUNIQUENESS_ADVERSARIAL_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g87-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'BLOCKED_D_FROZEN_CUBIC_DATA_ADMIT_MULTIPLE_QUARTIC_CTP_COMPLETIONS_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','scientific_status':'BLOCKED_UNDERDETERMINED_SCOPED' if valid else 'INVALID','readiness':66,'theory_established':0,'scope_lock':'Finite lower-jet nonuniqueness witness only; no complete nonlinear D law, arbitrary-field-redefinition inequivalence, retarded/unitary/measure closure, or physical completion selected.'}
+          pathlib.Path('g87-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g87-aggregate
+          path: g87-aggregate.json
