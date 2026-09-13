@@ -1,0 +1,68 @@
+name: RCG Iter048 G52-H Weak-Field Hamiltonian Quotient
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER048_G52H_LAUNCH.md'
+
+jobs:
+  quotient-bridge:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        case: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy
+      - name: Run frozen G52-H lane
+        run: |
+          mkdir -p out
+          python scripts/iter048_g52h_weak_field_hamiltonian_quotient.py --case '${{ matrix.case }}' --out 'out/result.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg048-g52h-case${{ matrix.case }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: quotient-bridge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G52-H rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=len(rows)==8 and all(r['structural_valid'] for r in rows)
+          support=structural and all(r['lane_support'] for r in rows)
+          summary={
+            'iteration':'Iter048','gate':'G52-H','n_results':len(rows),
+            'all_structural_valid':structural,'scientific_support':bool(support),
+            'worst_factorization_error':max((r['factorization_error'] for r in rows),default=None),
+            'worst_chi_relative_error':max((r['chi_relative_error'] for r in rows),default=None),
+            'worst_local_shift_absolute_error':max((r['local_shift_absolute_error'] for r in rows),default=None),
+            'worst_exchange_relative_error':max((r['exchange_relative_error'] for r in rows),default=None),
+            'largest_compactness':max((r['compactness'] for r in rows),default=None),
+            'classification':'WEAK_FIELD_PAIR_ENERGY_TO_CONTROLLED_PHASE_QUOTIENT_BRIDGE_VALIDATED' if support else 'G52H_FROZEN_RULE_NOT_MET',
+            'scope_lock':'Weak-field point-particle branch-energy quotient bridge only; not a covariant full-gravity derivation.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(summary,f,indent=2)
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg048-g52h-summary
+          path: summary/summary.json
