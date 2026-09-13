@@ -1,0 +1,74 @@
+name: RCG Iter051 G55-O Held-Out Entanglement Observable
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER051_G55O_LAUNCH.md'
+
+jobs:
+  observable-transport:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        case: [0,1,2,3,4,5]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G55-O lane
+        run: |
+          mkdir -p out
+          python scripts/iter051_g55o_heldout_entanglement_observable.py --case '${{ matrix.case }}' --out 'out/result.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg051-g55o-case${{ matrix.case }}
+          path: out/result.json
+
+  aggregate:
+    if: always()
+    needs: observable-transport
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G55-O rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          rows=sorted(rows,key=lambda r:r['min_d_over_s'])
+          structural=len(rows)==6 and all(r.get('structural_valid',False) for r in rows)
+          lane_support=bool(structural and all(r.get('lane_support',False) for r in rows))
+          support=lane_support
+          cls='HELDOUT_FINITE_SIZE_ENTANGLEMENT_OBSERVABLE_TRANSPORT_VALIDATED_SCOPED' if support else 'G55O_FROZEN_HELDOUT_OBSERVABLE_RULE_NOT_MET'
+          summary={
+            'iteration':'Iter051','gate':'G55-O','n_results':len(rows),
+            'all_structural_valid':structural,'all_lane_support':lane_support,
+            'scientific_support':support,
+            'worst_direct_closed_negativity_abs_diff':max((r['negativity_absolute_difference'] for r in rows),default=None),
+            'worst_local_z_negativity_difference':max((r['local_z_negativity_difference'] for r in rows),default=None),
+            'worst_exchange_negativity_difference':max((r['exchange_negativity_difference'] for r in rows),default=None),
+            'worst_equal_distance_null_negativity':max((r['equal_distance_null_negativity'] for r in rows),default=None),
+            'worst_kernel_relative_error':max((r['max_kernel_relative_error'] for r in rows),default=None),
+            'worst_density_trace_residual':max((r['density_trace_residual'] for r in rows),default=None),
+            'minimum_density_eigenvalue':min((r['minimum_density_eigenvalue'] for r in rows),default=None),
+            'classification':cls,
+            'scope_lock':'Prospectively held-out finite weak-field RCG-002 entanglement observable transport only; not covariant continuum gravity or experiment.'
+          }
+          os.makedirs('summary',exist_ok=True)
+          with open('summary/summary.json','w') as f: json.dump(summary,f,indent=2)
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg051-g55o-summary
+          path: summary/summary.json
