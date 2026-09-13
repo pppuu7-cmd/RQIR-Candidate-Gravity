@@ -1,0 +1,55 @@
+name: RCG Iter091 G93 connected multisource phase datum
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter091_g93_rcg002_connected_multisource_phase_datum.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: |
+          mkdir -p out
+          python scripts/iter091_g93_rcg002_connected_multisource_phase_datum.py --lane "${{ matrix.lane }}" --out "out/g93_${{ matrix.lane }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g93-${{ matrix.lane }}
+          path: out/g93_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g93-*
+          path: raw
+      - name: Apply frozen aggregate
+        run: |
+          mkdir -p out
+          python scripts/iter091_g93_rcg002_connected_multisource_phase_datum.py --aggregate raw --out out/g93_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g93-aggregate
+          path: out/g93_aggregate.json
+          if-no-files-found: error
