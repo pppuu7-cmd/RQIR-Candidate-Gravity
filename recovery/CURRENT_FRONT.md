@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_ACTIVE`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_CLOSED`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -12,32 +12,24 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G6
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 - `recovery/state.json` is currently absent; newest main + this file + clean ledger + durable results + validated Actions artifacts are authority.
 
-## Latest terminal authority — G74
-Classification: `CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED`.
+## Latest terminal authority — G75
+Classification: `CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED`.
 
-Prereg `ed068632bdb099ffdcb47535afe5e8c42ff399b0`; implementation `b1e1d84a4c2af4f9fe5e9f921efefd61e07163b3`; production head `b85789c5f55b0cbbbc95f82431215b084a9a13b1`; run `34779124616`; aggregate job/artifact `103782797267/10324670462`; aggregate digest `sha256:cf4256e218ba4c451c0c1e44543873f76763c3db96b5d9dab22434b496c221a8`.
+Prereg `b8d7b0e98d9b2115985e1531925ed0920d84ae1b`; implementation `107e4d40c5634d8a697ad8f97c7ea642b2535745`; production head `7a2d00ef584c1b1ff9819856395bdd476947e37e`; run `34782200622`; aggregate job/artifact `103791160399/10325528374`; aggregate digest `sha256:d8c3fa8f6b26bcd9a531468adc5be1994cb36c609b47831e5e31924e57295f6d`.
 
-Consumed raw artifacts: A `10324745362`, B `10323474735`, C `10324470487`, D `10324765386`. A confirms constant-normalization independence. B establishes exact aliasing of C by the same-shape quadratic slope nuisance and separation from the tested z^2 curvature nuisance. C establishes exact aliasing of D by same-shape cubic calibration. D confirms the combined alias structure and a frozen extra-observable control that restores algebraic independence.
+Consumed raw artifacts: A `10325725024`, B `10324629959`, C `10324448657`, D `10325004317`. A establishes baseline rank 2, rank 3 with either independent direct nuisance anchor alone, and rank 4 with both. B shows the same 2→3→4 pattern using linearly distinct added-response rows, while same-shape controls remain aliased. C reproduces the minimality pattern on all three frozen held-out rational panels and preserves full rank under all frozen invertible reparameterizations. D rejects duplicated-one-sided, zero, same-shape, and one-alias-only false positives.
 
-Scientific meaning: G73 local multi-order rank is not nuisance-robust to exact same-order, same-shape nuisance tangents. Independent nuisance anchors or additional observables with linearly distinct responses are required before C/D identifiability is physically usable. This does not select C or D and does not define candidate-owned dynamics.
+Scientific meaning: inside the exact G74 tangent model, two independent information directions are individually necessary and jointly sufficient to break the two exact nuisance aliases and restore four-column local algebraic identifiability. This does not establish physical realizability of anchors, architecture selection, coefficient values, or candidate-owned dynamics. Exact rank alone also does not establish numerical/statistical robustness.
 
-Terminal note: `results/ITER072_G74_CD_SAME_ORDER_NUISANCE_CONFOUNDING_TERMINAL.md`.
-
-## Active gate — G75
-`CD minimal nuisance-anchor augmentation` is prospectively frozen and running.
-- preregistration: `b8d7b0e98d9b2115985e1531925ed0920d84ae1b`
-- implementation: `107e4d40c5634d8a697ad8f97c7ea642b2535745`
-- production head: `7a2d00ef584c1b1ff9819856395bdd476947e37e`
-- run: `34782200622`
-
-Frozen ceiling on full PASS: `CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED`. This is exact tangent-model identifiability/experimental-design structure only; it does not establish that physical anchors exist, select C or D, or define candidate-owned dynamics.
+Terminal note: `results/ITER073_G75_CD_MINIMAL_NUISANCE_ANCHOR_AUGMENTATION_TERMINAL.md`.
 
 ## Next allowed gate
-Consume G75 raw lanes and aggregate terminally. Only after classification may the project decide whether to move from abstract anchor existence/minimality toward source-defined or physically realizable anchor constructions. No architecture selection is authorized from G75 alone.
+Prospectively audit robustness of the G75 restored rank to near-aliasing, anchor-strength rescaling and finite numerical precision. The next gate may quantify singular-value/condition-number behavior across frozen perturbation families, held-out momentum panels and adversarial threshold controls. It must not reinterpret numerical conditioning as physical detectability or architecture selection.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
-- nuisance-anchored identifiability of C/D hypothesis directions;
+- numerically/statistically robust nuisance-anchored identifiability of C/D hypothesis directions;
+- physically/source-defined anchor realization;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
@@ -47,4 +39,4 @@ Consume G75 raw lanes and aggregate terminally. Only after classification may th
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_MINIMAL_ANCHOR_AUDIT_RUNNING`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_SUFFICIENT_SCOPED`.
