@@ -8,7 +8,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR/MSQGR a
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O. G56F2 through G93 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration/nonlinear-selection qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O. G56F2 through G94 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration/nonlinear-selection qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative gate index
@@ -48,6 +48,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR/MSQGR a
 | G91 | `34784929824` / `0742c191af7542d424fd38369bed73a0aedcbb37` | `BLOCKED_D_EXPLICIT_COVARIANT_QUARTIC_INVARIANT_FAMILY_PRESERVES_FROZEN_CUBIC_DATA_SCOPED` | Explicit two-invariant local covariant D family only; off-shell witness. |
 | G92 | `34785342844` / `b82d58d3e016ef313873af57216d8f2fb103096b` | `BLOCKED_G90_G91_RICCI_ONLY_COVARIANT_WITNESSES_VANISH_ON_FROZEN_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED` | Leading Ricci-flat-shell qualification only; no complete field-redefinition quotient. |
 | G93 | `34788309457` / `d22f7d3acdb73cd7d85f570196562be310e23161` | `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED` | Connected three-source operational selector prerequisite only; rank undefined because map missing. |
+| G94 | `34789599885` / `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96` | `BLOCKED_D_CUBIC_CTP_OBJECT_LACKS_NATIVE_THREE_SOURCE_SOURCE_TO_PHASE_BRIDGE_SCOPED` | Existing D cubic construction reuse audit only; algebraic connected sensitivity exists, native physical bridge incomplete. |
 
 ## Recent terminal provenance
 ### G86 / G87 — nonlinear higher-order underdetermination
@@ -71,18 +72,25 @@ Raw A/B/C/D artifacts `10326317970 / 10325699864 / 10326611062 / 10325968546` we
 
 ### G93 — connected three-source operational selector prerequisite
 Authoritative prospective chain: prereg `a4d062025ba9f1400cb62d7c0a99325680b81206`; implementation `fe62d145fa6be62aa8e3a266046f1d38a581e1b2`; production `d22f7d3acdb73cd7d85f570196562be310e23161`; run `34788309457`; jobs A/B/C/D/aggregate `103807749691 / 103807749729 / 103807749725 / 103807749730 / 103807952105`.
+Artifacts consumed before classification: A `10327208141` (`sha256:7d1833eed5f36a248b50221c9234920dbc8ecb13401d6c660ec536eab87fdcb5`), B `10327013772` (`sha256:bf59522b47c54847af556ff58a62a55cd83f858ad7d98d81527fc1f0408211c5`), C `10327457612` (`sha256:7843b954924a56d1f32cee83f326560119ccf278070c759af2327b00347aa3db`), D `10326914056` (`sha256:90ff3971505e99ef4dab30f5d22651439761453eba91cfc252b1213b0e92a553`), aggregate `10327118325` (`sha256:1c13186fa6d773634ff7f10b69d0cf2f16ad57a4625f56f0318710ff1822e46e`).
+The connected third finite difference annihilates constant/one-body/pairwise phase information and detects a genuine connected `T abc` term, but no candidate-owned nonlinear map from two completion directions through physical source protocols into that observable exists in frozen authority. Terminal classification `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED`; selection rank `UNDEFINED_MAP_MISSING`. Terminal note: `results/ITER091_G93_C_CONNECTED_THREE_SOURCE_PHASE_SELECTOR_TERMINAL.md`.
+
+### G94 — D native three-source bridge sufficiency
+Prospective chain: prereg `83b06652225f6bbc05e98b9befac61ef20628e23`; implementation `9355f0d562d84ed87247ecb28057f023712b3086`; production `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`; run `34789599885`; jobs A/B/C/D/aggregate `103811251395 / 103811251442 / 103811251401 / 103811251262 / 103811374325`.
 
 Artifacts consumed before classification:
-- A `10327208141`, digest `sha256:7d1833eed5f36a248b50221c9234920dbc8ecb13401d6c660ec536eab87fdcb5`;
-- B `10327013772`, digest `sha256:bf59522b47c54847af556ff58a62a55cd83f858ad7d98d81527fc1f0408211c5`;
-- C `10327457612`, digest `sha256:7843b954924a56d1f32cee83f326560119ccf278070c759af2327b00347aa3db`;
-- D `10326914056`, digest `sha256:90ff3971505e99ef4dab30f5d22651439761453eba91cfc252b1213b0e92a553`;
-- aggregate `10327118325`, digest `sha256:1c13186fa6d773634ff7f10b69d0cf2f16ad57a4625f56f0318710ff1822e46e`.
+- A `10327394348`, digest `sha256:664a0f8ea8d0bdbbc545d387d4d47b90c586c204ee8b6ea48995a9213f835086`;
+- B `10327806195`, digest `sha256:54a52b56aee55f6a34dc1144e86931dfcb88e4a15cda475c45658ea10a6d5a7b`;
+- C `10328355129`, digest `sha256:7edc3de062918a313e5f21f9fa3a149d4e5d253316b10207d88497482cd808c0`;
+- D `10328050205`, digest `sha256:87be3aaf0022b2a1358732984b24f70a9f3a489941a8652f103c3bd6f9d92820`;
+- aggregate `10328050273`, digest `sha256:0bf596fa5a878b2f6a339d357512d0a47a76d8b0511e9cfe1928072c287fefc2`.
 
-A establishes exactly that the connected third finite difference of the RCG-002 branch phase annihilates every constant/one-body/pairwise contribution and detects a genuine `T abc` term. B finds all frozen authority present but no explicit candidate-owned nonlinear map from two completion directions through physical source protocols into that connected phase. C calibrates exact rank-2/1/0 controls and preserves rank under all frozen invertible coefficient transformations. D rejects inherited pairwise, proportional-protocol and basis-change false positives.
+A reproduces the D provenance locks: G72 is a hypothesis/construction, G81 is a native alias blocker, G83 is construction-only/not native physics, G52 is pairwise-only, and G93's native nonlinear map is missing. B finds all five indispensable native bridge components missing: physical three-source preparation, source-to-Delta/Sigma embedding, physical source/kernel contraction, dimensionless nonlinear phase normalization, and completion-coordinate dependence. C proves the D cubic algebra itself can carry connected information under an explicitly synthetic embedding (`chi_ABC=2`, scaling to `2z` under arbitrary normalization), while pairwise phases give exactly zero and duplicated protocols remain rank one. D rejects all preregistered rescue routes, including promoting G83 to native physics, hidden normalization, order promotion from G52, nuisance-as-physics, and retardedness-as-Bianchi/conservation.
 
-Terminal classification: `BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED`.
-Selection rank is `UNDEFINED_MAP_MISSING`, not zero. No coefficient is selected. Terminal note: `results/ITER091_G93_C_CONNECTED_THREE_SOURCE_PHASE_SELECTOR_TERMINAL.md`.
+Terminal classification: `BLOCKED_D_CUBIC_CTP_OBJECT_LACKS_NATIVE_THREE_SOURCE_SOURCE_TO_PHASE_BRIDGE_SCOPED`.
+Selection rank: `UNDEFINED_NATIVE_BRIDGE_INCOMPLETE`, not zero. No coefficient is selected. Terminal note: `results/ITER092_G94_D_NATIVE_THREE_SOURCE_PHASE_BRIDGE_TERMINAL.md`.
+
+G89 remains independently decisive for the D quartic sector: the inherited cubic/retarded/CTP object is blind to the two frozen quartic completion coordinates. Therefore physicalizing the same cubic D bridge later would still not by itself select that quartic pair; a genuinely quartic datum or deeper dynamical principle would be required.
 
 ## Concurrency quarantine
 A later overlapping G93 chain was preregistered at `cae05b73251b79d546636beaac48d788118c0a3a`, implemented at `f91c7744c5fa1e139cd647c502b4c23bf77b3e7e`, launched at `1e850e57d4258a81d245ae1de34f7f1f34c0a62e`, run `34788311792`. It addresses the same connected-multisource decision object and post-dates the authoritative preregistration `a4d062025...`. It is retained historically but **not consumed as a competing scientific verdict**.
@@ -90,31 +98,33 @@ A later overlapping G93 chain was preregistered at `cae05b73251b79d546636beaac48
 ## Infrastructure note
 Historical G90/G91 post-hoc terminal-validation workflows `34785111428` and `34785120618` failed with zero jobs. They are infrastructure failures, not scientific FAILs, and do not supersede original validated gates.
 
-## Scientific interpretation after G93
+## Scientific interpretation after G94
 The nonlinear selection-principle gap is now localized more sharply:
 1. multiple higher-order completions preserve inherited data (G86/G87);
 2. inherited constraints have selector rank zero (G88/G89);
 3. explicit finite covariant families retain off-shell freedom (G90/G91);
 4. the exact Ricci-only witnesses vanish on the frozen leading vacuum shell (G92);
-5. RCG-002 supplies a clean genuinely beyond-pairwise **operational functional** `chi_ABC`, but current candidate-owned dynamics do not predict it from surviving nonlinear completion directions (G93).
+5. RCG-002 supplies a clean genuinely beyond-pairwise operational functional `chi_ABC`, but current candidate-owned dynamics do not predict it from surviving nonlinear completion directions (G93);
+6. the strongest already-existing D-sector nonlinear construction has algebraic connected sensitivity but does not supply the missing native physical source-to-phase bridge without introducing unestablished source embedding, normalization, or reference physics (G94).
 
-Therefore the next missing scientific object is no longer another abstract selector vector. It is the candidate-owned nonlinear source/geometry/dynamics bridge that produces physical multi-source branch phases. Until that object exists, nonlinear coefficient selection is undefined and the completion space is not reduced.
+Therefore the immediate missing object is no longer another abstract selector vector or calibration row. It is an independently motivated candidate-owned nonlinear dynamical principle / influence functional / source rule that defines the physical multi-source map before coefficients are inspected. Until that exists, nonlinear coefficient selection remains undefined and the completion spaces are not reduced.
 
 ## Active frontier
-`NONLINEAR_DYNAMICAL_MAP_FRONTIER`.
+`CANDIDATE_OWNED_NONLINEAR_DYNAMICAL_PRINCIPLE_FRONTIER`.
 
-The exact next admissible gate must prospectively construct/test from RQIRCG's own constraints:
-- a physical three-source/reference preparation protocol;
-- a nonlinear field/source equation, influence-functional rule or equivalent candidate-owned dynamics;
-- the map from surviving nonlinear completion directions to all eight branch phases;
-- conservation and Bianchi/diffeomorphism consistency;
-- CTP/retarded and gauge-independent observable compatibility;
-- only then the Jacobian into `chi_ABC`.
+The next admissible work must search RQIRCG's own seed/repository for an independent relational/composition/operational principle capable of fixing a nonlinear `Delta Gamma` or equivalent source/field rule. Any proposed object must be prospectively defined before coefficient outcomes are known and must supply:
+- physical multi-source preparations;
+- conserved source coupling and source-to-history/CTP map;
+- dimensionless branch-phase normalization reducing to G52–G54 in their validated pairwise weak-field domain;
+- nonlinear conservation/Bianchi/diffeomorphism/gauge consistency;
+- retarded/CTP compatibility;
+- dependence on at least two genuine nonlinear completion directions, or an independently derived reason those directions are absent/redundant;
+- a held-out connected observable such as `chi_ABC`.
 
-Do not run another rank/conditioning/covariant-lift variant while this map is absent. Do not add a fitted `kappa abc` or import another candidate programme. If the map cannot be derived independently, record a terminal nonlinear-selection blocker or modification requirement.
+Do not run another rank/conditioning/reference-leakage/covariant-lift variant while this principle is absent. Do not promote G83/G85 construction controls, add a fitted `kappa abc`, set hidden normalization by convention, or import another candidate programme. If no candidate-owned principle can be derived, record a terminal current-version modification requirement rather than fitting coefficients.
 
 ## Open scientific layers
-- candidate-owned nonlinear dynamical/source map and selector;
+- candidate-owned nonlinear dynamical principle / influence functional / source-phase map;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - physical source/reference preparation and realizability;
 - field content/state space;
@@ -123,4 +133,4 @@ Do not run another rank/conditioning/covariant-lift variant while this map is ab
 - externally anchored held-out prediction.
 
 ## Claim locks
-Never promote finite/bounded-family or structural results to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen criteria post hoc. Covariance is not uniqueness. Identifiability is not dynamics. Abstract full rank is not physical realizability. Do not import QGR/MSQGR/KMQGB/RQIR physical assumptions/results or select coefficients post hoc. `THEORY_ESTABLISHED` remains **0%**.
+Never promote finite/bounded-family or structural results to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen criteria post hoc. Covariance is not uniqueness. Identifiability is not dynamics. Abstract full rank is not physical realizability. Do not import QGR/MSQGR/KMQGB/RQIR physical assumptions/results or select coefficients, selectors, source embeddings or phase normalizations post hoc. `THEORY_ESTABLISHED` remains **0%**.
