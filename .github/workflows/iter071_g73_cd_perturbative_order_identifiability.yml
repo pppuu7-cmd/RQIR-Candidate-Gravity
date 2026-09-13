@@ -1,0 +1,58 @@
+name: RCG Iter071 G73 C-D perturbative-order identifiability
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter071_g73_cd_perturbative_order_identifiability.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [A, B, C, D]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: |
+          mkdir -p out
+          python scripts/iter071_g73_cd_perturbative_order_identifiability.py --stream ${{ matrix.stream }} --out out/${{ matrix.stream }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g73-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g73-*
+          path: downloaded
+          merge-multiple: false
+      - name: Apply unchanged frozen aggregate
+        run: |
+          mkdir -p out
+          python scripts/iter071_g73_cd_perturbative_order_identifiability.py --aggregate-dir downloaded --out out/g73_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g73-aggregate
+          path: out/g73_aggregate.json
+          if-no-files-found: error
