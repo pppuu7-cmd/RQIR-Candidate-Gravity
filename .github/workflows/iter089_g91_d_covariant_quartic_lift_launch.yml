@@ -1,0 +1,61 @@
+name: RCG Iter089 G91 D covariant quartic lift recovery launch
+on:
+  push:
+    branches: [g91-d-covariant-quartic-lift]
+    paths:
+      - 'scripts/iter089_g91_d_covariant_quartic_lift.py'
+      - 'prereg/ITER089_G91_D_COVARIANT_QUARTIC_LIFT.md'
+      - '.github/workflows/iter089_g91_d_covariant_quartic_lift_launch.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter089_g91_d_covariant_quartic_lift.py --lane ${{ matrix.lane }} --out g91-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g91-${{ matrix.lane }}
+          path: g91-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g91-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'D_COVARIANT_QUARTIC_DENSITIES_START_AT_FOURTH_ORDER_SCOPED',
+            'B':'D_COVARIANT_QUARTIC_INVARIANTS_POINTWISE_INDEPENDENT_SCOPED',
+            'C':'D_COVARIANT_QUARTIC_CTP_FAMILY_PRESERVES_CUBIC_STRUCTURE_SCOPED',
+            'D':'D_COVARIANT_LIFT_ORDER_AND_INDEPENDENCE_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g91-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'BLOCKED_D_EXPLICIT_COVARIANT_QUARTIC_INVARIANT_FAMILY_PRESERVES_FROZEN_CUBIC_DATA_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','scientific_status':'BLOCKED_COVARIANT_FAMILY_UNDERDETERMINED_SCOPED' if valid else 'INVALID','readiness':66,'theory_established':0,'scope_lock':'Explicit two-invariant local covariant family only; no completeness modulo field redefinitions/boundaries, quartic retarded/unitary/measure closure, or physical completion selection.'}
+          pathlib.Path('g91-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g91-aggregate
+          path: g91-aggregate.json
