@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Iter046/G50-R: preregistered local-basis covariance audit of terminal G50-A candidates."""
-import argparse,json
+import argparse,json,sys
 from pathlib import Path
 import numpy as np
-from scripts.iter011_robustness_suite import td
-from scripts.iter043_g50p_four_state_classical_switching_provenance import product_states,apply_map
-from scripts.iter044_g50c_four_state_switching_calibration import TIMES,HOLDOUT,superops
-from scripts.iter045_g50a_four_state_switching_adversarial import target_superops
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from iter011_robustness_suite import td
+from iter043_g50p_four_state_classical_switching_provenance import product_states,apply_map
+from iter044_g50c_four_state_switching_calibration import TIMES,HOLDOUT,superops
+from iter045_g50a_four_state_switching_adversarial import target_superops
 
 GAP=1e-4; GAP_INV=1e-9; DIRECT=1e-10; TRACE=1e-10; EIG=-1e-10
 REF={
