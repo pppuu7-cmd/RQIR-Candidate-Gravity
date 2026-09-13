@@ -1,0 +1,62 @@
+name: RCG Iter093 G95 minimal finite-history nonlinear closure feasibility
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'prereg/ITER093_G95_MINIMAL_FINITE_HISTORY_NONLINEAR_CLOSURE_FEASIBILITY.md'
+      - 'scripts/iter093_g95_minimal_finite_history_closure.py'
+      - '.github/workflows/iter093_g95_minimal_finite_history_closure.yml'
+  workflow_dispatch:
+
+jobs:
+  scientific-lanes:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install --disable-pip-version-check 'sympy==1.13.3'
+      - name: Run frozen lane
+        run: |
+          mkdir -p out
+          python scripts/iter093_g95_minimal_finite_history_closure.py --lane "${{ matrix.lane }}" --out "out/g95_${{ matrix.lane }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g95-lane-${{ matrix.lane }}
+          path: out/g95_${{ matrix.lane }}.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: scientific-lanes
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact algebra dependency
+        run: python -m pip install --disable-pip-version-check 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g95-lane-*
+          path: raw
+          merge-multiple: true
+      - name: Aggregate frozen scientific classifications
+        run: |
+          ls -l raw
+          python scripts/iter093_g95_minimal_finite_history_closure.py --aggregate raw/g95_A.json raw/g95_B.json raw/g95_C.json raw/g95_D.json --out g95_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g95-aggregate
+          path: g95_aggregate.json
+          if-no-files-found: error
+          retention-days: 90
