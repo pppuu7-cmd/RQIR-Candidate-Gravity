@@ -1,0 +1,49 @@
+name: RCG Iter061 G63 auxiliary factorization audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter061_g63_auxiliary_factorization.py'
+      - '.github/workflows/rcg-iter061-g63-auxiliary-factorization.yml'
+  workflow_dispatch:
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - run: python scripts/iter061_g63_auxiliary_factorization.py --stream ${{ matrix.stream }} --out out/${{ matrix.stream }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g63-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+
+  aggregate:
+    needs: stream
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g63-*
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter061_g63_auxiliary_factorization.py --aggregate-dir downloaded --out summary/g63_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g63-aggregate
+          path: summary/g63_summary.json
