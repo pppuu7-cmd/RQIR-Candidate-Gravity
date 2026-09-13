@@ -1,6 +1,10 @@
 name: RCG Iter070 G72 C2 control-only recovery
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter070_g72_c2_control_repair.yml'
   workflow_dispatch:
 
 jobs:
