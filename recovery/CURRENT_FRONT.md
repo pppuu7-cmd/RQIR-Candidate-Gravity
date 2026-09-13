@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONSTITUTION_PREREQUISITE_BLOCKED / G58B_LINEARIZED_BASELINE_CLOSED / G59_TWO_DERIVATIVE_CONSTITUTION_CLOSED / G60_FOUR_DERIVATIVE_ESCAPE_CLOSED / G61_SECTOR_POLE_MAP_CLOSED / G62_RELATIVE_RESIDUE_CLOSED / G63_AUXILIARY_FACTORIZATION_CLOSED`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONSTITUTION_PREREQUISITE_BLOCKED / G58B_LINEARIZED_BASELINE_CLOSED / G59_TWO_DERIVATIVE_CONSTITUTION_CLOSED / G60_FOUR_DERIVATIVE_ESCAPE_CLOSED / G61_SECTOR_POLE_MAP_CLOSED / G62_RELATIVE_RESIDUE_CLOSED / G63_AUXILIARY_FACTORIZATION_CLOSED / G64_SOURCE_COUPLING_RANK_QUEUED`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -19,10 +19,16 @@ Raw lanes consumed: A `103742305251/10320022178`, B `103742305375/10319654009`, 
 A gives exact two-mode reconstruction and inertia `(1,1)` in TT and scalar sectors. B passes all 12 frozen rational rays / 24 sector cases. C preserves inertia under 16/16 frozen real congruences. D passes both exceptional one-pole limits and rejects definite-sign/zero-coupling fake controls.
 Terminal note: `results/ITER061_G63_AUXILIARY_FACTORIZATION_TERMINAL.md`.
 
-Scientific implication: this is a scoped algebraic source-coupled auxiliary-form result only. It does not establish a physical ghost, instability, quantum-unitarity failure, coefficient selection, or a global higher-derivative no-go theorem.
+Scientific implication: scoped algebraic source-coupled auxiliary-form result only. It does not establish a physical ghost, instability, quantum-unitarity failure, coefficient selection, or a global higher-derivative no-go theorem.
 
-## Next authorized frontier
-The next gate must remain candidate-independent and test whether the source-coupled indefinite auxiliary directions are genuinely unavoidable on the frozen conserved-source response subspace, rather than being removable by source-decoupling/projection. It must be prospectively preregistered before implementation and may establish only a scoped algebraic coupling/rank statement. No physical ghost interpretation is authorized.
+## Active Iter062 / G64 — source-coupling minimal-rank audit
+Frozen preregistration commit: `66dd0884a4e77500e76aaa2e9afe58d0bdf34b88` (before implementation).
+Implementation commit: `ea3e2cb2f69832be1b5c4286334bfaa113fc796c`.
+Production/workflow head: `9e8db59a34d25ba3b6d9d9c6686da03d75652108`.
+Authoritative run: `34767127085` (queued at latest synchronization).
+
+Frozen target: exact two-mode source-coupling/minimal-realization rank 2 for all nonexceptional frozen TT/scalar responses; invariance under eight preregistered invertible real field redefinitions; exceptional one-pole rank-1 behavior; zero-coupling and duplicated-pole negative controls.
+Allowed PASS ceiling only: `FOUR_DERIVATIVE_LINEARIZED_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED`. No physical ghost, instability, unitarity-failure, coefficient selection or global no-go claim is authorized.
 
 ## Open scientific layers
 - independently motivated candidate-owned deformation beyond the G59 class;
@@ -36,4 +42,4 @@ The next gate must remain candidate-independent and test whether the source-coup
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56F2_ROBUST_REPLACEMENT_PASS + G57P_CONSTITUTION_INPUTS_BLOCKED + G58B_LINEARIZED_BASELINE_SUPPORTED_NOVELTY_NOT_ESTABLISHED + G59_TWO_DERIVATIVE_CONSTITUTION_UNIQUE_SCOPED + G60_FOUR_DERIVATIVE_ESCAPE_TWO_DIMENSIONAL_SCOPED + G61_SECTOR_ADDITIONAL_ROOT_STRATIFICATION_SCOPED + G62_RELATIVE_RESIDUE_OPPOSITION_SCOPED + G63_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56F2_ROBUST_REPLACEMENT_PASS + G57P_CONSTITUTION_INPUTS_BLOCKED + G58B_LINEARIZED_BASELINE_SUPPORTED_NOVELTY_NOT_ESTABLISHED + G59_TWO_DERIVATIVE_CONSTITUTION_UNIQUE_SCOPED + G60_FOUR_DERIVATIVE_ESCAPE_TWO_DIMENSIONAL_SCOPED + G61_SECTOR_ADDITIONAL_ROOT_STRATIFICATION_SCOPED + G62_RELATIVE_RESIDUE_OPPOSITION_SCOPED + G63_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED + G64_SOURCE_COUPLING_RANK_QUEUED`.
