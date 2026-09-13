@@ -1,0 +1,47 @@
+name: RCG Iter070 G72 C2 control-only recovery
+
+on:
+  workflow_dispatch:
+
+jobs:
+  c2-repair-and-aggregate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Re-run only technically invalid C2 frozen stream
+        run: |
+          mkdir -p recovered/g72-C2
+          python scripts/iter070_g72_cd_minimal_completion_existence.py --stream C2 --out recovered/g72-C2/C2.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g72-C2-recovery
+          path: recovered/g72-C2/C2.json
+          if-no-files-found: error
+      - name: Download already validated C1/D1/D2 artifacts from authoritative initial run
+        uses: actions/download-artifact@v4
+        with:
+          pattern: g72-*
+          path: downloaded
+          merge-multiple: false
+          repository: pppuu7-cmd/RQIR-Candidate-Gravity
+          run-id: 34773142384
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Remove invalid aggregate and inject repaired C2 only
+        run: |
+          rm -rf downloaded/g72-aggregate
+          mkdir -p downloaded/g72-C2
+          cp recovered/g72-C2/C2.json downloaded/g72-C2/C2.json
+      - name: Apply unchanged frozen aggregate
+        run: |
+          mkdir -p out
+          python scripts/iter070_g72_cd_minimal_completion_existence.py --aggregate-dir downloaded --out out/g72_aggregate_recovery.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g72-aggregate-recovery
+          path: out/g72_aggregate_recovery.json
+          if-no-files-found: error
