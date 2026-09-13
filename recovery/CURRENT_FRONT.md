@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONSTITUTION_PREREQUISITE_BLOCKED / G58B_LINEARIZED_BASELINE_CLOSED / G59_TWO_DERIVATIVE_CONSTITUTION_CLOSED / G60_FOUR_DERIVATIVE_ESCAPE_CLOSED / G61_SECTOR_POLE_MAP_CLOSED / G62_RELATIVE_RESIDUE_CLOSED / G63_AUXILIARY_FACTORIZATION_CLOSED / G64_SOURCE_COUPLING_RANK_CLOSED / G65_FULL_CONSERVED_SOURCE_PROJECTOR_CLOSED / G66_GAUGE_SECTOR_INDEPENDENCE_CLOSED / G67_SOURCE_SATURATED_RESIDUE_CLOSED / G68_QUADRATIC_GRAVITY_BASELINE_NEXT`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_C_D_ORTHOGONAL_COMPLETIONS_NEXT`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -10,32 +10,50 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONST
 - Independent-from-QGR construction contract: **FROZEN**.
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
+- `recovery/state.json` is currently absent from the repository; this file plus `recovery/RECOVERY_DELTA_ITER068_G70.md`, newest commits, clean ledger and validated Actions artifacts are the available recovery authorities.
 
-## Latest closed authority
-### Iter065 / G67 — source-saturated pole/residue coupling PASS
-Classification: `FOUR_DERIVATIVE_LINEARIZED_SOURCE_SATURATED_OPPOSITE_RESIDUE_COUPLING_SCOPED`.
-Preregistration `757ad475331bee15efec66ef73623e1e484be291`; implementation `416d486329d8832ffa113a792359bd36d7160c87`; production head `4e0251d5ab6eb95c1873cff8c9412cd5a626d4b2`; run `34770704574`; aggregate job/artifact `103759759785/10321956604`; digest `sha256:1fa501166026e2d8d3ab13ae29353c8c3a763e40afb59b4230acf2a8c0cd5061`.
-Raw streams: A 96/96 TT residue checks with 12/12 nonzero numerators; B 96/96 scalar residue checks with 12/12 nonzero numerators; C 384/384 exact generic mixed-source reconstructions with zero invalid frozen lanes; D 2448/2448 discrete-Lorentz saturation checks; E all six exceptional/false-positive controls detected.
-Terminal note: `results/ITER065_G67_SOURCE_SATURATED_RESIDUE_TERMINAL.md`.
+## Newly closed chain
+### G68
+`G60_G67_LOCAL_FOUR_DERIVATIVE_ESCAPE_BASELINE_EQUIVALENT_TO_STANDARD_QUADRATIC_GRAVITY_SCOPED`, run `34771096136`. The local linearized four-derivative escape layer is standard curvature-squared quadratic gravity modulo 4D Gauss-Bonnet; novelty is not established in that layer.
 
-Scientific implication: inside the frozen local linearized four-derivative class, the G61/G62 additional poles and opposite relative residues survive exact saturation with the complete G65 conserved-source response and are not artifacts of a single representative tensor. This still does not establish negative norm, a physical ghost, instability, quantum nonunitarity, coefficient exclusion, nonlinear inconsistency or a global no-go theorem.
+### G69
+`BLOCKED_CANDIDATE_OWNED_BEYOND_BASELINE_DYNAMICS_NOT_YET_DEFINED`, run `34771370710`. BLOCKED, not scientific FAIL.
 
-## Next allowed gate — Iter066 / G68
-Prospectively preregister a quadratic-gravity baseline/novelty audit before implementation. Goal: test whether the entire two-dimensional G60 local four-derivative escape space is exactly the standard curvature-squared quadratic-gravity deformation modulo the 4D Gauss-Bonnet relation, and whether the G61–G67 sector structure follows from that standard baseline without any candidate-specific new ingredient.
+### G70
+`BEYOND_BASELINE_ARCHITECTURE_TRIAGE_COMPLETE_NO_UNIQUE_SELECTION`. Scientific streams run `34772158456`; infrastructure-only aggregate failure was recovered analysis-only by run `34772248100`, job/artifact `103763840814/10322650703`, digest `sha256:a4c97a45ebfa26ddfb707614c9817f0c8d2f9a8303616664517399dc635d8f0a`. Pareto set `{B,C,D,E}`.
 
-External literature anchors are fixed before implementation: K. S. Stelle, Phys. Rev. D 16, 953 (1977), DOI `10.1103/PhysRevD.16.953`; A. Salvio, Front. Phys. 6, 77 (2018), DOI `10.3389/fphy.2018.00077`. Literature is used only to classify known baseline structure, not to import desired RCG-002 conclusions.
+### G71 — latest closed authority
+Classification: `BEYOND_BASELINE_UNRESOLVED_PROPERTY_AUDIT_SCOPED`.
+Preregistration `f607a18b2d0830fcb2088da85b214161f72df219`; implementation `0e4be4fac1abf9ad4beabc075ba0e8fae92ef768`; production head `3992d4578c94024e4179a71b7fb73d0ef8e6a9ba`; run `34772999854`; aggregate job/artifact `103765950139/10322965913`; digest `sha256:b65ca45de2de3a5d67dc704532f7cf142412e0908454771872ae760403b2c05c`.
 
-Allowed terminal outcome if exact equivalence is supported: `G60_G67_LOCAL_FOUR_DERIVATIVE_ESCAPE_BASELINE_EQUIVALENT_TO_STANDARD_QUADRATIC_GRAVITY_SCOPED`; this means **novelty is not established in this layer**, not that RCG-002 is globally non-novel or false.
+Raw authority:
+- B `103765903793/10323120513`, digest `sha256:fa14f6d5676d6db3abc5470ceb50e74deed81b7437094a09ab15acbb2900885e`.
+- C `103765903785/10322293252`, digest `sha256:8396770a22f89b678e9fc9896ac73d0331aa880f28d251d077cc87e2c50c82ec`.
+- D `103765903637/10322901063`, digest `sha256:74c5a40e28b6f02ffd09c981aedbc7e57231d7221c40be838e1684ea5b752879`.
+- E `103765903706/10322666776`, digest `sha256:381a5c69808561137f5df34335a6ac2c75b5532c0ae1e06b0410e05320596340`.
+
+Scientific result: D's prospectively frozen cubic CTP extension has exact zero quadratic Hessian at the frozen background, nonzero third derivative, and a deliberately quadratic control has nonzero Hessian. Thus the cubic term by itself does not add new linearized finite poles. B and E are dominated by D under the unchanged G70 property ordering. The non-dominated set narrows to `{C,D}`. Missing structures remain BLOCKED, not FAIL: C lacks a covariant spacetime/Ward and momentum-pole embedding; D lacks an explicit retarded three-point ordering/prescription.
+
+Terminal note: `results/ITER069_G71_UNRESOLVED_ARCHITECTURE_DISCRIMINATORS_TERMINAL.md`.
+
+## Next allowed gate — G72
+Attack C and D independently without selecting either by preference. Any extra structure is a prospectively frozen HYPOTHESIS/CONSTRUCTION, not a derived RCG-002 law.
+
+High-value orthogonal targets:
+1. C: test a minimal covariant transverse embedding for exact Ward closure and explicitly inventory whether its chosen momentum kernel does or does not introduce finite poles; do not infer either property from the finite Gaussian matrix alone.
+2. D: test a minimal retarded three-point CTP ordering/support construction and exact CTP normalization/permutation controls; do not infer causality from the cubic Hessian result alone.
+
+Only after both independent completion tests are terminal may architecture selection/narrowing be reconsidered.
 
 ## Open scientific layers
-- candidate-owned deformation beyond standard two- and four-derivative local gravity baselines;
+- candidate-owned deformation beyond standard local gravity baselines;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
-- externally anchored predictions beyond current finite weak-field scope.
+- externally anchored physical predictions beyond current finite weak-field scope.
 
 ## Claim locks
-Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
+Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56F2_ROBUST_REPLACEMENT_PASS + G57P_CONSTITUTION_INPUTS_BLOCKED + G58B_LINEARIZED_BASELINE_SUPPORTED_NOVELTY_NOT_ESTABLISHED + G59_TWO_DERIVATIVE_CONSTITUTION_UNIQUE_SCOPED + G60_FOUR_DERIVATIVE_ESCAPE_TWO_DIMENSIONAL_SCOPED + G61_SECTOR_ADDITIONAL_ROOT_STRATIFICATION_SCOPED + G62_RELATIVE_RESIDUE_OPPOSITION_SCOPED + G63_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED + G64_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED + G65_FULL_CONSERVED_SOURCE_PROJECTOR_DECOMPOSITION_SCOPED + G66_CONSERVED_SOURCE_GAUGE_SECTOR_INDEPENDENCE_SCOPED + G67_SOURCE_SATURATED_OPPOSITE_RESIDUE_COUPLING_SCOPED + G68_QUADRATIC_GRAVITY_BASELINE_NEXT`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_ORTHOGONAL_COMPLETIONS_NEXT`.
