@@ -1,0 +1,68 @@
+name: RCG Iter090 G92 leading vacuum-shell witness audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter090_g92_leading_vacuum_shell_witness_audit.py'
+      - 'prereg/ITER090_G92_LEADING_VACUUM_SHELL_WITNESS_AUDIT.md'
+      - '.github/workflows/iter090_g92_leading_vacuum_shell_witness_audit.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter090_g92_leading_vacuum_shell_witness_audit.py --lane ${{ matrix.lane }} --out g92-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g92-${{ matrix.lane }}
+          path: g92-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g92-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'C_G90_RICCI_ONLY_WITNESSES_VANISH_ON_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED',
+            'B':'D_G91_RICCI_ONLY_WITNESSES_VANISH_ON_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED',
+            'C':'RICCI_FLAT_SHELL_DOES_NOT_FORCE_ALL_ALGEBRAIC_WEYL_INVARIANTS_ZERO_SCOPED',
+            'D':'VACUUM_SHELL_AUDIT_FALSE_POSITIVE_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g92-*.json'):
+              r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') is True and rows[k].get('classification')==v for k,v in expected.items()))
+          out={
+            'valid':valid,
+            'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},
+            'classification':'BLOCKED_G90_G91_RICCI_ONLY_COVARIANT_WITNESSES_VANISH_ON_FROZEN_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID',
+            'scientific_status':'BLOCKED_ON_SHELL_ROBUSTNESS_SCOPED' if valid else 'INVALID',
+            'readiness':66,
+            'theory_established':0,
+            'scope_lock':'Leading Einstein-vacuum shell robustness only; does not erase off-shell G90/G91 or establish complete field-redefinition/S-matrix equivalence.'}
+          pathlib.Path('g92-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g92-aggregate
+          path: g92-aggregate.json
