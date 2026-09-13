@@ -1,0 +1,49 @@
+name: RCG Iter060 G62 relative residue algebraic audit
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/iter060_g62_relative_residue_audit.py'
+      - '.github/workflows/rcg-iter060-g62-relative-residue-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - run: python scripts/iter060_g62_relative_residue_audit.py --stream ${{ matrix.stream }} --out out/${{ matrix.stream }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g62-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+
+  aggregate:
+    needs: stream
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g62-*
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter060_g62_relative_residue_audit.py --aggregate-dir downloaded --out summary/g62_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g62-aggregate
+          path: summary/g62_summary.json
