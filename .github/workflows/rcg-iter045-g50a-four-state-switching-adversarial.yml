@@ -1,0 +1,74 @@
+name: RCG Iter045 G50-A Four-State Switching Adversarial
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'protocol/ITER045_G50A_LAUNCH.md'
+
+jobs:
+  adversarial:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        method: [sobol_lsq, lhs_lsq]
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy scipy
+      - name: Run frozen G50-A adversarial lane
+        run: |
+          mkdir -p out
+          python scripts/iter045_g50a_four_state_switching_adversarial.py --method '${{ matrix.method }}' --shard '${{ matrix.shard }}' --out out/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg045-g50a-${{ matrix.method }}-s${{ matrix.shard }}
+          path: out/result.json
+
+  aggregate:
+    needs: adversarial
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Aggregate frozen G50-A rule
+        run: |
+          python - <<'PY'
+          import glob,json,os
+          rows=[]
+          for p in glob.glob('artifacts/**/*.json',recursive=True):
+              with open(p) as f: rows.append(json.load(f))
+          structural=bool(len(rows)==8 and all(r.get('structural_valid',False) for r in rows))
+          admissible=bool(structural and all(r.get('admissible',False) for r in rows))
+          lane_support=bool(admissible and all(r.get('lane_support',False) for r in rows))
+          pairs=[]
+          for s in range(4):
+              rr=[r for r in rows if r.get('shard')==s]
+              tg=sorted([r['best_candidate']['train_max_trace_gap'] for r in rr])
+              hg=sorted([r['best_candidate']['holdout_max_trace_gap'] for r in rr])
+              td=abs(tg[1]-tg[0]) if len(tg)==2 else None
+              hd=abs(hg[1]-hg[0]) if len(hg)==2 else None
+              ok=bool(len(rr)==2 and td<=0.002 and hd<=0.003)
+              pairs.append({'shard':s,'train_gaps':tg,'heldout_gaps':hg,'train_difference':td,'heldout_difference':hd,'agreement':ok})
+          support=bool(lane_support and all(p['agreement'] for p in pairs))
+          if not structural: cls='G50A_IMPLEMENTATION_OR_NUMERICAL_INVALID'
+          elif not admissible: cls='G50A_BLOCKED_ADMISSIBILITY'
+          elif support: cls='DERIVED_SCOPED_FOUR_STATE_CLASSICAL_SWITCHING_COMPARATOR_SUPPORT'
+          else: cls='G50A_FROZEN_SUPPORT_RULE_NOT_MET'
+          summary={'iteration':'Iter045','gate':'G50-A','n_results':len(rows),'all_structural_valid':structural,'all_admissible':admissible,'all_lane_support':lane_support,'pairs':pairs,'scientific_support':support,'classification':cls,'scope_lock':'Finite bounded stationary 20D four-state hidden-classical CTMC switching/local-sum-Hamiltonian family only.','interpretation':'Scoped RCG-002 comparator result only; not an arbitrary-classical-memory or semiclassical-gravity no-go theorem.'}
+          os.makedirs('summary',exist_ok=True)
+          open('summary/summary.json','w').write(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          if not structural: raise SystemExit(2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg045-g50a-summary
+          path: summary/summary.json
