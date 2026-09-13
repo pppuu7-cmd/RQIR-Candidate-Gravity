@@ -2,7 +2,7 @@
 
 Updated: 2026-09-13
 Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_ATTACK`
-Active production: **none; G49-C terminal PASS has authorized prospectively frozen cap-free/direct-PSD RCG-002 transport as the next gate.**
+Active production: **ITER042 / G49-A cap-free/direct-PSD RCG-002 adversarial transport**, run `34729309699`.
 
 ## Canonical status
 
@@ -23,25 +23,29 @@ Run `34726705385`, head `db61900e4113cf002f3d5c7b636b7e14d41e00c0`, aggregate jo
 
 All `12/12` response-blind lanes are structurally valid and pass the frozen support rule. Both Sobol and LHS pass at requested ranks 1..6; all six cross-method gap differences are `<=0.002` (actual maximum `9.084579650917406e-13`). Classification: `CAPFREE_DIRECT_PSD_OPTIMIZER_CALIBRATED`.
 
-Frozen lane support included exact requested effective rank, trajectory gap `<0.002`, relative Kossakowski error `<0.02`, PSD/TP/CP/output-state/trace controls, and numerical-box inactivity `max(abs(w_i))/8 <0.80`. Therefore the numerical coordinate box was required to be inactive for every passing selected candidate.
-
-Scope ceiling: response-blind calibration of the direct real-PSD `C=A^2` numerical parameterization with no physical trace cap. It is not a mathematical global optimum over all unbounded PSD generators and not a universal classical/semiclassical no-go theorem. Durable note: `results/ITER041_G49C_CAPFREE_PSD_CALIBRATION_TERMINAL.md`.
+Frozen lane support included exact requested effective rank, trajectory gap `<0.002`, relative Kossakowski error `<0.02`, PSD/TP/CP/output-state/trace controls, and numerical-box inactivity `max(abs(w_i))/8 <0.80`. Scope ceiling: response-blind calibration of direct real-PSD `C=A^2`, not a mathematical global optimum over the unbounded PSD cone. Durable note: `results/ITER041_G49C_CAPFREE_PSD_CALIBRATION_TERMINAL.md`.
 
 ### G48-A cap32/cap64 adversarial transport — scoped PASS
 
 Run `34724106251`, head `235e807fbb9f5bf00de42e66a5aa07df90a21116`, aggregate job `103636108319`, summary artifact `10307232484`, digest `sha256:4e58ab8c40a07546e47ea48eec5ffec8ec265e7216869c94702eda0eb50cd5b8`.
 
-All `16/16` lanes are structurally valid. All eight cross-method pairs satisfy the frozen nonzero-gap support rule and agree within `0.002` (actual differences `1.64e-08` to `3.70e-07`). All four cap32-vs-terminal-cap16 and all four cap64-vs-cap32 nesting checks pass. Classification: `DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64`.
+All `16/16` lanes structurally valid; all eight cross-method pairs pass nonzero-gap/agreement rules and all cap32/cap64 nesting checks pass. Classification: `DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64`. Finite-cap scope only.
 
-Scope ceiling: finite basis-invariant real-PSD Markovian trace caps 32/64 on the frozen RCG-002 toy panel only. No unbounded-PSD or universal classical/semiclassical no-go claim is authorized. Durable note: `results/ITER040_G48A_CAP32_CAP64_ADVERSARIAL_TERMINAL.md`.
+## Active gate — Iter042 / G49-A
 
-## Next authorized gate
+Scientific object: transport the already response-blind calibrated direct real-PSD family `C=A^2` to the unchanged four-shard RCG-002 toy trajectory panel, with no physical trace cap and with numerical box inactivity required.
 
-### Iter042 / G49-A — cap-free/direct-PSD RCG-002 adversarial transport
+Prospective preregistration commit: `67c57014859408175d235059db305e56991b23c5`.
+Implementation commit: `f9a71c862cd44e55a14d4cfd183a8d56161b2dc2`.
+Workflow commit: `5f1d33dd24c11454c0bd801d7c78e37b114cbf9c`.
+Launch/head: `1d7154fb328f514bc5e10c8e1dc192b56d3cafd3`.
+Authoritative run: `34729309699`.
 
-Authorized only because terminal G49-C calibrated the direct `C=A^2` parameterization response-blindly. The gate must be prospectively preregistered before implementation and must preserve the unchanged RCG-002 four-shard target and established comparator metric/probes/times. It must retain numerical-box inactivity as an admissibility requirement and include cross-method agreement plus consistency/nesting against terminal cap64 evidence. No threshold/family/witness retuning is permitted after production output is seen.
+Frozen matrix: methods `{sobol_lsq,lhs_lsq}` x shards `{0,1,2,3}` = `8` lanes, `fail-fast:false`, safe parallelism 8. Same direct 21-coordinate `C=A^2` family and numerical box `[-8,8]^21` as G49-C; same 32 starts / refine 6 / `max_nfev=1200`; same RCG-002 target/probes/times and inherited `GAP_THRESHOLD=1e-4`. Lane PASS requires physical admissibility plus `box_fraction<0.80` and gap `>1e-4`. Aggregate requires 8/8 structural validity, both methods supporting every shard, method agreement `<=0.002`, and direct-PSD best gap no worse than terminal cap64 best gap + `0.002` for every shard.
 
-Even a future G49-A PASS may establish only scoped numerical support on the frozen RCG-002 panel. It cannot by itself establish a mathematical unbounded-PSD optimum, universal classical/semiclassical exclusion, experimental evidence, or full candidate-gravity dynamics.
+Frozen classifications: `G49A_IMPLEMENTATION_OR_NUMERICAL_INVALID`, `G49A_FROZEN_SUPPORT_RULE_NOT_MET`, or `DERIVED_SCOPED_CAPFREE_DIRECT_PSD_COMPARATOR_SUPPORT`.
+
+Interpretation lock: even full PASS is scoped numerical evidence on the frozen RCG-002 panel, not a proof of the global infimum over the unbounded PSD cone and not a universal classical/semiclassical no-go theorem.
 
 ## Retained comparator/provenance authority
 
@@ -53,7 +57,7 @@ Even a future G49-A PASS may establish only scoped numerical support on the froz
 
 ## Open scientific layers
 
-- prospectively freeze and execute cap-free/direct-PSD RCG-002 transport;
+- terminally classify active G49-A without retuning;
 - broader hidden-classical memory beyond the frozen stationary 3-state/12D family;
 - externally anchored observables/holdouts;
 - continuum/full candidate-gravity dynamics and an actual gravity-theory constitution gate.
@@ -64,4 +68,4 @@ Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, 
 
 Current correct status:
 
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_63_PERCENT + THEORY_ESTABLISHED_0 + G49C_CAPFREE_CALIBRATION_PASS + G48A_SCOPED_FINITE_CAP_SUPPORT + G47A_SCOPED_FINITE_MEMORY_SUPPORT + COMPLEX_PSD_PROVENANCE_BOUNDARY_RETAINED + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_63_PERCENT + THEORY_ESTABLISHED_0 + G49C_CAPFREE_CALIBRATION_PASS + G49A_CAPFREE_TRANSPORT_RUNNING + G48A_SCOPED_FINITE_CAP_SUPPORT + G47A_SCOPED_FINITE_MEMORY_SUPPORT + COMPLEX_PSD_PROVENANCE_BOUNDARY_RETAINED + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
