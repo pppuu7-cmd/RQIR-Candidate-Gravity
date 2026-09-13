@@ -8,7 +8,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O; G56F2 through G75 are structural/robustness/constitution/baseline/architecture/identifiability qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O; G56F2 through G76 are structural/robustness/constitution/baseline/architecture/identifiability qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -30,20 +30,26 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G73 | `34776467784` / `0cdbf009...` | `CD_ORDER_SEPARATED_DIRECTIONS_JOINTLY_IDENTIFIABLE_ONLY_WITH_MULTIORDER_PANEL_SCOPED` | Local multi-order identifiability only. |
 | G74 | `34779124616` / `b85789c5...` | `CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED` | Same-order nuisance robustness only. |
 | G75 | `34782200622` / `7a2d00ef...` | `CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED` | Exact tangent-model anchor minimality only. |
+| G76 | `34782314724` / `3a983cbd...` | `G75_EXACT_IDENTIFIABILITY_DEGRADES_CONTINUOUSLY_TOWARD_ALIAS_SCOPED` | Frozen normalized conditioning robustness only. |
 
-## G75 terminal authority
-Preregistration `b8d7b0e98d9b2115985e1531925ed0920d84ae1b`; implementation `107e4d40c5634d8a697ad8f97c7ea642b2535745`; production head `7a2d00ef584c1b1ff9819856395bdd476947e37e`; run `34782200622`; aggregate job/artifact `103791160399/10325528374`; digest `sha256:d8c3fa8f6b26bcd9a531468adc5be1994cb36c609b47831e5e31924e57295f6d`.
+## G76 terminal authority
+Preregistration `7ede8341aea99338d250a6eba8522378aee8cca8`; implementation `3be0d3569596256f61c0931b4d40b1ce8f19713b`; production head `3a983cbd4490bf1a1bb284e3f25227d05f268680`; run `34782314724`; aggregate job/artifact `103791568561/10324864695`; digest `sha256:1d9124e8be09bc07a03a874fc5e183c2573a4b76991d38eba5ae6c92d6455e70`.
 
-Raw artifacts consumed before classification: A `10325725024` (`sha256:9ae83d56ea49bf1046ab537f7dfe8d8826d55407c1f798e3bf122f71c26b0b13`), B `10324629959` (`sha256:c5b1ce00513b9dacd86ecb229167d87c9d9555363a7d61f4b1712c3091a52ea2`), C `10324448657` (`sha256:81e13cf9fb5c2621971c56e3adbacd4f6eb3f57067be8be5472d5136a7f57763`), D `10325004317` (`sha256:22d5b4fd1cf1c04c4a8d2ee0239d3f0977df8fa0cf0d7aafedfcf638bb10dfe7`). G75 establishes the exact 2→3→4 minimality pattern: either independent information direction breaks one alias, while two independent directions are jointly sufficient for full four-column rank. Held-out exact rational panels and frozen invertible reparameterizations preserve the result; false-positive controls remain rank-deficient as preregistered.
+Raw artifacts consumed before classification: A `10325013006` (`sha256:1a8746559dcc3743fee83aed216ecff87c418c9622464226690d32fc0cb3386b`), B `10325735185` (`sha256:38008b5b4c73e62f268654e74f80d3d11069b22a7b65a93b9ad3eb93b02e6220`), C `10325780136` (`sha256:889866c92c1c333be601c487ed89f736ae6001253be3bf6903733e9a727b4817`), D `10324824728` (`sha256:51acb114351cd178c9e3aa81e4d20d88ddee70f132dfa1ffd0eb53f6c5852e16`). Direct-anchor and near-shape families retain rank four for every frozen nonzero perturbation but become monotonically ill-conditioned toward exact aliasing. Held-out panels and orthogonal coordinate controls preserve the result; float64 agrees with the independent 80-digit route and exact false-positive controls remain rank-deficient as frozen.
 
-Terminal note: `results/ITER073_G75_CD_MINIMAL_NUISANCE_ANCHOR_AUGMENTATION_TERMINAL.md`.
+Terminal note: `results/ITER074_G76_CD_NEAR_ALIAS_CONDITIONING_ROBUSTNESS_TERMINAL.md`.
 
-## Active frontier
-The next permitted layer is numerical/statistical robustness of the restored G75 rank. Prospectively quantify singular-value/condition-number behavior under near-aliasing, anchor-strength rescaling, held-out momentum panels and frozen false-positive thresholds. Exact full rank must not be interpreted as physical detectability. A later layer must still establish source-defined/physically realizable anchors and candidate-owned nonlinear dynamics.
+## Parallel active frontier — sibling gates from terminal G75
+The following gates were each prospectively frozen on separate branches rooted at terminal G75 and do **not** consume G76 or one another:
+- G77 statistical estimator-noise robustness — branch `g77-statistical-noise-robustness`, run `34782611134`.
+- G78 row-deletion/redundancy — branch `g78-row-deletion-redundancy`, run `34782616139`.
+- G79 GLS correlated-noise robustness — branch `g79-gls-correlated-noise`, run `34782623331`.
+
+They may execute concurrently. Their raw artifacts and frozen aggregates must be consumed independently; green CI alone is not classification authority. Only after all terminal outcomes are known may a synthesis gate combine them with G76.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
-- numerically/statistically robust nuisance-anchored identifiability of C/D hypothesis directions;
+- statistically robust nuisance-anchored identifiability of C/D hypothesis directions;
 - physically/source-defined anchor realization;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
