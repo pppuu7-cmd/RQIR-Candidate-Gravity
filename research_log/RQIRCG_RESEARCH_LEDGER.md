@@ -16,7 +16,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - `63% -> 64%`: G50-A broader four-state hidden-classical memory target-separation closure.
 - `64% -> 65%`: combined microscopic weak-field bridge rubric requiring G52-H + G53-W terminal PASS.
 - `65% -> 66%`: G55-O prospectively held-out entanglement-observable transport closure.
-- G50-R, G51-K, G54-Q, G56-F2, G58-B, G59, G60, G61, G62, G63 and G64 are structural/robustness/constitution qualifications and do not independently add readiness points.
+- G50-R, G51-K, G54-Q, G56-F2, G58-B, G59, G60, G61, G62, G63, G64 and G65 are structural/robustness/constitution qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -25,26 +25,26 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G56-F2 | `34748626476` / `9e61ed35...` | `RCG002_GAUSSIAN_CONTINUUM_SOURCE_KERNEL_CLOSURE_VALIDATED_ROBUST_REPLACEMENT_SCOPED` | Robust continuum Gaussian source/kernel replacement only. |
 | G57-P | `34748764012` / `dde4cae2...` | `BLOCKED_CONSTITUTION_INPUTS_IDENTIFIED` | Prerequisite inventory; BLOCKED, not scientific FAIL. |
 | G58-B | `34750487200` + C retry `34750571635` | `LINEARIZED_COVARIANT_BASELINE_EMBEDDING_SUPPORTED_AND_WEAK_FIELD_NOVELTY_NOT_ESTABLISHED` | Frozen finite linearized massless-spin-2 baseline panel only. |
-| G59 | `34753280230` / `73c30184...` | `TWO_DERIVATIVE_LINEARIZED_LOCAL_CONSTITUTION_UNIQUE_UP_TO_NORMALIZATION_SCOPED` | One symmetric tensor, 4D Minkowski, local Lorentz-invariant quadratic exactly-two-derivative linear-gauge class only. |
-| G60 | `34755807784` / `834420e7...` | `FOUR_DERIVATIVE_LINEARIZED_GAUGE_INVARIANT_ESCAPE_SPACE_TWO_DIMENSIONAL_SCOPED` | Candidate-independent local four-derivative linearized quotient modulo 4D Gauss-Bonnet only. |
+| G59 | `34753280230` / `73c30184...` | `TWO_DERIVATIVE_LINEARIZED_LOCAL_CONSTITUTION_UNIQUE_UP_TO_NORMALIZATION_SCOPED` | Exactly-two-derivative linear-gauge class only. |
+| G60 | `34755807784` / `834420e7...` | `FOUR_DERIVATIVE_LINEARIZED_GAUGE_INVARIANT_ESCAPE_SPACE_TWO_DIMENSIONAL_SCOPED` | Local four-derivative linearized quotient modulo 4D Gauss-Bonnet only. |
 | G61 | `34758458121` / `37cedcd5...` | `FOUR_DERIVATIVE_LINEARIZED_SECTOR_ADDITIONAL_ROOT_STRATIFICATION_SCOPED` | Algebraic roots in two canonical conserved representatives only. |
-| G62 | `34761167760` / `7e8baad8...` | `FOUR_DERIVATIVE_LINEARIZED_SECTOR_RELATIVE_RESIDUE_OPPOSITION_SCOPED` | Relative residues in the same two sector representatives only. |
-| G63 | `34764255219` / `4bc52cc3...` | `FOUR_DERIVATIVE_LINEARIZED_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED` | Auxiliary reconstruction/inertia in the same frozen sectors only. |
-| G64 | `34767127085` / `9e8db59a...` | `FOUR_DERIVATIVE_LINEARIZED_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED` | Minimal source-coupling rank two in the same frozen TT/scalar representatives only. |
+| G62 | `34761167760` / `7e8baad8...` | `FOUR_DERIVATIVE_LINEARIZED_SECTOR_RELATIVE_RESIDUE_OPPOSITION_SCOPED` | Relative residues in same representatives only. |
+| G63 | `34764255219` / `4bc52cc3...` | `FOUR_DERIVATIVE_LINEARIZED_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED` | Auxiliary reconstruction/inertia in same representatives only. |
+| G64 | `34767127085` / `9e8db59a...` | `FOUR_DERIVATIVE_LINEARIZED_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED` | Minimal source-coupling rank two in same representatives only. |
+| G65 | `34770109680` / `5cac0018...` | `FOUR_DERIVATIVE_LINEARIZED_FULL_CONSERVED_SOURCE_PROJECTOR_DECOMPOSITION_SCOPED` | Complete conserved-source projector decomposition within frozen local linearized class only. |
 
-## G64 terminal authority
-Preregistration `66dd0884a4e77500e76aaa2e9afe58d0bdf34b88`; implementation `ea3e2cb2f69832be1b5c4286334bfaa113fc796c`; production head `9e8db59a34d25ba3b6d9d9c6686da03d75652108`; run `34767127085`; aggregate job/artifact `103750064437/10320723301`; aggregate digest `sha256:dfffd1e1832ff05dd8d1f7fac99f1323aff41a43dcbfb2f8809fbc80b4423ba6`.
-Raw lanes: A `103749979026/10320957706` (`sha256:0a4253068d8abcfd1d0d7570583c711fe774acc249e987e2bfc40953210e595c`); B `103749979111/10320793178` (`sha256:b731afd8c6679718f52f3bbacdd09924463eced5518d36777e52e39e2b449e0b`); C `103749979132/10321067561` (`sha256:093ccb5d00980a98aebea035c104a295f4271577626c499b814e8f3afd0c8740`); D `103749979143/10321177212` (`sha256:4395e2dde98b6214a559c245ab8649c342077b49c401f389194750ca8708f176`).
-A: exact TT/scalar rank 2. B: 24/24 frozen ray-sector cases rank 2. C: 16/16 invertible real field-redefinition checks rank 2. D: exceptional rank-one limits pass; zero-coupling rank loss is detected; duplicated-pole fake is rejected.
-Terminal classification: `FOUR_DERIVATIVE_LINEARIZED_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED`.
-Interpretation: within the frozen two-sector linearized response, both pole contributions remain source-coupled and rank-one realization is insufficient. No physical ghost, instability, unitarity-failure, coefficient selection or global no-go conclusion is authorized. Readiness remains 66%; theory established remains 0%.
-Terminal note: `results/ITER062_G64_SOURCE_COUPLING_RANK_TERMINAL.md`.
+## G65 terminal authority
+Initial preregistration `dca4bd77c2fac5850f4d012c05b00fee34ccfea9`; pre-implementation Minkowski correction `56a04b8823a11eb551ea9ded4444c320edd224a8`; implementation `ecad1751103e5fa9b5b09f309688f52be189a610`; production head `5cac0018f39a9c6fc001e937fc763da15e421a7c`; run `34770109680`; aggregate job/artifact `103758047952/10321651327`; aggregate digest `sha256:8644579d8835b8cac803ec74015a3ff39515397968078a9a1432ff68d02fab5c`.
+Raw lanes: A `103758027280/10321836874` (`sha256:fb06edb695dae8afbd0bffb1340b6d242989cbdbaad79efabbf6e9a97a690ba3`); B `103758027346/10321567477` (`sha256:0bc3f3fb89f1f441e4bc599db9b98f0664b615a1b5d5cfada2c12e241f7ef411`); C `103758027306/10321787046` (`sha256:bb14ac7df3e67ea9b6f845b4ae8b15623f71be5b1c6cfdc826089b171ecd710c`); D `103758027204/10320779979` (`sha256:67e1fafa454f9d245a3237051bb6b6a576adf9bb6e1c7e07993c8e4a4e98927f`).
+A: exact projector ranks `(5,1,6)` and idempotence/orthogonality/transversality for all three frozen Minkowski momenta. B: 576/576 exact held-out conserved-source reconstruction/response checks. C: 82/82 exact discrete-Lorentz covariance checks. D: all four false-positive controls rejected.
+Interpretation: G61–G64 algebraic sector structure extends to the complete frozen conserved symmetric-source space. This is still linearized/local/four-derivative and does not establish physical ghosts, instability, quantum-unitarity failure, coefficient selection, nonlinear inconsistency or a global no-go theorem. Readiness remains 66%; theory established remains 0%.
+Terminal note: `results/ITER063_G65_FULL_CONSERVED_SOURCE_PROJECTOR_TERMINAL.md`.
 
 ## Active next frontier
-Iter063 / G65 must be prospectively preregistered before implementation. It extends the audit from two canonical TT/scalar representatives to the complete conserved symmetric-source tensor space. Frozen design requires four independent streams: exact conserved-projector algebra; held-out exact conserved-source reconstruction; basis/frame covariance; and nonconserved/malformed-projector false-positive controls. PASS may establish only full-conserved-source decomposition within the same local linearized four-derivative class; it may not establish physical ghosts, quantum-unitarity failure, coefficient selection or a global higher-derivative theorem.
+Iter064 / G66: exact conserved-source gauge-sector independence/Ward audit. Prospectively freeze longitudinal gauge-sector response operators and require that all conserved-source responses remain invariant for a held-out exact gauge-parameter panel, while nonconserved controls detect those additions. PASS ceiling only: scoped gauge-sector independence of the G65 conserved response; no physical viability/no-go claim.
 
 ## Open scientific layers
-- full conserved-source projector coverage of the G61–G64 algebraic result;
+- gauge-sector independence of the full conserved-source linearized response;
 - independently motivated candidate-owned deformation beyond the G59 class;
 - physical viability/selection inside or outside the G60 escape space;
 - nonlinear generally covariant candidate-owned dynamics;
