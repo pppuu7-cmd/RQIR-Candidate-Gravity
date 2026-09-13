@@ -1,0 +1,61 @@
+name: RCG Iter081 G83 D minimal source-calibration augmentation
+on:
+  push:
+    branches: [g83-d-minimal-source-calibration]
+    paths:
+      - 'scripts/iter081_g83_d_minimal_source_calibration_augmentation.py'
+      - 'prereg/ITER081_G83_D_MINIMAL_SOURCE_CALIBRATION_AUGMENTATION.md'
+      - '.github/workflows/iter081_g83_d_minimal_source_calibration_augmentation.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter081_g83_d_minimal_source_calibration_augmentation.py --lane ${{ matrix.lane }} --out g83-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g83-${{ matrix.lane }}
+          path: g83-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g83-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'D_SINGLE_REFERENCE_CHANNEL_ALGEBRAIC_SUFFICIENCY_SCOPED',
+            'B':'D_RETARDED_SOURCE_DEFINED_REFERENCE_COMPATIBILITY_SCOPED',
+            'C':'D_REFERENCE_CHANNEL_BLOCK_SEPARATE_NONMODIFICATION_SCOPED',
+            'D':'D_REFERENCE_CHANNEL_FALSE_ANCHOR_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g83-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'D_SINGLE_RETARDED_SOURCE_REFERENCE_CALIBRATION_BREAKS_CUBIC_GAIN_ALIAS_WITHOUT_MODIFYING_D_FUNCTIONAL_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','scientific_status':'PASS_SCOPED_CONSTRUCTION_WITNESS' if valid else 'INVALID','readiness':66,'theory_established':0,'scope_lock':'Construction sufficiency only. The added retarded source-labelled reference channel is a new hypothesis and is not established as physically realizable or candidate-owned.'}
+          pathlib.Path('g83-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g83-aggregate
+          path: g83-aggregate.json
