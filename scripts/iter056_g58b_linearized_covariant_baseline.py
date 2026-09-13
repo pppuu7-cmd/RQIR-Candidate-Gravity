@@ -71,7 +71,6 @@ def rho_gauss(r,s): return math.exp(-r*r/(2*s*s))/((2*math.pi)**1.5*s**3)
 def phi(r,s): return -G*math.erf(r/(math.sqrt(2)*s))/r
 
 def lap5_cartesian_radial(f,r,h):
-    # evaluate at (r,0,0), with 5-point second derivative on each Cartesian axis
     def val(x,y,z): return f(math.sqrt(x*x+y*y+z*z))
     c=val(r,0,0); total=0.0
     for ax in range(3):
@@ -107,7 +106,7 @@ def pulse(t): return math.sin(math.pi*t)**2 if 0<t<1 else 0.0
 def stream_c():
     rs=[0.2,0.35,0.5,0.8,1.1,1.4]; lanes=[]; adv_count=0
     for r in rs:
-        grid=sorted(set([0.0,max(0.0,r-0.17),max(0.0,r-0.03),r+0.07,r+0.31,r+0.73]))
+        grid=sorted(set([0.25-r,0.0,max(0.0,r-0.17),max(0.0,r-0.03),r+0.07,r+0.31,r+0.73]))
         pre=[t for t in grid if t<r]
         ret_pre=[pulse(t-r)/r for t in pre]
         ret_post=[pulse(t-r)/r for t in grid if t>r]
@@ -131,7 +130,6 @@ def stream_d():
         target=4*math.pi*G*m1*m2
         e1=abs(coeff-target)/abs(target); worst_tree=max(worst_tree,e1)
         smp=mp.mpf(str(s)); Rmp=mp.mpf(str(R)); Gmp=mp.mpf(str(G)); m1p=mp.mpf(str(m1)); m2p=mp.mpf(str(m2))
-        # radial inverse Fourier transform of -4*pi*G*m1*m2*exp(-s^2 q^2/2)/q^2
         integ=mp.quad(lambda x: mp.e**(-smp*smp*x*x/2)*mp.sin(x*Rmp)/x,[0, mp.inf])
         vn=-2*Gmp*m1p*m2p*integ/(mp.pi*Rmp)
         va=-Gmp*m1p*m2p*mp.erf(Rmp/(mp.sqrt(2)*smp))/Rmp
