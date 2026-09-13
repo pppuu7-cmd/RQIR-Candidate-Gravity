@@ -8,7 +8,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O; G56F2 through G81 are structural/robustness/constitution/baseline/architecture/identifiability/source-anchor qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O; G56F2 through G83 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -36,38 +36,37 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G79 | `34782623331` / `3ef34d8f...` | `G75_SPD_GLS_IDENTIFIABILITY_PERSISTS_WHILE_WEAK_ANCHOR_VARIANCE_GROWS_SCOPED` | Frozen SPD covariance surrogates only. |
 | G80 | `34783125605` / `6d159d77...` | `BLOCKED_C_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_SLOPE_ALIAS_SCOPED` | Existing C source-functional structure only. |
 | G81 | `34783132206` / `7d820af6...` | `BLOCKED_D_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_CUBIC_CALIBRATION_ALIAS_SCOPED` | Existing D source-functional structure only. |
+| G82 | `34783507013` / `ac64c3d7...` | `C_SINGLE_SOURCE_REFERENCE_CALIBRATION_BREAKS_SLOPE_ALIAS_WITHOUT_MODIFYING_C_FUNCTIONAL_SCOPED` | Added C reference-channel construction sufficiency only. |
+| G83 | `34783514167` / `0e6e0885...` | `D_SINGLE_RETARDED_SOURCE_REFERENCE_CALIBRATION_BREAKS_CUBIC_GAIN_ALIAS_WITHOUT_MODIFYING_D_FUNCTIONAL_SCOPED` | Added D reference-channel construction sufficiency only. |
 
 ## G76-G79 robustness fan-out
-G76–G79 are terminal scoped robustness results rooted in G75. Retrospective synthesis: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`. Jointly they establish only that exact alias-breaking rank can become ill-conditioned, uncertainty grows as anchors weaken under frozen iid/SPD surrogates, and the abstract design has explicit single-row failure/redundancy structure. They do not establish physical anchors or detectability.
+G76-G79 are terminal scoped robustness results rooted in G75. Retrospective synthesis: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`. Jointly they establish only that exact alias-breaking rank can become ill-conditioned, uncertainty grows as anchors weaken under frozen iid/SPD surrogates, and the abstract design has explicit single-row failure/redundancy structure. They do not establish physical anchors or detectability.
 
-## G80 terminal authority — C native-anchor availability
-Common base `080c219d20f8ed16fa24845ffa180ea5c5d57bc0`; preregistration `c09e2298a746cc5055e8f67c6c9edb182e52dabe`; implementation `0f53469f396248a5ba00a35dcb3450cb9318e74f`; production head `6d159d77d3feace880784d229067e30cb8afb657`; run `34783125605`; aggregate job/artifact `103793724031/10325925907`; digest `sha256:b2f9214940e746650cbad54cda6363c9ff5c8de69aa25f0abe1e80573be47610`.
+## G80-G81 native-anchor authority
+G80: common base `080c219d20f8ed16fa24845ffa180ea5c5d57bc0`; prereg `c09e2298a746cc5055e8f67c6c9edb182e52dabe`; implementation `0f53469f396248a5ba00a35dcb3450cb9318e74f`; head `6d159d77d3feace880784d229067e30cb8afb657`; run `34783125605`; aggregate `103793724031/10325925907`, digest `sha256:b2f9214940e746650cbad54cda6363c9ff5c8de69aa25f0abe1e80573be47610`. Existing C projected-source/Gaussian CTP structures preserve the exact C/N1 alias. Terminal note: `results/ITER078_G80_C_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
 
-Raw artifacts: A `10326250030` (`sha256:c46108e01029df42ecdb8f7efc23a9eb350f916393aefea3feaadc6ea016a7d5`), B `10325721295` (`sha256:c6a0db336f42f9a421c913167945f43f9d5dcd747401d93cf0bf5a37b44f6f4b`), C `10326020575` (`sha256:f028b6752659da7b85f8c0317eb6554477e63341dd9fbe618a137cbeefaf147a`), D `10325905809` (`sha256:20cdd12bed51ff55f1b1fd3dc2c544806cc3f09e837998c33a669c3ddf2128cf`). Existing transverse/Ward source sampling and native Gaussian CTP zero-derivative sectors preserve the exact C/N1 slope alias; only explicitly non-native controls restore rank two. Scientific status is BLOCKED, not FAIL.
+G81: same common base; prereg `30f6f10128f2d02bf25ebbdcf9b53af86c462452`; implementation `3da5fb204f796eae5819fe2f784fdfe25e7aa78b`; head `7d820af68ee4287cc4c9978432937d08b76e9fd7`; run `34783132206`; aggregate `103793885371/10326085588`, digest `sha256:e0da015980e7e7d214cc24386de2828db53fc746fb146886932eee95dc0acc7f`. Existing D retarded/support/permutation/CTP/jet structures preserve the exact D/N3 alias. Terminal note: `results/ITER079_G81_D_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
 
-Terminal note: `results/ITER078_G80_C_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
+## G82 terminal authority — C reference construction
+Common base `5830d944ad5b1ef076a8ddf0509116506c94b384`; preregistration `43e9a1e9ee838e48c3aa5b6640e588f4dc92ad80`; implementation `a77e89acabbd0f6c9c171f04c25b6de03013fafb`; production head `ac64c3d740a1954816fe66ab54ad6f36577ca095`; run `34783507013`; aggregate job/artifact `103794729260/10325248911`; digest `sha256:c5088a9b335987ecdc383c0ed2192fe0abfc9a933a1fc9ada0154abc3b1127d7`.
 
-## G81 terminal authority — D native-anchor availability
-Common base `080c219d20f8ed16fa24845ffa180ea5c5d57bc0`; preregistration `30f6f10128f2d02bf25ebbdcf9b53af86c462452`; implementation `3da5fb204f796eae5819fe2f784fdfe25e7aa78b`; production head `7d820af68ee4287cc4c9978432937d08b76e9fd7`; run `34783132206`; aggregate job/artifact `103793885371/10326085588`; digest `sha256:e0da015980e7e7d214cc24386de2828db53fc746fb146886932eee95dc0acc7f`.
+Raw artifacts: A `10325766858` (`sha256:bfa9614436f213da4423a3d80c01917af3ca428021f23c53cb53ca5bc4fb6128`), B `10324764404` (`sha256:58729a5accbfcd274283930c0e93c229c00ca0afde0d456123ccae86e5120e3d`), C `10326135827` (`sha256:35c7dfa789f22f4662d03bf9ad30356941a1fc681421031ad0176052c89c02fe`), D `10325632672` (`sha256:0c68423b7bf24c7acb28c675f29e87e9e28c36a6c7e851b7fcf3d6ef899e2735`). A single added candidate-blind nuisance-reference row restores C/N1 rank two on primary/held-out panels; the source-defined reference seed gives exact `q_ref=201559/448` and preserves Ward compatibility. The C candidate functional is unchanged. Terminal note: `results/ITER080_G82_C_MINIMAL_SOURCE_CALIBRATION_AUGMENTATION_TERMINAL.md`.
 
-Raw artifacts: A `10325564689` (`sha256:3fd8334684cdc3bf35cfaa16f4a801acb23efcf33ca68706957c8684f5390805`), B `10325781362` (`sha256:fc8d22040e146dd7e17083ce24af8b47cf0afde6dc6c689950fb614872e330a7`), C `10325751344` (`sha256:f79b7781984c1d523c13b0c8e99dd25882cdf33ae2f38bb5b8204636ee784763`), D `10325183701` (`sha256:24177dc6ca9f5fd6739dcd78a0fc14d61d84860a19cfcf9f249f6059c359925f`). Existing retarded support, Sigma permutations, CTP normalization and frozen cubic jet information preserve the exact D/N3 calibration alias; only explicitly non-native controls restore rank two. Scientific status is BLOCKED, not FAIL.
+## G83 terminal authority — D reference construction
+Common base `5830d944ad5b1ef076a8ddf0509116506c94b384`; preregistration `6c03aa2cfa462ae78e6410f1152ca476e679a195`; implementation `ff62a450d6b801a28a6f16422c1add117e2afcc1`; production head `0e6e088579a0f12f5d2b7f7aaf340beebca82944`; run `34783514167`; aggregate job/artifact `103794773369/10325334117`; digest `sha256:faca91a4782d2dfef0d40e085417cac6c435834201881ed6d8b9ddb3fe615c78`.
 
-Terminal note: `results/ITER079_G81_D_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
+Raw artifacts: A `10325308790` (`sha256:924f52630f7b25cce29717761e226344c7b4bf56d23e649e549dc693c347ff84`), B `10324999208` (`sha256:9319dd4eb8e272162dded2c74d3e2555353979d7b08bbe24230af634f635a887`), C `10324474946` (`sha256:2e961c6b700d6036b72843d5232e0740e3fd71e782b35dd3b9587e6d41134bc6`), D `10325687124` (`sha256:99d405cc9bb73a03d1defd7bf8245e74bd99613138391c7b9a5bf30a53348b31`). A single added candidate-blind retarded nuisance-reference row with `q_ref=2` restores D/N3 rank two while preserving retarded support, Sigma symmetry, CTP normalization and the frozen cubic jet. The D candidate functional is unchanged. Terminal note: `results/ITER081_G83_D_MINIMAL_SOURCE_CALIBRATION_AUGMENTATION_TERMINAL.md`.
+
+## G80-G83 synthesis
+`results/G80_G83_NATIVE_BLOCK_TO_REFERENCE_CONSTRUCTION_SYNTHESIS.md` is retrospective only, not a new gate. G80/G81 show native information is insufficient; G82/G83 show one explicit external reference direction is algebraically sufficient. Physical realizability remains open.
 
 ## Active frontier
-G80/G81 establish that the already-frozen C and D objects do not natively contain the independent calibration/source-response information required by G75. The next admissible layer is architecture-specific **minimal source-calibration augmentation**, treated as new construction hypotheses rather than discovered physical observables. C and D must remain independent sibling gates.
-
-Each augmentation gate must freeze before implementation:
-- the additional source/calibration variable or reference channel;
-- why it is candidate-architecture compatible but not already implied by G70–G72;
-- Ward/conservation/retarded/CTP constraints inherited from the corresponding architecture;
-- exact negative controls proving that a same-shape or zero channel does not resolve the alias;
-- an interpretation ceiling forbidding promotion of construction sufficiency to physical realizability.
+The next permitted layer is architecture-specific **reference-channel imperfect-decoupling/realizability robustness**. C and D must remain independent sibling gates. Test prospectively frozen candidate leakage into the reference channel, nuisance-gain uncertainty, near-loss of nuisance sensitivity, and inherited Ward/retarded constraints. A PASS may establish robustness of the construction family only; it cannot establish an actual source preparation, detector, calibration protocol or candidate-blind physical observable.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
-- architecture-specific source-calibration augmentation for C and D;
-- physical/source preparation and realizability of any successful augmentation;
+- reference-channel imperfect-decoupling robustness for C and D;
+- physical source/reference preparation and realizability;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
