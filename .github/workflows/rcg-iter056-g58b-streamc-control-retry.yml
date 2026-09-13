@@ -1,0 +1,25 @@
+name: RCG Iter056 G58-B Stream C control-only retry
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rcg-iter056-g58b-streamc-control-retry.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  stream-c:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy mpmath
+      - run: python scripts/iter056_g58b_linearized_covariant_baseline.py --stream C --out out/C.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg056-g58b-C-control-retry
+          path: out/C.json
