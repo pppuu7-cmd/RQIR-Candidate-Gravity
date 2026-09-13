@@ -1,0 +1,87 @@
+name: RCG Iter091 G93 C connected three-source phase selector
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter091_g93_c_connected_three_source_phase_selector.py'
+      - 'prereg/ITER091_G93_C_CONNECTED_THREE_SOURCE_PHASE_SELECTOR.md'
+      - '.github/workflows/iter091_g93_c_connected_three_source_phase_selector.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter091_g93_c_connected_three_source_phase_selector.py --lane ${{ matrix.lane }} --out g93-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g93-${{ matrix.lane }}
+          path: g93-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g93-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected_fixed={
+            'A':'RCG002_THREE_SOURCE_CONNECTED_PHASE_IS_GENUINELY_BEYOND_PAIRWISE_SCOPED',
+            'C':'THREE_SOURCE_SELECTOR_RANK_PIPELINE_CALIBRATED_SCOPED',
+            'D':'THREE_SOURCE_SELECTOR_INHERITED_AND_FALSE_POSITIVE_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g93-*.json'):
+              r=json.loads(p.read_text()); rows[r['stream']]=r
+          structural=(set(rows)==set(['A','B','C','D']) and all(rows[k].get('valid') is True for k in rows))
+          fixed_ok=structural and all(rows[k].get('classification')==v for k,v in expected_fixed.items())
+          b=rows.get('B',{})
+          map_status=b.get('map_status')
+          if fixed_ok and b.get('classification')=='BLOCKED_CANDIDATE_OWNED_THREE_SOURCE_NONLINEAR_PHASE_MAP_NOT_DEFINED_SCOPED' and map_status=='MISSING':
+              classification='BLOCKED_MISSING_CANDIDATE_OWNED_NONLINEAR_THREE_SOURCE_PHASE_MAP_SCOPED'
+              scientific_status='BLOCKED_MISSING_CANDIDATE_OWNED_DATUM'
+              selection_rank='UNDEFINED_MAP_MISSING'
+              valid=True
+          elif fixed_ok and b.get('classification')=='CANDIDATE_OWNED_THREE_SOURCE_NONLINEAR_PHASE_MAP_PRESENT_SCOPED' and map_status=='PRESENT':
+              classification='INFRASTRUCTURE_OR_GATE_INVALID'
+              scientific_status='INVALID_MAP_PRESENT_BUT_RANK_OBJECT_NOT_MACHINE_READABLE_UNDER_FROZEN_IMPLEMENTATION'
+              selection_rank='NOT_EVALUATED'
+              valid=False
+          else:
+              classification='INFRASTRUCTURE_OR_GATE_INVALID'
+              scientific_status='INVALID'
+              selection_rank='NOT_EVALUATED'
+              valid=False
+          out={
+            'valid':valid,
+            'classification':classification,
+            'scientific_status':scientific_status,
+            'selection_rank':selection_rank,
+            'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},
+            'map_status':map_status,
+            'readiness':66,
+            'theory_established':0,
+            'scope_lock':'Connected three-source operational selector prerequisite only; no nonlinear coefficient selection without explicit candidate-owned source/dynamics map.'}
+          pathlib.Path('g93-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g93-aggregate
+          path: g93-aggregate.json
