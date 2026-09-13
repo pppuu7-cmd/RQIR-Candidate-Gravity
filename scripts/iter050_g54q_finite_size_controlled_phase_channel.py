@@ -132,18 +132,18 @@ def run(case):
                   and np.isfinite(chi) and np.isfinite(point_rel))
 
     checks = {
-        'analytic_vs_fourier': kernel_rel <= 1e-10,
-        'unitary_factorization': factorization_error <= 1e-12,
-        'local_phase_quotient_invariance': local_shift_abs_error <= 1e-12,
-        'ab_exchange_invariance': exchange_rel_error <= 1e-12,
-        'trace_preserving': tp_residual <= 1e-12,
-        'choi_hermitian': herm_residual <= 1e-12,
-        'choi_positive': min_choi_eig >= -1e-12,
-        'choi_rank_one': choi_rank == 1,
-        'equal_distance_null': abs(null_chi) <= 1e-12,
-        'high_ratio_point_limit': True if ratio < 8.0 else point_rel <= 1e-10,
-        'weak_field_compactness': compactness < 1e-12,
-        'finite': finite,
+        'analytic_vs_fourier': bool(kernel_rel <= 1e-10),
+        'unitary_factorization': bool(factorization_error <= 1e-12),
+        'local_phase_quotient_invariance': bool(local_shift_abs_error <= 1e-12),
+        'ab_exchange_invariance': bool(exchange_rel_error <= 1e-12),
+        'trace_preserving': bool(tp_residual <= 1e-12),
+        'choi_hermitian': bool(herm_residual <= 1e-12),
+        'choi_positive': bool(min_choi_eig >= -1e-12),
+        'choi_rank_one': bool(choi_rank == 1),
+        'equal_distance_null': bool(abs(null_chi) <= 1e-12),
+        'high_ratio_point_limit': bool(True if ratio < 8.0 else point_rel <= 1e-10),
+        'weak_field_compactness': bool(compactness < 1e-12),
+        'finite': bool(finite),
     }
     structural_valid = bool(case in range(8) and ratio > 0 and s > 0 and np.all(ds > 0))
     lane_support = bool(structural_valid and all(checks.values()))
@@ -152,15 +152,15 @@ def run(case):
         'iteration':'Iter050','gate':'G54-Q','case':case,'min_d_over_s':ratio,
         'distances_m':[float(x) for x in ds], 's_m':s, 'mA_kg':mA, 'mB_kg':mB, 'T_s':T,
         'analytic_kernels':[float(x) for x in ka], 'numeric_kernels':[float(x) for x in kn],
-        'quadrature_errors':[float(x) for x in qerr], 'max_kernel_relative_error':kernel_rel,
-        'finite_size_controlled_phase':chi, 'point_controlled_phase':float(point_chi),
-        'point_phase_relative_difference':point_rel,
+        'quadrature_errors':[float(x) for x in qerr], 'max_kernel_relative_error':float(kernel_rel),
+        'finite_size_controlled_phase':float(chi), 'point_controlled_phase':float(point_chi),
+        'point_phase_relative_difference':float(point_rel),
         'unitary_factorization_error':factorization_error,
-        'local_shift_absolute_error':local_shift_abs_error,
-        'exchange_relative_error':exchange_rel_error,
+        'local_shift_absolute_error':float(local_shift_abs_error),
+        'exchange_relative_error':float(exchange_rel_error),
         'tp_residual':tp_residual, 'choi_hermiticity_residual':herm_residual,
         'minimum_choi_eigenvalue':min_choi_eig, 'choi_rank':choi_rank,
-        'equal_distance_null_phase':float(null_chi), 'max_compactness':compactness,
+        'equal_distance_null_phase':float(null_chi), 'max_compactness':float(compactness),
         'checks':checks, 'structural_valid':structural_valid, 'lane_support':lane_support,
         'scope_lock':'Finite weak-field isotropic-Gaussian controlled-phase channel integration only; not covariant continuum gravity.'
     }
