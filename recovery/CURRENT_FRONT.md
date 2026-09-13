@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / HELDOUT_OBSERVABLE_CLOSED / CONTINUUM_FIELD_CLOSURE_NEXT`
+Phase: `INDEPENDENT_RQIR_DERIVATION / HELDOUT_OBSERVABLE_CLOSED / G56F_CONTINUUM_FIELD_CLOSURE_RUNNING`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -26,15 +26,20 @@ Scope: prospectively held-out finite weak-field RCG-002 observable transport onl
 ## Readiness consequence
 The frozen G55-O interpretation closes the independent observable/witness rubric and advances internal programme readiness **65% -> 66%**. This is a roadmap metric, not correctness probability. Theory established remains **0%**.
 
-## Current frontier
-The next programme-critical layer is continuum/field closure derived from RCG-002 itself. The highest-information admissible prerequisite is to test whether the already-qualified isotropic Gaussian kernel
-`K_s(r)=erf(r/(sqrt(2)s))/r`
-closes consistently as a continuum radial field object: analytic radial Laplacian versus an independent numerical derivative, Gaussian source normalization/positivity, Gauss-flux/enclosed-source identity, isotropy/Cartesian derivative controls, and explicit wrong-sign/wrong-width negative controls.
+## Active gate — Iter052 / G56-F
+`GAUSSIAN_CONTINUUM_FIELD_CLOSURE`
 
-A PASS of such a gate may qualify only this smoothed weak-field continuum kernel/source relation. It cannot establish a generally covariant metric theory, a dynamical field equation, a quantum measure/path integral, or complete QG. Covariant dynamics, field/measure closure beyond this kernel, and gravity-theory constitution remain open.
+Preregistration commit `f27b25d290fae7e45f4584b5a66c902d33c0e568` precedes implementation commit `0b459d3a36826387194a25655d5014d397c039bc` and workflow/production head `fc8bed7571d88bf48a3cb168e71067185a5ad1e6`.
+Authoritative production run: `34746540910`.
+Frozen six-lane panel tests the RCG-002 Gaussian kernel/source identity using independent Cartesian and radial finite differences, Gaussian source normalization, Gauss flux, scale collapse, isotropy, and wrong-sign/wrong-width negative controls. Green CI alone is not scientific PASS. G56-F cannot raise readiness above 66% by itself.
+
+## Current frontier
+G56-F is the active continuum/field-closure prerequisite derived solely from RCG-002. Only after terminal classification may a dependent continuum/covariant constitution gate be defined.
+
+A G56-F PASS may qualify only the smoothed isotropic weak-field continuum source/kernel relation. It cannot establish a generally covariant metric theory, a dynamical field equation, a quantum measure/path integral, or complete QG. Covariant dynamics, field/measure closure beyond this kernel, and gravity-theory constitution remain open.
 
 ## Claim locks
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G54Q_FINITE_SIZE_CHANNEL_PASS + G55O_HELDOUT_OBSERVABLE_PASS + CONTINUUM_FIELD_CLOSURE_OPEN + COVARIANT_DYNAMICS_OPEN + FIELD_MEASURE_OPEN`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G55O_HELDOUT_OBSERVABLE_PASS + G56F_CONTINUUM_FIELD_CLOSURE_RUNNING + COVARIANT_DYNAMICS_OPEN + FIELD_MEASURE_OPEN`.
