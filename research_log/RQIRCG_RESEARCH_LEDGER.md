@@ -16,7 +16,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - `63% -> 64%`: G50-A broader four-state hidden-classical memory target-separation closure.
 - `64% -> 65%`: combined microscopic weak-field bridge rubric requiring G52-H + G53-W terminal PASS.
 - `65% -> 66%`: G55-O prospectively held-out entanglement-observable transport closure.
-- G50-R, G51-K, G54-Q, G56-F2, G58-B, G59, G60, G61, G62, G63, G64 and G65 are structural/robustness/constitution qualifications and do not independently add readiness points.
+- G50-R, G51-K, G54-Q, G56-F2, G58-B, G59, G60, G61, G62, G63, G64, G65 and G66 are structural/robustness/constitution qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -32,6 +32,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G63 | `34764255219` / `4bc52cc3...` | `FOUR_DERIVATIVE_LINEARIZED_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED` | Auxiliary reconstruction/inertia in same representatives only. |
 | G64 | `34767127085` / `9e8db59a...` | `FOUR_DERIVATIVE_LINEARIZED_TWO_MODE_SOURCE_COUPLING_RANK_TWO_SCOPED` | Minimal source-coupling rank two in same representatives only. |
 | G65 | `34770109680` / `5cac0018...` | `FOUR_DERIVATIVE_LINEARIZED_FULL_CONSERVED_SOURCE_PROJECTOR_DECOMPOSITION_SCOPED` | Complete conserved-source projector decomposition within frozen local linearized class only. |
+| G66 | `34770233112` / `8681a3d8...` | `FOUR_DERIVATIVE_LINEARIZED_CONSERVED_SOURCE_GAUGE_SECTOR_INDEPENDENCE_SCOPED` | Exact Ward/gauge-sector independence of the frozen conserved-source linearized response only. |
 
 ## G65 terminal authority
 Initial preregistration `dca4bd77c2fac5850f4d012c05b00fee34ccfea9`; pre-implementation Minkowski correction `56a04b8823a11eb551ea9ded4444c320edd224a8`; implementation `ecad1751103e5fa9b5b09f309688f52be189a610`; production head `5cac0018f39a9c6fc001e937fc763da15e421a7c`; run `34770109680`; aggregate job/artifact `103758047952/10321651327`; aggregate digest `sha256:8644579d8835b8cac803ec74015a3ff39515397968078a9a1432ff68d02fab5c`.
@@ -40,13 +41,18 @@ A: exact projector ranks `(5,1,6)` and idempotence/orthogonality/transversality 
 Interpretation: G61–G64 algebraic sector structure extends to the complete frozen conserved symmetric-source space. This is still linearized/local/four-derivative and does not establish physical ghosts, instability, quantum-unitarity failure, coefficient selection, nonlinear inconsistency or a global no-go theorem. Readiness remains 66%; theory established remains 0%.
 Terminal note: `results/ITER063_G65_FULL_CONSERVED_SOURCE_PROJECTOR_TERMINAL.md`.
 
+## G66 terminal authority
+Preregistration `b5284bb4263d0ceb7a5be87154d475be25d9e39a`; implementation `8b155d1c000cd5af81c8536bdcc3ceee6831284d`; production head `8681a3d8f440bb61dd8be4446a446a46f3fab467`; run `34770233112`; aggregate job/artifact `103758400276/10322160793`; aggregate digest `sha256:35176ab7a68543d822df57a946dc27c7dacaddf2dd03312828cdc8c16d1ec630`.
+Raw A `103758378653/10321926926` (`sha256:716fb4152d91ff30e919cfd8f41f41c6d8f31e79150d4e484a1519bcc84e21b8`): 180/180 exact Ward-annihilation checks. Raw B `103758378740/10322236176` (`sha256:65f00707c65ad9fdb90391c6448db112c7607a9d9d6b2cbd57419466b97295b6`): 2484/2484 held-out exact response-invariance checks. Raw C `103758378716/10321631519` (`sha256:87856c664e7b03f0c41e8303f5044ab6dfa321ba0ed8d79881502fa43f43cc62`): 180/180 exact discrete-Lorentz covariance checks. Raw D `103758378762/10322025977` (`sha256:e02ca62c9c67e0ca6230beabdb6ffe8bf0c0c451e035a27aabf57b0f189752fc`): nonconserved, wrong-nonlongitudinal and index-position controls all detected.
+Interpretation: the preregistered longitudinal gauge-sector family annihilates the complete frozen G65 conserved-source response. This does not establish nonlinear diffeomorphism completion, a physical ghost, instability, unitarity failure, coefficient selection, nonlinear consistency or a global no-go theorem. Readiness remains 66%; theory established remains 0%.
+Terminal note: `results/ITER064_G66_GAUGE_SECTOR_INDEPENDENCE_TERMINAL.md`.
+
 ## Active next frontier
-Iter064 / G66: exact conserved-source gauge-sector independence/Ward audit. Prospectively freeze longitudinal gauge-sector response operators and require that all conserved-source responses remain invariant for a held-out exact gauge-parameter panel, while nonconserved controls detect those additions. PASS ceiling only: scoped gauge-sector independence of the G65 conserved response; no physical viability/no-go claim.
+Iter065 / G67: prospectively freeze a **source-saturated pole/residue viability audit** before implementation. Combine the exact G61 pole locations, G62 relative residues and G65 full conserved-source projectors. Require independent TT and scalar source-saturated residue checks, held-out generic conserved-source mixtures with exact partial-fraction reconstruction, and exceptional-line/pure-sector/nonconserved controls. PASS ceiling only: source-saturated opposite-residue coupling within the frozen local linearized four-derivative class. It is not a physical-ghost theorem, quantum-unitarity theorem, instability proof, coefficient selection or global no-go claim.
 
 ## Open scientific layers
-- gauge-sector independence of the full conserved-source linearized response;
+- source-saturated physical viability/selection inside or outside the G60 escape space;
 - independently motivated candidate-owned deformation beyond the G59 class;
-- physical viability/selection inside or outside the G60 escape space;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
