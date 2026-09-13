@@ -11,28 +11,30 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / BROAD_CLASSICAL_COMPARATOR_ATTACK`
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 
-## Newly closed authority — Iter043 / G50-P
-Scientific classification: `FOUR_STATE_CLASSICAL_SWITCHING_PROVENANCE_MEMORY_QUALIFIED`.
+## Newly closed authority — Iter044 / G50-C
+Scientific classification: `FOUR_STATE_CLASSICAL_SWITCHING_OPTIMIZER_CALIBRATED`.
 
-Provenance: prereg `a1df25626f4359e735b28d4f535620f73a97f827`; implementation `a4e36a0350d2fa33700892faf77d3be709cce418`; workflow `3c96e247f9ed8bac634c143ff64d9b02199c72ee`; launch/head `c2a0eeb2e38649ca8b703b40a0d4e14cf2e6f1a3`; run `34734173762`; aggregate job `103662473956`; summary artifact `10310930046`; digest `sha256:82892d4106bfed8adb28b146ee3910aeeb110187ceca3e28ddbb3479454fc8f3`.
+Provenance: prereg `0de6cd29346ce68888c68ed1965ea0c7af224fb8`; implementation `1eed19071661ec143bf6e3feb350374031dab557`; workflow `a48d0386277de272ffa3b564c3c3d0674ef68492`; authoritative head `4528497f9b34add2bff84bc55db399673ca07c8f`; run `34734256210`; aggregate job `103662830407`; summary artifact `10310302963`; digest `sha256:c600d52b399ca493b537b65507696dda6193be17a3f155f78cbcc85ca8573bba`.
 
-All `6/6` raw lanes are structurally valid and pass the frozen provenance and non-semigroup memory witnesses. Across raw lanes: max TP residual `1.1329584524314835e-15`; min Choi eigenvalue `4.337030846198824e-12`; max product-output negativity `0.0`; max local-product factorization error `3.5542838651085923e-16`; semigroup defects `0.7286785668895192..0.8228078204750715` vs frozen threshold `1e-4`.
+All `8/8` raw lanes were consumed and satisfy the frozen response-blind calibration rule. Across lanes: worst train max trace gap `6.1950671201431e-12`; worst held-out max trace gap `4.109242107956982e-12`; worst normalized parameter error `1.7639089906452824e-10`; worst TP residual `1.776516304761236e-15`; minimum Choi eigenvalue `5.956647395842122e-11`. Sobol/LHS train-gap differences for controls 0..3 are `3.5660541684399162e-12`, `7.034200708641959e-13`, `2.5531430413522786e-12`, `1.386020869958981e-13`, all far below frozen `0.002`.
 
-Scope lock: response-blind finite four-state stationary hidden-classical CTMC switching among local-sum Hamiltonians only. No RCG-002 target was used. PASS qualifies a broader comparator family but does not establish target separation or any universal classical-memory/no-go result. Durable note: `results/ITER043_G50P_FOUR_STATE_CLASSICAL_SWITCHING_PROVENANCE_TERMINAL.md`.
+Scope lock: calibration only for the exact finite bounded stationary 20D four-state hidden-classical CTMC switching/local-sum-Hamiltonian family. It does not establish RCG-002 separation or any general classical-memory/no-go result. Durable note: `results/ITER044_G50C_FOUR_STATE_SWITCHING_CALIBRATION_TERMINAL.md` (result commit `cb008662a4b432bd202885207c6d61590dc56349`).
 
-## Active prospective gate — Iter044 / G50-C
-Goal: response-blind optimizer calibration for the terminally qualified 20D four-state hidden-classical switching family before any RCG-002 transport.
+## Active prospective gate — Iter045 / G50-A
+Goal: adversarial transport of the **exact calibrated G50-C family** to the frozen four-shard RCG-002 panel, with independent training and held-out-time checks.
 
-Preregistration commit: `0de6cd29346ce68888c68ed1965ea0c7af224fb8`.
-Implementation commit: `1eed19071661ec143bf6e3feb350374031dab557`.
-Workflow commit: `a48d0386277de272ffa3b564c3c3d0674ef68492`.
-Launch/head: `4528497f9b34add2bff84bc55db399673ca07c8f`.
+Preregistration commit: `da2ed3bb190fcfc8b3e8225361b98490513630bf` (created before implementation and before target production results).
+Implementation commit: `c9fb66bb69ac27d1546f083aec6c95db2033a9e7`.
+Workflow commit: `1e689724050b8e7e9734c21395e453fae4da8f2d`.
+Launch/head: `2122211ff1c08c03ca637c42b8299fd3a9fd6806`.
+Authoritative production run: `34736777512`.
 
-Frozen production: 8 lanes = Sobol/LHS × four response-blind synthetic controls, dimension 20, 32 starts, 6 refinements, 800 max evaluations. Lane thresholds: train gap `<0.002`, held-out-time gap `<0.003`, normalized parameter error `<0.10`, plus physical provenance. Aggregate additionally requires Sobol/LHS train-gap agreement `<=0.002` for every control.
+Frozen production: 8 independent lanes = Sobol/LHS × four existing RCG-002 shards; exact 20D G50-C bounds; 32 starts; 6 refinements; 800 max evaluations. Frozen target strengths are `[0.025, 0.10, 0.40, 1.40]`; training times `[0.12,0.35,0.75,1.25]`; held-out times `[0.23,0.58,1.05]`. Scoped support requires admissible candidates with both train and held-out max probe gaps `>1e-4`, plus cross-method agreement `<=0.002` train and `<=0.003` held-out for every shard.
 
-No scientific classification is authorized before terminal raw artifacts and aggregate are consumed. PASS would be calibration only and would authorize a separately preregistered RCG-002 adversarial transport against this exact family.
+No scientific classification is authorized before terminal raw artifacts and aggregate are consumed.
 
 ## Retained authority
+- G50-P run `34734173762`: `FOUR_STATE_CLASSICAL_SWITCHING_PROVENANCE_MEMORY_QUALIFIED`.
 - G49-A run `34729309699`: `DERIVED_SCOPED_CAPFREE_DIRECT_PSD_COMPARATOR_SUPPORT`.
 - G49-C run `34726705385`: `CAPFREE_DIRECT_PSD_OPTIMIZER_CALIBRATED`.
 - G48-A run `34724106251`: `DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64`.
@@ -41,8 +43,8 @@ No scientific classification is authorized before terminal raw artifacts and agg
 - G40-TM-A run `34716863840`: `G40TMA_FROZEN_SUPPORT_RULE_NOT_MET`; RTN robustness unresolved.
 
 ## Next allowed gates
-1. Consume terminal Iter044/G50-C artifacts.
-2. Only on calibration PASS, prospectively preregister RCG-002 adversarial transport against the exact frozen 20D four-state family.
+1. Consume terminal Iter045/G50-A raw artifacts and aggregate; classify scientifically, not by CI color.
+2. If G50-A provides scoped support, the four-state target-separation rubric may close; do not extrapolate beyond the exact finite family.
 3. Externally anchored held-out observables remain an independent high-value direction if definable without imported project physics.
 4. Continuum/full candidate-gravity dynamics and gravity-theory constitution remain open.
 
@@ -50,4 +52,4 @@ No scientific classification is authorized before terminal raw artifacts and agg
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_63_PERCENT + THEORY_ESTABLISHED_0 + G50P_FOUR_STATE_MEMORY_QUALIFIED + ITER044_G50C_RUNNING + G49A_CAPFREE_DIRECT_PSD_SCOPED_SUPPORT + G47A_FINITE_MEMORY_SUPPORT + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_63_PERCENT + THEORY_ESTABLISHED_0 + G50P_FOUR_STATE_MEMORY_QUALIFIED + G50C_OPTIMIZER_CALIBRATED + ITER045_G50A_RUNNING + G49A_CAPFREE_DIRECT_PSD_SCOPED_SUPPORT + G47A_FINITE_MEMORY_SUPPORT + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
