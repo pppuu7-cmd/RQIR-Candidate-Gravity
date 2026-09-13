@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / HELDOUT_OBSERVABLE_CLOSED / G56F_FROZEN_FAIL_LOCALIZED / G56F2_ROBUST_REPLACEMENT_RUNNING`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONSTITUTION_PREREQUISITE_BLOCKED / G58B_LINEARIZED_COVARIANT_BASELINE_RUNNING`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -11,47 +11,51 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / HELDOUT_OBSERVABLE_CLOSED / G56F_FROZEN_FA
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 
-## Recent closed authority
-### Iter051 / G55-O — held-out entanglement observable transport
-Classification: `HELDOUT_FINITE_SIZE_ENTANGLEMENT_OBSERVABLE_TRANSPORT_VALIDATED_SCOPED`.
-Preregistration `a824171b4e2fafa3ec61a0aa160d5d8a652a3343`; head `4e233f480561399fbbe80beb1cd984ec01a06e4b`; run `34744407575`; aggregate job `103689556743`; artifact `10313850057`; digest `sha256:e750229e99a129f6d2eac338bff600c77339108a748291cd9d76ab43113f6973`.
-This closed the independent observable/witness rubric and set roadmap readiness to 66%.
+## Newly closed authority
+### Iter054 / G56-F2 — robust continuum replacement PASS
+Classification: `RCG002_GAUSSIAN_CONTINUUM_SOURCE_KERNEL_CLOSURE_VALIDATED_ROBUST_REPLACEMENT_SCOPED`.
+Preregistration `f885cbe831c932b03c397f1c54b32093dca05aa1`; implementation `26eca8f41b7cb3389f7e228f344e55eaf808a925`; production head `9e61ed352065286b1785aa7601831a9fcca590b1`; run `34748626476`.
+- real-space job `103701201498`; artifact `10315386179`; digest `sha256:7a54f21930ae54099c82c2dee45544ea3791c0bd1896ee13b361e36ff8d3e728`;
+- spectral job `103701201559`; artifact `10314977127`; digest `sha256:d260a73d72a839438feef4524d5bedf1dad907e483bf10fe94f28cd381ef2d4a`;
+- global-control job `103701201417`; artifact `10314523465`; digest `sha256:b96d38ea59cf46d12756914385fdb0d3c795917112b3bb9a8c532c84c915e4bd`;
+- aggregate job `103701232845`; artifact `10315027015`; digest `sha256:91d3da1709ff1e4ea98111d5491f6053a0728621759b5673dbdbf0abffa14c1a`.
+Historical G56-F remains frozen FAIL; G56-F2 is a distinct prospective replacement and does not rescore it. Readiness remains 66%.
 
-### Iter052 / G56-F — historical frozen FAIL
-Terminal classification: `G56F_FROZEN_CONTINUUM_FIELD_CLOSURE_RULE_NOT_MET`.
-Preregistration `f27b25d290fae7e45f4584b5a66c902d33c0e568`; production head `fc8bed7571d88bf48a3cb168e71067185a5ad1e6`; run `34746540910`; aggregate job `103695482197`; artifact `10313798716`; digest `sha256:57de2f010d09a2f0d584f4238c98d98e0eb28261582515cbfbea7f03539a4b1b`.
-All source/kernel identity predicates passed, but the preregistered single-point wrong-width control failed at `u=2.0`: `0.029913948838822833 < 0.05`. The frozen FAIL is permanent and was not changed.
+### Iter055 / G57-P — constitution prerequisite audit BLOCKED
+Classification: `BLOCKED_CONSTITUTION_INPUTS_IDENTIFIED` — **BLOCKED prerequisite audit, not scientific FAIL**.
+Preregistration `78087e2547993a697d57383b17098c5dfaa65299`; implementation `86f94b837f22a993cbd29f87e8dfbe29a74979ae`; production head `dde4cae28d5c15f0db1853d6865b812dbfc0b054`; run `34748764012`.
+- object-inventory job `103701348101`; artifact `10314728161`; digest `sha256:93c319b7f24118d760164daf1dcd1b78025d448dc53ec8110850b2c65573e1c8`;
+- covariance/conservation job `103701348198`; artifact `10315376176`; digest `sha256:d66aa5a619504ed0b4c0e7e286d69a2a28888304437134931b6902a1b2416956`;
+- quantum/limit/measure job `103701347783`; artifact `10315615109`; digest `sha256:97705ae90adf960e0e8ba1d51f13b19c5f6920916a92e4195d601112f1bd5602`;
+- aggregate job `103701360271`; artifact `10315480973`; digest `sha256:dde0aefc9fc48e3164d49efa16d62ba2fc6af0f705cf14ba3c36f25e1f1bba7f`.
+Missing candidate-owned prerequisites include spacetime gravitational field variable, dynamical principle, diffeomorphism/source/Bianchi laws, covariant relativistic retarded dynamics, QFT/EFT baseline relation, derived G->0 and hbar->0 limits, and gravitational quantization/measure dynamics.
 
-### Iter053 / G56-D — terminal non-rescue diagnosis
-Terminal diagnosis: `NEGATIVE_CONTROL_LOCAL_BLIND_SPOT_WITH_INDEPENDENT_IDENTITY_SUPPORT`.
-Preregistration `325b4a44328c9f00b9a1a6643cdf79c47e90b22b`; implementation `b8e1498b8ee08b351a06780558a9212792331466`; production head `fa9c90366b10970e55d18277caf0e16edca96d31`; run `34748468285`.
-- D1 job `103700644293`; artifact `10315435658`; digest `sha256:5f78d99b6a756bb6e31596bd253230f7208261720cdae611b2f10cdec12daf2d`: original numerical predicates reproduced; expected approximately fourth-order stencil convergence observed before round-off.
-- D2 job `103700643877`; artifact `10314752825`; digest `sha256:57de945788f9386e323bd2028986e8f627ae7696bc3e083020cef1095bbfb747`: exact width-profile equality crossing `u=1.9635717388164815`; old 5% blind interval `[1.899,2.023]`; old `u=2.0` lane lies inside; dimensionless radial-profile L1 separation `0.4772096540261944`.
-- D3 job `103700643726`; artifact `10315460569`; digest `sha256:dedcbb09a5a1344edbee6b024ece40fd49983e98fb236a01ed9a1d998b912e9f`: seven new held-out arbitrary-precision points; max Laplacian relative error `2.76121848733739194017909059486e-78`; max Gauss-flux absolute error `1.05421979432305232243485740513e-81`.
-- aggregate job `103700722982`; artifact `10314747849`; digest `sha256:f5590714a7179159e20a2fb3ec204f87e47e2c25768b049318fa067160615124`.
-This diagnosis does not rescue G56-F and does not change readiness.
+## Theory-construction bridge
+`candidates/RCG_002_COVARIANT_BASELINE_COMPLETION_V0.md` is hypothesis-only and does not raise readiness. It supplies a minimum linearized spin-2 baseline object for testing; it is not established dynamics and is not imported from QGR/KMQGB/RQIR.
 
-## Active gate — Iter054 / G56-F2
-`ROBUST_GAUSSIAN_CONTINUUM_FIELD_CLOSURE_REPLACEMENT`
+## Active gate — Iter056 / G58-B
+`LINEARIZED_COVARIANT_BASELINE_EMBEDDING_AUDIT`
 
-This is a new prospective replacement gate, not a retry/rescore of G56-F.
-Preregistration commit `f885cbe831c932b03c397f1c54b32093dca05aa1`; implementation commit `26eca8f41b7cb3389f7e228f344e55eaf808a925`; workflow/production head `9e61ed352065286b1785aa7601831a9fcca590b1`; run `34748626476`.
+Preregistration commit `99d984aadb25f849a15a250b94cdc895eaca798a` was frozen before implementation. Implementation commit `cf8bd95de3a2470209f32008353497c7ba837989`; workflow/production head `8ed8a2de3656867743eddfed27d53a60ef7b778e`; run `34750487200`.
 
-Three independent parallel streams are frozen:
-1. new eight-lane real-space Cartesian/radial held-out panel;
-2. independent Fourier reconstruction/spectral Poisson identity;
-3. global profile-level width controls for `q=1.3` and `q=0.77`, eliminating the old single-point crossing pathology.
+Five independent frozen streams:
+1. conservation + de Donder + gauge-curvature invariance + linearized Bianchi;
+2. held-out Gaussian static-field reduction;
+3. retarded-support versus advanced control;
+4. standard spin-2 static/tree exchange and Gaussian Fourier baseline equivalence;
+5. G->0 operational decoupling plus diagnostic hbar scaling.
 
-G56-F2 itself cannot raise readiness above 66%. Only after terminal G56-F2 may a separately preregistered gravity-theory constitution/covariance rubric be eligible for the next readiness point.
+G58-B cannot raise readiness above 66% and cannot establish theory. If stream D passes, the correct result is negative for novelty at this order: the currently validated weak-field branch is baseline-equivalent to standard linearized spin-2 static/tree gravity at the tested order.
 
 ## Open scientific layers
-- robust terminal continuum source/kernel closure (G56-F2 currently active);
-- generally covariant candidate-gravity dynamics and gravity-theory constitution;
-- field/measure/quantization closure beyond weak-field branch kernels;
+- nonlinear generally covariant candidate-owned dynamics beyond the linearized baseline;
+- conserved source/Bianchi/diffeomorphism completion at nonlinear level;
+- field/measure/quantization closure;
+- a prospective deformation or `Delta Gamma` with an independently motivated source if novelty is to be tested;
 - externally anchored physical predictions beyond current finite weak-field bridge/observable scope.
 
 ## Claim locks
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56D_BLIND_SPOT_DIAGNOSED + G56F2_ROBUST_REPLACEMENT_RUNNING + COVARIANT_DYNAMICS_OPEN + FIELD_MEASURE_OPEN`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56F2_ROBUST_REPLACEMENT_PASS + G57P_CONSTITUTION_INPUTS_BLOCKED + G58B_LINEARIZED_BASELINE_RUNNING`.
