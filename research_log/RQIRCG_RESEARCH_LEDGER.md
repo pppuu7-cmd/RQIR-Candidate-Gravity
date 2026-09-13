@@ -8,7 +8,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O; G56F2 through G74 are structural/robustness/constitution/baseline/architecture/identifiability qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O; G56F2 through G75 are structural/robustness/constitution/baseline/architecture/identifiability qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -29,20 +29,22 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G72 | `34773142384` + recovery `34776292245` / `332773ca...` | `CD_ORTHOGONAL_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION_SCOPED` | Minimal existence witnesses only. |
 | G73 | `34776467784` / `0cdbf009...` | `CD_ORDER_SEPARATED_DIRECTIONS_JOINTLY_IDENTIFIABLE_ONLY_WITH_MULTIORDER_PANEL_SCOPED` | Local multi-order identifiability only. |
 | G74 | `34779124616` / `b85789c5...` | `CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED` | Same-order nuisance robustness only. |
+| G75 | `34782200622` / `7a2d00ef...` | `CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED` | Exact tangent-model anchor minimality only. |
 
-## G74 terminal authority
-Preregistration `ed068632bdb099ffdcb47535afe5e8c42ff399b0`; implementation `b1e1d84a4c2af4f9fe5e9f921efefd61e07163b3`; production head `b85789c5f55b0cbbbc95f82431215b084a9a13b1`; run `34779124616`; aggregate job/artifact `103782797267/10324670462`; digest `sha256:cf4256e218ba4c451c0c1e44543873f76763c3db96b5d9dab22434b496c221a8`.
+## G75 terminal authority
+Preregistration `b8d7b0e98d9b2115985e1531925ed0920d84ae1b`; implementation `107e4d40c5634d8a697ad8f97c7ea642b2535745`; production head `7a2d00ef584c1b1ff9819856395bdd476947e37e`; run `34782200622`; aggregate job/artifact `103791160399/10325528374`; digest `sha256:d8c3fa8f6b26bcd9a531468adc5be1994cb36c609b47831e5e31924e57295f6d`.
 
-Raw artifacts consumed before classification: A `10324745362` (`sha256:6b8433c4bcb3095a63025bad54c5c7ea21c85fb771840cdfab2f37f69e0e3a80`), B `10323474735` (`sha256:704c4f990ad6bd87fcd0b6199b344e700f33445dd1935675dbd568eb0d0eaa6b`), C `10324470487` (`sha256:dd82e16373b90de90dbb6e5c3a934335e3eb26dde2fbeb18d313924993e7927e`), D `10324765386` (`sha256:08f77d67979b1cc65d9c1bb9ea219fc0a50a7ee904e44ce3d8306f63a934200f`). G74 establishes exact aliasing of C by the same-shape quadratic slope nuisance and of D by same-shape cubic calibration, while constant/curvature and auxiliary extra-observable controls remain distinguishable as frozen.
+Raw artifacts consumed before classification: A `10325725024` (`sha256:9ae83d56ea49bf1046ab537f7dfe8d8826d55407c1f798e3bf122f71c26b0b13`), B `10324629959` (`sha256:c5b1ce00513b9dacd86ecb229167d87c9d9555363a7d61f4b1712c3091a52ea2`), C `10324448657` (`sha256:81e13cf9fb5c2621971c56e3adbacd4f6eb3f57067be8be5472d5136a7f57763`), D `10325004317` (`sha256:22d5b4fd1cf1c04c4a8d2ee0239d3f0977df8fa0cf0d7aafedfcf638bb10dfe7`). G75 establishes the exact 2→3→4 minimality pattern: either independent information direction breaks one alias, while two independent directions are jointly sufficient for full four-column rank. Held-out exact rational panels and frozen invertible reparameterizations preserve the result; false-positive controls remain rank-deficient as preregistered.
 
-Terminal note: `results/ITER072_G74_CD_SAME_ORDER_NUISANCE_CONFOUNDING_TERMINAL.md`.
+Terminal note: `results/ITER073_G75_CD_MINIMAL_NUISANCE_ANCHOR_AUGMENTATION_TERMINAL.md`.
 
 ## Active frontier
-The next permitted layer is a prospectively frozen minimal-anchor augmentation audit: test whether independently calibrated nuisance anchors and/or added linearly distinct response observables restore full local rank for C,D across held-out panels and reparameterizations. This remains identifiability/experimental-design structure only; it cannot select C or D or define candidate-owned RCG-002 dynamics.
+The next permitted layer is numerical/statistical robustness of the restored G75 rank. Prospectively quantify singular-value/condition-number behavior under near-aliasing, anchor-strength rescaling, held-out momentum panels and frozen false-positive thresholds. Exact full rank must not be interpreted as physical detectability. A later layer must still establish source-defined/physically realizable anchors and candidate-owned nonlinear dynamics.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
-- nuisance-anchored identifiability of C/D hypothesis directions;
+- numerically/statistically robust nuisance-anchored identifiability of C/D hypothesis directions;
+- physically/source-defined anchor realization;
 - nonlinear generally covariant candidate-owned dynamics;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
 - field/measure/quantization closure;
