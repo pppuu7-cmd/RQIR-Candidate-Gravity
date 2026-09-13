@@ -1,0 +1,61 @@
+name: RCG Iter078 G80 C native source-anchor audit
+on:
+  push:
+    branches: [g80-c-native-source-anchor-audit]
+    paths:
+      - 'scripts/iter078_g80_c_native_source_anchor_audit.py'
+      - 'prereg/ITER078_G80_C_NATIVE_SOURCE_ANCHOR_AUDIT.md'
+      - '.github/workflows/iter078_g80_c_native_source_anchor_audit.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter078_g80_c_native_source_anchor_audit.py --lane ${{ matrix.lane }} --out g80-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g80-${{ matrix.lane }}
+          path: g80-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g80-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'C_EXACT_RESPONSE_SLOPE_ALIAS_CONFIRMED_SCOPED',
+            'B':'C_TRANSVERSE_SOURCE_SAMPLING_PRESERVES_ALIAS_SCOPED',
+            'C':'C_NATIVE_CTP_ZERO_DERIVATIVE_SECTORS_DO_NOT_ANCHOR_SCOPED',
+            'D':'C_ANCHOR_AUDIT_SEPARABILITY_CONTROLS_VALID_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g80-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'BLOCKED_C_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_SLOPE_ALIAS_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','scientific_status':'BLOCKED_SCOPED' if valid else 'INVALID','readiness':66,'theory_established':0,'scope_lock':'Availability audit of already-frozen C source-functional structure only; positive calibration controls are non-native and cannot be promoted to physical observables.'}
+          pathlib.Path('g80-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g80-aggregate
+          path: g80-aggregate.json
