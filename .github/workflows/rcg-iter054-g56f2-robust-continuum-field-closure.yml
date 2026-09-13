@@ -1,0 +1,73 @@
+name: RCG Iter054 G56-F2 robust continuum field closure
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rcg-iter054-g56f2-robust-continuum-field-closure.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  real-space:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy
+      - run: python scripts/iter054_g56f2_robust_continuum_field_closure.py --stream r --out out/real.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg054-g56f2-real
+          path: out/real.json
+
+  spectral:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy
+      - run: python scripts/iter054_g56f2_robust_continuum_field_closure.py --stream s --out out/spectral.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg054-g56f2-spectral
+          path: out/spectral.json
+
+  global-controls:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy
+      - run: python scripts/iter054_g56f2_robust_continuum_field_closure.py --stream g --out out/global.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg054-g56f2-global
+          path: out/global.json
+
+  aggregate:
+    needs: [real-space, spectral, global-controls]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy scipy
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter054_g56f2_robust_continuum_field_closure.py --aggregate-dir downloaded --out summary/g56f2_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg054-g56f2-aggregate
+          path: summary/g56f2_summary.json
