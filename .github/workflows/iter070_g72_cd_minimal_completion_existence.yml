@@ -1,0 +1,57 @@
+name: RCG Iter070 G72 C-D minimal completion existence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter070_g72_cd_minimal_completion_existence.yml'
+  workflow_dispatch:
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [C1, C2, D1, D2]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen stream ${{ matrix.stream }}
+        run: |
+          mkdir -p out
+          python scripts/iter070_g72_cd_minimal_completion_existence.py --stream '${{ matrix.stream }}' --out 'out/${{ matrix.stream }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g72-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: stream
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g72-*
+          path: downloaded
+          merge-multiple: false
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python scripts/iter070_g72_cd_minimal_completion_existence.py --aggregate-dir downloaded --out out/g72_aggregate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g72-aggregate
+          path: out/g72_aggregate.json
+          if-no-files-found: error
