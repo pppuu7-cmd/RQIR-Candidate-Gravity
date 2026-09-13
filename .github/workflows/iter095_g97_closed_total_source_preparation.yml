@@ -1,0 +1,54 @@
+name: RCG Iter095 G97 closed total-source preparation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'prereg/ITER095_G97_CLOSED_TOTAL_SOURCE_PREPARATION.md'
+      - 'scripts/iter095_g97_closed_total_source_preparation.py'
+      - '.github/workflows/iter095_g97_closed_total_source_preparation.yml'
+  workflow_dispatch:
+
+jobs:
+  lanes:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check 'sympy==1.13.3'
+      - run: |
+          mkdir -p out
+          python scripts/iter095_g97_closed_total_source_preparation.py --lane "${{ matrix.lane }}" --out "out/g97_${{ matrix.lane }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g97-lane-${{ matrix.lane }}
+          path: out/g97_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lanes
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check 'sympy==1.13.3'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g97-lane-*
+          path: raw
+          merge-multiple: true
+      - run: python scripts/iter095_g97_closed_total_source_preparation.py --aggregate raw/g97_A.json raw/g97_B.json raw/g97_C.json raw/g97_D.json --out g97_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g97-aggregate
+          path: g97_aggregate.json
+          if-no-files-found: error
