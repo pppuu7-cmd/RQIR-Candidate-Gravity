@@ -1,0 +1,61 @@
+name: RCG Iter076 G78 C-D row-deletion redundancy
+on:
+  push:
+    branches: [g78-row-deletion-redundancy]
+    paths:
+      - 'scripts/iter076_g78_cd_row_deletion_redundancy.py'
+      - 'prereg/ITER076_G78_CD_ROW_DELETION_REDUNDANCY.md'
+      - '.github/workflows/iter076_g78_cd_row_deletion_redundancy.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy
+      - name: Run frozen scientific stream
+        run: python scripts/iter076_g78_cd_row_deletion_redundancy.py --lane ${{ matrix.lane }} --out g78-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g78-${{ matrix.lane }}
+          path: g78-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g78-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'SINGLE_ROW_DELETION_FAILURE_MAP_SCOPED',
+            'B':'DISTINCT_CUBIC_ROW_ADDS_SINGLE_FAILURE_REDUNDANCY_SCOPED',
+            'C':'ROW_REDUNDANCY_FALSE_POSITIVE_CONTROLS_SCOPED',
+            'D':'HELDOUT_SINGLE_ROW_FAILURE_PATTERN_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g78-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'G75_ANCHORED_DESIGN_SINGLE_ROW_FAILURE_MODES_AND_MINIMAL_CUBIC_REDUNDANCY_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','readiness':66,'theory_established':0,'scope_lock':'Frozen G75 algebraic row-design redundancy only; no physical measurement claim.'}
+          pathlib.Path('g78-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g78-aggregate
+          path: g78-aggregate.json
