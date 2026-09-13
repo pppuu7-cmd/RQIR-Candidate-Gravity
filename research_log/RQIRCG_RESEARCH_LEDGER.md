@@ -31,7 +31,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR/MSQGR a
 | G74 | `34779124616` / `b85789c5...` | `CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED` | Same-order nuisance robustness only. |
 | G75 | `34782200622` / `7a2d00ef...` | `CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED` | Exact tangent-model anchor minimality only. |
 | G76 | `34782314724` / `3a983cbd...` | `G75_EXACT_IDENTIFIABILITY_DEGRADES_CONTINUOUSLY_TOWARD_ALIAS_SCOPED` | Conditioning robustness only. |
-| G77 | `34782611134` / `b8a72889...` | `G75_ANCHORED_ESTIMATOR_VARIANCE_GROWS_AS_ANCHORS_WEAKEN_SCOPED` | Frozen iid-Gaussian estimator surrogate only. |
+| G77 | `34782623331` / `b8a72889...` | `G75_ANCHORED_ESTIMATOR_VARIANCE_GROWS_AS_ANCHORS_WEAKEN_SCOPED` | Frozen iid-Gaussian estimator surrogate only. |
 | G78 | `34782616139` / `6bd35ee2...` | `G75_ANCHORED_DESIGN_SINGLE_ROW_FAILURE_MODES_AND_MINIMAL_CUBIC_REDUNDANCY_SCOPED` | Exact row-design redundancy only. |
 | G79 | `34782623331` / `3ef34d8f...` | `G75_SPD_GLS_IDENTIFIABILITY_PERSISTS_WHILE_WEAK_ANCHOR_VARIANCE_GROWS_SCOPED` | Frozen SPD covariance surrogates only. |
 | G80 | `34783125605` / `6d159d77...` | `BLOCKED_C_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_SLOPE_ALIAS_SCOPED` | Existing C source-functional structure only. |
@@ -134,3 +134,24 @@ Do not run another rank/conditioning/reference-leakage/covariant-lift variant wh
 
 ## Claim locks
 Never promote finite/bounded-family or structural results to all-classical/semiclassical no-go claims. Green CI alone is not scientific PASS. Do not weaken frozen criteria post hoc. Covariance is not uniqueness. Identifiability is not dynamics. Abstract full rank is not physical realizability. Do not import QGR/MSQGR/KMQGB/RQIR physical assumptions/results or select coefficients, selectors, source embeddings or phase normalizations post hoc. `THEORY_ESTABLISHED` remains **0%**.
+
+## CPI1 terminal addendum — 2026-09-14
+
+This addendum is the newest orthogonal structural authority. It supersedes the pending-CPI1 status previously recorded in recovery, without changing any G72-G94 verdict or the duplicate-G93 quarantine.
+
+Prospective contract: `7be8d9f08eefb38caafe6718a367e5f43f3517e3`; frozen source: `fcecaf0108576c0ab17b5dc3a94eeb3a8cc6dd96`. Executed code persisted at `eed477ca6b098c6953f9cbfe1f78e4e06edc3cc5`; exact code blob `570e51d5ccebc834f148e10b77953c1654db6f09`, SHA256 `b5ac9f9a0e60ca65aa401cdd58c457f989a718eb7b8cdc22bffa1baccd035e8f`. Raw bundle commit `75abe9179f24f0c39b39138dbb9fa101bb429c48`, path `results/raw/RCG002_CPI1_RAW_BUNDLE.json`. Full derivation/terminal commit `1e3d6d1fd20ea1bf634c1cb9f47af120c0f4642d`, path `results/RCG002_CPI1_NONLINEAR_CONSTRUCTOR_TERMINAL.md`.
+
+Execution mode: four concurrent local processes, not a GitHub Actions run and not four independent reviewers. All 28 exact control conditions passed, distributed A7/B10/C8/D3. Original raw payloads, timestamps and checksums are archived. Code persistence followed local execution; the scientific contract preceded it.
+
+New scoped findings:
+1. A unit-modulus positive normalized influence kernel must be rank one and satisfy the phase cocycle. The scalar one-Delta cubic has `det F=-4 sin(k/4)^2` on histories 0,1,2; arbitrarily small rescaled histories violate positivity for any nonzero k. This rejects naive exact noiseless exponentiation, not a noisy/truncated EFT.
+2. The actual G72 D1 retarded 26-entry kernel fails the conservative history-potential curl condition; one exact component is `6*s0+s1`. D2 is a distinct reduced witness and independently has curl `2*s0`. Full symmetric finite-grid cubic tensors with latest-response support can be nonzero only on equal-time triples. Retained mediators, restricted closed protocols, noisy influence functionals and derivative-contact distributions are not excluded.
+3. The minimum missing operational bridge is a physical preparation plus positive normalized influence kernel, with coherent factorization demonstrated before assigning eight coherent phases. Four conditional Ramsey phase differences access one connected contrast without absolute phases, under common-channel and visibility assumptions.
+4. For a conditional coherent source action, `hbar*chi=W3[A,B,C]+W4[J0,A,B,C]+(W4[A,A,B,C]+W4[A,B,B,C]+W4[A,B,C,C])/2` through quartic order. A fixed nonzero background makes part of the quartic contribution scale cubically. This is not an RCG-002 prediction.
+5. Flat source conservation does not imply nonlinear conservation; the exact external-metric held-dust control has `nabla_mu T^{mu x}=epsilon^2*rho*f'(x)`. Apparatus and support stress are indispensable.
+
+G94 qualification from independent artifact/code review: all five ZIP digests match and raw payloads equal the aggregate, but B/D are documented-inventory checks, not a dynamical nonexistence theorem. Alternative synthetic embeddings are not certified physical gravitational completions.
+
+Classification: `PASS_STRUCTURAL_CPI1` plus `FAIL_SCOPED_UNRESTRICTED_HISTORY_NOISELESS_KERNEL`; overall physical map `BLOCKED_REQUIRES_NEW_NONLINEAR_SOURCE_STATE_EVOLUTION_PRINCIPLE`. Physical completion space remains undefined; selector rank `UNDEFINED_PHYSICAL_MAP_MISSING`, not zero. No coefficient, architecture or new interaction is selected. Readiness 66%; theory established 0% unchanged.
+
+Exact next fundamental gate: candidate-owned nonlinear source/state/evolution and conserved-source closure, with a derived positive influence kernel or verified coherent closed-mediator factorization on a specified physical protocol. Do not repeat CPI1, insert its d-cubic positive control as physics, fit a selector, or jump to quantization/measure completion.
