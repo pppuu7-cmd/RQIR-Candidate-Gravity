@@ -1,0 +1,69 @@
+name: RCG Iter055 G57-P constitution prerequisite audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rcg-iter055-g57p-constitution-prerequisite-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  object-inventory:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/iter055_g57p_constitution_prerequisite_audit.py --stream a --out out/a.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg055-g57p-object-inventory
+          path: out/a.json
+
+  covariance-conservation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/iter055_g57p_constitution_prerequisite_audit.py --stream b --out out/b.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg055-g57p-covariance-conservation
+          path: out/b.json
+
+  quantum-limit-measure:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/iter055_g57p_constitution_prerequisite_audit.py --stream c --out out/c.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg055-g57p-quantum-limit-measure
+          path: out/c.json
+
+  aggregate:
+    needs: [object-inventory, covariance-conservation, quantum-limit-measure]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter055_g57p_constitution_prerequisite_audit.py --aggregate-dir downloaded --out summary/g57p_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg055-g57p-aggregate
+          path: summary/g57p_summary.json
