@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED / G70_G89_ARCHITECTURE_IDENTIFIABILITY_AND_SELECTION_GAP_CHARACTERIZED / G90_G91_COVARIANT_LIFT_CLOSED_BLOCKED / NONLINEAR_SELECTOR_FRONTIER`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED / G70_G89_ARCHITECTURE_IDENTIFIABILITY_AND_SELECTION_GAP_CHARACTERIZED / G90_G91_OFFSHELL_COVARIANT_LIFTS_QUALIFIED_BY_G92 / NONLINEAR_SELECTOR_FRONTIER`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -12,39 +12,26 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G6
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 - `recovery/state.json` is absent; newest main + this file + clean ledger + durable results + validated Actions artifacts are authority.
 
-## Latest terminal authority — G90/G91 explicit covariant lifts
-### G90 — C cubic covariant lift
-- run `34784852748`, production head `92d9779463d412a53bdace61434bad014ad4ab96`;
-- aggregate job/artifact `103798379836 / 10326232568`;
-- aggregate digest `sha256:45ecf7c30097733e0cc70b34e8f7f8aa755e384580ea180599e29be34109755f`;
-- classification `BLOCKED_C_EXPLICIT_COVARIANT_CUBIC_INVARIANT_FAMILY_PRESERVES_FROZEN_QUADRATIC_DATA_SCOPED`;
-- terminal note `results/ITER088_G90_C_COVARIANT_CUBIC_LIFT_TERMINAL.md`.
+## Latest terminal authority — G92 leading Einstein-vacuum shell qualification
+- preregistration `c496340c8ec85a89da6712f76dc1221f113ded3b`;
+- implementation `80f544c64ebdf4f869a39991ce4b1d9e8fca3d4d`;
+- production head `b82d58d3e016ef313873af57216d8f2fb103096b`;
+- run `34785342844`;
+- aggregate job/artifact `103799717386 / 10326675920`;
+- aggregate digest `sha256:cf9cebafd56a337428850d9641a4e65b1e3d739947259b1afc2696e32d023b20`;
+- classification `BLOCKED_G90_G91_RICCI_ONLY_COVARIANT_WITNESSES_VANISH_ON_FROZEN_LEADING_EINSTEIN_VACUUM_SHELL_SCOPED`.
 
-Raw A/B/C/D artifacts were consumed and validate: third-order onset of both cubic densities; exact pointwise rank-two independence on the frozen backgrounds; CTP/lower-order preservation with inherited selector rank zero; and rejection of lower-order/proportional/zero controls.
-
-### G91 — D quartic covariant lift
-- run `34784929824`, production head `0742c191af7542d424fd38369bed73a0aedcbb37`;
-- aggregate job/artifact `103798622512 / 10325818667`;
-- aggregate digest `sha256:bc080c9115b6f1aef014a8bbb9add9e65a5209dd6e0f360573401d3334cbff2d`;
-- classification `BLOCKED_D_EXPLICIT_COVARIANT_QUARTIC_INVARIANT_FAMILY_PRESERVES_FROZEN_CUBIC_DATA_SCOPED`;
-- terminal note `results/ITER089_G91_D_COVARIANT_QUARTIC_LIFT_TERMINAL.md`.
-
-Raw A/B/C/D artifacts were consumed and validate: fourth-order onset of both quartic densities; exact pointwise rank-two independence; CTP preservation with the frozen retarded/Sigma-symmetric cubic kernel unchanged and inherited selector rank zero; and rejection of lower-order/proportional/zero controls.
-
-## Newly-terminal infrastructure failures
-Runs `34785111428` (G90 terminal-validation workflow) and `34785120618` (G91 terminal-validation workflow) failed before creating any jobs. They are **INFRASTRUCTURE/WORKFLOW-VALIDATION failures**, not scientific results. They do not invalidate the original frozen matrix runs above, whose raw artifacts and aggregates were independently consumed. No scientific threshold or witness was changed.
+Raw A/B/C/D artifacts were consumed before classification. A/B show exact shell-vanishing of the frozen G90/G91 Ricci-only families; C shows nonzero frozen algebraic Weyl controls survive Ricci-flatness; D rejects the false-positive constant-invariant control. Terminal note: `results/ITER090_G92_LEADING_VACUUM_SHELL_WITNESS_AUDIT_TERMINAL.md`.
 
 ## Scientific meaning
-G86/G87 showed reduced-jet nonlinear nonuniqueness; G88/G89 showed inherited lower-order/CTP/Ward/retarded constraints have selection rank zero; G90/G91 now show that this nonuniqueness survives inside explicit local generally covariant higher-curvature families. Therefore **bare covariance plus all currently frozen lower-order information still does not select a unique nonlinear C or D completion**.
+G86/G87 established nonlinear lower-jet nonuniqueness; G88/G89 established inherited selector rank zero; G90/G91 supplied explicit local generally covariant off-shell Ricci-only witness families. G92 now qualifies those exact witnesses: they vanish on the frozen leading Einstein-vacuum shell. Therefore they remain valid **off-shell** nonuniqueness witnesses but cannot by themselves be promoted to independent on-shell physical deformation directions.
 
-This is a finite-family underdetermination result. It is not a completeness theorem modulo all field redefinitions, boundary identities or dimension-specific relations, and it is not a physical no-go theorem.
+G92 does not prove the full RQIRCG shell is Ricci-flat and does not establish a complete field-redefinition/S-matrix quotient. Its independent Weyl control only shows that Ricci-flatness does not algebraically eliminate all possible higher-curvature information.
 
 ## Active scientific frontier — candidate-owned nonlinear selector / genuinely higher-order datum
-The covariant-lift prerequisite is closed. The next admissible work must add genuinely new candidate-owned information rather than reusing lower-order constraints under new notation.
+The next admissible authoritative gate must test whether RCG-002 supplies genuinely new candidate-owned information that can reduce nonlinear completion freedom. Do not run another Ricci-only covariant lift or another abstract identifiability variant merely because it is easy.
 
-A valid next gate must be prospectively frozen and must distinguish at least two independent completion coefficients without importing QGR/KMQGB/RQIR physical assumptions or selecting a preferred answer post hoc. Candidate classes may be audited for exact selection rank, invariance under admissible reparameterization, null/false-positive calibration and compatibility with already-frozen CTP/Ward/retarded structure. A selector that is algebraically dependent on inherited lower-order constraints is a BLOCKED result, not a theory success.
-
-No coefficient values are authorized at this frontier.
+A preferred next object is an operational connected multi-source phase/observable derived from the RCG-002 controlled-phase architecture: it must cancel inherited one- and two-body phase data, be invariant under local-phase redefinitions, and have an explicit candidate-owned map from at least two nonlinear completion directions before coefficient selection is allowed. If the operational object can be defined but the nonlinear map is absent, the correct terminal status is `BLOCKED_MISSING_CANDIDATE_OWNED_DATUM`, not selector rank zero and not an invented phenomenological rule.
 
 ## Open scientific layers
 - candidate-owned nonlinear selection principle / genuinely higher-order datum;
@@ -54,7 +41,7 @@ No coefficient values are authorized at this frontier.
 - externally anchored physical predictions beyond current finite weak-field scope.
 
 ## Claim locks
-Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
+Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `THEORY_ESTABLISHED`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, family-wide uniqueness, green-CI-as-scientific-PASS, post-hoc coefficient selection/criterion weakening, or importing QGR/MSQGR/KMQGB/RQIR physical assumptions/results as selection principles.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G70_G85_ARCHITECTURE_IDENTIFIABILITY_REFERENCE_LAYERS_SCOPED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + G90_G91_EXPLICIT_COVARIANT_FAMILY_UNDERDETERMINATION_SCOPED + NONLINEAR_SELECTOR_FRONTIER`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_NONLINEAR_SELECTION_PRINCIPLE_BLOCKED + G70_G85_ARCHITECTURE_IDENTIFIABILITY_REFERENCE_LAYERS_SCOPED + G86_G87_NONLINEAR_UNDERDETERMINATION_SCOPED + G88_G89_INHERITED_SELECTION_RANK_ZERO_SCOPED + G90_G91_OFFSHELL_COVARIANT_FAMILY_UNDERDETERMINATION_SCOPED + G92_RICCI_ONLY_WITNESSES_VANISH_ON_FROZEN_LEADING_VACUUM_SHELL_SCOPED + NONLINEAR_SELECTOR_FRONTIER`.
