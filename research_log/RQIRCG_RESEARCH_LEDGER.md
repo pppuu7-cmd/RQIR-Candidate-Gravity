@@ -15,7 +15,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 - `60% -> 61%`: G42-A bounded boundary-PSD adversarial comparator closure.
 - `61% -> 62%`: G44-A basis-invariant real-PSD `tr(C)<=4` comparator closure.
 - `62% -> 63%`: G47-A explicit finite hidden-classical memory comparator closure.
-- G46-A, G48-C and G48-A deepen/calibrate the already-counted Markovian PSD rubric and do not add readiness points. Calibration, implementation, identifiability, provenance and coordinate-coverage gates do not themselves raise readiness.
+- G46-A, G48-C, G48-A and G49-C deepen/calibrate the already-counted Markovian PSD rubric and do not add readiness points. Calibration, implementation, identifiability, provenance and coordinate-coverage gates do not themselves raise readiness.
 
 ## Authoritative gate ledger
 
@@ -43,7 +43,16 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G46-A | `34719458597` | `DERIVED_SCOPED_EXTENDED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP8_CAP16` | Fixed bounded real-PSD caps 8/16. |
 | G48-C | `34721391489` / `194db0cf...` | `CAP32_CAP64_TRACE_BALL_PSD_OPTIMIZER_CALIBRATED` | Response-blind finite cap32/cap64 calibration only. |
 | G48-A | `34724106251` / `235e807f...` | `DERIVED_SCOPED_TRACE_BALL_PSD_COMPARATOR_SUPPORT_CAP32_CAP64` | Finite caps 32/64 only; not unbounded PSD. |
-| G49-C | `34726705385` / `db61900e...` | **ACTIVE / unclassified** | Response-blind cap-free/direct-PSD numerical calibration only. |
+| G49-C | `34726705385` / `db61900e...` | `CAPFREE_DIRECT_PSD_OPTIMIZER_CALIBRATED` | Response-blind cap-free/direct-PSD numerical calibration only. |
+| G49-A | not launched | **AUTHORIZED NEXT / preregistration required** | RCG-002 four-shard direct-PSD transport only. |
+
+## G49-C terminal authority
+
+Run `34726705385`, head `db61900e4113cf002f3d5c7b636b7e14d41e00c0`, aggregate job `103642168161`, summary artifact `10307129893`, digest `sha256:ec1328e7dfa0de16be7e9d57549c81badff48c16193f9b957d566d996b80657b`.
+
+All `12/12` response-blind lanes are structurally valid and satisfy the frozen support rule, including exact requested rank, trajectory gap `<0.002`, relative Kossakowski error `<0.02`, PSD/TP/CP/state/trace admissibility, and numerical-box inactivity. Sobol/LHS both pass for each requested rank 1..6. Cross-method best-gap differences range from `6.106226635438361e-16` to `9.084579650917406e-13`, far inside the frozen `0.002` tolerance. Classification: `CAPFREE_DIRECT_PSD_OPTIMIZER_CALIBRATED`.
+
+This is optimizer calibration only. It does not establish a mathematical optimum over the unbounded PSD cone. It authorizes only a separately preregistered RCG-002 transport. Readiness remains 63%. Durable note: `results/ITER041_G49C_CAPFREE_PSD_CALIBRATION_TERMINAL.md`.
 
 ## G48-A terminal authority
 
@@ -53,17 +62,15 @@ All `16/16` lanes are structurally valid. All eight method pairs pass the frozen
 
 This is finite-cap evidence only. It does not establish an unbounded-PSD limit and is not an all-classical or all-semiclassical no-go theorem. Readiness remains 63%. Durable note: `results/ITER040_G48A_CAP32_CAP64_ADVERSARIAL_TERMINAL.md`.
 
-## Active frontier — G49-C
+## Active frontier — authorized G49-A
 
-G49-C was prospectively frozen only after terminal G48-A classification. Preregistration `2d472c4223602f77e13b054615e713c58f0b46c3`; implementation `05a41f62b36e0912f60c01f7aa1657130c3c66d4`; workflow `7c31d7d19f4847b12043e15ba1699740e0fd7af3`; launch/head `db61900e4113cf002f3d5c7b636b7e14d41e00c0`; run `34726705385`.
+Terminal G49-C has authorized a separately prospectively frozen cap-free/direct-PSD adversarial transport against the unchanged RCG-002 four-shard toy target. Before implementation the new gate must freeze the direct `C=A^2` family, numerical box inactivity, optimizer settings, target convention, probes/times, cross-method agreement, nonzero-gap rule, and consistency/nesting against terminal cap64 evidence. No target-dependent retuning is permitted.
 
-Frozen family: direct real-symmetric physical-scale `A`, `C=A^2`, no physical trace cap. The optimizer uses a numerical box `[-8,8]^21`, which must be inactive (`max |w_i| / 8 < 0.80`) for PASS. Response-blind controls use ranks 1..6 and `sqrt(tr(C))=[0.5,1,2,3,4,5]`, methods Sobol/LHS, 12 lanes. Per-lane thresholds are gap `<0.002`, relative Kossakowski error `<0.02`, exact requested effective rank, and frozen PSD/TP/CP/state/trace controls. RCG-002 is not used in this calibration.
-
-Only terminal G49-C PASS may authorize a separately preregistered RCG-002 transport. Even that later transport cannot by itself become a mathematical unbounded-PSD theorem.
+Even a future G49-A PASS remains scoped numerical evidence on the frozen RCG-002 panel and cannot by itself become a mathematical unbounded-PSD theorem or universal classical/semiclassical no-go.
 
 ## Open scientific layers
 
-- terminal G49-C and conditional direct-PSD RCG-002 transport;
+- prospectively freeze and execute direct-PSD RCG-002 transport;
 - broader hidden-classical memory beyond the frozen stationary 3-state/12D family;
 - externally anchored observables/holdouts;
 - continuum/full candidate-gravity dynamics and an actual gravity-theory constitution gate.
