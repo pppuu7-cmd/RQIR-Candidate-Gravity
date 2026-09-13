@@ -8,7 +8,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O; G56F2 through G83 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O; G56F2 through G85 are structural/robustness/constitution/baseline/architecture/identifiability/source-calibration qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -38,37 +38,36 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G81 | `34783132206` / `7d820af6...` | `BLOCKED_D_NATIVE_SOURCE_OBJECT_DOES_NOT_BREAK_EXACT_CUBIC_CALIBRATION_ALIAS_SCOPED` | Existing D source-functional structure only. |
 | G82 | `34783507013` / `ac64c3d7...` | `C_SINGLE_SOURCE_REFERENCE_CALIBRATION_BREAKS_SLOPE_ALIAS_WITHOUT_MODIFYING_C_FUNCTIONAL_SCOPED` | Added C reference-channel construction sufficiency only. |
 | G83 | `34783514167` / `0e6e0885...` | `D_SINGLE_RETARDED_SOURCE_REFERENCE_CALIBRATION_BREAKS_CUBIC_GAIN_ALIAS_WITHOUT_MODIFYING_D_FUNCTIONAL_SCOPED` | Added D reference-channel construction sufficiency only. |
+| G84 | `34783862061` / `2033fbe1...` | `C_REFERENCE_CONSTRUCTION_REMAINS_IDENTIFIABLE_UNDER_FROZEN_LEAKAGE_UNTIL_SAME_SHAPE_LIMIT_SCOPED` | C imperfect-decoupling construction robustness only. |
+| G85 | `34783869306` / `db783513...` | `D_REFERENCE_CONSTRUCTION_REMAINS_IDENTIFIABLE_UNDER_FROZEN_LEAKAGE_UNTIL_SAME_SHAPE_LIMIT_SCOPED` | D imperfect-decoupling construction robustness only. |
 
 ## G76-G79 robustness fan-out
-G76-G79 are terminal scoped robustness results rooted in G75. Retrospective synthesis: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`. Jointly they establish only that exact alias-breaking rank can become ill-conditioned, uncertainty grows as anchors weaken under frozen iid/SPD surrogates, and the abstract design has explicit single-row failure/redundancy structure. They do not establish physical anchors or detectability.
+G76-G79 are terminal scoped robustness results rooted in G75. Retrospective synthesis: `results/G76_G79_PARALLEL_ROBUSTNESS_SYNTHESIS.md`. They do not establish physical anchors or detectability.
 
-## G80-G81 native-anchor authority
-G80: common base `080c219d20f8ed16fa24845ffa180ea5c5d57bc0`; prereg `c09e2298a746cc5055e8f67c6c9edb182e52dabe`; implementation `0f53469f396248a5ba00a35dcb3450cb9318e74f`; head `6d159d77d3feace880784d229067e30cb8afb657`; run `34783125605`; aggregate `103793724031/10325925907`, digest `sha256:b2f9214940e746650cbad54cda6363c9ff5c8de69aa25f0abe1e80573be47610`. Existing C projected-source/Gaussian CTP structures preserve the exact C/N1 alias. Terminal note: `results/ITER078_G80_C_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
+## G80-G83 native/reference transition
+G80/G81 show that native C/D source-functionals do not contain independent calibration information; G82/G83 show that one explicitly added external nuisance-reference direction is algebraically sufficient without modifying the frozen candidate functional. Retrospective synthesis: `results/G80_G83_NATIVE_BLOCK_TO_REFERENCE_CONSTRUCTION_SYNTHESIS.md`.
 
-G81: same common base; prereg `30f6f10128f2d02bf25ebbdcf9b53af86c462452`; implementation `3da5fb204f796eae5819fe2f784fdfe25e7aa78b`; head `7d820af68ee4287cc4c9978432937d08b76e9fd7`; run `34783132206`; aggregate `103793885371/10326085588`, digest `sha256:e0da015980e7e7d214cc24386de2828db53fc746fb146886932eee95dc0acc7f`. Existing D retarded/support/permutation/CTP/jet structures preserve the exact D/N3 alias. Terminal note: `results/ITER079_G81_D_NATIVE_SOURCE_ANCHOR_AUDIT_TERMINAL.md`.
+## G84 terminal authority — C imperfect decoupling
+Common base `27bc7d7622d681a977a31ef040665f3b4defc49b`; preregistration `962312fc0c9f677e1d9ca4478dcc78f60bf51fe0`; implementation `79815c519016ebbceb061fcd3f9f19cbce7645fd`; production head `2033fbe1314861e2e7e1b4d5ec04f2f3215cc946`; run `34783862061`; aggregate job/artifact `103795792115/10326141440`; digest `sha256:470c5b7116a11e7ac1b79ef26e9db5390c8fefeb9e51d9f74e056975e6f846b8`.
 
-## G82 terminal authority — C reference construction
-Common base `5830d944ad5b1ef076a8ddf0509116506c94b384`; preregistration `43e9a1e9ee838e48c3aa5b6640e588f4dc92ad80`; implementation `a77e89acabbd0f6c9c171f04c25b6de03013fafb`; production head `ac64c3d740a1954816fe66ab54ad6f36577ca095`; run `34783507013`; aggregate job/artifact `103794729260/10325248911`; digest `sha256:c5088a9b335987ecdc383c0ed2192fe0abfc9a933a1fc9ada0154abc3b1127d7`.
+Raw artifacts: A `10326355690` (`sha256:d8ac7075ad045dbdfa45db8eb7b3d439a6d0da91365eae7461ff5acb1bd43ded`), B `10325777401` (`sha256:7e68ea7f9aff582ab657bdddb6189dedd9d199af5f9b990307e384390621a69c`), C `10325797222` (`sha256:afeb1c0fc696690a139605981f6da00485dfee719dc0b5ea484f9c37ae9079b6`), D `10326016660` (`sha256:0e9bc3814ba8cc71549706b14633508b489f0618d4570577daf70c1c4478fbfe`). Exact rank two survives every frozen non-boundary C reference leakage ratio and gain down to `1e-6`; conditioning degrades monotonically toward `rho=-1` or zero gain; Ward/source and 80-digit precision controls pass. Terminal note: `results/ITER082_G84_C_REFERENCE_LEAKAGE_ROBUSTNESS_TERMINAL.md`.
 
-Raw artifacts: A `10325766858` (`sha256:bfa9614436f213da4423a3d80c01917af3ca428021f23c53cb53ca5bc4fb6128`), B `10324764404` (`sha256:58729a5accbfcd274283930c0e93c229c00ca0afde0d456123ccae86e5120e3d`), C `10326135827` (`sha256:35c7dfa789f22f4662d03bf9ad30356941a1fc681421031ad0176052c89c02fe`), D `10325632672` (`sha256:0c68423b7bf24c7acb28c675f29e87e9e28c36a6c7e851b7fcf3d6ef899e2735`). A single added candidate-blind nuisance-reference row restores C/N1 rank two on primary/held-out panels; the source-defined reference seed gives exact `q_ref=201559/448` and preserves Ward compatibility. The C candidate functional is unchanged. Terminal note: `results/ITER080_G82_C_MINIMAL_SOURCE_CALIBRATION_AUGMENTATION_TERMINAL.md`.
+## G85 terminal authority — D imperfect decoupling
+Same common base; preregistration `aa64e9a75ec7ed6b2162413232b8fa4cd00b9b8e`; implementation `3d90591276ba089b3a2ce1593c0de582b2a53c09`; production head `db783513ec3940f402c61f71f1f61ff5c0e4d4e3`; run `34783869306`; aggregate job/artifact `103795801049/10326400165`; digest `sha256:0b77669cd6b7327c5f654b7c9bbafb49ece64add94553e9df117d93b92eaaf79`.
 
-## G83 terminal authority — D reference construction
-Common base `5830d944ad5b1ef076a8ddf0509116506c94b384`; preregistration `6c03aa2cfa462ae78e6410f1152ca476e679a195`; implementation `ff62a450d6b801a28a6f16422c1add117e2afcc1`; production head `0e6e088579a0f12f5d2b7f7aaf340beebca82944`; run `34783514167`; aggregate job/artifact `103794773369/10325334117`; digest `sha256:faca91a4782d2dfef0d40e085417cac6c435834201881ed6d8b9ddb3fe615c78`.
+Raw artifacts: A `10326130747` (`sha256:e74e605a6d57657b73341715755139f35808719cc5eba71b1d454071c0cdbc41`), B `10326345689` (`sha256:b835e6dca3f57e0a396c8e2e1bbc8f9fe7fc78351c0b9f28b72f93e2dc398149`), C `10325876972` (`sha256:cbde176ea3341f677988b1595f07c4596c37d6641d29d2aef3314cf06694b663`), D `10324899718` (`sha256:cdcfa12dd4b2aee1f583c8354bbc826c52c8dbf99aca4bf5bff51a4579f3e6d8`). Exact rank two survives every frozen non-boundary D reference leakage ratio and gain down to `1e-6`; conditioning degrades monotonically toward `rho=+1` or zero gain; retarded/Sigma/CTP/jet and 80-digit precision controls pass. Terminal note: `results/ITER083_G85_D_REFERENCE_LEAKAGE_ROBUSTNESS_TERMINAL.md`.
 
-Raw artifacts: A `10325308790` (`sha256:924f52630f7b25cce29717761e226344c7b4bf56d23e649e549dc693c347ff84`), B `10324999208` (`sha256:9319dd4eb8e272162dded2c74d3e2555353979d7b08bbe24230af634f635a887`), C `10324474946` (`sha256:2e961c6b700d6036b72843d5232e0740e3fd71e782b35dd3b9587e6d41134bc6`), D `10325687124` (`sha256:99d405cc9bb73a03d1defd7bf8245e74bd99613138391c7b9a5bf30a53348b31`). A single added candidate-blind retarded nuisance-reference row with `q_ref=2` restores D/N3 rank two while preserving retarded support, Sigma symmetry, CTP normalization and the frozen cubic jet. The D candidate functional is unchanged. Terminal note: `results/ITER081_G83_D_MINIMAL_SOURCE_CALIBRATION_AUGMENTATION_TERMINAL.md`.
-
-## G80-G83 synthesis
-`results/G80_G83_NATIVE_BLOCK_TO_REFERENCE_CONSTRUCTION_SYNTHESIS.md` is retrospective only, not a new gate. G80/G81 show native information is insufficient; G82/G83 show one explicit external reference direction is algebraically sufficient. Physical realizability remains open.
+## G82-G85 synthesis
+`results/G82_G85_REFERENCE_ROBUSTNESS_SYNTHESIS.md` is retrospective only, not a new gate. Reference-channel construction sufficiency and frozen imperfect-decoupling robustness are now characterized, but physical realizability remains unestablished.
 
 ## Active frontier
-The next permitted layer is architecture-specific **reference-channel imperfect-decoupling/realizability robustness**. C and D must remain independent sibling gates. Test prospectively frozen candidate leakage into the reference channel, nuisance-gain uncertainty, near-loss of nuisance sensitivity, and inherited Ward/retarded constraints. A PASS may establish robustness of the construction family only; it cannot establish an actual source preparation, detector, calibration protocol or candidate-blind physical observable.
+The identifiability/reference branch has diminishing returns from further abstract rank scans. The highest-value unresolved blocker remains G69: **candidate-owned nonlinear dynamics**. The next admissible layer is therefore an architecture-specific nonlinear-completion nonuniqueness audit: determine whether the frozen lower-order C and D perturbative data uniquely determine any nonlinear generally covariant completion, or whether explicit higher-order invariant freedom survives. C and D must remain independent sibling gates. A finding of nonuniqueness is BLOCKED/underdetermined, not an architecture failure.
 
 ## Open scientific layers
-- candidate-owned deformation beyond standard local gravity baselines;
-- reference-channel imperfect-decoupling robustness for C and D;
-- physical source/reference preparation and realizability;
-- nonlinear generally covariant candidate-owned dynamics;
+- nonlinear completion uniqueness/underdetermination for C and D;
+- candidate-owned generally covariant dynamics;
 - nonlinear conserved-source/Bianchi/diffeomorphism completion;
+- physical source/reference preparation and realizability;
 - field/measure/quantization closure;
 - externally anchored physical predictions beyond current finite weak-field scope.
 
