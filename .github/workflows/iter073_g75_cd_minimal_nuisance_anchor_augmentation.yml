@@ -1,0 +1,69 @@
+name: RCG Iter073 G75 C-D minimal nuisance-anchor augmentation
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter073_g75_cd_minimal_nuisance_anchor_augmentation.py'
+      - 'prereg/ITER073_G75_CD_MINIMAL_NUISANCE_ANCHOR_AUGMENTATION.md'
+      - '.github/workflows/iter073_g75_cd_minimal_nuisance_anchor_augmentation.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: python scripts/iter073_g75_cd_minimal_nuisance_anchor_augmentation.py --lane ${{ matrix.lane }} --out g75-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g75-${{ matrix.lane }}
+          path: g75-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g75-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'DIRECT_TWO_ANCHOR_MINIMALITY_SCOPED',
+            'B':'DISTINCT_RESPONSE_TWO_AUGMENTATION_RESTORES_RANK_SCOPED',
+            'C':'HELDOUT_PANEL_AND_REPARAMETERIZATION_ROBUSTNESS_SCOPED',
+            'D':'ADVERSARIAL_MINIMALITY_AND_FALSE_POSITIVE_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g75-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          complete=(set(rows)==set(expected))
+          scientific_fail=(complete and any(not rows[k].get('valid',False) for k in expected))
+          valid=(complete and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          if valid:
+            cls='CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED'
+          elif scientific_fail:
+            cls='SCIENTIFIC_FAIL_FROZEN_MINIMAL_ANCHOR_PREDICATE'
+          else:
+            cls='INFRASTRUCTURE_OR_GATE_INVALID'
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':cls,'readiness':66,'theory_established':0,'scope_lock':'Frozen tangent-model identifiability/experimental-design result only; no architecture selection, physical anchor existence, candidate law, or new physics.'}
+          pathlib.Path('g75-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g75-aggregate
+          path: g75-aggregate.json
