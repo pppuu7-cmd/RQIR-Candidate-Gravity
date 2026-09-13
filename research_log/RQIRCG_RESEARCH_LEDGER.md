@@ -8,7 +8,7 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 ## Canonical readiness
 - Internal programme readiness: **66%**.
 - Theory established: **0%**.
-- Readiness last increased at G55-O; G56F2 through G73 are structural/robustness/constitution/baseline/architecture/identifiability qualifications and do not independently add readiness points.
+- Readiness last increased at G55-O; G56F2 through G74 are structural/robustness/constitution/baseline/architecture/identifiability qualifications and do not independently add readiness points.
 - G56-F remains a preserved frozen-rule FAIL.
 
 ## Authoritative recent gates
@@ -28,18 +28,17 @@ RQIR-CG is an independent candidate-gravity construction. RQIR/KMQGB/QGR may con
 | G71 | `34772999854` / `3992d457...` | `BEYOND_BASELINE_UNRESOLVED_PROPERTY_AUDIT_SCOPED` | Property audit; Pareto `{C,D}`. |
 | G72 | `34773142384` + recovery `34776292245` / `332773ca...` | `CD_ORTHOGONAL_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION_SCOPED` | Minimal existence witnesses only. |
 | G73 | `34776467784` / `0cdbf009...` | `CD_ORDER_SEPARATED_DIRECTIONS_JOINTLY_IDENTIFIABLE_ONLY_WITH_MULTIORDER_PANEL_SCOPED` | Local multi-order identifiability only. |
+| G74 | `34779124616` / `b85789c5...` | `CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED` | Same-order nuisance robustness only. |
 
-## G73 terminal authority
-Preregistration `535c98499af94c8457767972c40c17304d500509`; implementation `ee16c8ed2c0d0d31527bb098c715c59ac26fa8df`; production head `0cdbf009e1d0691aaf5d756b32e80326b593c781`; run `34776467784`; aggregate job/artifact `103775419685/10323586719`; digest `sha256:6b3864119e485658b193f4c1c0eedd496c91ea2a295468ba879c15d4c67da5bd`.
+## G74 terminal authority
+Preregistration `ed068632bdb099ffdcb47535afe5e8c42ff399b0`; implementation `b1e1d84a4c2af4f9fe5e9f921efefd61e07163b3`; production head `b85789c5f55b0cbbbc95f82431215b084a9a13b1`; run `34779124616`; aggregate job/artifact `103782797267/10324670462`; digest `sha256:cf4256e218ba4c451c0c1e44543873f76763c3db96b5d9dab22434b496c221a8`.
 
-Raw artifacts consumed before classification: A `10324136045` (`sha256:2b8844fc8692e905b03d8817e5066fdfdec1f97021e1e081c0440697735316a4`), B `10323742027` (`sha256:2c92c70d8e3b46ed4413e5836bbb87fcb0c3a36a0503b0e7eb17e8a66f04300c`), C `10323956508` (`sha256:010d7f73281ef1b8a945683604e29ddc7f2a9fc63042adc434a8a4e30bdbde27`), D `10323164946` (`sha256:d2a3ba09ab7469795309579641e4b65076261a3fa1a07aae6470747850ebd146`). Exact joint rank is 2 only with both quadratic/two-point and cubic/three-point blocks; either block alone has rank 1; frozen reparameterizations preserve rank; rank-loss and order-leakage controls are detected.
+Raw artifacts consumed before classification: A `10324745362` (`sha256:6b8433c4bcb3095a63025bad54c5c7ea21c85fb771840cdfab2f37f69e0e3a80`), B `10323474735` (`sha256:704c4f990ad6bd87fcd0b6199b344e700f33445dd1935675dbd568eb0d0eaa6b`), C `10324470487` (`sha256:dd82e16373b90de90dbb6e5c3a934335e3eb26dde2fbeb18d313924993e7927e`), D `10324765386` (`sha256:08f77d67979b1cc65d9c1bb9ea219fc0a50a7ee904e44ce3d8306f63a934200f`). G74 establishes exact aliasing of C by the same-shape quadratic slope nuisance and of D by same-shape cubic calibration, while constant/curvature and auxiliary extra-observable controls remain distinguishable as frozen.
 
-Terminal note: `results/ITER071_G73_CD_PERTURBATIVE_ORDER_IDENTIFIABILITY_TERMINAL.md`.
+Terminal note: `results/ITER072_G74_CD_SAME_ORDER_NUISANCE_CONFOUNDING_TERMINAL.md`.
 
-## Active frontier — G74
-Prospectively frozen preregistration commit `ed068632bdb099ffdcb47535afe5e8c42ff399b0`; implementation commit `b1e1d84a4c2af4f9fe5e9f921efefd61e07163b3`; production head `b85789c5f55b0cbbbc95f82431215b084a9a13b1`; run `34779124616`.
-
-G74 audits same-order nuisance confounding of the frozen G73 C/D tangent directions. Frozen ceiling if all streams pass: `CD_IDENTIFIABILITY_REQUIRES_SAME_ORDER_NUISANCE_ANCHORS_SCOPED`. This cannot select C or D or define candidate-owned dynamics.
+## Active frontier
+The next permitted layer is a prospectively frozen minimal-anchor augmentation audit: test whether independently calibrated nuisance anchors and/or added linearly distinct response observables restore full local rank for C,D across held-out panels and reparameterizations. This remains identifiability/experimental-design structure only; it cannot select C or D or define candidate-owned RCG-002 dynamics.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
