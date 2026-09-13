@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_CLOSED`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_CLOSED / G76_NEAR_ALIAS_CONDITIONING_ACTIVE`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -23,8 +23,17 @@ Scientific meaning: inside the exact G74 tangent model, two independent informat
 
 Terminal note: `results/ITER073_G75_CD_MINIMAL_NUISANCE_ANCHOR_AUGMENTATION_TERMINAL.md`.
 
+## Active gate — G76
+`C/D near-alias conditioning robustness` is prospectively frozen and running.
+- preregistration: `7ede8341aea99338d250a6eba8522378aee8cca8`
+- implementation: `3be0d3569596256f61c0931b4d40b1ce8f19713b`
+- production head: `3a983cbd4490bf1a1bb284e3f25227d05f268680`
+- run: `34782314724`
+
+Frozen ceiling on full PASS: `G75_EXACT_IDENTIFIABILITY_DEGRADES_CONTINUOUSLY_TOWARD_ALIAS_SCOPED`. The audit uses fixed normalized designs, fixed SVD tolerance, held-out panels, orthogonal parameter-coordinate controls and an independent high-precision route. It cannot define a physical detectability threshold, prove physical anchor realizability, select C/D, or define candidate-owned dynamics.
+
 ## Next allowed gate
-Prospectively audit robustness of the G75 restored rank to near-aliasing, anchor-strength rescaling and finite numerical precision. The next gate may quantify singular-value/condition-number behavior across frozen perturbation families, held-out momentum panels and adversarial threshold controls. It must not reinterpret numerical conditioning as physical detectability or architecture selection.
+Consume all G76 raw lanes and frozen aggregate terminally. Only after classification may the project proceed toward physically/source-defined anchor realizations or a further statistically motivated threshold layer. Do not infer physical detectability from conditioning alone.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
@@ -39,4 +48,4 @@ Prospectively audit robustness of the G75 restored rank to near-aliasing, anchor
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_SUFFICIENT_SCOPED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_SUFFICIENT_SCOPED + G76_NEAR_ALIAS_CONDITIONING_RUNNING`.
