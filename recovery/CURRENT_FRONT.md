@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONSTITUTION_PREREQUISITE_BLOCKED / G58B_LINEARIZED_BASELINE_CLOSED / G59_TWO_DERIVATIVE_CONSTITUTION_CLOSED / G60_FOUR_DERIVATIVE_ESCAPE_CLOSED / G61_SECTOR_POLE_MAP_CLOSED / G62_RELATIVE_RESIDUE_CLOSED / G63_AUXILIARY_FACTORIZATION_RUNNING`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONSTITUTION_PREREQUISITE_BLOCKED / G58B_LINEARIZED_BASELINE_CLOSED / G59_TWO_DERIVATIVE_CONSTITUTION_CLOSED / G60_FOUR_DERIVATIVE_ESCAPE_CLOSED / G61_SECTOR_POLE_MAP_CLOSED / G62_RELATIVE_RESIDUE_CLOSED / G63_AUXILIARY_FACTORIZATION_CLOSED`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -11,27 +11,18 @@ Phase: `INDEPENDENT_RQIR_DERIVATION / G56F2_ROBUST_CONTINUUM_CLOSED / G57P_CONST
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 
-## Recent closed authority
+## Latest closed authority
+### Iter061 / G63 — auxiliary second-order factorization/inertia PASS
+Classification: `FOUR_DERIVATIVE_LINEARIZED_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED`.
+Preregistration `f448a07cccfa6a1914f8e74416dcb330dc1e2ed1`; implementation `4cf527a9c7166a2c51adcb50b7eeb7da08f59eb2`; production head `4bc52cc3cf7b34075cdab83fc758756034a2d714`; run `34764255219`; aggregate job/artifact `103742340642/10319009822`; digest `sha256:9bdb66ab443a353cad3d143789f6161d2cdfd6a468c93bdc0b4b857a4bb51b2e`.
+Raw lanes consumed: A `103742305251/10320022178`, B `103742305375/10319654009`, C `103742305320/10319434714`, D `103742305423/10319149479`.
+A gives exact two-mode reconstruction and inertia `(1,1)` in TT and scalar sectors. B passes all 12 frozen rational rays / 24 sector cases. C preserves inertia under 16/16 frozen real congruences. D passes both exceptional one-pole limits and rejects definite-sign/zero-coupling fake controls.
+Terminal note: `results/ITER061_G63_AUXILIARY_FACTORIZATION_TERMINAL.md`.
 
-### Iter060 / G62 — relative-residue algebraic audit PASS
-Classification: `FOUR_DERIVATIVE_LINEARIZED_SECTOR_RELATIVE_RESIDUE_OPPOSITION_SCOPED`.
-Preregistration `10fbc58c547e7baea13094025177a6fa459037d5`; implementation `b4999df69ca913b4045fcb3e25522331bd709cee`; production head `7e8baad8b6055b0546363682c56d786a6138e90e`; run `34761167760`; aggregate job/artifact `103734184486/10319241003`; digest `sha256:cc40a09a46f3791672b857e5559acac0f601bd3200781d3db75ab9cf847efdfa`.
-Raw lanes consumed: A `103734145769/10318788758` (`sha256:aef5c242cd95b74d49219badf6786e875dfe9cb07290643d4d4db0a606c08e31`); B `103734145831/10318524473` (`sha256:0d4b5964e09757e56f531fbf4b8ee2c0c3c22b5f24a6a4d886ab2589dcf31017`); C `103734145812/10318883090` (`sha256:4011b9ed8a153452405d195611ced54b97c475c1705e9985f726aeac557dc106`); D `103734145853/10319400418` (`sha256:c9c1a85be2dae99362cf40a522ceb39d3d4a2ae92e50b84a31b099832620ecba`).
-A gives exact TT residues `(-1/2,+1/2)` and scalar `(+1/6,-1/6)`. B verifies ratio `-1` on all 12 frozen nonexceptional rational rays. C gives 144/144 covariance checks. D gives 96/96 scale checks, correct exceptional-line behavior, and rejects wrong same-sign control 24/24.
-Terminal note: `results/ITER060_G62_RELATIVE_RESIDUE_AUDIT_TERMINAL.md`.
+Scientific implication: this is a scoped algebraic source-coupled auxiliary-form result only. It does not establish a physical ghost, instability, quantum-unitarity failure, coefficient selection, or a global higher-derivative no-go theorem.
 
-Scientific implication: the two frozen conserved-sector rational responses have exact opposite relative residues whenever the additional simple algebraic root exists. This is algebraic structure only; it is not a physical ghost, instability, unitarity-failure or higher-derivative no-go theorem and it selects no coefficients.
-
-## Active Iter061 / G63 — auxiliary second-order factorization/inertia audit
-Frozen preregistration commit: `f448a07cccfa6a1914f8e74416dcb330dc1e2ed1` (before implementation).
-Implementation commit: `4cf527a9c7166a2c51adcb50b7eeb7da08f59eb2`.
-Production/workflow head: `4bc52cc3cf7b34075cdab83fc758756034a2d714`.
-Authoritative run: `34764255219`.
-Current jobs: A `103742305251`, B `103742305375`, C `103742305320`, D `103742305423`; all running at last synchronization, aggregate pending.
-
-Frozen target: exact two-mode second-order auxiliary reconstruction for each nonexceptional sector, held-out 12-ray census, exact real-congruence inertia invariance under eight frozen invertible matrices, exceptional one-pole limits, and definite-sign/zero-coupling negative controls.
-
-Allowed PASS ceiling only: `FOUR_DERIVATIVE_LINEARIZED_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED`. Even PASS is an algebraic source-coupled auxiliary-form statement only; no physical ghost, instability, unitarity-failure, coefficient selection or global no-go claim is authorized.
+## Next authorized frontier
+The next gate must remain candidate-independent and test whether the source-coupled indefinite auxiliary directions are genuinely unavoidable on the frozen conserved-source response subspace, rather than being removable by source-decoupling/projection. It must be prospectively preregistered before implementation and may establish only a scoped algebraic coupling/rank statement. No physical ghost interpretation is authorized.
 
 ## Open scientific layers
 - independently motivated candidate-owned deformation beyond the G59 class;
@@ -45,4 +36,4 @@ Allowed PASS ceiling only: `FOUR_DERIVATIVE_LINEARIZED_AUXILIARY_TWO_MODE_INDEFI
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56F2_ROBUST_REPLACEMENT_PASS + G57P_CONSTITUTION_INPUTS_BLOCKED + G58B_LINEARIZED_BASELINE_SUPPORTED_NOVELTY_NOT_ESTABLISHED + G59_TWO_DERIVATIVE_CONSTITUTION_UNIQUE_SCOPED + G60_FOUR_DERIVATIVE_ESCAPE_TWO_DIMENSIONAL_SCOPED + G61_SECTOR_ADDITIONAL_ROOT_STRATIFICATION_SCOPED + G62_RELATIVE_RESIDUE_OPPOSITION_SCOPED + G63_AUXILIARY_FACTORIZATION_RUNNING`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G56F_HISTORICAL_FROZEN_FAIL + G56F2_ROBUST_REPLACEMENT_PASS + G57P_CONSTITUTION_INPUTS_BLOCKED + G58B_LINEARIZED_BASELINE_SUPPORTED_NOVELTY_NOT_ESTABLISHED + G59_TWO_DERIVATIVE_CONSTITUTION_UNIQUE_SCOPED + G60_FOUR_DERIVATIVE_ESCAPE_TWO_DIMENSIONAL_SCOPED + G61_SECTOR_ADDITIONAL_ROOT_STRATIFICATION_SCOPED + G62_RELATIVE_RESIDUE_OPPOSITION_SCOPED + G63_AUXILIARY_TWO_MODE_INDEFINITE_INERTIA_SCOPED`.
