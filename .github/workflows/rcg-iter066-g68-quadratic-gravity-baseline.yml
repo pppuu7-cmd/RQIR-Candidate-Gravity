@@ -1,0 +1,49 @@
+name: RCG Iter066 G68 quadratic gravity baseline audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/iter066_g68_quadratic_gravity_baseline.py'
+      - '.github/workflows/rcg-iter066-g68-quadratic-gravity-baseline.yml'
+  workflow_dispatch:
+
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [A, B, C, D, E]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet sympy
+      - run: python scripts/iter066_g68_quadratic_gravity_baseline.py --stream ${{ matrix.stream }} --out out/${{ matrix.stream }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g68-${{ matrix.stream }}
+          path: out/${{ matrix.stream }}.json
+
+  aggregate:
+    needs: stream
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g68-*
+          path: downloaded
+      - run: find downloaded -maxdepth 3 -type f -print
+      - run: python scripts/iter066_g68_quadratic_gravity_baseline.py --aggregate-dir downloaded --out summary/g68_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g68-aggregate
+          path: summary/g68_summary.json
