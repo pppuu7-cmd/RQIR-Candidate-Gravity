@@ -1,0 +1,55 @@
+name: RCG Iter092 G94 D native three-source phase bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/iter092_g94_d_native_three_source_phase_bridge.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - name: Run frozen scientific stream
+        run: |
+          mkdir -p out
+          python scripts/iter092_g94_d_native_three_source_phase_bridge.py --lane "${{ matrix.lane }}" --out "out/g94_${{ matrix.lane }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g94-${{ matrix.lane }}
+          path: out/g94_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g94-*
+          path: raw
+      - name: Apply frozen aggregate
+        run: |
+          mkdir -p out
+          python scripts/iter092_g94_d_native_three_source_phase_bridge.py --aggregate raw --out out/g94_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g94-aggregate
+          path: out/g94_aggregate.json
+          if-no-files-found: error
