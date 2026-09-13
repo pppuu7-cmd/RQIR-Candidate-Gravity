@@ -1,47 +1,47 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G50R_BASIS_COVARIANCE_PRODUCTION`
+Phase: `INDEPENDENT_RQIR_DERIVATION / MICROSCOPIC_WEAK_FIELD_BRIDGE_CLOSED / NEXT_CHANNEL_INTEGRATION_GATE`
 
 ## Canonical status
-- Candidate-model/programme readiness: **64%**.
+- Candidate-model/programme readiness: **65%**.
 - Theory established: **0%**.
 - Active seed: `RCG-002 Relational controlled-phase channel`.
 - Independent-from-QGR construction contract: **FROZEN**.
 - Clean authority ledger: `research_log/RQIRCG_RESEARCH_LEDGER.md`.
 - Legacy mixed-project ledger: **NOT SCIENTIFIC AUTHORITY**.
 
-## Newly closed authority — Iter045 / G50-A
-Scientific classification: `DERIVED_SCOPED_FOUR_STATE_CLASSICAL_SWITCHING_COMPARATOR_SUPPORT`.
+## Newly closed authority
+### Iter046 / G50-R — local-basis covariance
+Classification: `DERIVED_SCOPED_G50A_LOCAL_BASIS_COVARIANT_SUPPORT`.
+Run `34739265637`; aggregate job `103676188542`; artifact `10312356700`; digest `sha256:34b9bee037a9fc28d664d4b5bc303e51c2478e3ee302206d801040a7fcbf3e34`.
+All 16/16 lanes structurally valid and support the frozen rule. This is robustness qualification only and does not enlarge the comparator family.
 
-Provenance: prereg `da2ed3bb190fcfc8b3e8225361b98490513630bf`; implementation `c9fb66bb69ac27d1546f083aec6c95db2033a9e7`; workflow `1e689724050b8e7e9734c21395e453fae4da8f2d`; authoritative head `2122211ff1c08c03ca637c42b8299fd3a9fd6806`; run `34736777512`; aggregate job `103670129595`; summary artifact `10311238232`; digest `sha256:a2897d320cae758c6665565f6159c2fb2f50e10d8db8a738f6c622613949282a`.
+### Iter047 / G51-K — branchwise retarded kernel
+Classification: `BRANCHWISE_RETARDED_KERNEL_VALIDATED_AND_SHARED_RMAX_CAUSAL_PROXY_REJECTED`.
+Prereg `0b8bf52cc10539aaaf507e0da330c582461914e5`; head `9c4236f596002f1f145c852d964e426bb11e5b4a`; run `34741016035`; aggregate `103680636906`; artifact `10312114763`; digest `sha256:624543dc89d57a7c9abceb155a57e96492d190234ae55e4d95bcb081a1117c15`.
+8/8 lanes valid; worst post-all relative error `5.996553810643397e-16`; minimum shared-proxy relative difference `0.4999999999999997`. Scope: finite weak-field toy-kernel causality audit only.
 
-All `8/8` raw lanes were consumed and are structurally valid, admissible, provenance-valid and satisfy the frozen target-separation rule. Per-shard Sobol/LHS train gaps are approximately `0.5312233384`, `0.575453150`, `0.745706013`, `0.831250`; held-out gaps approximately `0.441038930`, `0.483684321`, `0.659779416`, `0.864186`. Largest cross-method disagreement is `3.0134559614314327e-7` train and `6.34423147127805e-7` held-out. Worst max TP residual is `1.33352576428069e-15`; minimum Choi eigenvalue among best candidates is positive at `3.712713157033707e-12`.
+### Iter048 / G52-H — weak-field pair-energy quotient
+Classification: `WEAK_FIELD_PAIR_ENERGY_TO_CONTROLLED_PHASE_QUOTIENT_BRIDGE_VALIDATED`.
+Prereg `d097e371b2cca109d9af77b8a782afcb41d2ed52`; head `83af9396556293f211bd778837b0b1cb8e55122b`; run `34741020448`; aggregate `103680658462`; artifact `10312359172`; digest `sha256:4a76cb160d81b6f519f2fa5fc77b39ee0ebf0c5c4eb2a776023ed1f14898a631`.
+8/8 lanes valid; worst factorization error `1.1102314949223176e-16`; worst chi relative error `1.3237115368607027e-15`; compactness remains far below the frozen ceiling.
 
-Scope lock: exact finite bounded stationary 20D four-state hidden-classical CTMC switching/local-sum-Hamiltonian family and frozen finite RCG-002 panel only. Durable note `results/ITER045_G50A_FOUR_STATE_SWITCHING_ADVERSARIAL_TERMINAL.md`, result commit `23b88cd52daf2c39f61117eaedf09b36a073b310`.
+### Iter049 / G53-W — finite-size Gaussian wavepacket bridge
+Classification: `FINITE_SIZE_GAUSSIAN_WAVEPACKET_WEAK_FIELD_BRIDGE_VALIDATED`.
+Prereg `20432ce2c7a6d052881d4bae7d091621a6f09343`; head `84a278806e6dd4256a3b44a14a1132b08914225c`; run `34741027250`; aggregate `103680697114`; artifact `10311534805`; digest `sha256:f1384e5cd5ddef0966d5f74873d6aa3a88326617c0e435ea56d01369a9da6ff8`.
+8/8 lanes valid; scientific support true; worst analytic-vs-Fourier relative error `1.9221632282619188e-16`; high-`R/s` point and branch limits agree to about `1e-15`.
 
-Readiness `63% -> 64%` because a genuinely broader hidden-memory target-separation rubric closed.
+## Readiness consequence
+The prospectively frozen microscopic weak-field bridge rubric required both G52-H and G53-W to PASS. Both are terminal PASS, so programme readiness moves **64% -> 65%**. G51-K and G50-R do not independently add readiness points.
 
-## Active Iter046 / G50-R
-Goal: test whether terminal G50-A support is invariant under independent deterministic local basis rotations, with no refit and no family expansion.
+## Current frontier
+The next high-information step is not another comparator-cap escalation. The newly validated point-energy quotient and finite-size Gaussian kernel should be integrated into one prospectively frozen finite-size controlled-phase channel gate, with local/global phase quotient invariance, exact unitary/CPTP controls, independent analytic-vs-numerical kernel implementations, point-particle convergence and no fitting to comparator outcomes.
 
-Prospective preregistration: `0ee31e39dacb0e2fb145fbe57345209f0c2ef878`; implementation `9965fb9631d62715acf2f713d3ef44f4a301512f`; pre-production import-path correction only `5124907bb363f808c1c887c12f457fd46759292c`; workflow `dc9a5cdbb300c767d2002c300de39f37c517705b`; launch/head `1e0d0e669089b144be24399032330c4690f37a8b`; production run `34739265637`.
-
-Frozen production: `4 rotation seeds x 4 shards = 16` independent matrix lanes, each auditing both terminal Sobol/LHS candidate vectors. Thresholds: train/held-out gap invariance `<=1e-9`, independent direct-vs-superoperator output discrepancy `<=1e-10`, trace residual `<=1e-10`, output eigenvalue floor `-1e-10`, and separation remains `>1e-4`. Terminal PASS label is frozen as `DERIVED_SCOPED_G50A_LOCAL_BASIS_COVARIANT_SUPPORT`.
-
-No scientific classification until all lane artifacts and frozen aggregate are terminally consumed.
-
-## Retained authority / open layers
-- G50-C run `34734256210`: optimizer calibration PASS.
-- G50-P run `34734173762`: four-state provenance/memory qualification PASS.
-- G49-A run `34729309699`: scoped cap-free direct-PSD comparator support.
-- G47-A run `34719377641`: scoped three-state memory comparator support.
-- G40-TM-A run `34716863840`: RTN robustness nonclosure retained.
-
-After G50-R terminal: prioritize a genuinely independent observable/witness layer; if no clean independent observable can be defined without importing outside-project physics, prioritize continuum/full candidate dynamics and a gravity-theory constitution gate. Do not repeat cap escalation or fit a new family merely to shrink the existing finite-panel gaps.
+Independent observable/witness and continuum/covariant gravity constitution remain open. A finite weak-field channel integration PASS would still not establish a covariant gravity field theory.
 
 ## Claim locks
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc threshold/family/witness weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_64_PERCENT + THEORY_ESTABLISHED_0 + G50A_FOUR_STATE_SCOPED_SUPPORT + G50R_BASIS_COVARIANCE_RUNNING + RTN_ROBUSTNESS_NONCLOSURE_RETAINED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_65_PERCENT + THEORY_ESTABLISHED_0 + G50R_BASIS_COVARIANCE_PASS + G51K_BRANCHWISE_CAUSAL_KERNEL_PASS + G52H_POINT_ENERGY_QUOTIENT_PASS + G53W_FINITE_SIZE_GAUSSIAN_BRIDGE_PASS + COVARIANT_CONTINUUM_GRAVITY_OPEN`.
