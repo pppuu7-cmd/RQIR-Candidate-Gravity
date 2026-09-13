@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-13
-Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED`
+Phase: `INDEPENDENT_RQIR_DERIVATION / G68_QUADRATIC_GRAVITY_BASELINE_CLOSED / G69_CANDIDATE_DYNAMICS_BLOCKED / G70_ARCHITECTURE_TRIAGE_CLOSED / G71_DISCRIMINATOR_AUDIT_CLOSED / G72_CD_MINIMAL_COMPLETIONS_CLOSED / G73_MULTIORDER_IDENTIFIABILITY_CLOSED / G74_NUISANCE_CONFOUNDING_CLOSED / G75_MINIMAL_ANCHOR_AUDIT_ACTIVE`
 
 ## Canonical status
 - Candidate-model/programme readiness: **66%**.
@@ -23,8 +23,17 @@ Scientific meaning: G73 local multi-order rank is not nuisance-robust to exact s
 
 Terminal note: `results/ITER072_G74_CD_SAME_ORDER_NUISANCE_CONFOUNDING_TERMINAL.md`.
 
+## Active gate — G75
+`CD minimal nuisance-anchor augmentation` is prospectively frozen and running.
+- preregistration: `b8d7b0e98d9b2115985e1531925ed0920d84ae1b`
+- implementation: `107e4d40c5634d8a697ad8f97c7ea642b2535745`
+- production head: `7a2d00ef584c1b1ff9819856395bdd476947e37e`
+- run: `34782200622`
+
+Frozen ceiling on full PASS: `CD_MINIMAL_TWO_INDEPENDENT_ANCHOR_DIRECTIONS_RESTORE_LOCAL_IDENTIFIABILITY_SCOPED`. This is exact tangent-model identifiability/experimental-design structure only; it does not establish that physical anchors exist, select C or D, or define candidate-owned dynamics.
+
 ## Next allowed gate
-Prospectively audit minimal anchor augmentation for the exact G74 aliases. Determine whether a frozen minimal set of independently calibrated nuisance anchors and/or added response-shape observables restores full local rank for C,D while retaining null/false-positive controls, basis/reparameterization covariance, and held-out panel robustness. This is an experimental-design/identifiability gate only; no architecture selection or candidate-law promotion is authorized.
+Consume G75 raw lanes and aggregate terminally. Only after classification may the project decide whether to move from abstract anchor existence/minimality toward source-defined or physically realizable anchor constructions. No architecture selection is authorized from G75 alone.
 
 ## Open scientific layers
 - candidate-owned deformation beyond standard local gravity baselines;
@@ -38,4 +47,4 @@ Prospectively audit minimal anchor augmentation for the exact G74 aliases. Deter
 Forbidden: `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `RQIR_REQUIRES_RCG002`, all-classical/all-semiclassical no-go claims, green-CI-as-scientific-PASS, post-hoc weakening, or importing QGR/KMQGB/RQIR physical assumptions/results.
 
 Current correct status:
-`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED`.
+`RCG002_SCOPED_COHERENT_CANDIDATE + READINESS_66_PERCENT + THEORY_ESTABLISHED_0 + G68_STANDARD_QUADRATIC_GRAVITY_BASELINE_SCOPED + G69_BLOCKED_CANDIDATE_DYNAMICS_UNDEFINED + G70_PARETO_BCDE + G71_PARETO_CD + G72_CD_MINIMAL_COMPLETIONS_EXIST_NO_UNIQUE_SELECTION + G73_MULTIORDER_LOCAL_IDENTIFIABILITY_SCOPED + G74_SAME_ORDER_NUISANCE_ANCHORS_REQUIRED_SCOPED + G75_MINIMAL_ANCHOR_AUDIT_RUNNING`.
