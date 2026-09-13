@@ -1,0 +1,61 @@
+name: RCG Iter083 G85 D reference leakage robustness
+on:
+  push:
+    branches: [g85-d-reference-leakage-robustness]
+    paths:
+      - 'scripts/iter083_g85_d_reference_leakage_robustness.py'
+      - 'prereg/ITER083_G85_D_REFERENCE_LEAKAGE_ROBUSTNESS.md'
+      - '.github/workflows/iter083_g85_d_reference_leakage_robustness.yml'
+  workflow_dispatch:
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [A, B, C, D]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip numpy sympy mpmath
+      - name: Run frozen scientific stream
+        run: python scripts/iter083_g85_d_reference_leakage_robustness.py --lane ${{ matrix.lane }} --out g85-${{ matrix.lane }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g85-${{ matrix.lane }}
+          path: g85-${{ matrix.lane }}.json
+
+  aggregate:
+    needs: lane
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: g85-*
+          path: raw
+          merge-multiple: true
+      - name: Apply frozen aggregate
+        shell: python
+        run: |
+          import json, pathlib, sys
+          expected={
+            'A':'D_EXACT_REFERENCE_LEAKAGE_BOUNDARY_SCOPED',
+            'B':'D_REFERENCE_CONDITIONING_DEGRADES_TO_SAME_SHAPE_LIMIT_SCOPED',
+            'C':'D_REFERENCE_GAIN_AND_RETARDED_SOURCE_ROBUSTNESS_SCOPED',
+            'D':'D_REFERENCE_PRECISION_AND_FALSE_REFERENCE_CONTROLS_SCOPED'}
+          rows={}
+          for p in pathlib.Path('raw').glob('g85-*.json'):
+            r=json.loads(p.read_text()); rows[r['stream']]=r
+          valid=(set(rows)==set(expected) and all(rows[k].get('valid') and rows[k].get('classification')==v for k,v in expected.items()))
+          out={'valid':valid,'lane_classifications':{k:rows[k]['classification'] for k in sorted(rows)},'classification':'D_REFERENCE_CONSTRUCTION_REMAINS_IDENTIFIABLE_UNDER_FROZEN_LEAKAGE_UNTIL_SAME_SHAPE_LIMIT_SCOPED' if valid else 'INFRASTRUCTURE_OR_GATE_INVALID','scientific_status':'PASS_SCOPED_CONSTRUCTION_ROBUSTNESS' if valid else 'INVALID','readiness':66,'theory_established':0,'scope_lock':'Frozen imperfect-decoupling construction family only; no physical retarded source-preparation, leakage-control or calibration-achievability claim.'}
+          pathlib.Path('g85-aggregate.json').write_text(json.dumps(out,indent=2,sort_keys=True))
+          if not valid: sys.exit(2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g85-aggregate
+          path: g85-aggregate.json
