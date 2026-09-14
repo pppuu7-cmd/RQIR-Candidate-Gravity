@@ -5,9 +5,9 @@
   "current_version": "RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED",
   "programme_label": "CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY",
   "rsc_status": "NEAR_SURVIVOR_NOT_SELECTED",
-  "latest_scientific_gate": "RSC_NEW_AXIOM_ANCHOR_BUDGET_PREOUTCOME_GATE",
-  "latest_scientific_classification": "RSC_NO_NEW_MODEL_DEFINING_AXIOM_INDEPENDENTLY_ANCHORED_PREOUTCOME_SCOPED",
-  "latest_structural_result": "STRONG_STRUCTURAL_ANCHORS_EXIST_BUT_NO_LEVELIII_MODEL_SELECTOR_SCOPED",
+  "latest_scientific_gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
+  "latest_scientific_classification": "NO_SPIN2_CONSISTENCY_PREMISE_CLASS_FORCED_BY_CURRENT_RQIRCG_SCOPED",
+  "latest_structural_result": "SPIN2_RIGIDITY_IS_PREMISE_CLASS_DEPENDENT_AND_CURRENT_PARENT_DOES_NOT_SELECT_THE_PREMISE_CLASS_SCOPED",
   "latest_integration_classification": "RQIRCGSF_STRUCTURAL_OBLIGATIONS_IMPORTED_WITH_HISTORICAL_VERSION_LOCK",
   "historical_rcg002_changed": false,
   "anchor_budget": {
@@ -18,6 +18,23 @@
     "E_operational_reduction_causal": 2
   },
   "strongest_candidate": "CGD2_CONSISTENT_GAUGE_DEFORMATION_TWO_DERIVATIVE_SPIN2",
+  "spin2_premise_audit": {
+    "gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
+    "prereg_commit": "d6a16827464a5ed9da97790b10784068c7d59087",
+    "theorem_notes_commit": "4114a3135cdfac1b6c61627a5a2aeed0dc6fdc89",
+    "terminal_commit": "2c92ff91227971507e510c180c57611bc8c516ee",
+    "ledger_commit": "2a74883096b5a3c59691603e13b686a581df86ab",
+    "route_verdicts": {
+      "P1_LAG2_local_action_offshell_deformation": "PARTIALLY_ANCHORED_CONDITIONAL",
+      "P2_SFT2_asymptotic_soft_smatrix_constructibility": "NOT_FORCED_BY_CURRENT_RQIRCG",
+      "P3_RHD2_canonical_hypersurface_deformation": "NOT_FORCED_BY_CURRENT_RQIRCG"
+    },
+    "authorized_levelIII_survivor_count": 0,
+    "ab1_candidate_C_after": "CGD2_REMAINS_CONDITIONAL_LEVELIII_ACTUAL_LEVELII",
+    "new_structural_fact": "THEOREM_STRENGTH_NE_PREMISE_AUTHORITY",
+    "remaining_gap": "REPRESENTATION_CLASS_SELECTION_GAP_SCOPED",
+    "einstein_dynamics_import_authorized": false
+  },
   "structural_import": {
     "source_repo": "pppuu7-cmd/RQIRCG-structural-findings",
     "source_head": "9eb6c8821c285a13d63a7a3d6859d2c1e0db2157",
@@ -65,7 +82,8 @@
   "theory_established_percent": 0,
   "chi_ABC_status": "UNAUTHORIZED_NOT_COMPUTED",
   "new_version_authorized": false,
-  "exact_next_gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
+  "exact_next_gate": "RSC_ARCHITECTURE_DISPOSITION_PREOUTCOME_GATE",
+  "next_gate_type": "PROGRAMME_DISPOSITION_PREOUTCOME",
   "rqircgsf_next_fronts": {
     "theory": "INDEPENDENT_QUANTUM_LAW_SELECTOR_ON_SF025_MATCHING_FIBRE",
     "operational": "BOUNDARY_COMPLETE_FINITE_TIME_PROTOCOL_NEWTONIAN_1PN_OBSERVABLE_COMPARISON"
@@ -83,6 +101,10 @@
     "NO_CONNECTED_SIGNAL_EQUALS_NEW_THREE_BODY_VERTEX",
     "NO_OPEN_ACTION_EQUALS_MEASURED_CHI_ABC",
     "NO_POST_HOC_BOUNDARY_PROTOCOL_SELECTION",
-    "NO_SUCCESSOR_PROMOTION_WITHOUT_SUCCESSOR_PROMOTION_GATE"
+    "NO_SUCCESSOR_PROMOTION_WITHOUT_SUCCESSOR_PROMOTION_GATE",
+    "NO_THEOREM_CONCLUSION_AS_AUTHORITY_FOR_ITS_PREMISES",
+    "NO_MINIMAL_DYNAMICS_EQ_LOCAL_ACTION_WITHOUT_AUTHORITY",
+    "NO_OPERATIONAL_CAUSALITY_EQ_SMATRIX_WITHOUT_AUTHORITY",
+    "NO_RELATIONAL_DISCIPLINE_EQ_HKT_CANONICAL_PREMISES_WITHOUT_AUTHORITY"
   ]
 }
