@@ -1,95 +1,125 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / NEW_CANDIDATE_VERSION_PRINCIPLE_FRONTIER`
+Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / NEW_RCG002_VERSION_PRINCIPLE_TRIAGE_FRONTIER`
 
 ## Canonical status
-- Active seed: `RCG-002 Relational controlled-phase channel`.
+
+- Active seed lineage: `RCG-002 Relational controlled-phase channel`.
+- Current frozen version classification: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
+- Programme label: `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
 - Programme readiness: **66%**; theory established: **0%**. These are bookkeeping labels, not probabilities.
+- Physical selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`.
+- Physical nonlinear completion space: **UNDEFINED**.
 - Scientific authority: newest `main`, this recovery file, dedicated RQIR-CG ledger/addenda, terminal notes, and validated Actions artifacts.
-- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_CM1_ADDENDUM.md`.
+- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_VB1_ADDENDUM.md`.
 - Legacy mixed-project ledgers are not scientific authority. `recovery/state.json` remains absent.
 - Independence lock remains active: no QGR/MSQGR/CRQN/KMQGB/RQIR/ISQGR candidate dynamics or preferred coefficients may be imported as selection principles.
 
-## Latest terminal — CM1 closed sequential mediator realization
+## Latest terminal — VB1 current-version generative-axiom sufficiency
 
-Classification: `NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`.
-Overall physical status: `RCG002_REQUIRES_NEW_NONLINEAR_PRINCIPLE`.
-Physical selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`.
+Classification:
+
+`RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
+
+Programme consequence:
+
+`CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
 
 Authority:
-- preregistration `1e1c6556b42769cb1d0ce67e964c7f151351ec1c`;
-- implementation `74caef5d4bba0a6a7106f68ab2efc3f44a543744`;
-- production `6f45a31a3259000a3e3b832f616c03d74563767b`;
-- run `34861269613`, attempt 1;
-- jobs A/B/C/D/aggregate `104033804455 / 104033804121 / 104033804463 / 104033804464 / 104033938938`;
-- artifacts A/B/C/D/aggregate `10355225608 / 10354464514 / 10354769236 / 10354469412 / 10354769307`;
-- raw summary commit `391c4920438900414a3d885c4ac03882eb65fc72`, `results/raw/RCG002_CM1_RAW_SUMMARY.json`;
-- terminal commit `ed446b2accee10a7d417df5d6580926a42d97126`, `results/RCG002_CM1_CLOSED_SEQUENTIAL_MEDIATOR_TERMINAL.md`;
-- clean-ledger addendum `b0563468e593b5080aa5c6650b8a62793ea68b57`.
 
-Verified artifact ZIP SHA256:
-- A `c3546d9d8260833c60dc14dad171b1c9e72621b7f67f3401997ca801ecd57d08`;
-- B `05e02a2cc84a36745404b952f771c411346ca988a8f19df22cc48c2f1a06f0b3`;
-- C `45a24e7ed51af79045d90cf61e91acfbddc3bdaa3b63aec96905d74d16ba014e`;
-- D `cb9e3eb013d71125f06fc9da774e124448c14a5f6bcdc0b8525a0212b67a3b7d`;
-- aggregate `3a042de0435f945d54f446732562d15cbd042a80cbeb3f36333ecbf9bc927c02`.
+- preregistration `2d300cd463a5209985bc13bd718154031f36c6b2`, `prereg/RCG002_VB1_CURRENT_VERSION_GENERATIVE_AXIOM_SUFFICIENCY.md`;
+- terminal `41fb9aa3333d6ccd7204911abb3dee0a3e63d5fd`, `results/RCG002_VB1_CURRENT_VERSION_BOUNDARY_TERMINAL.md`;
+- clean-ledger addendum `97ffd1ba2786399322319e859956d4027a7fb90e`, `research_log/RQIRCG_RESEARCH_LEDGER_VB1_ADDENDUM.md`.
 
-All four individual raw lane JSON objects equal their aggregate copies. Green CI was not used as scientific classification.
+VB1 is an exact authority/logic gate; no new numerical production artifact was required.
 
-### CM1 exact result
+### VB1 exact result
 
-Use three binary internal source labels and a four-level bus initially in `|0>`. With cyclic bus shift `S`, each source X=A,B,C acts only through the two-body source-bus controlled shift
+The prospectively frozen current-version authority universe was exhaustively audited under a deliberately weak definition of a qualifying nonlinear generator. A qualifying rule had only to identify a physical state/field object, source/preparation input or map, a nonlinear evolution/influence rule beyond the linear/Gaussian baseline, and at least one genuinely connected nonlinear observable fixed without a free connected coefficient/function.
 
-`V_X = |0><0|_X tensor I_M + |1><1|_X tensor S_M`.
+The audit found:
 
-The frozen sequence is
+1. **RCG-002 seed** — operational controlled-phase architecture only. It explicitly states that no microscopic formula for `chi` is asserted and that future source/distance/time/`G`/`hbar` dependence must be derived rather than fitted.
+2. **Construction contract** — admissibility gates and search order, not a nonlinear evolution law.
+3. **Covariant baseline v0** — a real linearized generator `Box bar h = -(16*pi*G/c^4) T` plus retarded weak-field/Gaussian baseline. It explicitly supplies no nonlinear metric completion or `Delta Gamma` and leaves nonlinear diffeomorphism/Bianchi closure unresolved.
+4. **G97** — closed probe+apparatus source-preparation and total-momentum bookkeeping only; not nonlinear gravity.
+5. **NP1** — operational connected phase/noise nonuniqueness theorem; `lambda`/`gamma` allowed but not selected.
+6. **CM1** — closed sequential mediator nonuniqueness theorem; mediator phase `lambda` remains calibration structure, not candidate physics.
+7. **Recovery frontier** — explicitly requires new candidate-owned source/state/evolution information.
 
-`V_A -> V_B -> V_C -> P_lambda -> V_C^-1 -> V_B^-1 -> V_A^-1`,
+Therefore no current authoritative object qualifies as a nonlinear source/state/evolution generator.
 
-with bus-only `P_lambda=diag(1,1,1,exp(i lambda))`.
+### Linear-baseline control
 
-For every branch `(a,b,c)` and every real symbolic `lambda`, exact computation gives
+For an affine three-source family
 
-`U |abc>|0>_M = exp(i lambda a b c) |abc>|0>_M`.
+`J(a,b,c)=J0+a A+b B+c C`
 
-Therefore:
-- mediator reset is exact for all eight branches;
-- no final which-branch record remains in the mediator;
-- no direct A-B/A-C/B-C or primitive three-source gate is used;
-- every coordinate lower face `a=0`, `b=0`, `c=0` is exactly identity;
-- the connected Boolean third finite difference is `lambda`;
-- every constant/one-/two-body phase basis term has connected third finite difference zero;
-- omitting any one source interaction kills the connected phase;
-- moving the phase gate before the C interaction kills the connected phase;
-- putting the phase on bus level 2 contaminates lower two-source faces and is rejected.
+and any linear-plus-quadratic functional
 
-The source-bus primitives and bus phase are exactly unitary. If labels/bus are spatial-translation neutral, the operations commute with the inherited G97 total translation generator by tensor-factor separation.
+`W2[J]=C+L[J]+(1/2)B[J,J]`,
 
-Important qualification: the controlled shifts commute, so reversing only the uncompute order leaves the operation unchanged. Thus CM1 establishes only `FINITE_ORDERED_CIRCUIT_CAUSALITY_ONLY`, not relativistic microcausality or spacetime retardation.
+the Boolean expansion contains only
 
-### Scientific interpretation
+`1,a,b,c,ab,ac,bc`.
 
-CM1 strengthens NP1: even a single finite mediator, only two-body source-mediator controls, exact mediator closure, exact lower-face recovery, unitary primitives, finite circuit ordering, and inherited total-translation bookkeeping still leave a continuum of connected phases parametrized by arbitrary `lambda`.
+Hence exactly
 
-Therefore **existence of a mediator, mediator closure, and circuit-level causal ordering are not sufficient RCG-002 nonlinear selection principles**.
+`Delta_A Delta_B Delta_C W2 = 0`.
 
-The bus is an adversarial calibration object, not gravity. Its bus-only phase `P_lambda` is exactly the additional unfixed dynamical information; current RCG-002 principles do not derive it.
+A synthetic symmetric cubic control `W3=(1/6)C3[J,J,J]` gives
 
-CM1 does NOT establish a physical source-history map, relativistic locality, energy/nonlinear stress-energy conservation, nonlinear Bianchi/diffeomorphism closure, a physical influence kernel, or a physical completion-space dimension.
+`Delta_A Delta_B Delta_C W3 = C3[A,B,C]`,
+
+showing that the audit would recognize genuinely nonlinear information when present. The cubic control is classifier calibration only and is not candidate physics.
+
+The quadratic null is only `SCOPED_LINEAR_BASELINE_CONNECTED_NULL_CONTROL`. It is not a physical prediction that the full RCG-002 three-source signal must vanish because the physical nonlinear source map and nonlinear completion are not defined.
+
+### Model-theoretic non-entailment witnesses
+
+VB1 reused already-terminal NP1/CM1 results rather than opening a new arbitrary completion scan.
+
+- NP1: distinct real `lambda` values at fixed admissible base channel and fixed `gamma` preserve the tested lower faces and normalized positive Schur-channel constraints while changing the connected phase.
+- NP1: distinct `gamma>=0` at fixed `lambda` preserve the same tested lower faces/positivity constraints while changing connected coherence magnitude.
+- CM1: distinct mediator phases `lambda` use the same single closed mediator, the same source-mediator primitive type, exact mediator reset, exact lower-face recovery, and the same inherited translation bookkeeping while changing the connected phase.
+
+These are exact countermodels only to their stated operational/mediator sufficiency claims. They are not promoted to physical relativistic gravitational models.
+
+### Version-boundary theorem
+
+Because the current frozen version contains no nonlinear generating map, while its tested structural constraints admit inequivalent connected responses, any future rule that fixes the connected response introduces genuinely additional candidate-owned information.
+
+Therefore such a rule must be introduced **prospectively as a new RCG-002 candidate version before its connected outcome is inspected**. It may not be appended retroactively as a fitted `lambda`, `gamma`, mediator phase, cubic vertex, EFT coefficient, or phenomenological kernel.
+
+This is a current-version boundary theorem, not a theorem that no future RCG-002 descendant can exist.
+
+## Retained CM1 terminal
+
+CM1 remains authoritative:
+
+`NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`.
+
+A single four-level mediator, only two-body source-mediator controls, exact mediator closure, exact lower-face recovery, unitary primitives, finite ordered-circuit structure, and inherited total-translation bookkeeping still leave arbitrary connected phase `lambda`.
+
+CM1 establishes only `FINITE_ORDERED_CIRCUIT_CAUSALITY_ONLY`, not spacetime microcausality or retarded relativistic dynamics.
+
+Terminal note: `results/RCG002_CM1_CLOSED_SEQUENTIAL_MEDIATOR_TERMINAL.md`; run `34861269613`.
 
 ## Retained NP1 terminal
 
-NP1 remains authoritative and unchanged:
-`RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`, overall `RCG002_REQUIRES_NEW_NONLINEAR_PRINCIPLE`.
+NP1 remains authoritative:
 
-NP1 showed that CPTP/positivity, exact lower-face recovery, lower-body phase quotient, G97 total translation, and abstract finite-time evolution leave at least two independent operational directions in its frozen family: connected phase and connected dephasing. That `>=2` lower bound is NOT a physical gravitational completion-space dimension.
+`RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`.
 
-Terminal note: `results/RCG002_NP1_CONNECTED_CHANNEL_EXTENSION_TERMINAL.md`; production run `34816931926`.
+Normalized CPTP/positivity, exact lower-face recovery, lower-body phase quotient, G97 total translation, and abstract finite-time evolution leave at least two independent **operational** directions in the frozen family: connected phase and connected dephasing. This is not a physical gravitational completion-space dimension.
+
+Terminal note: `results/RCG002_NP1_CONNECTED_CHANNEL_EXTENSION_TERMINAL.md`; run `34816931926`.
 
 ## Retained NCP1 terminal
 
 NCP1 remains authoritative and unchanged:
+
 - `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`;
 - `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`;
 - `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`;
@@ -100,39 +130,44 @@ Production run `34792497014`; terminal note `results/RCG002_NCP1_NOISY_COMPLETIO
 ## Retained G97 prerequisite
 
 `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`.
-G97 closes classical probe+apparatus total-momentum preparation bookkeeping only. It is not nonlinear gravity, energy conservation, or Bianchi closure.
+
+G97 closes a real classical source-preparation prerequisite: probe and apparatus/support can be treated together with exact total-momentum conservation. It does not define the nonlinear gravitational law, nonlinear energy/stress-energy conservation, Bianchi closure, or a physical influence kernel.
 
 ## Physical nonlinear completion space
 
 **Undefined.**
 
-G90/G91 witness coordinates, G92 shell qualifications, NCP1 noise coordinates, NP1 lambda/gamma coordinates, and the CM1 bus `lambda` are not automatically physical gravitational degrees of freedom. No physical field/source/readout equivalence quotient has been derived.
+G90/G91 witness coordinates, G92 shell qualifications, NCP1 noise coordinates, NP1 `lambda/gamma`, and CM1 bus `lambda` are not automatically physical gravitational degrees of freedom. No physical field/source/readout equivalence quotient has been derived.
 
-Therefore do not declare a physical dimension or selector rank from these formal coordinates.
+Do not convert operational coordinates into a physical dimension, and do not convert the absence of a physical map into selector rank zero.
 
 ## Exact next admissible fundamental gate
 
-**NEW CANDIDATE VERSION PRINCIPLE GATE.**
+**`NEW_RCG002_VERSION_PRINCIPLE_PROPOSAL_AND_PREOUTCOME_TRIAGE`.**
 
-The current RCG-002 version has reached a genuine model-definition boundary. CM1 removes another structural escape: merely postulating a mediator, demanding pairwise source-mediator couplings, exact mediator reset, or finite ordered-circuit causality cannot fix the connected response.
+The current version is terminal at the nonlinear model-definition boundary. The next substantive research object must therefore be a **prospectively new candidate version**, not a hidden repair of the current one.
 
-The next admissible substantive step is exactly one independently motivated candidate-owned physical source/state/evolution principle, frozen before its connected-phase outcome is inspected. A prospective new version must specify in one realization:
+Before any connected-phase/noise outcome is computed, compare a small set of independently motivated candidate-owned physical principles using only pre-outcome criteria. The triage must prioritize:
 
-1. physical field/state degrees of freedom;
-2. source preparation and G97 closed total-source -> physical field/history map;
-3. nonlinear evolution equation or influence/state rule;
-4. nonlinear conservation and Bianchi/constraint compatibility;
-5. spacetime retarded/microcausal structure appropriate to its scope;
-6. positive influence kernel or justified coherent/noisy factorization;
-7. recovery of the validated pairwise weak-field branch;
-8. connected phase/noise observables derived without fitting `lambda`, `gamma`, a mediator phase, or an equivalent free connected coefficient.
+1. derivability/motivation from RCG-002 relational and operational commitments rather than a desired `chi`;
+2. explicit physical field/state degrees of freedom;
+3. G97 closed total-source -> physical field/history map;
+4. a nonlinear evolution/influence law;
+5. nonlinear conservation and Bianchi/constraint compatibility;
+6. spacetime retarded/microcausal definability appropriate to scope;
+7. positive state/influence evolution or justified coherent/noisy factorization;
+8. recovery of the validated pairwise weak-field branch;
+9. parsimony and absence of imported candidate dynamics;
+10. ability, once selected prospectively, to derive connected observables without fitting a free connected coefficient.
 
-Do not run another arbitrary channel scan, mediator variant, ancilla dimension scan, cumulant scan, rank table, or covariance lift as a substitute for this missing physical principle.
+Do not choose a principle because it gives a large, elegant, nonzero, or convenient connected phase. Do not import standard GR/EFT nonlinear dynamics as a candidate-owned selector; standard theory may be used only as an explicit baseline/comparator unless independently re-derived under the construction contract and separately labelled.
 
-If no independently motivated RCG-002 principle can be supplied, terminalize the current version as `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`. Any added law must then be labelled a prospectively new candidate version, not a retroactive repair.
+Do not run another arbitrary channel scan, mediator/ancilla variant, cumulant scan, rank table, covariance lift, or coefficient fit in place of this gate.
 
 ## Open layers and locks
 
-Still open: candidate-owned nonlinear dynamics; nonlinear stress-energy/Bianchi/constraint closure; physical source-to-history map; spacetime causality; physical completion quotient; state/measure completion; externally anchored prediction.
+Still open for any future version: physical nonlinear source/state/evolution law; nonlinear stress-energy/Bianchi/constraint closure; physical source-to-history map; spacetime causality; physical completion quotient; state/measure completion; external/comparator discrimination; externally anchored prediction.
 
-Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002, universal classical/semiclassical/noisy no-go, family-wide uniqueness, or green-CI-as-physics. Historical G72-G97/CPI1/NCP1/NP1 results and duplicate-G93 quarantine remain intact.
+Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002, universal classical/semiclassical/noisy no-go, family-wide uniqueness, or green-CI-as-physics.
+
+Historical G72-G97/CPI1/NCP1/NP1/CM1 results and duplicate-G93 quarantine remain intact.
