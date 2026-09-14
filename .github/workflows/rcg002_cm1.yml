@@ -1,0 +1,76 @@
+name: RCG002 CM1 closed sequential mediator audit
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'prereg/RCG002_CM1_CAUSAL_MEDIATOR_REALIZATION_NONUNIQUENESS.md'
+      - 'scripts/rcg002_cm1_closed_mediator.py'
+      - '.github/workflows/rcg002_cm1.yml'
+  workflow_dispatch:
+
+jobs:
+  lanes:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        lane: [A, B, C, D]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen symbolic dependency
+        run: python -m pip install --disable-pip-version-check 'sympy==1.14.0'
+      - name: Verify prospective chronology
+        run: |
+          git merge-base --is-ancestor 1e1c6556b42769cb1d0ce67e964c7f151351ec1c HEAD
+          git merge-base --is-ancestor 74caef5d4bba0a6a7106f68ab2efc3f44a543744 HEAD
+          test -f prereg/RCG002_CM1_CAUSAL_MEDIATOR_REALIZATION_NONUNIQUENESS.md
+          test -f scripts/rcg002_cm1_closed_mediator.py
+      - name: Execute frozen independent lane
+        run: |
+          mkdir -p out
+          python scripts/rcg002_cm1_closed_mediator.py --lane "${{ matrix.lane }}" --out "out/cm1_${{ matrix.lane }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cm1-${{ matrix.lane }}
+          path: out/cm1_${{ matrix.lane }}.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: lanes
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'sympy==1.14.0'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cm1-*
+          path: raw
+          merge-multiple: true
+      - name: Require exactly four terminal lane payloads
+        run: |
+          test "$(find raw -maxdepth 1 -name 'cm1_*.json' | wc -l)" -eq 4
+          test -f raw/cm1_A.json
+          test -f raw/cm1_B.json
+          test -f raw/cm1_C.json
+          test -f raw/cm1_D.json
+      - name: Aggregate only after all lanes terminal
+        run: |
+          python scripts/rcg002_cm1_closed_mediator.py \
+            --aggregate raw/cm1_A.json raw/cm1_B.json raw/cm1_C.json raw/cm1_D.json \
+            --out cm1_aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cm1-aggregate
+          path: cm1_aggregate.json
+          if-no-files-found: error
