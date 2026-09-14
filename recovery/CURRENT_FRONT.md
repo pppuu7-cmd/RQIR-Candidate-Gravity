@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / V2P1_NO_PREOUTCOME_PRINCIPLE_SELECTED_TERMINAL / RSC1_INTERFACE_PACKAGE_NOT_CLOSED_TERMINAL / RSC_SSE1_SOURCE_STRESS_PREREQUISITE_BLOCKED_TERMINAL / RSC_CSA1_SOURCE_ACTION_OBJECT_UNDERDEFINED_TERMINAL / RSC_SCPT1_NO_SOURCE_CONSTITUTION_SELECTED_TERMINAL / RSC_QCPT1_NO_QUANTUM_CONSTITUTION_SELECTED_TERMINAL / RSC_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_PREOUTCOME_FRONTIER`
+Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / V2P1_NO_PREOUTCOME_PRINCIPLE_SELECTED_TERMINAL / RSC1_INTERFACE_PACKAGE_NOT_CLOSED_TERMINAL / RSC_SSE1_SOURCE_STRESS_PREREQUISITE_BLOCKED_TERMINAL / RSC_CSA1_SOURCE_ACTION_OBJECT_UNDERDEFINED_TERMINAL / RSC_SCPT1_NO_SOURCE_CONSTITUTION_SELECTED_TERMINAL / RSC_QCPT1_NO_QUANTUM_CONSTITUTION_SELECTED_TERMINAL / RSC_MAPF1_PACKAGE_SCHEMA_ONLY_TERMINAL / RSC_NEW_AXIOM_ANCHOR_BUDGET_PREOUTCOME_FRONTIER`
 
 ## Canonical status
 
@@ -9,159 +9,186 @@ Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_
 - Current frozen version: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
 - Programme label: `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
 - RSC status: `NEAR_SURVIVOR_NOT_SELECTED`.
-- Latest source-side classification: `NO_PREOUTCOME_SOURCE_CONSTITUTION_SELECTED`.
-- Latest quantum-side classification: `NO_PREOUTCOME_QUANTUM_CONSTITUTION_SELECTED`.
-- Combined structural result: `RSC_CURRENT_PRINCIPLE_PACKAGE_REQUIRES_MULTIPLE_NEW_MODEL_DEFINING_AXIOMS_SCOPED`.
+- Latest package classification: `RSC_PACKAGE_SCHEMA_ONLY_MODEL_DEFINITION_INCOMPLETE`.
+- Latest structural result: `CRVQ_FORMAL_CLOSURE_DOES_NOT_FIX_INDEPENDENT_SOURCE_AND_STATE_DATA_SCOPED`.
+- Retained source-side classification: `NO_PREOUTCOME_SOURCE_CONSTITUTION_SELECTED`.
+- Retained quantum-side classification: `NO_PREOUTCOME_QUANTUM_CONSTITUTION_SELECTED`.
 - Programme readiness: **66%**; theory established: **0%**. These are bookkeeping labels, not probabilities.
 - Physical selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`.
 - Physical nonlinear completion space: **UNDEFINED**.
-- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_RSC_QCPT1_ADDENDUM.md`.
+- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_RSC_MAPF1_ADDENDUM.md`.
 - Scientific authority: newest `main`, this recovery file, dedicated clean-ledger addenda, terminal notes, and validated Actions artifacts.
 - Independence lock remains active: no QGR/MSQGR/CRQN/KMQGB/RQIR/ISQGR candidate dynamics or preferred coefficients may be imported as RCG-002 selectors.
 
-## Latest terminal — RSC-QCPT1 quantum constitution principle triage
+## Latest terminal — RSC-MAPF1 minimal multi-axiom package formation
 
 Final classification:
 
-`NO_PREOUTCOME_QUANTUM_CONSTITUTION_SELECTED`.
+`RSC_PACKAGE_SCHEMA_ONLY_MODEL_DEFINITION_INCOMPLETE`.
 
 Secondary structural result:
 
-`RSC_QUANTUM_SIDE_REQUIRES_NEW_STATE_MEASURE_CONSTITUTION_SCOPED`.
-
-Combined with SCPT1:
-
-`RSC_CURRENT_PRINCIPLE_PACKAGE_REQUIRES_MULTIPLE_NEW_MODEL_DEFINING_AXIOMS_SCOPED`.
+`CRVQ_FORMAL_CLOSURE_DOES_NOT_FIX_INDEPENDENT_SOURCE_AND_STATE_DATA_SCOPED`.
 
 Authority:
 
-- preregistration commit `4111ab9504ed77398c3a947f276c254132bfc1ce`, file `prereg/RCG002_RSC_QCPT1_QUANTUM_CONSTITUTION_PRINCIPLE_TRIAGE_PREOUTCOME.md`;
-- terminal commit `7256a885c05c470079a616d18de7f8750280ab37`, file `results/RCG002_RSC_QCPT1_QUANTUM_CONSTITUTION_TRIAGE_TERMINAL.md`;
-- clean-ledger addendum commit `cdfad617a4404c72af22d3018684dd132f1db06a`, file `research_log/RQIRCG_RESEARCH_LEDGER_RSC_QCPT1_ADDENDUM.md`.
+- preregistration commit `2e5b573a5a8fca461df73fbfcd59b9633fe76b52`, file `prereg/RCG002_RSC_MAPF1_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_PREOUTCOME.md`;
+- terminal commit `8641e1e06fa2d122f2e726f44a13cb3f05f5b486`, file `results/RCG002_RSC_MAPF1_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_TERMINAL.md`;
+- clean-ledger addendum commit `f7ee669745e4e88ea80aacf75dce7b528adba8dd`, file `research_log/RQIRCG_RESEARCH_LEDGER_RSC_MAPF1_ADDENDUM.md`.
 
 No `chi_ABC`, connected phase/noise outcome, novelty observable, preferred nonlinear coefficient, or held-out connected result was computed or used.
 
-### Frozen proposal set and verdicts
+### CRVQ package skeleton
 
-1. `UCQ — Unified Closed Quantization`: `REJECT_MISSING_ACTION_STATE_MEASURE_AND_CTP_CONSTITUTION`.
-2. `PCF — Pure Coherent Factorization`: `REJECT_RANK_ONE_FORM_DOES_NOT_FIX_NONLINEAR_PHASE_FUNCTIONAL`.
-3. `GQC — Gaussian Quadratic Closure`: `REJECT_LINEAR_GAUSSIAN_BASELINE_NOT_NONLINEAR_RSC_CONSTITUTION`.
-4. `MPE — Minimum Positive Extension`: `REJECT_MINIMUM_NOISE_LEAVES_COHERENT_EXTENSION_UNFIXED`.
+MAPF1 assembled the strongest current principle-level clauses into a Closed Relational Variational-Quantum schema:
 
-Mandatory survivor count: **0**.
+1. closed realization completeness;
+2. unified variational source/self-source;
+3. minimal local covariance and exact linearized recovery;
+4. complete quantum preparation constitution;
+5. derived normalized positive operational influence;
+6. exact G97/weak-field recovery;
+7. independent-construction firewall.
 
-### Exact new state-dependence certificate
+This architecture is coherent but is not a physical package because mandatory model-defining slots remain unresolved.
 
-For fixed branch/history controlled microscopic dynamics
+### Unresolved mandatory slots
 
-`U=sum_x |x><x| tensor U_x`
+Current authority still lacks exact objects/rules for:
 
-and any initial unobserved density operator `rho_E`, the reduced coherence multiplier is
+- local probe physical fields/worldline+internal constitution;
+- local apparatus/support/control/binding ontology;
+- source/action physical representation;
+- allowed curvature/nonminimal operators and coefficient-fixing rule;
+- nonlinear carrier action/self-source;
+- executable conservation/constraint/Bianchi route;
+- physical unobserved quantum state/measure/boundary rule;
+- exact CTP/unitary/reduction map in the nonlinear realization.
 
-`K_rho(x,y)=Tr[rho_E U_y^dagger U_x]`.
+The lower-order recovery targets are exact, but no complete package exists from which to derive them.
 
-Every `rho_E` gives a normalized PSD kernel. Exact two-level control:
+### Source-side package calibration
 
-`U_0=I`, `U_1=Z`.
+The preregistered synthetic family
 
-- `rho_E=|0><0|` gives `K=[[1,1],[1,1]]`;
-- `rho_E=|+><+|` gives `K=[[1,0],[0,1]]`.
+`S_xi[g,phi] = Integral sqrt(-g)[-1/2 (partial phi)^2 - V(phi) - (xi/2) R phi^2]`
 
-Thus exactly the same microscopic controlled unitary can yield different normalized positive operational influence maps solely because the initial unobserved quantum state differs.
+has identical exact flat-space matter equations for all `xi`; `xi` is dimensionless and adds no new dimensional scale. Its flat-background variational stresses differ by
 
-Therefore even a completely fixed microscopic unitary/dynamics does not determine the operational quantum map unless the candidate also fixes the physical state/measure/coarse-graining constitution.
+`Delta T_mn = Delta xi (eta_mn Box - partial_m partial_n) phi^2`,
 
-This is a mathematical control, not an RCG-002 environment model.
+an identically conserved improvement.
 
-### Pure-factorization certificate
+Therefore the formal requirements `one action + covariance + two-derivative calibration + no new scale + same flat matter dynamics` do not by themselves choose the physical local source. A fixed physical ontology/representation and coupling rule are still required.
 
-For any phase assignment `Phi_x`, `K(x,y)=exp(i[Phi_x-Phi_y])` is unit-diagonal rank-one PSD. Adding any real phase deformation that vanishes on all already-frozen lower-order history domains preserves those lower-order restrictions while changing only unfixed higher-history phases. Therefore pure coherent/rank-one form does not itself select the nonlinear phase functional.
+This is calibration only, not RCG-002 matter physics.
 
-### Minimum-noise certificate
+### Quantum lower-domain package calibration
 
-NP1's already-authoritative family has `gamma>=0` as an added decoherence coordinate and an independent coherent `lambda` coordinate. At minimum added decoherence `gamma=0`, the coherent `lambda` freedom remains. Thus minimum-noise selection is insufficient even before a physical gravitational realization is defined.
+Freeze a real history selector `q_x` that vanishes on every already-authorized lower-order domain and fixed microscopic dynamics
 
-No new NP1 connected observable was computed in QCPT1.
+`U_x = exp(i alpha q_x Z)`
 
-## Combined model-definition consequence
+with frozen nonzero `alpha`.
 
-RSC1 showed two independent interfaces were missing. SCPT1 and QCPT1 now triage both interfaces under current authority:
+For the pure state `rho_0=|0><0|`,
 
-1. **source side** — no current-authority source constitution principle selects physical degrees, allowed local couplings, local total source and carrier self-source;
-2. **quantum side** — no current-authority quantum constitution principle selects the physical state/measure/influence object, even if one grants fixed microscopic dynamics.
+`K_0(x,y)=exp(i alpha[q_x-q_y])`.
 
-The missing content is therefore not one nonlinear coefficient. A viable RSC descendant requires at least a prospectively specified coupled model-definition package containing both a microphysical source/action constitution and a quantum state/measure/influence constitution.
+For the pure state `rho_plus=|+><+|`,
 
-This is not a claim about the number of fundamental laws in nature and not a universal no-go theorem.
+`K_plus(x,y)=cos(alpha[q_x-q_y])`.
 
-## Retained source-side chain
+Both are normalized PSD reduced kernels from exactly the same unitary dynamics. On every authorized lower-order domain `q_x=q_y=0`, so both reduce exactly to `K=1`; outside that domain they can differ.
 
-### RSC-SCPT1
+Thus `closed + unitary + pure + positive + exact lower-order recovery` does not select the physical unobserved state or higher reduced map.
 
-`NO_PREOUTCOME_SOURCE_CONSTITUTION_SELECTED` with secondary result `RSC_SOURCE_SIDE_REQUIRES_NEW_MODEL_DEFINING_ONTOLOGY_SCOPED`.
+No connected RCG-002 observable was evaluated from this control.
 
-Frozen proposals MGC/GML/OSQ/UVC all failed at least one mandatory source-definition criterion. Minimal coupling needs a prior physical field ontology; G97 collective mechanics does not determine local covariant source structure; an operational nonlinear quotient is circular without the missing source-to-carrier-to-readout map; one-action structure does not select the action.
+### Combined structural certificate
 
-### RSC-CSA1
+The source-side calibration changes a local source/action datum without choosing the quantum state. The state calibration changes the reduced operational map without changing the microscopic unitary and does not depend on the source calibration.
 
-`BLOCKED_SOURCE_ACTION_OBJECT_UNDERDEFINED` with scoped result `CLOSED_VARIATIONAL_SOURCE_RULE_NOT_UNIQUE_WITHOUT_CONSTITUTIVE_CURVATURE_COUPLING_RULE_SCOPED`.
+They therefore occupy logically independent model-definition slots. Their Cartesian-product use is only a synthetic sufficiency test.
 
-### RSC-SSE1
+Do **not** infer a two-dimensional physical completion space. Physical nonlinear completion space remains `UNDEFINED`; selector rank remains `UNDEFINED_PHYSICAL_MAP_MISSING`.
+
+### Why obvious words do not complete the package
+
+- `minimal coupling`: basis/ontology rule missing;
+- `one closed action`: action and field content still unspecified;
+- `prepared pure state`: observed preparation does not fix unobserved carrier/environment state;
+- `vacuum / no incoming state`: no nonlinear Hamiltonian/constraint quantization and boundary theorem select a unique state;
+- `trace the environment`: subsystem/state/dynamics split still missing.
+
+A package can be made syntactically complete only by stipulating new content. MAPF1 does not authorize choosing such content merely because it removes a blocker.
+
+## Retained RSC chain
+
+### QCPT1
+
+`NO_PREOUTCOME_QUANTUM_CONSTITUTION_SELECTED` with `RSC_QUANTUM_SIDE_REQUIRES_NEW_STATE_MEASURE_CONSTITUTION_SCOPED`.
+
+### SCPT1
+
+`NO_PREOUTCOME_SOURCE_CONSTITUTION_SELECTED` with `RSC_SOURCE_SIDE_REQUIRES_NEW_MODEL_DEFINING_ONTOLOGY_SCOPED`.
+
+### CSA1
+
+`BLOCKED_SOURCE_ACTION_OBJECT_UNDERDEFINED` with `CLOSED_VARIATIONAL_SOURCE_RULE_NOT_UNIQUE_WITHOUT_CONSTITUTIVE_CURVATURE_COUPLING_RULE_SCOPED`.
+
+### SSE1
 
 `BLOCKED_MISSING_CLOSED_SOURCE_ACTION_OR_EQUIVALENCE_PRINCIPLE`.
 
 ### RSC1
 
-`RSC_INTERFACE_PACKAGE_NOT_CLOSED_PREOUTCOME` with independent blockers:
+`RSC_INTERFACE_PACKAGE_NOT_CLOSED_PREOUTCOME` with independent blockers `BLOCKED_SOURCE_STRESS_INTERFACE_MISSING_DATUM` and `BLOCKED_POSITIVE_INFLUENCE_INTERFACE_MISSING_DATUM`.
 
-- `BLOCKED_SOURCE_STRESS_INTERFACE_MISSING_DATUM`;
-- `BLOCKED_POSITIVE_INFLUENCE_INTERFACE_MISSING_DATUM`.
+### V2P1
+
+`NO_PREOUTCOME_PRINCIPLE_SELECTED`; RSC remains a near-survivor, not a new candidate version.
 
 ## Retained earlier terminals
 
-- V2P1: `NO_PREOUTCOME_PRINCIPLE_SELECTED`; no new version authorized.
 - VB1: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
 - CM1: `NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`, run `34861269613`.
 - NP1: `RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`, run `34816931926`.
 - NCP1: `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`, `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`, `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`, overall `BLOCKED_PHYSICAL_EVOLUTION`, run `34792497014`.
-- G97: `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`; closed classical collective preparation bookkeeping only.
+- G97: `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`; closed collective source-preparation bookkeeping only.
 
 ## Automation infrastructure state
 
 Operational incident note `ops/RQIRCG_AUTOMATION_RUNTIME_INCIDENT_2026-09-14.md` has no scientific authority.
 
-The scheduled-run failure remains reproducible independently of the science. After the first bounded repair, Constructor ran at `2026-09-14T18:03:00Z`, produced no durable commit and was disabled about 66 seconds later. It has been re-enabled with an ultra-bounded protocol but has not yet had its next scheduled run.
+Constructor ran again at approximately `2026-09-14T18:59:44Z` under the ultra-bounded prompt, produced no durable RQIRCG commit, and was disabled about 65 seconds later. It was re-enabled. This is additional evidence for a hard scheduled-task execution cap or equivalent platform timeout.
 
-Auditor also ran at `2026-09-14T18:33:06Z`, produced no durable RQIRCG scientific commit and was disabled about 67 seconds later. It was re-enabled. This strengthens the diagnosis of a scheduled task execution cap or equivalent platform timeout rather than a GitHub/scientific failure.
-
-Do not treat automation disablement as scientific evidence.
+Auditor remains enabled after its previous re-enable. Automation disablement is infrastructure-only and must never be used as scientific evidence.
 
 ## Exact next admissible fundamental gate
 
-**`RSC_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_PREOUTCOME_GATE`.**
+**`RSC_NEW_AXIOM_ANCHOR_BUDGET_PREOUTCOME_GATE`.**
 
-Purpose: do not add isolated rescue coefficients. Prospectively ask whether one minimal new-version package can jointly close the two independently established model-definition interfaces in the SAME realization.
+Purpose: before inventing a concrete rescue model, determine whether any missing content axiom can be independently anchored strongly enough to deserve inclusion in a new RCG-002 version.
 
-Before any connected outcome, the package must specify at minimum:
+At minimum separate:
 
-1. physical source degrees including probe, apparatus/support/control/binding degrees required by closed preparation;
-2. source/action domain, allowed curvature/nonminimal couplings and a pre-outcome rule fixing their coefficients;
-3. local total source and carrier nonlinear self-source/action relation;
-4. conservation/constraint/Bianchi propagation route;
-5. physical quantum state/measure/CTP/influence constitution;
-6. normalization/positivity and causal operational reduction;
-7. exact weak-field/pairwise recovery;
-8. no free connected phase/noise functional;
-9. independence from imported candidate dynamics.
+A. source ontology/action anchor;
+B. curvature/nonminimal-coupling fixing anchor;
+C. carrier nonlinear self-source/constraint anchor;
+D. quantum state/measure/boundary anchor;
+E. operational reduction/causal anchor.
 
-The gate must first test whether an independently motivated package can even be frozen without choosing structures because they generate a desired connected result. If not, current RSC remains an unselected architecture and no new version is authorized.
+For every proposed content axiom, prospectively require an explicit motivation from an already-authoritative RQIR-CG requirement, an exact symmetry/consistency obstruction, or an external physical datum. The words `simplest`, `standard`, `minimal`, `natural`, `vacuum`, `least noisy`, or resemblance to GR/QFT are insufficient by themselves.
 
-`chi_ABC` remains unauthorized.
+If no content axiom survives this anchor test, RSC remains an unselected architecture and should not accumulate arbitrary rescue structure.
 
-## Open layers and locks
+No connected observable is authorized in this gate. `chi_ABC` remains unauthorized.
 
-Still open: new coupled source+quantum model-definition package; carrier nonlinear self-source; nonlinear constraint/Bianchi propagation in one realization; spacetime causality; physical completion quotient; external/comparator discrimination; externally anchored prediction.
+## Open layers and claim locks
 
-Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002/RSC, universal classical/semiclassical/noisy no-go, family-wide uniqueness, green-CI-as-physics, post-hoc source selection or post-hoc connected coefficient selection.
+Still open: independently anchored new content axioms; explicit source ontology/action; carrier nonlinear self-source; constraint/Bianchi propagation; quantum state/measure/CTP constitution; spacetime causality; physical completion quotient; external/comparator discrimination; externally anchored prediction.
 
-Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1/RSC1/SSE1/CSA1/SCPT1 results and duplicate-G93 quarantine remain intact.
+Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002/RSC, universal classical/semiclassical/noisy no-go, family-wide uniqueness, green-CI-as-physics, post-hoc source/state selection or post-hoc connected coefficient selection.
+
+Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1/RSC1/SSE1/CSA1/SCPT1/QCPT1 results and duplicate-G93 quarantine remain intact.
