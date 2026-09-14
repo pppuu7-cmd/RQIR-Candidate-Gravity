@@ -1,71 +1,108 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `G95_STRUCTURAL_BLOCKED / G96_ATTRIBUTED_TERMINAL / G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_NOISY_COMPLETION_RESTRICTIONS_AND_NONUNIQUENESS_TERMINAL / CANDIDATE_OWNED_NONLINEAR_EVOLUTION_FRONTIER`
+Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONTINUUM_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / NEW_CANDIDATE_VERSION_PRINCIPLE_FRONTIER`
 
 ## Canonical status
 - Active seed: `RCG-002 Relational controlled-phase channel`.
 - Programme readiness: **66%**; theory established: **0%**. These are bookkeeping labels, not probabilities.
-- Scientific authority: newest main, this recovery file, dedicated `research_log/RQIRCG_RESEARCH_LEDGER.md`, `research_log/RQIRCG_RESEARCH_LEDGER_G95_G96_ADDENDUM.md`, and newest `research_log/RQIRCG_RESEARCH_LEDGER_NCP1_ADDENDUM.md`, terminal notes, validated Actions artifacts.
+- Scientific authority: newest `main`, this recovery file, dedicated RQIR-CG ledger and addenda, terminal notes, validated Actions artifacts.
+- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_NP1_ADDENDUM.md`.
 - Legacy mixed-project ledgers are not scientific authority. `recovery/state.json` remains absent.
-- Independence lock remains active. No other candidate programme supplies dynamics or preferred coefficients.
+- Independence lock remains active: no QGR/MSQGR/CRQN/KMQGB/RQIR/ISQGR candidate dynamics or preferred coefficients may be imported as selection principles.
 
-## Latest terminal — NCP1 noisy nonlinear completion positivity
-Preregistration: `a796519c7859c33eb1f590740860cf7f388563e1`.
-Implementation: `5fa99c16b9b6e7d81fb338e22d1daf9c8886efe0`, `scripts/rcg002_ncp1.py`.
-Production head: `2c761add0d4f4b055f426701a8fec76bbb2c667c`; run `34792497014`, attempt 1, all four matrix jobs and aggregate completed.
-Raw archive: `8262b502b292b431863e2b862338679e324a767c`, `results/raw/RCG002_NCP1_RAW_BUNDLE.json`.
-Terminal proof/qualification: `f5895e17c3113fe1a933c7411bf69319a0e91f25`, `results/RCG002_NCP1_NOISY_COMPLETION_TERMINAL.md`.
-Clean ledger addendum: `14b345a2134a1646ac7fffa5e68b3681287ed624`.
-Bundle artifact: `10328693336`, SHA256 `b86d7ad7f1c4f9320bca8c79e929a7892018ee58a83f10affff194bcb1ad8b32`.
-Raw A/B/C/D artifacts: `10328810576 / 10328533762 / 10327644292 / 10328164412`.
-All five archive digests and raw/aggregate equality were independently verified after completion. Full hashes, production/code identities, timestamps and exact polynomial witnesses are durable in the terminal/raw records. All 21 production controls passed; no partial values, duplicated production run, scientific retry or post-hoc cutoff increase were used.
+## Latest terminal — NP1 connected-channel extension nonuniqueness
+Preregistration: `1c63d49ccfbc0978c0d791fabd335a00186fa4f4`.
+Implementation: `85f858b693d2d97ff3ba5c6f2adce733b1bb5c94`, `scripts/rcg002_np1_connected_extension.py`.
+Production: `aec4224051ec7858a5ac47e4c6f2b5cde2ddbcf2`; run `34816931926`, attempt 1.
+Jobs A/B/C/D/aggregate: `103889466939 / 103889467028 / 103889466952 / 103889466721 / 103889592848`.
+Raw archive: `772ca5b3d8c82fc3f303d48dea40023e1f42fbe6`, `results/raw/RCG002_NP1_RAW_BUNDLE.json`.
+Terminal note: `71d9fff2d3354c2ee5e4cba50a4ace1234f54977`, `results/RCG002_NP1_CONNECTED_CHANNEL_EXTENSION_TERMINAL.md`.
+Clean-ledger addendum: `a2294263c5a15168e96e8bd4964426c9a5d04acc`.
 
-### Scientific result
-- `PASS_STRUCTURAL_NCP1`: exact positivity restrictions and calibrated positive nonuniqueness.
-- `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`: a cubic phase cycle cannot be repaired by coherence losses starting only at fourth or higher history-amplitude order. The 3-by-3 determinant has leading term `-k^2*epsilon^6/4`.
-- `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`: on all real scalar histories, exact `exp(-nu*d^2+i*k*d*s^2)` is unitarily congruent to stationary `exp(-nu*t^2-i*k*t^3/12)`; Bochner plus Marcinkiewicz excludes k!=0 for finite nu>=0.
-- `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`: complete nonpolynomial Gaussian/centered-Poisson calibration kernels share the quadratic/cubic jet but differ at fourth order and above. No member is selected as physics.
-- Overall physical status: `BLOCKED_PHYSICAL_EVOLUTION`.
-- Selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`, NOT zero.
+Artifacts A/B/C/D/aggregate: `10335754857 / 10336587388 / 10337465262 / 10337395169 / 10337205608`.
+Verified ZIP SHA256 values:
+- A `d0a9d337dbf14718f48872b11d623b04dff64b7cf5f0b0def3ee6ecf24a944fc`;
+- B `18e295ca9f62796f30ce8dc250ca60685473d1496b8b3b0f4b4cb6f8c6507ac8`;
+- C `d57f661fe66f993ab0cc8ad04f099fed5802f9500cb5886643b8945db21adb26`;
+- D `14f6d95f92695fbf967b51604412a93e2836beda2490cc2a026242c56a2bc3d0`;
+- aggregate `4b0b7d101410d21824400b13e4f14a5797e4336545659b05a5281602d29728c1`.
+All raw lane JSON files exactly equal their aggregate copies. Scientific criteria were frozen before implementation and production; no competing NP1 production run or post-hoc threshold/parameter choice was used.
 
-For frozen k=1, exact moment certificates first fail at polynomial degrees 2, 4, 10 for nu=1/10, 1/2, 1. For nu=2 all degrees through 32 pass: the finite test is explicitly INCONCLUSIVE there, not physical PASS; the global theorem has its own independently verified domain. Gaussian k=0 controls pass the entire frozen range.
+### NP1 theorem
+On the three-bit branch cube define `q(a,b,c)=abc`. For any normalized PSD base Schur kernel `F0` reproducing the frozen lower coordinate faces, the multiplier
 
-These statements do not exclude all noisy completions, finite physical history sets, perturbative expansions, nonanalytic noise, or restricted protocols. The positive counterexamples change higher odd phase terms as well as higher even damping terms; they do not repair the exact cubic-only phase at every order. The scalar ray exists in the G72 algebra but its physical source accessibility has not been derived.
+`C_lambda,gamma(x,y)=exp(i lambda [q(x)-q(y)]) exp(-gamma [q(x)-q(y)]^2)`, `gamma>=0`,
 
-Both calibration channels may preserve the G97 total translation generator by depending on Q=x1-X. This does NOT establish energy conservation, a causal gravitational dilation, nonlinear stress-energy conservation, or Bianchi closure. Positivity and total momentum alone do not select native nonlinear evolution. No physical gravitational quotient or its dimension is established.
+defines another normalized PSD Schur channel through `F=F0 .* C`.
 
-## G95 terminal
-`BLOCKED_MINIMAL_FINITE_HISTORY_STRUCTURAL_SPACE_EMPTY_SCOPED`.
-Run `34791085566`; aggregate `10328282400`, digest `sha256:fe9cd5526cb5f96d73647bee43eed2783a9d1cb112d6d0c9768f4e74e41153fe`.
-Exact finite 3-cell one-Delta structural rank is 10/10, nullity 0. Scope only; no general RCG-002/noisy/continuum no-go.
+Reason: seven vertices have q=0 and one has q=1. With `r=exp(-gamma)` the nonzero q-sector block is `[[7,sqrt(7)r],[sqrt(7)r,1]]`, with determinant `7(1-r^2)>=0`; the lambda factor is a diagonal unitary congruence. The Schur product theorem preserves PSD.
 
-## G96 terminal
-`G95_STRUCTURAL_OBSTRUCTION_ATTRIBUTED_SCOPED`.
-Run `34791191689`; aggregate `10327927078`, digest `sha256:85bc13233b9a812b9d4114116e838e4729a34a31d3b210ecf5605525fd9ab17b`.
-Nullities none/C0/C1/P/C0+C1/C0+P/C1+P/full = 10/4/5/7/1/2/3/0. Full `{C0,C1,P}` is the unique minimal zero-nullity family set. Every leave-one-family-out basis remains incoherent under the frozen noiseless cocycle/rank-one test. G95 is not weakened.
+On every lower coordinate face `a=0`, `b=0`, or `c=0`, q vanishes and `C=1` exactly. Thus all frozen one-/two-source face channels survive unchanged.
 
-## G97 terminal
-`PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`.
-Authority: prereg `2a4c403882d156d56d918275c96aea3c19d53a61`; implementation `eb04d32b68d0f0ced8651df8599ba18b008bd105`; production `7274e539c0f6c4900da1bff7dd1d622508e45091`; run `34791265992`; artifacts A/B/C/D `10328211643 / 10327842336 / 10327937114 / 10328641718`; aggregate `10327777470`, digest `sha256:7f906cad27023f582530c8eb7f90fd449f11902fdd6d455cf54eec0ae69facba`.
-Raw artifacts consumed before the original classification. Exact closed-source results: total momentum derivative 0; probe-only `-F1-F2` is cancelled by apparatus `F1+F2`; internal branch kicks preserve total momentum and are invertible; external holding gives `-lambda`, with `lambda=0` restoring closure.
-Claim lock: classical source-preparation mechanics only. This is not nonlinear gravity, Bianchi closure, or a positive gravitational influence kernel.
+The connected phase has exact third finite difference `lambda`, while every constant/one-body/two-body phase has third difference zero. Lambda therefore survives the lower-body rephasing quotient measured by the connected phase contrast. Gamma independently changes connected coherence magnitude. In `(connected phase, connected log-magnitude)` coordinates the exact Jacobian with respect to `(lambda,gamma)` is `diag(1,-1)`.
+
+If the connected projector `Q=|111><111|` acts on internal branch labels, it commutes with the G97 total spatial translation generator. A finite-time time-local/random-unitary operational realization also exists. This demonstrates that normalized CPTP evolution plus lower-face recovery plus G97 total-translation compatibility still does not fix lambda or gamma. It does NOT establish relativistic microcausality, stress-energy conservation, Bianchi closure or gravity.
+
+### Terminal classification
+`RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`.
+
+Overall physical classification:
+`RCG002_REQUIRES_NEW_NONLINEAR_PRINCIPLE`.
+
+Operational connected-extension dimension lower bound: **>=2** within the frozen NP1 family (`lambda_connected_phase`, `gamma_connected_dephasing`). This is NOT the dimension of the physical gravitational completion space.
+
+Physical selector rank remains `UNDEFINED_PHYSICAL_MAP_MISSING`, not zero.
+
+### Scientific interpretation
+NP1 converts the main gap from an informal missing-coefficient problem into a scoped exact underdetermination theorem. Current requirements jointly fail to determine nonlinear RCG-002 evolution even after imposing:
+1. lower-order controlled-phase data;
+2. normalized CPTP Schur evolution;
+3. exact recovery of all frozen one-/two-source faces;
+4. invariance against lower-body phase rephasings;
+5. G97 total-translation compatibility;
+6. an abstract finite-time normalized evolution.
+
+Thus another rank/cumulant/positivity/lower-face test of the same architecture cannot by itself create the missing physical law. The current RCG-002 object is an underdetermined nonlinear interface architecture until a genuinely new candidate-owned principle is supplied.
+
+## Prior terminal — NCP1
+NCP1 remains authoritative and unchanged. It established:
+- `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`;
+- `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`;
+- `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`;
+- overall `BLOCKED_PHYSICAL_EVOLUTION`.
+Production run `34792497014`; terminal note `results/RCG002_NCP1_NOISY_COMPLETION_TERMINAL.md`.
+NCP1 does not select a noisy completion; NP1 strengthens the underdetermination directly at the three-source channel-extension level.
+
+## G97 retained prerequisite
+`PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`.
+G97 closes only classical source-preparation momentum bookkeeping. Probe-only momentum imbalance is exactly cancelled by apparatus, internal branch kicks preserve total momentum, and an external hold supplies a nonzero source. It is not nonlinear gravity or Bianchi closure.
+
+## Physical nonlinear completion space
+**Undefined.** G90/G91 finite off-shell witness coordinates, G92 on-shell qualifications, NCP1 noise parameters and NP1 operational lambda/gamma coordinates are not automatically physical gravitational degrees of freedom. A field/source/readout equivalence quotient has not been derived.
+
+Therefore do not declare a physical dimension or selector rank from any of these formal coordinate counts.
 
 ## Exact next admissible fundamental gate
-**Candidate-owned nonlinear causal source/state/evolution law on the closed G97 source system.**
+**NEW CANDIDATE VERSION PRINCIPLE GATE.**
 
-It must be independently motivated and prospectively frozen before connected-phase outcomes are inspected. In the same realization it must specify the state and causal evolution, recover validated pairwise weak-field normalization, derive a normalized positive influence kernel or justified coherent factorization/noise split, and verify nonlinear conservation/Bianchi/constraint compatibility. NCP1 requires compatible higher noise AND phase terms if the cubic response is retained; an exact finite polynomial log kernel cannot simply be asserted as a complete global channel.
+The current version has reached a genuine model-definition boundary. The next admissible substantive step is not to choose lambda/gamma. It is to state exactly one independently motivated candidate-owned nonlinear source/state/evolution principle before looking at its connected-phase outcome.
 
-At present no such candidate-owned law exists in authoritative RQIR-CG state. Selector rank remains undefined at the physical nonlinear level; no coefficient is selected. The nonlinear gravitational completion space is not narrowed merely by counting these formal consistency tests.
+A prospective new version must freeze, in one realization:
+- physical field/state degrees of freedom;
+- source preparation and source-to-history map on the closed G97 system;
+- nonlinear evolution equation or influence/state rule;
+- conservation and nonlinear Bianchi/constraint compatibility;
+- retarded/spacetime causal structure;
+- positive influence kernel or justified coherent/noisy factorization;
+- recovery of the validated lower-order weak-field branch;
+- prediction of connected phase/noise observables without fitting them.
 
-Do not import dynamics from RQIR/KMQGB/QGR/MSQGR/ISQGR; fit a connected coefficient; promote G96 ablations, G97 mechanics, CPI1 control terms, or NCP1 calibration noise to gravitational dynamics to obtain a PASS. A new law requires a new independently motivated, prospectively specified candidate version or new physical datum. If that input is absent, retain `RCG002_REQUIRES_NEW_NONLINEAR_PRINCIPLE`.
+The new principle must dynamically fix or derive the NP1 continuum freedom. It may not import another candidate programme or promote an NP1/NCP1 calibration construction into physics merely because it passes consistency checks.
 
-## Compute state
-G95, G96, G97 and NCP1 are terminal. NCP1 was one four-lane GitHub matrix run, not a recurring automation. The scheduling check found no active RQIRCG auto-research task; none was activated by this run.
-
-Do not duplicate NCP1, extend its moment cutoff post hoc, or use more arbitrary cumulant scans as a substitute for the native physical evolution principle. Productive parallel jobs should support one frozen physical decision object; an empty queue can reflect an unresolved scientific dependency rather than insufficient compute.
+If no independent RCG-002 motivation can be given, terminalize the current version as `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`. Any extra law would then be a prospectively new version, not a retroactive completion of the old seed.
 
 ## Open layers and locks
-Candidate-owned nonlinear evolution; nonlinear source/Bianchi/constraint closure; physical influence kernel; physical completion quotient; spacetime causality; state/measure completion; externally held-out predictions.
+Still open: native nonlinear dynamics; nonlinear stress-energy/Bianchi/constraint closure; physical source-to-history map; spacetime causality; physical completion quotient; state/measure completion; externally anchored prediction.
 
-CPI1/G72-G97 historical outcomes remain intact, as does the recorded non-authoritative duplicate-G93 quarantine in earlier terminal/ledger authority. Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002, general semiclassical/classical/noisy no-go, family-wide uniqueness, or green-CI-as-physics. Readiness 66%; theory established 0%.
+Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002, universal classical/semiclassical/noisy no-go, family-wide uniqueness, or green-CI-as-physics. Historical G72-G97/CPI1/NCP1 results and duplicate-G93 quarantine remain intact.
