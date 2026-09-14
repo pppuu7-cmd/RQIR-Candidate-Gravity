@@ -1,7 +1,7 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / V2P1_NO_PREOUTCOME_PRINCIPLE_SELECTED_TERMINAL / RSC1_INTERFACE_PACKAGE_NOT_CLOSED_TERMINAL / RSC_SSE1_SOURCE_STRESS_PREREQUISITE_BLOCKED_TERMINAL / RSC_CLOSED_SOURCE_ACTION_PROPOSAL_PREOUTCOME_FRONTIER`
+Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / V2P1_NO_PREOUTCOME_PRINCIPLE_SELECTED_TERMINAL / RSC1_INTERFACE_PACKAGE_NOT_CLOSED_TERMINAL / RSC_SSE1_SOURCE_STRESS_PREREQUISITE_BLOCKED_TERMINAL / RSC_CSA1_SOURCE_ACTION_OBJECT_UNDERDEFINED_TERMINAL / RSC_SOURCE_CONSTITUTION_PRINCIPLE_TRIAGE_PREOUTCOME_FRONTIER`
 
 ## Canonical status
 
@@ -9,155 +9,145 @@ Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_
 - Current frozen version: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
 - Programme label: `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
 - RSC status: `NEAR_SURVIVOR_NOT_SELECTED`.
-- Latest source-side classification: `BLOCKED_MISSING_CLOSED_SOURCE_ACTION_OR_EQUIVALENCE_PRINCIPLE`.
+- Latest source-side classification: `BLOCKED_SOURCE_ACTION_OBJECT_UNDERDEFINED`.
+- Latest structural sub-result: `CLOSED_VARIATIONAL_SOURCE_RULE_NOT_UNIQUE_WITHOUT_CONSTITUTIVE_CURVATURE_COUPLING_RULE_SCOPED`.
 - Programme readiness: **66%**; theory established: **0%**. These are bookkeeping labels, not probabilities.
 - Physical selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`.
 - Physical nonlinear completion space: **UNDEFINED**.
-- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_RSC_SSE1_ADDENDUM.md`.
+- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_RSC_CSA1_ADDENDUM.md`.
 - Scientific authority: newest `main`, this recovery file, dedicated clean-ledger addenda, terminal notes, and validated Actions artifacts.
 - Independence lock remains active: no QGR/MSQGR/CRQN/KMQGB/RQIR/ISQGR candidate dynamics or preferred coefficients may be imported as RCG-002 selectors.
 
-## Latest terminal — RSC-SSE1 source/stress equivalence prerequisite
+## Latest terminal — RSC-CSA1 closed-source action proposal pre-outcome gate
 
-Final classification:
+Classification:
 
-`BLOCKED_MISSING_CLOSED_SOURCE_ACTION_OR_EQUIVALENCE_PRINCIPLE`.
+`BLOCKED_SOURCE_ACTION_OBJECT_UNDERDEFINED`.
 
-Route A:
+Structural sub-result:
 
-`BLOCKED_MISSING_CLOSED_SOURCE_ACTION_AND_CARRIER_SELF_SOURCE_RULE`.
-
-Route B:
-
-`BLOCKED_NO_PROVEN_CARRIER_READOUT_INVARIANT_STRESS_QUOTIENT`.
+`CLOSED_VARIATIONAL_SOURCE_RULE_NOT_UNIQUE_WITHOUT_CONSTITUTIVE_CURVATURE_COUPLING_RULE_SCOPED`.
 
 Authority:
-- preregistration `46f6ae2b8ea3263ed081980783ed6221b7d52639`, `prereg/RCG002_RSC_SSE1_SOURCE_STRESS_EQUIVALENCE_PREREG.md`;
-- terminal `05d81080dbde205a609ce392bd73b38edf2900d0`, `results/RCG002_RSC_SSE1_SOURCE_STRESS_EQUIVALENCE_TERMINAL.md`;
-- clean-ledger addendum `0f54fe3accf49ed140d3496277d343d3060e4616`.
 
-No `chi_ABC`, connected phase/noise, novelty observable or connected coefficient was computed or used.
+- preregistration commit `49a1a84ff03bab1c3fb84290423a68a426918c9c`, file `prereg/RCG002_RSC_CSA1_CLOSED_SOURCE_ACTION_PROPOSAL_PREOUTCOME.md`;
+- terminal commit `60b33ad9b4fbfb1b0022ac2bf77cd5b2e41448fc`, file `results/RCG002_RSC_CSA1_CLOSED_SOURCE_ACTION_PROPOSAL_TERMINAL.md`;
+- clean-ledger addendum commit `ff32138d95e6571481a1eacc7031c34019a438e3`, file `research_log/RQIRCG_RESEARCH_LEDGER_RSC_CSA1_ADDENDUM.md`.
 
-### Exact Route-B certificate
+No `chi_ABC`, connected phase/noise, novelty observable, preferred nonlinear coefficient, or held-out connected outcome was computed or used.
 
-For the RSC1 conserved improvement
+### Exact action-level calibration certificate
 
-`delta T^{mu nu}=(partial^mu partial^nu-eta^{mu nu}Box)F`
+CSA1 prospectively froze the synthetic calibration family
 
-and the linearized source-carrier coupling
+`S_xi[g,phi] = Integral sqrt(-g)[ -1/2 g^{mu nu} partial_mu phi partial_nu phi - V(phi) - 1/2 xi R phi^2 ] d^4x`.
 
-`I_int[h,T]=(1/2) Integral d^4x h_{mu nu}T^{mu nu}`,
+This family is not RCG-002 matter physics. It is a false-positive calibration for the generic rule “closed covariant action + Hilbert stress uniquely selects the physical source.”
 
-boundary-controlled integration by parts gives exactly
+On exactly flat spacetime `R=0`, so the matter equations are identical for all `xi`. Metric variation nevertheless gives flat-background stress differences
 
-`delta I_int=(1/2) Integral d^4x F R1[h]`,
+`Delta T_{mu nu} = Delta xi (eta_{mu nu} Box - partial_mu partial_nu) phi^2`,
+
+which are identically conserved.
+
+With the inherited linearized carrier coupling
+
+`I_int=(1/2) Integral h^{mu nu}T_{mu nu} d^4x`,
+
+boundary-controlled integration by parts yields
+
+`Delta I_int = -(Delta xi/2) Integral phi^2 R1[h] d^4x`,
 
 where
 
 `R1[h]=partial_mu partial_nu h^{mu nu}-Box h`.
 
-`R1[h]` is invariant under the inherited linearized gauge transformation on the flat background. Therefore the coupling variation is not merely a linearized coordinate gauge mode.
+SSE1 already established that `R1[h]` is gauge invariant in the inherited flat-background linearized scope and is not identically zero. Thus a generic variational/Hilbert-stress prescription does not remove the source ambiguity unless a separate constitutive rule fixes the physical degrees and admissible curvature/nonminimal couplings or proves a full physical equivalence quotient.
 
-The variation is not identically zero. For the explicit static compact-support control
+The synthetic `xi` coordinate is calibration only and must not be counted as a physical RCG-002 completion coordinate.
 
-`h_{mu nu}=eta_{mu nu}H`, `F=H`,
+### Why aggregate status is BLOCKED, not FAIL
 
-one has `R1=-3 nabla^2 H` and a nonzero coupling proportional to
+The scalar calibration falsifies only the generic uniqueness claim for an unspecified covariant action. It is deliberately not the actual probe+apparatus/support realization. Current RCG-002 authority still does not specify the physical source ontology/action strongly enough to construct two fully realized competing RCG-002 source models.
 
-`Integral dt d^3x |grad H|^2`
+Therefore the correct aggregate result is `BLOCKED_SOURCE_ACTION_OBJECT_UNDERDEFINED`, not a universal or family-wide no-go.
 
-for nonconstant `H`.
+### Missing model-defining object after CSA1
 
-Thus equality of integrated charges plus local conservation is insufficient to declare the whole conserved-improvement family physically equivalent. A physical quotient would have to define allowed transformations and prove invariance of the complete nonlinear carrier + preparation + operational readout.
+A viable source-side RSC descendant must prospectively specify a **candidate-owned source constitution** containing, in one realization:
 
-### Route-A audit
+- probe physical degrees;
+- apparatus/support/control/binding degrees required by G97 closure;
+- allowed local curvature/nonminimal couplings and how their coefficients are fixed;
+- local total stress/source derivation;
+- carrier nonlinear action/self-source rule;
+- conservation/constraint propagation;
+- exact weak-field recovery;
+- no connected-outcome-driven coefficient or source choice.
 
-A sufficient canonical-source construction would require a complete same-realization closed-system action/source constitution for probe + apparatus/support + binding/holding/control degrees of freedom, with local stress derived from that object and the nonlinear carrier self-source derived compatibly.
+Choosing “minimal coupling” by convention is not yet authorized. It would be new model-defining information and must be prospectively motivated/tested.
 
-Current authority does not contain such an action/rule:
-- G97 gives closed classical mechanical force/impulse bookkeeping and total momentum, not a covariant local matter+apparatus/support action;
-- baseline v0 takes an abstract symmetric conserved `T_{mu nu}` as input and has no nonlinear carrier self-stress/action;
-- RSC states a self-coupling principle but does not supply the exact same-realization closed source action or carrier self-source law.
+## Retained source-side chain
 
-Importing standard GR/Einstein-Hilbert nonlinear dynamics, a preferred pseudotensor, or another candidate's action as the selector remains forbidden. Standard theory may be used only as an explicit comparator/background where authorized.
+### RSC-SSE1
 
-### Scientific meaning
+`BLOCKED_MISSING_CLOSED_SOURCE_ACTION_OR_EQUIVALENCE_PRINCIPLE`.
 
-RSC1 showed that global closure does not fix local stress. SSE1 now proves that the obvious source-equivalence rescue also does not follow from charge equality: conserved improvements can change the actual source-carrier coupling.
+SSE1 proved that equality of global charges plus local conservation does not imply physical source equivalence. Conserved improvements can change the actual source-carrier coupling. Current authority lacks a complete probe+apparatus/support action and carrier self-source rule.
 
-The source blocker is therefore localized to a genuine model-defining object:
+### RSC1
 
-**a prospectively specified closed-system source/action constitution, or a proven carrier/readout-invariant source equivalence quotient.**
-
-This is BLOCKED rather than FAIL because no fully specified RSC source principle has yet been contradicted.
-
-## Retained RSC1 terminal
-
-RSC1 remains `RSC_INTERFACE_PACKAGE_NOT_CLOSED_PREOUTCOME` with two independent blockers:
+`RSC_INTERFACE_PACKAGE_NOT_CLOSED_PREOUTCOME` with two independent blockers:
 
 1. `BLOCKED_SOURCE_STRESS_INTERFACE_MISSING_DATUM`;
 2. `BLOCKED_POSITIVE_INFLUENCE_INTERFACE_MISSING_DATUM`.
 
-Its exact positive-kernel certificate remains authoritative: deterministic coherent carrier phases do not uniquely determine a normalized positive influence/noise completion.
+The quantum state/measure/influence blocker remains independently open after all source-side work.
 
-The quantum state/measure/influence blocker remains independently open after all SSE1 source-side work.
+## Retained earlier terminals
 
-## Retained V2P1 / VB1 / earlier terminals
+- V2P1: `NO_PREOUTCOME_PRINCIPLE_SELECTED`; no new version authorized.
+- VB1: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
+- CM1: `NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`, run `34861269613`.
+- NP1: `RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`, run `34816931926`.
+- NCP1: `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`, `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`, `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`, overall `BLOCKED_PHYSICAL_EVOLUTION`, run `34792497014`.
+- G97: `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`; closed classical source-preparation bookkeeping only.
 
-V2P1 remains `NO_PREOUTCOME_PRINCIPLE_SELECTED`; no new version is authorized.
+## Automation infrastructure state
 
-VB1 remains `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
+Operational incident note: `ops/RQIRCG_AUTOMATION_RUNTIME_INCIDENT_2026-09-14.md`.
 
-CM1 remains `NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`, run `34861269613`.
+Long scheduled research prompts had shown a repeated approximately 63–67 second run-to-disable pattern without corresponding RQIRCG GitHub Actions failures or durable commits. Best-supported diagnosis remains scheduled execution-budget/runtime timeout or equivalent platform cap.
 
-NP1 remains `RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`, run `34816931926`.
-
-NCP1 remains `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`, `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`, `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`, overall `BLOCKED_PHYSICAL_EVOLUTION`, run `34792497014`.
-
-G97 remains `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`; it is closed classical source-preparation bookkeeping, not a local nonlinear stress/Bianchi/influence theory.
-
-## Automation infrastructure incident
-
-Operational note: `ops/RQIRCG_AUTOMATION_RUNTIME_INCIDENT_2026-09-14.md`, commit `5309a4b246692947cac4b6e1e82be1e6214d0154`.
-
-This note has **no scientific authority**.
-
-Observed scheduled-run metadata across RQIRCG and other long research automations showed a repeated approximately 63–67 second run-to-disable interval, with no corresponding post-CM1 RQIRCG GitHub Actions failure and no durable commit from the failed automation turns. Best-supported diagnosis: scheduled execution budget/runtime timeout or equivalent platform cap, not scientific failure.
-
-Control-only repair: RQIRCG Constructor and Auditor prompts were shortened to bounded micro-iterations, broad historical rescans were removed, early durable handoff was prioritized, and both recurring automations were re-enabled. Scientific criteria and claim locks were unchanged. Confirmation requires future scheduled runs to remain enabled and leave bounded durable progress.
-
-## Physical nonlinear completion space
-
-**Undefined.**
-
-RSC/SSE1 control functions and earlier NP1/CM1 coordinates are not automatically physical gravitational completion coordinates. Do not infer a physical dimension or selector rank from them.
+Control-only repair shortened Constructor/Auditor prompts into bounded micro-iterations. Both recurring RQIRCG automations are currently enabled. Scientific criteria were unchanged. Runtime repair remains empirically unconfirmed until a future scheduled run stays enabled and leaves bounded durable progress.
 
 ## Exact next admissible fundamental gate
 
-**`RSC_CLOSED_SOURCE_ACTION_PROPOSAL_PREOUTCOME_GATE`.**
+**`RSC_SOURCE_CONSTITUTION_PRINCIPLE_TRIAGE_PREOUTCOME_GATE`.**
 
-This gate must remain before all connected outcomes. It may not select an action because it yields a convenient `chi_ABC` or other desired phase.
+Before any connected outcome, prospectively freeze a small set of candidate-owned constitutive rules and compare them only on pre-outcome criteria.
 
-The gate should ask whether RCG-002's own relational/operational commitments independently motivate one minimal closed-system source/action constitution that specifies, in the same realization:
+The gate must ask whether any rule can independently fix:
 
-1. probe matter degrees of freedom;
-2. apparatus/support/control/binding degrees of freedom required by G97 closure;
-3. branch/history preparation;
-4. source/action domain and symmetry;
-5. local symmetric conserved total stress or equivalent source object;
-6. carrier nonlinear self-source/action rule;
-7. constraint/conservation propagation route;
-8. exact weak-field reduction to the validated baseline;
-9. no imported external-candidate dynamics and no free connected coefficient/function.
+1. the probe/apparatus/support physical degrees;
+2. which local curvature/nonminimal couplings are permitted;
+3. how their coefficients are fixed without gravitational connected-outcome fitting;
+4. the derived local total stress/source;
+5. the carrier self-source/action relation;
+6. weak-field baseline recovery;
+7. conservation/constraint propagation;
+8. independence from imported candidate dynamics.
 
-If no such package can be independently motivated without arbitrary new model data, record the source-side RSC proposal as still blocked; do not rescue it phenomenologically.
+A proposed “minimal coupling” rule must be treated as a new principle, not as a convention. No rule may be chosen because it produces a convenient `chi_ABC`.
 
-Even after a source-side PASS, the independent RSC quantum state/measure/influence gate remains mandatory before any connected prediction.
+Even a future source-side PASS does not remove the independent `BLOCKED_POSITIVE_INFLUENCE_INTERFACE_MISSING_DATUM` from RSC1.
+
+`chi_ABC` remains unauthorized.
 
 ## Open layers and locks
 
-Still open: closed source/action constitution; carrier nonlinear self-source; nonlinear constraint/Bianchi propagation in one realization; quantum state/measure/influence law; spacetime causality; physical completion quotient; external/comparator discrimination; externally anchored prediction.
+Still open: source constitution; carrier nonlinear self-source; nonlinear constraint/Bianchi propagation in one realization; quantum state/measure/influence law; spacetime causality; physical completion quotient; external/comparator discrimination; externally anchored prediction.
 
 Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002/RSC, universal classical/semiclassical/noisy no-go, family-wide uniqueness, green-CI-as-physics, post-hoc source selection or post-hoc connected coefficient selection.
 
-Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1/RSC1 results and duplicate-G93 quarantine remain intact.
+Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1/RSC1/SSE1 results and duplicate-G93 quarantine remain intact.
