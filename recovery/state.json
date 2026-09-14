@@ -5,13 +5,11 @@
   "current_version": "RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED",
   "programme_label": "CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY",
   "rsc_status": "NEAR_SURVIVOR_NOT_SELECTED",
-  "latest_gate": "RSC_NEW_AXIOM_ANCHOR_BUDGET_PREOUTCOME_GATE",
-  "latest_classification": "RSC_NO_NEW_MODEL_DEFINING_AXIOM_INDEPENDENTLY_ANCHORED_PREOUTCOME_SCOPED",
+  "latest_scientific_gate": "RSC_NEW_AXIOM_ANCHOR_BUDGET_PREOUTCOME_GATE",
+  "latest_scientific_classification": "RSC_NO_NEW_MODEL_DEFINING_AXIOM_INDEPENDENTLY_ANCHORED_PREOUTCOME_SCOPED",
   "latest_structural_result": "STRONG_STRUCTURAL_ANCHORS_EXIST_BUT_NO_LEVELIII_MODEL_SELECTOR_SCOPED",
-  "prereg_commit": "80962231e55adbf96d7d24f47aeb9cd382d2e0a6",
-  "terminal_commit": "a188e4bae2f46c4ddfc7da86f663c80b0b82cc79",
-  "ledger_commit": "0be560d9c1c669fd90724a4db222f244ece84f7e",
-  "recovery_commit": "64fcfec2aa94cde29e5f4650634e40077177ec7f",
+  "latest_integration_classification": "RQIRCGSF_STRUCTURAL_OBLIGATIONS_IMPORTED_WITH_HISTORICAL_VERSION_LOCK",
+  "historical_rcg002_changed": false,
   "anchor_budget": {
     "A_source_ontology_action": 2,
     "B_curvature_nonminimal": 2,
@@ -20,6 +18,47 @@
     "E_operational_reduction_causal": 2
   },
   "strongest_candidate": "CGD2_CONSISTENT_GAUGE_DEFORMATION_TWO_DERIVATIVE_SPIN2",
+  "structural_import": {
+    "source_repo": "pppuu7-cmd/RQIRCG-structural-findings",
+    "source_head": "9eb6c8821c285a13d63a7a3d6859d2c1e0db2157",
+    "source_role": "PROSPECTIVE_NEW_PRINCIPLE_SUCCESSOR_SEARCH",
+    "manifest_commit": "1c5685c1cca5092cff9096e614ad2463a408387f",
+    "slot_graph_commit": "7877810777fdf093c13b7f75c4bb6f95ee468676",
+    "selector_observable_obligations_commit": "f9261bf8f6ff3bd31f11e7efb7fdcaf8e0d431f2",
+    "terminal_import_commit": "5964755c55d0a59d81e5f64e8b56e73e97d92f60",
+    "ledger_import_commit": "61eae287eabfecfced27ea818a9ba91fa208e322",
+    "sf021_successor_only": {
+      "commit": "99528ea48cca12354b3708e4e348178e1cfd891f",
+      "classification": "RHPI_SELECTED_AS_CLASSICAL_GRAVITATIONAL_LAW_PRINCIPLE_SCOPED",
+      "retroactive_parent_authority": false
+    },
+    "sf025": {
+      "terminal_commit": "3216863317cf088b77d643c42a382800b4a3f004",
+      "classification": "POST_RHPI_QUANTUM_COMPOSITION_DOES_NOT_FIX_FINITE_ON_SHELL_MATCHING_SCOPED",
+      "quantum_law_matching_slot_separate_from_state_measure": true,
+      "matching_witness_is_candidate_dynamics": false
+    },
+    "sf026": {
+      "terminal_commit": "cb368a4fb226cc9c2c18f5b52880546922880bcd",
+      "classifications": [
+        "PAIRWISE_NULL_NOT_STABLE_UNDER_SELF_CONSISTENT_HISTORY_PULLBACK_SCOPED",
+        "FINITE_TIME_OBSERVABLE_BLOCKED_PENDING_BOUNDARY_COMPLETE_PROTOCOL"
+      ],
+      "release_delta3_coefficient": "-82/1848015",
+      "release_diagnostic_is_chi_ABC": false,
+      "nonzero_connected_signal_implies_new_three_body_vertex": false
+    },
+    "model_definition_slots": [
+      "CLASSICAL_LAW",
+      "SOURCE_PREPARATION_CONSTITUTION",
+      "QUANTUM_STATE_MEASURE_BOUNDARY",
+      "QUANTUM_LAW_ON_SHELL_MATCHING",
+      "OPERATIONAL_OBSERVABLE_READOUT"
+    ],
+    "boundary_complete_observable_required": true,
+    "rqircgsf_remains_independent": true,
+    "future_promotion_gate": "SUCCESSOR_PROMOTION_GATE"
+  },
   "physical_selector_rank": "UNDEFINED_PHYSICAL_MAP_MISSING",
   "physical_nonlinear_completion_space": "UNDEFINED",
   "programme_readiness_percent": 66,
@@ -27,8 +66,10 @@
   "chi_ABC_status": "UNAUTHORIZED_NOT_COMPUTED",
   "new_version_authorized": false,
   "exact_next_gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
-  "next_gate_recommended_mode": "PRO",
-  "pro_value_next_gate": "VERY_HIGH",
+  "rqircgsf_next_fronts": {
+    "theory": "INDEPENDENT_QUANTUM_LAW_SELECTOR_ON_SF025_MATCHING_FIBRE",
+    "operational": "BOUNDARY_COMPLETE_FINITE_TIME_PROTOCOL_NEWTONIAN_1PN_OBSERVABLE_COMPARISON"
+  },
   "claim_locks": [
     "NO_NEW_PHYSICS_FOUND",
     "NO_FULL_QUANTUM_GRAVITY",
@@ -36,6 +77,12 @@
     "NO_RQIR_REQUIRES_RCG002",
     "NO_UNIVERSAL_CLASSICAL_OR_SEMICLASSICAL_NO_GO",
     "NO_FAMILY_WIDE_UNIQUENESS",
-    "NO_POST_HOC_SOURCE_STATE_AXIOM_OR_CONNECTED_COEFFICIENT_SELECTION"
+    "NO_POST_HOC_SOURCE_STATE_AXIOM_OR_CONNECTED_COEFFICIENT_SELECTION",
+    "NO_RETROACTIVE_RHPI_IMPORT_INTO_RCG002",
+    "NO_MATCHING_FREEDOM_RELABELLED_AS_STATE_FREEDOM",
+    "NO_CONNECTED_SIGNAL_EQUALS_NEW_THREE_BODY_VERTEX",
+    "NO_OPEN_ACTION_EQUALS_MEASURED_CHI_ABC",
+    "NO_POST_HOC_BOUNDARY_PROTOCOL_SELECTION",
+    "NO_SUCCESSOR_PROMOTION_WITHOUT_SUCCESSOR_PROMOTION_GATE"
   ]
 }
