@@ -1,0 +1,41 @@
+{
+  "updated": "2026-09-14",
+  "project": "RQIR-Candidate-Gravity",
+  "seed": "RCG-002 Relational controlled-phase channel",
+  "current_version": "RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED",
+  "programme_label": "CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY",
+  "rsc_status": "NEAR_SURVIVOR_NOT_SELECTED",
+  "latest_gate": "RSC_NEW_AXIOM_ANCHOR_BUDGET_PREOUTCOME_GATE",
+  "latest_classification": "RSC_NO_NEW_MODEL_DEFINING_AXIOM_INDEPENDENTLY_ANCHORED_PREOUTCOME_SCOPED",
+  "latest_structural_result": "STRONG_STRUCTURAL_ANCHORS_EXIST_BUT_NO_LEVELIII_MODEL_SELECTOR_SCOPED",
+  "prereg_commit": "80962231e55adbf96d7d24f47aeb9cd382d2e0a6",
+  "terminal_commit": "a188e4bae2f46c4ddfc7da86f663c80b0b82cc79",
+  "ledger_commit": "0be560d9c1c669fd90724a4db222f244ece84f7e",
+  "recovery_commit": "64fcfec2aa94cde29e5f4650634e40077177ec7f",
+  "anchor_budget": {
+    "A_source_ontology_action": 2,
+    "B_curvature_nonminimal": 2,
+    "C_nonlinear_carrier": 2,
+    "D_quantum_state_measure_boundary": 2,
+    "E_operational_reduction_causal": 2
+  },
+  "strongest_candidate": "CGD2_CONSISTENT_GAUGE_DEFORMATION_TWO_DERIVATIVE_SPIN2",
+  "physical_selector_rank": "UNDEFINED_PHYSICAL_MAP_MISSING",
+  "physical_nonlinear_completion_space": "UNDEFINED",
+  "programme_readiness_percent": 66,
+  "theory_established_percent": 0,
+  "chi_ABC_status": "UNAUTHORIZED_NOT_COMPUTED",
+  "new_version_authorized": false,
+  "exact_next_gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
+  "next_gate_recommended_mode": "PRO",
+  "pro_value_next_gate": "VERY_HIGH",
+  "claim_locks": [
+    "NO_NEW_PHYSICS_FOUND",
+    "NO_FULL_QUANTUM_GRAVITY",
+    "NO_THEORY_ESTABLISHED",
+    "NO_RQIR_REQUIRES_RCG002",
+    "NO_UNIVERSAL_CLASSICAL_OR_SEMICLASSICAL_NO_GO",
+    "NO_FAMILY_WIDE_UNIQUENESS",
+    "NO_POST_HOC_SOURCE_STATE_AXIOM_OR_CONNECTED_COEFFICIENT_SELECTION"
+  ]
+}
