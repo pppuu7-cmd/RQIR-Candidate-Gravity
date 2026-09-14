@@ -1,167 +1,129 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-14
+Updated: 2026-09-15
 
-Phase: `VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / RSC_AB1_NO_LEVELIII_AXIOM_ANCHOR_TERMINAL / RQIRCGSF_STRUCTURAL_IMPORT_RECONCILED / RSC_S2PA1_NO_PREMISE_CLASS_FORCED_TERMINAL / RSC_ARCHITECTURE_DISPOSITION_PREOUTCOME_FRONTIER`
+Phase: `VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / RSC_S2PA1_NO_PREMISE_CLASS_FORCED_TERMINAL / RSC_AD1_DISPOSITION_NONUNIQUE_TERMINAL / PROGRAMME_DISPOSITION_AUTHORITY_FRONTIER`
 
 ## Canonical parent status
 
-- Active historical seed lineage: `RCG-002 Relational controlled-phase channel`.
+- Historical seed lineage: `RCG-002 Relational controlled-phase channel`.
 - Current frozen version: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
 - Programme label: `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
 - RSC status: `NEAR_SURVIVOR_NOT_SELECTED`.
 - Programme readiness: **66%**; theory established: **0%**. These are bookkeeping labels, not probabilities.
 - Physical selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`.
-- Physical nonlinear completion space: **UNDEFINED**.
+- Physical nonlinear completion space: `UNDEFINED`.
 - `chi_ABC`: `UNAUTHORIZED_NOT_COMPUTED`.
-- No new RCG-002 version is authorized.
+- New RCG-002 version authorized: **NO**.
 
-Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1/RSC1/SSE1/CSA1/SCPT1/QCPT1/MAPF1/AB1 and the RQIRCGSF structural import remain intact.
+Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1/RSC1/SSE1/CSA1/SCPT1/QCPT1/MAPF1/AB1/S2PA1 and the RQIRCGSF structural import remain intact.
 
-## Latest scientific gate — RSC-S2PA1
+## Latest scientific gate — RSC-AD1
 
 Gate:
 
-`RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE`.
+`RSC_ARCHITECTURE_DISPOSITION_PREOUTCOME_GATE`.
 
-Preregistration:
+Prospective preregistration:
 
-`d6a16827464a5ed9da97790b10784068c7d59087`
+`b5ac647ce0faab2bec1770d26a252288d5decf7f`.
 
-Source/theorem audit:
+Frozen disposition set:
 
-`4114a3135cdfac1b6c61627a5a2aeed0dc6fdc89`
+- D1 `FREEZE_RSC_UNSELECTED_ARCHITECTURE`;
+- D2 `RETIRE_RSC_FROM_ACTIVE_PARENT_FORMATION`;
+- D3 `AUTHORIZE_EXPLICIT_NEW_VERSION_FORMATION_ATTEMPT` only as workflow-level permission with every substantive datum prospectively identified as new post-VB1 content.
+
+Terminal micro-audits:
+
+- D1: `ADMISSIBLE`, commit `11b47051d7315e3369c0f71d818714f8864fd6ec`;
+- D2: `ADMISSIBLE`, commit `f37181ed0939023f9eac1381ad849d466e9efbdf`;
+- D3: `ADMISSIBLE` at workflow level only, commit `98cbde06c1c8566399d0a98083d1e0f8fb1561d1`.
 
 Terminal result:
 
-`2c92ff91227971507e510c180c57611bc8c516ee`
+`99c87e85497dbbb780a53f512f5dbc0fb48ef832`.
 
-Clean ledger:
+Clean-ledger addendum:
 
-`2a74883096b5a3c59691603e13b686a581df86ab`
+`aef63917c9fbcc454d7780ef2d1559dd5fcd1215`.
 
 Primary classification:
 
-`NO_SPIN2_CONSISTENCY_PREMISE_CLASS_FORCED_BY_CURRENT_RQIRCG_SCOPED`.
+`ARCHITECTURE_DISPOSITION_NOT_UNIQUELY_SELECTED_PREOUTCOME`.
 
 Secondary structural result:
 
-`SPIN2_RIGIDITY_IS_PREMISE_CLASS_DEPENDENT_AND_CURRENT_PARENT_DOES_NOT_SELECT_THE_PREMISE_CLASS_SCOPED`.
+`CURRENT_SCIENTIFIC_AUTHORITY_UNDERDETERMINES_PROGRAMME_DISPOSITION_SCOPED`.
 
-AB1 candidate-C status:
+New boundary fact:
 
-`CGD2_REMAINS_CONDITIONAL_LEVELIII_ACTUAL_LEVELII`.
+`SCIENTIFIC_CONSTRAINTS_ON_DISPOSITION != UNIQUE_PROGRAMME_DISPOSITION`.
 
-## Frozen premise-route verdicts
+## Meaning of AD1
 
-### P1 — `LAG2` local action / off-shell gauge deformation
+Current RQIRCG science determines strict constraints on future programme moves but does not select among the three frozen dispositions. All three can preserve the same terminal scientific facts and claim locks.
 
-Verdict:
+Therefore no disposition may be chosen from convenience, elegance, expected connected signal, resemblance to GR, resemblance to another candidate project, or administrative preference and then reported as a scientific consequence.
 
-`PARTIALLY_ANCHORED_CONDITIONAL`.
+D3 does **not** authorize any new representation class, action, source constitution, state/measure, quantum matching law, operational map, coefficient, version label, or prediction. It only shows that a provenance-clean prospective formation workflow would itself be scientifically admissible if programme authority chose that route.
 
-Parent RQIRCG already contains a nearly-Minkowski symmetric rank-2 linearized carrier, linearized gauge law, conserved source and two-derivative linearized equation. However it does **not** select a local nonlinear carrier action, the full Pauli-Fierz/BRST deformation class, or an at-most-two-derivative restriction on nonlinear interactions.
-
-The audited BRST rigidity theorem therefore has strong conditional selection power but its applicability class is not fully parent-authorized. The derivative restriction is substantive: the primary source permits higher-derivative gauge-invariant interactions when that restriction is removed.
-
-### P2 — `SFT2` asymptotic soft/S-matrix/constructibility
-
-Verdict:
-
-`NOT_FORCED_BY_CURRENT_RQIRCG`.
-
-Current RQIRCG does not select asymptotic in/out graviton ontology, asymptotic completeness, S-matrix pole/factorization axioms, or BCFW constructibility. Operational covariance/retarded causality/no-superluminal-signalling are weaker conditions.
-
-Soft-graviton universality therefore remains a conditional consistency theorem, not a parent authority for the missing nonlinear carrier law.
-
-### P3 — `RHD2` relational canonical hypersurface-deformation reconstruction
-
-Verdict:
-
-`NOT_FORCED_BY_CURRENT_RQIRCG`.
-
-Relational/gauge observable discipline does not entail a spatial-metric canonical phase space, lapse/shift Hamiltonian evolution, a strong Dirac/hypersurface-deformation algebra, HKT reshuffling or ultralocality assumptions. The parent baseline itself still marks nonlinear Bianchi/constraint structure unresolved.
-
-Path independence alone is not promoted to a uniqueness selector.
-
-## New structural fact
+## S2PA1 fact retained
 
 `THEOREM_STRENGTH != PREMISE_AUTHORITY`.
 
-Known spin-2 rigidity mathematics is not the remaining missing object. The unresolved parent datum is independent authority for a **dynamical representation class** to which such a theorem applies.
-
-The remaining gap is therefore a:
+No local-action/two-derivative, asymptotic S-matrix/constructibility, or HKT/canonical premise package is forced by current parent RQIRCG. The remaining model-definition gap remains:
 
 `REPRESENTATION_CLASS_SELECTION_GAP_SCOPED`.
 
-A theorem cannot supply authority for its own applicability assumptions, and agreement of several theorem routes on GR-like dynamics cannot select among their inequivalent premise packages.
-
-## Why no GR import is authorized
-
-No audited route reached `AUTHORIZED_LEVELIII_PREMISE_CLASS`.
-
-The local-action route requires unselected action/derivative-order premises. The S-matrix route requires an unselected scattering ontology. The canonical route requires unselected phase-space/constraint-representation premises.
-
-RQIRCGSF's post-VB1 RHPI/ADM-Einstein selection remains successor-only and cannot retroactively authorize any historical-parent premise.
-
-Therefore Einstein dynamics may not be imported into the current RSC line merely because known conditional uniqueness theorems would select it after adding extra premises.
+No Einstein/GR import is authorized.
 
 ## RQIRCGSF structural-import locks retained
 
-The controlled structural import remains authoritative only as future constraints:
-
 - `QUANTUM_STATE_MEASURE_SELECTION != QUANTUM_LAW_ON_SHELL_MATCHING_SELECTION`;
-- a future quantum selector must have nonzero selection power on the physical matching fibre after classical law and preparation/state are fixed;
+- future quantum selectors need nonzero selection power on the fixed-classical-law/fixed-preparation physical matching fibre;
 - `NONZERO_CONNECTED_SIGNAL != NEW_THREE_BODY_GRAVITATIONAL_VERTEX`;
-- self-consistent Newtonian/authorized 1PN known-physics baselines must be included in any later connected-observable interpretation;
-- a physical observable requires the boundary-complete chain `PREPARATION -> FULL FINITE-TIME EVOLUTION -> APPARATUS RECOIL/CONTROL -> RECOMBINATION -> READOUT/POVM -> PHYSICAL PROBABILITY OR COHERENCE`;
-- no successor-only principle enters historical RCG-002 except through a future `SUCCESSOR_PROMOTION_GATE`.
+- future connected observables require same-protocol self-consistent Newtonian then authorized 1PN/known-physics baselines;
+- physical observable chain remains `PREPARATION -> FULL FINITE-TIME EVOLUTION -> APPARATUS RECOIL/CONTROL -> RECOMBINATION -> READOUT/POVM -> PHYSICAL PROBABILITY OR COHERENCE`;
+- successor-only principles enter the parent only through explicit future authority such as `SUCCESSOR_PROMOTION_GATE`.
 
-SF025/SF026 do not answer S2PA1 and are not used as dynamics.
+## Exact next parent action
 
-## Programme consequence
+**`EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY_REQUIRED`.**
 
-Do not continue an unbounded sequence of neighboring spin-2 uniqueness-theorem scans. S2PA1 localized the blocker to new model-definition content, not missing algebra.
+AD1 does not authorize another unique parent **science** gate. A programme/governance authority must choose whether to apply D1, D2, or D3. Until then:
 
-Any new rule selecting one of the following would itself be a new post-VB1 model-defining principle and must be independently motivated/prospectively frozen:
+- historical RCG-002 stays terminal;
+- RSC stays `NEAR_SURVIVOR_NOT_SELECTED`;
+- no new candidate version is formed;
+- no representation class or dynamics is selected;
+- `chi_ABC` remains unauthorized.
 
-- local nonlinear action plus derivative-order class;
-- asymptotic S-matrix/constructibility class;
-- canonical hypersurface-deformation representation;
-- any other explicit carrier representation class.
+Do **not** create another parent principle/theorem gate merely to force a tie-break among D1/D2/D3.
 
-It may not be added only because it activates a desired uniqueness theorem.
+## Independent successor research remains active
 
-## Exact next parent gate
+RQIRCGSF remains independent and scientifically active under its own authority. Its open fronts remain:
 
-**`RSC_ARCHITECTURE_DISPOSITION_PREOUTCOME_GATE`.**
+### Theory track
 
-This is a programme-disposition gate, not a connected-outcome gate.
+`INDEPENDENT_QUANTUM_LAW_SELECTOR_ON_SF025_MATCHING_FIBRE`.
 
-It must prospectively decide which of the following is scientifically defensible under current authority:
+### Operational track
 
-1. keep RSC frozen as an unselected architecture awaiting a separately motivated explicit successor package;
-2. retire RSC from active parent candidate formation and move new model construction to the successor incubator;
-3. authorize an explicit new candidate-version formation attempt only if every new representation/source/state/quantum-law input is openly identified as genuinely new post-VB1 model content.
+`BOUNDARY_COMPLETE_FINITE_TIME_PROTOCOL_NEWTONIAN_1PN_OBSERVABLE_COMPARISON`.
 
-The gate may **not** invent a new action, select Einstein dynamics, choose a matching coefficient, compute `chi_ABC`, use a connected outcome as selector, or use RQIRCGSF's RHPI result retroactively.
-
-## RQIRCGSF remains independent
-
-`YES`.
-
-RQIRCG remains the parent/history/integration layer.
-
-RQIRCGSF remains the independent successor-principle incubator. Its open theory/operational tracks are not solved parent results.
+These may continue without choosing a parent disposition, but their results do not become historical parent authority automatically.
 
 ## Claim locks
 
-Retain all historical/AB1/import locks and additionally enforce:
+Retain all historical/AB1/import/S2PA1 locks and add:
 
-- no spin-2 theorem conclusion used as authority for its own premise class;
-- no `minimal dynamics` silently redefined as `local action` or `<=2 derivatives`;
-- no operational causality silently promoted to asymptotic S-matrix/constructibility;
-- no relational observable discipline silently promoted to HKT canonical premises;
+- no programme disposition reported as scientifically selected when AD1 found three admissible choices;
+- no D3 workflow permission reported as a formed/authorized candidate version;
+- no retirement reported as RSC scientific FAIL;
+- no freeze reported as RSC scientific preference or success;
+- no theorem conclusion used as authority for its own premise class;
 - no retroactive RHPI/ADM-Einstein import;
-- no `chi_ABC` calculation before an authorized downstream model-definition gate;
+- no `chi_ABC` before an authorized downstream model-definition/prediction gate;
 - no `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `THEORY_ESTABLISHED`, `RQIR_REQUIRES_RCG002`, universal classical/semiclassical no-go, or family-wide uniqueness claim without separate authority.
