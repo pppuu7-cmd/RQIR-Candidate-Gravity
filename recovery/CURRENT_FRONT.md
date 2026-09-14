@@ -1,144 +1,171 @@
 # RQIR-Candidate-Gravity current front
 
 Updated: 2026-09-14
-Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / V2P1_NO_PREOUTCOME_PRINCIPLE_SELECTED_TERMINAL / RSC_INTERFACE_CLOSURE_PREOUTCOME_FRONTIER`
+Phase: `G97_CLOSED_TOTAL_SOURCE_PREPARATION_PASS / NCP1_POSITIVITY_RESTRICTIONS_TERMINAL / NP1_CONNECTED_EXTENSION_UNDERDETERMINATION_TERMINAL / CM1_CLOSED_MEDIATOR_NONUNIQUENESS_TERMINAL / VB1_CURRENT_VERSION_MODEL_DEFINITION_BOUNDARY_TERMINAL / V2P1_NO_PREOUTCOME_PRINCIPLE_SELECTED_TERMINAL / RSC1_INTERFACE_PACKAGE_NOT_CLOSED_TERMINAL / RSC_SOURCE_STRESS_EQUIVALENCE_PREREQUISITE_FRONTIER`
 
 ## Canonical status
 
 - Active seed lineage: `RCG-002 Relational controlled-phase channel`.
 - Current frozen version classification: `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED`.
 - Programme label: `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
-- Latest new-version triage classification: `NO_PREOUTCOME_PRINCIPLE_SELECTED`.
+- Latest new-version triage: `NO_PREOUTCOME_PRINCIPLE_SELECTED`.
+- Latest RSC interface classification: `RSC_INTERFACE_PACKAGE_NOT_CLOSED_PREOUTCOME`.
+- RSC status: `NEAR_SURVIVOR_NOT_SELECTED`.
 - Programme readiness: **66%**; theory established: **0%**. These are bookkeeping labels, not probabilities.
 - Physical selector rank: `UNDEFINED_PHYSICAL_MAP_MISSING`.
 - Physical nonlinear completion space: **UNDEFINED**.
+- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_RSC1_ADDENDUM.md`.
 - Scientific authority: newest `main`, this recovery file, dedicated RQIR-CG ledger/addenda, terminal notes, and validated Actions artifacts.
-- Latest clean-ledger addendum: `research_log/RQIRCG_RESEARCH_LEDGER_V2P1_ADDENDUM.md`.
-- Legacy mixed-project ledgers are not scientific authority. `recovery/state.json` remains absent.
-- Independence lock remains active: no QGR/MSQGR/CRQN/KMQGB/RQIR/ISQGR candidate dynamics or preferred coefficients may be imported as selection principles.
+- Independence lock remains active: do not import QGR/MSQGR/CRQN/KMQGB/RQIR/ISQGR candidate dynamics or preferred coefficients as selectors.
 
-## Latest terminal — V2P1 new-version principle pre-outcome triage
+## Latest terminal — RSC1 interface closure pre-outcome
 
-Classification:
+Overall:
 
-`NO_PREOUTCOME_PRINCIPLE_SELECTED`.
+`RSC_INTERFACE_PACKAGE_NOT_CLOSED_PREOUTCOME`.
 
-Secondary label:
+Interface A:
 
-`NEW_VERSION_PRINCIPLE_PACKAGE_INCOMPLETE`.
+`BLOCKED_SOURCE_STRESS_INTERFACE_MISSING_DATUM`.
+
+Interface B:
+
+`BLOCKED_POSITIVE_INFLUENCE_INTERFACE_MISSING_DATUM`.
 
 Authority:
+- preregistration `b543b2836286721b7d39fe870da3c99e0cacd4e3`, `prereg/RCG002_RSC1_INTERFACE_CLOSURE_PREOUTCOME.md`;
+- terminal `ffe87dde7e830e79ce1772e53a4080b37cbcb30e`, `results/RCG002_RSC1_INTERFACE_CLOSURE_PREOUTCOME_TERMINAL.md`;
+- clean-ledger addendum `dd87874fdd506cf83fcd6b8095b277428ffe3f62`, `research_log/RQIRCG_RESEARCH_LEDGER_RSC1_ADDENDUM.md`.
 
-- preregistration `ec3efca247deec5e9801a1e0249dd2efc6cee1d8`, `prereg/RCG002_V2P1_NEW_VERSION_PRINCIPLE_PREOUTCOME_TRIAGE.md`;
-- terminal `bfc521a22db788b10fe5d6ff5a313f47c799e24f`, `results/RCG002_V2P1_NEW_VERSION_PRINCIPLE_TRIAGE_TERMINAL.md`;
-- clean-ledger addendum `3a116e647c7030a4e84a02b49f88c8c978a4c2be`, `research_log/RQIRCG_RESEARCH_LEDGER_V2P1_ADDENDUM.md`.
+RSC1 is an exact analytic/model-definition gate. No numerical workflow was required. No `chi_ABC`, connected noise, nonlinear coefficient or novelty observable was computed or used.
 
-No connected phase/noise outcome, nonlinear coefficient, mediator spectrum, or novelty observable was computed or used in V2P1 selection.
+### Interface A exact certificate — global closure does not determine local stress
 
-### Frozen proposal set and result
+For any symmetric locally conserved baseline source `T^{mu nu}` and sufficiently regular compactly supported/falling scalar `F(x)`, define
 
-Four prospectively frozen principle proposals were audited only on model-definition criteria:
+`delta T^{mu nu}=(partial^mu partial^nu-eta^{mu nu} Box)F`.
 
-1. `P1 RSC — Relational Self-Coupling Closure`;
-2. `P2 MPI — Minimum Positive Influence Extension`;
-3. `P3 CRM — Closed Relational Mediator Law`;
-4. `P4 CIC — Causal Influence-Cumulant Closure`.
+Then exactly
 
-Mandatory survivor count: **0**.
+`partial_mu delta T^{mu nu}=0`.
 
-### Strongest proposal: RSC
+With signature `(-,+,+,+)`,
 
-RSC was motivated independently from the existing RCG-002 linearized spin-2 baseline and the already-open nonlinear conservation/Bianchi obligation. It proposed iterative self-coupling of the existing carrier to the closed total source including carrier self-source, no new independent nonlinear couplings/scales/fields, local two-derivative classical equations, exact weak-field recovery, and a gauge/constraint-consistent causal initial-value formulation.
+`delta T^{00}=nabla^2 F`,
+`delta T^{0i}=-partial_t partial_i F`.
 
-RSC passed/defined routes for grounding, physical carrier, nonlinear generator, conservation/constraint route, causal route, weak-field recovery, no free connected coefficient at principle level, and parsimony/independence.
+Their fixed-time spatial integrals vanish under the frozen boundary assumptions. Thus an infinite family of locally different conserved stresses can preserve the same global four-momentum charges.
 
-It was **not promoted** because it fails two mandatory pre-outcome interfaces:
+RSC1 does **not** assert these representatives are physically equivalent under nonlinear gravity. The relevant insufficiency is that G97 supplies global closed-system mechanical bookkeeping but current RCG-002 authority supplies neither:
+- a unique same-realization local probe+apparatus/support/binding `T_tot^{mu nu}` plus carrier self-source; nor
+- an explicit source equivalence quotient with proof that nonlinear carrier dynamics/readout are invariant under it.
 
-1. `G97_CLOSED_PREPARATION_TO_NONLINEAR_TOTAL_STRESS_MAP` — G97 gives closed probe+apparatus mechanical bookkeeping, while baseline v0 uses an abstract conserved `T_{mu nu}`. No canonical same-realization map including apparatus/support/binding stresses plus carrier self-source has been defined.
-2. `NONLINEAR_CARRIER_TO_POSITIVE_OPERATIONAL_INFLUENCE_MAP` — RSC is presently a classical nonlinear field-closure principle and supplies no prospectively defined CTP/influence/state-space/measure route guaranteeing normalized positive operational evolution.
+The negative control `delta T^{mu nu}=eta^{mu nu}F` gives `partial_mu delta T^{mu nu}=partial^nu F` and correctly fails local conservation for nonconstant `F`.
 
-Frozen verdict: `NEAR_SURVIVOR_BUT_FAILS_C3_AND_C7`.
+Therefore Interface A is BLOCKED, not FAIL.
 
-The criteria were not weakened after inspection.
+### Interface B exact certificate — classical coherent response does not determine positive quantum influence
 
-### Other proposal verdicts
+Even granting a fixed set of real coherent carrier phases `phi_x`, for arbitrary real history function `f_x` and `sigma>=0`,
 
-- MPI: `REJECT_OPERATIONAL_SELECTOR_WITHOUT_PHYSICAL_GENERATOR`. An arbitrary information-geometric/Choi objective is extra selector structure not derived from RCG-002 and supplies no physical spacetime generator/conservation route.
-- CRM: `REJECT_MEDIATOR_DYNAMICS_NOT_FIXED_BY_PAIRWISE_DATA`. CM1 already supplies an exact counterexample to bare pairwise mediator closure selecting higher connected dynamics; the frozen CRM proposal does not define the missing mediator spectrum/matrix-element law or spacetime Bianchi/causal structure.
-- CIC: `REJECT_UNSPECIFIED_HIGHER_CUMULANT_RECURSION`. The required recursion that would determine higher connected cumulants from lower data is itself unspecified and therefore remains the missing functional datum identified by NCP1/NP1.
+`K_sigma(x,y)=exp(i(phi_x-phi_y)) exp[-(sigma^2/2)(f_x-f_y)^2]`
 
-### New scientific fact
+is a normalized PSD correlation kernel. If `X~N(0,sigma^2)` and
 
-VB1 showed that the current frozen version lacks a nonlinear generating principle. V2P1 sharpens what is required of any new version: a classical self-coupling idea alone is insufficient for the RCG-002 programme's operational target.
+`u_x(X)=exp(i phi_x+iX f_x)`,
 
-A viable prospectively new version must bind, in one pre-outcome package:
+then exactly
 
-- closed physical source/preparation -> nonlinear total stress/history;
-- nonlinear carrier/source-state evolution with conservation/constraint/causality structure;
-- nonlinear carrier -> normalized positive operational influence/state evolution;
-- exact validated weak-field recovery;
-- no independent fitted connected coefficient/function.
+`K_sigma(x,y)=E[u_x(X) conjugate(u_y(X))]`.
 
-No new candidate version is authorized yet.
+All members share the same deterministic coherent phase but distinct `sigma` values generally change coherence magnitudes. Thus classical carrier dynamics alone does not determine the nonlinear state/measure/noise/influence completion.
 
-## Retained VB1 terminal
+The frozen negative matrix `[[1,1,1],[1,1,-1],[1,-1,1]]` has determinant `-4` and correctly fails PSD, so normalization/Hermiticity alone were not treated as positivity.
 
-VB1 remains authoritative:
+Current RSC defines no nonlinear quantum state space, interacting measure, initial carrier/environment state or candidate-owned nonlinear influence/noise rule. The free Gaussian linearized baseline cannot be promoted beyond its comparator scope to fill this gap.
 
-`RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED` and `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
+Therefore Interface B is BLOCKED, not FAIL.
 
-The frozen current authority contains a real operational controlled-phase architecture, a real linearized covariant baseline, and a real G97 closed source-preparation prerequisite, but no physical nonlinear source/state/evolution generator. Any future rule that fixes the connected response introduces new model-defining information and must be prospectively versioned before outcome inspection.
+### Independence of the blockers
 
-Terminal note: `results/RCG002_VB1_CURRENT_VERSION_BOUNDARY_TERMINAL.md`.
+The source/stress-localization problem and the quantum state/noise/influence problem are distinct layers. Fixing one does not fix the other. The control variables used in the two certificates are not identified with physical completion coordinates and must not be counted as a physical theory-space dimension.
 
-## Retained CM1 / NP1 / NCP1 / G97
+### RSC1 scientific interpretation
 
-CM1 remains `NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`, run `34861269613`. A single finite closed mediator with two-body source-mediator controls and exact reset still leaves arbitrary connected phase. Only `FINITE_ORDERED_CIRCUIT_CAUSALITY_ONLY` is established.
+V2P1 identified two qualitative RSC gaps. RSC1 proves they are genuine independent model-definition gaps:
 
-NP1 remains `RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`, run `34816931926`. Positivity/CPTP, lower-face recovery, lower-body phase quotient, G97 total translation and finite-time normalized evolution leave independent connected phase/noise operational directions. This is not a physical gravitational completion-space dimension.
+1. closed/global conservation is weaker than a candidate-owned local nonlinear total-source map;
+2. a classical nonlinear carrier response is weaker than a candidate-owned normalized positive operational quantum map.
+
+Therefore RSC cannot be promoted by choosing a convenient local source representative or a convenient positive/noise kernel. Such choices would be additional candidate-version data.
+
+No new RCG-002 version is authorized.
+
+## Retained V2P1 / VB1 / earlier terminals
+
+V2P1 remains `NO_PREOUTCOME_PRINCIPLE_SELECTED` / `NEW_VERSION_PRINCIPLE_PACKAGE_INCOMPLETE`. RSC remains the strongest pre-outcome proposal but is not selected.
+
+VB1 remains `RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED` and `CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY`.
+
+CM1 remains `NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED`, run `34861269613`.
+
+NP1 remains `RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED`, run `34816931926`.
 
 NCP1 remains `FAIL_HIGHER_ORDER_ONLY_NOISE_RESCUE_SCOPED`, `FAIL_EXACT_GAUSSIAN_CUBIC_LOG_KERNEL_SCOPED`, `POSITIVE_NOISY_COMPLETIONS_NONUNIQUE_SCOPED`, overall `BLOCKED_PHYSICAL_EVOLUTION`, run `34792497014`.
 
-G97 remains `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`. It closes classical probe+apparatus total-momentum preparation bookkeeping only, not nonlinear gravity/Bianchi/positive influence dynamics.
+G97 remains `PASS_CLOSED_TOTAL_SOURCE_PREPARATION_CONSERVATION_SCOPED`, run `34791265992`. It is classical closed-preparation bookkeeping, not nonlinear stress/Bianchi/influence dynamics.
+
+G94 remains `BLOCKED_D_CUBIC_CTP_OBJECT_LACKS_NATIVE_THREE_SOURCE_SOURCE_TO_PHASE_BRIDGE_SCOPED`; CPI1 retains the need for a preparation map plus normalized positive influence kernel and does not supply the missing nonlinear U/state/full kernel.
 
 ## Automation state note
 
-At the V2P1 start, the two RQIRCG periodic automations had no newer durable scientific result in GitHub and were found disabled. They were re-enabled on 2026-09-14. Automation output is not scientific authority unless durably reconciled into repository state under the existing governance.
+At RSC1 state restoration, both RQIRCG periodic automations again had no newer durable scientific result and were found disabled. They were re-enabled on 2026-09-14. Automation state is not scientific evidence; only durable reconciled GitHub results become authority.
 
 ## Physical nonlinear completion space
 
 **Undefined.**
 
-Operational coordinates from G90/G91/NCP1/NP1/CM1 are not automatically physical gravitational degrees of freedom. No physical field/source/readout equivalence quotient has been derived. Do not infer a dimension, and do not convert the absent physical map into selector rank zero.
+The RSC1 control functions `F`, `f` and `sigma`, NP1 `lambda/gamma`, CM1 bus `lambda`, and earlier witness coordinates are not physical gravitational completion coordinates. No physical field/source/readout equivalence quotient has been derived. Do not infer a dimension or rank from them.
 
 ## Exact next admissible fundamental gate
 
-**`RSC_INTERFACE_CLOSURE_PREOUTCOME_GATE`.**
+**`RSC_SOURCE_STRESS_EQUIVALENCE_PREREQUISITE_GATE`.**
 
-RSC is not yet an authorized new version. The next gate must prospectively test whether its two missing interfaces can be closed without inspecting any connected phase/noise outcome:
+Interface A is upstream of the nonlinear carrier equation and therefore upstream of a candidate-owned quantum influence construction. The next gate must remain pre-outcome and must NOT choose a preferred stress representative because it gives a convenient phase.
 
-A. `G97_CLOSED_PREPARATION_TO_NONLINEAR_TOTAL_STRESS_MAP`
-- specify full probe+apparatus/support source histories;
-- include binding/holding/internal stresses needed for local conservation;
-- define the carrier self-source contribution in the same realization;
-- establish the precise conserved-source object and gauge/domain assumptions;
-- reject probe-only or externally held nonclosed surrogates.
+It should prospectively ask whether an independently motivated RCG-002-compatible source principle can provide either:
 
-B. `NONLINEAR_CARRIER_TO_POSITIVE_OPERATIONAL_INFLUENCE_MAP`
-- specify the quantum/state/influence object generated by the nonlinear carrier;
-- define normalization and positivity/CPTP or an exact justified alternative;
-- specify causal/CTP/retarded structure and source-history inputs;
-- show how the validated pairwise weak-field channel is recovered;
-- introduce no free connected coefficient/function selected by outcome.
+### Route A — canonical same-realization source construction
 
-If either interface requires an arbitrary functional, post-hoc source split, gauge-dependent prescription, new unfixed coupling, or desired-outcome choice, RSC remains unselected and no new RCG-002 version opens.
+A microphysical/operational closed-source rule that defines, before any connected outcome:
+- probe matter contribution;
+- apparatus/support/splitting/recombination/holding or binding stresses required for local conservation;
+- exact branch/history preparation;
+- local symmetric conserved total stress in the stated domain;
+- carrier self-source/constraint contribution required by RSC;
+- weak-field reduction to the validated baseline.
 
-Do not calculate `chi_ABC` before this interface gate terminalizes.
+Any new action or constitutive law is new candidate-version data and must be labelled prospectively; do not smuggle it into the current seed.
+
+### Route B — explicit physical source equivalence quotient
+
+Alternatively define a class `[T_tot]` and prove that all allowed improvements/redefinitions transform the nonlinear carrier, preparation and operational readout consistently so that the physical prediction is representative-independent. Merely observing global-charge equality is insufficient.
+
+### Terminal logic
+
+- PASS only if a canonical source or sufficient physical quotient is defined without outcome-driven choices and with a carrier self-source route.
+- BLOCKED if a new source action/constitutive datum is required but not independently motivated/specifiable.
+- FAIL only for an actual contradiction of a prospectively frozen source principle, not for absence of one.
+- INVALID if a convenient stress representative, external-candidate dynamics, or connected outcome is used as selector.
+
+Interface B remains independently open after any source-side PASS and must later receive its own prospective quantum state/measure/influence gate.
+
+Do not calculate `chi_ABC` before the source/interface chain explicitly authorizes it.
 
 ## Open layers and locks
 
-Still open: new-version principle selection; G97->nonlinear total stress map; nonlinear carrier->positive operational influence map; nonlinear conservation/Bianchi/constraint closure; spacetime causality; physical completion quotient; state/measure completion; external/comparator discrimination; externally anchored prediction.
+Still open: source/stress/action/equivalence definition; carrier nonlinear self-source; nonlinear quantum state/measure/influence law; nonlinear conservation/Bianchi/constraint propagation in one realization; spacetime causality; physical completion quotient; external/comparator discrimination; externally anchored prediction.
 
-Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002, universal classical/semiclassical/noisy no-go, family-wide uniqueness, green-CI-as-physics, or post-hoc connected coefficient selection.
+Forbidden claims remain `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, established nonlinear RCG-002/RSC, universal classical/semiclassical/noisy no-go, family-wide uniqueness, green-CI-as-physics, or post-hoc connected coefficient/source selection.
 
-Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1 results and duplicate-G93 quarantine remain intact.
+Historical G72-G97/CPI1/NCP1/NP1/CM1/VB1/V2P1 results and duplicate-G93 quarantine remain intact.
