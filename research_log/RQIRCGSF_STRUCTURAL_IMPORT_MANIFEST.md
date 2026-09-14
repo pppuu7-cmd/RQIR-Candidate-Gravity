@@ -24,7 +24,7 @@ and
 
 Successor-only classical selection result:
 
-- SF021 terminal commit `3216863317cf088b77d643c42a382800b4a3f004` is **not** the SF021 commit; the exact SF021 result file is `results/SF021_RHPI_GRAVITATIONAL_LAW_SELECTION_TERMINAL.md`, classification `RHPI_SELECTED_AS_CLASSICAL_GRAVITATIONAL_LAW_PRINCIPLE_SCOPED`. Its principle is successor-branch information only and is not imported as historical RCG-002 authority.
+- SF021 terminal commit `99528ea48cca12354b3708e4e348178e1cfd891f`, result `results/SF021_RHPI_GRAVITATIONAL_LAW_SELECTION_TERMINAL.md`, classification `RHPI_SELECTED_AS_CLASSICAL_GRAVITATIONAL_LAW_PRINCIPLE_SCOPED`. This principle remains successor-branch information only and is not imported as historical RCG-002 authority.
 
 Validated structural results imported in this reconciliation:
 
