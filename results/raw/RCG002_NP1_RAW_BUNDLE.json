@@ -1,0 +1,150 @@
+{
+  "all_checks_valid": true,
+  "classification": "RCG002_CURRENT_PRINCIPLES_ALLOW_CONTINUUM_CONNECTED_CHANNEL_EXTENSIONS_SCOPED",
+  "coordinates": [
+    "lambda_connected_phase",
+    "gamma_connected_dephasing"
+  ],
+  "frozen_base": "94467fdacc93f65102333fa01b7a34bb0d857a79",
+  "gate": "RCG002-NP1",
+  "lanes": {
+    "A": {
+      "checks": {
+        "compressed_determinant": true,
+        "compressed_trace_positive": true,
+        "gamma_zero_rank_one": true,
+        "gram_cross_is_r": true,
+        "negative_control_fails_psd": true
+      },
+      "checks_valid": true,
+      "compressed_det": "7 - 7*r**2",
+      "compressed_kernel": "Matrix([[7, sqrt(7)*r], [sqrt(7)*r, 1]])",
+      "finished_unix": 1789370081.857604,
+      "frozen_base": "94467fdacc93f65102333fa01b7a34bb0d857a79",
+      "gate": "RCG002-NP1",
+      "gram_vectors": {
+        "q0": ["1", "0"],
+        "q1": ["r", "sqrt(1 - r**2)"]
+      },
+      "lane": "A",
+      "negative_control_det": "-4",
+      "phase_congruence": "C = D(lambda) R D(lambda)^dagger, D_x=exp(i lambda q(x)); PSD preserved",
+      "prereg_commit": "1c63d49ccfbc0978c0d791fabd335a00186fa4f4",
+      "python": "3.12.14",
+      "schur_extension_theorem": "If F0>=0 and C>=0 then F0 .* C>=0; both unit diagonal imply normalized Schur channel.",
+      "scope": "Operational Schur-kernel theorem; no gravitational dynamics or spacetime locality is inferred.",
+      "started_unix": 1789370081.7038808,
+      "sympy": "1.14.0"
+    },
+    "B": {
+      "checks": {
+        "connected_third_difference_lambda": true,
+        "face_0_q_zero": true,
+        "face_1_q_zero": true,
+        "face_2_q_zero": true,
+        "lower_body_third_difference_zero": true,
+        "phase_noise_coordinates_independent": true
+      },
+      "checks_valid": true,
+      "face_statement": "On a=0 or b=0 or c=0, q=abc=0 for every state on that face, so C_lambda,gamma=1 identically.",
+      "finished_unix": 1789370092.6751037,
+      "frozen_base": "94467fdacc93f65102333fa01b7a34bb0d857a79",
+      "gate": "RCG002-NP1",
+      "lane": "B",
+      "observable_jacobian_lambda_gamma": "Matrix([[1, 0], [0, -1]])",
+      "prereg_commit": "1c63d49ccfbc0978c0d791fabd335a00186fa4f4",
+      "python": "3.12.14",
+      "rephasing_statement": "Adding any constant/one-body/two-body diagonal phase changes no third finite difference; lambda is not removable by that lower-body rephasing quotient.",
+      "scope": "Moebius/face theorem on the binary branch cube; not a proof of physical gravitational accessibility.",
+      "started_unix": 1789370092.6120048,
+      "sympy": "1.14.0",
+      "third_difference_connected": "lambda",
+      "third_difference_lower": "0"
+    },
+    "C": {
+      "Q_rank": 1,
+      "checks": {
+        "gaussian_characteristic_normalized": true,
+        "gaussian_crossing_factor": true,
+        "gaussian_reverse_crossing_factor": true,
+        "time_profile_integrates_lambda": true,
+        "translation_commutator_zero": true
+      },
+      "checks_valid": true,
+      "commutator_rank": 0,
+      "dilation": "U_X=exp(i (lambda+X) Q), X Gaussian with variance 2 gamma; averaging is random-unitary CPTP.",
+      "finished_unix": 1789370079.549822,
+      "frozen_base": "94467fdacc93f65102333fa01b7a34bb0d857a79",
+      "gate": "RCG002-NP1",
+      "lane": "C",
+      "prereg_commit": "1c63d49ccfbc0978c0d791fabd335a00186fa4f4",
+      "python": "3.12.14",
+      "scope": "Finite laboratory-time normalized evolution and total-translation compatibility only; no relativistic microcausality, stress-energy, Bianchi or gravity claim.",
+      "started_unix": 1789370079.46768,
+      "sympy": "1.14.0",
+      "time_integral": "lambda",
+      "time_profile": "6*lambda*t*(1 - t)"
+    },
+    "D": {
+      "authority_files": {
+        "baseline": "/home/runner/work/RQIR-Candidate-Gravity/RQIR-Candidate-Gravity/candidates/RCG_002_COVARIANT_BASELINE_COMPLETION_V0.md",
+        "contract": "/home/runner/work/RQIR-Candidate-Gravity/RQIR-Candidate-Gravity/docs/CONSTRUCTION_CONTRACT.md",
+        "ncp1": "/home/runner/work/RQIR-Candidate-Gravity/RQIR-Candidate-Gravity/results/RCG002_NCP1_NOISY_COMPLETION_TERMINAL.md",
+        "recovery": "/home/runner/work/RQIR-Candidate-Gravity/RQIR-Candidate-Gravity/recovery/CURRENT_FRONT.md",
+        "seed": "/home/runner/work/RQIR-Candidate-Gravity/RQIR-Candidate-Gravity/candidates/RCG_002_RELATIONAL_CONTROLLED_PHASE_CHANNEL.md"
+      },
+      "authority_result": "NO_EXISTING_NATIVE_SELECTOR_FOUND",
+      "checks": {
+        "baseline_delta_gamma_unselected": true,
+        "contract_search_minimal_dynamics": true,
+        "ncp1_physical_evolution_blocked": true,
+        "ncp1_requires_new_principle": true,
+        "recovery_no_candidate_owned_law": true,
+        "recovery_requires_new_principle": true,
+        "seed_must_derive_not_fit": true,
+        "seed_no_microscopic_chi": true
+      },
+      "checks_valid": true,
+      "finished_unix": 1789370081.557975,
+      "frozen_base": "94467fdacc93f65102333fa01b7a34bb0d857a79",
+      "gate": "RCG002-NP1",
+      "lane": "D",
+      "ownership": {
+        "ALLOWED_BUT_NOT_SELECTED": [
+          "connected unitary phase lambda",
+          "connected dephasing gamma",
+          "other positive higher-order channel completions"
+        ],
+        "DERIVED_FROM_RCG002": [
+          "normalized quantum-state evolution at the operational level",
+          "relational phase quotient / controlled-phase architecture",
+          "recover validated weak-field branch",
+          "closed total-source translation/conservation prerequisite from G97"
+        ],
+        "REQUIRES_NEW_PRINCIPLE": [
+          "microscopic nonlinear source/state/evolution law",
+          "rule fixing connected phase/noise hierarchy",
+          "nonlinear stress-energy/Bianchi/constraint completion",
+          "physical source-to-branch-history map and spacetime causal realization"
+        ]
+      },
+      "prereg_commit": "1c63d49ccfbc0978c0d791fabd335a00186fa4f4",
+      "python": "3.12.14",
+      "scope": "Repository-authority sufficiency audit; marker success is supporting provenance, not by itself a no-go theorem.",
+      "started_unix": 1789370081.557772,
+      "sympy": "1.14.0"
+    }
+  },
+  "operational_extension_dimension_lower_bound": 2,
+  "physical_classification": "RCG002_REQUIRES_NEW_NONLINEAR_PRINCIPLE",
+  "physical_selector_rank": "UNDEFINED_PHYSICAL_MAP_MISSING",
+  "prereg_commit": "1c63d49ccfbc0978c0d791fabd335a00186fa4f4",
+  "raw_sha256": {
+    "np1_A.json": "44d59fe2a2e8b853041509e2d1a8806b0da7347cfd72ce0cbc933a4f49b0c69e",
+    "np1_B.json": "bbf521ce6225175bf70281150ef99ff3727a8fe1f47bd5e2dd5e6e41153af485",
+    "np1_C.json": "36c76f4579748e955f641406b7d9740a743dbdecc7975c87046d11925cf3a1af",
+    "np1_D.json": "8cfa76d9a6a0e96642ee43d87befa54f56c4506ec9bcba3587c7b1c0ec74ac43"
+  },
+  "readiness_percent": 66,
+  "theory_established_percent": 0
+}
