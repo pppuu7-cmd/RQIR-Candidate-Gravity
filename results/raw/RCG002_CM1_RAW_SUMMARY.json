@@ -1,0 +1,75 @@
+{
+  "gate": "CM1",
+  "starting_main": "613713ced67058e0010cc44ede60955ec455fdb7",
+  "prereg_commit": "1e1c6556b42769cb1d0ce67e964c7f151351ec1c",
+  "implementation_commit": "74caef5d4bba0a6a7106f68ab2efc3f44a543744",
+  "production_commit": "6f45a31a3259000a3e3b832f616c03d74563767b",
+  "workflow_run": 34861269613,
+  "jobs": {
+    "A": 104033804455,
+    "B": 104033804121,
+    "C": 104033804463,
+    "D": 104033804464,
+    "aggregate": 104033938938
+  },
+  "artifacts": {
+    "A": {"id": 10355225608, "zip_sha256": "c3546d9d8260833c60dc14dad171b1c9e72621b7f67f3401997ca801ecd57d08", "raw_json_sha256": "88febeabe1fa1f11d166fddeed0a4b0ac393ebe3d4a9c6f717bb9ee8fe2e523e"},
+    "B": {"id": 10354464514, "zip_sha256": "05e02a2cc84a36745404b952f771c411346ca988a8f19df22cc48c2f1a06f0b3", "raw_json_sha256": "5bf445a1c6bfb0e2b9b1c6f9d2899e1bb2c8c7327ff9a8084eea85783e65b619"},
+    "C": {"id": 10354769236, "zip_sha256": "45a24e7ed51af79045d90cf61e91acfbddc3bdaa3b63aec96905d74d16ba014e", "raw_json_sha256": "744b9a910af8f69427e3d4e1b3e2edcb0631ed07d0fa41483dcb1984b5c2c02c"},
+    "D": {"id": 10354469412, "zip_sha256": "cb9e3eb013d71125f06fc9da774e124448c14a5f6bcdc0b8525a0212b67a3b7d", "raw_json_sha256": "1d72f59710abf19416d501d55349ccbbd9449c70111c352ec7b1aff7f76feb6f"},
+    "aggregate": {"id": 10354769307, "zip_sha256": "3a042de0435f945d54f446732562d15cbd042a80cbeb3f36333ecbf9bc927c02", "raw_json_sha256": "91728aabcedfe2841c789c1bf50e5b9a5a9d16fee5c2edc8be551bd0a21037bf"}
+  },
+  "post_terminal_verification": {
+    "all_zip_hashes_match_github": true,
+    "A_equals_aggregate_lane_A": true,
+    "B_equals_aggregate_lane_B": true,
+    "C_equals_aggregate_lane_C": true,
+    "D_equals_aggregate_lane_D": true,
+    "only_attempt_1_consumed": true
+  },
+  "A": {
+    "checks_valid": true,
+    "phase_exponents_000_to_111": [0,0,0,0,0,0,0,1],
+    "exact_bus_reset_all_branches": true,
+    "induced_source_unitary": "diag(1,1,1,1,1,1,1,exp(i*lambda))",
+    "lambda_domain": "all real lambda"
+  },
+  "B": {
+    "checks_valid": true,
+    "all_three_lower_faces_identity": true,
+    "connected_third_difference_coefficient": 1,
+    "lower_order_basis_third_differences": {"1":0,"a":0,"b":0,"c":0,"ab":0,"ac":0,"bc":0},
+    "omit_A_third_difference": 0,
+    "omit_B_third_difference": 0,
+    "omit_C_third_difference": 0,
+    "phase_level2_negative_control_face_identity": {"a=0":false,"b=0":false,"c=0":false},
+    "phase_level2_negative_control_third_difference": -3
+  },
+  "C": {
+    "checks_valid": true,
+    "shift_exact_unitary": true,
+    "controlled_shift_exact_inverse": true,
+    "mediator_phase_exact_unitary_for_real_lambda": true,
+    "source_dependent_primitives_are_one_source_plus_bus_only": true,
+    "mediator_returns_same_pure_zero_state_all_branches": true,
+    "no_residual_branch_record_in_bus": true,
+    "g97_translation_tensor_factor_control": true
+  },
+  "D": {
+    "checks_valid": true,
+    "causality_scope": "FINITE_ORDERED_CIRCUIT_CAUSALITY_ONLY",
+    "reverse_uncompute_equivalent_because_shifts_commute": true,
+    "moving_phase_before_C_third_difference": 0,
+    "lambda_remains_free_symbolic_input": true,
+    "not_established": ["relativistic microcausality","finite-speed spacetime propagation","gravitational source-history map","energy conservation","nonlinear stress-energy conservation","Bianchi/constraint closure","candidate-owned lambda selection"]
+  },
+  "aggregate": {
+    "checks_valid": true,
+    "continuum_lambda_survives": true,
+    "classification": "NONUNIQUENESS_SURVIVES_CLOSED_SEQUENTIAL_MEDIATOR_SCOPED",
+    "physical_status": "RCG002_REQUIRES_NEW_NONLINEAR_PRINCIPLE",
+    "selection_rank": "UNDEFINED_PHYSICAL_MAP_MISSING",
+    "readiness_percent": 66,
+    "theory_established_percent": 0
+  }
+}
