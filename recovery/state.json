@@ -1,15 +1,35 @@
 {
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "project": "RQIR-Candidate-Gravity",
   "seed": "RCG-002 Relational controlled-phase channel",
   "current_version": "RCG002_CURRENT_VERSION_NONLINEAR_DYNAMICS_UNDERDETERMINED",
   "programme_label": "CURRENT_VERSION_TERMINAL_AT_NONLINEAR_MODEL_DEFINITION_BOUNDARY",
   "rsc_status": "NEAR_SURVIVOR_NOT_SELECTED",
-  "latest_scientific_gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
-  "latest_scientific_classification": "NO_SPIN2_CONSISTENCY_PREMISE_CLASS_FORCED_BY_CURRENT_RQIRCG_SCOPED",
-  "latest_structural_result": "SPIN2_RIGIDITY_IS_PREMISE_CLASS_DEPENDENT_AND_CURRENT_PARENT_DOES_NOT_SELECT_THE_PREMISE_CLASS_SCOPED",
-  "latest_integration_classification": "RQIRCGSF_STRUCTURAL_OBLIGATIONS_IMPORTED_WITH_HISTORICAL_VERSION_LOCK",
+  "latest_scientific_gate": "RSC_ARCHITECTURE_DISPOSITION_PREOUTCOME_GATE",
+  "latest_scientific_classification": "ARCHITECTURE_DISPOSITION_NOT_UNIQUELY_SELECTED_PREOUTCOME",
+  "latest_structural_result": "CURRENT_SCIENTIFIC_AUTHORITY_UNDERDETERMINES_PROGRAMME_DISPOSITION_SCOPED",
   "historical_rcg002_changed": false,
+  "ad1_disposition_audit": {
+    "prereg_commit": "b5ac647ce0faab2bec1770d26a252288d5decf7f",
+    "D1_FREEZE_RSC_UNSELECTED_ARCHITECTURE": {
+      "verdict": "ADMISSIBLE",
+      "commit": "11b47051d7315e3369c0f71d818714f8864fd6ec"
+    },
+    "D2_RETIRE_RSC_FROM_ACTIVE_PARENT_FORMATION": {
+      "verdict": "ADMISSIBLE",
+      "commit": "f37181ed0939023f9eac1381ad849d466e9efbdf"
+    },
+    "D3_AUTHORIZE_EXPLICIT_NEW_VERSION_FORMATION_ATTEMPT": {
+      "verdict": "ADMISSIBLE_WORKFLOW_LEVEL_ONLY",
+      "commit": "98cbde06c1c8566399d0a98083d1e0f8fb1561d1",
+      "formed_candidate": false,
+      "substantive_physics_authorized": false
+    },
+    "admissible_count": 3,
+    "terminal_commit": "99c87e85497dbbb780a53f512f5dbc0fb48ef832",
+    "ledger_commit": "aef63917c9fbcc454d7780ef2d1559dd5fcd1215",
+    "new_boundary_fact": "SCIENTIFIC_CONSTRAINTS_ON_DISPOSITION_NE_UNIQUE_PROGRAMME_DISPOSITION"
+  },
   "anchor_budget": {
     "A_source_ontology_action": 2,
     "B_curvature_nonminimal": 2,
@@ -19,59 +39,19 @@
   },
   "strongest_candidate": "CGD2_CONSISTENT_GAUGE_DEFORMATION_TWO_DERIVATIVE_SPIN2",
   "spin2_premise_audit": {
-    "gate": "RSC_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_PREOUTCOME_GATE",
-    "prereg_commit": "d6a16827464a5ed9da97790b10784068c7d59087",
-    "theorem_notes_commit": "4114a3135cdfac1b6c61627a5a2aeed0dc6fdc89",
-    "terminal_commit": "2c92ff91227971507e510c180c57611bc8c516ee",
-    "ledger_commit": "2a74883096b5a3c59691603e13b686a581df86ab",
-    "route_verdicts": {
-      "P1_LAG2_local_action_offshell_deformation": "PARTIALLY_ANCHORED_CONDITIONAL",
-      "P2_SFT2_asymptotic_soft_smatrix_constructibility": "NOT_FORCED_BY_CURRENT_RQIRCG",
-      "P3_RHD2_canonical_hypersurface_deformation": "NOT_FORCED_BY_CURRENT_RQIRCG"
-    },
-    "authorized_levelIII_survivor_count": 0,
-    "ab1_candidate_C_after": "CGD2_REMAINS_CONDITIONAL_LEVELIII_ACTUAL_LEVELII",
-    "new_structural_fact": "THEOREM_STRENGTH_NE_PREMISE_AUTHORITY",
+    "classification": "NO_SPIN2_CONSISTENCY_PREMISE_CLASS_FORCED_BY_CURRENT_RQIRCG_SCOPED",
     "remaining_gap": "REPRESENTATION_CLASS_SELECTION_GAP_SCOPED",
+    "authorized_levelIII_survivor_count": 0,
     "einstein_dynamics_import_authorized": false
   },
   "structural_import": {
     "source_repo": "pppuu7-cmd/RQIRCG-structural-findings",
-    "source_head": "9eb6c8821c285a13d63a7a3d6859d2c1e0db2157",
+    "source_head_at_import": "9eb6c8821c285a13d63a7a3d6859d2c1e0db2157",
     "source_role": "PROSPECTIVE_NEW_PRINCIPLE_SUCCESSOR_SEARCH",
-    "manifest_commit": "1c5685c1cca5092cff9096e614ad2463a408387f",
-    "slot_graph_commit": "7877810777fdf093c13b7f75c4bb6f95ee468676",
-    "selector_observable_obligations_commit": "f9261bf8f6ff3bd31f11e7efb7fdcaf8e0d431f2",
-    "terminal_import_commit": "5964755c55d0a59d81e5f64e8b56e73e97d92f60",
-    "ledger_import_commit": "61eae287eabfecfced27ea818a9ba91fa208e322",
-    "sf021_successor_only": {
-      "commit": "99528ea48cca12354b3708e4e348178e1cfd891f",
-      "classification": "RHPI_SELECTED_AS_CLASSICAL_GRAVITATIONAL_LAW_PRINCIPLE_SCOPED",
-      "retroactive_parent_authority": false
-    },
-    "sf025": {
-      "terminal_commit": "3216863317cf088b77d643c42a382800b4a3f004",
-      "classification": "POST_RHPI_QUANTUM_COMPOSITION_DOES_NOT_FIX_FINITE_ON_SHELL_MATCHING_SCOPED",
-      "quantum_law_matching_slot_separate_from_state_measure": true,
-      "matching_witness_is_candidate_dynamics": false
-    },
-    "sf026": {
-      "terminal_commit": "cb368a4fb226cc9c2c18f5b52880546922880bcd",
-      "classifications": [
-        "PAIRWISE_NULL_NOT_STABLE_UNDER_SELF_CONSISTENT_HISTORY_PULLBACK_SCOPED",
-        "FINITE_TIME_OBSERVABLE_BLOCKED_PENDING_BOUNDARY_COMPLETE_PROTOCOL"
-      ],
-      "release_delta3_coefficient": "-82/1848015",
-      "release_diagnostic_is_chi_ABC": false,
-      "nonzero_connected_signal_implies_new_three_body_vertex": false
-    },
-    "model_definition_slots": [
-      "CLASSICAL_LAW",
-      "SOURCE_PREPARATION_CONSTITUTION",
-      "QUANTUM_STATE_MEASURE_BOUNDARY",
-      "QUANTUM_LAW_ON_SHELL_MATCHING",
-      "OPERATIONAL_OBSERVABLE_READOUT"
-    ],
+    "latest_integration_classification": "RQIRCGSF_STRUCTURAL_OBLIGATIONS_IMPORTED_WITH_HISTORICAL_VERSION_LOCK",
+    "sf021_retroactive_parent_authority": false,
+    "sf025_quantum_law_matching_slot_separate_from_state_measure": true,
+    "sf026_nonzero_connected_signal_implies_new_three_body_vertex": false,
     "boundary_complete_observable_required": true,
     "rqircgsf_remains_independent": true,
     "future_promotion_gate": "SUCCESSOR_PROMOTION_GATE"
@@ -82,8 +62,8 @@
   "theory_established_percent": 0,
   "chi_ABC_status": "UNAUTHORIZED_NOT_COMPUTED",
   "new_version_authorized": false,
-  "exact_next_gate": "RSC_ARCHITECTURE_DISPOSITION_PREOUTCOME_GATE",
-  "next_gate_type": "PROGRAMME_DISPOSITION_PREOUTCOME",
+  "exact_next_parent_action": "EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY_REQUIRED",
+  "next_parent_science_gate_authorized": false,
   "rqircgsf_next_fronts": {
     "theory": "INDEPENDENT_QUANTUM_LAW_SELECTOR_ON_SF025_MATCHING_FIBRE",
     "operational": "BOUNDARY_COMPLETE_FINITE_TIME_PROTOCOL_NEWTONIAN_1PN_OBSERVABLE_COMPARISON"
@@ -105,6 +85,10 @@
     "NO_THEOREM_CONCLUSION_AS_AUTHORITY_FOR_ITS_PREMISES",
     "NO_MINIMAL_DYNAMICS_EQ_LOCAL_ACTION_WITHOUT_AUTHORITY",
     "NO_OPERATIONAL_CAUSALITY_EQ_SMATRIX_WITHOUT_AUTHORITY",
-    "NO_RELATIONAL_DISCIPLINE_EQ_HKT_CANONICAL_PREMISES_WITHOUT_AUTHORITY"
+    "NO_RELATIONAL_DISCIPLINE_EQ_HKT_CANONICAL_PREMISES_WITHOUT_AUTHORITY",
+    "NO_PROGRAMME_DISPOSITION_REPORTED_AS_SCIENTIFICALLY_UNIQUE_AFTER_AD1",
+    "NO_D3_WORKFLOW_PERMISSION_EQ_FORMED_CANDIDATE",
+    "NO_RETIREMENT_EQ_RSC_SCIENTIFIC_FAIL",
+    "NO_FREEZE_EQ_RSC_SCIENTIFIC_SUCCESS"
   ]
 }
