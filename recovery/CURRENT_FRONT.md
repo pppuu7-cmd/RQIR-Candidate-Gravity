@@ -113,6 +113,18 @@ Rules after reconciliation:
 - **DO NOT open another parent principle/theorem gate to force a tie-break**;
 - a future parent run may advance only if a genuinely new explicit programme-authority declaration appears after this reconciliation.
 
+## Bounded current-front authority-arrival audit
+
+2026-09-15 ultra-bounded audit, source set restricted prospectively to this `recovery/CURRENT_FRONT.md` only.
+
+Question: does the current frontier itself record a genuinely new explicit post-reconciliation programme/governance declaration that chooses exactly one of D1/D2/D3?
+
+Result: **NO**.
+
+Classification remains `BLOCKED_PENDING_EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY`; exact next parent action remains `WAIT_FOR_EXPLICIT_PROGRAMME_DISPOSITION_DECLARATION`.
+
+This is only a current-front source-audit result, not a repository-wide nonexistence claim. No D1/D2/D3 scientific re-audit was performed, no new gate was opened, and `chi_ABC` remains `UNAUTHORIZED_NOT_COMPUTED`.
+
 ## S2PA1 boundary retained
 
 `THEOREM_STRENGTH != PREMISE_AUTHORITY`.
