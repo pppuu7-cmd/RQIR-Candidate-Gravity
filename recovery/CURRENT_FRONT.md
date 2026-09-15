@@ -1,6 +1,6 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-15 after bounded current-front programme-authority recheck.
+Updated: 2026-09-16 after bounded current-front programme-authority recheck.
 
 ## Canonical parent state
 
@@ -121,7 +121,7 @@ Question: does the current frontier itself record a genuinely new explicit post-
 
 Result: **NO**.
 
-Latest bounded recheck audited source blob `ed3ea8849ae4861a5ccdf57f2dcd14f38e880b07`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
+Latest bounded recheck (2026-09-16) audited source blob `2e12da693e97ee9e7f8c3bd380b7591a0a70c0eb`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
 
 Classification remains `BLOCKED_PENDING_EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY`; exact next parent action remains `WAIT_FOR_EXPLICIT_PROGRAMME_DISPOSITION_DECLARATION`.
 
