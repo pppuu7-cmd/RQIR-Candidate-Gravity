@@ -121,7 +121,7 @@ Question: does the current frontier itself record a genuinely new explicit post-
 
 Result: **NO**.
 
-Latest bounded recheck audited source blob `163ca56e2602f7790b25ea4c55bdf8626a11fe30`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
+Latest bounded recheck audited source blob `3c182c6f221794ac487d56bff131ff1581cf101b`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
 
 Classification remains `BLOCKED_PENDING_EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY`; exact next parent action remains `WAIT_FOR_EXPLICIT_PROGRAMME_DISPOSITION_DECLARATION`.
 
