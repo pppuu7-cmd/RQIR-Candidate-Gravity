@@ -143,7 +143,7 @@ No Einstein/GR import is authorized.
 - successor-only principles remain successor authority until explicit future import/promotion authority;
 - `NONZERO_CONNECTED_SIGNAL != NEW_THREE_BODY_GRAVITATIONAL_VERTEX`;
 - future connected observables require same-protocol self-consistent Newtonian and authorized 1PN/known-physics baselines;
-- physical observable chain remains `PREPARATION -> FULL FINITE-TIME EVOLUTION -> APPARATUS RECOIL/CONTROL -> RECOMBINATION -> READOUT/POVM -> PHYSICAL_PROBABILITY_OR_COHERENCE`.
+- physical observable chain remains `PREPARATION -> FULL FINITE-TIME EVOLUTION -> APPARATUS RECOIL/CONTROL -> RECOMBINATION -> READOUT/POVM -> PHYSICAL PROBABILITY OR COHERENCE`.
 
 Independent `pppuu7-cmd/RQIRCG-structural-findings` research may continue while the parent is parked. Its results do not automatically become historical RCG-002 authority.
 
