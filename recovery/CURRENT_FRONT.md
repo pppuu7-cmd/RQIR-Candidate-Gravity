@@ -1,6 +1,6 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-15 after automation programme-authority reconciliation.
+Updated: 2026-09-15 after bounded current-front programme-authority recheck.
 
 ## Canonical parent state
 
@@ -120,6 +120,8 @@ Rules after reconciliation:
 Question: does the current frontier itself record a genuinely new explicit post-reconciliation programme/governance declaration that chooses exactly one of D1/D2/D3?
 
 Result: **NO**.
+
+Latest bounded recheck audited source blob `163ca56e2602f7790b25ea4c55bdf8626a11fe30`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
 
 Classification remains `BLOCKED_PENDING_EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY`; exact next parent action remains `WAIT_FOR_EXPLICIT_PROGRAMME_DISPOSITION_DECLARATION`.
 
