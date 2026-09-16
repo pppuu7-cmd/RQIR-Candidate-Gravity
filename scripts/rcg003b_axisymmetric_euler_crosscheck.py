@@ -46,6 +46,17 @@ def coeff_matrix(Ea,Eb,vars_high):
     return [[sp.expand(sp.diff(Ea,v)) for v in vars_high],
             [sp.expand(sp.diff(Eb,v)) for v in vars_high]]
 
+def minimal_poly_witness(entries, vars_):
+    for label,e in entries:
+        p=sp.Poly(sp.expand(e),*vars_,domain=sp.QQ)
+        if not p.is_zero:
+            terms=sorted([(sum(m),m,c) for m,c in p.terms()],key=lambda x:(x[0],x[1]))
+            _,m,c=terms[0]
+            mon="*".join(f"{v}^{k}" for v,k in zip(vars_,m) if k) or "1"
+            return {"location":label,"monomial":mon,"powers":list(m),"coefficient":str(c),
+                    "common_density_factor":"exp(a+2b)"}
+    return None
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--output",required=True); ap.add_argument("--prereg-sha",required=True)
@@ -69,16 +80,24 @@ def main():
     Hn=[[sp.expand(e/ef) for e in row] for row in H]
     corr=all(sp.expand(fourth_n[i][j]-Hn[i][j])==0 for i in range(2) for j in range(2))
     fourth_nonzero=any(e!=0 for row in fourth_n for e in row)
+    third_nonzero=any(e!=0 for row in third_n for e in row)
 
-    classification=("FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED"
-                    if fourth_nonzero and corr else "INVALID_RCG003B")
-
-    p=sp.Poly(fourth_n[0][1],ua,ub,va,vb,domain=sp.QQ)
-    terms=sorted([(sum(m),m,c) for m,c in p.terms()],key=lambda x:(x[0],x[1]))
-    _,m,c=terms[0]
-    mon="*".join(f"{v}^{k}" for v,k in zip((ua,ub,va,vb),m) if k) or "1"
-    witness={"equation":"E_a","highest_derivative":"b4","monomial":mon,"powers":list(m),"coefficient":str(c),
-             "common_density_factor":"exp(a+2b)"}
+    if not corr:
+        classification="INVALID_RCG003B"
+        witness=None
+    elif fourth_nonzero:
+        classification="FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED"
+        witness=minimal_poly_witness([
+            ("E_a:a4",fourth_n[0][0]),("E_a:b4",fourth_n[0][1]),
+            ("E_b:a4",fourth_n[1][0]),("E_b:b4",fourth_n[1][1])],(ua,ub,va,vb))
+    elif third_nonzero:
+        classification="FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED"
+        witness=minimal_poly_witness([
+            ("E_a:a3",third_n[0][0]),("E_a:b3",third_n[0][1]),
+            ("E_b:a3",third_n[1][0]),("E_b:b3",third_n[1][1])],(ua,ub,va,vb))
+    else:
+        classification="PASS_SCOPED_RCG003B_AXISYMMETRIC_SECOND_ORDER_DERIVATIVE_CLOSURE"
+        witness=None
 
     exprs=[L]+[e for row in fourth_n for e in row]+[e for row in third_n for e in row]
     symbolic_sha=hashlib.sha256("\n--\n".join(sp.srepr(sp.expand(e)) for e in exprs).encode()).hexdigest()
@@ -97,6 +116,7 @@ def main():
       },
       "fourth_hessian_correspondence":bool(corr),
       "fourth_derivative_obstruction_present":bool(fourth_nonzero),
+      "third_derivative_obstruction_present":bool(third_nonzero),
       "minimal_exact_obstruction":witness,
       "symbolic_sha256":symbolic_sha,
       "classification":classification,
