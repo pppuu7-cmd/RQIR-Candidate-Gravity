@@ -1,0 +1,139 @@
+name: RCG003B axisymmetric Bianchi-I closure
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg003b-axisymmetric-bianchi-closure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze chronology and environment
+        run: |
+          git merge-base --is-ancestor dbb0b54465c628b533c646a5b3b74b8458eaf24e "$GITHUB_SHA"
+          git merge-base --is-ancestor ded5a44078c57909aeb6592b88bdac5c0917f85d "$GITHUB_SHA"
+          git merge-base --is-ancestor f7353512a31bdee081e63dc832a675ec16987121 "$GITHUB_SHA"
+          python -m pip install --disable-pip-version-check sympy==1.13.3
+          python --version
+          python -c "import sympy; print(sympy.__version__)"
+      - name: Direct metric Constructor
+        run: |
+          mkdir -p out
+          python scripts/rcg003b_axisymmetric_constructor.py \
+            --output out/RCG003B_CONSTRUCTOR.json \
+            --prereg-sha dbb0b54465c628b533c646a5b3b74b8458eaf24e \
+            --parent-terminal ded5a44078c57909aeb6592b88bdac5c0917f85d \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003b-constructor
+          path: out/RCG003B_CONSTRUCTOR.json
+
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze chronology and environment
+        run: |
+          git merge-base --is-ancestor dbb0b54465c628b533c646a5b3b74b8458eaf24e "$GITHUB_SHA"
+          git merge-base --is-ancestor ded5a44078c57909aeb6592b88bdac5c0917f85d "$GITHUB_SHA"
+          git merge-base --is-ancestor 49ea8d43f1dbca0e5212a67314cba9d5226a087c "$GITHUB_SHA"
+          python -m pip install --disable-pip-version-check sympy==1.13.3
+      - name: Independent fully anisotropic Critic
+        run: |
+          mkdir -p out
+          python scripts/rcg003b_axisymmetric_critic.py \
+            --output out/RCG003B_CRITIC.json \
+            --prereg-sha dbb0b54465c628b533c646a5b3b74b8458eaf24e \
+            --parent-terminal ded5a44078c57909aeb6592b88bdac5c0917f85d \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003b-critic
+          path: out/RCG003B_CRITIC.json
+
+  euler_crosscheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze chronology and environment
+        run: |
+          git merge-base --is-ancestor dbb0b54465c628b533c646a5b3b74b8458eaf24e "$GITHUB_SHA"
+          git merge-base --is-ancestor ded5a44078c57909aeb6592b88bdac5c0917f85d "$GITHUB_SHA"
+          git merge-base --is-ancestor b8dbe1c00fc7ad32444f682309526b3116ca9ede "$GITHUB_SHA"
+          python -m pip install --disable-pip-version-check sympy==1.13.3
+      - name: Direct Euler-Lagrange highest-derivative cross-check
+        run: |
+          mkdir -p out
+          python scripts/rcg003b_axisymmetric_euler_crosscheck.py \
+            --output out/RCG003B_EULER_CROSSCHECK.json \
+            --prereg-sha dbb0b54465c628b533c646a5b3b74b8458eaf24e \
+            --parent-terminal ded5a44078c57909aeb6592b88bdac5c0917f85d \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003b-euler-crosscheck
+          path: out/RCG003B_EULER_CROSSCHECK.json
+
+  aggregate:
+    needs: [constructor, critic, euler_crosscheck]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify frozen implementation ancestry
+        run: |
+          git merge-base --is-ancestor dbb0b54465c628b533c646a5b3b74b8458eaf24e "$GITHUB_SHA"
+          git merge-base --is-ancestor f7353512a31bdee081e63dc832a675ec16987121 "$GITHUB_SHA"
+          git merge-base --is-ancestor 49ea8d43f1dbca0e5212a67314cba9d5226a087c "$GITHUB_SHA"
+          git merge-base --is-ancestor b8dbe1c00fc7ad32444f682309526b3116ca9ede "$GITHUB_SHA"
+          git merge-base --is-ancestor 7989f4ace99d5efc6432f8ac41a7cb42eb0c98b0 "$GITHUB_SHA"
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg003b-constructor
+          path: in/constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg003b-critic
+          path: in/critic
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg003b-euler-crosscheck
+          path: in/euler
+      - name: Frozen aggregate
+        run: |
+          mkdir -p out
+          python scripts/rcg003b_axisymmetric_aggregate.py \
+            --constructor in/constructor/RCG003B_CONSTRUCTOR.json \
+            --critic in/critic/RCG003B_CRITIC.json \
+            --euler in/euler/RCG003B_EULER_CROSSCHECK.json \
+            --output out/RCG003B_TERMINAL_AGGREGATE.json \
+            --prereg-sha dbb0b54465c628b533c646a5b3b74b8458eaf24e \
+            --parent-terminal ded5a44078c57909aeb6592b88bdac5c0917f85d \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003b-terminal-aggregate
+          path: out/RCG003B_TERMINAL_AGGREGATE.json
