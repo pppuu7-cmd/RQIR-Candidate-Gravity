@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "constructor_classification_frozen": true,
+    "constructor_controls_pass": true,
+    "critic_pass": true,
+    "formation_valid": true,
+    "prereg_commit_match": true
+  },
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "claim_ceiling": "classical vacuum conformal structural result inside frozen bounded RCG003-v0 family only",
+  "classification": "PASS_SCOPED_RCG003_CONFORMAL_SECOND_ORDER_NONZERO_DEFORMATION_EXISTS",
+  "closure_rank": 2,
+  "constructor_sha256": "e3932e7b4c60edffdebc1d456cb531ba3ec7b26d72874d6ea65f94a78efbbca5",
+  "critic_classification": "PASS_INDEPENDENT_CRITIC_RCG003_SCOPE_AND_PROVENANCE",
+  "critic_sha256": "fd404702430ee7217188652a20af6612d8703b4a1b0cdd14bf7bc5d3c6d3af83",
+  "formation_side_classification": "RCG003_MINIMAL_NONLINEAR_FAMILY_FORMED_FOR_VACUUM_STRUCTURAL_TEST_SCOPED",
+  "nullspace_primitive_integer": [[7, -36, 36]],
+  "raw_dimension": 3,
+  "residual_dimension": 1,
+  "schema": "RCG003_TERMINAL_AGGREGATE_V1",
+  "theory_established_percent": 0,
+  "valid": true
+}
