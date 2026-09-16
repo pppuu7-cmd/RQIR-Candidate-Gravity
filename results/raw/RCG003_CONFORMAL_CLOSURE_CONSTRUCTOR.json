@@ -1,0 +1,117 @@
+{
+  "all_controls_pass": true,
+  "claim_locks": [
+    "NO_GR_OR_EINSTEIN_DERIVATION",
+    "NO_GLOBAL_UNIQUENESS",
+    "NO_QUANTUM_THEORY",
+    "NO_EXPERIMENTAL_CONFIRMATION",
+    "NO_CHI_ABC_PREDICTION",
+    "NO_NEW_PHYSICS_CLAIM"
+  ],
+  "classification": "PASS_SCOPED_RCG003_CONFORMAL_SECOND_ORDER_NONZERO_DEFORMATION_EXISTS",
+  "compatibility": {
+    "A": [
+      ["1296", "432", "180"],
+      ["1296", "288", "36"]
+    ],
+    "nullity": 1,
+    "nullspace_primitive_integer": [[7, -36, 36]],
+    "nullspace_rational": [["7/36", "-1", "1"]],
+    "rank": 2,
+    "residual_dimension": 1,
+    "row_monomials": [[0, 1], [1, 0]]
+  },
+  "controls": {
+    "EH_reference_second_order": true,
+    "R2_higher_derivative_sensitivity": true,
+    "broken_conservation_sign_detected": true,
+    "field_redefinition_duplicate": true,
+    "forbidden_source_rejected": true,
+    "gauge_density_variant_rejected": true,
+    "kinematic_identities": true,
+    "nullspace_exact": true,
+    "perturbed_closure_detected": true,
+    "source_conserved_control": true
+  },
+  "derived_kinematics": {
+    "R_polynomial": {"x^0 y^1": "6", "x^1 y^0": "6"},
+    "Ricci2_polynomial": {"x^0 y^2": "12", "x^1 y^1": "12", "x^2 y^0": "12"},
+    "hessians_common_exp_minus_2sigma_removed": {
+      "R Ricci^2": {"x^0 y^1": "432", "x^1 y^0": "288"},
+      "R^3": {"x^0 y^1": "1296", "x^1 y^0": "1296"},
+      "Tr(Ricci^3)": {"x^0 y^1": "180", "x^1 y^0": "36"}
+    },
+    "identity_checks": {
+      "R_from_mixed_eigenvalues": true,
+      "Ricci2_from_mixed_eigenvalues": true,
+      "sqrtg_common_factor_is_nonzero_formal": true
+    },
+    "operator_polynomials_common_exp_minus_2sigma_removed": {
+      "R Ricci^2": {"x^0 y^3": "72", "x^1 y^2": "144", "x^2 y^1": "144", "x^3 y^0": "72"},
+      "R^3": {"x^0 y^3": "216", "x^1 y^2": "648", "x^2 y^1": "648", "x^3 y^0": "216"},
+      "Tr(Ricci^3)": {"x^0 y^3": "30", "x^1 y^2": "18", "x^2 y^1": "36", "x^3 y^0": "24"}
+    }
+  },
+  "family": {
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "coefficient_order": ["lambda", "mu", "nu"],
+    "matter_coupling": "UNRESOLVED_OUTSIDE_GATE",
+    "operators": ["R^3", "R Ricci^2", "Tr(Ricci^3)"],
+    "production_source_tag": "VACUUM_ZERO",
+    "raw_dimension": 3,
+    "theory_established_percent": 0
+  },
+  "field_redefinition_control": [
+    {
+      "f_prime": "1",
+      "f_second": "2/3",
+      "monomials": [[0, 1], [1, 0]],
+      "nullity": 1,
+      "original_nullspace_survives": true,
+      "pass": true,
+      "rank": 2,
+      "same_solution_dimension": true,
+      "tau": "0"
+    },
+    {
+      "f_prime": "4/3",
+      "f_second": "2/3",
+      "monomials": [[0, 1], [1, 0]],
+      "nullity": 1,
+      "original_nullspace_survives": true,
+      "pass": true,
+      "rank": 2,
+      "same_solution_dimension": true,
+      "tau": "1/2"
+    }
+  ],
+  "formation": {
+    "side_classification": "RCG003_MINIMAL_NONLINEAR_FAMILY_FORMED_FOR_VACUUM_STRUCTURAL_TEST_SCOPED",
+    "slot_count": 22,
+    "slots": [
+      "version_identity", "parent_authority", "fundamental_variables", "representation_class",
+      "configuration_state_space", "gauge_redundancy", "causal_structure", "locality_status",
+      "source_constitution", "carrier_self_source", "matter_coupling", "nonlinear_dynamics_class",
+      "generator_status", "conservation_structure", "observable_map", "quantum_state_status",
+      "measure_status", "coefficient_classes", "field_redefinition_equivalence", "domain_of_validity",
+      "interpretation_ceiling", "classifier_rules"
+    ],
+    "valid_for_gate": true
+  },
+  "perturbed_closure_control": {
+    "available": true,
+    "detected": true,
+    "mutated_index": 0,
+    "residual": ["1296", "1296"]
+  },
+  "prereg_commit": "0bba0ea6e1d4e13635f70f3b5056e131afba6c7d",
+  "run_head": "9e710f12f0b1bc79d6e2bc6bc2a77fe81b9a8aa5",
+  "schema": "RCG003_CONFORMAL_CLOSURE_RESULT_V1",
+  "source_controls": {
+    "allowed_physical_source_tags": ["VACUUM_ZERO"],
+    "broken_sign_divergence": ["-8", "4", "0", "0"],
+    "forbidden_source_tag": "UNREGISTERED_EXTERNAL_T",
+    "good_divergence": ["0", "0", "0", "0"],
+    "k_up": ["-1", "2", "0", "0"]
+  }
+}
