@@ -1,0 +1,82 @@
+name: RCG003 minimal nonlinear closure
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'prereg/RCG003_MINIMAL_NONLINEAR_VERSION_FORMATION_AND_CLOSURE_GATE.md'
+      - 'scripts/rcg003_conformal_closure.py'
+      - 'scripts/rcg003_independent_critic.py'
+      - 'scripts/rcg003_aggregate.py'
+      - '.github/workflows/rcg003_minimal_nonlinear_closure.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Exact conformal closure evaluator
+        run: |
+          python3 scripts/rcg003_conformal_closure.py \
+            --output out/constructor.json \
+            --prereg-commit 0bba0ea6e1d4e13635f70f3b5056e131afba6c7d \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003-constructor
+          path: out/constructor.json
+          if-no-files-found: error
+
+  critic:
+    needs: constructor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg003-constructor
+          path: out
+      - name: Independent Critic
+        run: |
+          python3 scripts/rcg003_independent_critic.py \
+            --constructor out/constructor.json \
+            --output out/critic.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003-critic
+          path: out/critic.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg003-constructor
+          path: input/constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg003-critic
+          path: input/critic
+      - name: Frozen aggregate
+        run: |
+          python3 scripts/rcg003_aggregate.py \
+            --constructor input/constructor/constructor.json \
+            --critic input/critic/critic.json \
+            --output out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg003-terminal-aggregate
+          path: out/aggregate.json
+          if-no-files-found: error
