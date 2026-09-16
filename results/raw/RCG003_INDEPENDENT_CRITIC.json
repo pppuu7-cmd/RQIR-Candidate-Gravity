@@ -1,0 +1,56 @@
+{
+  "checks": {
+    "anti_fit_and_firewall": {
+      "chi_still_locked": true,
+      "no_successor_repo_tokens_in_evaluator": true,
+      "primitive_nullvector_not_literal_in_evaluator": true,
+      "theory_established_zero": true,
+      "vacuum_source_only_in_family": true
+    },
+    "chronology": {
+      "constructor_reports_frozen_prereg": true,
+      "d3_terminal_precedes_prereg": true,
+      "prereg_precedes_run_head": true
+    },
+    "controls": {
+      "broken_conservation_control": true,
+      "constructor_all_controls": true,
+      "field_redefinition_control": true,
+      "forbidden_source_control": true,
+      "gauge_density_control": true,
+      "perturbed_closure_control": true,
+      "sensitivity_control": true
+    },
+    "historical_blob_integrity": {
+      "historical_G90_synthesis_unchanged": true,
+      "historical_baseline_unchanged": true,
+      "prereg_unchanged": true
+    },
+    "independent_math": {
+      "independent_nullity_matches": true,
+      "independent_nullspace_matches": true,
+      "independent_rank_matches": true
+    },
+    "scope": {
+      "broader_field_redefinitions_not_claimed": true,
+      "formation_slot_count_22": true,
+      "matter_outside_gate": true,
+      "no_global_uniqueness_claim_lock": true,
+      "reference_not_derived_lock_present": true
+    }
+  },
+  "classification": "PASS_INDEPENDENT_CRITIC_RCG003_SCOPE_AND_PROVENANCE",
+  "constructor_sha256": "e3932e7b4c60edffdebc1d456cb531ba3ec7b26d72874d6ea65f94a78efbbca5",
+  "critic_pass": true,
+  "failures": [],
+  "independent_matrix": [
+    ["1296", "288", "36"],
+    ["1296", "432", "180"]
+  ],
+  "independent_nullity": 1,
+  "independent_primitive_nullspace": [[7, -36, 36]],
+  "independent_rank": 2,
+  "interpretation": "Critic validates only chronology, independent algebra, controls, firewall and frozen scope. It does not promote the structural result to a complete theory or prediction.",
+  "run_head": "9e710f12f0b1bc79d6e2bc6bc2a77fe81b9a8aa5",
+  "schema": "RCG003_INDEPENDENT_CRITIC_V1"
+}
