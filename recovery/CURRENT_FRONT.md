@@ -121,7 +121,7 @@ Question: does the current frontier itself record a genuinely new explicit post-
 
 Result: **NO**.
 
-Latest bounded recheck (2026-09-16) audited source blob `47d0641072ba5b6529ca6254710980caf840881d`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
+Latest bounded recheck (2026-09-16) audited source blob `7726f9ad9af5dab2de8bbeb6206b13179b68dba5`; it contained no new explicit programme-disposition declaration beyond the already-recorded blocked state.
 
 Classification remains `BLOCKED_PENDING_EXPLICIT_PROGRAMME_DISPOSITION_AUTHORITY`; exact next parent action remains `WAIT_FOR_EXPLICIT_PROGRAMME_DISPOSITION_DECLARATION`.
 
@@ -143,7 +143,7 @@ No Einstein/GR import is authorized.
 - successor-only principles remain successor authority until explicit future import/promotion authority;
 - `NONZERO_CONNECTED_SIGNAL != NEW_THREE_BODY_GRAVITATIONAL_VERTEX`;
 - future connected observables require same-protocol self-consistent Newtonian and authorized 1PN/known-physics baselines;
-- physical observable chain remains `PREPARATION -> FULL FINITE-TIME EVOLUTION -> APPARATUS RECOIL/CONTROL -> RECOMBINATION -> READOUT/POVM -> PHYSICAL PROBABILITY OR COHERENCE`.
+- physical observable chain remains `PREPARATION -> FULL FINITE-TIME EVOLUTION -> APPARATUS RECOIL/CONTROL -> RECOMBINATION -> READOUT/POVM -> PHYSICAL_PROBABILITY_OR_COHERENCE`.
 
 Independent `pppuu7-cmd/RQIRCG-structural-findings` research may continue while the parent is parked. Its results do not automatically become historical RCG-002 authority.
 
