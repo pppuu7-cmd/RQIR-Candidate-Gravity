@@ -1,0 +1,55 @@
+name: RCG005 preprimary exact quotient
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg005-preprimary-quotient.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify prospective chronology
+        run: |
+          git merge-base --is-ancestor 355ac8a2d892e311bd1989e7057c3defac2e7e8a "$GITHUB_SHA"
+          git merge-base --is-ancestor d2e38871ee5ac2e1331934647575e4a5b6144e4a "$GITHUB_SHA"
+          git merge-base --is-ancestor 1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08 "$GITHUB_SHA"
+          git merge-base --is-ancestor 1fb26a399264747fc2ffa8a564d4d281c0586f9c "$GITHUB_SHA"
+      - run: python scripts/rcg005_quotient_constructor.py --output rcg005-quotient-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-quotient-constructor, path: rcg005-quotient-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent Critic chronology
+        run: |
+          git merge-base --is-ancestor 1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08 "$GITHUB_SHA"
+          git merge-base --is-ancestor 1fb26a399264747fc2ffa8a564d4d281c0586f9c "$GITHUB_SHA"
+      - run: python scripts/rcg005_quotient_critic.py --output rcg005-quotient-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-quotient-critic, path: rcg005-quotient-critic.json}
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-quotient-constructor, path: qctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-quotient-critic, path: qcrit}
+      - run: python scripts/rcg005_quotient_aggregate.py --constructor qctor/rcg005-quotient-constructor.json --critic qcrit/rcg005-quotient-critic.json --output rcg005-quotient-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-quotient-aggregate, path: rcg005-quotient-aggregate.json}
