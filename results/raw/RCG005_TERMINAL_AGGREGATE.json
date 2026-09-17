@@ -1,0 +1,17 @@
+{
+  "aggregate_valid": true,
+  "claim_locks": {"GR_unique":false,"all_higher_curvature_gravity_fails":false,"chi_ABC":"UNAUTHORIZED_NOT_COMPUTED","ghost_free":false,"hyperbolic":false,"new_physics":false,"quantum_gravity":false,"stable":false,"theory_established":"0%","unitary":false},
+  "classification": "FAIL_SCOPED_RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_HAS_NO_NONZERO_SECOND_ORDER_SURVIVOR",
+  "constructor_payload_sha256": "dc8cfe3c944ad5e07f1d9669cf8fe6ee427f4ca3e360c6c73d8e0de07876f58f",
+  "controls_payload_sha256": "a2689d6cc738c83cc103dc73af0fa1cccf569bb94455f38410e93a05006655f4",
+  "critic_payload_sha256": "5693125b65ecb4e84627d2a727e0b100e6cc14dacf33751672886c8a9ec4a835",
+  "dimension_chain": {"K4_dimension":0,"K5_dimension":6,"K6_dimension":6,"K_SO_dimension":0,"exact_quotient_dimension":8,"heldout_survivor_dimension":0,"highest_order_A6_rank":2,"raw_templates_total":12390},
+  "euler_payload_sha256": "ca5dc52c00053fb6512064ce27c3d9b5b5b142724ff4e9ce0398cc2802e2d302",
+  "gate": "RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_TERMINAL_AGGREGATE",
+  "heldout_status": "NOT_APPLICABLE_PRIMARY_NULLITY_ZERO",
+  "mechanism_branch": "A_DERIVATIVE_SECTOR_HAS_NO_NONZERO_HIGHEST_ORDER_DEGENERATE_COMBINATION",
+  "predicates": {"A5_restricted_zero":true,"K6_exact_six":true,"constructor_A6_rank_two":true,"constructor_controls_valid":true,"constructor_scoped_fail":true,"critic_A6_rank_two":true,"critic_controls_valid":true,"critic_independent_pass":true,"direct_euler_A6_rank_two":true,"direct_euler_valid":true,"euler_independent_pass":true,"field_redefinition_firewall":true,"final_K_SO_zero":true,"frozen_basis_exact":true,"heldout_frozen_exact":true,"heldout_not_applicable_only_primary_zero":true,"inherited_A4_rank_six":true,"mechanism_branch_A":true,"negative_controls_valid":true,"preprimary_quotient_frozen_valid":true,"prereg_exact":true,"quotient_dimension_eight":true,"rcg004_embedding_rank_six":true,"relation_span_lock":true,"run_head_exact":true,"source_lock":true},
+  "quotient_freeze_commit": "f4d6f11490c0e668aa934e25580abad3015f0ae1",
+  "run_head": "23b426084168aef9e95dba7ee903a100effeec92",
+  "scientific_payload_sha256": "788ea853ab696eaab748f18b739a24729b36542ed0ece0883f8e4829982869d4"
+}
