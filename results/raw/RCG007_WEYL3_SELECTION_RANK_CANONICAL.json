@@ -1,0 +1,40 @@
+{
+  "phase": "RCG007_WEYL3_INHERITED_RQIR_SELECTION_RANK_AGGREGATE",
+  "run_head": "93d30d975dd086c44fa3154deb912d3d7689d0a7",
+  "workflow_run": 35254418803,
+  "constructor_job": 105314409714,
+  "critic_job": 105314409546,
+  "aggregate_job": 105314514104,
+  "artifacts": {
+    "constructor": {"id": 10512052772, "digest": "sha256:4e5301404823485969eba82780683cb3d4cd24278f128f58b2033b2822be5832"},
+    "critic": {"id": 10511567926, "digest": "sha256:c7419db8479a6549090a29b83fc22e6f9dcf33096a118cfdad6148f48f59edbf"},
+    "aggregate": {"id": 10512137824, "digest": "sha256:bf84320221cf83a6e6aa49c40524828b421d865902c28da2554725d2ac15bbf5"}
+  },
+  "aggregate_valid": true,
+  "agreement_checks": {
+    "G89_D_excluded": true,
+    "RCG002_excluded": true,
+    "chi_locked": true,
+    "constructor_valid": true,
+    "controls_nonzero": true,
+    "critic_valid": true,
+    "posthoc_excluded": true,
+    "same_prereg": true,
+    "same_residual_dimension": true,
+    "same_row_count": true,
+    "same_selector_rank": true,
+    "weyl3_nonzero": true,
+    "weyl3_order3": true
+  },
+  "admissible_selector_row_count": 22,
+  "selector_rank": 0,
+  "residual_coefficient_dimension": 1,
+  "classification": "BLOCKED_SCOPED_RCG007_INHERITED_RQIR_SELECTION_RANK_ZERO_FOR_WEYL3_COEFFICIENT",
+  "scientific_consequence": "The already-frozen admissible inherited RQIR lower-jet/CTP/quadratic-Ward/covariance information has exact selection rank zero on the unique Weyl^3 coefficient; a genuinely cubic candidate-independent datum or separately justified selection principle is required before alpha can be selected.",
+  "G89_D_cubic_kernel_status": "EXCLUDED_D_SPECIFIC_NO_RCG007_BRIDGE",
+  "RCG002_baseline_status": "EXCLUDED_CANDIDATE_OWNED_HYPOTHESIS",
+  "alpha_value": "UNSELECTED",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "theory_established": "0%",
+  "scientific_payload_sha256": "8586739932b006cc626fa07880531660ad079c9995e40816190d4732903a1de2"
+}
