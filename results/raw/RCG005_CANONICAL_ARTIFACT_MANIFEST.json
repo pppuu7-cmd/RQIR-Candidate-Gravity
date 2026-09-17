@@ -1,0 +1,74 @@
+{
+  "primary_run": {
+    "id": 35178534613,
+    "run_number": 1,
+    "run_attempt": 1,
+    "head_sha": "23b426084168aef9e95dba7ee903a100effeec92",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": {
+      "constructor": 105065495844,
+      "critic": 105065496077,
+      "direct_euler": 105065554582,
+      "negative_controls": 105065632807,
+      "aggregate": 105065703647
+    }
+  },
+  "artifacts": {
+    "constructor": {"id":10479527938,"digest":"sha256:b2969ed62bafb7748d413674682520dfe4861ba59ef7c6d9932c9b7a2a1126d4","json_sha256":"f60ce49f94169dd389b4dd40de2bcf118b4bd8191fae91a448fe475a2ffe86a5","scientific_payload_sha256":"dc8cfe3c944ad5e07f1d9669cf8fe6ee427f4ca3e360c6c73d8e0de07876f58f"},
+    "critic": {"id":10479289150,"digest":"sha256:bbc9da42f886def669bb01f1f0e86103d20655a6f1e959c6bf2316802bb469a9","json_sha256":"aba9deaa04d5725a3812c037473b2311a4939f8667d0646242c9099dba18e8a6","scientific_payload_sha256":"5693125b65ecb4e84627d2a727e0b100e6cc14dacf33751672886c8a9ec4a835"},
+    "direct_euler": {"id":10479537894,"digest":"sha256:4f890ed5a93aad6081c1ed54ca5b4eaf0fc370731330fd4607cb4a4d81266ba3","json_sha256":"50768450cb99034310c7f21403d40378970e7b42ac5544236abf8d30a9ac590f","scientific_payload_sha256":"ca5dc52c00053fb6512064ce27c3d9b5b5b142724ff4e9ce0398cc2802e2d302"},
+    "negative_controls": {"id":10478548700,"digest":"sha256:a2eb5068b7c1ae771cee097b14c8338fb7a5c0cb201f5a38dea201b4d07cc232","json_sha256":"1f1f90fc0cf0f7926b563e63ed912dddfdd9dc76e11b0ce3bc45dbf9c0b7c145","scientific_payload_sha256":"a2689d6cc738c83cc103dc73af0fa1cccf569bb94455f38410e93a05006655f4"},
+    "aggregate": {"id":10479114573,"digest":"sha256:8e043b361e784aed1a1629720965b1938396e156cf320e9fe4372a03b7f3e587","json_sha256":"c5bf49ec1b4f2d93aee2abb70461f1003425375fbd36dfb2674a659d3bb19409","scientific_payload_sha256":"788ea853ab696eaab748f18b739a24729b36542ed0ece0883f8e4829982869d4"}
+  },
+  "family_completeness_audit": {
+    "run_id": 35178717498,
+    "run_number": 1,
+    "run_attempt": 1,
+    "head_sha": "fa3fa43c2c4357dd3aec99be74a756e5e05da411",
+    "job_id": 105066050302,
+    "artifact_id": 10479503273,
+    "artifact_digest": "sha256:b30a3c3c999a90c7af8463a73482b91b35c3d0ace29b894a1d68b05c3a273e13",
+    "json_sha256": "f3ce2307ef8461081d868f75b0f3b0be779811b0d336e643b0ff653d3357ed42",
+    "scientific_payload_sha256": "df23f164ca52b1990aca51922ebf2a4331c8d0b3d222f7db64f1e1de60204023",
+    "classification": "PASS_RCG005_FAMILY_COMPLETENESS_AUDIT"
+  },
+  "preoutcome_provenance": {
+    "selection_declaration_commit": "513fca5a7df4a69bab56a29b4044f019b97466e6",
+    "selection_terminal_commit": "355ac8a2d892e311bd1989e7057c3defac2e7e8a",
+    "formation_authority_commit": "d2e38871ee5ac2e1331934647575e4a5b6144e4a",
+    "scientific_prereg_commit": "1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08",
+    "heldout_prereg_commit": "1fb26a399264747fc2ffa8a564d4d281c0586f9c",
+    "quotient_freeze_commit": "f4d6f11490c0e668aa934e25580abad3015f0ae1",
+    "quotient_canonical_run": 35178250959,
+    "quotient_canonical_head": "ac3c646b0fc1a5bec2fa6781e5bdb9c8bbb1b820"
+  },
+  "implementation": {
+    "constructor_commit": "d6672ca6331351571b9d0e5ab14e24cbe17ece34",
+    "critic_commit": "afa8e3ee116bf7a562daccc0513880e426d9da68",
+    "direct_euler_commit": "e0e530e5d271e4630ae85c14efd408d47c96423f",
+    "negative_controls_commit": "1778abf4443f7268e649175122786aab282e5045",
+    "aggregate_commit": "137002ffa6d13b9c011894df0f2909d768e5e95b",
+    "workflow_head": "23b426084168aef9e95dba7ee903a100effeec92",
+    "completeness_audit_script_commit": "3a37670ac31a9c8b77da0174c091182febf72229",
+    "completeness_audit_workflow_head": "fa3fa43c2c4357dd3aec99be74a756e5e05da411"
+  },
+  "exact_results": {
+    "raw_template_count": 12390,
+    "relation_rank": 17,
+    "exact_quotient_dimension": 8,
+    "new_derivative_dimension": 2,
+    "inherited_RCG004_dimension": 6,
+    "A6_rank": 2,
+    "K6_dimension": 6,
+    "A5_restricted_rank": 0,
+    "K5_dimension": 6,
+    "A4_inherited_restriction_rank": 6,
+    "K4_dimension": 0,
+    "K_SO_dimension": 0,
+    "heldout_status": "NOT_APPLICABLE_PRIMARY_NULLITY_ZERO",
+    "mechanism_branch": "A_DERIVATIVE_SECTOR_HAS_NO_NONZERO_HIGHEST_ORDER_DEGENERATE_COMBINATION"
+  },
+  "aggregate_valid": true,
+  "classification": "FAIL_SCOPED_RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_HAS_NO_NONZERO_SECOND_ORDER_SURVIVOR"
+}
