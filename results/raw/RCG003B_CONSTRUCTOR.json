@@ -37,6 +37,28 @@
     "H_ab": "-48*(ua - 4*ub + va**2 + 2*va*vb - 6*vb**2)",
     "H_bb": "48*(4*ua - 7*ub + 4*va**2 + 5*va*vb - 12*vb**2)"
   },
+  "hessian_terms": {
+    "H_aa": [
+      {"coefficient": "-96", "monomial": "ua^1", "powers": [1,0,0,0]},
+      {"coefficient": "-48", "monomial": "ub^1", "powers": [0,1,0,0]},
+      {"coefficient": "-96", "monomial": "va^2", "powers": [0,0,2,0]},
+      {"coefficient": "-48", "monomial": "va^1*vb^1", "powers": [0,0,1,1]}
+    ],
+    "H_ab": [
+      {"coefficient": "-48", "monomial": "ua^1", "powers": [1,0,0,0]},
+      {"coefficient": "192", "monomial": "ub^1", "powers": [0,1,0,0]},
+      {"coefficient": "-48", "monomial": "va^2", "powers": [0,0,2,0]},
+      {"coefficient": "-96", "monomial": "va^1*vb^1", "powers": [0,0,1,1]},
+      {"coefficient": "288", "monomial": "vb^2", "powers": [0,0,0,2]}
+    ],
+    "H_bb": [
+      {"coefficient": "192", "monomial": "ua^1", "powers": [1,0,0,0]},
+      {"coefficient": "-336", "monomial": "ub^1", "powers": [0,1,0,0]},
+      {"coefficient": "192", "monomial": "va^2", "powers": [0,0,2,0]},
+      {"coefficient": "240", "monomial": "va^1*vb^1", "powers": [0,0,1,1]},
+      {"coefficient": "-576", "monomial": "vb^2", "powers": [0,0,0,2]}
+    ]
+  },
   "hessian_zero_identically": false,
   "metric": "diag(-1,exp(2a),exp(2b),exp(2b))",
   "minimal_exact_obstruction": {
@@ -45,6 +67,9 @@
     "monomial": "ub^1",
     "powers": [0,1,0,0]
   },
+  "normalized_R": "2*ua + 4*ub + 2*va**2 + 4*va*vb + 6*vb**2",
+  "normalized_Ricci2": "2*ua**2 + 4*ua*ub + 4*ua*va**2 + 4*ua*va*vb + 4*ua*vb**2 + 6*ub**2 + 4*ub*va**2 + 4*ub*va*vb + 16*ub*vb**2 + 2*va**4 + 4*va**3*vb + 10*va**2*vb**2 + 8*va*vb**3 + 12*vb**4",
+  "normalized_Ricci3": "2*ua**3 + 6*ua**2*ub + 6*ua**2*va**2 + 6*ua**2*va*vb + 6*ua**2*vb**2 + 12*ua*ub**2 + 12*ua*ub*va**2 + 24*ua*ub*vb**2 + 6*ua*va**4 + 12*ua*va**3*vb + 24*ua*va**2*vb**2 + 12*ua*vb**4 + 10*ub**3 + 12*ub**2*va**2 + 6*ub**2*va*vb + 36*ub**2*vb**2 + 6*ub*va**4 + 30*ub*va**2*vb**2 + 24*ub*va*vb**3 + 48*ub*vb**4 + 2*va**6 + 6*va**5*vb + 18*va**4*vb**2 + 10*va**3*vb**3 + 24*va**2*vb**4 + 24*va*vb**5 + 24*vb**6",
   "parent_terminal": "ded5a44078c57909aeb6592b88bdac5c0917f85d",
   "prereg_sha": "dbb0b54465c628b533c646a5b3b74b8458eaf24e",
   "production_ray": [7,-36,36],
