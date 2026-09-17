@@ -1,0 +1,58 @@
+{
+  "phase": "RCG006_MFR_L0_CANONICAL",
+  "scientific_prereg": "fc3ff1f49c56f2befc039e09ebd8f388833dbff1",
+  "generator_freeze": "8c8314d2b857d6caa9719d6ba33e856ea0a697af",
+  "map_contract": "78789e048ab3d67fc8f2e901176ff3a352aad749",
+  "parent_freeze": "f4d6f11490c0e668aa934e25580abad3015f0ae1",
+  "workflow_run": 35250324503,
+  "workflow_head": "d781765b80d371033d1b6477f32693c2023838e6",
+  "constructor_job": 105300793351,
+  "critic_job": 105300793204,
+  "aggregate_job": 105300999807,
+  "artifacts": {
+    "constructor": {"id": 10509596985, "digest": "sha256:75fd597146c8fdd543e7dcdfb4e6fe941eab913dba86461383462bf923365fcb"},
+    "critic": {"id": 10509367460, "digest": "sha256:5e7a0d1981818dc840e8fee7f70423a758fa99fc7db1d607bd3795c97abced69"},
+    "aggregate": {"id": 10509317589, "digest": "sha256:3895fe7178a80f1b460c123e887c2882d61c5e4240bc3ec6ebd0c0019f73eb3a"}
+  },
+  "M_FR_shape": [8, 9],
+  "M_FR": [
+    ["0","0","0","0","0","0","0","-1","-4"],
+    ["0","0","0","0","0","0","0","1","0"],
+    ["1/2","0","0","-1/4","1","0","0","3/4","0"],
+    ["-1","1/2","-1/2","2","0","1","0","-11/2","0"],
+    ["0","0","0","1/4","0","0","0","1/2","0"],
+    ["0","-1","0","-2","0","0","0","6","4"],
+    ["0","0","-1","2","0","0","0","-3","4"],
+    ["0","0","0","0","0","0","0","-3/4","0"]
+  ],
+  "M_FR_sha256": "7ac6ba6d1003c676899c0017409e3466a7f5e12fbb4114feee94580f1b0799bd",
+  "rank_M_ALG": 5,
+  "rank_M_FULL": 7,
+  "kernel_dimension": 2,
+  "image_rref_rows": [
+    ["1","0","0","0","0","0","0","0"],
+    ["0","1","0","0","0","0","0","-3/4"],
+    ["0","0","1","0","0","0","0","0"],
+    ["0","0","0","1","0","0","0","0"],
+    ["0","0","0","0","1","0","0","0"],
+    ["0","0","0","0","0","1","0","0"],
+    ["0","0","0","0","0","0","1","0"]
+  ],
+  "image_span_sha256": "7c5e4b07d95881b907ed67a55742466c2889e99c20193806b834370a00f46788",
+  "Q_RCG005_dimension": 8,
+  "Q_EFT_dimension": 1,
+  "lexicographic_complement_axes": [1],
+  "RCG004_intersection_dimension": 5,
+  "RCG004_residual_dimension": 1,
+  "quotient_relation": "D1D1_CLASS_11 == (3/4)*RCG004_CANONICAL_AXIS_8 modulo Im(M_FR)",
+  "derivative_axis_witnesses": {
+    "D1D1_CLASS_9": {"in_image": true, "rank_with_axis": 7},
+    "D1D1_CLASS_11": {"in_image": false, "rank_with_axis": 8}
+  },
+  "constructor_critic_exact_image_agreement": true,
+  "classification": "PASS_SCOPED_RCG006_MFR_L0_MAP_SUBGATE",
+  "LS_companion_status": "NOT_COMPUTED",
+  "A_HD_transport_status": "NOT_COMPUTED",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "theory_established": "0%"
+}
