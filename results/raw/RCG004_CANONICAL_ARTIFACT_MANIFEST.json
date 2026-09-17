@@ -1,0 +1,89 @@
+{
+  "run_id": 35175941323,
+  "run_number": 1,
+  "run_attempt": 1,
+  "run_head": "f62d3ad892453725e6838059929f0f6212d4d3d6",
+  "run_conclusion": "success",
+  "authority_declaration_commit": "dae86c4ccf885622fbf5b4254be4b3fa80ccf5a2",
+  "authority_terminal_commit": "28781bc1873413b214f751eaa963cf1c51423e0b",
+  "scientific_prereg_commit": "345213253f2ecf415af40cb4fbae47b4f58d8870",
+  "heldout_prereg_commit": "5f83a594309429b45a8edd1bdc72b9653fffdc75",
+  "parent_rcg003b_terminal": "72f9ab2ab5ad85259a18fc1f368777c431a56324",
+  "implementation_commits": {
+    "constructor": "070e1594b3691755d5e2dd1db29f9191ceb49cad",
+    "critic": "bf77cb21c2109c1c7f1df4058bc827db5f6bda28",
+    "euler": "ec68b6dd77a1cd236912c14822f4806364205ff3",
+    "negative_controls": "77cbd509ca3e7449e93b9d0ea653f62e700fe944",
+    "aggregate": "2a6bcfce86cd31a816c3178a1e0fbcb5c03f4c46",
+    "workflow": "f62d3ad892453725e6838059929f0f6212d4d3d6"
+  },
+  "artifacts": {
+    "constructor": {
+      "id": 10478268717,
+      "digest": "sha256:82d5347c4031bf9cbd1ca37a57e96973b6921f26f04ac750435e81d40f685ab7",
+      "json_sha256": "f1d99ce8e4b4494ee0b960af36cde67854a27bd068b7252b4e67cc8f0338f678",
+      "scientific_payload_sha256": "811c570304c9a9d9d9412af73e6c226ed1c45048b39177a92955f2757722e942"
+    },
+    "critic": {
+      "id": 10478029848,
+      "digest": "sha256:55342f3747b15edb39bd08932d0fdee5f106944ba15e1bd696397fdc76482bc6",
+      "json_sha256": "2d181059dc4f373fddb3035c7ea42102222913e903bc2ee29038613df59041d8",
+      "scientific_payload_sha256": "02f2c05efe1797380808fc4d865882e6abd09219b47df240ec549fe8f82298a6"
+    },
+    "euler": {
+      "id": 10479110111,
+      "digest": "sha256:7b66b06c5945cebd4d61990c5555587890a79293ae963a4aa2b55a8019639eff",
+      "json_sha256": "87fae7fb38d40028dfb1d3ec1c2bb4142e8c12ae34c33d37c7fb3cbd47a6d664",
+      "scientific_payload_sha256": "98291d576e39d584bd568f45b6bd81574f794da744e3a7180d53ee31477a84f0"
+    },
+    "negative_controls": {
+      "id": 10477789460,
+      "digest": "sha256:f3f2a40df1f71b2ad696d99ee90322340e7dd89f0923bc9c80a3e2255ef12e8c",
+      "json_sha256": "afc57fcba8100d530bf1afc858e1338020ddc8edac739aed1162397788af4200"
+    },
+    "aggregate": {
+      "id": 10478064839,
+      "digest": "sha256:570db330d40847f128c10ed1f0c32468bac23f5fddfa7f1c9f72fbbd0ae5e348",
+      "json_sha256": "e28b8dcfab71b7f5825253dccb5059247c180aa342ae7143b7690969442f68a8",
+      "scientific_payload_sha256": "cb865962a0b2d284fb166b24281fb740e66a61e2a7ed32226b8f34fd3ed0c7e4"
+    }
+  },
+  "exact_results": {
+    "raw_matchings": 10395,
+    "nonzero_symmetry_classes": 13,
+    "zero_symmetry_classes": 20,
+    "exact_4d_quotient_dimension": 6,
+    "relation_nullity": 7,
+    "constructor_basis_class_indices": [0, 1, 2, 4, 5, 8],
+    "critic_basis_class_indices": [12, 11, 7, 5, 4, 3],
+    "constructor_universal_matrix_shape": [238, 13],
+    "constructor_universal_matrix_sha256": "3e5d03c1c4f15b4b55bb710970fe49a2f60cadd8d0f79d69d7916953fe695437",
+    "constructor_primary_hessian_shape": [54, 6],
+    "constructor_primary_hessian_rank": 6,
+    "constructor_primary_hessian_nullity": 0,
+    "constructor_primary_hessian_matrix_sha256": "7014978a97fce634d93f00e414903597245b8e4268b2c575dd1764547f96ced9",
+    "critic_primary_hessian_shape": [54, 6],
+    "critic_primary_hessian_rank": 6,
+    "critic_primary_hessian_nullity": 0,
+    "critic_primary_hessian_matrix_sha256": "e3e7c503deb87a85f6107b86a04652ec9ea73e78e246aad2bcfbc8d9ffe996fc",
+    "direct_euler_high_derivative_rows": 270,
+    "direct_euler_high_derivative_rank": 6,
+    "direct_euler_high_derivative_nullity": 0,
+    "direct_euler_fourth_derivative_rows": 81,
+    "direct_euler_fourth_derivative_rank": 6,
+    "direct_euler_third_derivative_rows": 189,
+    "direct_euler_third_derivative_rank": 6,
+    "fourth_hessian_correspondence": true,
+    "rcg003_embedding_rank": 3,
+    "rcg003_old_ray_constructor_coordinates": [7, -36, 0, 0, -36, 0],
+    "rcg003_axisymmetric_obstruction_exact_match": true,
+    "transverse_shear_isotropic_background": "-1296*(us + vs**2)",
+    "heldout_status": "NOT_APPLICABLE_PRIMARY_NULLITY_ZERO"
+  },
+  "classification": "FAIL_SCOPED_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_CLASS_HAS_NO_NONZERO_TRIAXIAL_SECOND_ORDER_SURVIVOR",
+  "aggregate_valid": true,
+  "source": "VACUUM_ZERO",
+  "field_redefinition_equivalence": "OUT_OF_SCOPE_RCG004_V0",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "theory_established": "0%"
+}
