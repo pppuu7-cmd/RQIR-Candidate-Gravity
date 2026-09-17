@@ -1,0 +1,23 @@
+{
+  "ALG_generator_dimension": 6,
+  "DER_new_principal_dimension": 3,
+  "claim_locks": {"RCG005_reclassified": false,"chi_ABC": "UNAUTHORIZED_NOT_COMPUTED","theory_established": "0%"},
+  "classification": "PASS_INDEPENDENT_CRITIC_RCG006_GENERATOR_COMPLETENESS",
+  "commutator_completion_all_in_ALG_span": true,
+  "constructor_not_imported": true,
+  "critic_ALG_pivot_raw_indices": [508,505,472,401,400,371],
+  "critic_DER_pivot_raw_indices": [56,43,14],
+  "environment": {"platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39","python": "3.12.14","sympy": "1.13.3"},
+  "generator_dimension_M": 9,
+  "heldout_prereg": "43748579a78f40e0825d5ae01dc634d55ba7b928",
+  "method": "REVERSE_PAIRINGS_PLUS_SELFDUAL_ANTISELFDUAL_GENERIC_CURVATURE_PLUS_INDEPENDENT_NORMAL_COORDINATE_H4_INDEXING",
+  "no_M_FR_computed": true,
+  "normal_coordinate_h4_variable_count": 350,
+  "parent_rcg005_terminal": "aef9882924ffd128c6c30934e4f95394aae874fc",
+  "phase": "RCG006_GENERATOR_COMPLETENESS_PREMAP_INDEPENDENT_CRITIC",
+  "raw_counts": {"ALG": 525,"DER": 60,"total": 585},
+  "run_head": "e1ae6681378f7c92e558c356b6ae933d35c507eb",
+  "scientific_payload_sha256": "b9597a3e01f8236d6421b9a88d19bdecb1d990fbb9a7ab19af3ef597a0c9c1cd",
+  "scientific_prereg": "fc3ff1f49c56f2befc039e09ebd8f388833dbff1",
+  "selection_terminal": "dc955720822d353d446186437ee2ca69458633bd"
+}
