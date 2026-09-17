@@ -1,0 +1,31 @@
+{
+  "phase": "RCG006C_WEYL_CUBED_BRIDGE_AGGREGATE",
+  "run_head": "6ac996aaf2201d659e4afc0d43a2242f74fbc069",
+  "workflow_run": 35252716318,
+  "constructor_job": 105308702775,
+  "critic_job": 105308702994,
+  "aggregate_job": 105309520064,
+  "artifacts": {
+    "constructor": {"id": 10512180305, "digest": "sha256:30ee8781395e1cfa87d4cde9fe24cf63448529eb0804d9fc3d2aafe2d61013e0"},
+    "critic": {"id": 10511056595, "digest": "sha256:7b770a7c77af501a4f4857bad551ac732afda9152c43fa415b97fa1fea9540d6"},
+    "aggregate": {"id": 10511391763, "digest": "sha256:e241ed69c6e08a6cbea443d3ba6441857835da6d1271d6d6f2a13772bc89e52e"}
+  },
+  "aggregate_valid": true,
+  "agreement_checks": {
+    "constructor_extends_to8": true,
+    "constructor_valid": true,
+    "critic_extends_to8": true,
+    "critic_valid": true,
+    "image_rank7": true,
+    "same_one_dimensional_quotient_ray": true
+  },
+  "constructor_RCG004_coordinates": ["-17/18","7","-1/2","-6","6","1"],
+  "critic_bivector_RCG004_coordinates": ["-17/144","7/8","-1/16","-3/4","3/4","1/8"],
+  "C3_over_D1D1_CLASS_11_mod_image": "4/3",
+  "C3_over_RCG004_AXIS_8_mod_image": "1",
+  "classification": "PASS_SCOPED_RCG006C_UNIQUE_EFT_CLASS_IS_PARITY_EVEN_WEYL_CUBED",
+  "interpretation": "The mechanically constructed parity-even Weyl-cubed invariant is nonzero modulo Im(M_FR) and therefore spans the unique one-dimensional first-order local pure-metric bulk EFT quotient. This is an operator-identity bridge, not a viability claim.",
+  "scientific_payload_sha256": "f1f841d275d27a1dd39a52148e2d79bcf4de7583c581dd705f9a196838519e7c",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "theory_established": "0%"
+}
