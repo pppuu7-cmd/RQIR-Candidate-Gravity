@@ -1,0 +1,90 @@
+{
+  "RCG004_formed": false,
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "coefficient_search_performed": false,
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "frozen_ray": [7,-36,36],
+  "isotropic_background_volume_shear": {
+    "H_beta_beta": "-1296*(u_sigma + v_sigma**2)",
+    "H_sigma_beta": "0",
+    "H_sigma_sigma": "0",
+    "conditions": "v_beta=0, u_beta=0"
+  },
+  "mechanism_summary": [
+    "The conformal/volume acceleration direction has H_sigma_sigma=0 identically for the frozen ray.",
+    "The mixed volume-shear obstruction is -1296*(u_beta+3*v_beta*v_sigma).",
+    "Even on an isotropic background, the shear-shear acceleration Hessian is -1296*(u_sigma+v_sigma^2), so the conformal restriction discards an obstructed direction rather than proving the full two-field Hessian vanishes."
+  ],
+  "no_new_model_content": true,
+  "operator_contributions_volume_shear": [
+    {
+      "H_beta_beta": "0",
+      "H_sigma_beta": "0",
+      "H_sigma_sigma": "9072*(u_sigma + v_beta**2 + 2*v_sigma**2)",
+      "coefficient": 7,
+      "operator": "R^3"
+    },
+    {
+      "H_beta_beta": "-2592*(u_sigma + v_beta**2 + 2*v_sigma**2)",
+      "H_sigma_beta": "-2592*(u_beta + 3*v_beta*v_sigma)",
+      "H_sigma_sigma": "-5184*(3*u_sigma + 4*v_beta**2 + 5*v_sigma**2)",
+      "coefficient": -36,
+      "operator": "R Ricci^2"
+    },
+    {
+      "H_beta_beta": "1296*(u_beta + u_sigma + 3*v_beta*v_sigma + 3*v_sigma**2)",
+      "H_sigma_beta": "1296*(u_beta + 3*v_beta*v_sigma)",
+      "H_sigma_sigma": "1296*(5*u_sigma + 9*v_beta**2 + 6*v_sigma**2)",
+      "coefficient": 36,
+      "operator": "Tr(Ricci^3)"
+    }
+  ],
+  "operators": [
+    {
+      "H_aa": "336*(ua + 2*ub + va**2 + 2*va*vb + 3*vb**2)",
+      "H_ab": "672*(ua + 2*ub + va**2 + 2*va*vb + 3*vb**2)",
+      "H_bb": "1344*(ua + 2*ub + va**2 + 2*va*vb + 3*vb**2)",
+      "coefficient": 7,
+      "isotropic_pullback": "9072*(u + 2*v**2)",
+      "operator": "R^3"
+    },
+    {
+      "H_aa": "-288*(3*ua + 4*ub + 3*va**2 + 4*va*vb + 5*vb**2)",
+      "H_ab": "-288*(4*ua + 7*ub + 4*va**2 + 5*va*vb + 9*vb**2)",
+      "H_bb": "-288*(7*ua + 18*ub + 7*va**2 + 10*va*vb + 25*vb**2)",
+      "coefficient": -36,
+      "isotropic_pullback": "-5184*(3*u + 5*v**2)",
+      "operator": "R Ricci^2"
+    },
+    {
+      "H_aa": "432*(ua + ub + va**2 + va*vb + vb**2)",
+      "H_ab": "432*(ua + 2*ub + va**2 + 2*vb**2)",
+      "H_bb": "432*(2*ua + 5*ub + 2*va**2 + va*vb + 6*vb**2)",
+      "coefficient": 36,
+      "isotropic_pullback": "1296*(5*u + 6*v**2)",
+      "operator": "Tr(Ricci^3)"
+    }
+  ],
+  "parent_classification": "FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED",
+  "parent_gate": "RCG003B_AXISYMMETRIC_BIANCHI_I_DERIVATIVE_CLOSURE",
+  "parent_terminal_commit": "72f9ab2ab5ad85259a18fc1f368777c431a56324",
+  "payload_sha256": "cb8b356739230e11af13f9bb1368255fa0fa2ccaeba8e5ea7765766d29192bdb",
+  "source": "VACUUM_ZERO",
+  "status": "RETROSPECTIVE_DESCRIPTIVE_POSTMORTEM_NO_CLASSIFIER_CHANGE",
+  "theory_established": "0%",
+  "total_hessian_ab": {
+    "H_aa": "-48*(2*ua + ub + 2*va**2 + va*vb)",
+    "H_ab": "-48*(ua - 4*ub + va**2 + 2*va*vb - 6*vb**2)",
+    "H_bb": "48*(4*ua - 7*ub + 4*va**2 + 5*va*vb - 12*vb**2)"
+  },
+  "total_hessian_volume_shear": {
+    "H_beta_beta": "1296*(u_beta - u_sigma - 2*v_beta**2 + 3*v_beta*v_sigma - v_sigma**2)",
+    "H_sigma_beta": "-1296*(u_beta + 3*v_beta*v_sigma)",
+    "H_sigma_sigma": "0"
+  },
+  "volume_shear_change": "a=sigma+2 beta; b=sigma-beta"
+}
