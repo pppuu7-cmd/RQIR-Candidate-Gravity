@@ -68,9 +68,9 @@ Artifacts:
 
 Raw repository persistence:
 - aggregate commit `9fc74204c70dfffcd60d42295ab60de28da648de`;
-- Constructor commit `2b2bac6825ac531305c98e305e6e3227a669697e`;
+- Constructor final raw commit `8c208dd284bc98ae182409b2deadbb109b22fd92`;
 - Critic commit `2971785dc5bf8941250269e74d85f05edffdfd9b`;
-- Euler commit `72deca7ed04e7476c790c0e1f4d1bc20487327da`.
+- Euler final raw commit `e253c0b3a773e1da2dfccdb602deb8a39db48435`.
 
 Canonical aggregate has `aggregate_valid=true`; all twelve frozen validity predicates are true, including exact prereg/parent/head/ray locks, both control lanes, Critic provenance, Constructor–Critic Hessian identity, Euler–Hessian correspondence, lane agreement, allowed classification, and source lock.
 
@@ -132,6 +132,9 @@ Current programme classification:
 
 Blocker record:
 `results/RCG004_MINIMAL_ALGEBRAIC_CUBIC_EXTENSION_AUTHORITY_BLOCKED.md`, commit `f7bf6d899c05ba0d5de0f7eefee8266b78604f15`.
+
+Research transition ledger:
+`recovery/RCG003B_TO_RCG004_RESEARCH_LEDGER.md`, commit `317394d7422f01ab017d99f43c7564eeb56b4bcd`.
 
 A future programme declaration must choose exactly one:
 - `AUTHORIZE_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_FORMATION_ATTEMPT`, or
