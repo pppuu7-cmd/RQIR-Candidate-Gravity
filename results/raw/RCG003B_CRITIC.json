@@ -1,0 +1,43 @@
+{
+  "claim_ceiling": "AXISYMMETRIC_HOMOGENEOUS_UNIT_LAPSE_VACUUM_FIXED_RAY_ONLY",
+  "classification": "FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED",
+  "controls": {
+    "EH_reference": true,
+    "R2_sensitivity": true,
+    "axis_label_duplicate": true,
+    "constructor_not_imported": true,
+    "fixed_parent_ray_no_refit": true,
+    "isotropic_recovery": true,
+    "off_shell_lock": true,
+    "perturbed_ray_negative": true,
+    "source_lock": true
+  },
+  "controls_valid": true,
+  "critic_classification": "PASS_INDEPENDENT_CRITIC_RCG003B_SCOPE_AND_PROVENANCE",
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "sympy": "1.13.3"
+  },
+  "hessian_normalized_by_exp_a_plus_2b": {
+    "H_aa": "-48*(2*ua + ub + 2*va**2 + va*vb)",
+    "H_ab": "-48*(ua - 4*ub + va**2 + 2*va*vb - 6*vb**2)",
+    "H_bb": "48*(4*ua - 7*ub + 4*va**2 + 5*va*vb - 12*vb**2)"
+  },
+  "hessian_zero_identically": false,
+  "lane": "INDEPENDENT_CRITIC",
+  "method": "FULLY_ANISOTROPIC_DIAGONAL_METRIC_CURVATURE_THEN_AXISYMMETRIC_SPECIALIZATION",
+  "minimal_exact_obstruction": {
+    "coefficient": "-48",
+    "component": "H_aa",
+    "monomial": "ub^1",
+    "powers": [0,1,0,0]
+  },
+  "parent_terminal": "ded5a44078c57909aeb6592b88bdac5c0917f85d",
+  "prereg_sha": "dbb0b54465c628b533c646a5b3b74b8458eaf24e",
+  "production_ray": [7,-36,36],
+  "run_head": "241a923523b2c770ffc8c48315d931af6e61846f",
+  "scientific_payload_sha256": "480a39eede957a3986dd19acb8fa5f4ab6886d82e5e49b1e82fa955c1cdca94e",
+  "source": "VACUUM_ZERO",
+  "symbolic_sha256": "51699117a70ca1e0694f67c447befcdf55216164ad83b01bd7a0f51ec32f315a"
+}
