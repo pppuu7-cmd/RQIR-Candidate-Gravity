@@ -1,0 +1,36 @@
+{
+  "claim_ceiling": "VERIFICATION_ONLY_SAME_FROZEN_RCG003B_CLASSIFIER",
+  "classification": "FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED",
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "sympy": "1.13.3"
+  },
+  "fourth_derivative_matrix_normalized": {
+    "E_a": {
+      "a4": "-48*(2*ua + ub + 2*va**2 + va*vb)",
+      "b4": "-48*(ua - 4*ub + va**2 + 2*va*vb - 6*vb**2)"
+    },
+    "E_b": {
+      "a4": "-48*(ua - 4*ub + va**2 + 2*va*vb - 6*vb**2)",
+      "b4": "48*(4*ua - 7*ub + 4*va**2 + 5*va*vb - 12*vb**2)"
+    }
+  },
+  "fourth_derivative_obstruction_present": true,
+  "fourth_hessian_correspondence": true,
+  "lane": "DIRECT_EULER_LAGRANGE_ADVERSARIAL_CROSSCHECK",
+  "method": "METRIC_DERIVATION_PLUS_EXACT_JET_TOTAL_DERIVATIVE_EL",
+  "minimal_exact_obstruction": {
+    "coefficient": "-48",
+    "common_density_factor": "exp(a+2b)",
+    "location": "E_a:a4",
+    "monomial": "ub^1",
+    "powers": [0,1,0,0]
+  },
+  "parent_terminal": "ded5a44078c57909aeb6592b88bdac5c0917f85d",
+  "prereg_sha": "dbb0b54465c628b533c646a5b3b74b8458eaf24e",
+  "production_ray": [7,-36,36],
+  "run_head": "241a923523b2c770ffc8c48315d931af6e61846f",
+  "scientific_payload_sha256": "c93c50597bf1a4fa26c4cb909d33cee319aedac5bc2a14d839adf100cd5911fa",
+  "symbolic_sha256": "8c9cd01db4cd4b6c9a173e9371fac62ee0ec1a37c69ab9ec9a7ab75d5a715b04"
+}
