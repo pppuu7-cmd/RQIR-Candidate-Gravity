@@ -1,0 +1,70 @@
+{
+  "aggregate_valid": true,
+  "agreement_checks": {
+    "canonical_MFR_identity": true,
+    "constructor_valid": true,
+    "critic_valid": true,
+    "curvature_manifest": true,
+    "final_bank_hash": true,
+    "final_bank_sample_count": true,
+    "final_stats_exact": true,
+    "h4_manifest": true,
+    "negative_controls": true
+  },
+  "canonical_MFR_sha256": "7ac6ba6d1003c676899c0017409e3466a7f5e12fbb4114feee94580f1b0799bd",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "classification": "PASS_SCOPED_RCG006B_GENERIC_METRIC_JET_HELDOUT",
+  "constructor_bank": {
+    "samples": 32,
+    "seed": "0x5243473030364341",
+    "sha256": "177a36c97b88420d7e24001403ea77a247e8c0b6be20f58246ac811c2eaa184e"
+  },
+  "constructor_bank_stats": {
+    "EH_action_image_checks": 288,
+    "alternate_relation_checks": 18720,
+    "direct_tensor_checks": 288,
+    "quotient_combo_checks": 32
+  },
+  "coordinate_manifest": {
+    "curvature_count": 20,
+    "curvature_sha256": "5ee3545c598d88d73925c8e3fb60240f30bc97a4b2be0dcf603eedd24e49730b",
+    "h4_count": 350,
+    "h4_sha256": "59060f106ee42b04f5831f511f6b1e84f4cacac2b89a48f15b30a5ec1fa3eb88"
+  },
+  "critic_bank": {
+    "samples": 32,
+    "seed": "0x5243473030364352",
+    "sha256": "34f866a046f80cd38694fe0c28cca37597dd215b874078e6990523073347c23b"
+  },
+  "critic_bank_stats": {
+    "EH_action_image_checks": 288,
+    "alternate_relation_checks": 18720,
+    "direct_tensor_checks": 288,
+    "quotient_combo_checks": 32
+  },
+  "final_bank": {
+    "samples": 16,
+    "seed": "0x524347303036484f",
+    "sha256": "3dfffc6e2e29e4676e10681118271bd07ba81ab5c0684ae8db8607fd18c6500b"
+  },
+  "final_bank_stats": {
+    "EH_action_image_checks": 144,
+    "alternate_relation_checks": 9360,
+    "direct_tensor_checks": 144,
+    "quotient_combo_checks": 16
+  },
+  "interpretation": "Exact preregistered rational held-out banks validate frozen generator tensors, EH raw images and final quotient map without refit. Finite held-out agreement is a validation layer only and is not promoted to a universal identity proof.",
+  "phase": "RCG006B_GENERIC_METRIC_JET_HELDOUT_AGGREGATE",
+  "run_head": "55d2ddfe5d84a4e56857c9b7fd12719ca5e9dc43",
+  "scientific_payload_sha256": "cacb5e3e5c921f30e7d104e2d3f183cdc9279359ced08f7cf6d7be0230210f71",
+  "theory_established": "0%",
+  "workflow_run": 35252660085,
+  "constructor_job": 105308517011,
+  "critic_job": 105308516603,
+  "aggregate_job": 105309021032,
+  "artifacts": {
+    "constructor": {"id": 10512235030, "digest": "sha256:3e2aae5e76a26e94b198fea87b0a71720f7c70df3e3ca07df371148195334fe7"},
+    "critic": {"id": 10511351333, "digest": "sha256:88771fff0a384122d28998936256752e5666221731c481da0cbc3f32da63c815"},
+    "aggregate": {"id": 10512270339, "digest": "sha256:28ddcc30af07e038f757cf7cff643f60b0514bda3e6bdd87e1909d58258e375a"}
+  }
+}
