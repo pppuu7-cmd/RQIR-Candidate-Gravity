@@ -17,24 +17,24 @@ def add(o,p,c=1):
     for k,v in p.items():o[k]+=sp.Rational(c)*v
     return o
 def ric(b,d):
-    o=defaultdict(sp.Rational)
+    o=defaultdict(lambda: sp.Rational(0))
     for a in range(4):add(o,p4.rform(a,b,a,d))
     return {k:v for k,v in o.items() if v}
 RIC=[[ric(b,d) for d in range(4)] for b in range(4)]
 def scalarR():
-    o=defaultdict(sp.Rational)
+    o=defaultdict(lambda: sp.Rational(0))
     for b in range(4):add(o,RIC[b][b])
     return {k:v for k,v in o.items() if v}
 RS=scalarR()
 def delta(a,b):return 1 if a==b else 0
 def C(a,b,c,d):
-    o=defaultdict(sp.Rational);add(o,p4.rform(a,b,c,d))
+    o=defaultdict(lambda: sp.Rational(0));add(o,p4.rform(a,b,c,d))
     add(o,RIC[d][b],-sp.Rational(1,2)*delta(a,c));add(o,RIC[c][b],sp.Rational(1,2)*delta(a,d))
     add(o,RIC[d][a],sp.Rational(1,2)*delta(b,c));add(o,RIC[c][a],-sp.Rational(1,2)*delta(b,d))
     add(o,RS,sp.Rational(1,6)*(delta(a,c)*delta(d,b)-delta(a,d)*delta(c,b)))
     return {k:v for k,v in o.items() if v}
 def c3poly():
-    o=defaultdict(sp.Rational)
+    o=defaultdict(lambda: sp.Rational(0))
     for a,b,c,d,e,f in product(range(4),repeat=6):
       x=C(a,b,c,d);y=C(a,b,e,f);z=C(e,f,c,d)
       if x and y and z:p4.p3(o,x,y,z)
@@ -50,7 +50,7 @@ def express(poly):
 def trace_checks():
     ok=True
     for b,d in product(range(4),repeat=2):
-      o=defaultdict(sp.Rational)
+      o=defaultdict(lambda: sp.Rational(0))
       for a in range(4):add(o,C(a,b,a,d))
       if any(o.values()):ok=False
     sym=True
