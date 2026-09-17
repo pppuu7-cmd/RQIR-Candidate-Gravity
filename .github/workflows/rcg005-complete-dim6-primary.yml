@@ -1,0 +1,95 @@
+name: RCG005 complete local dim6 closure
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg005-complete-dim6-primary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify all prospective freezes precede primary outcome
+        run: |
+          git merge-base --is-ancestor 355ac8a2d892e311bd1989e7057c3defac2e7e8a "$GITHUB_SHA"
+          git merge-base --is-ancestor d2e38871ee5ac2e1331934647575e4a5b6144e4a "$GITHUB_SHA"
+          git merge-base --is-ancestor 1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08 "$GITHUB_SHA"
+          git merge-base --is-ancestor 1fb26a399264747fc2ffa8a564d4d281c0586f9c "$GITHUB_SHA"
+          git merge-base --is-ancestor f4d6f11490c0e668aa934e25580abad3015f0ae1 "$GITHUB_SHA"
+      - run: python scripts/rcg005_dim6_constructor.py --output rcg005-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-constructor, path: rcg005-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent Critic freeze chronology
+        run: |
+          git merge-base --is-ancestor 1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08 "$GITHUB_SHA"
+          git merge-base --is-ancestor 1fb26a399264747fc2ffa8a564d4d281c0586f9c "$GITHUB_SHA"
+          git merge-base --is-ancestor f4d6f11490c0e668aa934e25580abad3015f0ae1 "$GITHUB_SHA"
+      - run: python scripts/rcg005_dim6_critic.py --output rcg005-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-critic, path: rcg005-critic.json}
+  direct-euler:
+    needs: [constructor]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-constructor, path: ctor}
+      - run: python scripts/rcg005_direct_euler_crosscheck.py --constructor ctor/rcg005-constructor.json --output rcg005-euler.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-direct-euler, path: rcg005-euler.json}
+  negative-controls:
+    needs: [constructor, critic, direct-euler]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-critic, path: crit}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-direct-euler, path: euler}
+      - run: python scripts/rcg005_negative_controls.py --constructor ctor/rcg005-constructor.json --critic crit/rcg005-critic.json --euler euler/rcg005-euler.json --output rcg005-controls.json
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-negative-controls, path: rcg005-controls.json}
+  aggregate:
+    needs: [constructor, critic, direct-euler, negative-controls]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-critic, path: crit}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-direct-euler, path: euler}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg005-negative-controls, path: controls}
+      - name: Apply frozen terminal classifier
+        run: python scripts/rcg005_terminal_aggregate.py --constructor ctor/rcg005-constructor.json --critic crit/rcg005-critic.json --euler euler/rcg005-euler.json --controls controls/rcg005-controls.json --output rcg005-terminal-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-terminal-aggregate, path: rcg005-terminal-aggregate.json}
