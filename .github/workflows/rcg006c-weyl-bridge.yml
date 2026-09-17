@@ -1,0 +1,51 @@
+name: RCG006C unique EFT class Weyl-cubed bridge
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg006c-weyl-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify prospective bridge chronology
+        run: |
+          git merge-base --is-ancestor 12ca52947d1390a494634b7a6a2d98d9a7e4bf7d "$GITHUB_SHA"
+          git merge-base --is-ancestor 1122988893e9d5f87771da8a6390f031be8fafca "$GITHUB_SHA"
+      - run: python scripts/rcg006c_weyl_bridge_constructor.py --output rcg006c-weyl-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006c-weyl-constructor, path: rcg006c-weyl-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent bridge chronology
+        run: git merge-base --is-ancestor 1122988893e9d5f87771da8a6390f031be8fafca "$GITHUB_SHA"
+      - run: python scripts/rcg006c_weyl_bridge_critic.py --output rcg006c-weyl-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006c-weyl-critic, path: rcg006c-weyl-critic.json}
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006c-weyl-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006c-weyl-critic, path: crit}
+      - run: python scripts/rcg006c_weyl_bridge_aggregate.py --constructor ctor/rcg006c-weyl-constructor.json --critic crit/rcg006c-weyl-critic.json --output rcg006c-weyl-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006c-weyl-aggregate, path: rcg006c-weyl-aggregate.json}
