@@ -1,0 +1,24 @@
+name: RCG005 family completeness audit
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg005-family-completeness-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify family and quotient freezes are ancestors
+        run: |
+          git merge-base --is-ancestor 1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08 "$GITHUB_SHA"
+          git merge-base --is-ancestor f4d6f11490c0e668aa934e25580abad3015f0ae1 "$GITHUB_SHA"
+      - run: python scripts/rcg005_family_completeness_audit.py --output rcg005-family-completeness-audit.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg005-family-completeness-audit, path: rcg005-family-completeness-audit.json}
