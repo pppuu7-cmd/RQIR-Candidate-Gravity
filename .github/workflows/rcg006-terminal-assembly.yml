@@ -1,0 +1,29 @@
+name: RCG006-v0 terminal structural audit assembly
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg006-terminal-assembly.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Verify all frozen terminal authorities precede assembly
+        run: |
+          git merge-base --is-ancestor fc3ff1f49c56f2befc039e09ebd8f388833dbff1 "$GITHUB_SHA"
+          git merge-base --is-ancestor 8c8314d2b857d6caa9719d6ba33e856ea0a697af "$GITHUB_SHA"
+          git merge-base --is-ancestor 12ca52947d1390a494634b7a6a2d98d9a7e4bf7d "$GITHUB_SHA"
+          git merge-base --is-ancestor 344f81f90db90b2d3444222bea357221d0c54680 "$GITHUB_SHA"
+          git merge-base --is-ancestor a067bca23fd01bc002afe3e66e8164549986aee8 "$GITHUB_SHA"
+          git merge-base --is-ancestor 43748579a78f40e0825d5ae01dc634d55ba7b928 "$GITHUB_SHA"
+          git merge-base --is-ancestor f537a7611b8a0787df65af3bdee4c0344e12fcf3 "$GITHUB_SHA"
+          git merge-base --is-ancestor c566cab822b7403782715fd8797543b9afa15f0d "$GITHUB_SHA"
+      - run: python scripts/rcg006_terminal_assemble.py --output rcg006-terminal-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-terminal-aggregate, path: rcg006-terminal-aggregate.json}
