@@ -1,344 +1,127 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-17 after explicit RCG005 curvature-derivative class selection, prospectively separated exact quotient freeze, canonical complete local dimension-six execution, class-level terminalization, and prospective RCG006 selector freeze.
+Updated: 2026-09-17 after canonical RCG006 generator freeze and terminal L0 first-order EH field-redefinition map subgate.
 
 ## Canonical programme/scientific phase
 
-`RCG002_HISTORICAL_SCIENCE_TERMINAL / RCG003B_AXISYMMETRIC_FAIL / RCG004_COMPLETE_ALGEBRAIC_CUBIC_CLASS_TERMINAL_FAIL / RCG005_CURVATURE_DERIVATIVE_CLASS_AUTHORITY_CONSUMED / RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_TERMINAL_FAIL / RCG006_MODEL_CLASS_SELECTION_BLOCKED`
+`RCG002_HISTORICAL_SCIENCE_TERMINAL / RCG003B_AXISYMMETRIC_FAIL / RCG004_COMPLETE_ALGEBRAIC_CUBIC_CLASS_TERMINAL_FAIL / RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_TERMINAL_FAIL / RCG006_FIELD_REDEFINITION_EQUIVALENCE_AUDIT_ACTIVE`
 
-Historical RCG002/RCG003/RCG003B and RCG004 terminals remain unchanged.
+Historical RCG002/RCG003/RCG003B/RCG004/RCG005 terminals remain unchanged. This file is a current-front pointer, not a rewrite of historical result notes.
 
 `chi_ABC = UNAUTHORIZED_NOT_COMPUTED`.
 `THEORY_ESTABLISHED = 0%`.
 
-## Parent terminals retained
+## RCG005 parent authority retained
 
-### RCG003B
+Terminal: `results/RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CURVATURE_TERMINAL.md`.
+Terminal commit: `aef9882924ffd128c6c30934e4f95394aae874fc`.
+Classification: `FAIL_SCOPED_RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_HAS_NO_NONZERO_SECOND_ORDER_SURVIVOR` under the frozen representative-level, off-shell second-order convention.
 
-Terminal commit:
-`72f9ab2ab5ad85259a18fc1f368777c431a56324`.
+RCG006 does not retroactively rewrite this result.
 
-Classification:
-`FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED`.
+## RCG006 programme and scientific contract
 
-Frozen RCG003-v0 dimension chain:
-`3 -> 1 -> 0` nonzero rays under conformal then axisymmetric derivative-order gates.
+Programme selection terminal: `dc955720822d353d446186437ee2ca69458633bd`.
+Selected direction: `FIELD_REDEFINITION_EQUIVALENCE_AUDIT`.
 
-The exact postmortem showed that the conformal restriction removed the shear variation carrying the obstruction. Do not reopen or refit `(7,-36,36)`.
+Scientific preregistration: `prereg/RCG006_BOUNDED_LOCAL_METRIC_FIELD_REDEFINITION_EFT_EQUIVALENCE_AUDIT_V0.md`, commit `fc3ff1f49c56f2befc039e09ebd8f388833dbff1`.
 
-### RCG004
+Map implementation contract: `prereg/RCG006_FIELD_REDEFINITION_MAP_IMPLEMENTATION_CONTRACT.md`, commit `78789e048ab3d67fc8f2e901176ff3a352aad749`.
 
-Terminal:
-`results/RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_TERMINAL.md`.
+Scope remains first-order, local, perturbatively invertible, parity-even pure-metric field redefinitions. Bulk-action equivalence only. Boundary observables, matter couplings, global solution spaces, causal structures, quantum measures and nonperturbative theory identity remain out of scope.
 
-Terminal commit:
-`c39cbbd8a7e8c0caeb14e080344d01119b2ce7db`.
+## Canonical RCG006 generator space — terminal pre-map freeze
 
-Canonical run:
-`35175941323`, workflow head `f62d3ad892453725e6838059929f0f6212d4d3d6`, completed `success`.
+Result: `results/RCG006_GENERATOR_COMPLETENESS_FREEZE.md`.
+Commit: `8c8314d2b857d6caa9719d6ba33e856ea0a697af`.
+Classification: `PASS_RCG006_GENERATOR_COMPLETENESS_READY_TO_FREEZE`.
 
-Exact chain:
-`10395 raw cubic matchings -> 13 nonzero symmetry classes -> exact 4D quotient 6 -> 0 triaxial Hessian survivors -> 0 direct-Euler survivors`.
+Exact generator quotient:
+- `M_ALG = 6` algebraic curvature-squared symmetric rank-2 directions;
+- `M_DER = 3` genuinely new derivative principal directions;
+- **`M = 9`** total frozen generator directions.
 
-Classification:
-`FAIL_SCOPED_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_CLASS_HAS_NO_NONZERO_TRIAXIAL_SECOND_ORDER_SURVIVOR`.
+Production generator basis is frozen and cannot be changed after seeing map/discriminator outcomes.
 
-Do not rerun RCG004 absent an independently demonstrated implementation defect.
+## Canonical L0 first-order EH map — terminal scoped subgate
 
-## RCG005 programme authority — consumed
+Terminal note: `results/RCG006_MFR_L0_MAP_TERMINAL.md`.
+Canonical raw/provenance: `results/raw/RCG006_MFR_L0_CANONICAL.json`.
+Terminal note commit: `12ca52947d1390a494634b7a6a2d98d9a7e4bf7d`.
 
-Programme-selector preregistration:
-`prereg/RCG005_NEXT_MODEL_CLASS_SELECTION_GATE.md`, commit `1bde9c52e00d855f92dcc28cdf8afcf04bd40026`.
+Canonical workflow run: `35250324503`, head `d781765b80d371033d1b6477f32693c2023838e6`.
+Constructor, independent Critic and aggregate all completed success.
 
-Explicit external selection declaration:
-`results/RCG005_CURVATURE_DERIVATIVE_CLASS_SELECTION_DECLARATION.md`, commit `513fca5a7df4a69bab56a29b4044f019b97466e6`.
+Classification: `PASS_SCOPED_RCG006_MFR_L0_MAP_SUBGATE`.
 
-Selected disposition:
-`SELECT_RCG005_CURVATURE_DERIVATIVE_BOUNDED_CLASS`.
+Exact facts:
+- `M_FR` shape `8 x 9`;
+- `rank(M_ALG)=5`;
+- **`rank(M_FR)=7`**;
+- `dim ker(M_FR)=2`;
+- **`dim Q_EFT = 1`**;
+- `dim(RCG004_subspace ∩ Im(M_FR)) = 5`;
+- residual inherited cubic quotient dimension `1`;
+- `D1D1_CLASS_9` is in `Im(M_FR)`;
+- `D1D1_CLASS_11` is not in `Im(M_FR)`;
+- modulo `Im(M_FR)`, `[D1D1_CLASS_11] = (3/4)[RCG004_CANONICAL_AXIS_8]`.
 
-Selection terminal:
-`results/RCG005_MODEL_CLASS_SELECTION_TERMINAL.md`, commit `355ac8a2d892e311bd1989e7057c3defac2e7e8a`.
+Canonical `M_FR` SHA256:
+`7ac6ba6d1003c676899c0017409e3466a7f5e12fbb4114feee94580f1b0799bd`.
 
-Classification:
-`RCG005_CURVATURE_DERIVATIVE_BOUNDED_CLASS_SELECTED_SCOPED`.
+Canonical image-span SHA256:
+`7c5e4b07d95881b907ed67a55742466c2889e99c20193806b834370a00f46788`.
 
-Scoped formation authority:
-`results/RCG005_FORMATION_AUTHORITY.md`, commit `d2e38871ee5ac2e1331934647575e4a5b6144e4a`.
+This is a first-order bulk EFT-equivalence statement only. It is not a gravity-candidate PASS.
 
-Classification:
-`RCG005_FORMATION_AUTHORIZED_SCOPED`.
+## Active authoritative gates
 
-This authority was consumed by exactly one prospectively controlled RCG005-v0 formation attempt.
+### A_HD orbit transport
 
-## RCG005 frozen family and equivalence convention
+Workflow: `.github/workflows/rcg006-ahd-transport.yml`.
+Run: `35250686885`.
+Head: `7af702935db7db904f08a0e70e6f8187dc61d859`.
 
-Scientific preregistration:
-`prereg/RCG005_COMPLETE_PARITY_EVEN_LOCAL_DIM6_PURE_METRIC_CURVATURE_CLASS_V0.md`, commit `1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08`.
+Status at this recovery write: non-terminal/queued.
 
-Held-out preregistration:
-`prereg/RCG005B_GENERIC_METRIC_JET_PRINCIPAL_SYMBOL_HELDOUT.md`, commit `1fb26a399264747fc2ffa8a564d4d281c0586f9c`.
+Frozen purpose: independently reconstruct the RCG005 higher-derivative discriminator `A_HD`, require rank `8` and kernel zero before consuming the RCG006 image, then compute `rank(A_HD M_FR)` and classify the preregistered structural branch.
 
-Version:
-`RCG005_COMPLETE_PARITY_EVEN_LOCAL_DIMENSION_SIX_PURE_METRIC_CURVATURE_CLASS_V0`.
+Do not use partial values and do not launch a competing authoritative transport gate while this run is non-terminal.
 
-Scope:
-- four dimensions;
-- local, parity even, pure metric;
-- correction engineering mass dimension six;
-- `VACUUM_ZERO`;
-- all scalar contractions of `nabla^{k_i} Riemann` with `sum_i(2+k_i)=6` before quotient;
-- exact Riemann algebraic symmetries;
-- algebraic and differential Bianchi identities;
-- exact covariant-derivative commutators;
-- exact action integration by parts / total derivatives;
-- exact four-dimensional identities;
-- exact duplicates and parity-even double-epsilon reduction.
+### Symbolic-Lambda companion
 
-Forbidden in v0 equivalence:
-- EOM/on-shell identities;
-- background-specific quotient;
-- perturbative or derivative-dependent metric field redefinitions.
+Workflow: `.github/workflows/rcg006-lambda-companion.yml`.
+Head: `56c0b6c2614f99c5cffb84bc99d2e56b45a84e05`.
 
-`FIELD_REDEFINITION_EQUIVALENCE = UNRESOLVED_OUT_OF_SCOPE_RCG005_V0`.
+This independent lane tracks `Lambda * Q_dim4_companion` leakage separately from the L0 eight-dimensional parent and verifies that derivative-generator traces are bulk total divergences. It cannot change the already-terminal L0 `M_FR` rank.
 
-No matter, extra fields, quartic/dimension-eight operators, torsion or nonlocality belong to RCG005-v0.
+If its workflow is non-terminal, do not use partial substantive values and do not duplicate it.
 
-## Outcome-independent RCG005 family completeness
+## Current scientific interpretation
 
-Separate completeness audit:
-- script commit `3a37670ac31a9c8b77da0174c091182febf72229`;
-- workflow head `fa3fa43c2c4357dd3aec99be74a756e5e05da411`;
-- run `35178717498`, run number `1`, attempt `1`;
-- job `105066050302` — success;
-- artifact `10479503273`, digest `sha256:b30a3c3c999a90c7af8463a73482b91b35c3d0ace29b894a1d68b05c3a273e13`;
-- classification `PASS_RCG005_FAMILY_COMPLETENESS_AUDIT`.
+RCG006 has already shown that seven of the eight frozen RCG005 bulk action directions are first-order EH field-redefinition image directions, leaving a one-dimensional EFT quotient. Whether the frozen representative-level higher-derivative discriminator is invariant along those admitted EFT orbits is still pending the terminal `A_HD` transport gate.
 
-The engineering-dimension equation has exactly the four unordered partitions:
-`(0,0,0), (0,2), (1,1), (4)`.
-
-Raw counts:
-- `Riemann^3 = 10395`;
-- `(nabla Riemann)^2 = 945`;
-- `Riemann*nabla^2 Riemann = 945`;
-- `nabla^4 Riemann = 105`;
-- total `12390`.
-
-Every `945/945` `Riemann*nabla^2 Riemann` contraction maps by exact action-level IBP into the `D1D1` raw family. Every `105/105` one-curvature `nabla^4 Riemann` contraction is an exact covariant total divergence. The derivative-commutator sector supplies exactly `3` independent relations of rank `3`. Parity-even double-epsilon contractions reduce exactly to the generalized-delta/metric-contraction span.
-
-Thus the declared mass-dimension-six raw action family is mechanically complete under the frozen boundary.
-
-## Preprimary exact quotient — frozen before primary dynamics
-
-The first quotient execution `35178140025` had an implementation-only undefined parent-manifest helper reference; no Constructor artifact/aggregate existed, so it has no scientific classification. Prospective execution-only repair:
-- record commit `c03c693719040ff5ec80da839782379e1b9ae7d3`;
-- repaired code commit `ce4cfe07d8226562700fb193c8b14eefba28f803`.
-
-Canonical quotient-only run:
-- run `35178250959`;
-- run number `2`, attempt `1`;
-- workflow head `ac3c646b0fc1a5bec2fa6781e5bdb9c8bbb1b820`;
-- Constructor `105064632969` — success;
-- independent Critic `105064633044` — success;
-- aggregate `105064698593` — success.
-
-Artifacts:
-- Constructor `10479537361`, digest `sha256:4dc0741d1beaf5ec66edb75508be8600742e6a45b046b71e1bb248d49b2e354c`;
-- Critic `10479243645`, digest `sha256:8159a877e47d5a459f1597bc316ad1cdb963d339ab27aa44811a723bc57862d3`;
-- aggregate `10479278706`, digest `sha256:b72001be7aa2a15eeb950f7c0d343c70aa93b3ac40adae725d50cf7aca6aeb4e`.
-
-Aggregate:
-`PASS_RCG005_PREPRIMARY_QUOTIENT_COMPLETENESS_READY_TO_FREEZE`, `aggregate_valid=true`, `primary_dynamics_status=NOT_COMPUTED_PREPRIMARY`.
-
-Exact quotient facts:
-- canonical cubic nonzero classes: `13`;
-- canonical `D1D1` nonzero classes: `12`;
-- exact generic 4D `nabla Riemann` tensor dimension after differential Bianchi: `60`;
-- exact pointwise `D1D1` rank: `4`;
-- independent normal-coordinate Critic uses `200` metric third-jet variables and also obtains rank `4`;
-- exact total relation rank on 25 canonical derivative+cubic directions: `17`;
-- exact quotient dimension: **`N=8`**;
-- exact relation RREF SHA256: `4b6f9b9713b076a10513adb1b10ab0bfc91b822acda441f976aee2f14a5fd38e`;
-- exact RCG004 embedding rank: `6`.
-
-Canonical quotient/basis freeze:
-`results/RCG005_EXACT_QUOTIENT_COMPLETENESS_FREEZE.md`, commit `f4d6f11490c0e668aa934e25580abad3015f0ae1`.
-
-This commit precedes the canonical primary workflow head.
-
-Frozen production quotient coordinates:
-- two new derivative directions: `D1D1_CLASS_9`, `D1D1_CLASS_11`;
-- six inherited RCG004 canonical axes `[0,1,2,4,5,8]`.
-
-No coefficient/survivor information was encoded in the basis freeze.
-
-## Canonical RCG005 primary scientific execution
-
-Workflow:
-`.github/workflows/rcg005-complete-dim6-primary.yml`.
-
-Workflow head:
-`23b426084168aef9e95dba7ee903a100effeec92`.
-
-Canonical run:
-`35178534613`, run number `1`, attempt `1`, completed `success`.
-
-Jobs:
-- Constructor `105065495844` — success;
-- independent Critic `105065496077` — success;
-- direct generalized Euler `105065554582` — success;
-- negative controls `105065632807` — success;
-- aggregate `105065703647` — success.
-
-Artifacts:
-- Constructor `10479527938`, digest `sha256:b2969ed62bafb7748d413674682520dfe4861ba59ef7c6d9932c9b7a2a1126d4`;
-- Critic `10479289150`, digest `sha256:bbc9da42f886def669bb01f1f0e86103d20655a6f1e959c6bf2316802bb469a9`;
-- direct Euler `10479537894`, digest `sha256:4f890ed5a93aad6081c1ed54ca5b4eaf0fc370731330fd4607cb4a4d81266ba3`;
-- negative controls `10478548700`, digest `sha256:a2eb5068b7c1ae771cee097b14c8338fb7a5c0cb201f5a38dea201b4d07cc232`;
-- aggregate `10479114573`, digest `sha256:8e043b361e784aed1a1629720965b1938396e156cf320e9fe4372a03b7f3e587`.
-
-Durable canonical manifest:
-`results/raw/RCG005_CANONICAL_ARTIFACT_MANIFEST.json`, commit `ac7ba30cd1c58fc029c37dfb0df9191021a56eb8`.
-
-Canonical aggregate has `aggregate_valid=true`; every frozen aggregate predicate is true.
-
-## Exact RCG005 derivative-order mechanism
-
-Restored-lapse primary metric:
-
-`ds^2=-N(t)^2dt^2+exp(2a(t))dx^2+exp(2b(t))dy^2+exp(2c(t))dz^2`, with `N=exp(n)` used as an exact nonsingular variable change.
-
-Source-faithful principal check:
-`partial(nabla_0 R_0i0i)/partial q_i''' = -exp(-3*n)`.
-
-For the two genuinely new derivative quotient directions the principal forms are:
-
-`P_9 = -(x1+x2+x3)^2`
-
-`P_11 = -(x1^2+x2^2+x3^2)`
-
-with common density `exp(a+b+c-5*n)`.
-
-Constructor sixth-order map:
-
-`A6 = [[-2,-2],[-2,0],[-2,0],[-2,-2],[-2,0],[-2,-2]]`.
-
-Exact rank:
-**`rank(A6)=2`**.
-
-Therefore both new derivative coefficients are forced to zero at highest order:
-
-`dim Q=8 -> dim K6=6`.
-
-Mechanism classification:
-
-`A_DERIVATIVE_SECTOR_HAS_NO_NONZERO_HIGHEST_ORDER_DEGENERATE_COMBINATION`.
-
-The surviving `K6` is exactly the inherited six-dimensional RCG004 algebraic-cubic subspace.
-
-`rank(A5 | K6)=0`, hence `dim K5=6`.
-
-The inherited canonical RCG004 fourth-order restriction has rank `6`:
-
-`rank(A4 | K5)=6`, hence `dim K4=0`.
-
-Thus final exact second-order candidate space is
-
-**`K_SO = {0}`**.
-
-Exact dimension chain:
-
-`12390 raw contractions/templates`
-`-> exact action quotient N=8`
-`-> A6 rank 2`
-`-> K6 dimension 6`
-`-> A5|K6 rank 0`
-`-> K5 dimension 6`
-`-> inherited A4|K5 rank 6`
-`-> K4 = K_SO = 0`.
-
-Independent Critic reproduces quotient 8, relation rank/hash, A6 rank2, K6=6, inherited A4 rank6 and K_SO=0 by a different tensor route.
-
-Independent generalized-Euler lane directly differentiates the restored-lapse principal reduced action, obtains a `9 x 2` sixth-order coefficient map of exact rank `2`, and independently confirms K_SO=0 after canonical parent A4 restriction.
-
-All frozen adversarial controls pass. The accidental isotropic projection reduces A6 rank from 2 to 1, explicitly demonstrating that the symmetry-masking trap remains active and detected.
-
-## Held-out status
-
-The generic metric-jet principal-symbol held-out was frozen before primary outcome, but the preregistered rule gives
-
-`NOT_APPLICABLE_PRIMARY_NULLITY_ZERO`
-
-because `dim K_SO=0`.
-
-No held-out seed was used to fit or rescue coefficients.
-
-## Canonical RCG005 terminal — class-level scoped FAIL
-
-Terminal:
-`results/RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CURVATURE_TERMINAL.md`.
-
-Terminal commit:
-`aef9882924ffd128c6c30934e4f95394aae874fc`.
-
-Classification:
-
-`FAIL_SCOPED_RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_HAS_NO_NONZERO_SECOND_ORDER_SURVIVOR`.
-
-Scientific meaning: under the frozen exact action equivalence and off-shell second-order criterion, the RCG004 failure was not merely caused by excluding curvature-derivative directions at the same engineering mass dimension. Completing the local parity-even pure-metric dimension-six action adds only two independent derivative directions beyond the inherited six algebraic-cubic directions; the two new directions fail already at sixth order, and the remaining inherited six fail at fourth order.
-
-This is a scoped class-level falsification, not an ansatz-level failure.
-
-Claim ceiling: this does not establish GR uniqueness, arbitrary higher-curvature/modified-gravity failure, failure of dimension-eight/quartic classes, additional-field theories, nonlocal theories, or a future field-redefinition/EFT-equivalence quotient. It does not establish ghost freedom, stability, hyperbolicity, unitarity, quantum gravity, phenomenology or new physics.
-
-## RCG006 anti-patching programme transition
-
-No successor class has been selected.
-
-Prospective selector:
-`prereg/RCG006_NEXT_MODEL_CLASS_SELECTION_GATE.md`, commit `ada3620b6e30051c3098b7815f56b738b9513e83`.
-
-Candidate programme directions are prospectively bounded as:
-- quartic / local pure-metric algebraic dimension-eight class;
-- additional dynamical field bounded architecture;
-- bounded nonlocal architecture;
-- bounded field-redefinition/EFT-equivalence audit before model formation;
-- another explicitly finite mechanism-motivated architecture;
-- HOLD.
-
-Current programme classification:
-
-**`BLOCKED_PENDING_EXPLICIT_RCG006_MODEL_CLASS_SELECTION`**.
-
-Blocker:
-`results/RCG006_NEXT_MODEL_CLASS_SELECTION_BLOCKED.md`, commit `a27fa07be0a902d41b991f56b92c6f1d0fcdd24e`.
-
-Transition ledger:
-`recovery/RCG005_TO_RCG006_RESEARCH_LEDGER.md`, commit `77ac77fbee5d38138f8341f872fb21ad179daca9`.
-
-No RCG006 family, operator basis, field content, nonlocal kernel, equivalence quotient, coefficient space or survivor has been formed.
-
-## Exact next action
-
-`CONSUME_EXPLICIT_RCG006_MODEL_CLASS_SELECTION_DECLARATION_IF_PROVIDED; OTHERWISE_DO_NOT_FORM_RCG006`.
-
-Do not rerun RCG005 run `35178534613` absent a demonstrated implementation defect.
-Do not append one quartic/field/nonlocal/derivative operator post-outcome.
-Do not compute `chi_ABC`.
+Therefore no terminal RCG006 classifier may yet be promoted from this recovery file alone.
 
 ## Claim locks
 
+- no `NEW_PHYSICS_FOUND`;
+- no `FULL_QUANTUM_GRAVITY`;
+- no `THEORY_ESTABLISHED`;
+- no GR uniqueness theorem;
+- no arbitrary modified-gravity no-go;
+- no boundary-observable equivalence;
+- no matter-coupled equivalence;
+- no nonperturbative field-redefinition equivalence;
+- no `chi_ABC` computation before separate authority.
+
 `chi_ABC = UNAUTHORIZED_NOT_COMPUTED`.
 `THEORY_ESTABLISHED = 0%`.
 
-No current result establishes:
-- GR/Einstein dynamics derived or unique;
-- complete gravity theory;
-- arbitrary higher-curvature or modified-gravity no-go;
-- ghost freedom;
-- stability;
-- hyperbolicity;
-- unitarity;
-- matter completion;
-- quantum gravity;
-- experimental confirmation;
-- new physics.
+## Next admissible action
+
+1. If either active workflow is non-terminal, inspect only status/provenance and do not consume partial scientific values.
+2. Once `A_HD` transport is terminal, validate Constructor/Critic/aggregate and persist its authority.
+3. Once symbolic-Lambda companion is terminal, validate and persist its independent authority.
+4. If both are valid, assemble the frozen RCG006-v0 terminal structural audit without adding or removing generators or changing classifiers.
+5. Only after RCG006 terminalization choose any successor programme gate prospectively. `chi_ABC` remains unauthorized.
