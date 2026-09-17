@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import argparse,json,hashlib
+from pathlib import Path
+
+def sha(o):return hashlib.sha256(json.dumps(o,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+def main():
+ p=argparse.ArgumentParser();p.add_argument('--constructor',required=True);p.add_argument('--critic',required=True);p.add_argument('--output',required=True);p.add_argument('--run-head',default='');a=p.parse_args();c=json.loads(Path(a.constructor).read_text());k=json.loads(Path(a.critic).read_text())
+ pred={'constructor_valid':c.get('valid') is True,'critic_valid':k.get('valid') is True,'constructor_no_primary':c.get('no_primary_dynamics_computed') is True,'critic_no_primary':k.get('no_primary_dynamics_computed') is True,'quotient_dimension_agrees':c.get('quotient_dimension')==k.get('quotient_dimension')==8,'relation_rank_agrees':c.get('relation_rank')==k.get('relation_rank')==17,'relation_span_exact_agreement':c.get('relation_rref_sha256')==k.get('relation_rref_sha256'),'d1_rank_agrees':c.get('D1D1_pointwise_rank')==k.get('D1D1_pointwise_rank')==4,'rcg004_embedding_rank_six':c.get('rcg004_embedding_rank')==6,'run_head_exact':c.get('run_head')==k.get('run_head')==a.run_head}
+ valid=all(pred.values());out={'gate':'RCG005_PREPRIMARY_QUOTIENT_COMPLETENESS_AGGREGATE','run_head':a.run_head,'predicates':pred,'aggregate_valid':valid,'quotient_dimension':8 if valid else None,'relation_rank':17 if valid else None,'relation_rref_sha256':c.get('relation_rref_sha256') if valid else None,'frozen_basis_candidate':c.get('frozen_basis_candidate'),'classification':'PASS_RCG005_PREPRIMARY_QUOTIENT_COMPLETENESS_READY_TO_FREEZE' if valid else 'INVALID_RCG005','primary_dynamics_status':'NOT_COMPUTED_PREPRIMARY'};out['scientific_payload_sha256']=sha(out);Path(a.output).write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps({'aggregate_valid':valid,'classification':out['classification'],'quotient_dimension':out['quotient_dimension']},sort_keys=True));raise SystemExit(0 if valid else 2)
+if __name__=='__main__':main()
