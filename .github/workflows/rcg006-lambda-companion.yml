@@ -1,0 +1,52 @@
+name: RCG006 symbolic-Lambda companion
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg006-lambda-companion.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify frozen authorities precede Lambda companion
+        run: |
+          git merge-base --is-ancestor fc3ff1f49c56f2befc039e09ebd8f388833dbff1 "$GITHUB_SHA"
+          git merge-base --is-ancestor 8c8314d2b857d6caa9719d6ba33e856ea0a697af "$GITHUB_SHA"
+          git merge-base --is-ancestor 78789e048ab3d67fc8f2e901176ff3a352aad749 "$GITHUB_SHA"
+      - run: python scripts/rcg006_lambda_companion_constructor.py --output rcg006-lambda-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-lambda-constructor, path: rcg006-lambda-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent Critic chronology
+        run: git merge-base --is-ancestor fc3ff1f49c56f2befc039e09ebd8f388833dbff1 "$GITHUB_SHA"
+      - run: python scripts/rcg006_lambda_companion_critic.py --output rcg006-lambda-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-lambda-critic, path: rcg006-lambda-critic.json}
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006-lambda-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006-lambda-critic, path: crit}
+      - run: python scripts/rcg006_lambda_companion_aggregate.py --constructor ctor/rcg006-lambda-constructor.json --critic crit/rcg006-lambda-critic.json --output rcg006-lambda-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-lambda-aggregate, path: rcg006-lambda-aggregate.json}
