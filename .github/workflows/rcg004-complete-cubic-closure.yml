@@ -1,0 +1,189 @@
+name: RCG004 complete cubic closure
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg004-complete-cubic-closure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic dependency
+        run: pip install sympy==1.13.3
+      - name: Verify frozen chronology
+        run: |
+          set -euo pipefail
+          for c in \
+            72f9ab2ab5ad85259a18fc1f368777c431a56324 \
+            b2d2cdc1c9bc169317e3e7dfd1a6d17109d01251 \
+            dae86c4ccf885622fbf5b4254be4b3fa80ccf5a2 \
+            28781bc1873413b214f751eaa963cf1c51423e0b \
+            345213253f2ecf415af40cb4fbae47b4f58d8870 \
+            5f83a594309429b45a8edd1bdc72b9653fffdc75 \
+            070e1594b3691755d5e2dd1db29f9191ceb49cad; do
+            git merge-base --is-ancestor "$c" "$GITHUB_SHA"
+          done
+      - name: Run complete-class Constructor
+        run: |
+          mkdir -p out
+          python scripts/rcg004_complete_cubic_constructor.py \
+            --output out/RCG004_CONSTRUCTOR.json \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg004-constructor
+          path: out/RCG004_CONSTRUCTOR.json
+          if-no-files-found: error
+
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic dependency
+        run: pip install sympy==1.13.3
+      - name: Verify Critic chronology and independence
+        run: |
+          set -euo pipefail
+          for c in \
+            72f9ab2ab5ad85259a18fc1f368777c431a56324 \
+            28781bc1873413b214f751eaa963cf1c51423e0b \
+            345213253f2ecf415af40cb4fbae47b4f58d8870 \
+            5f83a594309429b45a8edd1bdc72b9653fffdc75 \
+            bf77cb21c2109c1c7f1df4058bc827db5f6bda28; do
+            git merge-base --is-ancestor "$c" "$GITHUB_SHA"
+          done
+          ! grep -q 'import rcg004_complete_cubic_constructor' scripts/rcg004_complete_cubic_critic.py
+      - name: Run independent Critic
+        run: |
+          mkdir -p out
+          python scripts/rcg004_complete_cubic_critic.py \
+            --output out/RCG004_CRITIC.json \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg004-critic
+          path: out/RCG004_CRITIC.json
+          if-no-files-found: error
+
+  euler:
+    needs: constructor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy==1.13.3
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-constructor
+          path: in
+      - name: Run direct Euler-Lagrange cross-check
+        run: |
+          mkdir -p out
+          python scripts/rcg004_direct_euler_crosscheck.py \
+            --constructor-json in/RCG004_CONSTRUCTOR.json \
+            --output out/RCG004_EULER_CROSSCHECK.json \
+            --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg004-euler-crosscheck
+          path: out/RCG004_EULER_CROSSCHECK.json
+          if-no-files-found: error
+
+  negative-controls:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy==1.13.3
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-constructor
+          path: constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-critic
+          path: critic
+      - name: Run frozen negative controls
+        run: |
+          mkdir -p out
+          python scripts/rcg004_negative_controls.py \
+            --constructor-json constructor/RCG004_CONSTRUCTOR.json \
+            --critic-json critic/RCG004_CRITIC.json \
+            --output out/RCG004_NEGATIVE_CONTROLS.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg004-negative-controls
+          path: out/RCG004_NEGATIVE_CONTROLS.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [constructor, critic, euler, negative-controls]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-constructor
+          path: constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-critic
+          path: critic
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-euler-crosscheck
+          path: euler
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg004-negative-controls
+          path: negative
+      - name: Apply frozen aggregate classifier
+        run: |
+          mkdir -p out
+          python scripts/rcg004_terminal_aggregate.py \
+            --constructor constructor/RCG004_CONSTRUCTOR.json \
+            --critic critic/RCG004_CRITIC.json \
+            --euler euler/RCG004_EULER_CROSSCHECK.json \
+            --negative negative/RCG004_NEGATIVE_CONTROLS.json \
+            --output out/RCG004_TERMINAL_AGGREGATE.json \
+            --run-head "$GITHUB_SHA"
+      - name: Require aggregate validity
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('out/RCG004_TERMINAL_AGGREGATE.json'))
+          assert x['aggregate_valid'] is True, x
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg004-terminal-aggregate
+          path: out/RCG004_TERMINAL_AGGREGATE.json
+          if-no-files-found: error
