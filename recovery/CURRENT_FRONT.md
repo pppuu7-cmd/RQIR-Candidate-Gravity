@@ -1,208 +1,259 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-17 after canonical RCG003B terminalization, fresh post-b2d2 RCG004 authority audit, and descriptive RCG003B obstruction postmortem.
+Updated: 2026-09-17 after explicit A1 incorporation, complete RCG004-v0 class execution, canonical terminalization, and prospective RCG005 model-class selection freeze.
 
 ## Canonical programme/scientific phase
 
-`RCG002_HISTORICAL_SCIENCE_TERMINAL / D3_CONSUMED_BY_RCG003_FORMATION / RCG003_CONFORMAL_PASS / RCG003B_AXISYMMETRIC_FAIL / RCG003_V0_NONZERO_SURVIVORS_ZERO_IN_FROZEN_DERIVATIVE_SCOPE / RCG004_FORMATION_AUTHORITY_BLOCKED`
+`RCG002_HISTORICAL_SCIENCE_TERMINAL / D3_CONSUMED_BY_RCG003 / RCG003B_AXISYMMETRIC_FAIL / RCG004_A1_AUTHORITY_CONSUMED / RCG004_COMPLETE_ALGEBRAIC_CUBIC_CLASS_TERMINAL_FAIL / RCG005_MODEL_CLASS_SELECTION_BLOCKED`
 
-The old programme-disposition wait-state is closed and must not be reopened.
-
-Historical RCG-002 state remains:
-- `RSC = NEAR_SURVIVOR_NOT_SELECTED`;
-- `AD1 = ARCHITECTURE_DISPOSITION_NOT_UNIQUELY_SELECTED_PREOUTCOME`;
-- historical science unchanged by later programme authority.
+Historical RCG-002 and RCG003/RCG003B terminals are not reopened.
 
 `chi_ABC = UNAUTHORIZED_NOT_COMPUTED`.
 `THEORY_ESTABLISHED = 0%`.
 
-## RCG003-v0 formation and conformal gate
+## Parent RCG003B state retained
 
-Version:
-`RCG003_MINIMAL_NONLINEAR_CUBIC_RICCI_FAMILY_V0`.
+RCG003-v0 frozen Ricci-only cubic family reduced
 
-Frozen family:
-`lambda R^3 + mu R R_{mu nu}R^{mu nu} + nu R_mu^nu R_nu^rho R_rho^mu`.
+`3 -> 1 -> 0`
 
-Status: `NEW_MODEL_POSTULATE`, not historical RCG-002 law.
+under the conformal then axisymmetric derivative-order gates.
 
-Conformal formation/gate preregistration:
-`0bba0ea6e1d4e13635f70f3b5056e131afba6c7d`.
+Canonical RCG003B terminal:
+- `results/RCG003B_AXISYMMETRIC_BIANCHI_I_DERIVATIVE_CLOSURE_TERMINAL.md`;
+- commit `72f9ab2ab5ad85259a18fc1f368777c431a56324`;
+- classification `FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED`.
 
-Conformal terminal:
-`ded5a44078c57909aeb6592b88bdac5c0917f85d`.
+The descriptive postmortem established that the conformal restriction removed the shear variation carrying the obstruction. This remains explanatory RCG003-v0 evidence only.
 
-Conformal result:
-`PASS_SCOPED_RCG003_CONFORMAL_SECOND_ORDER_NONZERO_DEFORMATION_EXISTS`.
+## Explicit RCG004 A1 programme authority — consumed
 
-Exact coefficient-space reduction:
-`3 -> 1`, with primitive surviving ray `(7,-36,36)`.
+Authority preregistration:
+`prereg/RCG004_MINIMAL_ALGEBRAIC_CUBIC_EXTENSION_AUTHORITY.md`, commit `b2d2cdc1c9bc169317e3e7dfd1a6d17109d01251`.
 
-This conformal survivor was never a physical selection or global uniqueness statement.
+Explicit external A1 declaration:
+`results/RCG004_A1_PROGRAMME_AUTHORITY_DECLARATION.md`, commit `dae86c4ccf885622fbf5b4254be4b3fa80ccf5a2`.
 
-## Canonical RCG003B held-out anisotropic result — TERMINAL FAIL
+Acting process:
+`USER_EXTERNAL_PROGRAMME_OPERATOR_ISSUING_THIS_PROMPT`.
 
-Gate:
-`RCG003B_AXISYMMETRIC_BIANCHI_I_DERIVATIVE_CLOSURE`.
+Exact disposition:
+`AUTHORIZE_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_FORMATION_ATTEMPT`.
 
-Frozen preregistration:
-`dbb0b54465c628b533c646a5b3b74b8458eaf24e`.
+Authority terminal:
+`results/RCG004_FORMATION_AUTHORITY_TERMINAL.md`, commit `28781bc1873413b214f751eaa963cf1c51423e0b`.
 
-Terminal result file:
-`results/RCG003B_AXISYMMETRIC_BIANCHI_I_DERIVATIVE_CLOSURE_TERMINAL.md`.
+Classification:
+`RCG004_FORMATION_AUTHORIZED_SCOPED`.
 
-Terminal commit:
-`72f9ab2ab5ad85259a18fc1f368777c431a56324`.
+This was governance authority, not scientific evidence, and was incorporated before RCG004 model/basis/nullspace outcomes.
 
-Canonical Actions:
-- run `35156147876`;
-- run number `1`, attempt `1`;
-- workflow head `241a923523b2c770ffc8c48315d931af6e61846f`;
-- all Constructor / Critic / Euler / aggregate jobs completed `success`.
+## RCG004 scientific preregistration and held-out chronology
+
+Primary scientific preregistration:
+- `prereg/RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_FAMILY_V0.md`;
+- commit `345213253f2ecf415af40cb4fbae47b4f58d8870`.
+
+Frozen version:
+`RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_FAMILY_V0`.
+
+Scope:
+- complete bounded 4D parity-even algebraic curvature-cubic class;
+- all complete metric contractions of three Riemann tensors;
+- `VACUUM_ZERO`;
+- no curvature derivatives, quartics, matter, extra fields or nonlocality;
+- `FIELD_REDEFINITION_EQUIVALENCE = OUT_OF_SCOPE_RCG004_V0`.
+
+Restored-lapse triaxial held-out preregistration was committed before primary survivor inspection:
+- `prereg/RCG004B_RESTORED_LAPSE_TRIAXIAL_HELDOUT.md`;
+- commit `5f83a594309429b45a8edd1bdc72b9653fffdc75`.
+
+## Complete-class exact enumeration and quotient
+
+Raw class generation did not start from a remembered invariant list.
+
+All perfect matchings of twelve slots of three labelled Riemann tensors were mechanically enumerated:
+
+`raw contraction matchings = 10395`.
+
+After exact Riemann symmetry orbiting:
+- nonzero canonical contraction classes = `13`;
+- symmetry-zero classes = `20`.
+
+Constructor exact universal 4D algebraic-curvature certificate:
+- generic algebraic-curvature dimension = `20`;
+- universal polynomial matrix = `238 x 13`;
+- exact rank = `6`;
+- relation nullity = `7`;
+- exact quotient dimension **`N=6`**.
+
+Independent Critic reconstructed the same quotient dimension `6` using a self-dual/anti-self-dual route and selected a different independent basis, avoiding forced basis agreement.
+
+## RCG003 embedding regression
+
+The old RCG003 Ricci-only cubic subspace embeds with exact rank `3`.
+
+In the Constructor quotient coordinates:
+- `R^3 -> (1,0,0,0,0,0)`;
+- `R R_ab R^ab -> (0,1,0,0,0,0)`;
+- `Tr(Ricci^3) -> (0,0,0,0,-1,0)`;
+- old primitive ray `(7,-36,36) -> (7,-36,0,0,-36,0)`.
+
+Axisymmetric restriction reproduces the canonical RCG003B obstruction exactly. The transverse-shear isotropic-background control recovers
+
+`H_beta_beta = -1296*(u_sigma + v_sigma^2)`.
+
+Thus the RCG004 machinery does not erase the known shear failure.
+
+## Canonical RCG004 primary execution
+
+Workflow:
+`.github/workflows/rcg004-complete-cubic-closure.yml`.
+
+Workflow/scientific head:
+`f62d3ad892453725e6838059929f0f6212d4d3d6`.
+
+Canonical GitHub Actions run:
+`35175941323`, run number `1`, attempt `1`, completed `success`.
+
+Jobs:
+- Constructor `105057546423` — success;
+- independent Critic `105057546296` — success;
+- direct Euler cross-check `105057593950` — success;
+- negative controls `105057593932` — success;
+- aggregate `105057676864` — success.
 
 Artifacts:
-- Constructor `10471991651`, digest `sha256:9f230b1ca16a31e3459309f0eb245217b37dcdc77f918f505db2ce506bad32f6`;
-- Critic `10472051589`, digest `sha256:7691b12c0205010c15c645966400c8088bdd2b91e5f458ab4c4f9bfbe1f8b076`;
-- Euler cross-check `10471213517`, digest `sha256:1ccaf2da2fd6eedd1ca56b5c8a8d2172638752ba9891f5a68dc2f8341c5a35a8`;
-- aggregate `10471802799`, digest `sha256:3f0be5fe8255ba2368f6d125ef537340db7d21b1ecef046031861d2033a06e86`.
+- Constructor `10478268717`, digest `sha256:82d5347c4031bf9cbd1ca37a57e96973b6921f26f04ac750435e81d40f685ab7`;
+- Critic `10478029848`, digest `sha256:55342f3747b15edb39bd08932d0fdee5f106944ba15e1bd696397fdc76482bc6`;
+- Euler `10479110111`, digest `sha256:7b66b06c5945cebd4d61990c5555587890a79293ae963a4aa2b55a8019639eff`;
+- negative controls `10477789460`, digest `sha256:f3f2a40df1f71b2ad696d99ee90322340e7dd89f0923bc9c80a3e2255ef12e8c`;
+- aggregate `10478064839`, digest `sha256:570db330d40847f128c10ed1f0c32468bac23f5fddfa7f1c9f72fbbd0ae5e348`.
 
-Raw repository persistence:
-- aggregate commit `9fc74204c70dfffcd60d42295ab60de28da648de`;
-- Constructor final raw commit `8c208dd284bc98ae182409b2deadbb109b22fd92`;
-- Critic commit `2971785dc5bf8941250269e74d85f05edffdfd9b`;
-- Euler final raw commit `e253c0b3a773e1da2dfccdb602deb8a39db48435`.
+Durable canonical provenance:
+- `results/raw/RCG004_CANONICAL_ARTIFACT_MANIFEST.json`, commit `094dfa5e3eec39fe5fea674b627812850342832e`;
+- `results/raw/RCG004_TERMINAL_AGGREGATE.json`, commit `5ed5954f072259b1a612c1acdf7e46db1e6b2349`.
 
-Canonical aggregate has `aggregate_valid=true`; all twelve frozen validity predicates are true, including exact prereg/parent/head/ray locks, both control lanes, Critic provenance, Constructor–Critic Hessian identity, Euler–Hessian correspondence, lane agreement, allowed classification, and source lock.
+## Exact primary scientific result
 
-Primary terminal classification:
-`FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED`.
+Production geometry was fully triaxial off-shell unit-lapse Bianchi-I with independent `a(t),b(t),c(t)`.
 
-Independent Critic:
-`PASS_INDEPENDENT_CRITIC_RCG003B_SCOPE_AND_PROVENANCE`.
+For the exact six-dimensional 4D quotient:
 
-## Exact anisotropic obstruction
+Constructor acceleration-Hessian constraint matrix:
+- shape `54 x 6`;
+- exact rank `6`;
+- nullity `0`.
 
-After factoring the common nonzero density factor `exp(a+2b)`, with `va=adot`, `vb=bdot`, `ua=addot`, `ub=bddot`:
+Independent Critic on a different quotient basis:
+- shape `54 x 6`;
+- exact rank `6`;
+- nullity `0`.
 
-`H_aa = -48*(2*ua + ub + 2*va^2 + va*vb)`
+Thus
 
-`H_ab = -48*(ua - 4*ub + va^2 + 2*va*vb - 6*vb^2)`
+`ker(A_H) = {0}`.
 
-`H_bb = 48*(4*ua - 7*ub + 4*va^2 + 5*va*vb - 12*vb^2)`.
+No nonzero coefficient vector reaches the acceleration-linear curl stage; Hessian+curl survivor dimension is therefore `0`.
 
-Minimal exact witness:
-- `H_aa`;
-- monomial `ub`;
-- coefficient `-48`;
-- common density factor `exp(a+2b)`.
+Direct Euler-Lagrange cross-check:
+- high-derivative rows `270`, rank `6`, nullity `0`;
+- fourth-derivative rows `81`, rank `6`;
+- third-derivative rows `189`, rank `6`;
+- exact fourth-derivative/Hessian correspondence `true`.
 
-Direct Euler-Lagrange cross-check independently reproduces the same fourth-derivative coefficient structure and has `fourth_hessian_correspondence=true`.
+All frozen adversarial controls pass.
 
-Exact descriptive determinant:
-`det(H) = -20736*(ua-ub+va^2+va*vb-2*vb^2)^2`.
+Canonical aggregate has `aggregate_valid=true`; all 23 frozen predicates are true.
 
-## Descriptive RCG003B mechanism postmortem
+## Exact dimension chain
 
-This is explanatory analysis of the already-terminal RCG003-v0 object only; it changes no classifier and forms no RCG004 model.
+Inside the frozen RCG004-v0 scope:
 
-Postmortem result:
-`results/RCG003B_OPERATOR_OBSTRUCTION_POSTMORTEM.md`, commit `22ac042350bbf5afa5eaae652814e7c88d406d63`.
+`10395 raw matchings`
+`-> 13 nonzero symmetry classes`
+`-> 6 exact independent 4D algebraic cubic-curvature directions`
+`-> 0 triaxial Hessian survivors`
+`-> 0 direct-Euler verified survivors`.
 
-Reproducibility script:
-`scripts/rcg003b_operator_obstruction_postmortem.py`, commit `0daac3f8e7d182c52e2edf61d2f836881673cc2c`.
+Held-out restored-lapse status:
+`NOT_APPLICABLE_PRIMARY_NULLITY_ZERO`.
 
-Raw exact record:
-`results/raw/RCG003B_OPERATOR_OBSTRUCTION_POSTMORTEM.json`, commit `b214b5db6cd693f68f2a0617e94bcc8649c98454`.
+There is no primary survivor subspace to refit or test.
 
-Use the invertible axisymmetric volume/shear coordinates
-`a=sigma+2 beta`, `b=sigma-beta`.
+## Canonical RCG004 terminal — class-level scoped FAIL
 
-For the frozen ray `(7,-36,36)` the exact transformed acceleration Hessian is
+Terminal:
+`results/RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_TERMINAL.md`.
 
-`H_sigma_sigma = 0`,
+Terminal commit:
+`c39cbbd8a7e8c0caeb14e080344d01119b2ce7db`.
 
-`H_sigma_beta = -1296*(u_beta + 3*v_beta*v_sigma)`,
+Classification:
 
-`H_beta_beta = 1296*(u_beta - u_sigma - 2*v_beta^2 + 3*v_beta*v_sigma - v_sigma^2)`.
+`FAIL_SCOPED_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_CLASS_HAS_NO_NONZERO_TRIAXIAL_SECOND_ORDER_SURVIVOR`.
 
-Thus the volume/conformal acceleration channel cancels identically, but shear/mixed channels remain.
+Scientific meaning: the RCG003 failure was not merely caused by excluding Riemann-containing **algebraic cubic** invariants inside this prospectively complete bounded 4D parity-even class.
 
-On an isotropic background (`v_beta=0`, `u_beta=0`):
+Claim ceiling: this is not an arbitrary-cubic-gravity, arbitrary-higher-curvature, or modified-gravity no-go; it does not select GR or establish ghost freedom, stability, hyperbolicity, unitarity, matter completion, phenomenology, quantum gravity, or new physics.
 
-`H_sigma_sigma=0`, `H_sigma_beta=0`, while
+## Anti-patching transition to RCG005 programme selection
 
-`H_beta_beta=-1296*(u_sigma+v_sigma^2)`.
+Do not append one convenient curvature-derivative term, quartic invariant, extra field or nonlocal kernel after seeing the RCG004 outcome.
 
-Therefore the conformal PASS arose because the conformal restriction removed the shear degree of freedom from the tested configuration space; it did not establish that the full two-field Hessian vanished even on isotropic backgrounds.
+Prospective next-model-class selection gate:
+- `prereg/RCG005_NEXT_MODEL_CLASS_SELECTION_GATE.md`;
+- commit `1bde9c52e00d855f92dcc28cdf8afcf04bd40026`.
 
-The three frozen weighted operator contributions also show that `7 R^3` contributes only to the volume-volume Hessian in these coordinates, while `-36 R Ricci^2` and `36 Tr(Ricci^3)` carry the shear/mixed structure. The frozen combination cancels the full `sigma-sigma` channel exactly but not the shear channels.
+Candidate programme classes:
+A. curvature-derivative bounded class;
+B. quartic algebraic-curvature bounded class;
+C. additional-dynamical-field bounded class;
+D. nonlocal bounded class;
+E. another explicitly motivated bounded architecture;
+or HOLD.
 
-No coefficient search was performed and no new operator was introduced.
+Frozen selection priorities:
+1. maximum expected scientific information gain;
+2. mechanism relevance to the shear/triaxial higher-derivative obstruction;
+3. bounded completeness;
+4. falsifiability/exact classifier strength;
+5. minimum added functional freedom where other criteria are comparable.
 
-## Model-space accounting
+No post-gate explicit selection declaration has yet been incorporated.
 
-Only inside the frozen RCG003-v0 family and frozen derivative-order requirements:
+Current programme classification:
 
-`dim(raw)=3 -> dim(after conformal)=1 -> dim(after axisymmetric RCG003B)=0 nonzero rays`.
+`BLOCKED_PENDING_EXPLICIT_RCG005_MODEL_CLASS_SELECTION`.
 
-This is a real scoped falsification of the entire remaining nonzero RCG003-v0 ray. It is not a no-go theorem for all cubic gravity, higher-curvature gravity, or arbitrary nonlinear gravity.
+Blocker:
+`results/RCG005_NEXT_MODEL_CLASS_SELECTION_BLOCKED.md`, commit `c551b7c7e8aa64d065a46a9efb20cab29cd59d08`.
 
-Do not refit `(7,-36,36)` and do not add an operator post-outcome to rescue RCG003-v0.
-
-## RCG004 programme boundary
-
-The extant D3 declaration authorized only one prospectively controlled new-version formation attempt. That authority was consumed by RCG003 formation.
-
-A broader Riemann-containing cubic family would be a new version, not an implementation repair.
-
-Prospective authority gate:
-`prereg/RCG004_MINIMAL_ALGEBRAIC_CUBIC_EXTENSION_AUTHORITY.md`.
-
-Authority preregistration commit:
-`b2d2cdc1c9bc169317e3e7dfd1a6d17109d01251`.
-
-Fresh authority audit through repository head after the postmortem found **no explicit A1 or A2 declaration incorporated after `b2d2cdc1...`**. Code/history searches for both exact disposition strings returned no declaration; the commits after the preregistration contain only blocker, provenance, recovery, postmortem, and declaration-request records.
-
-Current programme classification remains:
-`BLOCKED_PENDING_EXPLICIT_RCG004_FORMATION_AUTHORITY`.
-
-Blocker record:
-`results/RCG004_MINIMAL_ALGEBRAIC_CUBIC_EXTENSION_AUTHORITY_BLOCKED.md`, commit `f7bf6d899c05ba0d5de0f7eefee8266b78604f15`.
-
-Research transition ledger:
-`recovery/RCG003B_TO_RCG004_RESEARCH_LEDGER.md`, commit `317394d7422f01ab017d99f43c7564eeb56b4bcd`.
-
-Exact complete declaration request/template:
-`recovery/RCG004_FORMATION_AUTHORITY_DECLARATION_REQUEST.md`, commit `ec9927ccf0b47e520ee1eaa9175d1e21cee92c78`.
-
-A future programme declaration must choose exactly one:
-- `AUTHORIZE_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_FORMATION_ATTEMPT`, or
-- `DO_NOT_AUTHORIZE_RCG004_FORMATION_HOLD_PROGRAMME`.
-
-No scientific RCG004 operator basis, coefficient nullspace, survivor, or triaxial outcome is authorized before that declaration is incorporated.
-
-If authorization A1 is later granted, the highest-information scientific target remains bounded conceptually: complete 4D parity-even algebraic curvature-cubic sector, exact algebraic/dimensional quotient, no curvature derivatives/quartics/matter, exact symbolic coefficients, full triaxial off-shell derivative-order constraint map, independent Critic, and a held-out no-refit test frozen before survivor inspection. These are scope ceilings for future preregistration, not current model content.
+No RCG005 family, operator basis, field content, kernel, coefficients or survivor has been formed.
 
 ## Exact next action
 
-`CONSUME_EXPLICIT_RCG004_FORMATION_AUTHORITY_DECLARATION_IF_PROVIDED; OTHERWISE_DO_NOT_FORM_OR_EVALUATE_RCG004`.
+`CONSUME_EXPLICIT_RCG005_MODEL_CLASS_SELECTION_DECLARATION_IF_PROVIDED; OTHERWISE_DO_NOT_FORM_RCG005`.
 
-Do not repeat RCG003 conformal closure or RCG003B run `35156147876`.
-Do not refit the RCG003 ray.
+Do not rerun RCG004 run `35175941323` absent a demonstrated implementation defect.
+Do not refit any RCG004 coefficient vector: none survived.
+Do not patch the model class post-outcome.
 Do not compute `chi_ABC`.
 
 ## Claim locks
 
+`chi_ABC = UNAUTHORIZED_NOT_COMPUTED`.
+`THEORY_ESTABLISHED = 0%`.
+
 No current result establishes:
-- GR/Einstein dynamics derived;
-- complete or unique gravity theory;
-- arbitrary nonlinear-gravity no-go;
-- full nonlinear constraint closure;
-- hyperbolicity, stability, ghost freedom, or unitarity;
+- GR/Einstein dynamics derived or unique;
+- complete gravity theory;
+- arbitrary higher-curvature or modified-gravity no-go;
+- ghost freedom;
+- stability;
+- hyperbolicity;
+- unitarity;
 - matter completion;
 - quantum gravity;
 - experimental confirmation;
 - new physics.
-
-`chi_ABC = UNAUTHORIZED_NOT_COMPUTED`.
-`THEORY_ESTABLISHED = 0%`.
