@@ -1,3 +1,4 @@
+# execution-only repair trigger: parent manifest path fixed prospectively in c03c693719040ff5ec80da839782379e1b9ae7d3
 name: RCG005 preprimary exact quotient
 on:
   push:
@@ -21,6 +22,8 @@ jobs:
           git merge-base --is-ancestor d2e38871ee5ac2e1331934647575e4a5b6144e4a "$GITHUB_SHA"
           git merge-base --is-ancestor 1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08 "$GITHUB_SHA"
           git merge-base --is-ancestor 1fb26a399264747fc2ffa8a564d4d281c0586f9c "$GITHUB_SHA"
+          git merge-base --is-ancestor c03c693719040ff5ec80da839782379e1b9ae7d3 "$GITHUB_SHA"
+          git merge-base --is-ancestor ce4cfe07d8226562700fb193c8b14eefba28f803 "$GITHUB_SHA"
       - run: python scripts/rcg005_quotient_constructor.py --output rcg005-quotient-constructor.json --run-head "$GITHUB_SHA"
       - uses: actions/upload-artifact@v4
         with: {name: rcg005-quotient-constructor, path: rcg005-quotient-constructor.json}
