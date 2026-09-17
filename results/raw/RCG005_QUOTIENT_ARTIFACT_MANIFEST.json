@@ -1,0 +1,55 @@
+{
+  "run_id": 35178250959,
+  "run_number": 2,
+  "run_attempt": 1,
+  "run_head": "ac3c646b0fc1a5bec2fa6781e5bdb9c8bbb1b820",
+  "run_conclusion": "success",
+  "failed_predecessor_run": 35178140025,
+  "execution_repair_commit": "c03c693719040ff5ec80da839782379e1b9ae7d3",
+  "execution_repair_code_commit": "ce4cfe07d8226562700fb193c8b14eefba28f803",
+  "scientific_prereg_commit": "1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08",
+  "heldout_prereg_commit": "1fb26a399264747fc2ffa8a564d4d281c0586f9c",
+  "selection_terminal_commit": "355ac8a2d892e311bd1989e7057c3defac2e7e8a",
+  "formation_authority_commit": "d2e38871ee5ac2e1331934647575e4a5b6144e4a",
+  "jobs": {
+    "constructor": 105064632969,
+    "critic": 105064633044,
+    "aggregate": 105064698593
+  },
+  "artifacts": {
+    "constructor": {
+      "id": 10479537361,
+      "digest": "sha256:4dc0741d1beaf5ec66edb75508be8600742e6a45b046b71e1bb248d49b2e354c",
+      "json_sha256": "f32e278194e9c30c6649dc5f88756cf2f66b7886f852c33030447624a5479feb",
+      "scientific_payload_sha256": "1e38d96492d007ce594c0df97ad8ec6aa209e4de0af7d3d19023525070990bdc"
+    },
+    "critic": {
+      "id": 10479243645,
+      "digest": "sha256:8159a877e47d5a459f1597bc316ad1cdb963d339ab27aa44811a723bc57862d3",
+      "json_sha256": "449eebfc90e699bc7ea1a4328e90a0676985cd920ec99f41ab2c883f3840ab60",
+      "scientific_payload_sha256": "d4ca42cf6a6aa45f666319882699173eee86a839396d2fbc5ab6facd04e72ace"
+    },
+    "aggregate": {
+      "id": 10479278706,
+      "digest": "sha256:b72001be7aa2a15eeb950f7c0d343c70aa93b3ac40adae725d50cf7aca6aeb4e",
+      "json_sha256": "22f730c36c9ed4e95a67429de1f55e7bcb64b67c59287cfdc0507c274f275c5d",
+      "scientific_payload_sha256": "13fca66d1dabb73189c8b1d0b3ee209a4a7b17badbc3d52808ba50459542b7e3"
+    }
+  },
+  "exact_results": {
+    "raw_counts": {"Riemann3": 10395, "D1D1": 945, "R_D2R": 945, "D4R": 105, "total": 12390},
+    "nonzero_class_counts": {"Riemann3": 13, "D1D1": 12, "R_D2R": 14, "D4R": 12},
+    "generic_dR_dimension": 60,
+    "D1D1_pointwise_rank": 4,
+    "commutator_relation_count": 3,
+    "total_relation_rank": 17,
+    "quotient_dimension": 8,
+    "relation_rref_sha256": "4b6f9b9713b076a10513adb1b10ab0bfc91b822acda441f976aee2f14a5fd38e",
+    "new_derivative_D1D1_class_indices": [9, 11],
+    "inherited_RCG004_class_indices": [0, 1, 2, 4, 5, 8],
+    "rcg004_embedding_rank": 6,
+    "primary_dynamics_status": "NOT_COMPUTED_PREPRIMARY"
+  },
+  "aggregate_valid": true,
+  "classification": "PASS_RCG005_PREPRIMARY_QUOTIENT_COMPLETENESS_READY_TO_FREEZE"
+}
