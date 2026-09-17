@@ -1,0 +1,25 @@
+{
+  "phase": "RCG006_SYMBOLIC_LAMBDA_COMPANION_CANONICAL",
+  "scientific_prereg": "fc3ff1f49c56f2befc039e09ebd8f388833dbff1",
+  "workflow_run": 35250843261,
+  "workflow_head": "56c0b6c2614f99c5cffb84bc99d2e56b45a84e05",
+  "constructor_job": 105302505383,
+  "critic_job": 105302504869,
+  "aggregate_job": 105304473446,
+  "artifacts": {
+    "constructor": {"id": 10508894169, "digest": "sha256:f814433dacaba3fa2b4171ff9413052e87d0f48bd08c1adf426767221f81d51d"},
+    "critic": {"id": 10509189460, "digest": "sha256:c76360d9479a09b98c8b3c552818eb57682dedcdf7d4939009cc23a265314bdc"},
+    "aggregate": {"id": 10509439632, "digest": "sha256:2a672e6b9e2cfdb0fe6f972ab0a8f14e51a1cebf43933e0c350559821fbde5d7"}
+  },
+  "aggregate_valid": true,
+  "Q_dim4_companion_dimension": 2,
+  "Lambda_ALG_leakage_rank": 2,
+  "Lambda_FULL_leakage_rank": 2,
+  "Lambda_leakage_generator_rowspace_sha256": "a30969d15f4abd011e951825192c1aea3f8caf3444441d0cbca915902d4cdae5",
+  "DER_bulk_companion_zero": true,
+  "DER_boundary_sensitive_divergence": true,
+  "classification": "PASS_SCOPED_RCG006_SYMBOLIC_LAMBDA_BULK_COMPANION",
+  "scientific_payload_sha256": "cfc30c4a77be14b4229c4fa20e282d2a7cc14efe76351a5e41e50f14ba49bcd1",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "theory_established": "0%"
+}
