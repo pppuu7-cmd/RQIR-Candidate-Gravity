@@ -1,0 +1,16 @@
+{
+  "D4_outer_derivative_partner_histogram": {"1":15,"2":15,"3":15,"4":15,"5":15,"6":15,"7":15},
+  "RD2_IBP_unique_image_count": 945,
+  "classification": "PASS_RCG005_FAMILY_COMPLETENESS_AUDIT",
+  "commutator_relation_count": 3,
+  "commutator_relation_rank": 3,
+  "double_epsilon_identity": "epsilon epsilon = signed generalized Kronecker delta = metric/delta contraction span",
+  "engineering_dimension_rule": "sum_i(2+k_i)=6",
+  "exact_partitions": [[0,0,0],[0,2],[1,1],[4]],
+  "gate": "RCG005_OUTCOME_INDEPENDENT_FAMILY_COMPLETENESS_AUDIT",
+  "predicates": {"D1D1_raw_count_945":true,"D4R_raw_count_105":true,"D4_every_raw_contraction_exact_total_divergence":true,"RD2_every_raw_contraction_IBP_maps_to_D1D1":true,"R_D2R_raw_count_945":true,"Riemann3_raw_count_10395":true,"all_engineering_dim6_partitions_exact":true,"derivative_commutator_relation_count_three_rank_three":true,"double_epsilon_parity_even_reduces_to_metric_span":true},
+  "raw_counts": {"D1D1":945,"D4R":105,"R_D2R":945,"Riemann3":10395,"total":12390},
+  "run_head": "fa3fa43c2c4357dd3aec99be74a756e5e05da411",
+  "scientific_payload_sha256": "df23f164ca52b1990aca51922ebf2a4331c8d0b3d222f7db64f1e1de60204023",
+  "valid": true
+}
