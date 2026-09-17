@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install sympy==1.13.3
-      - name: Verify prospective chronology and inherited authorities
+      - name: Verify prospective chronology, inherited authorities, and execution-only repair
         run: |
           git merge-base --is-ancestor ee8c606b5a1c5baa2f6547500b9675c70f469be6 "$GITHUB_SHA"
           git merge-base --is-ancestor d072cabcc4f5ccf46af382e16b7dbe62c935f3c4 "$GITHUB_SHA"
@@ -23,8 +23,9 @@ jobs:
           git merge-base --is-ancestor 2204951424f37705f7031a122fda3cfcb1a18f00 "$GITHUB_SHA"
           git merge-base --is-ancestor cf2463bbb2236a20c98dda5e50cdd620c8def8a7 "$GITHUB_SHA"
           git merge-base --is-ancestor 85d6e8ef6a29ffac2ba1481fc6213e5f6f67abb4 "$GITHUB_SHA"
-          git merge-base --is-ancestor 1092c4fd0d1ef0c4bc38f24e441f172157376745 "$GITHUB_SHA"
-      - run: python scripts/rcg007_weyl3_selection_rank_constructor.py --output rcg007-selection-constructor.json --run-head "$GITHUB_SHA"
+          git merge-base --is-ancestor e61f2ce8e7bf0d34c07de3e74539cd9f30c61988 "$GITHUB_SHA"
+          git merge-base --is-ancestor 283fe727eff54050d50bc8ad9dc12b6033a7911d "$GITHUB_SHA"
+      - run: python scripts/rcg007_weyl3_selection_rank_constructor_runner.py --output rcg007-selection-constructor.json --run-head "$GITHUB_SHA"
       - uses: actions/upload-artifact@v4
         with: {name: rcg007-selection-constructor, path: rcg007-selection-constructor.json}
   critic:
@@ -42,7 +43,7 @@ jobs:
           git merge-base --is-ancestor b4a0a867f937da0e4a557bcc07fc93ce7d567f02 "$GITHUB_SHA"
           git merge-base --is-ancestor 59e45f3503b677158827626b04d26e75479f2e82 "$GITHUB_SHA"
           git merge-base --is-ancestor 85d6e8ef6a29ffac2ba1481fc6213e5f6f67abb4 "$GITHUB_SHA"
-          git merge-base --is-ancestor 70901a04254c5c325e5cb2bfd0181a17b89ecf02 "$GITHUB_SHA"
+          git merge-base --is-ancestor e61f2ce8e7bf0d34c07de3e74539cd9f30c61988 "$GITHUB_SHA"
       - run: python scripts/rcg007_weyl3_selection_rank_critic.py --output rcg007-selection-critic.json --run-head "$GITHUB_SHA"
       - uses: actions/upload-artifact@v4
         with: {name: rcg007-selection-critic, path: rcg007-selection-critic.json}
