@@ -1,0 +1,29 @@
+{
+  "phase": "RCG006_A_HD_TRANSPORT_CANONICAL",
+  "scientific_prereg": "fc3ff1f49c56f2befc039e09ebd8f388833dbff1",
+  "mfr_terminal_commit": "12ca52947d1390a494634b7a6a2d98d9a7e4bf7d",
+  "workflow_run": 35250686885,
+  "workflow_head": "7af702935db7db904f08a0e70e6f8187dc61d859",
+  "constructor_job": 105301992374,
+  "critic_job": 105301992123,
+  "aggregate_job": 105304230776,
+  "artifacts": {
+    "constructor": {"id": 10509009896, "digest": "sha256:350a8c304ebf7745d9dae17266fee90e2a961623f29297716e5b4556840bc126"},
+    "critic": {"id": 10509044581, "digest": "sha256:b4da11ed3b11539adfb91f86ceafd5842865528225f40f425aecd220462eeb8a"},
+    "aggregate": {"id": 10508814385, "digest": "sha256:50f70b19724d8d0930ce8154f0f1c94221bac6493267b1e4467e08beb653b8af"}
+  },
+  "aggregate_valid": true,
+  "A_HD_rank": 8,
+  "A_HD_kernel_dimension": 0,
+  "A_HD_sha256": "a3a5759ba1fbf3fa7824e79c72776adb70aa98bd7679d262e869089c005e9907",
+  "rank_M_FR": 7,
+  "A_HD_M_FR_rank": 7,
+  "A_HD_M_FR_sha256": "c741af0c5bd243114fe5e6e782edf11d08e433720fcde9cf46d1f24754964f12",
+  "field_redefinition_image_kernel_dimension_under_A_HD": 0,
+  "structural_branch": "CASE_II_NONINVARIANT",
+  "quotient_aware_second_order_space_dimension": 0,
+  "classification": "PASS_SCOPED_RCG006_FIELD_REDEFINITION_DISCRIMINATOR_NONINVARIANT",
+  "scientific_payload_sha256": "191c06cd15461b51b8c047582e9592e1d42857662a8347043e23acf3f8a95893",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "theory_established": "0%"
+}
