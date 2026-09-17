@@ -1,0 +1,55 @@
+name: RCG006 frozen A_HD transport
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg006-ahd-transport.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify frozen authorities precede transport
+        run: |
+          git merge-base --is-ancestor fc3ff1f49c56f2befc039e09ebd8f388833dbff1 "$GITHUB_SHA"
+          git merge-base --is-ancestor 8c8314d2b857d6caa9719d6ba33e856ea0a697af "$GITHUB_SHA"
+          git merge-base --is-ancestor 78789e048ab3d67fc8f2e901176ff3a352aad749 "$GITHUB_SHA"
+          git merge-base --is-ancestor 12ca52947d1390a494634b7a6a2d98d9a7e4bf7d "$GITHUB_SHA"
+      - run: python scripts/rcg006_ahd_transport_constructor.py --output rcg006-ahd-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-ahd-constructor, path: rcg006-ahd-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent Critic chronology
+        run: |
+          git merge-base --is-ancestor fc3ff1f49c56f2befc039e09ebd8f388833dbff1 "$GITHUB_SHA"
+          git merge-base --is-ancestor 12ca52947d1390a494634b7a6a2d98d9a7e4bf7d "$GITHUB_SHA"
+      - run: python scripts/rcg006_ahd_transport_critic.py --output rcg006-ahd-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-ahd-critic, path: rcg006-ahd-critic.json}
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006-ahd-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006-ahd-critic, path: crit}
+      - run: python scripts/rcg006_ahd_transport_aggregate.py --constructor ctor/rcg006-ahd-constructor.json --critic crit/rcg006-ahd-critic.json --output rcg006-ahd-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006-ahd-aggregate, path: rcg006-ahd-aggregate.json}
