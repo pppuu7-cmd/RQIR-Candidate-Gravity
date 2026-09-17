@@ -1,0 +1,56 @@
+name: RCG006B exact generic metric-jet heldout
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg006b-heldout.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify heldout chronology and frozen authorities
+        run: |
+          git merge-base --is-ancestor 43748579a78f40e0825d5ae01dc634d55ba7b928 "$GITHUB_SHA"
+          git merge-base --is-ancestor 8c8314d2b857d6caa9719d6ba33e856ea0a697af "$GITHUB_SHA"
+          git merge-base --is-ancestor 12ca52947d1390a494634b7a6a2d98d9a7e4bf7d "$GITHUB_SHA"
+          git merge-base --is-ancestor da1d1795a6ecf885a7f52a717d4979d962002240 "$GITHUB_SHA"
+      - run: python scripts/rcg006b_heldout_constructor.py --output rcg006b-heldout-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006b-heldout-constructor, path: rcg006b-heldout-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent heldout chronology
+        run: |
+          git merge-base --is-ancestor 43748579a78f40e0825d5ae01dc634d55ba7b928 "$GITHUB_SHA"
+          git merge-base --is-ancestor da1d1795a6ecf885a7f52a717d4979d962002240 "$GITHUB_SHA"
+          git merge-base --is-ancestor 09fec3304c7e4eaee6ca38724acc511a425e8b37 "$GITHUB_SHA"
+      - run: python scripts/rcg006b_heldout_critic_runner.py --output rcg006b-heldout-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006b-heldout-critic, path: rcg006b-heldout-critic.json}
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006b-heldout-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg006b-heldout-critic, path: crit}
+      - run: python scripts/rcg006b_heldout_aggregate.py --constructor ctor/rcg006b-heldout-constructor.json --critic crit/rcg006b-heldout-critic.json --output rcg006b-heldout-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg006b-heldout-aggregate, path: rcg006b-heldout-aggregate.json}
