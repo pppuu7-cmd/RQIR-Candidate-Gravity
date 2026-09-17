@@ -1,0 +1,56 @@
+{
+  "claim_locks": {
+    "GR_derived": false,
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "full_constraint_closure": false,
+    "hyperbolicity": false,
+    "new_physics": false,
+    "quantum_gravity": false,
+    "theory_established": "0%"
+  },
+  "classification": "FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED",
+  "common_density_factor": "exp(a+2b)",
+  "control_details": {
+    "isotropic_pullback_hessian": "0",
+    "perturbed_ray_conformal_hessian": "1296*(u + 2*v**2)"
+  },
+  "controls": {
+    "EH_reference": true,
+    "R2_sensitivity": true,
+    "axis_label_duplicate": true,
+    "isotropic_recovery": true,
+    "off_shell_lock": true,
+    "perturbed_ray_negative": true,
+    "source_lock": true
+  },
+  "controls_valid": true,
+  "curl_status": "NOT_APPLICABLE_HESSIAN_NONZERO",
+  "derivation": "DIRECT_METRIC_TO_CHRISTOFFEL_TO_RICCI_TO_INVARIANTS",
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "sympy": "1.13.3"
+  },
+  "gate": "RCG003B_AXISYMMETRIC_BIANCHI_I_DERIVATIVE_CLOSURE",
+  "hessian_normalized_by_exp_a_plus_2b": {
+    "H_aa": "-48*(2*ua + ub + 2*va**2 + va*vb)",
+    "H_ab": "-48*(ua - 4*ub + va**2 + 2*va*vb - 6*vb**2)",
+    "H_bb": "48*(4*ua - 7*ub + 4*va**2 + 5*va*vb - 12*vb**2)"
+  },
+  "hessian_zero_identically": false,
+  "metric": "diag(-1,exp(2a),exp(2b),exp(2b))",
+  "minimal_exact_obstruction": {
+    "coefficient": "-48",
+    "component": "H_aa",
+    "monomial": "ub^1",
+    "powers": [0,1,0,0]
+  },
+  "parent_terminal": "ded5a44078c57909aeb6592b88bdac5c0917f85d",
+  "prereg_sha": "dbb0b54465c628b533c646a5b3b74b8458eaf24e",
+  "production_ray": [7,-36,36],
+  "run_head": "241a923523b2c770ffc8c48315d931af6e61846f",
+  "scientific_payload_sha256": "4493bbdafbea64d91bb66725673a023baca91411ed5d1679ccbfde4985f1997b",
+  "scope": "AXISYMMETRIC_HOMOGENEOUS_UNIT_LAPSE_VACUUM_FIXED_RAY_ONLY",
+  "source": "VACUUM_ZERO",
+  "symbolic_sha256": "1aa5be6f7a8f5f6eaa1575790108bbbce1f008c2eae4d7b5d02731015a7db3d3"
+}
