@@ -15,10 +15,13 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install sympy==1.13.3
-      - name: Verify prospective bridge chronology
+      - name: Verify prospective bridge chronology and execution-only repair
         run: |
           git merge-base --is-ancestor 12ca52947d1390a494634b7a6a2d98d9a7e4bf7d "$GITHUB_SHA"
           git merge-base --is-ancestor 1122988893e9d5f87771da8a6390f031be8fafca "$GITHUB_SHA"
+          git merge-base --is-ancestor bbd99b6061d22fc638317085ba0a51adc57b9bf3 "$GITHUB_SHA"
+          git merge-base --is-ancestor 50c9d87f614b6410d1dca10a8d88757b71294e4e "$GITHUB_SHA"
+          git merge-base --is-ancestor 08dbb35aef8e5811dff70988b4e7b08a67f21ebc "$GITHUB_SHA"
       - run: python scripts/rcg006c_weyl_bridge_constructor.py --output rcg006c-weyl-constructor.json --run-head "$GITHUB_SHA"
       - uses: actions/upload-artifact@v4
         with: {name: rcg006c-weyl-constructor, path: rcg006c-weyl-constructor.json}
@@ -30,8 +33,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install sympy==1.13.3
-      - name: Verify independent bridge chronology
-        run: git merge-base --is-ancestor 1122988893e9d5f87771da8a6390f031be8fafca "$GITHUB_SHA"
+      - name: Verify independent bridge chronology and repair
+        run: |
+          git merge-base --is-ancestor 1122988893e9d5f87771da8a6390f031be8fafca "$GITHUB_SHA"
+          git merge-base --is-ancestor bbd99b6061d22fc638317085ba0a51adc57b9bf3 "$GITHUB_SHA"
+          git merge-base --is-ancestor 08dbb35aef8e5811dff70988b4e7b08a67f21ebc "$GITHUB_SHA"
       - run: python scripts/rcg006c_weyl_bridge_critic.py --output rcg006c-weyl-critic.json --run-head "$GITHUB_SHA"
       - uses: actions/upload-artifact@v4
         with: {name: rcg006c-weyl-critic, path: rcg006c-weyl-critic.json}
