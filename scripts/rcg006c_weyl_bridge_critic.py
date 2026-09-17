@@ -15,20 +15,20 @@ def add(o,p,c=1):
     for k,v in p.items():o[k]+=sp.Rational(c)*v
     return o
 def ric(b,d):
-    o=defaultdict(sp.Rational)
+    o=defaultdict(lambda: sp.Rational(0))
     for a in range(4):add(o,p4.rform(a,b,a,d))
     return {k:v for k,v in o.items() if v}
 RIC=[[ric(b,d) for d in range(4)] for b in range(4)]
 RS={}
-_o=defaultdict(sp.Rational)
+_o=defaultdict(lambda: sp.Rational(0))
 for b in range(4):add(_o,RIC[b][b])
 RS={k:v for k,v in _o.items() if v}
 def C(a,b,c,d):
-    o=defaultdict(sp.Rational);add(o,p4.rform(a,b,c,d));D=lambda x,y:1 if x==y else 0
+    o=defaultdict(lambda: sp.Rational(0));add(o,p4.rform(a,b,c,d));D=lambda x,y:1 if x==y else 0
     add(o,RIC[d][b],-sp.Rational(1,2)*D(a,c));add(o,RIC[c][b],sp.Rational(1,2)*D(a,d));add(o,RIC[d][a],sp.Rational(1,2)*D(b,c));add(o,RIC[c][a],-sp.Rational(1,2)*D(b,d));add(o,RS,sp.Rational(1,6)*(D(a,c)*D(d,b)-D(a,d)*D(c,b)))
     return {k:v for k,v in o.items() if v}
 def bivector_c3():
-    o=defaultdict(sp.Rational)
+    o=defaultdict(lambda: sp.Rational(0))
     for p,q,r in product(range(6),repeat=3):
       a,b=PAIRS[p];c,d=PAIRS[q];e,f=PAIRS[r];x=C(a,b,c,d);y=C(c,d,e,f);z=C(e,f,a,b)
       if x and y and z:p4.p3(o,x,y,z)
