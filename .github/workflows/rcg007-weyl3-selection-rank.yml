@@ -1,0 +1,63 @@
+name: RCG007 Weyl3 inherited RQIR selection-rank audit
+on:
+  push:
+    paths:
+      - '.github/workflows/rcg007-weyl3-selection-rank.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify prospective chronology and inherited authorities
+        run: |
+          git merge-base --is-ancestor ee8c606b5a1c5baa2f6547500b9675c70f469be6 "$GITHUB_SHA"
+          git merge-base --is-ancestor d072cabcc4f5ccf46af382e16b7dbe62c935f3c4 "$GITHUB_SHA"
+          git merge-base --is-ancestor 9ecc7947d3a5e53e72acfbe9297e5dbc23cf155e "$GITHUB_SHA"
+          git merge-base --is-ancestor 2204951424f37705f7031a122fda3cfcb1a18f00 "$GITHUB_SHA"
+          git merge-base --is-ancestor cf2463bbb2236a20c98dda5e50cdd620c8def8a7 "$GITHUB_SHA"
+          git merge-base --is-ancestor 85d6e8ef6a29ffac2ba1481fc6213e5f6f67abb4 "$GITHUB_SHA"
+          git merge-base --is-ancestor 1092c4fd0d1ef0c4bc38f24e441f172157376745 "$GITHUB_SHA"
+      - run: python scripts/rcg007_weyl3_selection_rank_constructor.py --output rcg007-selection-constructor.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg007-selection-constructor, path: rcg007-selection-constructor.json}
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - name: Verify independent Critic chronology
+        run: |
+          git merge-base --is-ancestor ee8c606b5a1c5baa2f6547500b9675c70f469be6 "$GITHUB_SHA"
+          git merge-base --is-ancestor d072cabcc4f5ccf46af382e16b7dbe62c935f3c4 "$GITHUB_SHA"
+          git merge-base --is-ancestor b4a0a867f937da0e4a557bcc07fc93ce7d567f02 "$GITHUB_SHA"
+          git merge-base --is-ancestor 59e45f3503b677158827626b04d26e75479f2e82 "$GITHUB_SHA"
+          git merge-base --is-ancestor 85d6e8ef6a29ffac2ba1481fc6213e5f6f67abb4 "$GITHUB_SHA"
+          git merge-base --is-ancestor 70901a04254c5c325e5cb2bfd0181a17b89ecf02 "$GITHUB_SHA"
+      - run: python scripts/rcg007_weyl3_selection_rank_critic.py --output rcg007-selection-critic.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg007-selection-critic, path: rcg007-selection-critic.json}
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install sympy==1.13.3
+      - uses: actions/download-artifact@v4
+        with: {name: rcg007-selection-constructor, path: ctor}
+      - uses: actions/download-artifact@v4
+        with: {name: rcg007-selection-critic, path: crit}
+      - run: python scripts/rcg007_weyl3_selection_rank_aggregate.py --constructor ctor/rcg007-selection-constructor.json --critic crit/rcg007-selection-critic.json --output rcg007-selection-aggregate.json --run-head "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        with: {name: rcg007-selection-aggregate, path: rcg007-selection-aggregate.json}
