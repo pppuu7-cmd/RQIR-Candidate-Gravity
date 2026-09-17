@@ -1,0 +1,23 @@
+{
+  "D1D1_pointwise_rank": 4,
+  "class_counts": {"D1D1_nonzero": 12, "cubic_nonzero": 13},
+  "classification": "PASS_INDEPENDENT_CRITIC_RCG005_PREPRIMARY_EXACT_QUOTIENT",
+  "commutator_relation_count": 3,
+  "constructor_not_imported": true,
+  "cubic_rank": 6,
+  "heldout_prereg_sha": "1fb26a399264747fc2ffa8a564d4d281c0586f9c",
+  "independent_basis_policy": "RELATION_RREF_FREE_REPRESENTATIVES_NOT_CONSTRUCTOR_LABEL_PROOF",
+  "method": "REVERSE_PAIRINGS_SELFDUAL_CUBIC_NORMAL_COORDINATE_200_METRIC_THIRD_JETS",
+  "no_primary_dynamics_computed": true,
+  "normal_coordinate_metric_third_jet_variables": 200,
+  "phase": "RCG005_PREPRIMARY_QUOTIENT_ONLY_INDEPENDENT_CRITIC",
+  "prereg_sha": "1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08",
+  "quotient_dimension": 8,
+  "raw_counts": {"D1D1": 945, "cubic": 10395},
+  "rcg004_parent_lock": true,
+  "relation_rank": 17,
+  "relation_rref_sha256": "4b6f9b9713b076a10513adb1b10ab0bfc91b822acda441f976aee2f14a5fd38e",
+  "run_head": "ac3c646b0fc1a5bec2fa6781e5bdb9c8bbb1b820",
+  "scientific_payload_sha256": "d4ca42cf6a6aa45f666319882699173eee86a839396d2fbc5ab6facd04e72ace",
+  "valid": true
+}
