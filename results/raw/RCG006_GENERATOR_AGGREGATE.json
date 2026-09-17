@@ -1,0 +1,17 @@
+{
+  "ALG_generator_dimension": 6,
+  "DER_new_principal_dimension": 3,
+  "M_FR_status": "NOT_COMPUTED_PREMAP",
+  "aggregate_valid": true,
+  "claim_locks": {"RCG005_reclassified": false,"chi_ABC": "UNAUTHORIZED_NOT_COMPUTED","theory_established": "0%"},
+  "classification": "PASS_RCG006_GENERATOR_COMPLETENESS_READY_TO_FREEZE",
+  "constructor_basis": {"ALG_raw_indices": [16,19,46,52,436,439],"DER_raw_indices": [1,30,46]},
+  "constructor_payload_sha256": "4c5cc524458432105ad5b1715062835a7c2338bf1b0f35057aeb47bc1ca5f2c3",
+  "critic_payload_sha256": "b9597a3e01f8236d6421b9a88d19bdecb1d990fbb9a7ab19af3ef597a0c9c1cd",
+  "generator_dimension_M": 9,
+  "phase": "RCG006_GENERATOR_COMPLETENESS_PREMAP_AGGREGATE",
+  "predicates": {"ALG_dimension_agree": true,"DER_dimension_agree": true,"commutator_completion_both": true,"constructor_no_map": true,"constructor_pass": true,"critic_no_map": true,"critic_pass": true,"heldout_exact": true,"prereg_exact": true,"raw_counts_agree": true,"run_head_agree": true,"total_dimension_agree": true},
+  "raw_counts": {"ALG": 525,"DER": 60,"total": 585},
+  "run_head": "e1ae6681378f7c92e558c356b6ae933d35c507eb",
+  "scientific_payload_sha256": "71e5a97b703f85637d2faa0f5e11a66bf6d61f4a14c8bbecdfd234911fdce6e4"
+}
