@@ -1,0 +1,31 @@
+{
+  "base_relation_rref_sha256": "4b6f9b9713b076a10513adb1b10ab0bfc91b822acda441f976aee2f14a5fd38e",
+  "classification": "PASS_RCG005_NEGATIVE_CONTROLS",
+  "controls": {
+    "accidental_isotropy_trap_detected": true,
+    "basis_permutation_rank_invariant": true,
+    "coefficient_column_permutation_rank_invariant": true,
+    "constructor_critic_euler_primary_agreement": true,
+    "duplicate_invariant_detected": true,
+    "eom_substitution_offshell_guard": true,
+    "field_redefinition_contamination_rejected": true,
+    "known_total_derivative_reduces_to_zero_euler": true,
+    "lapse_gauge_fixed_before_variation_trap_detected": true,
+    "omitted_raw_derivative_contraction_detected": true,
+    "parity_odd_contamination_rejected": true,
+    "quotient_freeze_relation_hash_lock": true,
+    "rcg004_six_direction_regression_lock": true,
+    "sign_flipped_derivative_commutator_detected": true,
+    "source_VACUUM_ZERO_lock": true,
+    "violated_differential_bianchi_detected": true,
+    "wrong_4d_identity_detected": true
+  },
+  "controls_valid": true,
+  "full_A6_rank": 2,
+  "gate": "RCG005_FROZEN_NEGATIVE_CONTROLS",
+  "isotropic_A6_rank": 1,
+  "mutated_4d_relation_rref_sha256": "ea7e21fa425d3c7fb6a4b929b621194eba6c84b1aa7e63a5afa906a68227afd8",
+  "mutated_commutator_rref_sha256": "59834db6ab6c9b4040550f6d088a8a33abe890e2ce26c14109a0891c464c4e3a",
+  "quotient_freeze_commit": "f4d6f11490c0e668aa934e25580abad3015f0ae1",
+  "scientific_payload_sha256": "a2689d6cc738c83cc103dc73af0fa1cccf569bb94455f38410e93a05006655f4"
+}
