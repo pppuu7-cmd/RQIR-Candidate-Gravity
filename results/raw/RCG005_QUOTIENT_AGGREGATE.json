@@ -1,0 +1,27 @@
+{
+  "aggregate_valid": true,
+  "classification": "PASS_RCG005_PREPRIMARY_QUOTIENT_COMPLETENESS_READY_TO_FREEZE",
+  "frozen_basis_candidate": {
+    "inherited_RCG004_class_indices": [0, 1, 2, 4, 5, 8],
+    "new_derivative_D1D1_class_indices": [9, 11]
+  },
+  "gate": "RCG005_PREPRIMARY_QUOTIENT_COMPLETENESS_AGGREGATE",
+  "predicates": {
+    "constructor_no_primary": true,
+    "constructor_valid": true,
+    "critic_no_primary": true,
+    "critic_valid": true,
+    "d1_rank_agrees": true,
+    "quotient_dimension_agrees": true,
+    "rcg004_embedding_rank_six": true,
+    "relation_rank_agrees": true,
+    "relation_span_exact_agreement": true,
+    "run_head_exact": true
+  },
+  "primary_dynamics_status": "NOT_COMPUTED_PREPRIMARY",
+  "quotient_dimension": 8,
+  "relation_rank": 17,
+  "relation_rref_sha256": "4b6f9b9713b076a10513adb1b10ab0bfc91b822acda441f976aee2f14a5fd38e",
+  "run_head": "ac3c646b0fc1a5bec2fa6781e5bdb9c8bbb1b820",
+  "scientific_payload_sha256": "13fca66d1dabb73189c8b1d0b3ee209a4a7b17badbc3d52808ba50459542b7e3"
+}
