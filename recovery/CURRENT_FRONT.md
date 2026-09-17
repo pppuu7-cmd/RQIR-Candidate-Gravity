@@ -1,6 +1,6 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-17 after canonical RCG006 generator freeze and terminal L0 first-order EH field-redefinition map subgate.
+Updated: 2026-09-17 after canonical RCG006 generator freeze, terminal L0 first-order EH field-redefinition map, and terminal higher-derivative-discriminator transport.
 
 ## Canonical programme/scientific phase
 
@@ -25,7 +25,6 @@ Programme selection terminal: `dc955720822d353d446186437ee2ca69458633bd`.
 Selected direction: `FIELD_REDEFINITION_EQUIVALENCE_AUDIT`.
 
 Scientific preregistration: `prereg/RCG006_BOUNDED_LOCAL_METRIC_FIELD_REDEFINITION_EFT_EQUIVALENCE_AUDIT_V0.md`, commit `fc3ff1f49c56f2befc039e09ebd8f388833dbff1`.
-
 Map implementation contract: `prereg/RCG006_FIELD_REDEFINITION_MAP_IMPLEMENTATION_CONTRACT.md`, commit `78789e048ab3d67fc8f2e901176ff3a352aad749`.
 
 Scope remains first-order, local, perturbatively invertible, parity-even pure-metric field redefinitions. Bulk-action equivalence only. Boundary observables, matter couplings, global solution spaces, causal structures, quantum measures and nonperturbative theory identity remain out of scope.
@@ -37,20 +36,16 @@ Commit: `8c8314d2b857d6caa9719d6ba33e856ea0a697af`.
 Classification: `PASS_RCG006_GENERATOR_COMPLETENESS_READY_TO_FREEZE`.
 
 Exact generator quotient:
-- `M_ALG = 6` algebraic curvature-squared symmetric rank-2 directions;
-- `M_DER = 3` genuinely new derivative principal directions;
+- `M_ALG = 6`;
+- `M_DER = 3`;
 - **`M = 9`** total frozen generator directions.
-
-Production generator basis is frozen and cannot be changed after seeing map/discriminator outcomes.
 
 ## Canonical L0 first-order EH map — terminal scoped subgate
 
 Terminal note: `results/RCG006_MFR_L0_MAP_TERMINAL.md`.
 Canonical raw/provenance: `results/raw/RCG006_MFR_L0_CANONICAL.json`.
 Terminal note commit: `12ca52947d1390a494634b7a6a2d98d9a7e4bf7d`.
-
-Canonical workflow run: `35250324503`, head `d781765b80d371033d1b6477f32693c2023838e6`.
-Constructor, independent Critic and aggregate all completed success.
+Canonical workflow run: `35250324503`.
 
 Classification: `PASS_SCOPED_RCG006_MFR_L0_MAP_SUBGATE`.
 
@@ -61,7 +56,6 @@ Exact facts:
 - `dim ker(M_FR)=2`;
 - **`dim Q_EFT = 1`**;
 - `dim(RCG004_subspace ∩ Im(M_FR)) = 5`;
-- residual inherited cubic quotient dimension `1`;
 - `D1D1_CLASS_9` is in `Im(M_FR)`;
 - `D1D1_CLASS_11` is not in `Im(M_FR)`;
 - modulo `Im(M_FR)`, `[D1D1_CLASS_11] = (3/4)[RCG004_CANONICAL_AXIS_8]`.
@@ -72,36 +66,53 @@ Canonical `M_FR` SHA256:
 Canonical image-span SHA256:
 `7c5e4b07d95881b907ed67a55742466c2889e99c20193806b834370a00f46788`.
 
-This is a first-order bulk EFT-equivalence statement only. It is not a gravity-candidate PASS.
+## Canonical A_HD orbit transport — terminal scoped subgate
 
-## Active authoritative gates
+Terminal note: `results/RCG006_A_HD_TRANSPORT_TERMINAL.md`.
+Canonical raw/provenance: `results/raw/RCG006_A_HD_TRANSPORT_CANONICAL.json`.
+Terminal note commit: `344f81f90db90b2d3444222bea357221d0c54680`.
+Canonical workflow run: `35250686885`, head `7af702935db7db904f08a0e70e6f8187dc61d859`.
 
-### A_HD orbit transport
+Classification:
+`PASS_SCOPED_RCG006_FIELD_REDEFINITION_DISCRIMINATOR_NONINVARIANT`.
 
-Workflow: `.github/workflows/rcg006-ahd-transport.yml`.
-Run: `35250686885`.
-Head: `7af702935db7db904f08a0e70e6f8187dc61d859`.
+Exact facts:
+- **`rank(A_HD)=8`**;
+- **`ker(A_HD)={0}`**;
+- `rank(M_FR)=7`;
+- **`rank(A_HD M_FR)=7`**;
+- image-kernel dimension under `A_HD` is `0`;
+- structural branch **`CASE_II_NONINVARIANT`**;
+- quotient-aware second-order space dimension remains `0`.
 
-Status at this recovery write: non-terminal/queued.
+Scientific meaning: the RCG005 representative-level higher-derivative discriminator is not invariant along admitted first-order local EFT field-redefinition orbits. RCG005 remains historically valid under its frozen representative convention; RCG006 prevents promoting that criterion to an EFT-class statement.
 
-Frozen purpose: independently reconstruct the RCG005 higher-derivative discriminator `A_HD`, require rank `8` and kernel zero before consuming the RCG006 image, then compute `rank(A_HD M_FR)` and classify the preregistered structural branch.
-
-Do not use partial values and do not launch a competing authoritative transport gate while this run is non-terminal.
-
-### Symbolic-Lambda companion
+## Active authoritative gate — symbolic-Lambda companion
 
 Workflow: `.github/workflows/rcg006-lambda-companion.yml`.
+Run: `35250843261`.
 Head: `56c0b6c2614f99c5cffb84bc99d2e56b45a84e05`.
 
-This independent lane tracks `Lambda * Q_dim4_companion` leakage separately from the L0 eight-dimensional parent and verifies that derivative-generator traces are bulk total divergences. It cannot change the already-terminal L0 `M_FR` rank.
+At this recovery write Constructor and independent Critic are completed success, while aggregate remains non-terminal. Do not consume partial substantive values or launch a competing authoritative Lambda gate.
 
-If its workflow is non-terminal, do not use partial substantive values and do not duplicate it.
+Purpose: track `Lambda * Q_dim4_companion` leakage separately from the L0 eight-dimensional parent and verify derivative-generator traces as bulk total divergences. It cannot change the terminal L0 `M_FR` rank.
+
+## Independent successor identity bridge — RCG006C
+
+Prospective preregistration: `prereg/RCG006C_UNIQUE_EFT_CLASS_WEYL_CUBED_BRIDGE.md`, commit `1122988893e9d5f87771da8a6390f031be8fafca`.
+
+Initial run `35251277832` failed infrastructure-only before scientific output due to a SymPy zero-default factory defect. Prospective execution-only repair is recorded in `results/RCG006C_WEYL_BRIDGE_EXECUTION_ONLY_REPAIR.md`, commit `bbd99b6061d22fc638317085ba0a51adc57b9bf3`.
+
+Repaired canonical retry: run `35251589231`, head `2051bbe0c4e0cf23343043dcd933759313a047a2`.
+At this recovery write Constructor is completed success and Critic/aggregate are non-terminal. Do not consume partial workflow values. Independent debugging calculations are non-authoritative.
+
+This bridge tests whether the already-existing one-dimensional `Q_EFT` is exactly the parity-even Weyl-cubed class; it is an identity/interpretation bridge, not new-family formation.
 
 ## Current scientific interpretation
 
-RCG006 has already shown that seven of the eight frozen RCG005 bulk action directions are first-order EH field-redefinition image directions, leaving a one-dimensional EFT quotient. Whether the frozen representative-level higher-derivative discriminator is invariant along those admitted EFT orbits is still pending the terminal `A_HD` transport gate.
+RCG006 has canonically established that seven of the eight frozen RCG005 bulk action directions are first-order EH field-redefinition image directions, leaving a one-dimensional EFT quotient, and that the old representative-level higher-derivative discriminator is non-invariant along those redundant orbits.
 
-Therefore no terminal RCG006 classifier may yet be promoted from this recovery file alone.
+Full RCG006-v0 terminal assembly still awaits the terminal symbolic-Lambda companion. RCG006C is separately non-terminal and cannot be promoted from local debugging or incomplete workflow values.
 
 ## Claim locks
 
@@ -120,8 +131,8 @@ Therefore no terminal RCG006 classifier may yet be promoted from this recovery f
 
 ## Next admissible action
 
-1. If either active workflow is non-terminal, inspect only status/provenance and do not consume partial scientific values.
-2. Once `A_HD` transport is terminal, validate Constructor/Critic/aggregate and persist its authority.
-3. Once symbolic-Lambda companion is terminal, validate and persist its independent authority.
-4. If both are valid, assemble the frozen RCG006-v0 terminal structural audit without adding or removing generators or changing classifiers.
-5. Only after RCG006 terminalization choose any successor programme gate prospectively. `chi_ABC` remains unauthorized.
+1. Validate and persist the terminal symbolic-Lambda companion once aggregate is terminal.
+2. If valid, assemble the frozen RCG006-v0 terminal structural audit with the already-terminal L0 map and A_HD transport; do not alter generators or classifiers.
+3. Independently validate the repaired RCG006C Weyl-cubed bridge only after its Critic and aggregate are terminal.
+4. Only after RCG006 terminalization may a successor model-class selector be opened prospectively. No implicit quartic/additional-field/nonlocal selection is allowed.
+5. `chi_ABC` remains unauthorized.
