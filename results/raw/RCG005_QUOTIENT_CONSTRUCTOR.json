@@ -1,0 +1,32 @@
+{
+  "D1D1_pointwise_rank": 4,
+  "class_counts": {
+    "D1D1_nonzero": 12,
+    "D1D1_zero": 14,
+    "D4_nonzero": 12,
+    "D4_zero": 9,
+    "RD2_nonzero": 14,
+    "RD2_zero": 24,
+    "cubic_nonzero": 13,
+    "cubic_zero": 20
+  },
+  "classification": "PASS_RCG005_PREPRIMARY_EXACT_QUOTIENT_COMPLETENESS",
+  "commutator_relation_count": 3,
+  "frozen_basis_candidate": {
+    "inherited_RCG004_class_indices": [0, 1, 2, 4, 5, 8],
+    "new_derivative_D1D1_class_indices": [9, 11]
+  },
+  "generic_dR_dimension": 60,
+  "heldout_prereg_sha": "1fb26a399264747fc2ffa8a564d4d281c0586f9c",
+  "no_primary_dynamics_computed": true,
+  "phase": "RCG005_PREPRIMARY_QUOTIENT_ONLY",
+  "prereg_sha": "1ac1c032dcbbd8e3f0a527a470acc0a44ddffa08",
+  "quotient_dimension": 8,
+  "raw_counts": {"D1D1": 945, "D4": 105, "RD2": 945, "cubic": 10395, "total": 12390},
+  "rcg004_embedding_rank": 6,
+  "relation_rank": 17,
+  "relation_rref_sha256": "4b6f9b9713b076a10513adb1b10ab0bfc91b822acda441f976aee2f14a5fd38e",
+  "run_head": "ac3c646b0fc1a5bec2fa6781e5bdb9c8bbb1b820",
+  "scientific_payload_sha256": "1e38d96492d007ce594c0df97ad8ec6aa209e4de0af7d3d19023525070990bdc",
+  "valid": true
+}
