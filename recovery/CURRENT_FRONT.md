@@ -1,6 +1,6 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-17 after canonical RCG003B Actions terminalization and prospective RCG004 authority-gate freeze.
+Updated: 2026-09-17 after canonical RCG003B terminalization, fresh post-b2d2 RCG004 authority audit, and descriptive RCG003B obstruction postmortem.
 
 ## Canonical programme/scientific phase
 
@@ -75,11 +75,9 @@ Raw repository persistence:
 Canonical aggregate has `aggregate_valid=true`; all twelve frozen validity predicates are true, including exact prereg/parent/head/ray locks, both control lanes, Critic provenance, Constructor–Critic Hessian identity, Euler–Hessian correspondence, lane agreement, allowed classification, and source lock.
 
 Primary terminal classification:
-
 `FAIL_SCOPED_RCG003B_AXISYMMETRIC_HIGHER_DERIVATIVE_SURVIVOR_FALSIFIED`.
 
 Independent Critic:
-
 `PASS_INDEPENDENT_CRITIC_RCG003B_SCOPE_AND_PROVENANCE`.
 
 ## Exact anisotropic obstruction
@@ -103,7 +101,43 @@ Direct Euler-Lagrange cross-check independently reproduces the same fourth-deriv
 Exact descriptive determinant:
 `det(H) = -20736*(ua-ub+va^2+va*vb-2*vb^2)^2`.
 
-The isotropic pullback still recovers zero Hessian, so the mechanism is specifically isotropic/conformal masking of an anisotropic higher-derivative obstruction.
+## Descriptive RCG003B mechanism postmortem
+
+This is explanatory analysis of the already-terminal RCG003-v0 object only; it changes no classifier and forms no RCG004 model.
+
+Postmortem result:
+`results/RCG003B_OPERATOR_OBSTRUCTION_POSTMORTEM.md`, commit `22ac042350bbf5afa5eaae652814e7c88d406d63`.
+
+Reproducibility script:
+`scripts/rcg003b_operator_obstruction_postmortem.py`, commit `0daac3f8e7d182c52e2edf61d2f836881673cc2c`.
+
+Raw exact record:
+`results/raw/RCG003B_OPERATOR_OBSTRUCTION_POSTMORTEM.json`, commit `b214b5db6cd693f68f2a0617e94bcc8649c98454`.
+
+Use the invertible axisymmetric volume/shear coordinates
+`a=sigma+2 beta`, `b=sigma-beta`.
+
+For the frozen ray `(7,-36,36)` the exact transformed acceleration Hessian is
+
+`H_sigma_sigma = 0`,
+
+`H_sigma_beta = -1296*(u_beta + 3*v_beta*v_sigma)`,
+
+`H_beta_beta = 1296*(u_beta - u_sigma - 2*v_beta^2 + 3*v_beta*v_sigma - v_sigma^2)`.
+
+Thus the volume/conformal acceleration channel cancels identically, but shear/mixed channels remain.
+
+On an isotropic background (`v_beta=0`, `u_beta=0`):
+
+`H_sigma_sigma=0`, `H_sigma_beta=0`, while
+
+`H_beta_beta=-1296*(u_sigma+v_sigma^2)`.
+
+Therefore the conformal PASS arose because the conformal restriction removed the shear degree of freedom from the tested configuration space; it did not establish that the full two-field Hessian vanished even on isotropic backgrounds.
+
+The three frozen weighted operator contributions also show that `7 R^3` contributes only to the volume-volume Hessian in these coordinates, while `-36 R Ricci^2` and `36 Tr(Ricci^3)` carry the shear/mixed structure. The frozen combination cancels the full `sigma-sigma` channel exactly but not the shear channels.
+
+No coefficient search was performed and no new operator was introduced.
 
 ## Model-space accounting
 
@@ -127,7 +161,9 @@ Prospective authority gate:
 Authority preregistration commit:
 `b2d2cdc1c9bc169317e3e7dfd1a6d17109d01251`.
 
-Current programme classification:
+Fresh authority audit through repository head after the postmortem found **no explicit A1 or A2 declaration incorporated after `b2d2cdc1...`**. Code/history searches for both exact disposition strings returned no declaration; the commits after the preregistration contain only blocker, provenance, recovery, postmortem, and declaration-request records.
+
+Current programme classification remains:
 `BLOCKED_PENDING_EXPLICIT_RCG004_FORMATION_AUTHORITY`.
 
 Blocker record:
@@ -136,13 +172,16 @@ Blocker record:
 Research transition ledger:
 `recovery/RCG003B_TO_RCG004_RESEARCH_LEDGER.md`, commit `317394d7422f01ab017d99f43c7564eeb56b4bcd`.
 
+Exact complete declaration request/template:
+`recovery/RCG004_FORMATION_AUTHORITY_DECLARATION_REQUEST.md`, commit `ec9927ccf0b47e520ee1eaa9175d1e21cee92c78`.
+
 A future programme declaration must choose exactly one:
 - `AUTHORIZE_RCG004_COMPLETE_PARITY_EVEN_ALGEBRAIC_CUBIC_CURVATURE_FORMATION_ATTEMPT`, or
 - `DO_NOT_AUTHORIZE_RCG004_FORMATION_HOLD_PROGRAMME`.
 
 No scientific RCG004 operator basis, coefficient nullspace, survivor, or triaxial outcome is authorized before that declaration is incorporated.
 
-If authorization A1 is later granted, the highest-information scientific target is already bounded conceptually: complete 4D parity-even algebraic curvature-cubic sector, exact algebraic/dimensional quotient, no curvature derivatives/quartics/matter, exact symbolic coefficients, full triaxial off-shell derivative-order constraint map, independent Critic, and a held-out no-refit test frozen before survivor inspection. These are scope ceilings for future preregistration, not current model content.
+If authorization A1 is later granted, the highest-information scientific target remains bounded conceptually: complete 4D parity-even algebraic curvature-cubic sector, exact algebraic/dimensional quotient, no curvature derivatives/quartics/matter, exact symbolic coefficients, full triaxial off-shell derivative-order constraint map, independent Critic, and a held-out no-refit test frozen before survivor inspection. These are scope ceilings for future preregistration, not current model content.
 
 ## Exact next action
 
