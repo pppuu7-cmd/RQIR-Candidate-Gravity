@@ -32,5 +32,16 @@
   "production_ray": [7,-36,36],
   "run_head": "241a923523b2c770ffc8c48315d931af6e61846f",
   "scientific_payload_sha256": "c93c50597bf1a4fa26c4cb909d33cee319aedac5bc2a14d839adf100cd5911fa",
-  "symbolic_sha256": "8c9cd01db4cd4b6c9a173e9371fac62ee0ec1a37c69ab9ec9a7ab75d5a715b04"
+  "symbolic_sha256": "8c9cd01db4cd4b6c9a173e9371fac62ee0ec1a37c69ab9ec9a7ab75d5a715b04",
+  "third_derivative_coefficients_normalized": {
+    "E_a": {
+      "a3": "-96*(2*ja + jb + 6*ua*va + 5*ua*vb + 2*ub*va + 2*ub*vb + 2*va**3 + 5*va**2*vb + 2*va*vb**2)",
+      "b3": "-48*(2*ja - 8*jb + 5*ua*va + 6*ua*vb + 6*ub*va - 47*ub*vb + va**3 - 2*va**2*vb + 13*va*vb**2 - 30*vb**3)"
+    },
+    "E_b": {
+      "a3": "-48*(2*ja - 8*jb + 7*ua*va + 10*ua*vb - 14*ub*va - 33*ub*vb + 3*va**3 + 18*va**2*vb - 21*va*vb**2 - 18*vb**3)",
+      "b3": "96*(4*ja - 7*jb + 12*ua*va + 13*ua*vb - 2*ub*va - 38*ub*vb + 4*va**3 + 13*va**2*vb - 2*va*vb**2 - 24*vb**3)"
+    }
+  },
+  "third_derivative_obstruction_present": true
 }
