@@ -517,3 +517,52 @@ with no hidden collapse.
 If current authority does not provide that projection rule, terminalize BLOCKED rather than inventing one.
 
 All RCG011 claim locks remain unchanged.
+
+
+## RCG012R terminal — parent-principle slot projection authority
+
+Prereg:
+`0f6b8995702b80f22a13afe7eaf5ea4543620f98`.
+
+Static Critic:
+`3201951e23c99b180e1b13772c1847d2f855ddf1`.
+
+Terminal commit:
+`3b351980e843e8ab0b4b46bf1f499b2175d8af8d`.
+
+Classification:
+`BLOCKED_SCOPED_RCG012R_NO_AUTHORIZED_PROJECTION_FROM_FIVE_SLOT_GRAPH_TO_PARENT_PRINCIPLE`.
+
+Independent bounded review:
+`CONFIRMED_SCOPED`.
+
+New scoped fact:
+`PARENT_PRINCIPLE_STAGE_PROJECTION_FROM_FIVE_SLOT_GRAPH_IS_NOT_DEFINED_BY_CURRENT_DURABLE_AUTHORITY`.
+
+Therefore no minimal content-basis theorem is currently authorized.
+
+Do not invent a parent-stage A-E projection.
+
+## Next highest-information frontier
+
+`RCG013_SUCCESSOR_PROMOTION_SLOT_STATUS_CENSUS_PREOUTCOME_GATE`.
+
+Use the already-authoritative five-slot successor promotion condition directly.
+
+Audit parent-local exact status of:
+A CLASSICAL LAW;
+B SOURCE CONSTITUTION;
+C STATE / MEASURE;
+D QUANTUM LAW;
+E OPERATIONAL MAP.
+
+In particular, distinguish:
+- successor-only selected reference;
+- exact parent-local object;
+- structural negative control;
+- unresolved slot;
+- boundary-complete operational object.
+
+Do not access another repository in this gate.
+
+The goal is to identify the earliest parent-local object/provenance blocker for a future SUCCESSOR_PROMOTION_GATE.
