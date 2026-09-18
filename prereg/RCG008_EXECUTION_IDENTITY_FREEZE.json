@@ -1,0 +1,23 @@
+{
+  "schema": "RCG008_EXECUTION_IDENTITY_FREEZE_V0",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_CANONICAL_EXECUTION",
+  "authority_base_commit": "1a53979ea1f684d6acdc35c789c0bf8c86e8f6b0",
+  "implementation_commit": "60ac01fd4743af9bc85a054f44ddfbd7e234d46d",
+  "scientific_prereg_commit": "a802ee303cccce73f0a8c974f4c73915ebae40c0",
+  "scientific_prereg_blob": "8316d3f484cef5217065177450c79566371f9485",
+  "implementation_blobs": {
+    "data/RCG008_FROZEN_CORPUS_MANIFEST_V0.json": "f10edc81b28d9feaeeecb2537a2c74d0916ad135",
+    "scripts/rcg008_source_authority_constructor.py": "1463948df929115f824cfbf899ac868cf92d6721",
+    "scripts/rcg008_source_authority_critic.py": "2b3612b90513d62abdba896cefb6957633f63e4f",
+    "scripts/rcg008_source_authority_aggregate.py": "6aa68609a3e9fe1b8d05403a76e9ee3f2cafb71e",
+    "scripts/rcg008_source_authority_auditor.py": "7d528ad5050ca394ad6818bfbd391cf875802b2e",
+    "scripts/rcg008_verify_execution_identity.py": "93ace9ce853ab15a2b26edf763d2ed78455bed9c",
+    ".github/workflows/rcg008-higher-order-source-authority-census.yml": "834c69024fc5ec184664b9c2ff44931534e98090"
+  },
+  "run_policy": "Exactly one canonical Actions execution is authorized by adding this freeze file. Subsequent terminalization commits must not touch this trigger path.",
+  "locks": {
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
