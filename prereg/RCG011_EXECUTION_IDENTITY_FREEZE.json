@@ -1,0 +1,36 @@
+{
+  "schema":"RCG011_EXECUTION_IDENTITY_FREEZE_V0",
+  "status":"PROSPECTIVELY_FROZEN_BEFORE_CANONICAL_EXECUTION",
+  "scientific_prereg_commit":"33c2d57d299920a56f5ed89eec0efc7940e1ce9f",
+  "scientific_prereg_blob":"9bf74cc2c7a8c2e2f21544535cbf82a886f17c13",
+  "authority_manifest_blob":"2cf5f2c833abd2bcf0616c62bc66871bdb32f8be",
+  "static_critic_commit":"423bf5afc1a2a4d3c691da9b4e5104424037aa64",
+  "static_critic_blob":"152e2b6023bacd53b485fae7230fe778cb9e6e56",
+  "implementation_commit":"36424ffb460afb9331d5db90d45e7130f8f848fd",
+  "implementation_blobs":{
+    "data/RCG011_NEW_PARENT_PRINCIPLE_FAMILY_FORMATION_AUTHORITY_V0.json":"2cf5f2c833abd2bcf0616c62bc66871bdb32f8be",
+    "prereg/RCG011_NEW_PARENT_PRINCIPLE_FAMILY_FORMATION_V0.md":"9bf74cc2c7a8c2e2f21544535cbf82a886f17c13",
+    "research_log/RQIRCG_STATIC_CRITIC_RCG011_PREEXEC.md":"152e2b6023bacd53b485fae7230fe778cb9e6e56",
+    "scripts/rcg011_parent_principle_family_constructor.py":"89f818e6580167d2747345f285d055c46dac6a54",
+    "scripts/rcg011_parent_principle_family_critic.py":"8e419f81c4cf2b16dd8f07dd2558cac3accb0f89",
+    "scripts/rcg011_parent_principle_family_aggregate.py":"3448ffaabfcfa2fb62326672e39f86aefd12fa48",
+    "scripts/rcg011_parent_principle_family_auditor.py":"b497e4071e1bf1fa297770c255e10442922013fa",
+    "scripts/rcg011_verify_execution_identity.py":"ae216f26d7aee9213ec06a633ab6813bd6b8d3ed",
+    ".github/workflows/rcg011-new-parent-principle-family-formation.yml":"86d721e62735b9654bfb9ad3238cb2ebfcde4b59"
+  },
+  "run_policy":"Exactly one canonical RCG011 family-formation Actions run is authorized by creation of this file.",
+  "locks":{
+    "coefficient_space":"A=span{alpha}",
+    "selector_rank":0,
+    "residual_dimension":1,
+    "parent_principle_defined":false,
+    "parent_functional_defined":false,
+    "source_object_defined":false,
+    "value_derivation_authorized":false,
+    "bridge_authorized":false,
+    "alpha_sensitivity_authorized":false,
+    "alpha":"UNSELECTED",
+    "chi_ABC":"UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED":"0%"
+  }
+}
