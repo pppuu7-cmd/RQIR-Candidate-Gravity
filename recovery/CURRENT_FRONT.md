@@ -323,3 +323,93 @@ Familiarity, minimality by name, resemblance to GR/QFT, convenient Weyl-cubed se
 If a future parent-principle gate passes, STOP again. A separate source-object/functional definition gate must then pass before any response value is authorized.
 
 STOP here.
+
+
+## RCG011 new parent-principle family formation terminal authority
+
+Scientific preregistration:
+`33c2d57d299920a56f5ed89eec0efc7940e1ce9f`.
+
+Static Critic:
+`423bf5afc1a2a4d3c691da9b4e5104424037aa64`,
+verdict `WELL_POSED_FOR_NEW_PARENT_PRINCIPLE_FAMILY_FORMATION_EXECUTION`.
+
+Implementation:
+`36424ffb460afb9331d5db90d45e7130f8f848fd`.
+
+Canonical execution head:
+`7af7f4b7e0c643177e4b4c8bca37c56a8844aa11`.
+
+Canonical Actions run:
+`35404971243` — completed / success.
+
+Terminal science commit:
+`7e8aa16b137be14c6ca413b8324447290240770a`.
+
+Classification:
+`BLOCKED_SCOPED_RCG011_FORMED_FAMILIES_LEAVE_HIDDEN_MODEL_DATA`.
+
+Independent Selector Auditor:
+`CONFIRMED_SCOPED`.
+
+Immutable artifact authority:
+- Constructor `10571559717`, `sha256:6fdc62800090d8f2a2d41335b519163a0759a7b7ce45e1c8c819027ce4ea088c`;
+- Critic `10571394810`, `sha256:2d3a13329c3710ea52437907d95628691e696db0e83efaef42e7f648e4cdd0c5`;
+- Aggregate `10571577812`, `sha256:8829129b81693368f94bccf4f2b2fb1a44afb1dc6722ca57f1d766a33f71b10b`;
+- Audit `10571434886`, `sha256:56a6c69f82ffe27bcba21d23912f5736c4bdd0a844783cd16a263972fef0fc83`.
+
+Exact result:
+- Constructor/Critic disagreements: `[]`;
+- provenance: `true`;
+- controls: `true`;
+- structurally eligible families: `[]`;
+- selected families: `[]`;
+- synthetic fully specified parent principle: `PASS_CLASSIFIER_CONTROL`.
+
+Frozen scientific families:
+- F1 closed variational source generator;
+- F2 causal positive influence generator;
+- F3 relational composition generator;
+- F4 joint source-state generating package.
+
+All four retain hidden model content before scientific selection.
+
+New scoped fact:
+`ALL_FROZEN_NEW_PARENT_PRINCIPLE_FAMILIES_RETAIN_HIDDEN_MODEL_CONTENT_BEFORE_SELECTION`.
+
+Current highest DAG blocker:
+`EXACT_NEW_SOURCE_STATE_GENERATING_CONTENT_MUST_BE_PROSPECTIVELY_SPECIFIED`.
+
+Current locks remain:
+- `A=span{alpha}`;
+- `selector_rank=0`;
+- residual dimension `1`;
+- `PARENT_PRINCIPLE_DEFINED=NO`;
+- `PARENT_FUNCTIONAL_DEFINED=NO`;
+- `SOURCE_OBJECT_DEFINED=NO`;
+- `VALUE_DERIVATION_AUTHORIZED=NO`;
+- `BRIDGE_AUTHORIZED=NO`;
+- `ALPHA_SENSITIVITY_AUTHORIZED=NO`;
+- `alpha=UNSELECTED`;
+- `chi_ABC=UNAUTHORIZED_NOT_COMPUTED`;
+- `THEORY_ESTABLISHED=0%`.
+
+## Next admissible highest-information frontier after RCG011
+
+`RCG012_MINIMAL_EXPLICIT_NEW_MODEL_CONTENT_BASIS_PREOUTCOME_GATE`.
+
+Do not choose a named parent-principle family yet.
+
+Prospectively determine the smallest explicit non-placeholder content basis required for any legal parent principle hypothesis to become an executable source object.
+
+At minimum audit independence/necessity of:
+1. source ontology/source-space plus physical equivalence quotient;
+2. state/measure/preparation constitution;
+3. quantitative generating/response rule;
+4. causal/ordering/normalization only where not already implied by a chosen representation.
+
+This is a model-definition obligation audit, not a count of fundamental laws in nature.
+
+No response value, bridge, alpha sensitivity, alpha solution or chi_ABC is authorized.
+
+STOP after terminal RCG012 basis classification before populating a concrete successor hypothesis.
