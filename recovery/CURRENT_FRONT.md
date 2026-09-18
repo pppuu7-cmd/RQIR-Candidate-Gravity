@@ -1,10 +1,10 @@
 # RQIR-Candidate-Gravity current front
 
-Updated: 2026-09-18 after terminal RCG008 higher-order RQIR source-authority census and independent Selector Auditor confirmation.
+Updated: 2026-09-18 after terminal RCG009 upstream candidate-independent third-variation source-definition gate and independent Auditor confirmation.
 
 ## Canonical phase
 
-`RCG002_HISTORICAL_SCIENCE_TERMINAL / RCG003B_AXISYMMETRIC_FAIL / RCG004_COMPLETE_ALGEBRAIC_CUBIC_CLASS_TERMINAL_FAIL / RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_TERMINAL_FAIL / RCG006_FIELD_REDEFINITION_EQUIVALENCE_AUDIT_TERMINAL / RCG006C_UNIQUE_EFT_CLASS_WEYL_CUBED_TERMINAL / RCG007_INHERITED_RQIR_SELECTION_RANK_ZERO_TERMINAL_BLOCKER / RCG008_HIGHER_ORDER_RQIR_SOURCE_AUTHORITY_CENSUS_TERMINAL_BLOCKER`
+`RCG002_HISTORICAL_SCIENCE_TERMINAL / RCG003B_AXISYMMETRIC_FAIL / RCG004_COMPLETE_ALGEBRAIC_CUBIC_CLASS_TERMINAL_FAIL / RCG005_COMPLETE_LOCAL_DIM6_PURE_METRIC_CLASS_TERMINAL_FAIL / RCG006_FIELD_REDEFINITION_EQUIVALENCE_AUDIT_TERMINAL / RCG006C_UNIQUE_EFT_CLASS_WEYL_CUBED_TERMINAL / RCG007_INHERITED_RQIR_SELECTION_RANK_ZERO_TERMINAL_BLOCKER / RCG008_HIGHER_ORDER_RQIR_SOURCE_AUTHORITY_CENSUS_TERMINAL_BLOCKER / RCG009_UPSTREAM_THIRD_VARIATION_SOURCE_DEFINITION_TERMINAL_BLOCKER`
 
 `alpha = UNSELECTED`.
 
@@ -63,32 +63,11 @@ Exact result:
 
 Scientific preregistration: `a802ee303cccce73f0a8c974f4c73915ebae40c0`.
 
-Frozen authority base: `1a53979ea1f684d6acdc35c789c0bf8c86e8f6b0`.
-
-Frozen corpus manifest blob:
-`f10edc81b28d9feaeeecb2537a2c74d0916ad135`.
-
-Initial run `35367595336` was a pre-science infrastructure failure only: Constructor and Critic both stopped on the same literal wording guard after identity verification; aggregate and auditor were not executed. It is not a scientific RCG008 result.
-
-Prospective execution-only repair chain:
-- `07f51a9a5b9ba86a30183dd48e27b1672da93f7d`;
-- `b127f7adbe20101c1d3ff91c1c10c7a98b61f854`.
-
-Canonical repaired execution head:
-`7831e3f9f6067d38df524fb72c4dfa5f20a8d41d`.
-
 Canonical repaired Actions run:
 `35367838160` — success.
 
 Terminal result commit:
 `fc70c698ff1f059f8833fecae97bc2f9f5b2f331`.
-
-Terminal result:
-`results/RCG008_HIGHER_ORDER_RQIR_SOURCE_AUTHORITY_CENSUS_TERMINAL.md`.
-
-Independent Selector Auditor:
-`research_log/RQIRCG_SELECTOR_AUDITOR_RCG008_REVIEW_2026-09-18.md`,
-verdict `CONFIRMED_SCOPED`.
 
 Classification:
 `BLOCKED_SCOPED_RCG008_NO_EXISTING_APPLICABLE_HIGHER_ORDER_RQIR_DATUM_IN_CURRENT_AUTHORITY`.
@@ -99,63 +78,161 @@ Exact census result:
 - Constructor/Critic disagreements: `0`;
 - controls valid: `true`;
 - provenance valid: `true`;
-- rejected candidate-owned count: `5`;
-- rejected too-low-order count: `1`;
-- rejected domain-specific count: `2`;
-- rejected unbridged count: `2`.
-
-Mandatory controls:
 - G88: `FOUND_BUT_TOO_LOW_ORDER_FOR_ALPHA`;
 - G89: `FOUND_BUT_D_SPECIFIC_UNBRIDGED`;
 - RCG007 synthetic cubic control: `FOUND_BUT_SYNTHETIC_CONTROL`.
 
-Independent Auditor reproduced zero qualifying data and the same terminal classification.
+RCG008 established a scoped current-authority absence result: no already-usable candidate-independent genuinely higher-order RQIR datum, and no already-authorized bridge, exists for the Weyl-cubed coefficient.
 
-## Current information-rank state
+## RCG009 upstream source-definition triage
+
+Fresh parent frontier:
+`13b9fd0d6bd996cb8ae871bb81a5f755259ae79c`.
+
+Scientific preregistration:
+`a4bf5346a9c8d021ee8914b5bea1aad0ae3315dc`.
+
+Frozen authority manifest blob:
+`63a3dcb4a096591ff905690fe345b1566828dc85`.
+
+Outcome-blind triage metric:
+`AUTHORITY × DERIVABILITY × EXPECTED_INDEPENDENT_INFORMATION × DOMAIN_CLEANLINESS × FALSIFIABILITY / COST`.
+
+Frozen family scores:
+- parent-functional third variation: `108`;
+- higher-order Ward identity: `18`;
+- cubic CTP response: `9`;
+- three-point retarded kernel: `9`.
+
+Selected family:
+`CANDIDATE_INDEPENDENT_THIRD_VARIATION_OF_PARENT_RQIR_SOURCE_FUNCTIONAL`.
+
+Formal target:
+`O3_ABC[J] := delta^3 W_RQIR[J] / (delta J_A delta J_B delta J_C)`.
+
+This notation was only a target for source-definition testing; existence was not presumed.
+
+Independent static Critic:
+`535503fe66b5b6d964e6c6fe2f54f6fb2c5a9d1f`,
+verdict `WELL_POSED_FOR_SOURCE_DEFINITION_EXECUTION`.
+
+Implementation:
+`3d02f6ca7af1d5624dbf79f4fc77429e44971e31`.
+
+Execution identity / canonical head:
+`7c8abdf17cc1e8e1f07a40b34d3ee19b741af11e`.
+
+Canonical Actions run:
+`35374333047` — completed / success.
+
+Terminal result commit:
+`f920c41213ae760d47870516980733b7f92a1f89`.
+
+Terminal result:
+`results/RCG009_UPSTREAM_THIRD_VARIATION_SOURCE_DEFINITION_TERMINAL.md`.
+
+Independent Auditor:
+`research_log/RQIRCG_SELECTOR_AUDITOR_RCG009_REVIEW_2026-09-18.md`,
+verdict `CONFIRMED_SCOPED`.
+
+Classification:
+`BLOCKED_SCOPED_RCG009_RQIR_PRINCIPLES_DO_NOT_DEFINE_REQUIRED_HIGHER_ORDER_OBJECT`.
+
+## RCG009 exact result
+
+Constructor and independent Critic agree with zero disagreements.
+
+Frozen requirement state:
+- `R1_PARENT_FUNCTIONAL = FAIL_MISSING_PARENT_FUNCTIONAL`;
+- `R2_SOURCE_SPACE = NOT_REACHED_PARENT_MISSING`;
+- `R3_THIRD_VARIATION_LICENSE = NOT_REACHED_PARENT_MISSING`;
+- `R4_CANDIDATE_INDEPENDENCE = NO_OBJECT_TO_OWN`;
+- `R5_DOMAIN = NO_OBJECT_DOMAIN_TO_DECLARE`;
+- `R6_TRANSFORMATION_RULE = NOT_REACHED_PARENT_MISSING`;
+- `R7_ORDERING_RULE = NOT_APPLICABLE`.
+
+Controls:
+- G89 -> `REJECT_D_SPECIFIC_NOT_UPSTREAM`;
+- RQIRCGSF successor-only -> `REJECT_SUCCESSOR_ONLY_NOT_PARENT_AUTHORITY`;
+- RCG002 CPI1 -> `REJECT_CONDITIONAL_OR_CANDIDATE_OWNED_W`;
+- synthetic complete parent-functional definition -> `PASS_CLASSIFIER_CONTROL`.
+
+`CONTROLS_OK = true`.
+
+`PROVENANCE_OK = true`.
+
+Independent Auditor reproduced the same classification and confirmed:
+- `parent_functional_defined = false`;
+- `source_object_defined = false`.
+
+## Current information-rank and authorization state
 
 `COEFFICIENT_SPACE = A=span{alpha}`.
 
-`RANK_BEFORE_RCG008 = 0`.
-
-`RANK_AFTER_RCG008 = 0`.
+`SELECTOR_RANK = 0`.
 
 `RESIDUAL_COEFFICIENT_DIMENSION = 1`.
 
-`BRIDGE_AUTHORIZED = NO`.
+`SOURCE_OBJECT_DEFINED = NO`.
 
-RCG008 is a source-authority census and does not add a selector row. Therefore it does not determine `alpha`.
+`SOURCE_OWNERSHIP = NOT_ESTABLISHED_NO_OBJECT`.
+
+`SOURCE_DOMAIN = NOT_ESTABLISHED_NO_OBJECT`.
+
+`CANDIDATE_INDEPENDENCE = NOT_ESTABLISHED_NO_OBJECT`.
+
+`DERIVABILITY_STATUS = BLOCKED_AT_PARENT_FUNCTIONAL_DEFINITION`.
+
+`VALUE_DERIVATION_AUTHORIZED = NO`.
+
+`BRIDGE_GATE_AUTHORIZED = NO`.
+
+`ALPHA_SENSITIVITY_AUTHORIZED = NO`.
+
+`alpha = UNSELECTED`.
+
+`chi_ABC = UNAUTHORIZED_NOT_COMPUTED`.
+
+`THEORY_ESTABLISHED = 0%`.
 
 ## Current highest DAG blocker
 
-The current durable authority does not contain an already-usable candidate-independent genuinely cubic/third-order-or-higher RQIR datum legally applicable, or already legally bridged, to the Weyl-cubed coefficient.
+RCG008 showed that an already-usable higher-order RQIR information source is absent.
+
+RCG009 localizes the problem one level further upstream: current durable RQIR authority does not define the primitive candidate-independent parent source/generating/influence functional from which a legal third-order response object could even be formed.
 
 Scoped blocker:
 
-`MISSING_AUTHORIZED_UPSTREAM_HIGHER_ORDER_RQIR_INFORMATION_SOURCE_FOR_WEYL3_ALPHA`.
+`MISSING_RQIR_OWNED_PARENT_SOURCE_FUNCTIONAL_FOR_CANDIDATE_INDEPENDENT_HIGHER_ORDER_RESPONSE`.
 
 This is not:
 - `alpha=0`;
-- Weyl-cubed falsification;
-- a theorem that no future RQIR higher-order datum can exist;
-- permission to enlarge the gravity model class.
+- a Weyl-cubed falsification;
+- a theorem that no future source principle can exist;
+- permission to import G89;
+- permission to choose a source representative;
+- permission to compute `chi_ABC`;
+- permission to expand the gravity model.
 
 ## Claim locks
 
-No `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `THEORY_ESTABLISHED`, GR uniqueness, arbitrary modified-gravity no-go, coefficient selection, boundary/matter/nonperturbative equivalence, or `chi_ABC` computation.
+No `NEW_PHYSICS_FOUND`, `FULL_QUANTUM_GRAVITY`, `THEORY_ESTABLISHED`, GR uniqueness, arbitrary modified-gravity no-go, coefficient selection, Weyl-cubed confirmation/falsification, or `chi_ABC` computation.
 
 Maintain:
 - `alpha = UNSELECTED`;
 - `chi_ABC = UNAUTHORIZED_NOT_COMPUTED`;
 - `THEORY_ESTABLISHED = 0%`.
 
-## Next admissible highest-information gate
+## Next admissible highest-information frontier
 
-Do not expand to dimension eight, add fields/nonlocal kernels, import D-specific dynamics, select a source representative, or solve `alpha`.
+RCG009 is complete. **Do not start value derivation.**
 
-The next prospectively frozen question should be upstream/source-first:
+A future continuation, only under a new prospective freeze, must address the missing model-defining prerequisite itself:
 
-`CAN_THE_MISSING_HIGHER_ORDER_RQIR_DATUM_BE_DERIVED_FROM_EXISTING_RQIR_PRINCIPLES_WITHOUT_IMPORTING_CANDIDATE_PHYSICS?`
+`CAN_A_CANDIDATE_INDEPENDENT_RQIR_PARENT_SOURCE_GENERATING_OR_INFLUENCE_PRINCIPLE_BE_PROSPECTIVELY_DEFINED_OR_DERIVED_WITH_EXACT_SOURCE_SPACE_DOMAIN_AND_TRANSFORMATION_LAW_WITHOUT_USING_GRAVITY_CANDIDATE_OUTCOMES?`
 
-A future gate may test one bounded upstream family such as a candidate-independent third variation, cubic CTP response, three-point retarded kernel, or higher Ward identity. It must first establish object definition, ownership, domain and legal derivability before any value, bridge or alpha sensitivity is computed.
+This would add genuinely new model-defining information. It must be selected and frozen before any higher-order value is calculated.
 
-RCG008 itself is complete. STOP here until a separate prospective gate is frozen.
+No bridge, alpha-sensitivity or coefficient gate is authorized until a parent source object exists terminally.
+
+STOP here.
