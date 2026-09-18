@@ -1,0 +1,151 @@
+{
+  "schema": "RCG009_UPSTREAM_THIRD_VARIATION_SOURCE_DEFINITION_AUTHORITY_V0",
+  "frontier_commit": "13b9fd0d6bd996cb8ae871bb81a5f755259ae79c",
+  "scientific_question": "DOES_EXISTING_RQIR_AUTHORITY_DEFINE_A_CANDIDATE_INDEPENDENT_PARENT_SOURCE_FUNCTIONAL_AND_THIRD_VARIATION_OBJECT",
+  "selected_family": "CANDIDATE_INDEPENDENT_THIRD_VARIATION_OF_PARENT_RQIR_SOURCE_FUNCTIONAL",
+  "target_formal_object": "O3_ABC[J] := delta^3 W_RQIR[J] / (delta J_A delta J_B delta J_C)",
+  "target_lock": "Formal notation only. W_RQIR, source space, domain and derivative conventions must be independently established by authority; the object is not presumed to exist.",
+  "authority_records": [
+    {
+      "role": "frontier_recovery",
+      "path": "recovery/CURRENT_FRONT.md",
+      "blob": "f41772ac01421ee48a34917d3fde239627f23308"
+    },
+    {
+      "role": "rcg008_terminal",
+      "path": "results/RCG008_HIGHER_ORDER_RQIR_SOURCE_AUTHORITY_CENSUS_TERMINAL.md",
+      "blob": "01a98c0af940d70632030fa1c36fba0c8efef3de"
+    },
+    {
+      "role": "structural_import_terminal",
+      "path": "results/RQIRCGSF_STRUCTURAL_IMPORT_TERMINAL.md",
+      "blob": "baf4f7d33e92a4724e40ea5162f654705dc349b5"
+    },
+    {
+      "role": "structural_import_manifest",
+      "path": "research_log/RQIRCGSF_STRUCTURAL_IMPORT_MANIFEST.md",
+      "blob": "1f9417442e387bddf1dda935604bb507734247d6"
+    },
+    {
+      "role": "model_slot_graph",
+      "path": "docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md",
+      "blob": "fe019f91114052bd8b6a4b56cf1373d765ed9b06"
+    },
+    {
+      "role": "observable_obligations",
+      "path": "docs/RQIRCG_SELECTOR_OBSERVABLE_OBLIGATIONS.md",
+      "blob": "562db13b9c58895e8ce8e8293ef91461d691b087"
+    },
+    {
+      "role": "clean_ledger",
+      "path": "research_log/RQIRCG_RESEARCH_LEDGER.md",
+      "blob": "f82aa0dd4ffa223f3fb3bf41bf8ac328eaf9c4da"
+    },
+    {
+      "role": "g89_negative_control",
+      "path": "results/ITER087_G89_D_INHERITED_CONSTRAINT_SELECTION_SUFFICIENCY_TERMINAL.md",
+      "blob": "71175e7411efabbbc98ebd6e09172d1d540f15f9"
+    },
+    {
+      "role": "candidate_ctp_negative_control",
+      "path": "results/RCG002_CPI1_NONLINEAR_CONSTRUCTOR_TERMINAL.md",
+      "blob": "38ef03cf46fb4fd98f342f30568d102391a6017e"
+    },
+    {
+      "role": "source_constitution_negative_control",
+      "path": "results/RCG002_RSC_SCPT1_SOURCE_CONSTITUTION_TRIAGE_TERMINAL.md",
+      "blob": "c633f8c349c5f90a4d2c9c712659a7e65ea90559"
+    },
+    {
+      "role": "source_action_negative_control",
+      "path": "results/RCG002_RSC_SSE1_SOURCE_STRESS_EQUIVALENCE_TERMINAL.md",
+      "blob": "0fa6905d8453637110cd4c8d5f15fcb07467dffe"
+    }
+  ],
+  "outcome_blind_triage": {
+    "scale": "ordinal 1..3; higher is better except COST where lower is better",
+    "metric": "AUTHORITY*DERIVABILITY*EXPECTED_INDEPENDENT_INFORMATION*DOMAIN_CLEANLINESS*FALSIFIABILITY/COST",
+    "candidates": [
+      {
+        "family": "THIRD_VARIATION_PARENT_FUNCTIONAL",
+        "AUTHORITY": 2,
+        "DERIVABILITY": 2,
+        "EXPECTED_INDEPENDENT_INFORMATION": 3,
+        "DOMAIN_CLEANLINESS": 3,
+        "FALSIFIABILITY": 3,
+        "COST": 1,
+        "score": 108,
+        "rationale": "Tests the most primitive common prerequisite W[J]+source space without importing CTP or retarded ordering."
+      },
+      {
+        "family": "HIGHER_ORDER_WARD_IDENTITY",
+        "AUTHORITY": 2,
+        "DERIVABILITY": 1,
+        "EXPECTED_INDEPENDENT_INFORMATION": 2,
+        "DOMAIN_CLEANLINESS": 3,
+        "FALSIFIABILITY": 3,
+        "COST": 2,
+        "score": 18,
+        "rationale": "Ward consistency is durable, but higher-order independent content requires source/contact conventions not yet established."
+      },
+      {
+        "family": "CUBIC_CTP_RESPONSE",
+        "AUTHORITY": 2,
+        "DERIVABILITY": 1,
+        "EXPECTED_INDEPENDENT_INFORMATION": 3,
+        "DOMAIN_CLEANLINESS": 1,
+        "FALSIFIABILITY": 3,
+        "COST": 2,
+        "score": 9,
+        "rationale": "Existing concrete CTP structures are C/D or RCG002 scoped; branch/source authority is not universal."
+      },
+      {
+        "family": "THREE_POINT_RETARDED_KERNEL",
+        "AUTHORITY": 2,
+        "DERIVABILITY": 1,
+        "EXPECTED_INDEPENDENT_INFORMATION": 3,
+        "DOMAIN_CLEANLINESS": 1,
+        "FALSIFIABILITY": 3,
+        "COST": 2,
+        "score": 9,
+        "rationale": "Known retarded cubic evidence is D-specific and cannot be promoted upstream."
+      }
+    ],
+    "selected": "THIRD_VARIATION_PARENT_FUNCTIONAL",
+    "prohibited_selection_basis": [
+      "desired alpha",
+      "agreement with Weyl3",
+      "nonzero likelihood",
+      "aesthetic preference"
+    ]
+  },
+  "source_definition_requirements": {
+    "R1_PARENT_FUNCTIONAL": "Exact durable RQIR-owned parent source/generating/influence functional is explicitly defined.",
+    "R2_SOURCE_SPACE": "Source variables/index spaces and admissible source family are explicitly defined.",
+    "R3_THIRD_VARIATION_LICENSE": "Authority licenses third functional variation in that source space; no value is computed.",
+    "R4_CANDIDATE_INDEPENDENCE": "Definition survives removal of Weyl3/RCG gravity-candidate equations and candidate-generated completion objects.",
+    "R5_DOMAIN": "Exact domain/scope is declared and is not merely D-specific or RCG002-specific.",
+    "R6_TRANSFORMATION_RULE": "Required source transformation/representative rule is defined sufficiently to know whether O3 is representative invariant or dependent.",
+    "R7_ORDERING_RULE": "If the parent object is real-time/CTP/retarded, branch/ordering/contact conventions are explicit; otherwise this requirement is NOT_APPLICABLE_BY_AUTHORITY, not silently invented."
+  },
+  "controls": {
+    "G89": "MUST_REJECT_D_SPECIFIC_HIGHER_ORDER_AS_UPSTREAM_OBJECT",
+    "RQIRCGSF_SUCCESSOR": "MUST_REJECT_SUCCESSOR_ONLY_PRINCIPLE_AS_PARENT_AUTHORITY",
+    "RCG002_CPI1": "MUST_REJECT_CONDITIONAL_OR_CANDIDATE_OWNED_W_AS_PARENT_RQIR_OBJECT",
+    "SYNTHETIC_COMPLETE_OBJECT": "MUST_PASS_CLASSIFIER_BUT_NEVER_ENTER_SCIENTIFIC_CORPUS"
+  },
+  "allowed_classifications": [
+    "PASS_SCOPED_RCG009_UPSTREAM_HIGHER_ORDER_RQIR_OBJECT_SOURCE_DEFINED",
+    "BLOCKED_SCOPED_RCG009_RQIR_PRINCIPLES_DO_NOT_DEFINE_REQUIRED_HIGHER_ORDER_OBJECT",
+    "BLOCKED_SCOPED_RCG009_SOURCE_OWNERSHIP_OR_DOMAIN_UNRESOLVED",
+    "INVALID_RCG009_IMPLEMENTATION_OR_PROVENANCE"
+  ],
+  "locks": {
+    "value_derivation": "UNAUTHORIZED",
+    "bridge_gate": "UNAUTHORIZED",
+    "alpha_sensitivity": "UNAUTHORIZED",
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
