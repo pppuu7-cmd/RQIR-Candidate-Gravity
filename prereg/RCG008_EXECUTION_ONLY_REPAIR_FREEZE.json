@@ -1,0 +1,26 @@
+{
+  "schema": "RCG008_EXECUTION_ONLY_REPAIR_FREEZE_V0",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_REPAIRED_CANONICAL_EXECUTION",
+  "invalid_pre_science_run": 35367595336,
+  "invalid_pre_science_head": "b01f237d9d50601805ca2dc8e84cc63db427f491",
+  "implementation_commit": "b127f7adbe20101c1d3ff91c1c10c7a98b61f854",
+  "authority_base_commit": "1a53979ea1f684d6acdc35c789c0bf8c86e8f6b0",
+  "scientific_prereg_commit": "a802ee303cccce73f0a8c974f4c73915ebae40c0",
+  "execution_only_repair_record": "prereg/RCG008_EXECUTION_ONLY_REPAIR_V0.md",
+  "implementation_blobs": {
+    "data/RCG008_FROZEN_CORPUS_MANIFEST_V0.json": "f10edc81b28d9feaeeecb2537a2c74d0916ad135",
+    "scripts/rcg008_source_authority_constructor.py": "34f112138461577d501d1ae97be49b32cfb76e0d",
+    "scripts/rcg008_source_authority_critic.py": "ab0060537a475b50570d95bfb3690f8c4fab3216",
+    "scripts/rcg008_source_authority_aggregate.py": "6aa68609a3e9fe1b8d05403a76e9ee3f2cafb71e",
+    "scripts/rcg008_source_authority_auditor.py": "150544bc4926ab847db27362f965b9debd233c01",
+    "scripts/rcg008_verify_execution_identity.py": "ac4ee66826f116a02ffb4685afe0869b02d90abe",
+    ".github/workflows/rcg008-higher-order-source-authority-census.yml": "3b44d19d82dc1763a9c8bc087eb7ba9a2d184a71",
+    "prereg/RCG008_EXECUTION_ONLY_REPAIR_V0.md": "42a27b74745e5cf96ac26947f052f064e551d7f1"
+  },
+  "locked_science": "Corpus, criteria, classifications, positive controls, aggregate taxonomy and claim locks unchanged.",
+  "locks": {
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
