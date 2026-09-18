@@ -1,0 +1,71 @@
+{
+  "schema": "RCG011_NEW_PARENT_PRINCIPLE_FAMILY_FORMATION_AUTHORITY_V0",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_EXECUTION",
+  "frontier_commit": "ba2b143df4511201b77a1f2d876ada7e01f2f000",
+  "scientific_question": "CAN_ANY_PROSPECTIVELY_NEW_CANDIDATE_INDEPENDENT_PARENT_SOURCE_GENERATING_OR_INFLUENCE_PRINCIPLE_FAMILY_BE_SELECTED_PREOUTCOME_BY_EXISTING_RQIR_STRUCTURAL_OR_EMPIRICAL_ANCHORS_WHILE_SATISFYING_A_COMPLETE_SOURCE_STATE_GENERATING_CONTRACT_WITHOUT_HIDDEN_MODEL_DATA?",
+  "families": [
+    {
+      "id": "F1_CLOSED_VARIATIONAL_SOURCE_GENERATOR",
+      "description": "one closed same-realization action/constitutive functional supplies source plus carrier self-source"
+    },
+    {
+      "id": "F2_CAUSAL_POSITIVE_INFLUENCE_GENERATOR",
+      "description": "normalized positive causal influence/process functional over closed operational histories"
+    },
+    {
+      "id": "F3_RELATIONAL_COMPOSITION_GENERATOR",
+      "description": "relational composition/path-independence principle generates parent response hierarchy"
+    },
+    {
+      "id": "F4_JOINT_SOURCE_STATE_GENERATING_PACKAGE",
+      "description": "joint source ontology + state/measure + causal generating rule treated as a new primitive package"
+    }
+  ],
+  "eligibility_contract": [
+    "E1_EXPLICITLY_NEW_MODEL_CONTENT",
+    "E2_EXACT_SOURCE_SPACE",
+    "E3_EXACT_DOMAIN",
+    "E4_TRANSFORMATION_OR_EQUIVALENCE_LAW",
+    "E5_CAUSAL_OR_ORDERING_RULE",
+    "E6_NORMALIZATION_OR_PHYSICAL_EQUIVALENCE_CLASS",
+    "E7_STATE_MEASURE_OR_PREPARATION_CONSTITUTION",
+    "E8_GENERATING_OR_RESPONSE_RULE_WITH_SELECTION_POWER",
+    "E9_CANDIDATE_INDEPENDENCE",
+    "E10_INDEPENDENT_PREOUTCOME_SELECTION_AUTHORITY",
+    "E11_NO_HIDDEN_PLACEHOLDERS",
+    "E12_OUTCOME_FIREWALL"
+  ],
+  "authority_records": [
+    {"path":"recovery/CURRENT_FRONT.md","blob":"3c867e0f3da8dd830c8fca2c6446d55629f8cdb4","role":"canonical post-RCG010 recovery"},
+    {"path":"results/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_TERMINAL.md","blob":"91aafa5cc2ead404c84efb26f54cda1afe1c9fce","role":"existing principles underdetermine parent principle"},
+    {"path":"results/RCG002_RSC_CSA1_CLOSED_SOURCE_ACTION_PROPOSAL_TERMINAL.md","blob":"ff6b58e181fc12b3ab59db6509f783d23148adcd","role":"closed variational source route underdefined without ontology/coupling rule"},
+    {"path":"results/RCG002_RSC_SCPT1_SOURCE_CONSTITUTION_TRIAGE_TERMINAL.md","blob":"c633f8c349c5f90a4d2c9c712659a7e65ea90559","role":"no preoutcome source constitution selected"},
+    {"path":"results/RCG002_RSC_QCPT1_QUANTUM_CONSTITUTION_TRIAGE_TERMINAL.md","blob":"0c950c3d5414ab47589c7383f8cf5b46ad201d0f","role":"no preoutcome quantum state/measure/influence constitution selected"},
+    {"path":"results/RCG002_RSC_MAPF1_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_TERMINAL.md","blob":"8ec49d042a7673fc2627140dad1321462ccc2bda","role":"package schema with placeholders is not model definition"},
+    {"path":"results/RCG002_RSC_AB1_NEW_AXIOM_ANCHOR_BUDGET_TERMINAL.md","blob":"247b82e91962609f5bfaf53b69be6978f935eb59","role":"no Level-III model-defining axiom independently anchored preoutcome"},
+    {"path":"results/RCG002_RSC_S2PA1_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_TERMINAL.md","blob":"cf0991ff86477f6b8e232a8a52e6418df6c04520","role":"relational/action/scattering premise classes not forced by parent"},
+    {"path":"docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md","blob":"fe019f91114052bd8b6a4b56cf1373d765ed9b06","role":"source, state/measure, quantum law and operational slots remain distinct"},
+    {"path":"docs/RQIRCG_SELECTOR_OBSERVABLE_OBLIGATIONS.md","blob":"562db13b9c58895e8ce8e8293ef91461d691b087","role":"future selector obligations and outcome firewall"}
+  ],
+  "decision_rule": {
+    "structural_eligibility": "all E1-E9,E11,E12 PASS and E5 may be NOT_APPLICABLE only if justified",
+    "scientific_selection": "structurally eligible family must also have E10 PASS with Level-III preoutcome authority",
+    "multiple_structurally_eligible_without_unique_E10": "BLOCKED_NO_PREOUTCOME_SELECTION",
+    "zero_structurally_eligible": "BLOCKED_HIDDEN_MODEL_DATA"
+  },
+  "positive_control": "SYNTHETIC_FULLY_SPECIFIED_PARENT_PRINCIPLE_WITH_INDEPENDENT_PREDECLARED_ANCHOR_MUST_PASS_CLASSIFIER_ONLY",
+  "locks": {
+    "coefficient_space":"A=span{alpha}",
+    "selector_rank":0,
+    "residual_dimension":1,
+    "parent_principle_defined":false,
+    "parent_functional_defined":false,
+    "source_object_defined":false,
+    "value_derivation_authorized":false,
+    "bridge_authorized":false,
+    "alpha_sensitivity_authorized":false,
+    "alpha":"UNSELECTED",
+    "chi_ABC":"UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED":"0%"
+  }
+}
