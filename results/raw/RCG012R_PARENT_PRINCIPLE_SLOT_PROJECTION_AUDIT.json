@@ -1,0 +1,44 @@
+{
+  "phase": "RCG012R_PARENT_PRINCIPLE_SLOT_PROJECTION_AUTHORITY_AUDIT",
+  "frontier_commit": "e3e735500f7a78f4ed6d29a2479d0c3c57c42cea",
+  "prereg_commit": "0f6b8995702b80f22a13afe7eaf5ea4543620f98",
+  "static_critic_commit": "3201951e23c99b180e1b13772c1847d2f855ddf1",
+  "static_critic_verdict": "WELL_POSED_FOR_PARENT_PRINCIPLE_SLOT_PROJECTION_AUTHORITY_AUDIT",
+  "requirements": {
+    "P1_EXPLICIT_PROJECTION_RULE_EXISTS": "FAIL_NO_AUTHORIZED_A_E_TO_PARENT_STAGE_PROJECTION",
+    "P2_ALL_FIVE_SLOTS_CLASSIFIED_BY_AUTHORITY": "NOT_REACHED_P1_BLOCKER",
+    "P3_NONCOLLAPSE_RULE_PRESERVED": "PASS_BINDING_AUTHORITY",
+    "P4_PARENT_STAGE_BOUNDARY_EXPLICIT": "FAIL_BOUNDARY_NOT_MAPPED_TO_A_E",
+    "P5_OPERATIONAL_READOUT_BOUNDARY_EXPLICIT": "FAIL_NO_AUTHORIZED_PARENT_VS_READOUT_STAGE_ASSIGNMENT",
+    "P6_CANDIDATE_INDEPENDENCE": "PASS",
+    "P7_OUTCOME_FIREWALL": "PASS"
+  },
+  "code_search_controls": {
+    "parent principle + Slot A": 0,
+    "parent-principle + OPERATIONAL MAP": 0,
+    "five slots + parent": 0,
+    "projection + model-definition slot": 0,
+    "note": "searches executed before RCG012R prereg was added; navigation control only"
+  },
+  "exact_authority": {
+    "rcg010_blob": "91aafa5cc2ead404c84efb26f54cda1afe1c9fce",
+    "rcg011_blob": "5ac68cdad4b52ff1d62a9c889683a399905205c3",
+    "slot_graph_blob": "fe019f91114052bd8b6a4b56cf1373d765ed9b06",
+    "selector_observable_blob": "562db13b9c58895e8ce8e8293ef91461d691b087"
+  },
+  "classification": "BLOCKED_SCOPED_RCG012R_NO_AUTHORIZED_PROJECTION_FROM_FIVE_SLOT_GRAPH_TO_PARENT_PRINCIPLE",
+  "new_scientific_fact": "PARENT_PRINCIPLE_STAGE_PROJECTION_FROM_FIVE_SLOT_GRAPH_IS_NOT_DEFINED_BY_CURRENT_DURABLE_AUTHORITY",
+  "minimal_basis_theorem_authorized": false,
+  "parent_principle_defined": false,
+  "parent_functional_defined": false,
+  "source_object_defined": false,
+  "coefficient_space": "A=span{alpha}",
+  "selector_rank": 0,
+  "residual_dimension": 1,
+  "value_derivation_authorized": false,
+  "bridge_authorized": false,
+  "alpha_sensitivity_authorized": false,
+  "alpha": "UNSELECTED",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "THEORY_ESTABLISHED": "0%"
+}
