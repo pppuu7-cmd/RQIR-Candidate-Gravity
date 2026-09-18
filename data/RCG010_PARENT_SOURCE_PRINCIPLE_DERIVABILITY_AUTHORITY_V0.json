@@ -1,0 +1,138 @@
+{
+  "schema": "RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_AUTHORITY_V0",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_EXECUTION",
+  "frontier_commit": "2cd66deb88f513a36ca78b00de5e6c15426e1dd5",
+  "selected_gate": "PARENT_SOURCE_PRINCIPLE_DERIVABILITY_FROM_EXISTING_RQIR_AUTHORITY",
+  "scientific_question": "CAN_A_CANDIDATE_INDEPENDENT_RQIR_PARENT_SOURCE_GENERATING_OR_INFLUENCE_PRINCIPLE_BE_DEFINED_OR_DERIVED_WITH_EXACT_SOURCE_SPACE_DOMAIN_AND_TRANSFORMATION_LAW_WITHOUT_USING_GRAVITY_CANDIDATE_OUTCOMES?",
+  "required_parent_principle_fields": [
+    "EXPLICIT_PARENT_PRINCIPLE_OR_DERIVATION_RULE",
+    "SOURCE_SPACE",
+    "DOMAIN",
+    "TRANSFORMATION_OR_EQUIVALENCE_LAW",
+    "CAUSAL_OR_ORDERING_RULE_IF_APPLICABLE",
+    "NORMALIZATION_OR_EQUIVALENCE_CLASS",
+    "GENERATING_OR_RESPONSE_RULE",
+    "CANDIDATE_INDEPENDENCE",
+    "NO_SUCCESSOR_RETROIMPORT",
+    "NO_OUTCOME_SELECTION"
+  ],
+  "authority_records": [
+    {
+      "path": "candidates/RCG_002_RELATIONAL_CONTROLLED_PHASE_CHANNEL.md",
+      "blob": "c6414f788df18e7d06fefe72c405e5d3091a971e",
+      "layer": "INHERITED_PARENT_PRIMITIVE",
+      "role": "relational operational seed; microscopic chi/source law explicitly deferred"
+    },
+    {
+      "path": "docs/CONSTRUCTION_CONTRACT.md",
+      "blob": "45b3b5a36a6340a3a841bd2fc0b3053c753b5365",
+      "layer": "INHERITED_PARENT_PRIMITIVE",
+      "role": "construction order and consistency obligations; not a dynamics/source law"
+    },
+    {
+      "path": "candidates/RCG_002_COVARIANT_BASELINE_COMPLETION_V0.md",
+      "blob": "a57c045edb858b28740a1d6709343690c53d6b01",
+      "layer": "INHERITED_PARENT_PRIMITIVE",
+      "role": "linearized spin-2 conserved-source retarded baseline; nonlinear/source constitution unresolved"
+    },
+    {
+      "path": "results/ITER095_G97_CLOSED_TOTAL_SOURCE_PREPARATION_TERMINAL.md",
+      "blob": "691b64c94527fec076c165e5e036928949fe544e",
+      "layer": "INHERITED_PARENT_PRIMITIVE",
+      "role": "closed preparation/source bookkeeping and exact total momentum conservation only"
+    },
+    {
+      "path": "results/RCG002_RSC1_INTERFACE_CLOSURE_PREOUTCOME_TERMINAL.md",
+      "blob": "6f5fccb1558858b48386e3dfcef82626f173a3d2",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "source/stress and positive-influence interfaces independently missing"
+    },
+    {
+      "path": "results/RCG002_RSC_CSA1_CLOSED_SOURCE_ACTION_PROPOSAL_TERMINAL.md",
+      "blob": "ff6b58e181fc12b3ab59db6509f783d23148adcd",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "generic closed variational source rule underdefined without source ontology/coupling rule"
+    },
+    {
+      "path": "results/RCG002_RSC_SCPT1_SOURCE_CONSTITUTION_TRIAGE_TERMINAL.md",
+      "blob": "c633f8c349c5f90a4d2c9c712659a7e65ea90559",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "no pre-outcome source constitution selected; new model-defining ontology required"
+    },
+    {
+      "path": "results/RCG002_RSC_QCPT1_QUANTUM_CONSTITUTION_TRIAGE_TERMINAL.md",
+      "blob": "0c950c3d5414ab47589c7383f8cf5b46ad201d0f",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "no pre-outcome quantum constitution selected; state/measure/influence constitution required"
+    },
+    {
+      "path": "results/RCG002_RSC_MAPF1_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_TERMINAL.md",
+      "blob": "8ec49d042a7673fc2627140dad1321462ccc2bda",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "formal closure package schema does not fix source/action or state/measure content"
+    },
+    {
+      "path": "results/RCG002_RSC_AB1_NEW_AXIOM_ANCHOR_BUDGET_TERMINAL.md",
+      "blob": "247b82e91962609f5bfaf53b69be6978f935eb59",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "no current Level-III model-defining axiom independently anchored pre-outcome"
+    },
+    {
+      "path": "results/RCG002_RSC_S2PA1_SPIN2_CONSISTENCY_PREMISE_AUTHORITY_TERMINAL.md",
+      "blob": "cf0991ff86477f6b8e232a8a52e6418df6c04520",
+      "layer": "PARENT_STRUCTURAL_TERMINAL",
+      "role": "relational/action/S-matrix premise classes are not forced by current parent authority"
+    },
+    {
+      "path": "docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md",
+      "blob": "fe019f91114052bd8b6a4b56cf1373d765ed9b06",
+      "layer": "PARENT_INTEGRATION_ARCHITECTURE",
+      "role": "source/preparation and state/measure remain distinct unresolved model-definition slots"
+    },
+    {
+      "path": "results/RQIRCGSF_STRUCTURAL_IMPORT_TERMINAL.md",
+      "blob": "baf4f7d33e92a4724e40ea5162f654705dc349b5",
+      "layer": "SUCCESSOR_FIREWALL",
+      "role": "future source principles are successor-only unless separately promoted; no retroactive authority"
+    },
+    {
+      "path": "results/RCG009_UPSTREAM_THIRD_VARIATION_SOURCE_DEFINITION_TERMINAL.md",
+      "blob": "b67ddb6edb9e8170d84d865e76790d24035d21d8",
+      "layer": "PARENT_TERMINAL_FRONTIER",
+      "role": "parent functional missing; value/bridge/sensitivity unauthorized"
+    },
+    {
+      "path": "recovery/CURRENT_FRONT.md",
+      "blob": "9686f2ceddb9088375e882025500237f2b5dcbf9",
+      "layer": "RECOVERY_AUTHORITY",
+      "role": "canonical post-RCG009 front"
+    }
+  ],
+  "cheap_obstruction_order": [
+    "O1_EXISTING_PARENT_PRINCIPLE_OR_DERIVATION_RULE",
+    "O2_SOURCE_SPACE",
+    "O3_DOMAIN",
+    "O4_TRANSFORMATION_OR_EQUIVALENCE_LAW",
+    "O5_CAUSAL_ORDERING_NORMALIZATION",
+    "O6_CANDIDATE_INDEPENDENCE"
+  ],
+  "family_controls": {
+    "CLOSED_VARIATIONAL_SOURCE": "must not pass if ontology/couplings/field basis are not fixed",
+    "POSITIVE_INFLUENCE": "must not pass if state/measure/coarse-graining are not fixed",
+    "RELATIONAL_COMPOSITION": "must not be promoted into a full canonical/action premise class by nomenclature",
+    "FORMAL_MULTI_AXIOM_SCHEMA": "must not pass if it contains placeholders rather than selected content",
+    "SUCCESSOR_SOURCE_PRINCIPLE": "must be rejected as retroactive parent authority",
+    "SYNTHETIC_COMPLETE_PARENT_PRINCIPLE": "must take SOURCE_DEFINED branch but is not scientific evidence"
+  },
+  "locks": {
+    "coefficient_space": "A=span{alpha}",
+    "selector_rank": 0,
+    "residual_dimension": 1,
+    "value_derivation_authorized": false,
+    "bridge_authorized": false,
+    "alpha_sensitivity_authorized": false,
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
