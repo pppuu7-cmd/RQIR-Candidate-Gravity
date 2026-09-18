@@ -1,0 +1,35 @@
+{
+  "schema": "RCG010_EXECUTION_IDENTITY_FREEZE_V0",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_CANONICAL_EXECUTION",
+  "scientific_prereg_commit": "8b1402a67b8268c9790192cf37fe19cfe2e435ab",
+  "scientific_prereg_blob": "41523e8e9559b150e412b453680d7874a77882f7",
+  "authority_manifest_blob": "03f644e97b457f7a783f09956af7e39ecff81248",
+  "static_critic_commit": "f9ff9f42e504a5ed3ff4f9646ea1cb3dd41f7bf2",
+  "static_critic_blob": "754e9eb6af307fb794177acee516ed50d94e96d0",
+  "implementation_commit": "1d6c08f8ed26a37b793ca4b05ece2c129feb8a57",
+  "implementation_blobs": {
+    "data/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_AUTHORITY_V0.json": "03f644e97b457f7a783f09956af7e39ecff81248",
+    "prereg/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_V0.md": "41523e8e9559b150e412b453680d7874a77882f7",
+    "research_log/RQIRCG_STATIC_CRITIC_RCG010_PREEXEC.md": "754e9eb6af307fb794177acee516ed50d94e96d0",
+    "scripts/rcg010_parent_principle_constructor.py": "2bcd5d0e486601d16f46a7d80dea8ce815f378ce",
+    "scripts/rcg010_parent_principle_critic.py": "69b79b92cbfa49c95fadeb52800f8962dfa0dbde",
+    "scripts/rcg010_parent_principle_aggregate.py": "f2f60ca809000b2673cb3b9f8c9f41c0d3e5f7e6",
+    "scripts/rcg010_parent_principle_auditor.py": "80cd6b23ef82c188c385437da49dc7b1fd21ec94",
+    "scripts/rcg010_verify_execution_identity.py": "8fcee82f33e8010e31ae4dee175174b09cf00d60",
+    ".github/workflows/rcg010-parent-source-principle-derivability.yml": "6348f7a509cd79190dd8bbede9dc042a97e257f3"
+  },
+  "run_policy": "Exactly one canonical RCG010 parent-principle derivability Actions run is authorized by creation of this freeze file.",
+  "locks": {
+    "coefficient_space": "A=span{alpha}",
+    "selector_rank": 0,
+    "residual_dimension": 1,
+    "parent_functional_defined": false,
+    "source_object_defined": false,
+    "value_derivation_authorized": false,
+    "bridge_authorized": false,
+    "alpha_sensitivity_authorized": false,
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
