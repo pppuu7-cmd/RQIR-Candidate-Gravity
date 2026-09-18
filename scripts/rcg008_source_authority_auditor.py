@@ -8,7 +8,7 @@ def hb(p): return subprocess.check_output(["git","hash-object",p],text=True).str
 AUDIT={
 "G88":("lower-order Ward/CTP constraints","FOUND_BUT_TOO_LOW_ORDER_FOR_ALPHA",False),
 "G89":("D_FROZEN_RETARDED_CUBIC_SECTOR_COEFFICIENT_BLIND_SCOPED","FOUND_BUT_D_SPECIFIC_UNBRIDGED",False),
-"G90":("not a physical nonlinear completion","FOUND_BUT_CANDIDATE_OWNED",False),
+"G90":("physical nonlinear completion","FOUND_BUT_CANDIDATE_OWNED",False),
 "G91":("finite-family witness","FOUND_BUT_CANDIDATE_OWNED",False),
 "G92":("does not select any Weyl/Riemann operator","FOUND_BUT_NOT_SELECTOR_DATUM",False),
 "G93":("BLOCKED_MISSING_CANDIDATE_OWNED_DATUM","FOUND_BUT_CANDIDATE_OWNED",False),

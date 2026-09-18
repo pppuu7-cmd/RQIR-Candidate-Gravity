@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'prereg/RCG008_EXECUTION_IDENTITY_FREEZE.json'
+      - 'prereg/RCG008_EXECUTION_ONLY_REPAIR_FREEZE.json'
 
 permissions:
   contents: read
