@@ -1,0 +1,92 @@
+name: RCG010 Parent Source-Principle Derivability
+
+on:
+  push:
+    paths:
+      - 'prereg/RCG010_EXECUTION_IDENTITY_FREEZE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/rcg010_verify_execution_identity.py
+      - name: Constructor parent-principle derivability audit
+        run: python scripts/rcg010_parent_principle_constructor.py --manifest data/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_AUTHORITY_V0.json --out out/constructor.json
+      - run: cat out/constructor.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg010-constructor
+          path: out/constructor.json
+          if-no-files-found: error
+
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/rcg010_verify_execution_identity.py
+      - name: Independent Critic parent-principle derivability audit
+        run: python scripts/rcg010_parent_principle_critic.py --manifest data/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_AUTHORITY_V0.json --out out/critic.json
+      - run: cat out/critic.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg010-critic
+          path: out/critic.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg010-constructor
+          path: in/constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg010-critic
+          path: in/critic
+      - name: Aggregate parent-principle decision
+        run: python scripts/rcg010_parent_principle_aggregate.py --constructor in/constructor/constructor.json --critic in/critic/critic.json --out out/aggregate.json
+      - run: cat out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg010-aggregate
+          path: out/aggregate.json
+          if-no-files-found: error
+
+  auditor:
+    needs: [aggregate]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg010-aggregate
+          path: in/aggregate
+      - name: Independent Selector Auditor
+        run: python scripts/rcg010_parent_principle_auditor.py --manifest data/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_AUTHORITY_V0.json --aggregate in/aggregate/aggregate.json --out out/audit.json
+      - run: cat out/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg010-independent-audit
+          path: out/audit.json
+          if-no-files-found: error
