@@ -15,7 +15,8 @@ A bounded pre-rerun static audit of every frozen evidence anchor found exactly t
 Authorized repair only:
 - G90 evidence anchor -> `physical nonlinear completion` in Constructor, Critic and Auditor;
 - remove the absent redundant G96 Constructor literal while retaining `diagnostic connected directions`;
-- add the dedicated repair-freeze trigger path to the existing workflow.
+- add the dedicated repair-freeze trigger path to the existing workflow;
+- make the identity verifier prefer the repair freeze when present, while retaining the original freeze fallback.
 
 Locked unchanged:
 - RCG008 preregistration and question;
