@@ -413,3 +413,46 @@ This is a model-definition obligation audit, not a count of fundamental laws in 
 No response value, bridge, alpha sensitivity, alpha solution or chi_ABC is authorized.
 
 STOP after terminal RCG012 basis classification before populating a concrete successor hypothesis.
+
+
+## ACTIVE RCG012 WAITSTATE — NON-SCIENTIFIC
+
+RCG012 gate:
+`RCG012_MINIMAL_EXPLICIT_NEW_MODEL_CONTENT_BASIS_PREOUTCOME_GATE`.
+
+Scientific preregistration:
+`db72a4cb44177a7a35063050b023bfb49ee01a01`.
+
+Static Critic:
+`838664690c19019a3355aa11c7691b2d76ad25c7`,
+verdict `WELL_POSED_FOR_MINIMAL_EXPLICIT_CONTENT_BASIS_EXECUTION`.
+
+Implementation:
+`a840f390b2a6786e661013a9e63c72ccbdd82066`.
+
+Execution identity / launch head:
+`4d9411e8234985a8e0123578dcee42bf607fd53d`.
+
+Canonical Actions run:
+`35405271943`.
+
+Latest checked operational state:
+`queued`.
+
+Jobs:
+- critic `105793632084` — queued;
+- constructor `105793632312` — queued.
+
+No job steps have started and no RCG012 artifacts exist at this waitstate.
+
+This is **not** a scientific BLOCKED/FAIL/INVALID result.
+
+Rules while queued:
+- do not launch a competing RCG012 run;
+- do not infer S/Q/G necessity from preregistered expectations;
+- do not use local/manual execution as replacement scientific authority;
+- do not open RCG013;
+- do not change frozen RCG012 criteria;
+- only monitor canonical run `35405271943` or diagnose explicit infrastructure failure if GitHub later reports one.
+
+All RCG011 locks remain in force until RCG012 terminal authority exists.
