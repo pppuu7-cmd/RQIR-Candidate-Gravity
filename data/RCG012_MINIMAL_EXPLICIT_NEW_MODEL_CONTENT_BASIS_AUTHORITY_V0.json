@@ -1,0 +1,45 @@
+{
+  "schema":"RCG012_MINIMAL_EXPLICIT_NEW_MODEL_CONTENT_BASIS_AUTHORITY_V0",
+  "status":"PROSPECTIVELY_FROZEN_BEFORE_EXECUTION",
+  "frontier_commit":"b3caf62538a0458c7c2416b2a6111da4c2a31602",
+  "scientific_question":"WITHIN_THE_FROZEN_RQIR_PARENT_PRINCIPLE_CONTRACT_WHAT_IS_THE_MINIMAL_INDEPENDENT_NONPLACEHOLDER_CONTENT_BASIS_REQUIRED_TO_DEFINE_AN_EXECUTABLE_CANDIDATE_INDEPENDENT_PARENT_SOURCE_OBJECT_PREOUTCOME?",
+  "blocks":{
+    "S_SOURCE_CONSTITUTION":{
+      "contains":["exact source ontology/space","physical source domain","transformation/equivalence quotient"]
+    },
+    "Q_STATE_MEASURE_PREPARATION":{
+      "contains":["physical state/measure/boundary/preparation constitution"]
+    },
+    "G_QUANTITATIVE_GENERATOR":{
+      "contains":["quantitative source+state to generating/influence/response map","causal/ordering rule in chosen representation","normalization/output equivalence class"]
+    }
+  },
+  "candidate_bases":[
+    ["S_SOURCE_CONSTITUTION","G_QUANTITATIVE_GENERATOR"],
+    ["Q_STATE_MEASURE_PREPARATION","G_QUANTITATIVE_GENERATOR"],
+    ["S_SOURCE_CONSTITUTION","Q_STATE_MEASURE_PREPARATION"],
+    ["S_SOURCE_CONSTITUTION","Q_STATE_MEASURE_PREPARATION","G_QUANTITATIVE_GENERATOR"]
+  ],
+  "authority_records":[
+    {"path":"recovery/CURRENT_FRONT.md","blob":"a44980ae63b51593a02254b627d09d18706aba9d","role":"post-RCG011 recovery"},
+    {"path":"results/RCG011_NEW_PARENT_PRINCIPLE_FAMILY_FORMATION_TERMINAL.md","blob":"5ac68cdad4b52ff1d62a9c889683a399905205c3","role":"all frozen named families retain hidden content"},
+    {"path":"results/RCG002_RSC1_INTERFACE_CLOSURE_PREOUTCOME_TERMINAL.md","blob":"6f5fccb1558858b48386e3dfcef82626f173a3d2","role":"source/stress and positive influence interfaces independently missing"},
+    {"path":"results/RCG002_RSC_QCPT1_QUANTUM_CONSTITUTION_TRIAGE_TERMINAL.md","blob":"0c950c3d5414ab47589c7383f8cf5b46ad201d0f","role":"fixed microdynamics does not fix influence state/measure"},
+    {"path":"results/RCG002_RSC_MAPF1_MINIMAL_MULTI_AXIOM_PACKAGE_FORMATION_TERMINAL.md","blob":"8ec49d042a7673fc2627140dad1321462ccc2bda","role":"source and state ambiguities form independent product controls"},
+    {"path":"results/RCG002_VB1_CURRENT_VERSION_BOUNDARY_TERMINAL.md","blob":"d8658abeef164518ec892755b720c0d5e782e315","role":"current version lacks nonlinear generative source/state/evolution rule"},
+    {"path":"docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md","blob":"fe019f91114052bd8b6a4b56cf1373d765ed9b06","role":"source, state/measure and law slots are distinct obligations"}
+  ],
+  "necessity_tests":{
+    "S_PLUS_G_WITHOUT_Q":"must fail by same-dynamics/different-state control",
+    "Q_PLUS_G_WITHOUT_S":"must fail by source-representative/ontology ambiguity",
+    "S_PLUS_Q_WITHOUT_G":"must fail by absent nonlinear quantitative generator and surviving connected-response freedom"
+  },
+  "sufficiency_control":"S_PLUS_Q_PLUS_G_SYNTHETIC_EXACT_OBJECT_MUST_PASS_STRUCTURAL_EXECUTABILITY_CLASSIFIER_ONLY",
+  "interpretation_ceiling":"minimum obligation basis inside frozen parent-principle contract; not a count of fundamental laws, not theory-space dimension, not a physical model selection",
+  "locks":{
+    "coefficient_space":"A=span{alpha}","selector_rank":0,"residual_dimension":1,
+    "parent_principle_defined":false,"parent_functional_defined":false,"source_object_defined":false,
+    "value_derivation_authorized":false,"bridge_authorized":false,"alpha_sensitivity_authorized":false,
+    "alpha":"UNSELECTED","chi_ABC":"UNAUTHORIZED_NOT_COMPUTED","THEORY_ESTABLISHED":"0%"
+  }
+}
