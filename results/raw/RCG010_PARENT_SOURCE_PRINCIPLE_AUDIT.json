@@ -1,0 +1,22 @@
+{
+  "THEORY_ESTABLISHED": "0%",
+  "aggregate_classification": "BLOCKED_SCOPED_RCG010_EXISTING_RQIR_PRINCIPLES_UNDERDETERMINE_PARENT_SOURCE_PRINCIPLE",
+  "alpha": "UNSELECTED",
+  "alpha_sensitivity_authorized": false,
+  "bridge_authorized": false,
+  "candidate_independence": "NOT_ESTABLISHED_NO_PARENT_PRINCIPLE",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "controls_ok": true,
+  "domain_status": "NOT_DEFINED_PARENT_PRINCIPLE_UNDERDETERMINED",
+  "independent_classification": "BLOCKED_SCOPED_RCG010_EXISTING_RQIR_PRINCIPLES_UNDERDETERMINE_PARENT_SOURCE_PRINCIPLE",
+  "parent_functional_defined": false,
+  "parent_principle_defined": false,
+  "phase": "RCG010_PARENT_SOURCE_PRINCIPLE_INDEPENDENT_SELECTOR_AUDITOR",
+  "provenance_ok": true,
+  "run_id": "35403150835",
+  "source_object_defined": false,
+  "source_space_status": "NOT_DEFINED_PARENT_PRINCIPLE_UNDERDETERMINED",
+  "transformation_law_status": "NOT_DEFINED_PARENT_PRINCIPLE_UNDERDETERMINED",
+  "value_derivation_authorized": false,
+  "verdict": "CONFIRMED_SCOPED"
+}
