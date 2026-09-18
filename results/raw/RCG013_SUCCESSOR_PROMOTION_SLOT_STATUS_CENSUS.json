@@ -1,0 +1,56 @@
+{
+  "phase": "RCG013_SUCCESSOR_PROMOTION_SLOT_STATUS_CENSUS",
+  "frontier_commit": "ef624dbb6ad04550960e4379d4846e73476a2259",
+  "prereg_commit": "a2fb9620a21aad02b8e04b8f79766bd848e50481",
+  "static_critic_commit": "d2146bac7a2d917b85ce690b2968b7c77d181635",
+  "static_critic_verdict": "WELL_POSED_FOR_PARENT_LOCAL_SUCCESSOR_PROMOTION_SLOT_CENSUS",
+  "tree_commit": "d2146bac7a2d917b85ce690b2968b7c77d181635",
+  "tree_presence": {
+    "RHPI_or_SF021_or_SF025_or_SF026_named_paths": [],
+    "interpretation": "no parent-local defining result/object files for those successor objects; import records only"
+  },
+  "slots": {
+    "A_CLASSICAL_LAW": {
+      "status": "SUCCESSOR_ONLY_SELECTED_REFERENCE_NOT_PARENT_LOCAL",
+      "evidence": "structural import manifest references SF021 terminal commit/path and RHPI selection, but exact defining object is absent from parent tree"
+    },
+    "B_SOURCE_CONSTITUTION": {
+      "status": "UNRESOLVED_MODEL_DEFINITION_SLOT",
+      "evidence": "slot graph explicitly marks source/preparation as unresolved; no future source constitution principle imported"
+    },
+    "C_STATE_MEASURE": {
+      "status": "UNRESOLVED_MODEL_DEFINITION_SLOT",
+      "evidence": "slot graph marks separate state/measure slot; QCPT1 terminal NO_PREOUTCOME_QUANTUM_CONSTITUTION_SELECTED"
+    },
+    "D_QUANTUM_LAW": {
+      "status": "STRUCTURAL_NEGATIVE_CONTROL_ONLY",
+      "evidence": "SF025 import requires nonzero selection power on matching fibre; no selected quantum law imported"
+    },
+    "E_OPERATIONAL_MAP": {
+      "status": "BOUNDARY_COMPLETE_OBJECT_MISSING",
+      "evidence": "SF026 import terminalizes FINITE_TIME_OBSERVABLE_BLOCKED_PENDING_BOUNDARY_COMPLETE_PROTOCOL; requirement chain is not an object"
+    }
+  },
+  "classification": "PASS_SCOPED_RCG013_SUCCESSOR_PROMOTION_SLOT_STATUS_CENSUS_COMPLETE",
+  "earliest_parent_local_promotion_blocker": "A_CLASSICAL_LAW_EXACT_SELECTED_OBJECT_NOT_MATERIALIZED_IN_PARENT_REPOSITORY",
+  "downstream_open_slots": [
+    "B_SOURCE_CONSTITUTION",
+    "C_STATE_MEASURE",
+    "D_QUANTUM_LAW",
+    "E_OPERATIONAL_MAP"
+  ],
+  "promotion_executable": false,
+  "external_repository_access_used": false,
+  "parent_principle_defined": false,
+  "parent_functional_defined": false,
+  "source_object_defined": false,
+  "coefficient_space": "A=span{alpha}",
+  "selector_rank": 0,
+  "residual_dimension": 1,
+  "value_derivation_authorized": false,
+  "bridge_authorized": false,
+  "alpha_sensitivity_authorized": false,
+  "alpha": "UNSELECTED",
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "THEORY_ESTABLISHED": "0%"
+}
