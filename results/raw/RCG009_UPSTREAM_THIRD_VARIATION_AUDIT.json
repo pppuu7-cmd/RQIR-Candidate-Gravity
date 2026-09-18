@@ -1,0 +1,17 @@
+{
+  "THEORY_ESTABLISHED": "0%",
+  "aggregate_classification": "BLOCKED_SCOPED_RCG009_RQIR_PRINCIPLES_DO_NOT_DEFINE_REQUIRED_HIGHER_ORDER_OBJECT",
+  "alpha": "UNSELECTED",
+  "alpha_sensitivity_authorized": false,
+  "bridge_gate_authorized": false,
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "controls_ok": true,
+  "independent_classification": "BLOCKED_SCOPED_RCG009_RQIR_PRINCIPLES_DO_NOT_DEFINE_REQUIRED_HIGHER_ORDER_OBJECT",
+  "parent_functional_defined": false,
+  "phase": "RCG009_UPSTREAM_THIRD_VARIATION_INDEPENDENT_AUDITOR",
+  "provenance_ok": true,
+  "run_id": "35374333047",
+  "source_object_defined": false,
+  "value_derivation_authorized": false,
+  "verdict": "CONFIRMED_SCOPED"
+}
