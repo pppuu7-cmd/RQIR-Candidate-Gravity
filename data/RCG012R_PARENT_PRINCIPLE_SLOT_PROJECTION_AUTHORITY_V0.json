@@ -1,0 +1,62 @@
+{
+  "schema":"RCG012R_PARENT_PRINCIPLE_SLOT_PROJECTION_AUTHORITY_V0",
+  "status":"PROSPECTIVELY_FROZEN_BEFORE_EXECUTION",
+  "frontier_commit":"e3e735500f7a78f4ed6d29a2479d0c3c57c42cea",
+  "scientific_question":"DOES_CURRENT_DURABLE_RQIRCG_AUTHORITY_DEFINE_A_NONCOLLAPSING_PROJECTION_FROM_THE_FIVE_MODEL_DEFINITION_SLOTS_TO_THE_NARROWER_PARENT_SOURCE_GENERATING_INFLUENCE_PRINCIPLE_STAGE_SUFFICIENT_TO_AUTHORIZE_A_MINIMAL_CONTENT_BASIS_THEOREM?",
+  "slots":[
+    "A_CLASSICAL_LAW",
+    "B_SOURCE_PREPARATION_CONSTITUTION",
+    "C_QUANTUM_STATE_MEASURE_BOUNDARY",
+    "D_QUANTUM_LAW_ON_SHELL_MATCHING",
+    "E_OPERATIONAL_OBSERVABLE_READOUT"
+  ],
+  "required_projection_labels":[
+    "REQUIRED_AT_PARENT_PRINCIPLE_STAGE",
+    "DOWNSTREAM_ONLY",
+    "NOT_APPLICABLE"
+  ],
+  "cheap_obstruction":"P1_EXPLICIT_PROJECTION_RULE_EXISTS",
+  "requirements":[
+    "P1_EXPLICIT_PROJECTION_RULE_EXISTS",
+    "P2_ALL_FIVE_SLOTS_CLASSIFIED_BY_AUTHORITY",
+    "P3_NONCOLLAPSE_RULE_PRESERVED",
+    "P4_PARENT_STAGE_BOUNDARY_EXPLICIT",
+    "P5_OPERATIONAL_READOUT_BOUNDARY_EXPLICIT",
+    "P6_CANDIDATE_INDEPENDENCE",
+    "P7_OUTCOME_FIREWALL"
+  ],
+  "authority_records":[
+    {"path":"recovery/CURRENT_FRONT.md","blob":"48dcfb91a35ddd551f7a283c0dd50998042f43cc","role":"post-RCG012-quarantine frontier"},
+    {"path":"results/RCG012_PREEXECUTION_CONTRACT_DEFECT_QUARANTINE.md","blob":"bdde9663d4195a97e59118c2e73d086adccfb908","role":"pre-execution invalidation of collapsed S/Q/G basis"},
+    {"path":"results/RCG010_PARENT_SOURCE_PRINCIPLE_DERIVABILITY_TERMINAL.md","blob":"91aafa5cc2ead404c84efb26f54cda1afe1c9fce","role":"parent principle legal obligations"},
+    {"path":"results/RCG011_NEW_PARENT_PRINCIPLE_FAMILY_FORMATION_TERMINAL.md","blob":"5ac68cdad4b52ff1d62a9c889683a399905205c3","role":"parent-principle content blocker"},
+    {"path":"docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md","blob":"fe019f91114052bd8b6a4b56cf1373d765ed9b06","role":"five-slot non-collapse architecture and promotion minimum"},
+    {"path":"docs/RQIRCG_SELECTOR_OBSERVABLE_OBLIGATIONS.md","blob":"562db13b9c58895e8ce8e8293ef91461d691b087","role":"slot-specific selector and observable obligations"}
+  ],
+  "terminal_taxonomy":[
+    "PASS_SCOPED_RCG012R_PARENT_PRINCIPLE_SLOT_PROJECTION_DEFINED",
+    "BLOCKED_SCOPED_RCG012R_NO_AUTHORIZED_PROJECTION_FROM_FIVE_SLOT_GRAPH_TO_PARENT_PRINCIPLE",
+    "BLOCKED_SCOPED_RCG012R_PARENT_STAGE_BOUNDARY_AMBIGUOUS",
+    "INVALID_RCG012R_IMPLEMENTATION_OR_PROVENANCE"
+  ],
+  "search_controls":[
+    "repo code search: parent principle + Slot A",
+    "repo code search: parent-principle + OPERATIONAL MAP",
+    "repo code search: five slots + parent",
+    "repo code search: projection + model-definition slot"
+  ],
+  "locks":{
+    "coefficient_space":"A=span{alpha}",
+    "selector_rank":0,
+    "residual_dimension":1,
+    "parent_principle_defined":false,
+    "parent_functional_defined":false,
+    "source_object_defined":false,
+    "value_derivation_authorized":false,
+    "bridge_authorized":false,
+    "alpha_sensitivity_authorized":false,
+    "alpha":"UNSELECTED",
+    "chi_ABC":"UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED":"0%"
+  }
+}
