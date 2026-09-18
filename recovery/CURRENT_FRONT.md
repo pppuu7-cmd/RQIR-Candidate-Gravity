@@ -566,3 +566,61 @@ In particular, distinguish:
 Do not access another repository in this gate.
 
 The goal is to identify the earliest parent-local object/provenance blocker for a future SUCCESSOR_PROMOTION_GATE.
+
+
+## RCG013 terminal — successor promotion slot-status census
+
+Prereg:
+`a2fb9620a21aad02b8e04b8f79766bd848e50481`.
+
+Static Critic:
+`d2146bac7a2d917b85ce690b2968b7c77d181635`.
+
+Terminal commit:
+`df6ee1ed395dd91590b4c52e9c19b768c31628c3`.
+
+Classification:
+`PASS_SCOPED_RCG013_SUCCESSOR_PROMOTION_SLOT_STATUS_CENSUS_COMPLETE`.
+
+Independent bounded review:
+`CONFIRMED_SCOPED`.
+
+Parent-local five-slot census:
+
+- A CLASSICAL LAW
+  = `SUCCESSOR_ONLY_SELECTED_REFERENCE_NOT_PARENT_LOCAL`
+- B SOURCE CONSTITUTION
+  = `UNRESOLVED_MODEL_DEFINITION_SLOT`
+- C STATE / MEASURE
+  = `UNRESOLVED_MODEL_DEFINITION_SLOT`
+- D QUANTUM LAW
+  = `STRUCTURAL_NEGATIVE_CONTROL_ONLY`
+- E OPERATIONAL MAP
+  = `BOUNDARY_COMPLETE_OBJECT_MISSING`
+
+Recursive parent-tree audit found no RHPI/SF021/SF025/SF026 defining result path. Parent contains structural import records only.
+
+Earliest parent-local promotion blocker:
+
+`A_CLASSICAL_LAW_EXACT_SELECTED_OBJECT_NOT_MATERIALIZED_IN_PARENT_REPOSITORY`.
+
+This does not challenge SF021. It is a locality/provenance blocker for parent-only execution.
+
+Even if A is later materialized, B, C, D and E remain independently open.
+
+Current successor promotion status:
+`NOT_EXECUTABLE`.
+
+## Next admissible repo-only gate
+
+`RCG014_PARENT_LOCAL_CLASSICAL_LAW_OBJECT_AUTHORITY_REQUIREMENTS_GATE`.
+
+Under repo-only operation:
+- do not fetch the successor repository;
+- do not reconstruct RHPI from memory;
+- do not fabricate missing source content.
+
+The gate may only freeze the exact content-addressed provenance/object package that would be required before A can receive
+`PARENT_LOCAL_EXACT_SELECTED_OBJECT`.
+
+All coefficient/value/chi locks remain unchanged.
