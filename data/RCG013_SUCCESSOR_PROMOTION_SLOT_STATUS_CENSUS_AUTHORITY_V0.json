@@ -1,0 +1,49 @@
+{
+  "schema":"RCG013_SUCCESSOR_PROMOTION_SLOT_STATUS_CENSUS_AUTHORITY_V0",
+  "status":"PROSPECTIVELY_FROZEN_BEFORE_EXECUTION",
+  "frontier_commit":"ef624dbb6ad04550960e4379d4846e73476a2259",
+  "question":"WHAT_IS_THE_EXACT_PARENT_LOCAL_AUTHORITY_STATUS_OF_EACH_FIVE_SUCCESSOR_PROMOTION_SLOT_AND_WHAT_IS_THE_EARLIEST_OBJECT_OR_PROVENANCE_BLOCKER_TO_AN_EXECUTABLE_SUCCESSOR_PROMOTION_GATE?",
+  "slots":[
+    "A_CLASSICAL_LAW",
+    "B_SOURCE_CONSTITUTION",
+    "C_STATE_MEASURE",
+    "D_QUANTUM_LAW",
+    "E_OPERATIONAL_MAP"
+  ],
+  "status_vocabulary":[
+    "PARENT_LOCAL_EXACT_SELECTED_OBJECT",
+    "SUCCESSOR_ONLY_SELECTED_REFERENCE_NOT_PARENT_LOCAL",
+    "STRUCTURAL_NEGATIVE_CONTROL_ONLY",
+    "UNRESOLVED_MODEL_DEFINITION_SLOT",
+    "BOUNDARY_COMPLETE_OBJECT_MISSING"
+  ],
+  "authority_records":[
+    {"path":"recovery/CURRENT_FRONT.md","blob":"aadb50f5d7a7251b7556e1c3cb73c8b4409dbfba","role":"post-RCG012R frontier"},
+    {"path":"docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md","blob":"fe019f91114052bd8b6a4b56cf1373d765ed9b06","role":"five-slot graph and promotion condition"},
+    {"path":"docs/RQIRCG_SELECTOR_OBSERVABLE_OBLIGATIONS.md","blob":"562db13b9c58895e8ce8e8293ef91461d691b087","role":"slot-specific selection and observable obligations"},
+    {"path":"research_log/RQIRCGSF_STRUCTURAL_IMPORT_MANIFEST.md","blob":"1f9417442e387bddf1dda935604bb507734247d6","role":"exact structural import provenance and successor-only content"},
+    {"path":"results/RQIRCGSF_STRUCTURAL_IMPORT_TERMINAL.md","blob":"baf4f7d33e92a4724e40ea5162f654705dc349b5","role":"terminal import scope and promotion condition"}
+  ],
+  "tree_presence_tests":[
+    "SF021_RHPI_GRAVITATIONAL_LAW_SELECTION_TERMINAL.md",
+    "RHPI",
+    "SF025",
+    "SF026"
+  ],
+  "classification":"PASS_SCOPED_RCG013_SUCCESSOR_PROMOTION_SLOT_STATUS_CENSUS_COMPLETE_if_all_slots_classified_with_exact_parent_local_evidence",
+  "claim_ceiling":"status/provenance census only; no slot promotion; no successor candidate formation; no cross-repository import",
+  "locks":{
+    "coefficient_space":"A=span{alpha}",
+    "selector_rank":0,
+    "residual_dimension":1,
+    "parent_principle_defined":false,
+    "parent_functional_defined":false,
+    "source_object_defined":false,
+    "value_derivation_authorized":false,
+    "bridge_authorized":false,
+    "alpha_sensitivity_authorized":false,
+    "alpha":"UNSELECTED",
+    "chi_ABC":"UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED":"0%"
+  }
+}
