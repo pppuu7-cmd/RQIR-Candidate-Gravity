@@ -1,0 +1,94 @@
+name: RCG008 Higher-Order RQIR Source Authority Census
+
+on:
+  push:
+    paths:
+      - 'prereg/RCG008_EXECUTION_IDENTITY_FREEZE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify frozen implementation identity
+        run: python scripts/rcg008_verify_execution_identity.py
+      - name: Constructor
+        run: python scripts/rcg008_source_authority_constructor.py --manifest data/RCG008_FROZEN_CORPUS_MANIFEST_V0.json --out out/constructor.json
+      - run: cat out/constructor.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg008-constructor
+          path: out/constructor.json
+          if-no-files-found: error
+
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify frozen implementation identity
+        run: python scripts/rcg008_verify_execution_identity.py
+      - name: Independent Critic
+        run: python scripts/rcg008_source_authority_critic.py --manifest data/RCG008_FROZEN_CORPUS_MANIFEST_V0.json --out out/critic.json
+      - run: cat out/critic.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg008-critic
+          path: out/critic.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg008-constructor
+          path: in/constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg008-critic
+          path: in/critic
+      - name: Aggregate
+        run: python scripts/rcg008_source_authority_aggregate.py --manifest data/RCG008_FROZEN_CORPUS_MANIFEST_V0.json --constructor in/constructor/constructor.json --critic in/critic/critic.json --out out/aggregate.json
+      - run: cat out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg008-aggregate
+          path: out/aggregate.json
+          if-no-files-found: error
+
+  auditor:
+    needs: [aggregate]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg008-aggregate
+          path: in/aggregate
+      - name: Independent Selector Auditor
+        run: python scripts/rcg008_source_authority_auditor.py --manifest data/RCG008_FROZEN_CORPUS_MANIFEST_V0.json --aggregate in/aggregate/aggregate.json --out out/audit.json
+      - run: cat out/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg008-independent-audit
+          path: out/audit.json
+          if-no-files-found: error

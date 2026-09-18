@@ -1,0 +1,208 @@
+{
+  "schema": "RCG008_FROZEN_CORPUS_MANIFEST_V0",
+  "authority_base_commit": "1a53979ea1f684d6acdc35c789c0bf8c86e8f6b0",
+  "prereg_commit": "a802ee303cccce73f0a8c974f4c73915ebae40c0",
+  "prereg_path": "prereg/RCG008_HIGHER_ORDER_RQIR_SOURCE_AUTHORITY_CENSUS_V0.md",
+  "discovery_rule": {
+    "bounded_roots": [
+      "results",
+      "prereg",
+      "candidates",
+      "recovery"
+    ],
+    "authority_types": [
+      "terminal_result",
+      "frozen_prereg",
+      "candidate_source_record",
+      "canonical_raw_parent"
+    ],
+    "frozen_families": [
+      "G88",
+      "G89",
+      "G90",
+      "G91",
+      "G92",
+      "G93",
+      "G94",
+      "G95",
+      "G96",
+      "G97",
+      "RCG002",
+      "RCG007"
+    ],
+    "rule": "Include the terminal authority record for each frozen G88-G97 family, the RCG002 candidate-owned higher-order/source records directly implicated by G93, and the RCG007 terminal plus canonical raw positive-control record. Direct dependencies are frozen by Git blob identity. No post-outcome expansion."
+  },
+  "support_records": [
+    {
+      "path": "prereg/RCG008_HIGHER_ORDER_RQIR_SOURCE_AUTHORITY_CENSUS_V0.md",
+      "blob": "8316d3f484cef5217065177450c79566371f9485"
+    },
+    {
+      "path": "recovery/CURRENT_FRONT.md",
+      "blob": "80f1dd26ea577878c8fd3cdab8b4ef41c84947c3"
+    },
+    {
+      "path": "results/RCG007_WEYL3_INHERITED_RQIR_SELECTION_RANK_TERMINAL.md",
+      "blob": "e5598db836d357aca8379bed5f42e9396f0e1cd5"
+    },
+    {
+      "path": "results/raw/RCG007_WEYL3_SELECTION_RANK_CANONICAL.json",
+      "blob": "839b5082f1647bedbd52d94777695e3fab0f8f4e"
+    }
+  ],
+  "objects": [
+    {
+      "id": "G88",
+      "path": "results/ITER086_G88_C_INHERITED_CONSTRAINT_SELECTION_SUFFICIENCY_TERMINAL.md",
+      "blob": "4a73bc37d34f0c6b2a15f86fb3b84d391dde8929",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER086_G88_C_INHERITED_CONSTRAINT_SELECTION_SUFFICIENCY.md",
+          "blob": "dadb38cd33872f0b0c935949d9de5ae667c49a66"
+        }
+      ]
+    },
+    {
+      "id": "G89",
+      "path": "results/ITER087_G89_D_INHERITED_CONSTRAINT_SELECTION_SUFFICIENCY_TERMINAL.md",
+      "blob": "71175e7411efabbbc98ebd6e09172d1d540f15f9",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER087_G89_D_INHERITED_CONSTRAINT_SELECTION_SUFFICIENCY.md",
+          "blob": "8b233d33c1b761f23a88efc33779424334b4bc5a"
+        }
+      ]
+    },
+    {
+      "id": "G90",
+      "path": "results/ITER088_G90_C_COVARIANT_CUBIC_LIFT_TERMINAL.md",
+      "blob": "1377ea41d85d86efc002613fcf3a3eac5421861e",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER088_G90_C_COVARIANT_CUBIC_LIFT.md",
+          "blob": "0c55f63229506abcae1b1d10d794ba5837349391"
+        }
+      ]
+    },
+    {
+      "id": "G91",
+      "path": "results/ITER089_G91_D_COVARIANT_QUARTIC_LIFT_TERMINAL.md",
+      "blob": "38bc01d4d268217cb20cf74f29364e99a4108980",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER089_G91_D_COVARIANT_QUARTIC_LIFT.md",
+          "blob": "e4f8ac9901e9c2ea7ff82360a2539ebb853f7419"
+        }
+      ]
+    },
+    {
+      "id": "G92",
+      "path": "results/ITER090_G92_LEADING_VACUUM_SHELL_WITNESS_AUDIT_TERMINAL.md",
+      "blob": "43a019b3749345631479f0e8830ac611c0f2fa03",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER090_G92_LEADING_VACUUM_SHELL_WITNESS_AUDIT.md",
+          "blob": "a02a810e3b2c120a74997ca7373d8939ca17b6c3"
+        }
+      ]
+    },
+    {
+      "id": "G93",
+      "path": "results/ITER091_G93_C_CONNECTED_THREE_SOURCE_PHASE_SELECTOR_TERMINAL.md",
+      "blob": "fceb2642747e37b9c2c238f5cc330ecfa949b5e0",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER091_G93_C_CONNECTED_THREE_SOURCE_PHASE_SELECTOR.md",
+          "blob": "c1595c54485f9e959c3bad29a2a56863ae0a1882"
+        },
+        {
+          "path": "prereg/ITER091_G93_RCG002_CONNECTED_MULTISOURCE_PHASE_DATUM.md",
+          "blob": "2a94f7e74bb7d201e2410f1af8a9f57a5c298bb7"
+        }
+      ]
+    },
+    {
+      "id": "G94",
+      "path": "results/ITER092_G94_D_NATIVE_THREE_SOURCE_PHASE_BRIDGE_TERMINAL.md",
+      "blob": "49ab17cbec4b07d477ed027a8a04740b4b050e6e",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER092_G94_D_NATIVE_THREE_SOURCE_PHASE_BRIDGE_AUDIT.md",
+          "blob": "f6b5da18f4b547ec51ddfad47b4fc6ff4f23f359"
+        }
+      ]
+    },
+    {
+      "id": "G95",
+      "path": "results/ITER093_G95_MINIMAL_FINITE_HISTORY_NONLINEAR_CLOSURE_TERMINAL.md",
+      "blob": "b681562903939edbf69991f0102a77ae6320bb06",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER093_G95_MINIMAL_FINITE_HISTORY_NONLINEAR_CLOSURE_FEASIBILITY.md",
+          "blob": "d8a95ca36aac7734a0263c2c1c84b0c408ab1ade"
+        }
+      ]
+    },
+    {
+      "id": "G96",
+      "path": "results/ITER094_G96_G95_CONSTRAINT_ATTRIBUTION_TERMINAL.md",
+      "blob": "f017cd67e457295e9d75eeec002ed331bb31e0b6",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER094_G96_G95_CONSTRAINT_ATTRIBUTION.md",
+          "blob": "8f4ed745da6412bd86aa74c099948ad5332ce5f5"
+        }
+      ]
+    },
+    {
+      "id": "G97",
+      "path": "results/ITER095_G97_CLOSED_TOTAL_SOURCE_PREPARATION_TERMINAL.md",
+      "blob": "691b64c94527fec076c165e5e036928949fe544e",
+      "authority_type": "terminal_result",
+      "dependencies": [
+        {
+          "path": "prereg/ITER095_G97_CLOSED_TOTAL_SOURCE_PREPARATION.md",
+          "blob": "ae4a1a3b427d91706ff0674be100317ffc393d6c"
+        }
+      ]
+    },
+    {
+      "id": "RCG002_LINEARIZED",
+      "path": "candidates/RCG_002_COVARIANT_BASELINE_COMPLETION_V0.md",
+      "blob": "a57c045edb858b28740a1d6709343690c53d6b01",
+      "authority_type": "candidate_source_record",
+      "dependencies": []
+    },
+    {
+      "id": "RCG007_SYNTHETIC_CUBIC_CONTROL",
+      "path": "results/RCG007_WEYL3_INHERITED_RQIR_SELECTION_RANK_TERMINAL.md",
+      "blob": "e5598db836d357aca8379bed5f42e9396f0e1cd5",
+      "authority_type": "terminal_parent_control",
+      "dependencies": [
+        {
+          "path": "results/raw/RCG007_WEYL3_SELECTION_RANK_CANONICAL.json",
+          "blob": "839b5082f1647bedbd52d94777695e3fab0f8f4e"
+        }
+      ]
+    }
+  ],
+  "mandatory_controls": {
+    "G88": "FOUND_BUT_TOO_LOW_ORDER_FOR_ALPHA",
+    "G89": "FOUND_BUT_D_SPECIFIC_UNBRIDGED",
+    "RCG007_SYNTHETIC_CUBIC_CONTROL": "FOUND_BUT_SYNTHETIC_CONTROL"
+  },
+  "locks": {
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
