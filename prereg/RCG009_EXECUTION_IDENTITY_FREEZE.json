@@ -1,0 +1,30 @@
+{
+  "schema": "RCG009_EXECUTION_IDENTITY_FREEZE_V0",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_CANONICAL_EXECUTION",
+  "scientific_prereg_commit": "a4bf5346a9c8d021ee8914b5bea1aad0ae3315dc",
+  "scientific_prereg_blob": "1254b3f655073239b216a953718c94f24c50a2da",
+  "authority_manifest_blob": "63a3dcb4a096591ff905690fe345b1566828dc85",
+  "static_critic_commit": "535503fe66b5b6d964e6c6fe2f54f6fb2c5a9d1f",
+  "static_critic_blob": "4d7a0790a60b17e7167e2e050c26cafe0b63d198",
+  "implementation_commit": "3d02f6ca7af1d5624dbf79f4fc77429e44971e31",
+  "implementation_blobs": {
+    "data/RCG009_UPSTREAM_THIRD_VARIATION_AUTHORITY_V0.json": "63a3dcb4a096591ff905690fe345b1566828dc85",
+    "prereg/RCG009_UPSTREAM_THIRD_VARIATION_SOURCE_DEFINITION_V0.md": "1254b3f655073239b216a953718c94f24c50a2da",
+    "research_log/RQIRCG_STATIC_CRITIC_RCG009_PREEXEC.md": "4d7a0790a60b17e7167e2e050c26cafe0b63d198",
+    "scripts/rcg009_upstream_third_variation_constructor.py": "1050c2b0dcdd48514afbcf987c4ac9d233fc7378",
+    "scripts/rcg009_upstream_third_variation_critic.py": "eed9d10df1569b3ca570d0ffb0c8af9eede621c0",
+    "scripts/rcg009_upstream_third_variation_aggregate.py": "aa514439a71f037e48a74c135f36417089dd7d91",
+    "scripts/rcg009_upstream_third_variation_auditor.py": "8e7e451448d2eb344305e56d93c0e4414e745487",
+    "scripts/rcg009_verify_execution_identity.py": "e564a44bae48df58036ff2f9520225a39eab8fd8",
+    ".github/workflows/rcg009-upstream-third-variation-source-definition.yml": "285464db3ec0c2ac93a47a7511c032f05d0b2c37"
+  },
+  "run_policy": "Exactly one canonical source-definition Actions run is authorized by creation of this freeze file.",
+  "locks": {
+    "value_derivation_authorized": false,
+    "bridge_gate_authorized": false,
+    "alpha_sensitivity_authorized": false,
+    "alpha": "UNSELECTED",
+    "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+    "THEORY_ESTABLISHED": "0%"
+  }
+}
