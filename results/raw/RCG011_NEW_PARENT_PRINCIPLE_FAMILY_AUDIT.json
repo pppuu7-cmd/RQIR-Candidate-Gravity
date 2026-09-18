@@ -1,0 +1,20 @@
+{
+  "THEORY_ESTABLISHED": "0%",
+  "aggregate_classification": "BLOCKED_SCOPED_RCG011_FORMED_FAMILIES_LEAVE_HIDDEN_MODEL_DATA",
+  "alpha": "UNSELECTED",
+  "alpha_sensitivity_authorized": false,
+  "bridge_authorized": false,
+  "chi_ABC": "UNAUTHORIZED_NOT_COMPUTED",
+  "controls_ok": true,
+  "independent_classification": "BLOCKED_SCOPED_RCG011_FORMED_FAMILIES_LEAVE_HIDDEN_MODEL_DATA",
+  "parent_functional_defined": false,
+  "parent_principle_defined": false,
+  "phase": "RCG011_NEW_PARENT_PRINCIPLE_FAMILY_INDEPENDENT_SELECTOR_AUDITOR",
+  "provenance_ok": true,
+  "residual_blocker": "EXACT_NEW_SOURCE_STATE_GENERATING_CONTENT_MUST_BE_PROSPECTIVELY_SPECIFIED",
+  "run_id": "35404971243",
+  "source_object_defined": false,
+  "structurally_eligible_families": [],
+  "value_derivation_authorized": false,
+  "verdict": "CONFIRMED_SCOPED"
+}
