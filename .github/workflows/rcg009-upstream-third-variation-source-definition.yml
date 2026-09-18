@@ -1,0 +1,92 @@
+name: RCG009 Upstream Third-Variation Source Definition
+
+on:
+  push:
+    paths:
+      - 'prereg/RCG009_EXECUTION_IDENTITY_FREEZE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  constructor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/rcg009_verify_execution_identity.py
+      - name: Constructor source-definition audit
+        run: python scripts/rcg009_upstream_third_variation_constructor.py --manifest data/RCG009_UPSTREAM_THIRD_VARIATION_AUTHORITY_V0.json --out out/constructor.json
+      - run: cat out/constructor.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg009-constructor
+          path: out/constructor.json
+          if-no-files-found: error
+
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/rcg009_verify_execution_identity.py
+      - name: Independent Critic source-definition audit
+        run: python scripts/rcg009_upstream_third_variation_critic.py --manifest data/RCG009_UPSTREAM_THIRD_VARIATION_AUTHORITY_V0.json --out out/critic.json
+      - run: cat out/critic.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg009-critic
+          path: out/critic.json
+          if-no-files-found: error
+
+  aggregate:
+    needs: [constructor, critic]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg009-constructor
+          path: in/constructor
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg009-critic
+          path: in/critic
+      - name: Aggregate source-definition decision
+        run: python scripts/rcg009_upstream_third_variation_aggregate.py --constructor in/constructor/constructor.json --critic in/critic/critic.json --out out/aggregate.json
+      - run: cat out/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg009-aggregate
+          path: out/aggregate.json
+          if-no-files-found: error
+
+  auditor:
+    needs: [aggregate]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: rcg009-aggregate
+          path: in/aggregate
+      - name: Independent Selector Auditor
+        run: python scripts/rcg009_upstream_third_variation_auditor.py --manifest data/RCG009_UPSTREAM_THIRD_VARIATION_AUTHORITY_V0.json --aggregate in/aggregate/aggregate.json --out out/audit.json
+      - run: cat out/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rcg009-independent-audit
+          path: out/audit.json
+          if-no-files-found: error
