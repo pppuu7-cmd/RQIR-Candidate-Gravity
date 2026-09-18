@@ -456,3 +456,64 @@ Rules while queued:
 - only monitor canonical run `35405271943` or diagnose explicit infrastructure failure if GitHub later reports one.
 
 All RCG011 locks remain in force until RCG012 terminal authority exists.
+
+
+## RCG012 PRE-EXECUTION CONTRACT QUARANTINE
+
+Historical frozen RCG012 prereg:
+`db72a4cb44177a7a35063050b023bfb49ee01a01`.
+
+Launch head:
+`4d9411e8234985a8e0123578dcee42bf607fd53d`.
+
+Originally authorized run:
+`35405271943`.
+
+Pre-execution defect authority:
+`results/RCG012_PREEXECUTION_CONTRACT_DEFECT_QUARANTINE.md`.
+
+Quarantine commit:
+`1b43ac4384a6277773492341038f66a997ee345b`.
+
+Classification:
+`INVALID_RCG012_PREEXECUTION_CONTRACT_COLLAPSES_DISTINCT_MODEL_DEFINITION_SLOTS`
+(mapped to frozen `INVALID_RCG012_IMPLEMENTATION_OR_PROVENANCE`).
+
+Defect was discovered while run 35405271943 was still queued:
+- no job steps had begun;
+- no RCG012 artifacts existed;
+- no substantive output had been observed.
+
+Reason:
+the RCG012 S/Q/G basis silently collapsed obligations already frozen as logically distinct in
+`docs/RQIRCG_MODEL_DEFINITION_SLOT_GRAPH.md`:
+CLASSICAL LAW; SOURCE/PREPARATION; QUANTUM STATE/MEASURE; QUANTUM LAW/MATCHING; OPERATIONAL OBSERVABLE/READOUT.
+
+The graph explicitly states:
+`The five slots are logically distinct even when one mathematical package relates them`
+and
+`No PASS in one slot grants automatic PASS in another.`
+
+Therefore any later output from run 35405271943 is quarantined:
+`NONAUTHORITATIVE_FOR_SCIENCE`.
+
+Do not rerun or repair RCG012 in place.
+Do not infer a 3-block minimum.
+
+## Current highest-information frontier
+
+`RCG012R_PARENT_PRINCIPLE_SLOT_PROJECTION_AUTHORITY_GATE`.
+
+Question:
+does current durable authority already define a non-collapsing projection from the five-slot successor model-definition graph to the narrower parent source/generating/influence-principle stage?
+
+Before any minimal-basis theorem, every slot A-E must be classified by exact authority as:
+- REQUIRED_AT_PARENT_PRINCIPLE_STAGE;
+- DOWNSTREAM_ONLY;
+- NOT_APPLICABLE;
+
+with no hidden collapse.
+
+If current authority does not provide that projection rule, terminalize BLOCKED rather than inventing one.
+
+All RCG011 claim locks remain unchanged.
